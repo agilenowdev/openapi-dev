@@ -1,4 +1,4 @@
-# Agile.Now.AccountsApi.Model.TenantData
+# Agile.Now.ApiAccounts.Model.TenantData
 The record of Tenant information.
 
 ## Properties

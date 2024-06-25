@@ -1,4 +1,4 @@
-# Agile.Now.AccountsApi - the C# library for the Accounts API documentation
+# Agile.Now.ApiAccounts - the C# library for the Accounts API documentation
 
 ## Introduction
 The OpenAPI Specification (OAS) defines a standard, language-agnostic interface to RESTful APIs which allows both humans and computers to discover and understand the capabilities of the service without access to source code, documentation, or through network traffic inspection. When properly defined, a consumer can understand and interact with the remote service with a minimal amount of implementation logic.
@@ -49,9 +49,9 @@ Run the following command to generate the DLL
 
 Then include the DLL (under the `bin` folder) in the C# project, and use the namespaces:
 ```csharp
-using Agile.Now.AccountsApi.Api;
-using Agile.Now.AccountsApi.Client;
-using Agile.Now.AccountsApi.Model;
+using Agile.Now.ApiAccounts.Api;
+using Agile.Now.ApiAccounts.Client;
+using Agile.Now.ApiAccounts.Model;
 ```
 <a id="packaging"></a>
 ## Packaging
@@ -61,7 +61,7 @@ A `.nuspec` is included with the project. You can follow the Nuget quickstart to
 This `.nuspec` uses placeholders from the `.csproj`, so build the `.csproj` directly:
 
 ```
-nuget pack -Build -OutputDirectory out Agile.Now.AccountsApi.csproj
+nuget pack -Build -OutputDirectory out Agile.Now.ApiAccounts.csproj
 ```
 
 Then, publish to a [local feed](https://docs.microsoft.com/en-us/nuget/hosting-packages/local-feeds) or [other host](https://docs.microsoft.com/en-us/nuget/hosting-packages/overview) and consume the new package via Nuget as usual.
@@ -83,9 +83,9 @@ c.Proxy = webProxy;
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Agile.Now.AccountsApi.Api;
-using Agile.Now.AccountsApi.Client;
-using Agile.Now.AccountsApi.Model;
+using Agile.Now.ApiAccounts.Api;
+using Agile.Now.ApiAccounts.Client;
+using Agile.Now.ApiAccounts.Model;
 
 namespace Example
 {

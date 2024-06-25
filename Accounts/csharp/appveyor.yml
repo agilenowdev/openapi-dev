@@ -6,4 +6,4 @@ build_script:
 - dotnet build -c Release
 - dotnet test -c Release
 after_build:
-- dotnet pack .\src\Agile.Now.AccountsApi\Agile.Now.AccountsApi.csproj -o ../../output -c Release --no-build
+- dotnet pack .\src\Agile.Now.ApiAccounts\Agile.Now.ApiAccounts.csproj -o ../../output -c Release --no-build

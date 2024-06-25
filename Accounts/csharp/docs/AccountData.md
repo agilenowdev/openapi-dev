@@ -1,4 +1,4 @@
-# Agile.Now.AccountsApi.Model.AccountData
+# Agile.Now.ApiAccounts.Model.AccountData
 The record of Account information.
 
 ## Properties

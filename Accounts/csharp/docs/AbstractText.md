@@ -1,4 +1,4 @@
-# Agile.Now.AccountsApi.Model.AbstractText
+# Agile.Now.ApiAccounts.Model.AbstractText
 The abstract object structure
 
 ## Properties

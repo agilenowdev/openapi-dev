@@ -1,4 +1,4 @@
-# Agile.Now.AccountsApi.Api.AccountsApi
+# Agile.Now.ApiAccounts.Api.AccountsApi
 
 All URIs are relative to *https://dev.esystems.fi*
 
@@ -26,9 +26,9 @@ Use the `AccountData` object resource to create new records.  You can supply the
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Agile.Now.AccountsApi.Api;
-using Agile.Now.AccountsApi.Client;
-using Agile.Now.AccountsApi.Model;
+using Agile.Now.ApiAccounts.Api;
+using Agile.Now.ApiAccounts.Client;
+using Agile.Now.ApiAccounts.Model;
 
 namespace Example
 {
@@ -122,9 +122,9 @@ Use the query string resource to delete `Account` record. The method contains tw
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Agile.Now.AccountsApi.Api;
-using Agile.Now.AccountsApi.Client;
-using Agile.Now.AccountsApi.Model;
+using Agile.Now.ApiAccounts.Api;
+using Agile.Now.ApiAccounts.Client;
+using Agile.Now.ApiAccounts.Model;
 
 namespace Example
 {
@@ -220,9 +220,9 @@ Use the query string resource to delete `Tenant` record. The method contains two
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Agile.Now.AccountsApi.Api;
-using Agile.Now.AccountsApi.Client;
-using Agile.Now.AccountsApi.Model;
+using Agile.Now.ApiAccounts.Api;
+using Agile.Now.ApiAccounts.Client;
+using Agile.Now.ApiAccounts.Model;
 
 namespace Example
 {
@@ -322,9 +322,9 @@ The method returns one record of the `Account`.  Method returns an extended `Acc
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Agile.Now.AccountsApi.Api;
-using Agile.Now.AccountsApi.Client;
-using Agile.Now.AccountsApi.Model;
+using Agile.Now.ApiAccounts.Api;
+using Agile.Now.ApiAccounts.Client;
+using Agile.Now.ApiAccounts.Model;
 
 namespace Example
 {
@@ -420,9 +420,9 @@ Utilize this method to execute a query designed to fetch comprehensive informati
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Agile.Now.AccountsApi.Api;
-using Agile.Now.AccountsApi.Client;
-using Agile.Now.AccountsApi.Model;
+using Agile.Now.ApiAccounts.Api;
+using Agile.Now.ApiAccounts.Client;
+using Agile.Now.ApiAccounts.Model;
 
 namespace Example
 {
@@ -528,9 +528,9 @@ Utilize this method to execute a query designed to fetch comprehensive informati
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Agile.Now.AccountsApi.Api;
-using Agile.Now.AccountsApi.Client;
-using Agile.Now.AccountsApi.Model;
+using Agile.Now.ApiAccounts.Api;
+using Agile.Now.ApiAccounts.Client;
+using Agile.Now.ApiAccounts.Model;
 
 namespace Example
 {
@@ -632,9 +632,9 @@ Use the `AccountData` object resource to update `Account` using `Id,Username, Ex
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Agile.Now.AccountsApi.Api;
-using Agile.Now.AccountsApi.Client;
-using Agile.Now.AccountsApi.Model;
+using Agile.Now.ApiAccounts.Api;
+using Agile.Now.ApiAccounts.Client;
+using Agile.Now.ApiAccounts.Model;
 
 namespace Example
 {
@@ -732,9 +732,9 @@ Use the `AccountData` object resource to insert or update (Upsert) `Account` usi
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Agile.Now.AccountsApi.Api;
-using Agile.Now.AccountsApi.Client;
-using Agile.Now.AccountsApi.Model;
+using Agile.Now.ApiAccounts.Api;
+using Agile.Now.ApiAccounts.Client;
+using Agile.Now.ApiAccounts.Model;
 
 namespace Example
 {
@@ -828,9 +828,9 @@ Use the `TenantPost` object resource to insert or update (Upsert) `Tenant` using
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Agile.Now.AccountsApi.Api;
-using Agile.Now.AccountsApi.Client;
-using Agile.Now.AccountsApi.Model;
+using Agile.Now.ApiAccounts.Api;
+using Agile.Now.ApiAccounts.Client;
+using Agile.Now.ApiAccounts.Model;
 
 namespace Example
 {

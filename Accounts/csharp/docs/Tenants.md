@@ -1,4 +1,4 @@
-# Agile.Now.AccountsApi.Model.Tenants
+# Agile.Now.ApiAccounts.Model.Tenants
 The list of `Tenant` records
 
 ## Properties

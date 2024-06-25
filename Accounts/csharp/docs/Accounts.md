@@ -1,4 +1,4 @@
-# Agile.Now.AccountsApi.Model.Accounts
+# Agile.Now.ApiAccounts.Model.Accounts
 The list of `Account` records
 
 ## Properties
