@@ -1,4 +1,4 @@
-# Agile.Now.OrganizationsApi.Api.LocationsApi
+# Agile.Now.ApiOrganizations.Api.LocationsApi
 
 All URIs are relative to *https://dev.esystems.fi*
 
@@ -28,9 +28,9 @@ Use the `LocationData` object resource to create new records.  You can supply th
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Agile.Now.OrganizationsApi.Api;
-using Agile.Now.OrganizationsApi.Client;
-using Agile.Now.OrganizationsApi.Model;
+using Agile.Now.ApiOrganizations.Api;
+using Agile.Now.ApiOrganizations.Client;
+using Agile.Now.ApiOrganizations.Model;
 
 namespace Example
 {
@@ -124,9 +124,9 @@ Use the query string resource to delete `Location` record. The method contains t
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Agile.Now.OrganizationsApi.Api;
-using Agile.Now.OrganizationsApi.Client;
-using Agile.Now.OrganizationsApi.Model;
+using Agile.Now.ApiOrganizations.Api;
+using Agile.Now.ApiOrganizations.Client;
+using Agile.Now.ApiOrganizations.Model;
 
 namespace Example
 {
@@ -222,9 +222,9 @@ Use the query string resource to delete `User` record. The method contains two p
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Agile.Now.OrganizationsApi.Api;
-using Agile.Now.OrganizationsApi.Client;
-using Agile.Now.OrganizationsApi.Model;
+using Agile.Now.ApiOrganizations.Api;
+using Agile.Now.ApiOrganizations.Client;
+using Agile.Now.ApiOrganizations.Model;
 
 namespace Example
 {
@@ -324,9 +324,9 @@ The method returns one record of the `Location`.  Method returns an extended `Lo
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Agile.Now.OrganizationsApi.Api;
-using Agile.Now.OrganizationsApi.Client;
-using Agile.Now.OrganizationsApi.Model;
+using Agile.Now.ApiOrganizations.Api;
+using Agile.Now.ApiOrganizations.Client;
+using Agile.Now.ApiOrganizations.Model;
 
 namespace Example
 {
@@ -422,9 +422,9 @@ Utilize this method to execute a query designed to fetch comprehensive informati
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Agile.Now.OrganizationsApi.Api;
-using Agile.Now.OrganizationsApi.Client;
-using Agile.Now.OrganizationsApi.Model;
+using Agile.Now.ApiOrganizations.Api;
+using Agile.Now.ApiOrganizations.Client;
+using Agile.Now.ApiOrganizations.Model;
 
 namespace Example
 {
@@ -530,9 +530,9 @@ Utilize this method to execute a query designed to fetch comprehensive informati
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Agile.Now.OrganizationsApi.Api;
-using Agile.Now.OrganizationsApi.Client;
-using Agile.Now.OrganizationsApi.Model;
+using Agile.Now.ApiOrganizations.Api;
+using Agile.Now.ApiOrganizations.Client;
+using Agile.Now.ApiOrganizations.Model;
 
 namespace Example
 {
@@ -634,9 +634,9 @@ Use the `UsersData` object resource to insert or update (Upsert) a list of `User
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Agile.Now.OrganizationsApi.Api;
-using Agile.Now.OrganizationsApi.Client;
-using Agile.Now.OrganizationsApi.Model;
+using Agile.Now.ApiOrganizations.Api;
+using Agile.Now.ApiOrganizations.Client;
+using Agile.Now.ApiOrganizations.Model;
 
 namespace Example
 {
@@ -736,9 +736,9 @@ Use the `LocationsText` object resource to insert or update (Upsert) a list of `
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Agile.Now.OrganizationsApi.Api;
-using Agile.Now.OrganizationsApi.Client;
-using Agile.Now.OrganizationsApi.Model;
+using Agile.Now.ApiOrganizations.Api;
+using Agile.Now.ApiOrganizations.Client;
+using Agile.Now.ApiOrganizations.Model;
 
 namespace Example
 {
@@ -832,9 +832,9 @@ Use the `LocationData` object resource to update `Location` using `Id,Name,Exter
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Agile.Now.OrganizationsApi.Api;
-using Agile.Now.OrganizationsApi.Client;
-using Agile.Now.OrganizationsApi.Model;
+using Agile.Now.ApiOrganizations.Api;
+using Agile.Now.ApiOrganizations.Client;
+using Agile.Now.ApiOrganizations.Model;
 
 namespace Example
 {
@@ -932,9 +932,9 @@ Use the `LocationData` object resource to insert or update (Upsert) `Location` u
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Agile.Now.OrganizationsApi.Api;
-using Agile.Now.OrganizationsApi.Client;
-using Agile.Now.OrganizationsApi.Model;
+using Agile.Now.ApiOrganizations.Api;
+using Agile.Now.ApiOrganizations.Client;
+using Agile.Now.ApiOrganizations.Model;
 
 namespace Example
 {
@@ -1028,9 +1028,9 @@ Use the `UserPost` object resource to insert or update (Upsert) `User` using `Id
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Agile.Now.OrganizationsApi.Api;
-using Agile.Now.OrganizationsApi.Client;
-using Agile.Now.OrganizationsApi.Model;
+using Agile.Now.ApiOrganizations.Api;
+using Agile.Now.ApiOrganizations.Client;
+using Agile.Now.ApiOrganizations.Model;
 
 namespace Example
 {

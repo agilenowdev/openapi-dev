@@ -1,4 +1,4 @@
-# Agile.Now.OrganizationsApi.Model.Error
+# Agile.Now.ApiOrganizations.Model.Error
 The list of errors. Throw specific exceptions based on the received error.
 
 ## Properties

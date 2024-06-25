@@ -1,4 +1,4 @@
-# Agile.Now.OrganizationsApi.Model.Department
+# Agile.Now.ApiOrganizations.Model.Department
 The record of Department information.
 
 ## Properties

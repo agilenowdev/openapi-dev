@@ -1,4 +1,4 @@
-# Agile.Now.OrganizationsApi.Model.UsersData
+# Agile.Now.ApiOrganizations.Model.UsersData
 The data loading record of User importing
 
 ## Properties

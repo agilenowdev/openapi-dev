@@ -1,4 +1,4 @@
-# Agile.Now.OrganizationsApi.Model.ListValidation
+# Agile.Now.ApiOrganizations.Model.ListValidation
 List validation for entity attribute
 
 ## Properties

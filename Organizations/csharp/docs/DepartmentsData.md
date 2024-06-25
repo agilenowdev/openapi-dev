@@ -1,4 +1,4 @@
-# Agile.Now.OrganizationsApi.Model.DepartmentsData
+# Agile.Now.ApiOrganizations.Model.DepartmentsData
 The data loading record of Department importing
 
 ## Properties

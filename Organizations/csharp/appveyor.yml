@@ -6,4 +6,4 @@ build_script:
 - dotnet build -c Release
 - dotnet test -c Release
 after_build:
-- dotnet pack .\src\Agile.Now.OrganizationsApi\Agile.Now.OrganizationsApi.csproj -o ../../output -c Release --no-build
+- dotnet pack .\src\Agile.Now.ApiOrganizations\Agile.Now.ApiOrganizations.csproj -o ../../output -c Release --no-build

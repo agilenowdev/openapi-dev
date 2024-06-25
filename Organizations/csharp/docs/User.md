@@ -1,4 +1,4 @@
-# Agile.Now.OrganizationsApi.Model.User
+# Agile.Now.ApiOrganizations.Model.User
 The record of User information.
 
 ## Properties

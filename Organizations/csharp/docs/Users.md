@@ -1,4 +1,4 @@
-# Agile.Now.OrganizationsApi.Model.Users
+# Agile.Now.ApiOrganizations.Model.Users
 The list of `User` records
 
 ## Properties

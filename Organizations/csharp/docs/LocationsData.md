@@ -1,4 +1,4 @@
-# Agile.Now.OrganizationsApi.Model.LocationsData
+# Agile.Now.ApiOrganizations.Model.LocationsData
 The data loading record of Location importing
 
 ## Properties

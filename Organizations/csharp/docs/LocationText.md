@@ -1,4 +1,4 @@
-# Agile.Now.OrganizationsApi.Model.LocationText
+# Agile.Now.ApiOrganizations.Model.LocationText
 The record of Location information.
 
 ## Properties

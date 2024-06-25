@@ -1,4 +1,4 @@
-# Agile.Now.OrganizationsApi.Model.Departments
+# Agile.Now.ApiOrganizations.Model.Departments
 The list of `Department` records
 
 ## Properties

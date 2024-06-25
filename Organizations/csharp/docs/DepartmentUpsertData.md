@@ -1,4 +1,4 @@
-# Agile.Now.OrganizationsApi.Model.DepartmentUpsertData
+# Agile.Now.ApiOrganizations.Model.DepartmentUpsertData
 The record of Department information.
 
 ## Properties

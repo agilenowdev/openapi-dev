@@ -1,4 +1,4 @@
-# Agile.Now.OrganizationsApi.Model.Locations
+# Agile.Now.ApiOrganizations.Model.Locations
 The list of `Location` records
 
 ## Properties

@@ -1,4 +1,4 @@
-# Agile.Now.OrganizationsApi.Model.FieldType
+# Agile.Now.ApiOrganizations.Model.FieldType
 The field object structure
 
 ## Properties
