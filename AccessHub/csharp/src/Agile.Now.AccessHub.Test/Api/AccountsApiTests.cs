@@ -16,12 +16,12 @@ using System.Reflection;
 using RestSharp;
 using Xunit;
 
-using Agile.Now.ApiAccounts.Client;
-using Agile.Now.ApiAccounts.Api;
+using Agile.Now.AccessHub.Client;
+using Agile.Now.AccessHub.Api;
 // uncomment below to import models
-//using Agile.Now.ApiAccounts.Model;
+//using Agile.Now.AccessHub.Model;
 
-namespace Agile.Now.ApiAccounts.Test.Api
+namespace Agile.Now.AccessHub.Test.Api
 {
     /// <summary>
     ///  Class for testing AccountsApi
