@@ -8,21 +8,13 @@
  */
 
 using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Reflection;
-using RestSharp;
-using Xunit;
-
-using Agile.Now.ApiAccounts.Client;
 using Agile.Now.ApiAccounts.Api;
+using Agile.Now.ApiAccounts.Client;
 // uncomment below to import models
 using Agile.Now.ApiAccounts.Model;
+using Xunit;
 
-namespace Agile.Now.ApiAccounts.Test.Api
-{
+namespace Agile.Now.ApiAccounts.Test.Api {
     /// <summary>
     ///  Class for testing AccountsApi
     /// </summary>
@@ -108,11 +100,10 @@ namespace Agile.Now.ApiAccounts.Test.Api
         [Fact]
         public void GetAccountTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string? name = null;
-            //var response = instance.GetAccount(id, name);
-            //Assert.IsType<Account>(response);
+            string id = "F74658FE-D107-4BBC-B04F-163022A4CE16";
+            string? name = null;
+            var response = instance.GetAccount(id, name);
+            Assert.IsType<Account>(response);
         }
 
         /// <summary>
@@ -139,14 +130,13 @@ namespace Agile.Now.ApiAccounts.Test.Api
         [Fact]
         public void ListAccountsTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string? fields = null;
-            //string? filters = null;
-            //string? orders = null;
-            //int? currentPage = null;
-            //int? pageSize = null;
-            //var response = instance.ListAccounts(fields, filters, orders, currentPage, pageSize);
-            //Assert.IsType<Accounts>(response);
+            string? fields = null;
+            string? filters = null;
+            string? orders = null;
+            int? currentPage = null;
+            int? pageSize = 100;
+            var response = instance.ListAccounts(fields, filters, orders, currentPage, pageSize);
+            Assert.IsType<Accounts>(response);
         }
 
         /// <summary>
