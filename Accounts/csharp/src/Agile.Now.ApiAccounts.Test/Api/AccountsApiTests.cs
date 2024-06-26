@@ -8,19 +8,10 @@
  */
 
 using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Reflection;
-using RestSharp;
-using Xunit;
-
-using Agile.Now.ApiAccounts.Client;
 using Agile.Now.ApiAccounts.Api;
-// uncomment below to import models
-//using Agile.Now.ApiAccounts.Model;
-
+using Agile.Now.ApiAccounts.Client;
+using Agile.Now.ApiAccounts.Model;
+using Xunit;
 namespace Agile.Now.ApiAccounts.Test.Api
 {
     /// <summary>
@@ -32,27 +23,25 @@ namespace Agile.Now.ApiAccounts.Test.Api
     /// </remarks>
     public class AccountsApiTests : IDisposable
     {
-        private AccountsApi instance;
+        private readonly AccountsApi instance;
 
         public AccountsApiTests()
         {
-            instance = new AccountsApi();
+            Configuration configuration = new Configuration
+            {
+                BasePath = "https://dev.esystems.fi",
+                OAuthTokenUrl = "https://dev.esystems.fi/oAuth/rest/v2/Token",
+                OAuthFlow = Client.Auth.OAuthFlow.APPLICATION,
+                OAuthClientId = "c8907421-0886-4fb0-b859-d29966762e16",
+                OAuthClientSecret = "1da54fa9-ae11-4db3-9740-1bb47b85cd8e"
+            };
+            instance = new AccountsApi(configuration);
         }
 
         public void Dispose()
         {
-            // Cleanup when everything is done.
         }
 
-        /// <summary>
-        /// Test an instance of AccountsApi
-        /// </summary>
-        [Fact]
-        public void InstanceTest()
-        {
-            // TODO uncomment below to test 'IsType' AccountsApi
-            //Assert.IsType<AccountsApi>(instance);
-        }
 
         /// <summary>
         /// Test CreateAccount
@@ -60,10 +49,11 @@ namespace Agile.Now.ApiAccounts.Test.Api
         [Fact]
         public void CreateAccountTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //AccountData accountData = null;
-            //var response = instance.CreateAccount(accountData);
-            //Assert.IsType<Account>(response);
+            var request = TestData.CreateAccountData();
+            var response = instance.CreateAccount(request);
+            Assert.Equal(request.Username, response.Username);
+            Assert.Equal(request.Email, response.Email);
+            //instance.DeleteAccount(response.Id, "Id");
         }
 
         /// <summary>
@@ -100,11 +90,10 @@ namespace Agile.Now.ApiAccounts.Test.Api
         [Fact]
         public void GetAccountTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string? name = null;
-            //var response = instance.GetAccount(id, name);
-            //Assert.IsType<Account>(response);
+            string id = "F74658FE-D107-4BBC-B04F-163022A4CE16";
+            string? name = null;
+            var response = instance.GetAccount(id, name);
+            Assert.IsType<Account>(response);
         }
 
         /// <summary>
@@ -131,14 +120,13 @@ namespace Agile.Now.ApiAccounts.Test.Api
         [Fact]
         public void ListAccountsTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string? fields = null;
-            //string? filters = null;
-            //string? orders = null;
-            //int? currentPage = null;
-            //int? pageSize = null;
-            //var response = instance.ListAccounts(fields, filters, orders, currentPage, pageSize);
-            //Assert.IsType<Accounts>(response);
+            string? fields = null;
+            string? filters = null;
+            string? orders = null;
+            int? currentPage = null;
+            int? pageSize = 100;
+            var response = instance.ListAccounts(fields, filters, orders, currentPage, pageSize);
+            Assert.IsType<Accounts>(response);
         }
 
         /// <summary>
@@ -161,10 +149,19 @@ namespace Agile.Now.ApiAccounts.Test.Api
         [Fact]
         public void UpsertAccountTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //AccountData accountData = null;
-            //var response = instance.UpsertAccount(accountData);
-            //Assert.IsType<Account>(response);
+            AccountData accountData = new
+            (
+                name: "demo 223",
+                tenantId: new("Id", "15"),
+                firstName: "test 223",
+                lastName: "demo 223",
+                email: "test223@esystems.fi",
+                username: "test223@esystems.fi",
+                isActive: true,
+                languageId: new("Name", "Finnish")
+            );
+            var response = instance.UpsertAccount(accountData);
+            Assert.IsType<Account>(response);
         }
 
         /// <summary>
