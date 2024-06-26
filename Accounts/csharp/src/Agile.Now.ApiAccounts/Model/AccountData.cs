@@ -59,22 +59,10 @@ namespace Agile.Now.ApiAccounts.Model
         public AccountData(string id = default(string), FieldType tenantId = default(FieldType), string name = default(string), string firstName = default(string), string lastName = default(string), string phone = default(string), string email = default(string), FieldType languageId = default(FieldType), FieldType timezoneId = default(FieldType), FieldType dateFormatId = default(FieldType), string username = default(string), string externalId = default(string), bool notifyByEmail = false, bool notifyBySMS = false, bool isActive = false, DateTime modifiedOn = default(DateTime), DateTime createdOn = default(DateTime))
         {
             // to ensure "id" is required (not null)
-            if (id == null)
-            {
-                throw new ArgumentNullException("id is a required property for AccountData and cannot be null");
-            }
             this.Id = id;
             // to ensure "tenantId" is required (not null)
-            if (tenantId == null)
-            {
-                throw new ArgumentNullException("tenantId is a required property for AccountData and cannot be null");
-            }
             this.TenantId = tenantId;
             // to ensure "name" is required (not null)
-            if (name == null)
-            {
-                throw new ArgumentNullException("name is a required property for AccountData and cannot be null");
-            }
             this.Name = name;
             // to ensure "firstName" is required (not null)
             if (firstName == null)
@@ -116,13 +104,13 @@ namespace Agile.Now.ApiAccounts.Model
         /// The identifier of account
         /// </summary>
         /// <value>The identifier of account</value>
-        [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Id", IsRequired = false, EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>
         /// Gets or Sets TenantId
         /// </summary>
-        [DataMember(Name = "TenantId", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "TenantId", IsRequired = false, EmitDefaultValue = true)]
         public FieldType TenantId { get; set; }
 
         /// <summary>
