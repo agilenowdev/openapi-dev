@@ -159,10 +159,19 @@ namespace Agile.Now.ApiAccounts.Test.Api {
         [Fact]
         public void UpsertAccountTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //AccountData accountData = null;
-            //var response = instance.UpsertAccount(accountData);
-            //Assert.IsType<Account>(response);
+            AccountData accountData = new
+            (
+                name: "demo 223",
+                tenantId: new("Id", "15"),
+                firstName: "test 223",
+                lastName: "demo 223",
+                email: "test223@esystems.fi",
+                username: "test223@esystems.fi",
+                isActive: true,
+                languageId: new("Name", "Finnish")
+            );
+            var response = instance.UpsertAccount(accountData);
+            Assert.IsType<Account>(response);
         }
 
         /// <summary>
