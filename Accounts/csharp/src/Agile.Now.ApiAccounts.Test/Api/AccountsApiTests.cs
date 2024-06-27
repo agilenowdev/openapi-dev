@@ -74,14 +74,26 @@ namespace Agile.Now.ApiAccounts.Test.Api
         }
 
         /// <summary>
-        /// Test DeleteAccount
+        /// Test DeleteAccount by Id
         /// </summary>
         [Fact]
-        public void DeleteAccountTest()
+        public void DeleteAccountByIdTest()
         {
             var createdAccount = api.CreateAccount(TestData.CreateAccountData());
             api.DeleteAccount(createdAccount.Id, "Id");
             var existingAccounts = api.ListAccounts(filters: $"Id = {createdAccount.Id}");
+            Assert.Empty(existingAccounts.Data);
+        }
+
+        /// <summary>
+        /// Test DeleteAccount by UserName
+        /// </summary>
+        [Fact]
+        public void DeleteAccountByUserNameTest()
+        {
+            var createdAccount = api.CreateAccount(TestData.CreateAccountData());
+            api.DeleteAccount(createdAccount.Username, "Username");
+            var existingAccounts = api.ListAccounts(filters: $"Username = {createdAccount.Username}");
             Assert.Empty(existingAccounts.Data);
         }
 

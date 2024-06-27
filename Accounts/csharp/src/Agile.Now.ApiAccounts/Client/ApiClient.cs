@@ -144,7 +144,7 @@ namespace Agile.Now.ApiAccounts.Client
             }
             catch (Exception e)
             {
-                throw new ApiException(500, e.Message);
+              throw new ApiException(500, e.Message);
             }
         }
 

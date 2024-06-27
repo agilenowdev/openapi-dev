@@ -3,9 +3,10 @@
   <PropertyGroup>
     <AssemblyName>Agile.Now.ApiAccounts.Test</AssemblyName>
     <RootNamespace>Agile.Now.ApiAccounts.Test</RootNamespace>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <IsPackable>false</IsPackable>
     <Nullable>annotations</Nullable>
+	  <LangVersion>12</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
