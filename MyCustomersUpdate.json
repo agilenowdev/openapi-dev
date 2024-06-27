@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.80"
+    "version": "3.0.81"
   },
   "servers": [
     {
@@ -897,7 +897,7 @@
             "example": "User"
           }
         },
-        "description": "The object provides metadata about the list of items returned in the API response. It typically includes information that helps clients understand and work with the data.\""
+        "description": "The object provides metadata about the list of items returned in the API response. It typically includes information that helps clients understand and work with the data."
       },
       "Error": {
         "required": [
