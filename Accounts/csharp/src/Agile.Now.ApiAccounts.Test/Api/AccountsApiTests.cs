@@ -79,11 +79,10 @@ namespace Agile.Now.ApiAccounts.Test.Api
         [Fact]
         public void DeleteAccountTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string? name = null;
-            //var response = instance.DeleteAccount(id, name);
-            //Assert.IsType<Account>(response);
+            var createdAccount = api.CreateAccount(TestData.CreateAccountData());
+            api.DeleteAccount(createdAccount.Id, "Id");
+            var existingAccounts = api.ListAccounts(filters: $"Id = {createdAccount.Id}");
+            Assert.Empty(existingAccounts.Data);
         }
 
         /// <summary>
