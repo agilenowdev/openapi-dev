@@ -8,6 +8,7 @@
  */
 
 using System;
+using System.Xml.Linq;
 using Agile.Now.ApiAccounts.Api;
 using Agile.Now.ApiAccounts.Client;
 using Agile.Now.ApiAccounts.Model;
@@ -23,7 +24,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
     /// </remarks>
     public class AccountsApiTests : IDisposable
     {
-        private readonly AccountsApi instance;
+        private readonly AccountsApi api;
 
         public AccountsApiTests()
         {
@@ -35,13 +36,12 @@ namespace Agile.Now.ApiAccounts.Test.Api
                 OAuthClientId = "c8907421-0886-4fb0-b859-d29966762e16",
                 OAuthClientSecret = "1da54fa9-ae11-4db3-9740-1bb47b85cd8e"
             };
-            instance = new AccountsApi(configuration);
+            api = new AccountsApi(configuration);
         }
 
         public void Dispose()
         {
         }
-
 
         /// <summary>
         /// Test CreateAccount
@@ -49,11 +49,28 @@ namespace Agile.Now.ApiAccounts.Test.Api
         [Fact]
         public void CreateAccountTest()
         {
-            var request = TestData.CreateAccountData();
-            var response = instance.CreateAccount(request);
-            Assert.Equal(request.Username, response.Username);
-            Assert.Equal(request.Email, response.Email);
-            //instance.DeleteAccount(response.Id, "Id");
+            var newAccount = TestData.CreateAccountData();
+            var createdAccount = api.CreateAccount(newAccount);
+
+            Assert.Equal(newAccount.LastName, createdAccount.LastName);
+            Assert.Equal(newAccount.FirstName, createdAccount.FirstName);
+            Assert.Equal(newAccount.NotifyBySMS, createdAccount.NotifyBySMS);
+            Assert.Equal(newAccount.Email, createdAccount.Email);
+            Assert.Equal(newAccount.IsActive, createdAccount.IsActive);
+
+            Assert.Equal($"{newAccount.LastName} {newAccount.FirstName}", createdAccount.Name);
+
+            Assert.NotNull(createdAccount.TimezoneId);
+            Assert.NotEqual(createdAccount.CreatedOn, DateTime.MinValue);
+            Assert.True(createdAccount.NotifyByEmail);
+
+            Assert.Equal(newAccount.DateFormatId.Value, createdAccount.DateFormatId.Id);
+            Assert.Equal(newAccount.LanguageId.Value, createdAccount.LanguageId.Name);
+
+            var existingAccount = api.GetAccount(createdAccount.Id);
+            Assert.NotNull(existingAccount);
+
+            api.DeleteAccount(createdAccount.Id, "Id");
         }
 
         /// <summary>
@@ -92,7 +109,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
         {
             string id = "F74658FE-D107-4BBC-B04F-163022A4CE16";
             string? name = null;
-            var response = instance.GetAccount(id, name);
+            var response = api.GetAccount(id, name);
             Assert.IsType<Account>(response);
         }
 
@@ -125,7 +142,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
             string? orders = null;
             int? currentPage = null;
             int? pageSize = 100;
-            var response = instance.ListAccounts(fields, filters, orders, currentPage, pageSize);
+            var response = api.ListAccounts(fields, filters, orders, currentPage, pageSize);
             Assert.IsType<Accounts>(response);
         }
 
@@ -160,7 +177,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
                 isActive: true,
                 languageId: new("Name", "Finnish")
             );
-            var response = instance.UpsertAccount(accountData);
+            var response = api.UpsertAccount(accountData);
             Assert.IsType<Account>(response);
         }
 

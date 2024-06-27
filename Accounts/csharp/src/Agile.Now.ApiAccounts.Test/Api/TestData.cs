@@ -9,11 +9,10 @@ namespace Agile.Now.ApiAccounts.Test.Api
 
         public static AccountData CreateAccountData()
         {
-            var name = "unit-test-acount";
+            var name = "unit-test-account";
             var uniqueName = $"{name}-{DateTime.Now:yyyy-MM-dd-HH-mm-ss-fff}";
             return new
             (
-                name: name,
                 tenantId: new("Id", DefaultTenant.ToString()),
                 firstName: name,
                 lastName: "lastName",
@@ -21,7 +20,10 @@ namespace Agile.Now.ApiAccounts.Test.Api
                 username: uniqueName,
                 isActive: true,
                 languageId: new("Name", "Finnish")
-            );
+            )
+            {
+                DateFormatId = new("Id", "DD-MM-YYYY")
+            };
         }
     }
 }
