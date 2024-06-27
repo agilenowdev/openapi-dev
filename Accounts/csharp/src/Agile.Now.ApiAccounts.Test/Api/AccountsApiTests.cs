@@ -52,25 +52,30 @@ namespace Agile.Now.ApiAccounts.Test.Api
             var newAccount = TestData.CreateAccountData();
             var createdAccount = api.CreateAccount(newAccount);
 
-            Assert.Equal(newAccount.LastName, createdAccount.LastName);
-            Assert.Equal(newAccount.FirstName, createdAccount.FirstName);
-            Assert.Equal(newAccount.NotifyBySMS, createdAccount.NotifyBySMS);
-            Assert.Equal(newAccount.Email, createdAccount.Email);
-            Assert.Equal(newAccount.IsActive, createdAccount.IsActive);
+            try
+            {
+                Assert.Equal(newAccount.LastName, createdAccount.LastName);
+                Assert.Equal(newAccount.FirstName, createdAccount.FirstName);
+                Assert.Equal(newAccount.NotifyBySMS, createdAccount.NotifyBySMS);
+                Assert.Equal(newAccount.Email, createdAccount.Email);
+                Assert.Equal(newAccount.IsActive, createdAccount.IsActive);
 
-            Assert.Equal($"{newAccount.LastName} {newAccount.FirstName}", createdAccount.Name);
+                Assert.Equal($"{newAccount.LastName} {newAccount.FirstName}", createdAccount.Name);
 
-            Assert.NotNull(createdAccount.TimezoneId);
-            Assert.NotEqual(createdAccount.CreatedOn, DateTime.MinValue);
-            Assert.True(createdAccount.NotifyByEmail);
+                Assert.NotNull(createdAccount.TimezoneId);
+                Assert.NotEqual(createdAccount.CreatedOn, DateTime.MinValue);
+                Assert.True(createdAccount.NotifyByEmail);
 
-            Assert.Equal(newAccount.DateFormatId.Value, createdAccount.DateFormatId.Id);
-            Assert.Equal(newAccount.LanguageId.Value, createdAccount.LanguageId.Name);
+                Assert.Equal(newAccount.DateFormatId.Value, createdAccount.DateFormatId.Id);
+                Assert.Equal(newAccount.LanguageId.Value, createdAccount.LanguageId.Name);
 
-            var existingAccount = api.GetAccount(createdAccount.Id);
-            Assert.NotNull(existingAccount);
-
-            api.DeleteAccount(createdAccount.Id, "Id");
+                var existingAccount = api.GetAccount(createdAccount.Id);
+                Assert.NotNull(existingAccount);
+            }
+            finally
+            {
+                api.DeleteAccount(createdAccount.Id, "Id");
+            }
         }
 
         /// <summary>
@@ -113,15 +118,27 @@ namespace Agile.Now.ApiAccounts.Test.Api
         }
 
         /// <summary>
-        /// Test GetAccount
+        /// Test GetAccount by Id
         /// </summary>
         [Fact]
-        public void GetAccountTest()
+        public void GetAccountByIdTest()
         {
-            string id = "F74658FE-D107-4BBC-B04F-163022A4CE16";
-            string? name = null;
-            var response = api.GetAccount(id, name);
-            Assert.IsType<Account>(response);
+            var createdAccount = api.CreateAccount(TestData.CreateAccountData());
+            var existingAccount = api.GetAccount(createdAccount.Id);
+            var notFoundException = Record.Exception(() => api.GetAccount(createdAccount.Id));
+            Assert.Null(notFoundException);
+        }
+
+        /// <summary>
+        /// Test GetAccount by UserName
+        /// </summary>
+        [Fact]
+        public void GetAccountByUserNameTest()
+        {
+            var createdAccount = api.CreateAccount(TestData.CreateAccountData());
+            var existingAccount = api.GetAccount(createdAccount.Username, "Username");
+            var notFoundException = Record.Exception(() => api.GetAccount(createdAccount.Id));
+            Assert.Null(notFoundException);
         }
 
         /// <summary>
