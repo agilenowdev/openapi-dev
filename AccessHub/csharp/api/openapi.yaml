@@ -31,7 +31,7 @@ info:
     name: BSD-3 license
     url: https://opensource.org/licenses/BSD-3-Clause
   title: Accounts API documentation
-  version: 3.0.8
+  version: 3.0.12
 servers:
 - description: Default entry point of service
   url: https://dev.esystems.fi
@@ -1031,12 +1031,13 @@ paths:
         name: PageSize
         required: false
         schema:
-          default: "0"
+          default: 0
           description: |-
             The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.
 
             The value ranges from `1` to `1000` and defaults to `50`.
-          type: string
+          format: int32
+          type: integer
         style: form
       responses:
         "200":
@@ -6730,8 +6731,6 @@ components:
       - FirstName
       - Id
       - LastName
-      - Name
-      - TenantId
       - Username
       type: object
     AbstractLong:
@@ -6979,8 +6978,6 @@ components:
       - FirstName
       - Id
       - LastName
-      - Name
-      - TenantId
       - Username
       type: object
     FieldType:
