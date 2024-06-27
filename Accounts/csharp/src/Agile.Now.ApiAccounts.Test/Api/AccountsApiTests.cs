@@ -69,8 +69,8 @@ namespace Agile.Now.ApiAccounts.Test.Api
                 Assert.Equal(newAccount.DateFormatId.Value, createdAccount.DateFormatId.Id);
                 Assert.Equal(newAccount.LanguageId.Value, createdAccount.LanguageId.Name);
 
-                var existingAccount = api.GetAccount(createdAccount.Id);
-                Assert.NotNull(existingAccount);
+                var notFoundException = Record.Exception(() => api.GetAccount(createdAccount.Id));
+                Assert.Null(notFoundException);
             }
             finally
             {
