@@ -39,6 +39,8 @@ docs/Locations.md
 docs/LocationsApi.md
 docs/LocationsData.md
 docs/Meta.md
+docs/Meta1.md
+docs/Meta2.md
 docs/Tenant.md
 docs/TenantData.md
 docs/Tenants.md
@@ -49,6 +51,8 @@ docs/Users.md
 docs/UsersData.md
 git_push.sh
 src/Agile.Now.AccessHub.Test/Agile.Now.AccessHub.Test.csproj
+src/Agile.Now.AccessHub.Test/Model/Meta1Tests.cs
+src/Agile.Now.AccessHub.Test/Model/Meta2Tests.cs
 src/Agile.Now.AccessHub/Agile.Now.AccessHub.csproj
 src/Agile.Now.AccessHub/Api/AccountsApi.cs
 src/Agile.Now.AccessHub/Api/ConnectionsApi.cs
@@ -106,6 +110,8 @@ src/Agile.Now.AccessHub/Model/LocationText.cs
 src/Agile.Now.AccessHub/Model/Locations.cs
 src/Agile.Now.AccessHub/Model/LocationsData.cs
 src/Agile.Now.AccessHub/Model/Meta.cs
+src/Agile.Now.AccessHub/Model/Meta1.cs
+src/Agile.Now.AccessHub/Model/Meta2.cs
 src/Agile.Now.AccessHub/Model/Tenant.cs
 src/Agile.Now.AccessHub/Model/TenantData.cs
 src/Agile.Now.AccessHub/Model/Tenants.cs

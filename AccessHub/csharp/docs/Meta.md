@@ -1,5 +1,5 @@
 # Agile.Now.AccessHub.Model.Meta
-The object provides metadata about the list of items returned in the API response. It typically includes information that helps clients understand and work with the data.\"
+The object provides metadata about the list of items returned in the API response. It typically includes information that helps clients understand and work with the data.
 
 ## Properties
 
