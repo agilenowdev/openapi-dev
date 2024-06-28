@@ -193,8 +193,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
         [Fact]
         public void ListAccountsByIdTest()
         {
-            var newAccounts = new[] { 0, 1, 2 }.
-                Select(i => TestAccountData.CreateAccountData(i.ToString())).ToArray();
+            var newAccounts = TestAccountData.CreateAccountDataList();
             var createdAccounts = newAccounts.Select(i => api.CreateAccount(i)).ToArray();
             var foundAccounts = api.ListAccounts(
                 filters: $"Id In {string.Join("; ", createdAccounts.Select(i => i.Id))}").Data;
@@ -207,8 +206,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
         [Fact]
         public void ListAccountsByUserNameTest()
         {
-            var newAccounts = new[] { 0, 1, 2 }.
-                Select(i => TestAccountData.CreateAccountData(i.ToString())).ToArray();
+            var newAccounts = TestAccountData.CreateAccountDataList();
             var createdAccounts = newAccounts.Select(i => api.CreateAccount(i)).ToArray();
             var foundAccounts = api.ListAccounts(
                 filters: $"Username In {string.Join("; ", createdAccounts.Select(i => i.Username))}").Data;

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Agile.Now.ApiAccounts.Model;
 
 namespace Agile.Now.ApiAccounts.Test.Api
@@ -25,5 +27,8 @@ namespace Agile.Now.ApiAccounts.Test.Api
                 DateFormatId = new("Id", "DD-MM-YYYY")
             };
         }
+
+        public static AccountData[] CreateAccountDataList() =>
+            new[] { 0, 1, 2 }.Select(i => CreateAccountData(i.ToString())).ToArray();
     }
 };
