@@ -8,6 +8,8 @@
  */
 
 using System;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Security.Principal;
 using System.Xml.Linq;
 using Agile.Now.ApiAccounts.Api;
@@ -44,7 +46,8 @@ namespace Agile.Now.ApiAccounts.Test.Api
         {
         }
 
-        void UpdateAccountData(AccountData account) {
+        void UpdateAccountData(AccountData account)
+        {
             const string updated = "updated";
             account.LastName += updated;
             account.FirstName += updated;
@@ -99,8 +102,8 @@ namespace Agile.Now.ApiAccounts.Test.Api
         {
             var createdAccount = api.CreateAccount(TestAccountData.CreateAccountData());
             api.DeleteAccount(createdAccount.Id, "Id");
-            var existingAccounts = api.ListAccounts(filters: $"Id = {createdAccount.Id}");
-            Assert.Empty(existingAccounts.Data);
+            var existingAccounts = api.ListAccounts(filters: $"Id = {createdAccount.Id}").Data;
+            Assert.Empty(existingAccounts);
         }
 
         /// <summary>
@@ -111,8 +114,8 @@ namespace Agile.Now.ApiAccounts.Test.Api
         {
             var createdAccount = api.CreateAccount(TestAccountData.CreateAccountData());
             api.DeleteAccount(createdAccount.Username, "Username");
-            var existingAccounts = api.ListAccounts(filters: $"Username = {createdAccount.Username}");
-            Assert.Empty(existingAccounts.Data);
+            var existingAccounts = api.ListAccounts(filters: $"Username = {createdAccount.Username}").Data;
+            Assert.Empty(existingAccounts);
         }
 
         /// <summary>
@@ -185,18 +188,31 @@ namespace Agile.Now.ApiAccounts.Test.Api
         }
 
         /// <summary>
-        /// Test ListAccounts
+        /// Test ListAccounts by Id
         /// </summary>
         [Fact]
-        public void ListAccountsTest()
+        public void ListAccountsByIdTest()
         {
-            string? fields = null;
-            string? filters = null;
-            string? orders = null;
-            int? currentPage = null;
-            int? pageSize = 100;
-            var response = api.ListAccounts(fields, filters, orders, currentPage, pageSize);
-            Assert.IsType<Accounts>(response);
+            var newAccounts = new[] { 0, 1, 2 }.
+                Select(i => TestAccountData.CreateAccountData(i.ToString())).ToArray();
+            var createdAccounts = newAccounts.Select(i => api.CreateAccount(i)).ToArray();
+            var foundAccounts = api.ListAccounts(
+                filters: $"Id In {string.Join("; ", createdAccounts.Select(i => i.Id))}").Data;
+            Assert.Equal(foundAccounts.Count, createdAccounts.Length);
+        }
+
+        /// <summary>
+        /// Test ListAccounts by UserName
+        /// </summary>
+        [Fact]
+        public void ListAccountsByUserNameTest()
+        {
+            var newAccounts = new[] { 0, 1, 2 }.
+                Select(i => TestAccountData.CreateAccountData(i.ToString())).ToArray();
+            var createdAccounts = newAccounts.Select(i => api.CreateAccount(i)).ToArray();
+            var foundAccounts = api.ListAccounts(
+                filters: $"Username In {string.Join("; ", createdAccounts.Select(i => i.Username))}").Data;
+            Assert.Equal(foundAccounts.Count, createdAccounts.Length);
         }
 
         /// <summary>

@@ -7,15 +7,15 @@ namespace Agile.Now.ApiAccounts.Test.Api
     {
         public const int DefaultTenant = 15;
 
-        public static AccountData CreateAccountData()
+        public static AccountData CreateAccountData(string suffix = null)
         {
-            var name = "unit-test-account";
+            var name = "unit-test-account" + suffix;
             var uniqueName = $"{name}-{DateTime.Now:yyyy-MM-dd-HH-mm-ss-fff}";
             return new
             (
                 tenantId: new("Id", DefaultTenant.ToString()),
                 firstName: name,
-                lastName: "lastName",
+                lastName: "lastName" + suffix,
                 email: uniqueName + "@agilenow.io",
                 username: uniqueName,
                 isActive: true,
@@ -26,4 +26,4 @@ namespace Agile.Now.ApiAccounts.Test.Api
             };
         }
     }
-}
+};
