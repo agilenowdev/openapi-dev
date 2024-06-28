@@ -3,7 +3,7 @@ using Agile.Now.ApiAccounts.Model;
 
 namespace Agile.Now.ApiAccounts.Test.Api
 {
-    internal static class TestData
+    internal static class TestAccountData
     {
         public const int DefaultTenant = 15;
 
@@ -16,7 +16,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
                 tenantId: new("Id", DefaultTenant.ToString()),
                 firstName: name,
                 lastName: "lastName",
-                email: uniqueName + "@esystems.fi",
+                email: uniqueName + "@agilenow.io",
                 username: uniqueName,
                 isActive: true,
                 languageId: new("Name", "Finnish")

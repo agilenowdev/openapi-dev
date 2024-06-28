@@ -49,7 +49,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
         [Fact]
         public void CreateAccountTest()
         {
-            var newAccount = TestData.CreateAccountData();
+            var newAccount = TestAccountData.CreateAccountData();
             var createdAccount = api.CreateAccount(newAccount);
 
             try
@@ -84,7 +84,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
         [Fact]
         public void DeleteAccountByIdTest()
         {
-            var createdAccount = api.CreateAccount(TestData.CreateAccountData());
+            var createdAccount = api.CreateAccount(TestAccountData.CreateAccountData());
             api.DeleteAccount(createdAccount.Id, "Id");
             var existingAccounts = api.ListAccounts(filters: $"Id = {createdAccount.Id}");
             Assert.Empty(existingAccounts.Data);
@@ -96,7 +96,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
         [Fact]
         public void DeleteAccountByUserNameTest()
         {
-            var createdAccount = api.CreateAccount(TestData.CreateAccountData());
+            var createdAccount = api.CreateAccount(TestAccountData.CreateAccountData());
             api.DeleteAccount(createdAccount.Username, "Username");
             var existingAccounts = api.ListAccounts(filters: $"Username = {createdAccount.Username}");
             Assert.Empty(existingAccounts.Data);
@@ -123,7 +123,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
         [Fact]
         public void GetAccountByIdTest()
         {
-            var createdAccount = api.CreateAccount(TestData.CreateAccountData());
+            var createdAccount = api.CreateAccount(TestAccountData.CreateAccountData());
             var existingAccount = api.GetAccount(createdAccount.Id);
             var notFoundException = Record.Exception(() => api.GetAccount(createdAccount.Id));
             Assert.Null(notFoundException);
@@ -135,7 +135,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
         [Fact]
         public void GetAccountByUserNameTest()
         {
-            var createdAccount = api.CreateAccount(TestData.CreateAccountData());
+            var createdAccount = api.CreateAccount(TestAccountData.CreateAccountData());
             var existingAccount = api.GetAccount(createdAccount.Username, "Username");
             var notFoundException = Record.Exception(() => api.GetAccount(createdAccount.Id));
             Assert.Null(notFoundException);
