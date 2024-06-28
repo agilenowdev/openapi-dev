@@ -8,6 +8,7 @@
  */
 
 using System;
+using System.Security.Principal;
 using System.Xml.Linq;
 using Agile.Now.ApiAccounts.Api;
 using Agile.Now.ApiAccounts.Client;
@@ -43,6 +44,23 @@ namespace Agile.Now.ApiAccounts.Test.Api
         {
         }
 
+        void AssertAccountsEqual(AccountData accountData, Account account)
+        {
+            Assert.Equal(accountData.LastName, account.LastName);
+            Assert.Equal(accountData.FirstName, account.FirstName);
+            Assert.Equal(accountData.NotifyBySMS, account.NotifyBySMS);
+            Assert.Equal(accountData.Email, account.Email);
+            Assert.Equal(accountData.IsActive, account.IsActive);
+            Assert.Equal($"{accountData.LastName} {accountData.FirstName}", account.Name);
+
+            Assert.NotNull(account.TimezoneId);
+            Assert.NotEqual(account.CreatedOn, DateTime.MinValue);
+            Assert.True(account.NotifyByEmail);
+
+            Assert.Equal(accountData.DateFormatId.Value, account.DateFormatId.Id);
+            Assert.Equal(accountData.LanguageId.Value, account.LanguageId.Name);
+        }
+
         /// <summary>
         /// Test CreateAccount
         /// </summary>
@@ -54,21 +72,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
 
             try
             {
-                Assert.Equal(newAccount.LastName, createdAccount.LastName);
-                Assert.Equal(newAccount.FirstName, createdAccount.FirstName);
-                Assert.Equal(newAccount.NotifyBySMS, createdAccount.NotifyBySMS);
-                Assert.Equal(newAccount.Email, createdAccount.Email);
-                Assert.Equal(newAccount.IsActive, createdAccount.IsActive);
-
-                Assert.Equal($"{newAccount.LastName} {newAccount.FirstName}", createdAccount.Name);
-
-                Assert.NotNull(createdAccount.TimezoneId);
-                Assert.NotEqual(createdAccount.CreatedOn, DateTime.MinValue);
-                Assert.True(createdAccount.NotifyByEmail);
-
-                Assert.Equal(newAccount.DateFormatId.Value, createdAccount.DateFormatId.Id);
-                Assert.Equal(newAccount.LanguageId.Value, createdAccount.LanguageId.Name);
-
+                AssertAccountsEqual(newAccount, createdAccount);
                 var notFoundException = Record.Exception(() => api.GetAccount(createdAccount.Id));
                 Assert.Null(notFoundException);
             }
@@ -192,12 +196,24 @@ namespace Agile.Now.ApiAccounts.Test.Api
         [Fact]
         public void UpdateAccountTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //AccountData accountData = null;
-            //string? name = null;
-            //var response = instance.UpdateAccount(id, accountData, name);
-            //Assert.IsType<Account>(response);
+            var account = TestAccountData.CreateAccountData();
+            var createdAccount = api.CreateAccount(account);
+            const string updated = "updated";
+            try
+            {
+                account.LastName += updated;
+                account.FirstName += updated;
+                account.NotifyByEmail = !account.NotifyByEmail;
+                account.Email = updated + account.Email;
+                account.LanguageId = new("Name", "English");
+                var updatedAccount = api.UpdateAccount(createdAccount.Id, account);
+                AssertAccountsEqual(account, updatedAccount);
+            }
+            finally
+            {
+                api.DeleteAccount(createdAccount.Id, "Id");
+
+            }
         }
 
         /// <summary>
