@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.12"
+    "version": "3.0.20"
   },
   "servers": [
     {
@@ -3171,7 +3171,7 @@
             "example": "User"
           }
         },
-        "description": "The object provides metadata about the list of items returned in the API response. It typically includes information that helps clients understand and work with the data.\""
+        "description": "The object provides metadata about the list of items returned in the API response. It typically includes information that helps clients understand and work with the data."
       },
       "Error": {
         "required": [
@@ -3559,6 +3559,44 @@
         },
         "description": "The record of Tenant information."
       },
+      "Meta1": {
+        "required": [
+          "TotalItems",
+          "CurrentPage",
+          "PageSize",
+          "Type"
+        ],
+        "type": "object",
+        "properties": {
+          "TotalItems": {
+            "type": "integer",
+            "description": "This field represents the total number of items available in the entire dataset, not just the items returned in the current response. It's useful for implementing pagination, as clients can use it to calculate the number of pages or total available items.",
+            "format": "int32",
+            "default": 0,
+            "example": 1000
+          },
+          "CurrentPage": {
+            "type": "integer",
+            "description": "This field specifies the current page of results being returned. It's often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.",
+            "format": "int32",
+            "default": 1,
+            "example": 50
+          },
+          "PageSize": {
+            "type": "integer",
+            "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.",
+            "format": "int32",
+            "default": 50,
+            "example": 50
+          },
+          "Type": {
+            "type": "string",
+            "description": "The type of the record",
+            "example": "User"
+          }
+        },
+        "description": "The object provides metadata about the list of items returned in the API response. It typically includes information that helps clients understand and work with the data.\""
+      },
       "Department": {
         "required": [
           "Id",
@@ -3647,7 +3685,7 @@
         "type": "object",
         "properties": {
           "Meta": {
-            "$ref": "#/components/schemas/Meta"
+            "$ref": "#/components/schemas/Meta1"
           },
           "Data": {
             "type": "array",
@@ -4031,7 +4069,7 @@
         "type": "object",
         "properties": {
           "Meta": {
-            "$ref": "#/components/schemas/Meta"
+            "$ref": "#/components/schemas/Meta1"
           },
           "Data": {
             "type": "array",
@@ -4206,7 +4244,7 @@
         "type": "object",
         "properties": {
           "Meta": {
-            "$ref": "#/components/schemas/Meta"
+            "$ref": "#/components/schemas/Meta1"
           },
           "Data": {
             "type": "array",
@@ -4365,6 +4403,44 @@
         },
         "description": "The data loading record of Location importing"
       },
+      "Meta2": {
+        "required": [
+          "TotalItems",
+          "CurrentPage",
+          "PageSize",
+          "Type"
+        ],
+        "type": "object",
+        "properties": {
+          "TotalItems": {
+            "type": "integer",
+            "description": "This field represents the total number of items available in the entire dataset, not just the items returned in the current response. It's useful for implementing pagination, as clients can use it to calculate the number of pages or total available items.",
+            "format": "int32",
+            "default": 0,
+            "example": 1000
+          },
+          "CurrentPage": {
+            "type": "integer",
+            "description": "This field specifies the current page of results being returned. It's often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.",
+            "format": "int32",
+            "default": 1,
+            "example": 50
+          },
+          "PageSize": {
+            "type": "integer",
+            "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.",
+            "format": "int32",
+            "default": 50,
+            "example": 50
+          },
+          "Type": {
+            "type": "string",
+            "description": "The type of the record",
+            "example": "User"
+          }
+        },
+        "description": "The object provides metadata about the list of items returned in the API response. It typically includes information that helps clients understand and work with the data.\""
+      },
       "Connection": {
         "required": [
           "Id",
@@ -4436,7 +4512,7 @@
         "type": "object",
         "properties": {
           "Meta": {
-            "$ref": "#/components/schemas/Meta"
+            "$ref": "#/components/schemas/Meta2"
           },
           "Data": {
             "type": "array",
@@ -4580,7 +4656,7 @@
         "type": "object",
         "properties": {
           "Meta": {
-            "$ref": "#/components/schemas/Meta"
+            "$ref": "#/components/schemas/Meta2"
           },
           "Data": {
             "type": "array",
@@ -4787,7 +4863,7 @@
         "type": "object",
         "properties": {
           "Meta": {
-            "$ref": "#/components/schemas/Meta"
+            "$ref": "#/components/schemas/Meta2"
           },
           "Data": {
             "type": "array",
