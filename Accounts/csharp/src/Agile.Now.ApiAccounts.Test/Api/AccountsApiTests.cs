@@ -124,9 +124,15 @@ namespace Agile.Now.ApiAccounts.Test.Api
         public void GetAccountByIdTest()
         {
             var createdAccount = api.CreateAccount(TestAccountData.CreateAccountData());
-            var existingAccount = api.GetAccount(createdAccount.Id);
-            var notFoundException = Record.Exception(() => api.GetAccount(createdAccount.Id));
-            Assert.Null(notFoundException);
+            try
+            {
+                var notFoundException = Record.Exception(() => api.GetAccount(createdAccount.Id));
+                Assert.Null(notFoundException);
+            }
+            finally
+            {
+                api.DeleteAccount(createdAccount.Id, "Id");
+            }
         }
 
         /// <summary>
@@ -136,9 +142,15 @@ namespace Agile.Now.ApiAccounts.Test.Api
         public void GetAccountByUserNameTest()
         {
             var createdAccount = api.CreateAccount(TestAccountData.CreateAccountData());
-            var existingAccount = api.GetAccount(createdAccount.Username, "Username");
-            var notFoundException = Record.Exception(() => api.GetAccount(createdAccount.Id));
-            Assert.Null(notFoundException);
+            try
+            {
+                var notFoundException = Record.Exception(() => api.GetAccount(createdAccount.Username, "Username"));
+                Assert.Null(notFoundException);
+            }
+            finally
+            {
+                api.DeleteAccount(createdAccount.Id, "Id");
+            }
         }
 
         /// <summary>
