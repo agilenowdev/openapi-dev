@@ -5,7 +5,7 @@ The list of `Connection` records
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Meta** | [**Meta2**](Meta2.md) |  | [optional] 
+**Meta** | [**Meta**](Meta.md) |  | [optional] 
 **Data** | [**List&lt;Connection&gt;**](Connection.md) | The list of &#x60;Connection records&#x60; | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

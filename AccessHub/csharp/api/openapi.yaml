@@ -31,7 +31,7 @@ info:
     name: BSD-3 license
     url: https://opensource.org/licenses/BSD-3-Clause
   title: Accounts API documentation
-  version: 3.0.20
+  version: 3.0.22
 servers:
 - description: Default entry point of service
   url: https://dev.esystems.fi
@@ -2493,12 +2493,13 @@ paths:
         name: PageSize
         required: false
         schema:
-          default: "0"
+          default: 0
           description: |-
             The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.
 
             The value ranges from `1` to `1000` and defaults to `50`.
-          type: string
+          format: int32
+          type: integer
         style: form
       responses:
         "200":
@@ -4099,12 +4100,13 @@ paths:
         name: PageSize
         required: false
         schema:
-          default: "0"
+          default: 0
           description: |-
             The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.
 
             The value ranges from `1` to `1000` and defaults to `50`.
-          type: string
+          format: int32
+          type: integer
         style: form
       responses:
         "200":
@@ -5597,12 +5599,13 @@ paths:
         name: PageSize
         required: false
         schema:
-          default: "0"
+          default: 0
           description: |-
             The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.
 
             The value ranges from `1` to `1000` and defaults to `50`.
-          type: string
+          format: int32
+          type: integer
         style: form
       responses:
         "200":
@@ -7092,51 +7095,6 @@ components:
       - TenantId
       - UserId
       type: object
-    Meta1:
-      description: The object provides metadata about the list of items returned in
-        the API response. It typically includes information that helps clients understand
-        and work with the data."
-      example:
-        Type: User
-        PageSize: 50
-        CurrentPage: 50
-        TotalItems: 1000
-      properties:
-        TotalItems:
-          default: 0
-          description: "This field represents the total number of items available\
-            \ in the entire dataset, not just the items returned in the current response.\
-            \ It's useful for implementing pagination, as clients can use it to calculate\
-            \ the number of pages or total available items."
-          example: 1000
-          format: int32
-          type: integer
-        CurrentPage:
-          default: 1
-          description: This field specifies the current page of results being returned.
-            It's often used in conjunction with `PageSize` to manage pagination by
-            indicating which subset of the total data is currently being retrieved.
-          example: 50
-          format: int32
-          type: integer
-        PageSize:
-          default: 50
-          description: The field indicates the number of items returned in a single
-            page or response. It helps clients determine how many items to display
-            per page and how to request additional pages if needed.
-          example: 50
-          format: int32
-          type: integer
-        Type:
-          description: The type of the record
-          example: User
-          type: string
-      required:
-      - CurrentPage
-      - PageSize
-      - TotalItems
-      - Type
-      type: object
     Department:
       description: The record of Department information.
       example:
@@ -7336,7 +7294,7 @@ components:
           ContactName: ContactName
       properties:
         Meta:
-          $ref: '#/components/schemas/Meta1'
+          $ref: '#/components/schemas/Meta'
         Data:
           description: The list of `Department records`
           items:
@@ -7839,7 +7797,7 @@ components:
             Name: Bob Normal
       properties:
         Meta:
-          $ref: '#/components/schemas/Meta1'
+          $ref: '#/components/schemas/Meta'
         Data:
           description: The list of `User records`
           items:
@@ -8124,7 +8082,7 @@ components:
           Name: Name
       properties:
         Meta:
-          $ref: '#/components/schemas/Meta1'
+          $ref: '#/components/schemas/Meta'
         Data:
           description: The list of `Location records`
           items:
@@ -8320,51 +8278,6 @@ components:
             $ref: '#/components/schemas/LocationText'
           type: array
       type: object
-    Meta2:
-      description: The object provides metadata about the list of items returned in
-        the API response. It typically includes information that helps clients understand
-        and work with the data."
-      example:
-        Type: User
-        PageSize: 50
-        CurrentPage: 50
-        TotalItems: 1000
-      properties:
-        TotalItems:
-          default: 0
-          description: "This field represents the total number of items available\
-            \ in the entire dataset, not just the items returned in the current response.\
-            \ It's useful for implementing pagination, as clients can use it to calculate\
-            \ the number of pages or total available items."
-          example: 1000
-          format: int32
-          type: integer
-        CurrentPage:
-          default: 1
-          description: This field specifies the current page of results being returned.
-            It's often used in conjunction with `PageSize` to manage pagination by
-            indicating which subset of the total data is currently being retrieved.
-          example: 50
-          format: int32
-          type: integer
-        PageSize:
-          default: 50
-          description: The field indicates the number of items returned in a single
-            page or response. It helps clients determine how many items to display
-            per page and how to request additional pages if needed.
-          example: 50
-          format: int32
-          type: integer
-        Type:
-          description: The type of the record
-          example: User
-          type: string
-      required:
-      - CurrentPage
-      - PageSize
-      - TotalItems
-      - Type
-      type: object
     Connection:
       description: The record of Connection information.
       example:
@@ -8492,7 +8405,7 @@ components:
           Name: Name
       properties:
         Meta:
-          $ref: '#/components/schemas/Meta2'
+          $ref: '#/components/schemas/Meta'
         Data:
           description: The list of `Connection records`
           items:
@@ -8697,7 +8610,7 @@ components:
             Name: Bob Normal
       properties:
         Meta:
-          $ref: '#/components/schemas/Meta2'
+          $ref: '#/components/schemas/Meta'
         Data:
           description: The list of `Config records`
           items:
@@ -8964,7 +8877,7 @@ components:
           Name: Name
       properties:
         Meta:
-          $ref: '#/components/schemas/Meta2'
+          $ref: '#/components/schemas/Meta'
         Data:
           description: The list of `Entity records`
           items:
