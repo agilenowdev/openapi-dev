@@ -44,6 +44,15 @@ namespace Agile.Now.ApiAccounts.Test.Api
         {
         }
 
+        void UpdateAccountData(AccountData account) {
+            const string updated = "updated";
+            account.LastName += updated;
+            account.FirstName += updated;
+            account.NotifyByEmail = !account.NotifyByEmail;
+            account.Email = updated + account.Email;
+            account.LanguageId = new("Name", "English");
+        }
+
         void AssertAccountsEqual(AccountData accountData, Account account)
         {
             Assert.Equal(accountData.LastName, account.LastName);
@@ -198,14 +207,9 @@ namespace Agile.Now.ApiAccounts.Test.Api
         {
             var account = TestAccountData.CreateAccountData();
             var createdAccount = api.CreateAccount(account);
-            const string updated = "updated";
             try
             {
-                account.LastName += updated;
-                account.FirstName += updated;
-                account.NotifyByEmail = !account.NotifyByEmail;
-                account.Email = updated + account.Email;
-                account.LanguageId = new("Name", "English");
+                UpdateAccountData(account);
                 var updatedAccount = api.UpdateAccount(createdAccount.Id, account);
                 AssertAccountsEqual(account, updatedAccount);
             }
@@ -222,19 +226,21 @@ namespace Agile.Now.ApiAccounts.Test.Api
         [Fact]
         public void UpsertAccountTest()
         {
-            AccountData accountData = new
-            (
-                name: "demo 223",
-                tenantId: new("Id", "15"),
-                firstName: "test 223",
-                lastName: "demo 223",
-                email: "test223@esystems.fi",
-                username: "test223@esystems.fi",
-                isActive: true,
-                languageId: new("Name", "Finnish")
-            );
-            var response = api.UpsertAccount(accountData);
-            Assert.IsType<Account>(response);
+            var account = TestAccountData.CreateAccountData();
+            var createdAccount = api.UpsertAccount(account);
+            try
+            {
+                var notFoundException = Record.Exception(() => api.GetAccount(createdAccount.Id));
+                Assert.Null(notFoundException);
+                UpdateAccountData(account);
+                var updatedAccount = api.UpdateAccount(createdAccount.Id, account);
+                AssertAccountsEqual(account, updatedAccount);
+            }
+            finally
+            {
+                api.DeleteAccount(createdAccount.Id, "Id");
+
+            }
         }
 
         /// <summary>
