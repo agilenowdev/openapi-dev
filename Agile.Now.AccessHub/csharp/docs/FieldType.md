@@ -1,4 +1,4 @@
-# Agile.Now.AccessHub.Model.FieldType
+# Agile\.Now\.AccessHub.Model.FieldType
 The field object structure
 
 ## Properties

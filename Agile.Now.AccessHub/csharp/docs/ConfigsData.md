@@ -1,4 +1,4 @@
-# Agile.Now.AccessHub.Model.ConfigsData
+# Agile\.Now\.AccessHub.Model.ConfigsData
 The data loading record of Config importing
 
 ## Properties

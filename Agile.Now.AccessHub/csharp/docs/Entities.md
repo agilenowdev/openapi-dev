@@ -1,4 +1,4 @@
-# Agile.Now.AccessHub.Model.Entities
+# Agile\.Now\.AccessHub.Model.Entities
 The list of `Entity` records
 
 ## Properties

@@ -1,4 +1,4 @@
-# Agile.Now.AccessHub.Model.Error
+# Agile\.Now\.AccessHub.Model.Error
 The list of errors. Throw specific exceptions based on the received error.
 
 ## Properties

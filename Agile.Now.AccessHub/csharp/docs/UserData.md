@@ -1,4 +1,4 @@
-# Agile.Now.AccessHub.Model.UserData
+# Agile\.Now\.AccessHub.Model.UserData
 The record of User information.
 
 ## Properties

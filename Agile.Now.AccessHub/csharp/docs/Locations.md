@@ -1,4 +1,4 @@
-# Agile.Now.AccessHub.Model.Locations
+# Agile\.Now\.AccessHub.Model.Locations
 The list of `Location` records
 
 ## Properties

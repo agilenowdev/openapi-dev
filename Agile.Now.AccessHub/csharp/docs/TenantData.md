@@ -1,4 +1,4 @@
-# Agile.Now.AccessHub.Model.TenantData
+# Agile\.Now\.AccessHub.Model.TenantData
 The record of Tenant information.
 
 ## Properties

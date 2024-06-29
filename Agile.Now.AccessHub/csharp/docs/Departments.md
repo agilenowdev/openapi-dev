@@ -1,4 +1,4 @@
-# Agile.Now.AccessHub.Model.Departments
+# Agile\.Now\.AccessHub.Model.Departments
 The list of `Department` records
 
 ## Properties

@@ -1,4 +1,4 @@
-# Agile.Now.AccessHub.Model.DepartmentsData
+# Agile\.Now\.AccessHub.Model.DepartmentsData
 The data loading record of Department importing
 
 ## Properties

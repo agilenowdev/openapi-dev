@@ -1,4 +1,4 @@
-# Agile.Now.AccessHub.Model.ConnectionData
+# Agile\.Now\.AccessHub.Model.ConnectionData
 The record of Connection information.
 
 ## Properties

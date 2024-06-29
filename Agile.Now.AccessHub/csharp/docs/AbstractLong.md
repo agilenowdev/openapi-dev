@@ -1,4 +1,4 @@
-# Agile.Now.AccessHub.Model.AbstractLong
+# Agile\.Now\.AccessHub.Model.AbstractLong
 The abstract object structure
 
 ## Properties

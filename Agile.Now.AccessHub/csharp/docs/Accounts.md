@@ -1,4 +1,4 @@
-# Agile.Now.AccessHub.Model.Accounts
+# Agile\.Now\.AccessHub.Model.Accounts
 The list of `Account` records
 
 ## Properties

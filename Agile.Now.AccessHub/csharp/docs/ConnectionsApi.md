@@ -1,4 +1,4 @@
-# Agile.Now.AccessHub.Api.ConnectionsApi
+# Agile\.Now\.AccessHub.Api.ConnectionsApi
 
 All URIs are relative to *https://dev.esystems.fi*
 
@@ -27,9 +27,9 @@ Use the `ConnectionData` object resource to create new records.  You can supply 
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Agile.Now.AccessHub.Api;
-using Agile.Now.AccessHub.Client;
-using Agile.Now.AccessHub.Model;
+using Agile\.Now\.AccessHub.Api;
+using Agile\.Now\.AccessHub.Client;
+using Agile\.Now\.AccessHub.Model;
 
 namespace Example
 {
@@ -123,9 +123,9 @@ Use the query string resource to delete `Connection` record. The method contains
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Agile.Now.AccessHub.Api;
-using Agile.Now.AccessHub.Client;
-using Agile.Now.AccessHub.Model;
+using Agile\.Now\.AccessHub.Api;
+using Agile\.Now\.AccessHub.Client;
+using Agile\.Now\.AccessHub.Model;
 
 namespace Example
 {
@@ -221,9 +221,9 @@ Use the query string resource to delete `Config` record. The method contains two
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Agile.Now.AccessHub.Api;
-using Agile.Now.AccessHub.Client;
-using Agile.Now.AccessHub.Model;
+using Agile\.Now\.AccessHub.Api;
+using Agile\.Now\.AccessHub.Client;
+using Agile\.Now\.AccessHub.Model;
 
 namespace Example
 {
@@ -323,9 +323,9 @@ The method returns one record of the `Connection`.  Method returns an extended `
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Agile.Now.AccessHub.Api;
-using Agile.Now.AccessHub.Client;
-using Agile.Now.AccessHub.Model;
+using Agile\.Now\.AccessHub.Api;
+using Agile\.Now\.AccessHub.Client;
+using Agile\.Now\.AccessHub.Model;
 
 namespace Example
 {
@@ -421,9 +421,9 @@ Utilize this method to execute a query designed to fetch comprehensive informati
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Agile.Now.AccessHub.Api;
-using Agile.Now.AccessHub.Client;
-using Agile.Now.AccessHub.Model;
+using Agile\.Now\.AccessHub.Api;
+using Agile\.Now\.AccessHub.Client;
+using Agile\.Now\.AccessHub.Model;
 
 namespace Example
 {
@@ -529,9 +529,9 @@ Utilize this method to execute a query designed to fetch comprehensive informati
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Agile.Now.AccessHub.Api;
-using Agile.Now.AccessHub.Client;
-using Agile.Now.AccessHub.Model;
+using Agile\.Now\.AccessHub.Api;
+using Agile\.Now\.AccessHub.Client;
+using Agile\.Now\.AccessHub.Model;
 
 namespace Example
 {
@@ -633,9 +633,9 @@ Use the `ConfigsData` object resource to insert or update (Upsert) a list of `Co
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Agile.Now.AccessHub.Api;
-using Agile.Now.AccessHub.Client;
-using Agile.Now.AccessHub.Model;
+using Agile\.Now\.AccessHub.Api;
+using Agile\.Now\.AccessHub.Client;
+using Agile\.Now\.AccessHub.Model;
 
 namespace Example
 {
@@ -735,9 +735,9 @@ Use the `ConnectionData` object resource to update `Connection` using `Id,Name` 
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Agile.Now.AccessHub.Api;
-using Agile.Now.AccessHub.Client;
-using Agile.Now.AccessHub.Model;
+using Agile\.Now\.AccessHub.Api;
+using Agile\.Now\.AccessHub.Client;
+using Agile\.Now\.AccessHub.Model;
 
 namespace Example
 {
@@ -835,9 +835,9 @@ Use the `ConnectionData` object resource to insert or update (Upsert) `Connectio
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Agile.Now.AccessHub.Api;
-using Agile.Now.AccessHub.Client;
-using Agile.Now.AccessHub.Model;
+using Agile\.Now\.AccessHub.Api;
+using Agile\.Now\.AccessHub.Client;
+using Agile\.Now\.AccessHub.Model;
 
 namespace Example
 {
@@ -931,9 +931,9 @@ Use the `ConfigPost` object resource to insert or update (Upsert) `Config` using
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Agile.Now.AccessHub.Api;
-using Agile.Now.AccessHub.Client;
-using Agile.Now.AccessHub.Model;
+using Agile\.Now\.AccessHub.Api;
+using Agile\.Now\.AccessHub.Client;
+using Agile\.Now\.AccessHub.Model;
 
 namespace Example
 {

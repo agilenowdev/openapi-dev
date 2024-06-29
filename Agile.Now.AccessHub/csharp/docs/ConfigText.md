@@ -1,4 +1,4 @@
-# Agile.Now.AccessHub.Model.ConfigText
+# Agile\.Now\.AccessHub.Model.ConfigText
 The record of Config information.
 
 ## Properties

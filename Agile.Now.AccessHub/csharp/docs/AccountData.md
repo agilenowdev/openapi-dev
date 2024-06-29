@@ -1,4 +1,4 @@
-# Agile.Now.AccessHub.Model.AccountData
+# Agile\.Now\.AccessHub.Model.AccountData
 The record of Account information.
 
 ## Properties

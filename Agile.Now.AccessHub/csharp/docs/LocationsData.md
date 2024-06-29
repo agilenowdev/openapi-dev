@@ -1,4 +1,4 @@
-# Agile.Now.AccessHub.Model.LocationsData
+# Agile\.Now\.AccessHub.Model.LocationsData
 The data loading record of Location importing
 
 ## Properties

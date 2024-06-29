@@ -1,4 +1,4 @@
-# Agile.Now.AccessHub.Model.Location
+# Agile\.Now\.AccessHub.Model.Location
 The record of Location information.
 
 ## Properties

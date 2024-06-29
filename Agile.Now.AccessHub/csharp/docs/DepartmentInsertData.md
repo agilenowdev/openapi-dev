@@ -1,4 +1,4 @@
-# Agile.Now.AccessHub.Model.DepartmentInsertData
+# Agile\.Now\.AccessHub.Model.DepartmentInsertData
 The record of Department information.
 
 ## Properties

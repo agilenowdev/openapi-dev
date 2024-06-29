@@ -1,4 +1,4 @@
-# Agile.Now.AccessHub.Api.EntitiesApi
+# Agile\.Now\.AccessHub.Api.EntitiesApi
 
 All URIs are relative to *https://dev.esystems.fi*
 
@@ -19,9 +19,9 @@ The method returns one record of the `Entity`.  Method returns an extended `Enti
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Agile.Now.AccessHub.Api;
-using Agile.Now.AccessHub.Client;
-using Agile.Now.AccessHub.Model;
+using Agile\.Now\.AccessHub.Api;
+using Agile\.Now\.AccessHub.Client;
+using Agile\.Now\.AccessHub.Model;
 
 namespace Example
 {
@@ -117,9 +117,9 @@ Utilize this method to execute a query designed to fetch comprehensive informati
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Agile.Now.AccessHub.Api;
-using Agile.Now.AccessHub.Client;
-using Agile.Now.AccessHub.Model;
+using Agile\.Now\.AccessHub.Api;
+using Agile\.Now\.AccessHub.Client;
+using Agile\.Now\.AccessHub.Model;
 
 namespace Example
 {

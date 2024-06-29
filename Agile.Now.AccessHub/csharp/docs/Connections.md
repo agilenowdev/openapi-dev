@@ -1,4 +1,4 @@
-# Agile.Now.AccessHub.Model.Connections
+# Agile\.Now\.AccessHub.Model.Connections
 The list of `Connection` records
 
 ## Properties

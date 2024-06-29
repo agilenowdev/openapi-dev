@@ -1,4 +1,4 @@
-# Agile.Now.AccessHub.Model.Users
+# Agile\.Now\.AccessHub.Model.Users
 The list of `User` records
 
 ## Properties

@@ -1,4 +1,4 @@
-# Agile.Now.AccessHub.Model.Entity
+# Agile\.Now\.AccessHub.Model.Entity
 The record of Entity information.
 
 ## Properties

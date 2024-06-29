@@ -1,4 +1,4 @@
-# Agile.Now.AccessHub.Model.AbstractText
+# Agile\.Now\.AccessHub.Model.AbstractText
 The abstract object structure
 
 ## Properties
