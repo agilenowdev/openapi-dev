@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "2.0.29"
+    "version": "2.0.31"
   },
   "servers": [
     {
@@ -42,6 +42,24 @@
             "schema": {
               "type": "string",
               "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nUsername, ExternalId\n```"
+            }
+          },
+          {
+            "name": "SelectInclude",
+            "in": "query",
+            "description": "Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database.",
+            "schema": {
+              "type": "string",
+              "description": "Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database."
+            }
+          },
+          {
+            "name": "SelectExclude",
+            "in": "query",
+            "description": "Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database.",
+            "schema": {
+              "type": "string",
+              "description": "Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database."
             }
           }
         ],
@@ -266,6 +284,24 @@
               "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.\n\nThe value ranges from `1` to `1000` and defaults to `50`.",
               "format": "int32",
               "default": 0
+            }
+          },
+          {
+            "name": "SelectInclude",
+            "in": "query",
+            "description": "Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database.",
+            "schema": {
+              "type": "string",
+              "description": "Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database."
+            }
+          },
+          {
+            "name": "SelectExclude",
+            "in": "query",
+            "description": "Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database.",
+            "schema": {
+              "type": "string",
+              "description": "Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database."
             }
           }
         ],
