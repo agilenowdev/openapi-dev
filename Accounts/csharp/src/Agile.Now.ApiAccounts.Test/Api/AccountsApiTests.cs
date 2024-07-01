@@ -56,7 +56,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
             account.LanguageId = new("Name", "English");
         }
 
-        void AssertAccountsEqual(AccountData accountData, Account account)
+        void AssertAccountDataEqual(AccountData accountData, Account account)
         {
             Assert.Equal(accountData.LastName, account.LastName);
             Assert.Equal(accountData.FirstName, account.FirstName);
@@ -77,16 +77,17 @@ namespace Agile.Now.ApiAccounts.Test.Api
         /// Test CreateAccount
         /// </summary>
         [Fact]
-        public void CreateAccountTest()
+        public void Test_CreateAccount()
         {
             var newAccount = TestAccountData.CreateAccountData();
             var createdAccount = api.CreateAccount(newAccount);
 
             try
             {
-                AssertAccountsEqual(newAccount, createdAccount);
+                AssertAccountDataEqual(newAccount, createdAccount);
                 var notFoundException = Record.Exception(() => api.GetAccount(createdAccount.Id));
                 Assert.Null(notFoundException);
+                Assert.NotEqual(0, createdAccount.TenantId.Id);
             }
             finally
             {
@@ -98,7 +99,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
         /// Test DeleteAccount by Id
         /// </summary>
         [Fact]
-        public void DeleteAccountByIdTest()
+        public void Test_DeleteAccount_ById()
         {
             var createdAccount = api.CreateAccount(TestAccountData.CreateAccountData());
             api.DeleteAccount(createdAccount.Id, "Id");
@@ -110,12 +111,139 @@ namespace Agile.Now.ApiAccounts.Test.Api
         /// Test DeleteAccount by UserName
         /// </summary>
         [Fact]
-        public void DeleteAccountByUserNameTest()
+        public void Test_DeleteAccount_ByUserName()
         {
             var createdAccount = api.CreateAccount(TestAccountData.CreateAccountData());
             api.DeleteAccount(createdAccount.Username, "Username");
             var existingAccounts = api.ListAccounts(filters: $"Username = {createdAccount.Username}").Data;
             Assert.Empty(existingAccounts);
+        }
+
+        /// <summary>
+        /// Test GetAccount by Id
+        /// </summary>
+        [Fact]
+        public void Test_GetAccount_ById()
+        {
+            var createdAccount = api.CreateAccount(TestAccountData.CreateAccountData());
+            try
+            {
+                var notFoundException = Record.Exception(() => api.GetAccount(createdAccount.Id));
+                Assert.Null(notFoundException);
+            }
+            finally
+            {
+                api.DeleteAccount(createdAccount.Id, "Id");
+            }
+        }
+
+        /// <summary>
+        /// Test GetAccount by UserName
+        /// </summary>
+        [Fact]
+        public void Test_GetAccount_ByUserName()
+        {
+            var createdAccount = api.CreateAccount(TestAccountData.CreateAccountData());
+            try
+            {
+                var notFoundException = Record.Exception(() => api.GetAccount(createdAccount.Username, "Username"));
+                Assert.Null(notFoundException);
+            }
+            finally
+            {
+                api.DeleteAccount(createdAccount.Id, "Id");
+            }
+        }
+
+        /// <summary>
+        /// Test ListAccounts by Id
+        /// </summary>
+        [Fact]
+        public void Test_ListAccounts_ById()
+        {
+            var newAccounts = TestAccountData.CreateAccountDataList();
+            var createdAccounts = newAccounts.Select(i => api.CreateAccount(i)).ToArray();
+            var foundAccounts = api.ListAccounts(
+                filters: $"Id In {string.Join("; ", createdAccounts.Select(i => i.Id))}").Data;
+            Assert.Equal(foundAccounts.Count, createdAccounts.Length);
+        }
+
+        /// <summary>
+        /// Test ListAccounts by UserName
+        /// </summary>
+        [Fact]
+        public void Test_ListAccounts_ByUserName()
+        {
+            var newAccounts = TestAccountData.CreateAccountDataList();
+            var createdAccounts = newAccounts.Select(i => api.CreateAccount(i)).ToArray();
+            var foundAccounts = api.ListAccounts(
+                filters: $"Username In {string.Join("; ", createdAccounts.Select(i => i.Username))}").Data;
+            Assert.Equal(foundAccounts.Count, createdAccounts.Length);
+        }
+
+        /// <summary>
+        /// Test UpdateAccount
+        /// </summary>
+        [Fact]
+        public void Test_UpdateAccount()
+        {
+            var newAccount = TestAccountData.CreateAccountData();
+            var createdAccount = api.CreateAccount(newAccount);
+            try
+            {
+                UpdateAccountData(newAccount);
+                newAccount.TenantId = new FieldType("Name", "Accounts_API");
+                var updatedAccount = api.UpdateAccount(createdAccount.Id, newAccount);
+                AssertAccountDataEqual(newAccount, updatedAccount);
+            }
+            finally
+            {
+                api.DeleteAccount(createdAccount.Id, "Id");
+            }
+        }
+
+        /// <summary>
+        /// Test UpdateAccount - tenant does not change
+        /// </summary>
+        [Fact]
+        public void Test_UpdateAccount_TenantDoesNotChange()
+        {
+            var newAccount = TestAccountData.CreateAccountData();
+            var createdAccount = api.CreateAccount(newAccount);
+            try
+            {
+                UpdateAccountData(newAccount);
+                var oldTenant = createdAccount.TenantId.Id;
+                newAccount.TenantId = new("Id", (oldTenant + 1).ToString());
+                var updatedAccount = api.UpdateAccount(createdAccount.Id, newAccount);
+                Assert.Equal(oldTenant, updatedAccount.TenantId.Id);
+            }
+            finally
+            {
+                api.DeleteAccount(createdAccount.Id, "Id");
+            }
+        }
+
+        /// <summary>
+        /// Test UpsertAccount
+        /// </summary>
+        [Fact]
+        public void Test_UpsertAccount()
+        {
+            var account = TestAccountData.CreateAccountData();
+            var createdAccount = api.UpsertAccount(account);
+            try
+            {
+                var notFoundException = Record.Exception(() => api.GetAccount(createdAccount.Id));
+                Assert.Null(notFoundException);
+                UpdateAccountData(account);
+                var updatedAccount = api.UpdateAccount(createdAccount.Id, account);
+                AssertAccountDataEqual(account, updatedAccount);
+            }
+            finally
+            {
+                api.DeleteAccount(createdAccount.Id, "Id");
+            }
         }
 
         /// <summary>
@@ -134,42 +262,6 @@ namespace Agile.Now.ApiAccounts.Test.Api
         }
 
         /// <summary>
-        /// Test GetAccount by Id
-        /// </summary>
-        [Fact]
-        public void GetAccountByIdTest()
-        {
-            var createdAccount = api.CreateAccount(TestAccountData.CreateAccountData());
-            try
-            {
-                var notFoundException = Record.Exception(() => api.GetAccount(createdAccount.Id));
-                Assert.Null(notFoundException);
-            }
-            finally
-            {
-                api.DeleteAccount(createdAccount.Id, "Id");
-            }
-        }
-
-        /// <summary>
-        /// Test GetAccount by UserName
-        /// </summary>
-        [Fact]
-        public void GetAccountByUserNameTest()
-        {
-            var createdAccount = api.CreateAccount(TestAccountData.CreateAccountData());
-            try
-            {
-                var notFoundException = Record.Exception(() => api.GetAccount(createdAccount.Username, "Username"));
-                Assert.Null(notFoundException);
-            }
-            finally
-            {
-                api.DeleteAccount(createdAccount.Id, "Id");
-            }
-        }
-
-        /// <summary>
         /// Test ListAccountTenants
         /// </summary>
         [Fact]
@@ -185,76 +277,6 @@ namespace Agile.Now.ApiAccounts.Test.Api
             //string? pageSize = null;
             //var response = instance.ListAccountTenants(id, name, fields, filters, orders, currentPage, pageSize);
             //Assert.IsType<Tenants>(response);
-        }
-
-        /// <summary>
-        /// Test ListAccounts by Id
-        /// </summary>
-        [Fact]
-        public void ListAccountsByIdTest()
-        {
-            var newAccounts = TestAccountData.CreateAccountDataList();
-            var createdAccounts = newAccounts.Select(i => api.CreateAccount(i)).ToArray();
-            var foundAccounts = api.ListAccounts(
-                filters: $"Id In {string.Join("; ", createdAccounts.Select(i => i.Id))}").Data;
-            Assert.Equal(foundAccounts.Count, createdAccounts.Length);
-        }
-
-        /// <summary>
-        /// Test ListAccounts by UserName
-        /// </summary>
-        [Fact]
-        public void ListAccountsByUserNameTest()
-        {
-            var newAccounts = TestAccountData.CreateAccountDataList();
-            var createdAccounts = newAccounts.Select(i => api.CreateAccount(i)).ToArray();
-            var foundAccounts = api.ListAccounts(
-                filters: $"Username In {string.Join("; ", createdAccounts.Select(i => i.Username))}").Data;
-            Assert.Equal(foundAccounts.Count, createdAccounts.Length);
-        }
-
-        /// <summary>
-        /// Test UpdateAccount
-        /// </summary>
-        [Fact]
-        public void UpdateAccountTest()
-        {
-            var account = TestAccountData.CreateAccountData();
-            var createdAccount = api.CreateAccount(account);
-            try
-            {
-                UpdateAccountData(account);
-                var updatedAccount = api.UpdateAccount(createdAccount.Id, account);
-                AssertAccountsEqual(account, updatedAccount);
-            }
-            finally
-            {
-                api.DeleteAccount(createdAccount.Id, "Id");
-
-            }
-        }
-
-        /// <summary>
-        /// Test UpsertAccount
-        /// </summary>
-        [Fact]
-        public void UpsertAccountTest()
-        {
-            var account = TestAccountData.CreateAccountData();
-            var createdAccount = api.UpsertAccount(account);
-            try
-            {
-                var notFoundException = Record.Exception(() => api.GetAccount(createdAccount.Id));
-                Assert.Null(notFoundException);
-                UpdateAccountData(account);
-                var updatedAccount = api.UpdateAccount(createdAccount.Id, account);
-                AssertAccountsEqual(account, updatedAccount);
-            }
-            finally
-            {
-                api.DeleteAccount(createdAccount.Id, "Id");
-
-            }
         }
 
         /// <summary>

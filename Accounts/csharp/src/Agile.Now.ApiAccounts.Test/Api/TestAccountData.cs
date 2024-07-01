@@ -15,7 +15,6 @@ namespace Agile.Now.ApiAccounts.Test.Api
             var uniqueName = $"{name}-{DateTime.Now:yyyy-MM-dd-HH-mm-ss-fff}";
             return new
             (
-                tenantId: new("Id", DefaultTenant.ToString()),
                 firstName: name,
                 lastName: "lastName" + suffix,
                 email: uniqueName + "@agilenow.io",
