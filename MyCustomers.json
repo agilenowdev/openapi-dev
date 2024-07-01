@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.82"
+    "version": "3.0.83"
   },
   "servers": [
     {
@@ -1002,6 +1002,10 @@
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
           },
+          "Attribute1": {
+            "type": "string",
+            "description": "Attribute1 text"
+          },
           "Attribute2": {
             "type": "string",
             "description": "Attribute2 text"
@@ -1009,6 +1013,10 @@
           "Attribute3": {
             "type": "string",
             "description": "Attribute3 text"
+          },
+          "Attribute4": {
+            "type": "string",
+            "description": "Attribute4 text"
           }
         },
         "description": "The record of MyCustomer information."
