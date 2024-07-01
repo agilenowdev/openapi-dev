@@ -104,9 +104,7 @@ namespace Agile.Now.AccessHub.Test.Api
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
             //string? name = null;
-            //string? selectInclude = null;
-            //string? selectExclude = null;
-            //var response = instance.GetAccount(id, name, selectInclude, selectExclude);
+            //var response = instance.GetAccount(id, name);
             //Assert.IsType<Account>(response);
         }
 
@@ -140,9 +138,7 @@ namespace Agile.Now.AccessHub.Test.Api
             //string? orders = null;
             //int? currentPage = null;
             //int? pageSize = null;
-            //string? selectInclude = null;
-            //string? selectExclude = null;
-            //var response = instance.ListAccounts(fields, filters, orders, currentPage, pageSize, selectInclude, selectExclude);
+            //var response = instance.ListAccounts(fields, filters, orders, currentPage, pageSize);
             //Assert.IsType<Accounts>(response);
         }
 

@@ -214,30 +214,6 @@ paths:
             \ field is used.\n\nExample: \n```\nUsername, ExternalId\n```"
           type: string
         style: form
-      - description: "Mentioned fields will be returned from database, overwise if\
-          \ value is empty all database record fields will be returned from database."
-        explode: true
-        in: query
-        name: SelectInclude
-        required: false
-        schema:
-          description: "Mentioned fields will be returned from database, overwise\
-            \ if value is empty all database record fields will be returned from database."
-          type: string
-        style: form
-      - description: "Mentioned fields will be excluded from returned database record,\
-          \ overwise if value is empty all database record fields will be returned\
-          \ from database."
-        explode: true
-        in: query
-        name: SelectExclude
-        required: false
-        schema:
-          description: "Mentioned fields will be excluded from returned database record,\
-            \ overwise if value is empty all database record fields will be returned\
-            \ from database."
-          type: string
-        style: form
       responses:
         "200":
           content:
@@ -600,30 +576,6 @@ paths:
             The value ranges from `1` to `1000` and defaults to `50`.
           format: int32
           type: integer
-        style: form
-      - description: "Mentioned fields will be returned from database, overwise if\
-          \ value is empty all database record fields will be returned from database."
-        explode: true
-        in: query
-        name: SelectInclude
-        required: false
-        schema:
-          description: "Mentioned fields will be returned from database, overwise\
-            \ if value is empty all database record fields will be returned from database."
-          type: string
-        style: form
-      - description: "Mentioned fields will be excluded from returned database record,\
-          \ overwise if value is empty all database record fields will be returned\
-          \ from database."
-        explode: true
-        in: query
-        name: SelectExclude
-        required: false
-        schema:
-          description: "Mentioned fields will be excluded from returned database record,\
-            \ overwise if value is empty all database record fields will be returned\
-            \ from database."
-          type: string
         style: form
       responses:
         "200":

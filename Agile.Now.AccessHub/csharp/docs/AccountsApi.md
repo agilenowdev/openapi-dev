@@ -312,7 +312,7 @@ catch (ApiException e)
 
 <a id="getaccount"></a>
 # **GetAccount**
-> Account GetAccount (string id, string? name = null, string? selectInclude = null, string? selectExclude = null)
+> Account GetAccount (string id, string? name = null)
 
 
 
@@ -340,12 +340,10 @@ namespace Example
             var apiInstance = new AccountsApi(config);
             var id = "id_example";  // string | The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
             var name = "name_example";  // string? | The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Username, ExternalId ``` (optional) 
-            var selectInclude = "selectInclude_example";  // string? | Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database. (optional) 
-            var selectExclude = "selectExclude_example";  // string? | Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database. (optional) 
 
             try
             {
-                Account result = apiInstance.GetAccount(id, name, selectInclude, selectExclude);
+                Account result = apiInstance.GetAccount(id, name);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -365,7 +363,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<Account> response = apiInstance.GetAccountWithHttpInfo(id, name, selectInclude, selectExclude);
+    ApiResponse<Account> response = apiInstance.GetAccountWithHttpInfo(id, name);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -384,8 +382,6 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **id** | **string** | The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
 | **name** | **string?** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Username, ExternalId &#x60;&#x60;&#x60; | [optional]  |
-| **selectInclude** | **string?** | Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database. | [optional]  |
-| **selectExclude** | **string?** | Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database. | [optional]  |
 
 ### Return type
 
@@ -522,7 +518,7 @@ catch (ApiException e)
 
 <a id="listaccounts"></a>
 # **ListAccounts**
-> Accounts ListAccounts (string? fields = null, string? filters = null, string? orders = null, int? currentPage = null, int? pageSize = null, string? selectInclude = null, string? selectExclude = null)
+> Accounts ListAccounts (string? fields = null, string? filters = null, string? orders = null, int? currentPage = null, int? pageSize = null)
 
 
 
@@ -553,12 +549,10 @@ namespace Example
             var orders = "orders_example";  // string? | The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  ``` Name DESC, CreatedOn ASC ``` (optional) 
             var currentPage = 0;  // int? | This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved. (optional)  (default to 0)
             var pageSize = 0;  // int? | The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional)  (default to 0)
-            var selectInclude = "selectInclude_example";  // string? | Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database. (optional) 
-            var selectExclude = "selectExclude_example";  // string? | Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database. (optional) 
 
             try
             {
-                Accounts result = apiInstance.ListAccounts(fields, filters, orders, currentPage, pageSize, selectInclude, selectExclude);
+                Accounts result = apiInstance.ListAccounts(fields, filters, orders, currentPage, pageSize);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -578,7 +572,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<Accounts> response = apiInstance.ListAccountsWithHttpInfo(fields, filters, orders, currentPage, pageSize, selectInclude, selectExclude);
+    ApiResponse<Accounts> response = apiInstance.ListAccountsWithHttpInfo(fields, filters, orders, currentPage, pageSize);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -600,8 +594,6 @@ catch (ApiException e)
 | **orders** | **string?** | The &#x60;Orders&#x60; parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  &#x60;&#x60;&#x60; Name DESC, CreatedOn ASC &#x60;&#x60;&#x60; | [optional]  |
 | **currentPage** | **int?** | This field specifies the current page of results being returned. It&amp;#39;s often used in conjunction with &#x60;PageSize&#x60; to manage pagination by indicating which subset of the total data is currently being retrieved. | [optional] [default to 0] |
 | **pageSize** | **int?** | The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from &#x60;1&#x60; to &#x60;1000&#x60; and defaults to &#x60;50&#x60;. | [optional] [default to 0] |
-| **selectInclude** | **string?** | Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database. | [optional]  |
-| **selectExclude** | **string?** | Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database. | [optional]  |
 
 ### Return type
 

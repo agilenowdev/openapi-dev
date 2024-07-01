@@ -206,7 +206,7 @@ try {
 ## `getAccount()`
 
 ```php
-getAccount($id, $name, $select_include, $select_exclude): \OpenAPI\Client\Model\Account
+getAccount($id, $name): \OpenAPI\Client\Model\Account
 ```
 
 
@@ -232,11 +232,9 @@ $apiInstance = new OpenAPI\Client\Api\AccountsApi(
 );
 $id = 'id_example'; // string | The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
 $name = 'name_example'; // string | The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Username, ExternalId ```
-$select_include = 'select_include_example'; // string | Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database.
-$select_exclude = 'select_exclude_example'; // string | Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database.
 
 try {
-    $result = $apiInstance->getAccount($id, $name, $select_include, $select_exclude);
+    $result = $apiInstance->getAccount($id, $name);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountsApi->getAccount: ', $e->getMessage(), PHP_EOL;
@@ -249,8 +247,6 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t | |
 | **name** | **string**| The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Username, ExternalId &#x60;&#x60;&#x60; | [optional] |
-| **select_include** | **string**| Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database. | [optional] |
-| **select_exclude** | **string**| Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database. | [optional] |
 
 ### Return type
 
@@ -344,7 +340,7 @@ try {
 ## `listAccounts()`
 
 ```php
-listAccounts($fields, $filters, $orders, $current_page, $page_size, $select_include, $select_exclude): \OpenAPI\Client\Model\Accounts
+listAccounts($fields, $filters, $orders, $current_page, $page_size): \OpenAPI\Client\Model\Accounts
 ```
 
 
@@ -373,11 +369,9 @@ $filters = 'filters_example'; // string | In the List methods, filtering of reso
 $orders = 'orders_example'; // string | The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  ``` Name DESC, CreatedOn ASC ```
 $current_page = 0; // int | This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.
 $page_size = 0; // int | The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`.
-$select_include = 'select_include_example'; // string | Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database.
-$select_exclude = 'select_exclude_example'; // string | Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database.
 
 try {
-    $result = $apiInstance->listAccounts($fields, $filters, $orders, $current_page, $page_size, $select_include, $select_exclude);
+    $result = $apiInstance->listAccounts($fields, $filters, $orders, $current_page, $page_size);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountsApi->listAccounts: ', $e->getMessage(), PHP_EOL;
@@ -393,8 +387,6 @@ try {
 | **orders** | **string**| The &#x60;Orders&#x60; parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  &#x60;&#x60;&#x60; Name DESC, CreatedOn ASC &#x60;&#x60;&#x60; | [optional] |
 | **current_page** | **int**| This field specifies the current page of results being returned. It&amp;#39;s often used in conjunction with &#x60;PageSize&#x60; to manage pagination by indicating which subset of the total data is currently being retrieved. | [optional] [default to 0] |
 | **page_size** | **int**| The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from &#x60;1&#x60; to &#x60;1000&#x60; and defaults to &#x60;50&#x60;. | [optional] [default to 0] |
-| **select_include** | **string**| Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database. | [optional] |
-| **select_exclude** | **string**| Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database. | [optional] |
 
 ### Return type
 

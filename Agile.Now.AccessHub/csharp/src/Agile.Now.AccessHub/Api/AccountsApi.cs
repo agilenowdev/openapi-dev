@@ -114,11 +114,9 @@ namespace Agile.Now.AccessHub.Api
         /// <exception cref="Agile.Now.AccessHub.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
         /// <param name="name">The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Username, ExternalId &#x60;&#x60;&#x60; (optional)</param>
-        /// <param name="selectInclude">Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database. (optional)</param>
-        /// <param name="selectExclude">Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Account</returns>
-        Account GetAccount(string id, string? name = default(string?), string? selectInclude = default(string?), string? selectExclude = default(string?), int operationIndex = 0);
+        Account GetAccount(string id, string? name = default(string?), int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -129,11 +127,9 @@ namespace Agile.Now.AccessHub.Api
         /// <exception cref="Agile.Now.AccessHub.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
         /// <param name="name">The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Username, ExternalId &#x60;&#x60;&#x60; (optional)</param>
-        /// <param name="selectInclude">Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database. (optional)</param>
-        /// <param name="selectExclude">Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Account</returns>
-        ApiResponse<Account> GetAccountWithHttpInfo(string id, string? name = default(string?), string? selectInclude = default(string?), string? selectExclude = default(string?), int operationIndex = 0);
+        ApiResponse<Account> GetAccountWithHttpInfo(string id, string? name = default(string?), int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -181,11 +177,9 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="orders">The &#x60;Orders&#x60; parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  &#x60;&#x60;&#x60; Name DESC, CreatedOn ASC &#x60;&#x60;&#x60; (optional)</param>
         /// <param name="currentPage">This field specifies the current page of results being returned. It&amp;#39;s often used in conjunction with &#x60;PageSize&#x60; to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)</param>
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from &#x60;1&#x60; to &#x60;1000&#x60; and defaults to &#x60;50&#x60;. (optional, default to 0)</param>
-        /// <param name="selectInclude">Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database. (optional)</param>
-        /// <param name="selectExclude">Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Accounts</returns>
-        Accounts ListAccounts(string? fields = default(string?), string? filters = default(string?), string? orders = default(string?), int? currentPage = default(int?), int? pageSize = default(int?), string? selectInclude = default(string?), string? selectExclude = default(string?), int operationIndex = 0);
+        Accounts ListAccounts(string? fields = default(string?), string? filters = default(string?), string? orders = default(string?), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -199,11 +193,9 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="orders">The &#x60;Orders&#x60; parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  &#x60;&#x60;&#x60; Name DESC, CreatedOn ASC &#x60;&#x60;&#x60; (optional)</param>
         /// <param name="currentPage">This field specifies the current page of results being returned. It&amp;#39;s often used in conjunction with &#x60;PageSize&#x60; to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)</param>
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from &#x60;1&#x60; to &#x60;1000&#x60; and defaults to &#x60;50&#x60;. (optional, default to 0)</param>
-        /// <param name="selectInclude">Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database. (optional)</param>
-        /// <param name="selectExclude">Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Accounts</returns>
-        ApiResponse<Accounts> ListAccountsWithHttpInfo(string? fields = default(string?), string? filters = default(string?), string? orders = default(string?), int? currentPage = default(int?), int? pageSize = default(int?), string? selectInclude = default(string?), string? selectExclude = default(string?), int operationIndex = 0);
+        ApiResponse<Accounts> ListAccountsWithHttpInfo(string? fields = default(string?), string? filters = default(string?), string? orders = default(string?), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -382,12 +374,10 @@ namespace Agile.Now.AccessHub.Api
         /// <exception cref="Agile.Now.AccessHub.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
         /// <param name="name">The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Username, ExternalId &#x60;&#x60;&#x60; (optional)</param>
-        /// <param name="selectInclude">Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database. (optional)</param>
-        /// <param name="selectExclude">Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Account</returns>
-        System.Threading.Tasks.Task<Account> GetAccountAsync(string id, string? name = default(string?), string? selectInclude = default(string?), string? selectExclude = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Account> GetAccountAsync(string id, string? name = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -398,12 +388,10 @@ namespace Agile.Now.AccessHub.Api
         /// <exception cref="Agile.Now.AccessHub.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
         /// <param name="name">The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Username, ExternalId &#x60;&#x60;&#x60; (optional)</param>
-        /// <param name="selectInclude">Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database. (optional)</param>
-        /// <param name="selectExclude">Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Account)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Account>> GetAccountWithHttpInfoAsync(string id, string? name = default(string?), string? selectInclude = default(string?), string? selectExclude = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Account>> GetAccountWithHttpInfoAsync(string id, string? name = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -453,12 +441,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="orders">The &#x60;Orders&#x60; parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  &#x60;&#x60;&#x60; Name DESC, CreatedOn ASC &#x60;&#x60;&#x60; (optional)</param>
         /// <param name="currentPage">This field specifies the current page of results being returned. It&amp;#39;s often used in conjunction with &#x60;PageSize&#x60; to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)</param>
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from &#x60;1&#x60; to &#x60;1000&#x60; and defaults to &#x60;50&#x60;. (optional, default to 0)</param>
-        /// <param name="selectInclude">Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database. (optional)</param>
-        /// <param name="selectExclude">Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Accounts</returns>
-        System.Threading.Tasks.Task<Accounts> ListAccountsAsync(string? fields = default(string?), string? filters = default(string?), string? orders = default(string?), int? currentPage = default(int?), int? pageSize = default(int?), string? selectInclude = default(string?), string? selectExclude = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Accounts> ListAccountsAsync(string? fields = default(string?), string? filters = default(string?), string? orders = default(string?), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -472,12 +458,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="orders">The &#x60;Orders&#x60; parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  &#x60;&#x60;&#x60; Name DESC, CreatedOn ASC &#x60;&#x60;&#x60; (optional)</param>
         /// <param name="currentPage">This field specifies the current page of results being returned. It&amp;#39;s often used in conjunction with &#x60;PageSize&#x60; to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)</param>
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from &#x60;1&#x60; to &#x60;1000&#x60; and defaults to &#x60;50&#x60;. (optional, default to 0)</param>
-        /// <param name="selectInclude">Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database. (optional)</param>
-        /// <param name="selectExclude">Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Accounts)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Accounts>> ListAccountsWithHttpInfoAsync(string? fields = default(string?), string? filters = default(string?), string? orders = default(string?), int? currentPage = default(int?), int? pageSize = default(int?), string? selectInclude = default(string?), string? selectExclude = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Accounts>> ListAccountsWithHttpInfoAsync(string? fields = default(string?), string? filters = default(string?), string? orders = default(string?), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -1271,13 +1255,11 @@ namespace Agile.Now.AccessHub.Api
         /// <exception cref="Agile.Now.AccessHub.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
         /// <param name="name">The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Username, ExternalId &#x60;&#x60;&#x60; (optional)</param>
-        /// <param name="selectInclude">Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database. (optional)</param>
-        /// <param name="selectExclude">Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Account</returns>
-        public Account GetAccount(string id, string? name = default(string?), string? selectInclude = default(string?), string? selectExclude = default(string?), int operationIndex = 0)
+        public Account GetAccount(string id, string? name = default(string?), int operationIndex = 0)
         {
-            Agile.Now.AccessHub.Client.ApiResponse<Account> localVarResponse = GetAccountWithHttpInfo(id, name, selectInclude, selectExclude);
+            Agile.Now.AccessHub.Client.ApiResponse<Account> localVarResponse = GetAccountWithHttpInfo(id, name);
             return localVarResponse.Data;
         }
 
@@ -1287,11 +1269,9 @@ namespace Agile.Now.AccessHub.Api
         /// <exception cref="Agile.Now.AccessHub.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
         /// <param name="name">The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Username, ExternalId &#x60;&#x60;&#x60; (optional)</param>
-        /// <param name="selectInclude">Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database. (optional)</param>
-        /// <param name="selectExclude">Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Account</returns>
-        public Agile.Now.AccessHub.Client.ApiResponse<Account> GetAccountWithHttpInfo(string id, string? name = default(string?), string? selectInclude = default(string?), string? selectExclude = default(string?), int operationIndex = 0)
+        public Agile.Now.AccessHub.Client.ApiResponse<Account> GetAccountWithHttpInfo(string id, string? name = default(string?), int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1325,14 +1305,6 @@ namespace Agile.Now.AccessHub.Api
             if (name != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Agile.Now.AccessHub.Client.ClientUtils.ParameterToMultiMap("", "Name", name));
-            }
-            if (selectInclude != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Agile.Now.AccessHub.Client.ClientUtils.ParameterToMultiMap("", "SelectInclude", selectInclude));
-            }
-            if (selectExclude != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Agile.Now.AccessHub.Client.ClientUtils.ParameterToMultiMap("", "SelectExclude", selectExclude));
             }
 
             localVarRequestOptions.Operation = "AccountsApi.GetAccount";
@@ -1375,14 +1347,12 @@ namespace Agile.Now.AccessHub.Api
         /// <exception cref="Agile.Now.AccessHub.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
         /// <param name="name">The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Username, ExternalId &#x60;&#x60;&#x60; (optional)</param>
-        /// <param name="selectInclude">Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database. (optional)</param>
-        /// <param name="selectExclude">Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Account</returns>
-        public async System.Threading.Tasks.Task<Account> GetAccountAsync(string id, string? name = default(string?), string? selectInclude = default(string?), string? selectExclude = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Account> GetAccountAsync(string id, string? name = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Agile.Now.AccessHub.Client.ApiResponse<Account> localVarResponse = await GetAccountWithHttpInfoAsync(id, name, selectInclude, selectExclude, operationIndex, cancellationToken).ConfigureAwait(false);
+            Agile.Now.AccessHub.Client.ApiResponse<Account> localVarResponse = await GetAccountWithHttpInfoAsync(id, name, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1392,12 +1362,10 @@ namespace Agile.Now.AccessHub.Api
         /// <exception cref="Agile.Now.AccessHub.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
         /// <param name="name">The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Username, ExternalId &#x60;&#x60;&#x60; (optional)</param>
-        /// <param name="selectInclude">Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database. (optional)</param>
-        /// <param name="selectExclude">Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Account)</returns>
-        public async System.Threading.Tasks.Task<Agile.Now.AccessHub.Client.ApiResponse<Account>> GetAccountWithHttpInfoAsync(string id, string? name = default(string?), string? selectInclude = default(string?), string? selectExclude = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Agile.Now.AccessHub.Client.ApiResponse<Account>> GetAccountWithHttpInfoAsync(string id, string? name = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1432,14 +1400,6 @@ namespace Agile.Now.AccessHub.Api
             if (name != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Agile.Now.AccessHub.Client.ClientUtils.ParameterToMultiMap("", "Name", name));
-            }
-            if (selectInclude != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Agile.Now.AccessHub.Client.ClientUtils.ParameterToMultiMap("", "SelectInclude", selectInclude));
-            }
-            if (selectExclude != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Agile.Now.AccessHub.Client.ClientUtils.ParameterToMultiMap("", "SelectExclude", selectExclude));
             }
 
             localVarRequestOptions.Operation = "AccountsApi.GetAccount";
@@ -1734,13 +1694,11 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="orders">The &#x60;Orders&#x60; parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  &#x60;&#x60;&#x60; Name DESC, CreatedOn ASC &#x60;&#x60;&#x60; (optional)</param>
         /// <param name="currentPage">This field specifies the current page of results being returned. It&amp;#39;s often used in conjunction with &#x60;PageSize&#x60; to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)</param>
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from &#x60;1&#x60; to &#x60;1000&#x60; and defaults to &#x60;50&#x60;. (optional, default to 0)</param>
-        /// <param name="selectInclude">Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database. (optional)</param>
-        /// <param name="selectExclude">Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Accounts</returns>
-        public Accounts ListAccounts(string? fields = default(string?), string? filters = default(string?), string? orders = default(string?), int? currentPage = default(int?), int? pageSize = default(int?), string? selectInclude = default(string?), string? selectExclude = default(string?), int operationIndex = 0)
+        public Accounts ListAccounts(string? fields = default(string?), string? filters = default(string?), string? orders = default(string?), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0)
         {
-            Agile.Now.AccessHub.Client.ApiResponse<Accounts> localVarResponse = ListAccountsWithHttpInfo(fields, filters, orders, currentPage, pageSize, selectInclude, selectExclude);
+            Agile.Now.AccessHub.Client.ApiResponse<Accounts> localVarResponse = ListAccountsWithHttpInfo(fields, filters, orders, currentPage, pageSize);
             return localVarResponse.Data;
         }
 
@@ -1753,11 +1711,9 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="orders">The &#x60;Orders&#x60; parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  &#x60;&#x60;&#x60; Name DESC, CreatedOn ASC &#x60;&#x60;&#x60; (optional)</param>
         /// <param name="currentPage">This field specifies the current page of results being returned. It&amp;#39;s often used in conjunction with &#x60;PageSize&#x60; to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)</param>
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from &#x60;1&#x60; to &#x60;1000&#x60; and defaults to &#x60;50&#x60;. (optional, default to 0)</param>
-        /// <param name="selectInclude">Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database. (optional)</param>
-        /// <param name="selectExclude">Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Accounts</returns>
-        public Agile.Now.AccessHub.Client.ApiResponse<Accounts> ListAccountsWithHttpInfo(string? fields = default(string?), string? filters = default(string?), string? orders = default(string?), int? currentPage = default(int?), int? pageSize = default(int?), string? selectInclude = default(string?), string? selectExclude = default(string?), int operationIndex = 0)
+        public Agile.Now.AccessHub.Client.ApiResponse<Accounts> ListAccountsWithHttpInfo(string? fields = default(string?), string? filters = default(string?), string? orders = default(string?), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0)
         {
             Agile.Now.AccessHub.Client.RequestOptions localVarRequestOptions = new Agile.Now.AccessHub.Client.RequestOptions();
 
@@ -1800,14 +1756,6 @@ namespace Agile.Now.AccessHub.Api
             if (pageSize != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Agile.Now.AccessHub.Client.ClientUtils.ParameterToMultiMap("", "PageSize", pageSize));
-            }
-            if (selectInclude != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Agile.Now.AccessHub.Client.ClientUtils.ParameterToMultiMap("", "SelectInclude", selectInclude));
-            }
-            if (selectExclude != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Agile.Now.AccessHub.Client.ClientUtils.ParameterToMultiMap("", "SelectExclude", selectExclude));
             }
 
             localVarRequestOptions.Operation = "AccountsApi.ListAccounts";
@@ -1853,14 +1801,12 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="orders">The &#x60;Orders&#x60; parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  &#x60;&#x60;&#x60; Name DESC, CreatedOn ASC &#x60;&#x60;&#x60; (optional)</param>
         /// <param name="currentPage">This field specifies the current page of results being returned. It&amp;#39;s often used in conjunction with &#x60;PageSize&#x60; to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)</param>
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from &#x60;1&#x60; to &#x60;1000&#x60; and defaults to &#x60;50&#x60;. (optional, default to 0)</param>
-        /// <param name="selectInclude">Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database. (optional)</param>
-        /// <param name="selectExclude">Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Accounts</returns>
-        public async System.Threading.Tasks.Task<Accounts> ListAccountsAsync(string? fields = default(string?), string? filters = default(string?), string? orders = default(string?), int? currentPage = default(int?), int? pageSize = default(int?), string? selectInclude = default(string?), string? selectExclude = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Accounts> ListAccountsAsync(string? fields = default(string?), string? filters = default(string?), string? orders = default(string?), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Agile.Now.AccessHub.Client.ApiResponse<Accounts> localVarResponse = await ListAccountsWithHttpInfoAsync(fields, filters, orders, currentPage, pageSize, selectInclude, selectExclude, operationIndex, cancellationToken).ConfigureAwait(false);
+            Agile.Now.AccessHub.Client.ApiResponse<Accounts> localVarResponse = await ListAccountsWithHttpInfoAsync(fields, filters, orders, currentPage, pageSize, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1873,12 +1819,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="orders">The &#x60;Orders&#x60; parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  &#x60;&#x60;&#x60; Name DESC, CreatedOn ASC &#x60;&#x60;&#x60; (optional)</param>
         /// <param name="currentPage">This field specifies the current page of results being returned. It&amp;#39;s often used in conjunction with &#x60;PageSize&#x60; to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)</param>
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from &#x60;1&#x60; to &#x60;1000&#x60; and defaults to &#x60;50&#x60;. (optional, default to 0)</param>
-        /// <param name="selectInclude">Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database. (optional)</param>
-        /// <param name="selectExclude">Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Accounts)</returns>
-        public async System.Threading.Tasks.Task<Agile.Now.AccessHub.Client.ApiResponse<Accounts>> ListAccountsWithHttpInfoAsync(string? fields = default(string?), string? filters = default(string?), string? orders = default(string?), int? currentPage = default(int?), int? pageSize = default(int?), string? selectInclude = default(string?), string? selectExclude = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Agile.Now.AccessHub.Client.ApiResponse<Accounts>> ListAccountsWithHttpInfoAsync(string? fields = default(string?), string? filters = default(string?), string? orders = default(string?), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             Agile.Now.AccessHub.Client.RequestOptions localVarRequestOptions = new Agile.Now.AccessHub.Client.RequestOptions();
@@ -1922,14 +1866,6 @@ namespace Agile.Now.AccessHub.Api
             if (pageSize != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Agile.Now.AccessHub.Client.ClientUtils.ParameterToMultiMap("", "PageSize", pageSize));
-            }
-            if (selectInclude != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Agile.Now.AccessHub.Client.ClientUtils.ParameterToMultiMap("", "SelectInclude", selectInclude));
-            }
-            if (selectExclude != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Agile.Now.AccessHub.Client.ClientUtils.ParameterToMultiMap("", "SelectExclude", selectExclude));
             }
 
             localVarRequestOptions.Operation = "AccountsApi.ListAccounts";

@@ -1545,17 +1545,15 @@ class AccountsApi
      *
      * @param  string $id The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t (required)
      * @param  string $name The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Username, ExternalId &#x60;&#x60;&#x60; (optional)
-     * @param  string $select_include Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database. (optional)
-     * @param  string $select_exclude Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccount'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\Account|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error
      */
-    public function getAccount($id, $name = null, $select_include = null, $select_exclude = null, string $contentType = self::contentTypes['getAccount'][0])
+    public function getAccount($id, $name = null, string $contentType = self::contentTypes['getAccount'][0])
     {
-        list($response) = $this->getAccountWithHttpInfo($id, $name, $select_include, $select_exclude, $contentType);
+        list($response) = $this->getAccountWithHttpInfo($id, $name, $contentType);
         return $response;
     }
 
@@ -1564,17 +1562,15 @@ class AccountsApi
      *
      * @param  string $id The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t (required)
      * @param  string $name The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Username, ExternalId &#x60;&#x60;&#x60; (optional)
-     * @param  string $select_include Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database. (optional)
-     * @param  string $select_exclude Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccount'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\Account|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAccountWithHttpInfo($id, $name = null, $select_include = null, $select_exclude = null, string $contentType = self::contentTypes['getAccount'][0])
+    public function getAccountWithHttpInfo($id, $name = null, string $contentType = self::contentTypes['getAccount'][0])
     {
-        $request = $this->getAccountRequest($id, $name, $select_include, $select_exclude, $contentType);
+        $request = $this->getAccountRequest($id, $name, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1829,16 +1825,14 @@ class AccountsApi
      *
      * @param  string $id The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t (required)
      * @param  string $name The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Username, ExternalId &#x60;&#x60;&#x60; (optional)
-     * @param  string $select_include Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database. (optional)
-     * @param  string $select_exclude Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccount'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAccountAsync($id, $name = null, $select_include = null, $select_exclude = null, string $contentType = self::contentTypes['getAccount'][0])
+    public function getAccountAsync($id, $name = null, string $contentType = self::contentTypes['getAccount'][0])
     {
-        return $this->getAccountAsyncWithHttpInfo($id, $name, $select_include, $select_exclude, $contentType)
+        return $this->getAccountAsyncWithHttpInfo($id, $name, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1851,17 +1845,15 @@ class AccountsApi
      *
      * @param  string $id The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t (required)
      * @param  string $name The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Username, ExternalId &#x60;&#x60;&#x60; (optional)
-     * @param  string $select_include Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database. (optional)
-     * @param  string $select_exclude Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccount'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAccountAsyncWithHttpInfo($id, $name = null, $select_include = null, $select_exclude = null, string $contentType = self::contentTypes['getAccount'][0])
+    public function getAccountAsyncWithHttpInfo($id, $name = null, string $contentType = self::contentTypes['getAccount'][0])
     {
         $returnType = '\OpenAPI\Client\Model\Account';
-        $request = $this->getAccountRequest($id, $name, $select_include, $select_exclude, $contentType);
+        $request = $this->getAccountRequest($id, $name, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1904,14 +1896,12 @@ class AccountsApi
      *
      * @param  string $id The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t (required)
      * @param  string $name The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Username, ExternalId &#x60;&#x60;&#x60; (optional)
-     * @param  string $select_include Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database. (optional)
-     * @param  string $select_exclude Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccount'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAccountRequest($id, $name = null, $select_include = null, $select_exclude = null, string $contentType = self::contentTypes['getAccount'][0])
+    public function getAccountRequest($id, $name = null, string $contentType = self::contentTypes['getAccount'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -1920,8 +1910,6 @@ class AccountsApi
                 'Missing the required parameter $id when calling getAccount'
             );
         }
-
-
 
 
 
@@ -1936,24 +1924,6 @@ class AccountsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $name,
             'Name', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $select_include,
-            'SelectInclude', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $select_exclude,
-            'SelectExclude', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -2569,17 +2539,15 @@ class AccountsApi
      * @param  string $orders The &#x60;Orders&#x60; parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  &#x60;&#x60;&#x60; Name DESC, CreatedOn ASC &#x60;&#x60;&#x60; (optional)
      * @param  int $current_page This field specifies the current page of results being returned. It&amp;#39;s often used in conjunction with &#x60;PageSize&#x60; to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)
      * @param  int $page_size The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from &#x60;1&#x60; to &#x60;1000&#x60; and defaults to &#x60;50&#x60;. (optional, default to 0)
-     * @param  string $select_include Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database. (optional)
-     * @param  string $select_exclude Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccounts'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\Accounts|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error
      */
-    public function listAccounts($fields = null, $filters = null, $orders = null, $current_page = 0, $page_size = 0, $select_include = null, $select_exclude = null, string $contentType = self::contentTypes['listAccounts'][0])
+    public function listAccounts($fields = null, $filters = null, $orders = null, $current_page = 0, $page_size = 0, string $contentType = self::contentTypes['listAccounts'][0])
     {
-        list($response) = $this->listAccountsWithHttpInfo($fields, $filters, $orders, $current_page, $page_size, $select_include, $select_exclude, $contentType);
+        list($response) = $this->listAccountsWithHttpInfo($fields, $filters, $orders, $current_page, $page_size, $contentType);
         return $response;
     }
 
@@ -2591,17 +2559,15 @@ class AccountsApi
      * @param  string $orders The &#x60;Orders&#x60; parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  &#x60;&#x60;&#x60; Name DESC, CreatedOn ASC &#x60;&#x60;&#x60; (optional)
      * @param  int $current_page This field specifies the current page of results being returned. It&amp;#39;s often used in conjunction with &#x60;PageSize&#x60; to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)
      * @param  int $page_size The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from &#x60;1&#x60; to &#x60;1000&#x60; and defaults to &#x60;50&#x60;. (optional, default to 0)
-     * @param  string $select_include Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database. (optional)
-     * @param  string $select_exclude Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccounts'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\Accounts|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error|\OpenAPI\Client\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listAccountsWithHttpInfo($fields = null, $filters = null, $orders = null, $current_page = 0, $page_size = 0, $select_include = null, $select_exclude = null, string $contentType = self::contentTypes['listAccounts'][0])
+    public function listAccountsWithHttpInfo($fields = null, $filters = null, $orders = null, $current_page = 0, $page_size = 0, string $contentType = self::contentTypes['listAccounts'][0])
     {
-        $request = $this->listAccountsRequest($fields, $filters, $orders, $current_page, $page_size, $select_include, $select_exclude, $contentType);
+        $request = $this->listAccountsRequest($fields, $filters, $orders, $current_page, $page_size, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2859,16 +2825,14 @@ class AccountsApi
      * @param  string $orders The &#x60;Orders&#x60; parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  &#x60;&#x60;&#x60; Name DESC, CreatedOn ASC &#x60;&#x60;&#x60; (optional)
      * @param  int $current_page This field specifies the current page of results being returned. It&amp;#39;s often used in conjunction with &#x60;PageSize&#x60; to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)
      * @param  int $page_size The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from &#x60;1&#x60; to &#x60;1000&#x60; and defaults to &#x60;50&#x60;. (optional, default to 0)
-     * @param  string $select_include Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database. (optional)
-     * @param  string $select_exclude Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAccountsAsync($fields = null, $filters = null, $orders = null, $current_page = 0, $page_size = 0, $select_include = null, $select_exclude = null, string $contentType = self::contentTypes['listAccounts'][0])
+    public function listAccountsAsync($fields = null, $filters = null, $orders = null, $current_page = 0, $page_size = 0, string $contentType = self::contentTypes['listAccounts'][0])
     {
-        return $this->listAccountsAsyncWithHttpInfo($fields, $filters, $orders, $current_page, $page_size, $select_include, $select_exclude, $contentType)
+        return $this->listAccountsAsyncWithHttpInfo($fields, $filters, $orders, $current_page, $page_size, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2884,17 +2848,15 @@ class AccountsApi
      * @param  string $orders The &#x60;Orders&#x60; parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  &#x60;&#x60;&#x60; Name DESC, CreatedOn ASC &#x60;&#x60;&#x60; (optional)
      * @param  int $current_page This field specifies the current page of results being returned. It&amp;#39;s often used in conjunction with &#x60;PageSize&#x60; to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)
      * @param  int $page_size The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from &#x60;1&#x60; to &#x60;1000&#x60; and defaults to &#x60;50&#x60;. (optional, default to 0)
-     * @param  string $select_include Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database. (optional)
-     * @param  string $select_exclude Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAccountsAsyncWithHttpInfo($fields = null, $filters = null, $orders = null, $current_page = 0, $page_size = 0, $select_include = null, $select_exclude = null, string $contentType = self::contentTypes['listAccounts'][0])
+    public function listAccountsAsyncWithHttpInfo($fields = null, $filters = null, $orders = null, $current_page = 0, $page_size = 0, string $contentType = self::contentTypes['listAccounts'][0])
     {
         $returnType = '\OpenAPI\Client\Model\Accounts';
-        $request = $this->listAccountsRequest($fields, $filters, $orders, $current_page, $page_size, $select_include, $select_exclude, $contentType);
+        $request = $this->listAccountsRequest($fields, $filters, $orders, $current_page, $page_size, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2940,17 +2902,13 @@ class AccountsApi
      * @param  string $orders The &#x60;Orders&#x60; parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  &#x60;&#x60;&#x60; Name DESC, CreatedOn ASC &#x60;&#x60;&#x60; (optional)
      * @param  int $current_page This field specifies the current page of results being returned. It&amp;#39;s often used in conjunction with &#x60;PageSize&#x60; to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)
      * @param  int $page_size The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from &#x60;1&#x60; to &#x60;1000&#x60; and defaults to &#x60;50&#x60;. (optional, default to 0)
-     * @param  string $select_include Mentioned fields will be returned from database, overwise if value is empty all database record fields will be returned from database. (optional)
-     * @param  string $select_exclude Mentioned fields will be excluded from returned database record, overwise if value is empty all database record fields will be returned from database. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listAccountsRequest($fields = null, $filters = null, $orders = null, $current_page = 0, $page_size = 0, $select_include = null, $select_exclude = null, string $contentType = self::contentTypes['listAccounts'][0])
+    public function listAccountsRequest($fields = null, $filters = null, $orders = null, $current_page = 0, $page_size = 0, string $contentType = self::contentTypes['listAccounts'][0])
     {
-
-
 
 
 
@@ -3006,24 +2964,6 @@ class AccountsApi
             $page_size,
             'PageSize', // param base name
             'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $select_include,
-            'SelectInclude', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $select_exclude,
-            'SelectExclude', // param base name
-            'string', // openApiType
             'form', // style
             true, // explode
             false // required
