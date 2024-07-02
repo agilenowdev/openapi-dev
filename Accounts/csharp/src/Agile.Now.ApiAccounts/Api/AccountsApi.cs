@@ -88,7 +88,7 @@ namespace Agile.Now.ApiAccounts.Api
         /// <param name="subName">The name of the database field. If empty, the entity &#x60;UserId&#x60; field is used.  Example:  &#x60;&#x60;&#x60; AccountId.Username, AccountId.ExternalId &#x60;&#x60;&#x60; (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Tenant</returns>
-        Tenant DeleteAccountTenant(string id, string subId, string? name = default(string?), string? subName = default(string?), int operationIndex = 0);
+        Tenant2 DeleteAccountTenant(string id, string subId, string? name = default(string?), string? subName = default(string?), int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -103,7 +103,7 @@ namespace Agile.Now.ApiAccounts.Api
         /// <param name="subName">The name of the database field. If empty, the entity &#x60;UserId&#x60; field is used.  Example:  &#x60;&#x60;&#x60; AccountId.Username, AccountId.ExternalId &#x60;&#x60;&#x60; (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Tenant</returns>
-        ApiResponse<Tenant> DeleteAccountTenantWithHttpInfo(string id, string subId, string? name = default(string?), string? subName = default(string?), int operationIndex = 0);
+        ApiResponse<Tenant2> DeleteAccountTenantWithHttpInfo(string id, string subId, string? name = default(string?), string? subName = default(string?), int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -347,7 +347,7 @@ namespace Agile.Now.ApiAccounts.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Tenant</returns>
-        System.Threading.Tasks.Task<Tenant> DeleteAccountTenantAsync(string id, string subId, string? name = default(string?), string? subName = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Tenant2> DeleteAccountTenantAsync(string id, string subId, string? name = default(string?), string? subName = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -363,7 +363,7 @@ namespace Agile.Now.ApiAccounts.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Tenant)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Tenant>> DeleteAccountTenantWithHttpInfoAsync(string id, string subId, string? name = default(string?), string? subName = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Tenant2>> DeleteAccountTenantWithHttpInfoAsync(string id, string subId, string? name = default(string?), string? subName = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -1040,9 +1040,9 @@ namespace Agile.Now.ApiAccounts.Api
         /// <param name="subName">The name of the database field. If empty, the entity &#x60;UserId&#x60; field is used.  Example:  &#x60;&#x60;&#x60; AccountId.Username, AccountId.ExternalId &#x60;&#x60;&#x60; (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Tenant</returns>
-        public Tenant DeleteAccountTenant(string id, string subId, string? name = default(string?), string? subName = default(string?), int operationIndex = 0)
+        public Tenant2 DeleteAccountTenant(string id, string subId, string? name = default(string?), string? subName = default(string?), int operationIndex = 0)
         {
-            Agile.Now.ApiAccounts.Client.ApiResponse<Tenant> localVarResponse = DeleteAccountTenantWithHttpInfo(id, subId, name, subName);
+            Agile.Now.ApiAccounts.Client.ApiResponse<Tenant2> localVarResponse = DeleteAccountTenantWithHttpInfo(id, subId, name, subName);
             return localVarResponse.Data;
         }
 
@@ -1056,7 +1056,7 @@ namespace Agile.Now.ApiAccounts.Api
         /// <param name="subName">The name of the database field. If empty, the entity &#x60;UserId&#x60; field is used.  Example:  &#x60;&#x60;&#x60; AccountId.Username, AccountId.ExternalId &#x60;&#x60;&#x60; (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Tenant</returns>
-        public Agile.Now.ApiAccounts.Client.ApiResponse<Tenant> DeleteAccountTenantWithHttpInfo(string id, string subId, string? name = default(string?), string? subName = default(string?), int operationIndex = 0)
+        public Agile.Now.ApiAccounts.Client.ApiResponse<Tenant2> DeleteAccountTenantWithHttpInfo(string id, string subId, string? name = default(string?), string? subName = default(string?), int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1124,7 +1124,7 @@ namespace Agile.Now.ApiAccounts.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Delete<Tenant>("/Endpoint/rest/api/v1/Account/{Id}/Tenant/{SubId}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Delete<Tenant2>("/Endpoint/rest/api/v1/Account/{Id}/Tenant/{SubId}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("DeleteAccountTenant", localVarResponse);
@@ -1148,9 +1148,9 @@ namespace Agile.Now.ApiAccounts.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Tenant</returns>
-        public async System.Threading.Tasks.Task<Tenant> DeleteAccountTenantAsync(string id, string subId, string? name = default(string?), string? subName = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Tenant2> DeleteAccountTenantAsync(string id, string subId, string? name = default(string?), string? subName = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Agile.Now.ApiAccounts.Client.ApiResponse<Tenant> localVarResponse = await DeleteAccountTenantWithHttpInfoAsync(id, subId, name, subName, operationIndex, cancellationToken).ConfigureAwait(false);
+            Agile.Now.ApiAccounts.Client.ApiResponse<Tenant2> localVarResponse = await DeleteAccountTenantWithHttpInfoAsync(id, subId, name, subName, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1165,7 +1165,7 @@ namespace Agile.Now.ApiAccounts.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Tenant)</returns>
-        public async System.Threading.Tasks.Task<Agile.Now.ApiAccounts.Client.ApiResponse<Tenant>> DeleteAccountTenantWithHttpInfoAsync(string id, string subId, string? name = default(string?), string? subName = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Agile.Now.ApiAccounts.Client.ApiResponse<Tenant2>> DeleteAccountTenantWithHttpInfoAsync(string id, string subId, string? name = default(string?), string? subName = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1234,7 +1234,7 @@ namespace Agile.Now.ApiAccounts.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.DeleteAsync<Tenant>("/Endpoint/rest/api/v1/Account/{Id}/Tenant/{SubId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<Tenant2>("/Endpoint/rest/api/v1/Account/{Id}/Tenant/{SubId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
