@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "2.0.45"
+    "version": "2.0.46"
   },
   "servers": [
     {
@@ -523,7 +523,7 @@
         "tags": [
           "Accounts"
         ],
-        "description": "Use the `TenantPost` object resource to insert or update (Upsert) `Tenant` using `UserId,AccountId.Username, AccountId.ExternalId` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `TenantData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `UserId, TenantId, AccountId`\n\n### Update a record of Tenant\n* If the `UserId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `UserId` field value (primary key).\n* If the `AccountId.Username, AccountId.ExternalId` field value is not empty and `UserId` field value is empty, action try insert record according `AccountId.Username, AccountId.ExternalId` field value (if set, the value is a unique identifier).\n\n### Create a new record of Tenant\n* If the value in the `AccountId.Username, AccountId.ExternalId` and `UserId` fields are empty then action insert a new record according input parameter entity record structure (`TenantData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Tenant` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "description": "Use the `TenantPost` object resource to insert or update (Upsert) `Tenant` using `UserId,TenantId.Name` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `TenantData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `UserId, TenantId, AccountId`\n\n### Update a record of Tenant\n* If the `UserId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `UserId` field value (primary key).\n* If the `TenantId.Name` field value is not empty and `UserId` field value is empty, action try insert record according `TenantId.Name` field value (if set, the value is a unique identifier).\n\n### Create a new record of Tenant\n* If the value in the `TenantId.Name` and `UserId` fields are empty then action insert a new record according input parameter entity record structure (`TenantData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Tenant` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
         "operationId": "Upsert Account Tenant",
         "parameters": [
           {
@@ -597,7 +597,7 @@
         "tags": [
           "Accounts"
         ],
-        "description": "Use the query string resource to delete `Tenant` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `UserId,AccountId.Username, AccountId.ExternalId` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `Tenant` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `UserId, TenantId, AccountId`\n\n### Delete a record of Tenant\n* If the `UserId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `UserId,AccountId.Username, AccountId.ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
+        "description": "Use the query string resource to delete `Tenant` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `UserId,TenantId.Name` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `Tenant` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `UserId, TenantId, AccountId`\n\n### Delete a record of Tenant\n* If the `UserId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `UserId,TenantId.Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
         "operationId": "Delete Account Tenant",
         "parameters": [
           {
@@ -632,10 +632,10 @@
           {
             "name": "SubName",
             "in": "query",
-            "description": "The name of the database field. If empty, the entity `UserId` field is used.\n\nExample: \n```\nAccountId.Username, AccountId.ExternalId\n```",
+            "description": "The name of the database field. If empty, the entity `UserId` field is used.\n\nExample: \n```\nTenantId.Name\n```",
             "schema": {
               "type": "string",
-              "description": "The name of the database field. If empty, the entity `UserId` field is used.\n\nExample: \n```\nAccountId.Username, AccountId.ExternalId\n```"
+              "description": "The name of the database field. If empty, the entity `UserId` field is used.\n\nExample: \n```\nTenantId.Name\n```"
             }
           }
         ],
