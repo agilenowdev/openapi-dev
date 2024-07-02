@@ -45,10 +45,6 @@ namespace Agile.Now.ApiAccounts.Model
         public TenantData(FieldType userId = default(FieldType), FieldType tenantId = default(FieldType), DateTime createdOn = default(DateTime))
         {
             // to ensure "userId" is required (not null)
-            if (userId == null)
-            {
-                throw new ArgumentNullException("userId is a required property for TenantData and cannot be null");
-            }
             this.UserId = userId;
             // to ensure "tenantId" is required (not null)
             if (tenantId == null)
@@ -62,7 +58,7 @@ namespace Agile.Now.ApiAccounts.Model
         /// <summary>
         /// Gets or Sets UserId
         /// </summary>
-        [DataMember(Name = "UserId", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "UserId", EmitDefaultValue = true)]
         public FieldType UserId { get; set; }
 
         /// <summary>

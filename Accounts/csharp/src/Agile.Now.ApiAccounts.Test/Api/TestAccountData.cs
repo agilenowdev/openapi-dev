@@ -27,7 +27,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
             };
         }
 
-        public static AccountData[] CreateAccountDataList() =>
-            new[] { 0, 1, 2 }.Select(i => CreateAccountData(i.ToString())).ToArray();
+        public static AccountData[] CreateAccountDataList(int count) =>
+            Enumerable.Range(0, count).Select(i => CreateAccountData(i.ToString())).ToArray();
     }
 };

@@ -257,7 +257,7 @@ namespace Agile.Now.ApiAccounts.Api
         /// <param name="name">The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Id &#x60;&#x60;&#x60; (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Tenant</returns>
-        Tenant UpsertAccountTenant(string id, TenantData tenantData, string? name = default(string?), int operationIndex = 0);
+        Tenant2 UpsertAccountTenant(string id, TenantData tenantData, string? name = default(string?), int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -271,7 +271,7 @@ namespace Agile.Now.ApiAccounts.Api
         /// <param name="name">The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Id &#x60;&#x60;&#x60; (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Tenant</returns>
-        ApiResponse<Tenant> UpsertAccountTenantWithHttpInfo(string id, TenantData tenantData, string? name = default(string?), int operationIndex = 0);
+        ApiResponse<Tenant2> UpsertAccountTenantWithHttpInfo(string id, TenantData tenantData, string? name = default(string?), int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -1471,11 +1471,6 @@ namespace Agile.Now.ApiAccounts.Api
         public Agile.Now.ApiAccounts.Client.ApiResponse<Tenants> ListAccountTenantsWithHttpInfo(string id, string? name = default(string?), string? fields = default(string?), string? filters = default(string?), string? orders = default(string?), int? currentPage = default(int?), string? pageSize = default(string?), int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new Agile.Now.ApiAccounts.Client.ApiException(400, "Missing required parameter 'id' when calling AccountsApi->ListAccountTenants");
-            }
-
             Agile.Now.ApiAccounts.Client.RequestOptions localVarRequestOptions = new Agile.Now.ApiAccounts.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -2297,9 +2292,9 @@ namespace Agile.Now.ApiAccounts.Api
         /// <param name="name">The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Id &#x60;&#x60;&#x60; (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Tenant</returns>
-        public Tenant UpsertAccountTenant(string id, TenantData tenantData, string? name = default(string?), int operationIndex = 0)
+        public Tenant2 UpsertAccountTenant(string id, TenantData tenantData, string? name = default(string?), int operationIndex = 0)
         {
-            Agile.Now.ApiAccounts.Client.ApiResponse<Tenant> localVarResponse = UpsertAccountTenantWithHttpInfo(id, tenantData, name);
+            Agile.Now.ApiAccounts.Client.ApiResponse<Tenant2> localVarResponse = UpsertAccountTenantWithHttpInfo(id, tenantData, name);
             return localVarResponse.Data;
         }
 
@@ -2312,14 +2307,9 @@ namespace Agile.Now.ApiAccounts.Api
         /// <param name="name">The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Id &#x60;&#x60;&#x60; (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Tenant</returns>
-        public Agile.Now.ApiAccounts.Client.ApiResponse<Tenant> UpsertAccountTenantWithHttpInfo(string id, TenantData tenantData, string? name = default(string?), int operationIndex = 0)
+        public Agile.Now.ApiAccounts.Client.ApiResponse<Tenant2> UpsertAccountTenantWithHttpInfo(string id, TenantData tenantData, string? name = default(string?), int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new Agile.Now.ApiAccounts.Client.ApiException(400, "Missing required parameter 'id' when calling AccountsApi->UpsertAccountTenant");
-            }
-
             // verify the required parameter 'tenantData' is set
             if (tenantData == null)
             {
@@ -2377,7 +2367,7 @@ namespace Agile.Now.ApiAccounts.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<Tenant>("/Endpoint/rest/api/v1/Account/{Id}/Tenant", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<Tenant2>("/Endpoint/rest/api/v1/Account/{Id}/Tenant", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpsertAccountTenant", localVarResponse);
@@ -2496,5 +2486,9 @@ namespace Agile.Now.ApiAccounts.Api
             return localVarResponse;
         }
 
+        public void DeleteAccountTenant(object accountTenant)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

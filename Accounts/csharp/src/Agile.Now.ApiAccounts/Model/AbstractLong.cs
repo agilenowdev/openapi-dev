@@ -46,23 +46,8 @@ namespace Agile.Now.ApiAccounts.Model
         public AbstractLong(long id = 0, string externalId = default(string), string name = default(string), string type = default(string))
         {
             this.Id = id;
-            // to ensure "externalId" is required (not null)
-            if (externalId == null)
-            {
-                throw new ArgumentNullException("externalId is a required property for AbstractLong and cannot be null");
-            }
             this.ExternalId = externalId;
-            // to ensure "name" is required (not null)
-            if (name == null)
-            {
-                throw new ArgumentNullException("name is a required property for AbstractLong and cannot be null");
-            }
             this.Name = name;
-            // to ensure "type" is required (not null)
-            if (type == null)
-            {
-                throw new ArgumentNullException("type is a required property for AbstractLong and cannot be null");
-            }
             this.Type = type;
         }
 
@@ -71,7 +56,7 @@ namespace Agile.Now.ApiAccounts.Model
         /// </summary>
         /// <value>The primary key of the record row. If the Id attribute is used, then it must be unique</value>
         /// <example>1234567891234567</example>
-        [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Id", EmitDefaultValue = true)]
         public long Id { get; set; }
 
         /// <summary>
@@ -79,7 +64,7 @@ namespace Agile.Now.ApiAccounts.Model
         /// </summary>
         /// <value>The external identier of the record row. If the External Id attribute is used, then it must be unique</value>
         /// <example>3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5</example>
-        [DataMember(Name = "ExternalId", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "ExternalId", EmitDefaultValue = true)]
         public string ExternalId { get; set; }
 
         /// <summary>
@@ -87,7 +72,7 @@ namespace Agile.Now.ApiAccounts.Model
         /// </summary>
         /// <value>The name of the record row</value>
         /// <example>Bob Normal</example>
-        [DataMember(Name = "Name", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Name", EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -95,7 +80,7 @@ namespace Agile.Now.ApiAccounts.Model
         /// </summary>
         /// <value>The type of the record object</value>
         /// <example>User</example>
-        [DataMember(Name = "Type", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Type", EmitDefaultValue = true)]
         public string Type { get; set; }
 
         /// <summary>

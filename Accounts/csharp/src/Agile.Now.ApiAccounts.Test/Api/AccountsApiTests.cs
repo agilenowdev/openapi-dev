@@ -8,14 +8,12 @@
  */
 
 using System;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Security.Principal;
-using System.Xml.Linq;
 using Agile.Now.ApiAccounts.Api;
 using Agile.Now.ApiAccounts.Client;
 using Agile.Now.ApiAccounts.Model;
 using Xunit;
+using Xunit.Abstractions;
 namespace Agile.Now.ApiAccounts.Test.Api
 {
     /// <summary>
@@ -28,9 +26,11 @@ namespace Agile.Now.ApiAccounts.Test.Api
     public class AccountsApiTests : IDisposable
     {
         private readonly AccountsApi api;
+        private readonly ITestOutputHelper output;
 
-        public AccountsApiTests()
+        public AccountsApiTests(ITestOutputHelper testOutputHelper)
         {
+            output = testOutputHelper;
             Configuration configuration = new Configuration
             {
                 BasePath = "https://dev.esystems.fi",
@@ -46,14 +46,17 @@ namespace Agile.Now.ApiAccounts.Test.Api
         {
         }
 
-        void UpdateAccountData(AccountData account)
+        void UpdateAccountData(AccountData accountData)
         {
             const string updated = "updated";
-            account.LastName += updated;
-            account.FirstName += updated;
-            account.NotifyByEmail = !account.NotifyByEmail;
-            account.Email = updated + account.Email;
-            account.LanguageId = new("Name", "English");
+            accountData.LastName += updated;
+            accountData.FirstName += updated;
+            accountData.NotifyByEmail = !accountData.NotifyByEmail;
+            accountData.NotifyBySMS = !accountData.NotifyBySMS;
+            accountData.Email = updated + accountData.Email;
+            accountData.LanguageId = accountData.LanguageId.Value == "Finnish" ?
+                new("Name", "English") :
+                new("Name", "Finnish");
         }
 
         void AssertAccountDataEqual(AccountData accountData, Account account)
@@ -63,6 +66,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
             Assert.Equal(accountData.NotifyBySMS, account.NotifyBySMS);
             Assert.Equal(accountData.Email, account.Email);
             Assert.Equal(accountData.IsActive, account.IsActive);
+
             Assert.Equal($"{accountData.LastName} {accountData.FirstName}", account.Name);
 
             Assert.NotNull(account.TimezoneId);
@@ -85,9 +89,8 @@ namespace Agile.Now.ApiAccounts.Test.Api
             try
             {
                 AssertAccountDataEqual(newAccount, createdAccount);
-                var notFoundException = Record.Exception(() => api.GetAccount(createdAccount.Id));
-                Assert.Null(notFoundException);
-                Assert.NotEqual(0, createdAccount.TenantId.Id);
+                Assert.Null(Record.Exception(() => api.GetAccount(createdAccount.Id)));
+                output.WriteLine($"TenantId= {createdAccount.TenantId.Id}");
             }
             finally
             {
@@ -103,8 +106,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
         {
             var createdAccount = api.CreateAccount(TestAccountData.CreateAccountData());
             api.DeleteAccount(createdAccount.Id, "Id");
-            var existingAccounts = api.ListAccounts(filters: $"Id = {createdAccount.Id}").Data;
-            Assert.Empty(existingAccounts);
+            Assert.Throws<ApiException>(() => api.GetAccount(createdAccount.Id));
         }
 
         /// <summary>
@@ -115,8 +117,31 @@ namespace Agile.Now.ApiAccounts.Test.Api
         {
             var createdAccount = api.CreateAccount(TestAccountData.CreateAccountData());
             api.DeleteAccount(createdAccount.Username, "Username");
-            var existingAccounts = api.ListAccounts(filters: $"Username = {createdAccount.Username}").Data;
-            Assert.Empty(existingAccounts);
+            Assert.Throws<ApiException>(() => api.GetAccount(createdAccount.Id));
+        }
+
+        /// <summary>
+        /// Test DeleteAccount with several tenants
+        /// </summary>
+        [Fact]
+        public void Test_DeleteAccount_WithSeveralTenants()
+        {
+            var newAccount = TestAccountData.CreateAccountData();
+            var createdAccount = api.CreateAccount(newAccount);
+            try
+            {
+                var anotherAccountTenant = api.UpsertAccountTenant(
+                    createdAccount.Id, new(new(), new FieldType("Id", "7178")));
+                api.DeleteAccount(createdAccount.Id, "Id");
+                Assert.Null(Record.Exception(() => api.GetAccount(createdAccount.Id)));
+                api.DeleteAccountTenant(createdAccount.Id, anotherAccountTenant.UserId.ToString());
+                api.DeleteAccount(createdAccount.Id, "Id");
+                Assert.Throws<ApiException>(() => api.GetAccount(createdAccount.Id));
+            }
+            finally
+            {
+                api.DeleteAccount(createdAccount.Id, "Id");
+            }
         }
 
         /// <summary>
@@ -128,8 +153,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
             var createdAccount = api.CreateAccount(TestAccountData.CreateAccountData());
             try
             {
-                var notFoundException = Record.Exception(() => api.GetAccount(createdAccount.Id));
-                Assert.Null(notFoundException);
+                Assert.Null(Record.Exception(() => api.GetAccount(createdAccount.Id)));
             }
             finally
             {
@@ -146,8 +170,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
             var createdAccount = api.CreateAccount(TestAccountData.CreateAccountData());
             try
             {
-                var notFoundException = Record.Exception(() => api.GetAccount(createdAccount.Username, "Username"));
-                Assert.Null(notFoundException);
+                Assert.Null(Record.Exception(() => api.GetAccount(createdAccount.Username, "Username")));
             }
             finally
             {
@@ -161,7 +184,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
         [Fact]
         public void Test_ListAccounts_ById()
         {
-            var newAccounts = TestAccountData.CreateAccountDataList();
+            var newAccounts = TestAccountData.CreateAccountDataList(2);
             var createdAccounts = newAccounts.Select(i => api.CreateAccount(i)).ToArray();
             var foundAccounts = api.ListAccounts(
                 filters: $"Id In {string.Join("; ", createdAccounts.Select(i => i.Id))}").Data;
@@ -174,7 +197,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
         [Fact]
         public void Test_ListAccounts_ByUserName()
         {
-            var newAccounts = TestAccountData.CreateAccountDataList();
+            var newAccounts = TestAccountData.CreateAccountDataList(2);
             var createdAccounts = newAccounts.Select(i => api.CreateAccount(i)).ToArray();
             var foundAccounts = api.ListAccounts(
                 filters: $"Username In {string.Join("; ", createdAccounts.Select(i => i.Username))}").Data;

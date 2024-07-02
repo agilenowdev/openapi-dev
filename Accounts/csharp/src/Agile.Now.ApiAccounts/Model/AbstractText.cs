@@ -35,16 +35,9 @@ namespace Agile.Now.ApiAccounts.Model {
         /// <param name="type">The type of the record object (required).</param>
         public AbstractText(string id = default(string), string externalId = default(string), string name = default(string), string type = default(string))
         {
-            // to ensure "id" is required (not null)
-            
             this.Id = id;
-            
             this.ExternalId = externalId;
-            // to ensure "name" is required (not null)
-            
             this.Name = name;
-            // to ensure "type" is required (not null)
-            
             this.Type = type;
         }
 
@@ -61,7 +54,7 @@ namespace Agile.Now.ApiAccounts.Model {
         /// </summary>
         /// <value>The external identier of the record row. If the External Id attribute is used, then it must be unique</value>
         /// <example>3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5</example>
-        [DataMember(Name = "ExternalId", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "ExternalId", EmitDefaultValue = true)]
         public string ExternalId { get; set; }
 
         /// <summary>
@@ -77,7 +70,7 @@ namespace Agile.Now.ApiAccounts.Model {
         /// </summary>
         /// <value>The type of the record object</value>
         /// <example>User</example>
-        [DataMember(Name = "Type", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Type", EmitDefaultValue = true)]
         public string Type { get; set; }
 
         /// <summary>

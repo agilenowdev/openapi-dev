@@ -9,22 +9,82 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = Agile.Now.ApiAccounts.Client.OpenAPIDateConverter;
 
 namespace Agile.Now.ApiAccounts.Model
 {
+    [DataContract(Name = "Tenant")]
+    public partial class Tenant2 : IValidatableObject
+    {
+        [JsonConstructorAttribute]
+        protected Tenant2() { }
+
+        public Tenant2(long userId = default, AbstractLong tenantId = default(AbstractLong), AbstractText 
+            accountId = default, DateTime createdOn = default(DateTime))
+        {
+            this.UserId = userId;
+            this.TenantId = tenantId;
+            this.AccountId = accountId;
+            this.CreatedOn = createdOn;
+        }
+
+        /// <summary>
+        /// Gets or Sets UserId
+        /// </summary>
+        [DataMember(Name = "UserId", EmitDefaultValue = true)]
+        public long UserId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TenantId
+        /// </summary>
+        [DataMember(Name = "TenantId", EmitDefaultValue = true)]
+        public AbstractLong TenantId { get; set; }
+
+        [DataMember(Name = "AccountId", EmitDefaultValue = true)]
+        public AbstractText AccountId { get; set; }
+
+        /// <summary>
+        /// The date the record was created
+        /// </summary>
+        /// <value>The date the record was created</value>
+        /// <example>1900-01-01T00:00Z</example>
+        [DataMember(Name = "CreatedOn", EmitDefaultValue = true)]
+        public DateTime CreatedOn { get; set; }
+
+        /// <summary>
+        /// Returns the string presentation of the object
+        /// </summary>
+        /// <returns>String presentation of the object</returns>
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("class Tenant2 {\n");
+            sb.Append("  UserId: ").Append(UserId).Append("\n");
+            sb.Append("  TenantId: ").Append(TenantId).Append("\n");
+            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
+            sb.Append("}\n");
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// Returns the JSON string presentation of the object
+        /// </summary>
+        /// <returns>JSON string presentation of the object</returns>
+        public virtual string ToJson()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+        }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
+    }
+
     /// <summary>
     /// The record of Tenant information.
     /// </summary>
@@ -44,17 +104,8 @@ namespace Agile.Now.ApiAccounts.Model
         /// <param name="createdOn">The date the record was created (required) (default to &quot;1900-01-01T00:00Z&quot;).</param>
         public Tenant(AbstractLong userId = default(AbstractLong), AbstractLong tenantId = default(AbstractLong), DateTime createdOn = default(DateTime))
         {
-            // to ensure "userId" is required (not null)
-            if (userId == null)
-            {
-                throw new ArgumentNullException("userId is a required property for Tenant and cannot be null");
-            }
             this.UserId = userId;
             // to ensure "tenantId" is required (not null)
-            if (tenantId == null)
-            {
-                throw new ArgumentNullException("tenantId is a required property for Tenant and cannot be null");
-            }
             this.TenantId = tenantId;
             this.CreatedOn = createdOn;
         }
@@ -62,13 +113,13 @@ namespace Agile.Now.ApiAccounts.Model
         /// <summary>
         /// Gets or Sets UserId
         /// </summary>
-        [DataMember(Name = "UserId", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "UserId", EmitDefaultValue = true)]
         public AbstractLong UserId { get; set; }
 
         /// <summary>
         /// Gets or Sets TenantId
         /// </summary>
-        [DataMember(Name = "TenantId", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "TenantId", EmitDefaultValue = true)]
         public AbstractLong TenantId { get; set; }
 
         /// <summary>
