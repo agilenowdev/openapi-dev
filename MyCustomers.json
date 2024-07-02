@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.81"
+    "version": "3.0.84"
   },
   "servers": [
     {
@@ -944,8 +944,34 @@
         "description": "The list of errors. Throw specific exceptions based on the received error."
       },
       "MyCustomer": {
+        "required": [
+          "Id"
+        ],
         "type": "object",
         "properties": {
+          "Id": {
+            "type": "integer",
+            "description": "The guid to identify the customer",
+            "format": "int64",
+            "default": 0,
+            "example": 0
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the customer"
+          },
+          "Attribute1": {
+            "type": "string",
+            "description": "Attribute1 text"
+          },
+          "Attribute2": {
+            "type": "string",
+            "description": "Attribute2 text"
+          },
+          "Attribute3": {
+            "type": "string",
+            "description": "Attribute3 text"
+          },
           "Attribute4": {
             "type": "string",
             "description": "Attribute4 text"
