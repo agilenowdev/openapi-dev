@@ -26,34 +26,45 @@ using OpenAPIDateConverter = Agile.Now.ApiAccounts.Client.OpenAPIDateConverter;
 namespace Agile.Now.ApiAccounts.Model
 {
     /// <summary>
-    /// The list of &#x60;Tenant&#x60; records
+    /// The record of Picture information.
     /// </summary>
-    [DataContract(Name = "Tenants")]
-    public partial class Tenants : IValidatableObject
+    [DataContract(Name = "PictureData")]
+    public partial class PictureData : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Tenants" /> class.
+        /// Initializes a new instance of the <see cref="PictureData" /> class.
         /// </summary>
-        /// <param name="meta">meta.</param>
-        /// <param name="data">The list of &#x60;Tenant records&#x60;.</param>
-        public Tenants(Meta meta = default(Meta), List<Tenant> data = default(List<Tenant>))
+        /// <param name="filename">Filename of account picture.</param>
+        /// <param name="picture">Picture of account.</param>
+        /// <param name="createdOn">Date the record was created (default to &quot;1900-01-01T00:00Z&quot;).</param>
+        public PictureData(string filename = default(string), System.IO.Stream picture = default(System.IO.Stream), DateTime createdOn = default(DateTime))
         {
-            this.Meta = meta;
-            this.Data = data;
+            this.Filename = filename;
+            this.Picture = picture;
+            this.CreatedOn = createdOn;
         }
 
         /// <summary>
-        /// Gets or Sets Meta
+        /// Filename of account picture
         /// </summary>
-        [DataMember(Name = "Meta", EmitDefaultValue = false)]
-        public Meta Meta { get; set; }
+        /// <value>Filename of account picture</value>
+        [DataMember(Name = "Filename", EmitDefaultValue = false)]
+        public string Filename { get; set; }
 
         /// <summary>
-        /// The list of &#x60;Tenant records&#x60;
+        /// Picture of account
         /// </summary>
-        /// <value>The list of &#x60;Tenant records&#x60;</value>
-        [DataMember(Name = "Data", EmitDefaultValue = false)]
-        public List<Tenant> Data { get; set; }
+        /// <value>Picture of account</value>
+        [DataMember(Name = "Picture", EmitDefaultValue = false)]
+        public System.IO.Stream Picture { get; set; }
+
+        /// <summary>
+        /// Date the record was created
+        /// </summary>
+        /// <value>Date the record was created</value>
+        /// <example>1900-01-01T00:00Z</example>
+        [DataMember(Name = "CreatedOn", EmitDefaultValue = false)]
+        public DateTime CreatedOn { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -62,9 +73,10 @@ namespace Agile.Now.ApiAccounts.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class Tenants {\n");
-            sb.Append("  Meta: ").Append(Meta).Append("\n");
-            sb.Append("  Data: ").Append(Data).Append("\n");
+            sb.Append("class PictureData {\n");
+            sb.Append("  Filename: ").Append(Filename).Append("\n");
+            sb.Append("  Picture: ").Append(Picture).Append("\n");
+            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

@@ -26,34 +26,57 @@ using OpenAPIDateConverter = Agile.Now.ApiAccounts.Client.OpenAPIDateConverter;
 namespace Agile.Now.ApiAccounts.Model
 {
     /// <summary>
-    /// The list of &#x60;Tenant&#x60; records
+    /// The record of Tenant information.
     /// </summary>
-    [DataContract(Name = "Tenants")]
-    public partial class Tenants : IValidatableObject
+    [DataContract(Name = "Tenant")]
+    public partial class Tenant2 : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Tenants" /> class.
+        /// Initializes a new instance of the <see cref="Tenant" /> class.
         /// </summary>
-        /// <param name="meta">meta.</param>
-        /// <param name="data">The list of &#x60;Tenant records&#x60;.</param>
-        public Tenants(Meta meta = default(Meta), List<Tenant> data = default(List<Tenant>))
+        [JsonConstructorAttribute]
+        protected Tenant2() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Tenant" /> class.
+        /// </summary>
+        /// <param name="userId">userId (required).</param>
+        /// <param name="tenantId">tenantId (required).</param>
+        /// <param name="createdOn">The date the record was created (required) (default to &quot;1900-01-01T00:00Z&quot;).</param>
+        public Tenant2(long userId, AbstractText accountId = default, AbstractLong tenantId = default(AbstractLong), DateTime createdOn = default(DateTime))
         {
-            this.Meta = meta;
-            this.Data = data;
+            this.UserId = userId;
+            this.AccountId = accountId;
+            // to ensure "tenantId" is required (not null)
+            if (tenantId == null)
+            {
+                throw new ArgumentNullException("tenantId is a required property for Tenant and cannot be null");
+            }
+            this.TenantId = tenantId;
+            this.CreatedOn = createdOn;
         }
 
         /// <summary>
-        /// Gets or Sets Meta
+        /// Gets or Sets UserId
         /// </summary>
-        [DataMember(Name = "Meta", EmitDefaultValue = false)]
-        public Meta Meta { get; set; }
+        [DataMember(Name = "UserId", IsRequired = true, EmitDefaultValue = true)]
+        public long UserId { get; set; }
 
         /// <summary>
-        /// The list of &#x60;Tenant records&#x60;
+        /// Gets or Sets TenantId
         /// </summary>
-        /// <value>The list of &#x60;Tenant records&#x60;</value>
-        [DataMember(Name = "Data", EmitDefaultValue = false)]
-        public List<Tenant> Data { get; set; }
+        [DataMember(Name = "AccountId", IsRequired = true, EmitDefaultValue = true)]
+        public AbstractText AccountId { get; set; }
+
+        [DataMember(Name = "TenantId", IsRequired = true, EmitDefaultValue = true)]
+        public AbstractLong TenantId { get; set; }
+
+        /// <summary>
+        /// The date the record was created
+        /// </summary>
+        /// <value>The date the record was created</value>
+        /// <example>1900-01-01T00:00Z</example>
+        [DataMember(Name = "CreatedOn", IsRequired = true, EmitDefaultValue = true)]
+        public DateTime CreatedOn { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -62,9 +85,10 @@ namespace Agile.Now.ApiAccounts.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class Tenants {\n");
-            sb.Append("  Meta: ").Append(Meta).Append("\n");
-            sb.Append("  Data: ").Append(Data).Append("\n");
+            sb.Append("class Tenant {\n");
+            sb.Append("  UserId: ").Append(UserId).Append("\n");
+            sb.Append("  TenantId: ").Append(TenantId).Append("\n");
+            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

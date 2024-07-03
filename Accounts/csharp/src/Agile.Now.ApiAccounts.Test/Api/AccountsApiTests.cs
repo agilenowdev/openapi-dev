@@ -131,10 +131,10 @@ namespace Agile.Now.ApiAccounts.Test.Api
             try
             {
                 var anotherAccountTenant = api.UpsertAccountTenant(
-                    createdAccount.Id, new(new(), new FieldType("Id", "7178")));
+                    createdAccount.Id, new(new("Id", ""), new FieldType("Id", "7178")));
                 api.DeleteAccount(createdAccount.Id, "Id");
                 Assert.Null(Record.Exception(() => api.GetAccount(createdAccount.Id)));
-                api.DeleteAccountTenant(createdAccount.Id, anotherAccountTenant.UserId.ToString());
+                api.DeleteAccountTenant(createdAccount.Id, anotherAccountTenant.TenantId.Id.ToString());
                 api.DeleteAccount(createdAccount.Id, "Id");
                 Assert.Throws<ApiException>(() => api.GetAccount(createdAccount.Id));
             }

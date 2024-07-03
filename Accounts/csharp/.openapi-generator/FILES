@@ -13,6 +13,8 @@ docs/AccountsApi.md
 docs/Error.md
 docs/FieldType.md
 docs/Meta.md
+docs/Picture.md
+docs/PictureData.md
 docs/Tenant.md
 docs/TenantData.md
 docs/Tenants.md
@@ -27,6 +29,8 @@ src/Agile.Now.ApiAccounts.Test/Model/AccountsTests.cs
 src/Agile.Now.ApiAccounts.Test/Model/ErrorTests.cs
 src/Agile.Now.ApiAccounts.Test/Model/FieldTypeTests.cs
 src/Agile.Now.ApiAccounts.Test/Model/MetaTests.cs
+src/Agile.Now.ApiAccounts.Test/Model/PictureDataTests.cs
+src/Agile.Now.ApiAccounts.Test/Model/PictureTests.cs
 src/Agile.Now.ApiAccounts.Test/Model/TenantDataTests.cs
 src/Agile.Now.ApiAccounts.Test/Model/TenantTests.cs
 src/Agile.Now.ApiAccounts.Test/Model/TenantsTests.cs
@@ -60,6 +64,8 @@ src/Agile.Now.ApiAccounts/Model/Accounts.cs
 src/Agile.Now.ApiAccounts/Model/Error.cs
 src/Agile.Now.ApiAccounts/Model/FieldType.cs
 src/Agile.Now.ApiAccounts/Model/Meta.cs
+src/Agile.Now.ApiAccounts/Model/Picture.cs
+src/Agile.Now.ApiAccounts/Model/PictureData.cs
 src/Agile.Now.ApiAccounts/Model/Tenant.cs
 src/Agile.Now.ApiAccounts/Model/TenantData.cs
 src/Agile.Now.ApiAccounts/Model/Tenants.cs

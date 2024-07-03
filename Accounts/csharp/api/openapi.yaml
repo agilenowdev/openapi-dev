@@ -23,7 +23,7 @@ info:
     name: BSD-3 license
     url: https://opensource.org/licenses/BSD-3-Clause
   title: Accounts API documentation
-  version: 3.0.2
+  version: 2.0.47
 servers:
 - description: Default entry point of service
   url: https://dev.esystems.fi
@@ -856,9 +856,9 @@ paths:
 
         Leverage the search service to extract the requisite information from the system effectively.
 
-        The method returns a list structured with an extended `Tenant` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.
+        The method returns a list structured with an extended `Picture` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.
 
-        The foreign key fields involved are: `UserId, TenantId, AccountId`
+        The foreign key fields involved are: `AccountId`
 
         ### Example
         It searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.
@@ -900,7 +900,7 @@ paths:
           \ and use the GET method of the resource.\n\nThe list of database column\
           \ attributes. If list is empty or &quot;*&quot; then all of fields will\
           \ be returned.\n\nThis method converts a string list to a string with a\
-          \ comma separator.\n\nExample: \n```\nUserId, TenantId, AccountId, CreatedOn\n\
+          \ comma separator.\n\nExample: \n```\nAccountId, Filename, Picture, CreatedOn\n\
           ```"
         explode: true
         in: query
@@ -911,8 +911,8 @@ paths:
             \ and use the GET method of the resource.\n\nThe list of database column\
             \ attributes. If list is empty or &quot;*&quot; then all of fields will\
             \ be returned.\n\nThis method converts a string list to a string with\
-            \ a comma separator.\n\nExample: \n```\nUserId, TenantId, AccountId, CreatedOn\n\
-            ```"
+            \ a comma separator.\n\nExample: \n```\nAccountId, Filename, Picture,\
+            \ CreatedOn\n```"
           type: string
         style: form
       - description: |
@@ -1015,12 +1015,13 @@ paths:
         name: PageSize
         required: false
         schema:
-          default: "0"
+          default: 0
           description: |-
             The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.
 
             The value ranges from `1` to `1000` and defaults to `50`.
-          type: string
+          format: int32
+          type: integer
         style: form
       responses:
         "200":
@@ -1102,7 +1103,7 @@ paths:
   /Endpoint/rest/api/v1/Account/{Id}/Tenant:
     post:
       description: |-
-        Use the `TenantPost` object resource to insert or update (Upsert) `Tenant` using `UserId,AccountId.Username, AccountId.ExternalId` field(s) value.
+        Use the `TenantPost` object resource to insert or update (Upsert) `Tenant` using `UserId,TenantId.Name` field(s) value.
 
         You can supply the required field values in the request data, and then use the `POST` method of the resource.
 
@@ -1112,10 +1113,10 @@ paths:
 
         ### Update a record of Tenant
         * If the `UserId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `UserId` field value (primary key).
-        * If the `AccountId.Username, AccountId.ExternalId` field value is not empty and `UserId` field value is empty, action try insert record according `AccountId.Username, AccountId.ExternalId` field value (if set, the value is a unique identifier).
+        * If the `TenantId.Name` field value is not empty and `UserId` field value is empty, action try insert record according `TenantId.Name` field value (if set, the value is a unique identifier).
 
         ### Create a new record of Tenant
-        * If the value in the `AccountId.Username, AccountId.ExternalId` and `UserId` fields are empty then action insert a new record according input parameter entity record structure (`TenantData`).
+        * If the value in the `TenantId.Name` and `UserId` fields are empty then action insert a new record according input parameter entity record structure (`TenantData`).
 
         The response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Tenant` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
       operationId: Upsert Account Tenant
@@ -1239,7 +1240,7 @@ paths:
   /Endpoint/rest/api/v1/Account/{Id}/Tenant/{SubId}:
     delete:
       description: |-
-        Use the query string resource to delete `Tenant` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `UserId,AccountId.Username, AccountId.ExternalId` field(s) value and use the `DELETE` method of the resource to delete a record.
+        Use the query string resource to delete `Tenant` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `UserId,TenantId.Name` field(s) value and use the `DELETE` method of the resource to delete a record.
 
         Method returns an extended `Tenant` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
@@ -1248,7 +1249,7 @@ paths:
         ### Delete a record of Tenant
         * If the `UserId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
         * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
-        * If the `UserId,AccountId.Username, AccountId.ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+        * If the `UserId,TenantId.Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
         The response body will contain the object of the deleted record if the call is successful.
       operationId: Delete Account Tenant
@@ -1299,16 +1300,14 @@ paths:
           type: string
         style: simple
       - description: "The name of the database field. If empty, the entity `UserId`\
-          \ field is used.\n\nExample: \n```\nAccountId.Username, AccountId.ExternalId\n\
-          ```"
+          \ field is used.\n\nExample: \n```\nTenantId.Name\n```"
         explode: true
         in: query
         name: SubName
         required: false
         schema:
           description: "The name of the database field. If empty, the entity `UserId`\
-            \ field is used.\n\nExample: \n```\nAccountId.Username, AccountId.ExternalId\n\
-            ```"
+            \ field is used.\n\nExample: \n```\nTenantId.Name\n```"
           type: string
         style: form
       responses:
@@ -1318,6 +1317,295 @@ paths:
               schema:
                 $ref: '#/components/schemas/Tenant'
           description: Deleted `Tenant` information.
+        "400":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The user has provided input that the browser is unable to convert.
+                - There are multiple rows in the database for the same value
+                - The value does not match the specified entity structure
+                - '...'
+                Type: /Errors/Bad Input
+                Title: Bad Request
+                StatusCode: 400
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request - The user has provided input that the browser
+            is unable to convert.
+        "401":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The session Id or OAuth token used has expired or is invalid.
+                Type: /Errors/Unauthorized
+                Title: Unauthorized
+                StatusCode: 401
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized - The response status code indicates that the
+            client request has not been completed because it lacks valid authentication
+            credentials for the requested resource.
+        "403":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The user does not have access to execute operation
+                Type: /Errors/Permission
+                Title: Bad Request
+                StatusCode: 403
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden - The user does not have access to execute operation
+        "500":
+          content:
+            application/json:
+              example:
+                Errors:
+                - An internal server error is an error on the web server you're trying
+                  to access.
+                Type: /Errors/Internal Server Error
+                Title: Internal Server Error
+                StatusCode: 500
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error - An internal server error is an error
+            on the web server you're trying to access.
+      security:
+      - OAuth2:
+        - AccessManager:Delete
+        - AccessUser:Delete
+      tags:
+      - Accounts
+  /Endpoint/rest/api/v1/Account/{Id}/Picture:
+    post:
+      description: |-
+        Use the `PicturePost` object resource to insert or update (Upsert) `Picture` using `AccountId,AccountId.Username, AccountId.ExternalId` field(s) value.
+
+        You can supply the required field values in the request data, and then use the `POST` method of the resource.
+
+        The input parameter must be used in the `PictureData` record structure inside the `FieldType` parameter in the foreign key fields.
+
+        Foreign key fields are: `AccountId`
+
+        ### Update a record of Picture
+        * If the `AccountId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `AccountId` field value (primary key).
+        * If the `AccountId.Username, AccountId.ExternalId` field value is not empty and `AccountId` field value is empty, action try insert record according `AccountId.Username, AccountId.ExternalId` field value (if set, the value is a unique identifier).
+
+        ### Create a new record of Picture
+        * If the value in the `AccountId.Username, AccountId.ExternalId` and `AccountId` fields are empty then action insert a new record according input parameter entity record structure (`PictureData`).
+
+        The response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Picture` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+      operationId: Upsert Account Picture
+      parameters:
+      - description: |-
+          The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.
+
+          You can extract any string to a base64 string.
+          E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+        explode: false
+        in: path
+        name: Id
+        required: true
+        schema:
+          description: |-
+            The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.
+
+            You can extract any string to a base64 string.
+            E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+          type: string
+        style: simple
+      - description: "The name of the database field. If empty, the entity `Id` field\
+          \ is used.\n\nExample: \n```\nId\n```"
+        explode: true
+        in: query
+        name: Name
+        required: false
+        schema:
+          description: "The name of the database field. If empty, the entity `Id`\
+            \ field is used.\n\nExample: \n```\nId\n```"
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PictureData'
+        description: |-
+          `Picture` information to insert or update.
+
+          The input parameter must be used in the `PictureData` record structure inside the `FieldType` parameter in the foreign key fields.
+        required: true
+        x-bodyName: Record
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Picture'
+          description: Inserted or updated `Picture` information.
+        "400":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The user has provided input that the browser is unable to convert.
+                - There are multiple rows in the database for the same value
+                - The value does not match the specified entity structure
+                - '...'
+                Type: /Errors/Bad Input
+                Title: Bad Request
+                StatusCode: 400
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request - The user has provided input that the browser
+            is unable to convert.
+        "401":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The session Id or OAuth token used has expired or is invalid.
+                Type: /Errors/Unauthorized
+                Title: Unauthorized
+                StatusCode: 401
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized - The response status code indicates that the
+            client request has not been completed because it lacks valid authentication
+            credentials for the requested resource.
+        "403":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The user does not have access to execute operation
+                Type: /Errors/Permission
+                Title: Bad Request
+                StatusCode: 403
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden - The user does not have access to execute operation
+        "500":
+          content:
+            application/json:
+              example:
+                Errors:
+                - An internal server error is an error on the web server you're trying
+                  to access.
+                Type: /Errors/Internal Server Error
+                Title: Internal Server Error
+                StatusCode: 500
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error - An internal server error is an error
+            on the web server you're trying to access.
+      security:
+      - OAuth2:
+        - "AccessManager:Create, Update"
+        - "AccessUser:Create, Update"
+      tags:
+      - Accounts
+  /Endpoint/rest/api/v1/Account/{Id}/Picture/{SubId}:
+    delete:
+      description: |-
+        Use the query string resource to delete `Picture` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `AccountId,AccountId.Username, AccountId.ExternalId` field(s) value and use the `DELETE` method of the resource to delete a record.
+
+        Method returns an extended `Picture` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+
+        Foreign key fields are: `AccountId`
+
+        ### Delete a record of Picture
+        * If the `AccountId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
+        * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+        * If the `AccountId,AccountId.Username, AccountId.ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+
+        The response body will contain the object of the deleted record if the call is successful.
+      operationId: Delete Account Picture
+      parameters:
+      - description: |-
+          The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.
+
+          You can extract any string to a base64 string.
+          E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+        explode: false
+        in: path
+        name: Id
+        required: true
+        schema:
+          description: |-
+            The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.
+
+            You can extract any string to a base64 string.
+            E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+          type: string
+        style: simple
+      - description: "The name of the database field. If empty, the entity `Id` field\
+          \ is used.\n\nExample: \n```\nId\n```"
+        explode: true
+        in: query
+        name: Name
+        required: false
+        schema:
+          description: "The name of the database field. If empty, the entity `Id`\
+            \ field is used.\n\nExample: \n```\nId\n```"
+          type: string
+        style: form
+      - description: |-
+          The identifier of the Picture record. The parameter is part of the url address and some special characters are forbidden.
+
+          You can extract any string to a base64 string.
+          E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+        explode: false
+        in: path
+        name: SubId
+        required: true
+        schema:
+          description: |-
+            The identifier of the Picture record. The parameter is part of the url address and some special characters are forbidden.
+
+            You can extract any string to a base64 string.
+            E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+          type: string
+        style: simple
+      - description: "The name of the database field. If empty, the entity `AccountId`\
+          \ field is used.\n\nExample: \n```\nAccountId.Username, AccountId.ExternalId\n\
+          ```"
+        explode: true
+        in: query
+        name: SubName
+        required: false
+        schema:
+          description: "The name of the database field. If empty, the entity `AccountId`\
+            \ field is used.\n\nExample: \n```\nAccountId.Username, AccountId.ExternalId\n\
+            ```"
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Picture'
+          description: Deleted `Picture` information.
         "400":
           content:
             application/json:
@@ -1472,7 +1760,7 @@ components:
     Meta:
       description: The object provides metadata about the list of items returned in
         the API response. It typically includes information that helps clients understand
-        and work with the data."
+        and work with the data.
       example:
         Type: User
         PageSize: 50
@@ -1661,8 +1949,6 @@ components:
       - FirstName
       - Id
       - LastName
-      - Name
-      - TenantId
       - Username
       type: object
     AbstractLong:
@@ -1910,8 +2196,6 @@ components:
       - FirstName
       - Id
       - LastName
-      - Name
-      - TenantId
       - Username
       type: object
     FieldType:
@@ -2025,6 +2309,48 @@ components:
       - CreatedOn
       - TenantId
       - UserId
+      type: object
+    Picture:
+      description: The record of Picture information.
+      example:
+        Picture: ""
+        Filename: Filename
+        CreatedOn: 1900-01-01T00:00:00Z
+      properties:
+        Filename:
+          description: Filename of account picture
+          type: string
+        Picture:
+          description: Picture of account
+          format: binary
+          type: string
+        CreatedOn:
+          default: 1900-01-01T00:00:00Z
+          description: Date the record was created
+          example: 1900-01-01T00:00:00Z
+          format: date-time
+          type: string
+      type: object
+    PictureData:
+      description: The record of Picture information.
+      example:
+        Picture: ""
+        Filename: Filename
+        CreatedOn: 1900-01-01T00:00:00Z
+      properties:
+        Filename:
+          description: Filename of account picture
+          type: string
+        Picture:
+          description: Picture of account
+          format: binary
+          type: string
+        CreatedOn:
+          default: 1900-01-01T00:00:00Z
+          description: Date the record was created
+          example: 1900-01-01T00:00:00Z
+          format: date-time
+          type: string
       type: object
   securitySchemes:
     OAuth2:

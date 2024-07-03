@@ -6,8 +6,8 @@ The record of Account information.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | The identifier of account | 
-**TenantId** | [**AbstractLong**](AbstractLong.md) |  | 
-**Name** | **string** | The name of the account | 
+**TenantId** | [**AbstractLong**](AbstractLong.md) |  | [optional] 
+**Name** | **string** | The name of the account | [optional] 
 **FirstName** | **string** | Person&#39;s first name | 
 **LastName** | **string** | Person&#39;s last name | 
 **Phone** | **string** | The phone number of account. The phone number is unique in the system | [optional] 
