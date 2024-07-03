@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "2.0.47"
+    "version": "2.0.48"
   },
   "servers": [
     {
@@ -412,7 +412,7 @@
         "tags": [
           "Accounts"
         ],
-        "description": "Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.\n\nLeverage the search service to extract the requisite information from the system effectively.\n\nThe method returns a list structured with an extended `Picture` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.\n\nThe foreign key fields involved are: `AccountId`\n\n### Example\nIt searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.\n\n```http\nfields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000\n```",
+        "description": "Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.\n\nLeverage the search service to extract the requisite information from the system effectively.\n\nThe method returns a list structured with an extended `Tenant` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.\n\nThe foreign key fields involved are: `UserId, TenantId, AccountId`\n\n### Example\nIt searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.\n\n```http\nfields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000\n```",
         "operationId": "List Account Tenants",
         "parameters": [
           {
@@ -437,10 +437,10 @@
           {
             "name": "Fields",
             "in": "query",
-            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nAccountId, Filename, Picture, CreatedOn\n```",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nUserId, TenantId, AccountId, CreatedOn\n```",
             "schema": {
               "type": "string",
-              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nAccountId, Filename, Picture, CreatedOn\n```"
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nUserId, TenantId, AccountId, CreatedOn\n```"
             }
           },
           {
@@ -673,12 +673,123 @@
         ]
       }
     },
+    "/Endpoint/rest/api/v1/Account/{Id}/Pictures": {
+      "get": {
+        "tags": [
+          "Accounts"
+        ],
+        "description": "Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.\n\nLeverage the search service to extract the requisite information from the system effectively.\n\nThe method returns a list structured with an extended `Picture` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.\n\nThe foreign key fields involved are: `AccountId`\n\n### Example\nIt searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.\n\n```http\nfields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000\n```",
+        "operationId": "List Account Pictures",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```"
+            }
+          },
+          {
+            "name": "Fields",
+            "in": "query",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nAccountId, Filename, Picture, CreatedOn\n```",
+            "schema": {
+              "type": "string",
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nAccountId, Filename, Picture, CreatedOn\n```"
+            }
+          },
+          {
+            "name": "Filters",
+            "in": "query",
+            "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.\n\nThe name of the entity field. Example: `Name` or relation field `OwnerId.Name`\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn\n\nYou can add multiple values separated by comma when using the `In`, `NotIn` operators.\nExample of text field; `USA; FIN; ARE`\nExample of numeric field; `1, 2, 3`\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+            "schema": {
+              "type": "string",
+              "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.\n\nThe name of the entity field. Example: `Name` or relation field `OwnerId.Name`\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn\n\nYou can add multiple values separated by comma when using the `In`, `NotIn` operators.\nExample of text field; `USA; FIN; ARE`\nExample of numeric field; `1, 2, 3`\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n"
+            }
+          },
+          {
+            "name": "Orders",
+            "in": "query",
+            "description": "The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: \n```\nName DESC, CreatedOn ASC\n```",
+            "schema": {
+              "type": "string",
+              "description": "The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: \n```\nName DESC, CreatedOn ASC\n```"
+            }
+          },
+          {
+            "name": "CurrentPage",
+            "in": "query",
+            "description": "This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.",
+            "schema": {
+              "type": "integer",
+              "description": "This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.\n\nThe value ranges from `1` to `1000` and defaults to `50`.",
+            "schema": {
+              "type": "integer",
+              "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.\n\nThe value ranges from `1` to `1000` and defaults to `50`.",
+              "format": "int32",
+              "default": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of Pictures",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pictures"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "AccessManager:Read",
+              "AccessUser:Read"
+            ]
+          }
+        ]
+      }
+    },
     "/Endpoint/rest/api/v1/Account/{Id}/Picture": {
       "post": {
         "tags": [
           "Accounts"
         ],
-        "description": "Use the `PicturePost` object resource to insert or update (Upsert) `Picture` using `AccountId,AccountId.Username, AccountId.ExternalId` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `PictureData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `AccountId`\n\n### Update a record of Picture\n* If the `AccountId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `AccountId` field value (primary key).\n* If the `AccountId.Username, AccountId.ExternalId` field value is not empty and `AccountId` field value is empty, action try insert record according `AccountId.Username, AccountId.ExternalId` field value (if set, the value is a unique identifier).\n\n### Create a new record of Picture\n* If the value in the `AccountId.Username, AccountId.ExternalId` and `AccountId` fields are empty then action insert a new record according input parameter entity record structure (`PictureData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Picture` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "description": "Use the `PicturePost` object resource to insert or update (Upsert) `Picture` using `AccountId` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `PictureData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `AccountId`\n\n### Update a record of Picture\n* If the `AccountId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `AccountId` field value (primary key).\n* When the AccountId field value is not provided, the system will automatically initiate the insertion of a new record.\n\n### Create a new record of Picture\n* If the value in the `AccountId` field is empty then action insert a new record according input parameter entity record structure (`PictureData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Picture` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
         "operationId": "Upsert Account Picture",
         "parameters": [
           {
@@ -752,7 +863,7 @@
         "tags": [
           "Accounts"
         ],
-        "description": "Use the query string resource to delete `Picture` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `AccountId,AccountId.Username, AccountId.ExternalId` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `Picture` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `AccountId`\n\n### Delete a record of Picture\n* If the `AccountId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `AccountId,AccountId.Username, AccountId.ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
+        "description": "Use the query string resource to delete `Picture` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `AccountId` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `Picture` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `AccountId`\n\n### Delete a record of Picture\n* If the `AccountId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `AccountId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
         "operationId": "Delete Account Picture",
         "parameters": [
           {
@@ -787,10 +898,10 @@
           {
             "name": "SubName",
             "in": "query",
-            "description": "The name of the database field. If empty, the entity `AccountId` field is used.\n\nExample: \n```\nAccountId.Username, AccountId.ExternalId\n```",
+            "description": "The name of the database field. If empty, the entity `AccountId` field is used.\n\nExample: \n```\n\n```",
             "schema": {
               "type": "string",
-              "description": "The name of the database field. If empty, the entity `AccountId` field is used.\n\nExample: \n```\nAccountId.Username, AccountId.ExternalId\n```"
+              "description": "The name of the database field. If empty, the entity `AccountId` field is used.\n\nExample: \n```\n\n```"
             }
           }
         ],
@@ -1276,6 +1387,22 @@
           }
         },
         "description": "The record of Picture information."
+      },
+      "Pictures": {
+        "type": "object",
+        "properties": {
+          "Meta": {
+            "$ref": "#/components/schemas/Meta"
+          },
+          "Data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Picture"
+            },
+            "description": "The list of `Picture records`"
+          }
+        },
+        "description": "The list of `Picture` records"
       },
       "PictureData": {
         "type": "object",
