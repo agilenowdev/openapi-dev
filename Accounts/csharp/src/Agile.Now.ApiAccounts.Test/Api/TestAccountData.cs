@@ -6,6 +6,9 @@ namespace Agile.Now.ApiAccounts.Test.Api
 {
     internal static class TestAccountData
     {
+        public const int DefaultTenant = 15;
+        public const int AnotherTenant = 7178;
+
         public static AccountData CreateAccountData(string suffix = null)
         {
             var name = "unit-test-account" + suffix;

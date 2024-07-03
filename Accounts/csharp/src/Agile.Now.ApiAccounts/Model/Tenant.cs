@@ -42,11 +42,6 @@ namespace Agile.Now.ApiAccounts.Model
                 throw new ArgumentNullException("userId is a required property for Tenant and cannot be null");
             }
             this.UserId = userId;
-            // to ensure "tenantId" is required (not null)
-            if (tenantId == null)
-            {
-                throw new ArgumentNullException("tenantId is a required property for Tenant and cannot be null");
-            }
             this.TenantId = tenantId;
             this.CreatedOn = createdOn;
         }
@@ -60,7 +55,7 @@ namespace Agile.Now.ApiAccounts.Model
         /// <summary>
         /// Gets or Sets TenantId
         /// </summary>
-        [DataMember(Name = "TenantId", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "TenantId", EmitDefaultValue = true)]
         public AbstractLong TenantId { get; set; }
 
         /// <summary>

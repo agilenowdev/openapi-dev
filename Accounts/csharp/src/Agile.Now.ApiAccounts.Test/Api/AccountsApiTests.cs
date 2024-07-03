@@ -75,7 +75,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
             }
             finally
             {
-                api.DeleteAccount(createdAccount.Id, "Id");
+                api.DeleteAccount(createdAccount.Id);
             }
         }
 
@@ -86,7 +86,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
         public void Test_DeleteAccount_ById()
         {
             var createdAccount = api.CreateAccount(TestAccountData.CreateAccountData());
-            api.DeleteAccount(createdAccount.Id, "Id");
+            api.DeleteAccount(createdAccount.Id);
             Assert.Throws<ApiException>(() => api.GetAccount(createdAccount.Id));
         }
 
@@ -107,21 +107,21 @@ namespace Agile.Now.ApiAccounts.Test.Api
         [Fact]
         public void Test_DeleteAccount_WithSeveralTenants()
         {
-            var newAccount = TestAccountData.CreateAccountData();
-            var createdAccount = api.CreateAccount(newAccount);
+            var accountData = TestAccountData.CreateAccountData();
+            var createdAccount = api.CreateAccount(accountData);
             try
             {
-                var anotherAccountTenant = api.UpsertAccountTenant(
-                    createdAccount.Id, new(new("Id", ""), new FieldType("Id", "7178")));
-                api.DeleteAccount(createdAccount.Id, "Id");
+                var anotherTenant = api.UpsertAccountTenant(
+                    createdAccount.Id, new(new("Id", ""), new FieldType("Id", TestAccountData.AnotherTenant.ToString())));
+                api.DeleteAccount(createdAccount.Id);
                 Assert.Null(Record.Exception(() => api.GetAccount(createdAccount.Id)));
-                api.DeleteAccountTenant(createdAccount.Id, anotherAccountTenant.TenantId.Id.ToString());
-                api.DeleteAccount(createdAccount.Id, "Id");
+                api.DeleteAccountTenant(createdAccount.Id, anotherTenant.TenantId.Id.ToString());
+                api.DeleteAccount(createdAccount.Id);
                 Assert.Throws<ApiException>(() => api.GetAccount(createdAccount.Id));
             }
             finally
             {
-                api.DeleteAccount(createdAccount.Id, "Id");
+                api.DeleteAccount(createdAccount.Id);
             }
         }
 
@@ -143,7 +143,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
             }
             finally
             {
-                api.DeleteAccount(createdAccount.Id, "Id");
+                api.DeleteAccount(createdAccount.Id);
             }
         }
 
@@ -165,7 +165,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
             }
             finally
             {
-                api.DeleteAccount(createdAccount.Id, "Id");
+                api.DeleteAccount(createdAccount.Id);
             }
         }
 
@@ -177,9 +177,17 @@ namespace Agile.Now.ApiAccounts.Test.Api
         {
             var accountData = TestAccountData.CreateAccountDataList(2);
             var createdAccounts = accountData.Select(i => api.CreateAccount(i)).ToArray();
-            var foundAccounts = api.ListAccounts(
-                filters: $"Id In {string.Join("; ", createdAccounts.Select(i => i.Id))}").Data;
-            Assert.Equal(foundAccounts.Count, createdAccounts.Length);
+            try
+            {
+                var foundAccounts = api.ListAccounts(
+                    filters: $"Id In {string.Join("; ", createdAccounts.Select(i => i.Id))}").Data;
+                Assert.Equal(foundAccounts.Count, createdAccounts.Length);
+            }
+            finally
+            {
+                foreach (var i in createdAccounts)
+                    api.DeleteAccount(i.Id);
+            }
         }
 
         /// <summary>
@@ -190,9 +198,17 @@ namespace Agile.Now.ApiAccounts.Test.Api
         {
             var accountData = TestAccountData.CreateAccountDataList(2);
             var createdAccounts = accountData.Select(i => api.CreateAccount(i)).ToArray();
-            var foundAccounts = api.ListAccounts(
-                filters: $"Username In {string.Join("; ", createdAccounts.Select(i => i.Username))}");
-            Assert.Equal(foundAccounts.Data.Count, createdAccounts.Length);
+            try
+            {
+                var foundAccounts = api.ListAccounts(
+                    filters: $"Username In {string.Join("; ", createdAccounts.Select(i => i.Username))}");
+                Assert.Equal(foundAccounts.Data.Count, createdAccounts.Length);
+            }
+            finally
+            {
+                foreach (var i in createdAccounts)
+                    api.DeleteAccount(i.Id);
+            }
         }
 
         /// <summary>
@@ -211,7 +227,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
             }
             finally
             {
-                api.DeleteAccount(createdAccount.Id, "Id");
+                api.DeleteAccount(createdAccount.Id);
             }
         }
 
@@ -233,7 +249,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
             }
             finally
             {
-                api.DeleteAccount(createdAccount.Id, "Id");
+                api.DeleteAccount(createdAccount.Id);
             }
         }
 
@@ -254,7 +270,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
             }
             finally
             {
-                api.DeleteAccount(createdAccount.Id, "Id");
+                api.DeleteAccount(createdAccount.Id);
             }
         }
 
@@ -262,47 +278,64 @@ namespace Agile.Now.ApiAccounts.Test.Api
         /// Test DeleteAccountTenant
         /// </summary>
         [Fact]
-        public void DeleteAccountTenantTest()
+        public void Test_DeleteAccountTenant()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string subId = null;
-            //string? name = null;
-            //string? subName = null;
-            //var response = instance.DeleteAccountTenant(id, subId, name, subName);
-            //Assert.IsType<Tenant>(response);
+            var accountData = TestAccountData.CreateAccountData();
+            var createdAccount = api.CreateAccount(accountData);
+            var anotherTenant = api.UpsertAccountTenant(
+                createdAccount.Id,
+                new(new("Name", createdAccount.Name + "_another_tenant"),
+                new("Id", TestAccountData.AnotherTenant.ToString())));
+            api.DeleteAccountTenant(createdAccount.Id, anotherTenant.TenantId.Id.ToString());
+            api.DeleteAccount(createdAccount.Id);
         }
 
         /// <summary>
         /// Test ListAccountTenants
         /// </summary>
         [Fact]
-        public void ListAccountTenantsTest()
+        public void Test_ListAccountTenants()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string? name = null;
-            //string? fields = null;
-            //string? filters = null;
-            //string? orders = null;
-            //int? currentPage = null;
-            //string? pageSize = null;
-            //var response = instance.ListAccountTenants(id, name, fields, filters, orders, currentPage, pageSize);
-            //Assert.IsType<Tenants>(response);
+            var accountData = TestAccountData.CreateAccountData();
+            var createdAccount = api.CreateAccount(accountData);
+            var anotherTenant = api.UpsertAccountTenant(
+                createdAccount.Id,
+                new(new("Name", createdAccount.Name + "_another_tenant"),
+                new("Id", TestAccountData.AnotherTenant.ToString())));
+            try
+            {
+                var existingAccountTenants = api.ListAccountTenants(createdAccount.Id).Data;
+                Assert.Equal(2, existingAccountTenants.Count);
+            }
+            finally
+            {
+                api.DeleteAccountTenant(createdAccount.Id, anotherTenant.TenantId.Id.ToString());
+                api.DeleteAccount(createdAccount.Id);
+            }
         }
 
         /// <summary>
         /// Test UpsertAccountTenant
         /// </summary>
         [Fact]
-        public void UpsertAccountTenantTest()
+        public void Test_UpsertAccountTenant()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //TenantData tenantData = null;
-            //string? name = null;
-            //var response = instance.UpsertAccountTenant(id, tenantData, name);
-            //Assert.IsType<Tenant>(response);
+            var accountData = TestAccountData.CreateAccountData();
+            var createdAccount = api.CreateAccount(accountData);
+            var anotherTenant = api.UpsertAccountTenant(
+                createdAccount.Id,
+                new(new("Name", createdAccount.Name + "_another_tenant"),
+                new("Id", TestAccountData.AnotherTenant.ToString())));
+            try
+            {
+                var existingAccountTenants = api.ListAccountTenants(createdAccount.Id).Data;
+                Assert.Contains(existingAccountTenants, i => i.TenantId.Id == anotherTenant.TenantId.Id);
+            }
+            finally
+            {
+                api.DeleteAccountTenant(createdAccount.Id, anotherTenant.TenantId.Id.ToString());
+                api.DeleteAccount(createdAccount.Id);
+            }
         }
     }
 }
