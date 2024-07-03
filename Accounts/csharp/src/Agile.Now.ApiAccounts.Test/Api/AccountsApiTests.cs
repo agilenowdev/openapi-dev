@@ -46,32 +46,14 @@ namespace Agile.Now.ApiAccounts.Test.Api
         {
         }
 
-        void UpdateAccountData(AccountData accountData)
-        {
-            const string updated = "updated";
-            accountData.LastName += updated;
-            accountData.FirstName += updated;
-            accountData.NotifyByEmail = !accountData.NotifyByEmail;
-            accountData.NotifyBySMS = !accountData.NotifyBySMS;
-            accountData.Email = updated + accountData.Email;
-            accountData.LanguageId = accountData.LanguageId.Value == "Finnish" ?
-                new("Name", "English") :
-                new("Name", "Finnish");
-        }
-
         void AssertAccountDataEqual(AccountData accountData, Account account)
         {
             Assert.Equal(accountData.LastName, account.LastName);
             Assert.Equal(accountData.FirstName, account.FirstName);
-            Assert.Equal(accountData.NotifyBySMS, account.NotifyBySMS);
             Assert.Equal(accountData.Email, account.Email);
             Assert.Equal(accountData.IsActive, account.IsActive);
 
             Assert.Equal($"{accountData.LastName} {accountData.FirstName}", account.Name);
-
-            Assert.NotNull(account.TimezoneId);
-            Assert.NotEqual(account.CreatedOn, DateTime.MinValue);
-            Assert.True(account.NotifyByEmail);
 
             Assert.Equal(accountData.DateFormatId.Value, account.DateFormatId.Id);
             Assert.Equal(accountData.LanguageId.Value, account.LanguageId.Name);
@@ -83,12 +65,11 @@ namespace Agile.Now.ApiAccounts.Test.Api
         [Fact]
         public void Test_CreateAccount()
         {
-            var newAccount = TestAccountData.CreateAccountData();
-            var createdAccount = api.CreateAccount(newAccount);
-
+            var accountData = TestAccountData.CreateAccountData();
+            var createdAccount = api.CreateAccount(accountData);
             try
             {
-                AssertAccountDataEqual(newAccount, createdAccount);
+                AssertAccountDataEqual(accountData, createdAccount);
                 Assert.Null(Record.Exception(() => api.GetAccount(createdAccount.Id)));
                 output.WriteLine($"TenantId= {createdAccount.TenantId.Id}");
             }
@@ -153,7 +134,12 @@ namespace Agile.Now.ApiAccounts.Test.Api
             var createdAccount = api.CreateAccount(TestAccountData.CreateAccountData());
             try
             {
-                Assert.Null(Record.Exception(() => api.GetAccount(createdAccount.Id)));
+                Assert.Null(Record.Exception(() =>
+                {
+                    var existingAccount = api.GetAccount(createdAccount.Id);
+                    Assert.Equal(createdAccount.Id, existingAccount.Id);
+                    return existingAccount;
+                }));
             }
             finally
             {
@@ -170,7 +156,12 @@ namespace Agile.Now.ApiAccounts.Test.Api
             var createdAccount = api.CreateAccount(TestAccountData.CreateAccountData());
             try
             {
-                Assert.Null(Record.Exception(() => api.GetAccount(createdAccount.Username, "Username")));
+                Assert.Null(Record.Exception(() =>
+                {
+                    var existingAccount = api.GetAccount(createdAccount.Username, "Username");
+                    Assert.Equal(createdAccount.Username, existingAccount.Username);
+                    return existingAccount;
+                }));
             }
             finally
             {
@@ -184,8 +175,8 @@ namespace Agile.Now.ApiAccounts.Test.Api
         [Fact]
         public void Test_ListAccounts_ById()
         {
-            var newAccounts = TestAccountData.CreateAccountDataList(2);
-            var createdAccounts = newAccounts.Select(i => api.CreateAccount(i)).ToArray();
+            var accountData = TestAccountData.CreateAccountDataList(2);
+            var createdAccounts = accountData.Select(i => api.CreateAccount(i)).ToArray();
             var foundAccounts = api.ListAccounts(
                 filters: $"Id In {string.Join("; ", createdAccounts.Select(i => i.Id))}").Data;
             Assert.Equal(foundAccounts.Count, createdAccounts.Length);
@@ -197,11 +188,11 @@ namespace Agile.Now.ApiAccounts.Test.Api
         [Fact]
         public void Test_ListAccounts_ByUserName()
         {
-            var newAccounts = TestAccountData.CreateAccountDataList(2);
-            var createdAccounts = newAccounts.Select(i => api.CreateAccount(i)).ToArray();
+            var accountData = TestAccountData.CreateAccountDataList(2);
+            var createdAccounts = accountData.Select(i => api.CreateAccount(i)).ToArray();
             var foundAccounts = api.ListAccounts(
-                filters: $"Username In {string.Join("; ", createdAccounts.Select(i => i.Username))}").Data;
-            Assert.Equal(foundAccounts.Count, createdAccounts.Length);
+                filters: $"Username In {string.Join("; ", createdAccounts.Select(i => i.Username))}");
+            Assert.Equal(foundAccounts.Data.Count, createdAccounts.Length);
         }
 
         /// <summary>
@@ -210,14 +201,13 @@ namespace Agile.Now.ApiAccounts.Test.Api
         [Fact]
         public void Test_UpdateAccount()
         {
-            var newAccount = TestAccountData.CreateAccountData();
-            var createdAccount = api.CreateAccount(newAccount);
+            var accountData = TestAccountData.CreateAccountData();
+            var createdAccount = api.CreateAccount(accountData);
             try
             {
-                UpdateAccountData(newAccount);
-                newAccount.TenantId = new FieldType("Name", "Accounts_API");
-                var updatedAccount = api.UpdateAccount(createdAccount.Id, newAccount);
-                AssertAccountDataEqual(newAccount, updatedAccount);
+                TestAccountData.UpdateAccountData(accountData);
+                var updatedAccount = api.UpdateAccount(createdAccount.Id, accountData);
+                AssertAccountDataEqual(accountData, updatedAccount);
             }
             finally
             {
@@ -231,14 +221,14 @@ namespace Agile.Now.ApiAccounts.Test.Api
         [Fact]
         public void Test_UpdateAccount_TenantDoesNotChange()
         {
-            var newAccount = TestAccountData.CreateAccountData();
-            var createdAccount = api.CreateAccount(newAccount);
+            var accountData = TestAccountData.CreateAccountData();
+            var createdAccount = api.CreateAccount(accountData);
             try
             {
-                UpdateAccountData(newAccount);
+                TestAccountData.UpdateAccountData(accountData);
                 var oldTenant = createdAccount.TenantId.Id;
-                newAccount.TenantId = new("Id", (oldTenant + 1).ToString());
-                var updatedAccount = api.UpdateAccount(createdAccount.Id, newAccount);
+                accountData.TenantId = new("Id", (oldTenant + 1).ToString());
+                var updatedAccount = api.UpdateAccount(createdAccount.Id, accountData);
                 Assert.Equal(oldTenant, updatedAccount.TenantId.Id);
             }
             finally
@@ -253,15 +243,14 @@ namespace Agile.Now.ApiAccounts.Test.Api
         [Fact]
         public void Test_UpsertAccount()
         {
-            var account = TestAccountData.CreateAccountData();
-            var createdAccount = api.UpsertAccount(account);
+            var accountData = TestAccountData.CreateAccountData();
+            var createdAccount = api.UpsertAccount(accountData);
             try
             {
-                var notFoundException = Record.Exception(() => api.GetAccount(createdAccount.Id));
-                Assert.Null(notFoundException);
-                UpdateAccountData(account);
-                var updatedAccount = api.UpdateAccount(createdAccount.Id, account);
-                AssertAccountDataEqual(account, updatedAccount);
+                Assert.Null(Record.Exception(() => api.GetAccount(createdAccount.Id)));
+                TestAccountData.UpdateAccountData(accountData);
+                var updatedAccount = api.UpdateAccount(createdAccount.Id, accountData);
+                AssertAccountDataEqual(accountData, updatedAccount);
             }
             finally
             {

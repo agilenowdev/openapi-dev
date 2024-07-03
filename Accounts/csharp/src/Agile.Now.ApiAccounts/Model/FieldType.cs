@@ -49,11 +49,6 @@ namespace Agile.Now.ApiAccounts.Model
                 throw new ArgumentNullException("field is a required property for FieldType and cannot be null");
             }
             this.Field = field;
-            // to ensure "value" is required (not null)
-            if (value == null)
-            {
-                throw new ArgumentNullException("value is a required property for FieldType and cannot be null");
-            }
             this.Value = value;
         }
 
@@ -68,7 +63,7 @@ namespace Agile.Now.ApiAccounts.Model
         /// The value of the data row
         /// </summary>
         /// <value>The value of the data row</value>
-        [DataMember(Name = "Value", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Value", EmitDefaultValue = true)]
         public string Value { get; set; }
 
         /// <summary>
