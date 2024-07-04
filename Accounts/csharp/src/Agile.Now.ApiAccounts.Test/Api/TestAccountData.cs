@@ -1,6 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Text;
 using Agile.Now.ApiAccounts.Model;
+using Newtonsoft.Json.Linq;
 
 namespace Agile.Now.ApiAccounts.Test.Api
 {
@@ -8,6 +12,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
     {
         public const int DefaultTenant = 15;
         public const int AnotherTenant = 7178;
+        public const string PictureData = "0123456789";
 
         public static AccountData CreateAccountData(string suffix = null)
         {
@@ -57,7 +62,9 @@ namespace Agile.Now.ApiAccounts.Test.Api
             externalId: account.ExternalId,
             notifyByEmail: account.NotifyByEmail,
             notifyBySMS: account.NotifyBySMS,
-            isActive: account.IsActive
+        isActive: account.IsActive
         );
+
+        public static Stream ToStream(this string s) => new MemoryStream(Encoding.UTF8.GetBytes(s ?? ""));
     }
 };

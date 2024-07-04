@@ -282,12 +282,18 @@ namespace Agile.Now.ApiAccounts.Test.Api
         {
             var accountData = TestAccountData.CreateAccountData();
             var createdAccount = api.CreateAccount(accountData);
-            var anotherTenant = api.UpsertAccountTenant(
-                createdAccount.Id,
-                new(new("Name", createdAccount.Name + "_another_tenant"),
-                new("Id", TestAccountData.AnotherTenant.ToString())));
-            api.DeleteAccountTenant(createdAccount.Id, anotherTenant.TenantId.Id.ToString());
-            api.DeleteAccount(createdAccount.Id);
+            try
+            {
+                var anotherTenant = api.UpsertAccountTenant(
+                    createdAccount.Id,
+                    new(new("Name", createdAccount.Name + "_another_tenant"),
+                    new("Id", TestAccountData.AnotherTenant.ToString())));
+                api.DeleteAccountTenant(createdAccount.Id, anotherTenant.TenantId.Id.ToString());
+            }
+            finally
+            {
+                api.DeleteAccount(createdAccount.Id);
+            }
         }
 
         /// <summary>
@@ -298,18 +304,24 @@ namespace Agile.Now.ApiAccounts.Test.Api
         {
             var accountData = TestAccountData.CreateAccountData();
             var createdAccount = api.CreateAccount(accountData);
-            var anotherTenant = api.UpsertAccountTenant(
-                createdAccount.Id,
-                new(new("Name", createdAccount.Name + "_another_tenant"),
-                new("Id", TestAccountData.AnotherTenant.ToString())));
             try
             {
-                var existingAccountTenants = api.ListAccountTenants(createdAccount.Id).Data;
-                Assert.Equal(2, existingAccountTenants.Count);
+                var anotherTenant = api.UpsertAccountTenant(
+                    createdAccount.Id,
+                    new(new("Name", createdAccount.Name + "_another_tenant"),
+                    new("Id", TestAccountData.AnotherTenant.ToString())));
+                try
+                {
+                    var existingAccountTenants = api.ListAccountTenants(createdAccount.Id).Data;
+                    Assert.Equal(2, existingAccountTenants.Count);
+                }
+                finally
+                {
+                    api.DeleteAccountTenant(createdAccount.Id, anotherTenant.TenantId.Id.ToString());
+                }
             }
             finally
             {
-                api.DeleteAccountTenant(createdAccount.Id, anotherTenant.TenantId.Id.ToString());
                 api.DeleteAccount(createdAccount.Id);
             }
         }
@@ -322,18 +334,93 @@ namespace Agile.Now.ApiAccounts.Test.Api
         {
             var accountData = TestAccountData.CreateAccountData();
             var createdAccount = api.CreateAccount(accountData);
-            var anotherTenant = api.UpsertAccountTenant(
-                createdAccount.Id,
-                new(new("Name", createdAccount.Name + "_another_tenant"),
-                new("Id", TestAccountData.AnotherTenant.ToString())));
             try
             {
-                var existingAccountTenants = api.ListAccountTenants(createdAccount.Id).Data;
-                Assert.Contains(existingAccountTenants, i => i.TenantId.Id == anotherTenant.TenantId.Id);
+                var anotherTenant = api.UpsertAccountTenant(
+                    createdAccount.Id,
+                    new(new("Name", createdAccount.Name + "_another_tenant"),
+                    new("Id", TestAccountData.AnotherTenant.ToString())));
+                try
+                {
+                    var existingAccountTenants = api.ListAccountTenants(createdAccount.Id).Data;
+                    Assert.Contains(existingAccountTenants, i => i.TenantId.Id == anotherTenant.TenantId.Id);
+                }
+                finally
+                {
+                    api.DeleteAccountTenant(createdAccount.Id, anotherTenant.TenantId.Id.ToString());
+                }
             }
             finally
             {
-                api.DeleteAccountTenant(createdAccount.Id, anotherTenant.TenantId.Id.ToString());
+                api.DeleteAccount(createdAccount.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test DeleteAccountPicture
+        /// </summary>
+        [Fact]
+        public void Test_DeleteAccountPicture()
+        {
+            var accountData = TestAccountData.CreateAccountData();
+            var createdAccount = api.CreateAccount(accountData);
+            try
+            {
+                var picture = api.UpsertAccountPicture(createdAccount.Id, new("Id", TestAccountData.PictureData.ToStream()));
+                api.DeleteAccountPicture(createdAccount.Id, null);
+            }
+            finally
+            {
+                api.DeleteAccount(createdAccount.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test UpsertAccountPicture
+        /// </summary>
+        [Fact]
+        public void Test_UpsertAccountPicture()
+        {
+            var accountData = TestAccountData.CreateAccountData();
+            var createdAccount = api.CreateAccount(accountData);
+            try
+            {
+                var picture = api.UpsertAccountPicture(createdAccount.Id, new("Id", TestAccountData.PictureData.ToStream()));
+                try
+                {
+                }
+                finally
+                {
+                    api.DeleteAccountPicture(createdAccount.Id, null);
+                }
+            }
+            finally
+            {
+                api.DeleteAccount(createdAccount.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test ListAccountPicture
+        /// </summary>
+        [Fact]
+        public void Test_ListAccountPictures()
+        {
+            var accountData = TestAccountData.CreateAccountData();
+            var createdAccount = api.CreateAccount(accountData);
+            try
+            {
+                var picture = api.UpsertAccountPicture(createdAccount.Id, new("Id", TestAccountData.PictureData.ToStream()));
+                try
+                {
+                }
+                finally
+                {
+                    api.DeleteAccountPicture(createdAccount.Id, null);
+                }
+            }
+            finally
+            {
                 api.DeleteAccount(createdAccount.Id);
             }
         }
