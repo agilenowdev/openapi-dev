@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.91"
+    "version": "3.0.92"
   },
   "servers": [
     {
@@ -102,7 +102,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/MyCustomerUpdateUpdateData"
+                "$ref": "#/components/schemas/MyCustomerUpdateData"
               }
             }
           },
@@ -283,7 +283,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/MyCustomerUpdateUpsertData"
+                "$ref": "#/components/schemas/MyCustomerUpdateData"
               }
             }
           },
@@ -498,7 +498,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/MyCustomerRecordUpdateUpdateData"
+                "$ref": "#/components/schemas/MyCustomerRecordUpdateData"
               }
             }
           },
@@ -706,7 +706,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/MyCustomerRecordUpdateUpsertData"
+                "$ref": "#/components/schemas/MyCustomerRecordUpdateData"
               }
             }
           },
