@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.89"
+    "version": "3.0.90"
   },
   "servers": [
     {
@@ -74,7 +74,7 @@
         "tags": [
           "MyCustomers"
         ],
-        "description": "Use the `MyCustomerUpdateData` object resource to update `MyCustomer` using `Id,ExternalId, SapId` field(s) value.\n\nProvide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record. \n\nThe input parameter must be used in the `MyCustomerUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `ParentCustomerId, OwnerId, ModifiedBy, CreatedBy`\n\n### Update a record of MyCustomer\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id,ExternalId, SapId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the updated record if the call is successful. Method returns an extended `MyCustomer` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "description": "Use the `MyCustomerData` object resource to update `MyCustomer` using `Id,ExternalId, SapId` field(s) value.\n\nProvide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record. \n\nThe input parameter must be used in the `MyCustomerData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `ParentCustomerId, OwnerId, ModifiedBy, CreatedBy`\n\n### Update a record of MyCustomer\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id,ExternalId, SapId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the updated record if the call is successful. Method returns an extended `MyCustomer` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
         "operationId": "Update MyCustomer",
         "parameters": [
           {
@@ -98,11 +98,11 @@
           }
         ],
         "requestBody": {
-          "description": "MyCustomer information to update.\n\nThe input parameter must be used in the `MyCustomerUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "description": "MyCustomer information to update.\n\nThe input parameter must be used in the `MyCustomerData` record structure inside the `FieldType` parameter in the foreign key fields.",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/MyCustomerUpdateData"
+                "$ref": "#/components/schemas/MyCustomerData"
               }
             }
           },
@@ -276,14 +276,14 @@
         "tags": [
           "MyCustomers"
         ],
-        "description": "Use the `MyCustomerUpsertData` object resource to insert or update (Upsert) `MyCustomer` using `Id,ExternalId, SapId` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `MyCustomerUpsertData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `ParentCustomerId, OwnerId, ModifiedBy, CreatedBy`\n\n### Update a record of MyCustomer\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `ExternalId, SapId` field value is not empty and `Id` field value is empty, action try insert record according `ExternalId, SapId` field value (if set, the value is a unique identifier).\n\n### Create a new record of MyCustomer\n* If the value in the `ExternalId, SapId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`MyCustomerInsertData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `MyCustomer` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "description": "Use the `MyCustomerData` object resource to insert or update (Upsert) `MyCustomer` using `Id,ExternalId, SapId` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `MyCustomerData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `ParentCustomerId, OwnerId, ModifiedBy, CreatedBy`\n\n### Update a record of MyCustomer\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `ExternalId, SapId` field value is not empty and `Id` field value is empty, action try insert record according `ExternalId, SapId` field value (if set, the value is a unique identifier).\n\n### Create a new record of MyCustomer\n* If the value in the `ExternalId, SapId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`MyCustomerData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `MyCustomer` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
         "operationId": "Upsert MyCustomer",
         "requestBody": {
-          "description": "`MyCustomer` information to insert or update.\n\nThe input parameter must be used in the `MyCustomerUpsertData` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "description": "`MyCustomer` information to insert or update.\n\nThe input parameter must be used in the `MyCustomerData` record structure inside the `FieldType` parameter in the foreign key fields.",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/MyCustomerUpsertData"
+                "$ref": "#/components/schemas/MyCustomerData"
               }
             }
           },
@@ -319,14 +319,14 @@
         "tags": [
           "MyCustomers"
         ],
-        "description": "Use the `MyCustomerInsertData` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `MyCustomerInsertData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `ParentCustomerId, OwnerId, ModifiedBy, CreatedBy`\n\n### Create a new record of MyCustomer\n* If the value in the `Id,ExternalId, SapId` fields are empty then action insert a new record according input parameter entity record structure (`MyCustomerInsertData`).\n* If the value in the `ExternalId, SapId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`MyCustomerInsertData`).\n* If the `Id,ExternalId, SapId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the created record if the call is successful. Method returns an extended `MyCustomer` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\n",
+        "description": "Use the `MyCustomerData` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `MyCustomerData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `ParentCustomerId, OwnerId, ModifiedBy, CreatedBy`\n\n### Create a new record of MyCustomer\n* If the value in the `Id,ExternalId, SapId` fields are empty then action insert a new record according input parameter entity record structure (`MyCustomerData`).\n* If the value in the `ExternalId, SapId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`MyCustomerData`).\n* If the `Id,ExternalId, SapId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the created record if the call is successful. Method returns an extended `MyCustomer` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\n",
         "operationId": "Create MyCustomer",
         "requestBody": {
-          "description": "`MyCustomer` information to insert.\n\nThe input parameter must be used in the `MyCustomerInsertData` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "description": "`MyCustomer` information to insert.\n\nThe input parameter must be used in the `MyCustomerData` record structure inside the `FieldType` parameter in the foreign key fields.",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/MyCustomerInsertData"
+                "$ref": "#/components/schemas/MyCustomerData"
               }
             }
           },
@@ -364,7 +364,7 @@
         "tags": [
           "MyCustomers"
         ],
-        "description": "Use the `MyCustomersText` object resource to insert or update (Upsert) a list of `MyCustomerList` using `Id,ExternalId, SapId` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `PATCH` method of the resource.\n\nThe input parameter must be used in the `MyCustomerList` record structure as text fields in the foreign key fields.\n\nForeign key fields are: `ParentCustomerId, OwnerId, ModifiedBy, CreatedBy`\n\n### Update a record of MyCustomer\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned. You cannot change `Id` field value (primary key).\n* If the `ExternalId, SapId` field value is not empty and `Id` field value is empty, action try insert record according `ExternalId, SapId` field value (if set, the value is a unique identifier).\n\n**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.\n\n### Create a new record of MyCustomer\n* If the value in the `ExternalId, SapId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`MyCustomerInsertData`).\n\nThe response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `MyCustomer` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.",
+        "description": "Use the `MyCustomersText` object resource to insert or update (Upsert) a list of `MyCustomerList` using `Id,ExternalId, SapId` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `PATCH` method of the resource.\n\nThe input parameter must be used in the `MyCustomerList` record structure as text fields in the foreign key fields.\n\nForeign key fields are: `ParentCustomerId, OwnerId, ModifiedBy, CreatedBy`\n\n### Update a record of MyCustomer\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned. You cannot change `Id` field value (primary key).\n* If the `ExternalId, SapId` field value is not empty and `Id` field value is empty, action try insert record according `ExternalId, SapId` field value (if set, the value is a unique identifier).\n\n**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.\n\n### Create a new record of MyCustomer\n* If the value in the `ExternalId, SapId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`MyCustomerData`).\n\nThe response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `MyCustomer` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.",
         "operationId": "Patch MyCustomers",
         "requestBody": {
           "description": "The list of MyCustomer information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.",
@@ -491,7 +491,9 @@
       },
       "MyCustomer": {
         "required": [
-          "Id"
+          "Id",
+          "Name",
+          "Is_Active"
         ],
         "type": "object",
         "properties": {
@@ -505,6 +507,46 @@
           "ExternalId": {
             "type": "string",
             "description": "The external identifier of the customer"
+          },
+          "SapId": {
+            "type": "string",
+            "description": "This field is the SAP Id and you can use this between the two systems"
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the customer"
+          },
+          "ParentCustomerId": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "OwnerId": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the customer is active and can be used",
+            "default": false,
+            "example": false
+          },
+          "ModifiedOn": {
+            "type": "string",
+            "description": "The date the record was updated",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          },
+          "ModifiedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date the record was created",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
           },
           "Attribute1": {
             "type": "string",
@@ -575,7 +617,7 @@
         },
         "description": "The list of `MyCustomer` records"
       },
-      "MyCustomerUpsertData": {
+      "MyCustomerData": {
         "required": [
           "Id",
           "Name",
@@ -670,70 +712,6 @@
           }
         },
         "description": "The field object structure"
-      },
-      "MyCustomerInsertData": {
-        "required": [
-          "Id"
-        ],
-        "type": "object",
-        "properties": {
-          "Id": {
-            "type": "integer",
-            "description": "The guid to identify the customer",
-            "format": "int64",
-            "default": 0,
-            "example": 0
-          },
-          "ExternalId": {
-            "type": "string",
-            "description": "The external identifier of the customer"
-          },
-          "Attribute1": {
-            "type": "string",
-            "description": "Attribute1 text"
-          },
-          "Attribute3": {
-            "type": "string",
-            "description": "Attribute3 text"
-          },
-          "Attribute4": {
-            "type": "string",
-            "description": "Attribute4 text"
-          }
-        },
-        "description": "The record of MyCustomer information."
-      },
-      "MyCustomerUpdateData": {
-        "required": [
-          "Id"
-        ],
-        "type": "object",
-        "properties": {
-          "Id": {
-            "type": "integer",
-            "description": "The guid to identify the customer",
-            "format": "int64",
-            "default": 0,
-            "example": 0
-          },
-          "ExternalId": {
-            "type": "string",
-            "description": "The external identifier of the customer"
-          },
-          "Attribute2": {
-            "type": "string",
-            "description": "Attribute2 text"
-          },
-          "Attribute3": {
-            "type": "string",
-            "description": "Attribute3 text"
-          },
-          "Attribute4": {
-            "type": "string",
-            "description": "Attribute4 text"
-          }
-        },
-        "description": "The record of MyCustomer information."
       },
       "MyCustomerText": {
         "required": [
