@@ -283,7 +283,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/MyCustomerInsertUpsertData"
+                "$ref": "#/components/schemas/MyCustomerInsertData"
               }
             }
           },
@@ -326,7 +326,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/MyCustomerInsertInsertData"
+                "$ref": "#/components/schemas/MyCustomerInsertData"
               }
             }
           },
@@ -706,7 +706,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/MyCustomerRecordInsertUpsertData"
+                "$ref": "#/components/schemas/MyCustomerRecordInsertData"
               }
             }
           },
@@ -758,7 +758,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/MyCustomerRecordInsertInsertData"
+                "$ref": "#/components/schemas/MyCustomerRecordInsertData"
               }
             }
           },
