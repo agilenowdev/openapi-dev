@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net.Sockets;
 using System.Runtime.CompilerServices;
 using System.Text;
 using Agile.Now.ApiAccounts.Model;
@@ -46,25 +48,14 @@ namespace Agile.Now.ApiAccounts.Test.Api
                 new("Name", "Finnish");
         }
 
-        public static AccountData ToAccountData(Account account) => new
-        (
-            id: account.Id,
-            tenantId: new("Id", account.TenantId.Id.ToString()),
-            name: account.Name,
-            firstName: account.FirstName,
-            lastName: account.LastName,
-            phone: account.Phone,
-            email: account.Email,
-            languageId: new("Name", account.LanguageId.Name),
-            timezoneId: new("Id", account.TimezoneId.Id),
-            dateFormatId: new("Id", account.DateFormatId.Id),
-            username: account.Username,
-            externalId: account.ExternalId,
-            notifyByEmail: account.NotifyByEmail,
-            notifyBySMS: account.NotifyBySMS,
-        isActive: account.IsActive
-        );
+        public static Stream ToStream(this string s) => new TestStream(Encoding.UTF8.GetBytes(s ?? ""));
+    }
 
-        public static Stream ToStream(this string s) => new MemoryStream(Encoding.UTF8.GetBytes(s ?? ""));
+    public class TestStream : MemoryStream
+    {
+        public TestStream(byte[] buffer) : base(buffer) { }
+        public override int ReadTimeout { get => 10000; set => base.ReadTimeout = value; }
+        public override int WriteTimeout { get => 10000; set => base.WriteTimeout = value; }
+        public override bool CanTimeout => true;
     }
 };
