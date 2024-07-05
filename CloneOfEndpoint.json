@@ -1,0 +1,1760 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "OpenApi documentation",
+    "description": "## Introduction\r\nThe OpenAPI Specification (OAS) defines a standard, language-agnostic interface to RESTful APIs which allows both humans and computers to discover and understand the capabilities of the service without access to source code, documentation, or through network traffic inspection. When properly defined, a consumer can understand and interact with the remote service with a minimal amount of implementation logic.\r\n\r\nAn OpenAPI definition can then be used by documentation generation tools to display the API, code generation tools to generate servers and clients in various programming languages, testing tools, and many other use cases.\r\n\r\n| Version | URL | Description |\r\n| --- | --- | --- |\r\n| v3 | https://dev.esystems.fi/Endpoint/rest/Doc/v3/Json/CloneOfEndpoint | Serializes to the Open API document as a string in the JSON format and represents all patches of OpenAPI V3.0 spec (e.g. 3.0.0, 3.0.1). |\r\n| v3 | https://dev.esystems.fi/Endpoint/rest/Doc/v3/Yaml/CloneOfEndpoint | Serializes to the Open API document as a string in the Yaml format and represents all patches of OpenAPI V3.0 spec (e.g. 3.0.0, 3.0.1). |\r\n| v2 | https://dev.esystems.fi/Endpoint/rest/Doc/v2/Json/CloneOfEndpoint | Serializes to the Open API document as a string in the JSON format and represents OpenAPI V2.0 spec.|\r\n| v2 | https://dev.esystems.fi/Endpoint/rest/Doc/v2/Yaml/CloneOfEndpoint | Serializes to the Open API document as a string in the Yaml format and represents OpenAPI V2.0 spec. |",
+    "contact": { },
+    "license": {
+      "name": "BSD-3 license",
+      "url": "https://opensource.org/licenses/BSD-3-Clause"
+    },
+    "version": "3.0.1"
+  },
+  "servers": [
+    {
+      "url": "https://dev.esystems.fi",
+      "description": "Default entry point of service"
+    }
+  ],
+  "paths": {
+    "/CloneOfEndpoint/rest/api/v{Version}/{EntitiesName}": {
+      "get": {
+        "tags": [
+          "api"
+        ],
+        "description": "Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.\n\nLeverage the search service to extract the requisite information from the system effectively.\n\n{Response_List}\n\nThe foreign key fields involved are: `{EntityForeignKeys}`\n\n### Example\nIt searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.\n\n```http\nfields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000\n```",
+        "operationId": "ListEntities",
+        "parameters": [
+          {
+            "name": "Version",
+            "in": "path",
+            "description": "The parameter serves as an identifier for specifying the version of the API endpoint you wish to interact with. \n\nFor instance, this parameter might take on values like &#39;1&#39; or &#39;67&#39; to indicate the desired API version. By default, when set to &#39;0&#39;, it automatically selects the latest stable version. ",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The parameter serves as an identifier for specifying the version of the API endpoint you wish to interact with. \n\nFor instance, this parameter might take on values like &#39;1&#39; or &#39;67&#39; to indicate the desired API version. By default, when set to &#39;0&#39;, it automatically selects the latest stable version. ",
+              "format": "int32"
+            },
+            "x-example": 0
+          },
+          {
+            "name": "EntitiesName",
+            "in": "path",
+            "description": "The name of entity",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The name of entity",
+              "default": ""
+            }
+          },
+          {
+            "name": "Fields",
+            "in": "query",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\n{EntityAttributes}\n```",
+            "schema": {
+              "type": "string",
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\n{EntityAttributes}\n```",
+              "default": ""
+            }
+          },
+          {
+            "name": "Filters",
+            "in": "query",
+            "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.\n\nThe name of the entity field. Example: `Name` or relation field `OwnerId.Name`\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn\n\nYou can add multiple values separated by comma when using the `In`, `NotIn` operators.\nExample of text field; `USA; FIN; ARE`\nExample of numeric field; `1, 2, 3`\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+            "schema": {
+              "type": "string",
+              "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.\n\nThe name of the entity field. Example: `Name` or relation field `OwnerId.Name`\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn\n\nYou can add multiple values separated by comma when using the `In`, `NotIn` operators.\nExample of text field; `USA; FIN; ARE`\nExample of numeric field; `1, 2, 3`\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+              "default": ""
+            }
+          },
+          {
+            "name": "Orders",
+            "in": "query",
+            "description": "The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: \n```\nName DESC, CreatedOn ASC\n```",
+            "schema": {
+              "type": "string",
+              "description": "The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: \n```\nName DESC, CreatedOn ASC\n```",
+              "default": ""
+            }
+          },
+          {
+            "name": "CurrentPage",
+            "in": "query",
+            "description": "This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.",
+            "schema": {
+              "type": "integer",
+              "description": "This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.",
+              "format": "int32"
+            },
+            "x-example": 0
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.\n\nThe value ranges from `1` to `1000` and defaults to `50`.",
+            "schema": {
+              "type": "integer",
+              "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.\n\nThe value ranges from `1` to `1000` and defaults to `50`.",
+              "format": "int32"
+            },
+            "x-example": 0
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of {EntitiesName}",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TextRecord"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CloneOfEndpoint/rest/api/v{Version}/{EntitiesName}/{Format}": {
+      "patch": {
+        "tags": [
+          "api"
+        ],
+        "description": "Use the `{EntitiesName}Text` object resource to insert or update (Upsert) a list of `{EntityName}List` using `{UniqueFields}` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `PATCH` method of the resource.\n\n{Request_List}\n\nForeign key fields are: `{EntityForeignKeys}`\n\n### Update a record of {EntityName}\n{Errors_NotFound} {Info_PrimaryKeyCannotChange}\n{Info_Update}\n\n**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.\n\n### Create a new record of {EntityName}\n{Info_Insert}\n\nThe response body will contain the record list structure of the updated or created record if the call is successful. {Response_List}",
+        "operationId": "PatchEntities",
+        "parameters": [
+          {
+            "name": "Version",
+            "in": "path",
+            "description": "The parameter serves as an identifier for specifying the version of the API endpoint you wish to interact with. \n\nFor instance, this parameter might take on values like &#39;1&#39; or &#39;67&#39; to indicate the desired API version. By default, when set to &#39;0&#39;, it automatically selects the latest stable version. ",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The parameter serves as an identifier for specifying the version of the API endpoint you wish to interact with. \n\nFor instance, this parameter might take on values like &#39;1&#39; or &#39;67&#39; to indicate the desired API version. By default, when set to &#39;0&#39;, it automatically selects the latest stable version. ",
+              "format": "int32"
+            },
+            "x-example": 0
+          },
+          {
+            "name": "EntitiesName",
+            "in": "path",
+            "description": "The name of entity",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The name of entity",
+              "default": ""
+            }
+          },
+          {
+            "name": "Format",
+            "in": "path",
+            "description": "&quot;Format&quot; refers to the specific structure or arrangement in which data can be presented or stored. In the context of your statement where supported formats are JSON, Excel, and CSV, here&#39;s a brief description for each:\n\n1. **JSON (JavaScript Object Notation)**: JSON is a lightweight data interchange format that is easy for both humans and machines to read and write. It is often used for representing structured data and is particularly popular in web applications for transmitting data between a server and a client.\n\n2. **Excel**: Excel is a widely used spreadsheet application developed by Microsoft. It supports the tabular representation of data, including text, numbers, and formulas. Excel files typically have the extension &quot;.xlsx&quot; or &quot;.xls&quot; and are commonly used for data analysis, reporting, and storage.\n\n3. **CSV (Comma-Separated Values)**: CSV is a simple and widely supported file format for representing tabular data. Each line in a CSV file represents a row of data, with values separated by commas (or other delimiters like semicolons or tabs). CSV files are easy to create, read, and edit, making them a common choice for data exchange between different applications and platforms.\n\nThese formats serve different purposes and have varying strengths and weaknesses, so the choice of format often depends on the specific requirements of your application or data use case.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "&quot;Format&quot; refers to the specific structure or arrangement in which data can be presented or stored. In the context of your statement where supported formats are JSON, Excel, and CSV, here&#39;s a brief description for each:\n\n1. **JSON (JavaScript Object Notation)**: JSON is a lightweight data interchange format that is easy for both humans and machines to read and write. It is often used for representing structured data and is particularly popular in web applications for transmitting data between a server and a client.\n\n2. **Excel**: Excel is a widely used spreadsheet application developed by Microsoft. It supports the tabular representation of data, including text, numbers, and formulas. Excel files typically have the extension &quot;.xlsx&quot; or &quot;.xls&quot; and are commonly used for data analysis, reporting, and storage.\n\n3. **CSV (Comma-Separated Values)**: CSV is a simple and widely supported file format for representing tabular data. Each line in a CSV file represents a row of data, with values separated by commas (or other delimiters like semicolons or tabs). CSV files are easy to create, read, and edit, making them a common choice for data exchange between different applications and platforms.\n\nThese formats serve different purposes and have varying strengths and weaknesses, so the choice of format often depends on the specific requirements of your application or data use case.",
+              "default": ""
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The list of {EntityName} information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.",
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "description": "The list of {EntityName} information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.",
+                "default": ""
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Data"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated list of {EntityName} information. \n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TextRecord"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CloneOfEndpoint/rest/api/v{Version}/{EntityName}": {
+      "patch": {
+        "tags": [
+          "api"
+        ],
+        "description": "Use the `{EntityNameUpsertData}` object resource to insert or update (Upsert) `{EntityName}` using `{UniqueFields}` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\n{Request_Upsert_Record}\n\nForeign key fields are: `{EntityForeignKeys}`\n\n### Update a record of {EntityName}\n{Errors_NotFound}. {Info_PrimaryKeyCannotChange}\n{Info_Update}\n\n### Create a new record of {EntityName}\n{Info_Insert}\n\nThe response body will contain the object of the updated or created record if the call is successful. {Response_Record}",
+        "operationId": "UpsertEntity",
+        "parameters": [
+          {
+            "name": "Version",
+            "in": "path",
+            "description": "The parameter serves as an identifier for specifying the version of the API endpoint you wish to interact with. For instance, this parameter might take on values like &#39;1&#39; or &#39;67&#39; to indicate the desired API version.&quot;",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The parameter serves as an identifier for specifying the version of the API endpoint you wish to interact with. For instance, this parameter might take on values like &#39;1&#39; or &#39;67&#39; to indicate the desired API version.&quot;",
+              "format": "int32"
+            },
+            "x-example": 0
+          },
+          {
+            "name": "EntityName",
+            "in": "path",
+            "description": "The name of entity",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The name of entity",
+              "default": ""
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "`{EntityName}` information to insert or update.\n\nThe input parameter must be used in the `{EntityNameUpsertData}` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "description": "`{EntityName}` information to insert or update.\n\nThe input parameter must be used in the `{EntityNameUpsertData}` record structure inside the `FieldType` parameter in the foreign key fields.",
+                "default": ""
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Record"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated `{EntityName}` information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TextRecord"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "api"
+        ],
+        "description": "Use the `{EntityNameInsertData}` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\n{Request_Insert_Record}\n\nForeign key fields are: `{EntityForeignKeys}`\n\n### Create a new record of {EntityName}\n{Info_PrimaryKey}\n{Info_Insert}\n{Errors_MultibleRows}\n\nThe response body will contain the object of the created record if the call is successful. {Response_Record}\n\n",
+        "operationId": "CreateEntity",
+        "parameters": [
+          {
+            "name": "Version",
+            "in": "path",
+            "description": "The parameter serves as an identifier for specifying the version of the API endpoint you wish to interact with. \n\nFor instance, this parameter might take on values like &#39;1&#39; or &#39;67&#39; to indicate the desired API version. By default, when set to &#39;0&#39;, it automatically selects the latest stable version. ",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The parameter serves as an identifier for specifying the version of the API endpoint you wish to interact with. \n\nFor instance, this parameter might take on values like &#39;1&#39; or &#39;67&#39; to indicate the desired API version. By default, when set to &#39;0&#39;, it automatically selects the latest stable version. ",
+              "format": "int32"
+            },
+            "x-example": 0
+          },
+          {
+            "name": "EntityName",
+            "in": "path",
+            "description": "The name of entity",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The name of entity",
+              "default": ""
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "`{EntityName}` information to insert.\n\nThe input parameter must be used in the `{EntityNameInsertData}` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "description": "`{EntityName}` information to insert.\n\nThe input parameter must be used in the `{EntityNameInsertData}` record structure inside the `FieldType` parameter in the foreign key fields.",
+                "default": ""
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Record"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted `{EntityName}` information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TextRecord"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CloneOfEndpoint/rest/api/v{Version}/{EntityName}/{Id}": {
+      "put": {
+        "tags": [
+          "api"
+        ],
+        "description": "Use the `{EntityNameUpdateData}` object resource to update `{EntityName}` using `{UniqueFields}` field(s) value.\n\nProvide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record. \n\n{Request_Update_Record}\n\nForeign key fields are: `{EntityForeignKeys}`\n\n### Update a record of {EntityName}\n{Errors_NotFound}. {Info_PrimaryKeyCannotChange}\n{Errors_InvalidField}\n{Errors_MultibleRows}\n\nThe response body will contain the object of the updated record if the call is successful. {Response_Record}",
+        "operationId": "UpdateEntity",
+        "parameters": [
+          {
+            "name": "Version",
+            "in": "path",
+            "description": "The parameter serves as an identifier for specifying the version of the API endpoint you wish to interact with. For instance, this parameter might take on values like &#39;1&#39; or &#39;67&#39; to indicate the desired API version.&quot;",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The parameter serves as an identifier for specifying the version of the API endpoint you wish to interact with. For instance, this parameter might take on values like &#39;1&#39; or &#39;67&#39; to indicate the desired API version.&quot;",
+              "format": "int32"
+            },
+            "x-example": 0
+          },
+          {
+            "name": "EntityName",
+            "in": "path",
+            "description": "The name of entity",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The name of entity",
+              "default": ""
+            }
+          },
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the {EntityName} record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the {EntityName} record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `{EntityPrimaryKey}` field is used.\n\nExample: \n```\n{ExtraUniqueFields}\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `{EntityPrimaryKey}` field is used.\n\nExample: \n```\n{ExtraUniqueFields}\n```",
+              "default": ""
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "{EntityName} information to update.\n\nThe input parameter must be used in the `{EntityNameUpdateData}` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "description": "{EntityName} information to update.\n\nThe input parameter must be used in the `{EntityNameUpdateData}` record structure inside the `FieldType` parameter in the foreign key fields.",
+                "default": ""
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Record"
+        },
+        "responses": {
+          "200": {
+            "description": "Updated `{EntityName}` information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TextRecord"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "api"
+        ],
+        "description": "Use the query string resource to delete `{EntityName}` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `{UniqueFields}` field(s) value and use the `DELETE` method of the resource to delete a record.\n\n{Response_Record}\n\nForeign key fields are: `{EntityForeignKeys}`\n\n### Delete a record of {EntityName}\n{Errors_NotFound}\n{Errors_InvalidField}\n{Errors_MultibleRows}\n\nThe response body will contain the object of the deleted record if the call is successful.",
+        "operationId": "DeleteEntity",
+        "parameters": [
+          {
+            "name": "Version",
+            "in": "path",
+            "description": "The parameter serves as an identifier for specifying the version of the API endpoint you wish to interact with. \n\nFor instance, this parameter might take on values like &#39;1&#39; or &#39;67&#39; to indicate the desired API version. By default, when set to &#39;0&#39;, it automatically selects the latest stable version. ",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The parameter serves as an identifier for specifying the version of the API endpoint you wish to interact with. \n\nFor instance, this parameter might take on values like &#39;1&#39; or &#39;67&#39; to indicate the desired API version. By default, when set to &#39;0&#39;, it automatically selects the latest stable version. ",
+              "format": "int32"
+            },
+            "x-example": 0
+          },
+          {
+            "name": "EntityName",
+            "in": "path",
+            "description": "The name of entity",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The name of entity",
+              "default": ""
+            }
+          },
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the {EntityName} record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the {EntityName} record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `{EntityPrimaryKey}` field is used.\n\nExample: \n```\n{ExtraUniqueFields}\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `{EntityPrimaryKey}` field is used.\n\nExample: \n```\n{ExtraUniqueFields}\n```",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted `{EntityName}` information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TextRecord"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "api"
+        ],
+        "description": "The method returns one record of the `{EntityName}`.\n\n{Response_Record}\n\nForeign key fields are: `{EntityForeignKeys}`\n\n### Get a record of {EntityName}\n{Errors_NotFound}\n{Errors_InvalidField}\n{Errors_MultibleRows}",
+        "operationId": "GetEntity",
+        "parameters": [
+          {
+            "name": "Version",
+            "in": "path",
+            "description": "The parameter serves as an identifier for specifying the version of the API endpoint you wish to interact with. \n\nFor instance, this parameter might take on values like &#39;1&#39; or &#39;67&#39; to indicate the desired API version. By default, when set to &#39;0&#39;, it automatically selects the latest stable version. ",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The parameter serves as an identifier for specifying the version of the API endpoint you wish to interact with. \n\nFor instance, this parameter might take on values like &#39;1&#39; or &#39;67&#39; to indicate the desired API version. By default, when set to &#39;0&#39;, it automatically selects the latest stable version. ",
+              "format": "int32"
+            },
+            "x-example": 0
+          },
+          {
+            "name": "EntityName",
+            "in": "path",
+            "description": "The name of entity",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The name of entity",
+              "default": ""
+            }
+          },
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the {EntityName} record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the {EntityName} record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `{EntityPrimaryKey}` field is used.\n\nExample: \n```\n{ExtraUniqueFields}\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `{EntityPrimaryKey}` field is used.\n\nExample: \n```\n{ExtraUniqueFields}\n```",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The record of `{EntityName}` information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TextRecord"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CloneOfEndpoint/rest/api/v{Version}/{EntityName}/{Id}/{SubEntitiesName}": {
+      "patch": {
+        "tags": [
+          "api"
+        ],
+        "description": "Use the `{EntitiesName}Data` object resource to insert or update (Upsert) a list of `{EntityName}Data` using `{UniqueFields}` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\n{Request_List}\n\nForeign key fields are: `{EntityForeignKeys}`\n\n### Update a record of {EntityName}\n{Info_Update}\n\n**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.\n\n### Create a new record of {EntityName}\n{Info_Insert}\n\nThe response body will contain the record list structure of the updated or created record if the call is successful. {Response_List}",
+        "operationId": "PatchSubEntities",
+        "parameters": [
+          {
+            "name": "Version",
+            "in": "path",
+            "description": "The parameter serves as an identifier for specifying the version of the API endpoint you wish to interact with. \n\nFor instance, this parameter might take on values like &#39;1&#39; or &#39;67&#39; to indicate the desired API version. By default, when set to &#39;0&#39;, it automatically selects the latest stable version. ",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The parameter serves as an identifier for specifying the version of the API endpoint you wish to interact with. \n\nFor instance, this parameter might take on values like &#39;1&#39; or &#39;67&#39; to indicate the desired API version. By default, when set to &#39;0&#39;, it automatically selects the latest stable version. ",
+              "format": "int32"
+            },
+            "x-example": 0
+          },
+          {
+            "name": "EntityName",
+            "in": "path",
+            "description": "The name of entity",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The name of entity",
+              "default": ""
+            }
+          },
+          {
+            "name": "SubEntitiesName",
+            "in": "path",
+            "description": "The name of subentity",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The name of subentity",
+              "default": ""
+            }
+          },
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the {RestApi} record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the {RestApi} record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `{ParentEntityPrimaryKey}` field is used.\n\nExample: \n```\n{ParentExtraUniqueFields}\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `{ParentEntityPrimaryKey}` field is used.\n\nExample: \n```\n{ParentExtraUniqueFields}\n```",
+              "default": ""
+            }
+          },
+          {
+            "name": "DeleteNotExists",
+            "in": "query",
+            "description": "The Delete not exists function delete orphan values from a table.\n\nIf you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table.",
+            "schema": {
+              "type": "boolean",
+              "description": "The Delete not exists function delete orphan values from a table.\n\nIf you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table."
+            },
+            "x-example": false
+          }
+        ],
+        "requestBody": {
+          "description": "The list of {EntityName} information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.",
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "description": "The list of {EntityName} information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.",
+                "default": ""
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Data"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated list of {EntityName} information. \n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TextRecord"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "api"
+        ],
+        "description": "Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.\n\nLeverage the search service to extract the requisite information from the system effectively.\n\n{Response_List}\n\nThe foreign key fields involved are: `{EntityForeignKeys}`\n\n### Example\nIt searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.\n\n```http\nfields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000\n```",
+        "operationId": "ListSubEntities",
+        "parameters": [
+          {
+            "name": "Version",
+            "in": "path",
+            "description": "The parameter serves as an identifier for specifying the version of the API endpoint you wish to interact with. \n\nFor instance, this parameter might take on values like &#39;1&#39; or &#39;67&#39; to indicate the desired API version. By default, when set to &#39;0&#39;, it automatically selects the latest stable version. ",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The parameter serves as an identifier for specifying the version of the API endpoint you wish to interact with. \n\nFor instance, this parameter might take on values like &#39;1&#39; or &#39;67&#39; to indicate the desired API version. By default, when set to &#39;0&#39;, it automatically selects the latest stable version. ",
+              "format": "int32"
+            },
+            "x-example": 0
+          },
+          {
+            "name": "EntityName",
+            "in": "path",
+            "description": "The name of entity",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The name of entity",
+              "default": ""
+            }
+          },
+          {
+            "name": "SubEntitiesName",
+            "in": "path",
+            "description": "The name of subentity",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The name of subentity",
+              "default": ""
+            }
+          },
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the {RestApi} record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the {RestApi} record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `{ParentEntityPrimaryKey}` field is used.\n\nExample: \n```\n{ParentExtraUniqueFields}\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `{ParentEntityPrimaryKey}` field is used.\n\nExample: \n```\n{ParentExtraUniqueFields}\n```",
+              "default": ""
+            }
+          },
+          {
+            "name": "Fields",
+            "in": "query",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\n{EntityAttributes}\n```",
+            "schema": {
+              "type": "string",
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\n{EntityAttributes}\n```",
+              "default": ""
+            }
+          },
+          {
+            "name": "Filters",
+            "in": "query",
+            "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.\n\nThe name of the entity field. Example: `Name` or relation field `OwnerId.Name`\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn\n\nYou can add multiple values separated by comma when using the `In`, `NotIn` operators.\nExample of text field; `USA; FIN; ARE`\nExample of numeric field; `1, 2, 3`\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+            "schema": {
+              "type": "string",
+              "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.\n\nThe name of the entity field. Example: `Name` or relation field `OwnerId.Name`\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn\n\nYou can add multiple values separated by comma when using the `In`, `NotIn` operators.\nExample of text field; `USA; FIN; ARE`\nExample of numeric field; `1, 2, 3`\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+              "default": ""
+            }
+          },
+          {
+            "name": "Orders",
+            "in": "query",
+            "description": "The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: \n```\nName DESC, CreatedOn ASC\n```",
+            "schema": {
+              "type": "string",
+              "description": "The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: \n```\nName DESC, CreatedOn ASC\n```",
+              "default": ""
+            }
+          },
+          {
+            "name": "CurrentPage",
+            "in": "query",
+            "description": "This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.",
+            "schema": {
+              "type": "integer",
+              "description": "This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.",
+              "format": "int32"
+            },
+            "x-example": 0
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.\n\nThe value ranges from `1` to `1000` and defaults to `50`.",
+            "schema": {
+              "type": "integer",
+              "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.\n\nThe value ranges from `1` to `1000` and defaults to `50`.",
+              "format": "int32"
+            },
+            "x-example": 0
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of {EntitiesName}",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TextRecord"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CloneOfEndpoint/rest/api/v{Version}/{EntityName}/{Id}/{SubEntityName}": {
+      "post": {
+        "tags": [
+          "api"
+        ],
+        "description": "Use the `{EntityName}Post` object resource to insert or update (Upsert) `{EntityName}` using `{UniqueFields}` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\n{Request_Record}\n\nForeign key fields are: `{EntityForeignKeys}`\n\n### Update a record of {EntityName}\n{Errors_NotFound}. {Info_PrimaryKeyCannotChange}\n{Info_Update}\n\n### Create a new record of {EntityName}\n{Info_Insert}\n\nThe response body will contain the object of the updated or created record if the call is successful. {Response_Record}",
+        "operationId": "UpsertSubEntity",
+        "parameters": [
+          {
+            "name": "Version",
+            "in": "path",
+            "description": "The parameter serves as an identifier for specifying the version of the API endpoint you wish to interact with. For instance, this parameter might take on values like &#39;1&#39; or &#39;67&#39; to indicate the desired API version.&quot;",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The parameter serves as an identifier for specifying the version of the API endpoint you wish to interact with. For instance, this parameter might take on values like &#39;1&#39; or &#39;67&#39; to indicate the desired API version.&quot;",
+              "format": "int32"
+            },
+            "x-example": 0
+          },
+          {
+            "name": "EntityName",
+            "in": "path",
+            "description": "The name of entity",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The name of entity",
+              "default": ""
+            }
+          },
+          {
+            "name": "SubEntityName",
+            "in": "path",
+            "description": "The name of subentity",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The name of subentity",
+              "default": ""
+            }
+          },
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the {RestApi} record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the {RestApi} record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `{ParentEntityPrimaryKey}` field is used.\n\nExample: \n```\n{ParentExtraUniqueFields}\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `{ParentEntityPrimaryKey}` field is used.\n\nExample: \n```\n{ParentExtraUniqueFields}\n```",
+              "default": ""
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "`{EntityName}` information to insert or update.\n\nThe input parameter must be used in the `{EntityName}Data` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "description": "`{EntityName}` information to insert or update.\n\nThe input parameter must be used in the `{EntityName}Data` record structure inside the `FieldType` parameter in the foreign key fields.",
+                "default": ""
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Record"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated `{EntityName}` information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TextRecord"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CloneOfEndpoint/rest/api/v{Version}/{EntityName}/{Id}/{SubEntityName}/{SubId}": {
+      "delete": {
+        "tags": [
+          "api"
+        ],
+        "description": "Use the query string resource to delete `{EntityName}` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `{UniqueFields}` field(s) value and use the `DELETE` method of the resource to delete a record.\n\n{Response_Record}\n\nForeign key fields are: `{EntityForeignKeys}`\n\n### Delete a record of {EntityName}\n{Errors_NotFound}\n{Errors_InvalidField}\n{Errors_MultibleRows}\n\nThe response body will contain the object of the deleted record if the call is successful.",
+        "operationId": "DeleteSubEntity",
+        "parameters": [
+          {
+            "name": "Version",
+            "in": "path",
+            "description": "The parameter serves as an identifier for specifying the version of the API endpoint you wish to interact with. \n\nFor instance, this parameter might take on values like &#39;1&#39; or &#39;67&#39; to indicate the desired API version. By default, when set to &#39;0&#39;, it automatically selects the latest stable version. ",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The parameter serves as an identifier for specifying the version of the API endpoint you wish to interact with. \n\nFor instance, this parameter might take on values like &#39;1&#39; or &#39;67&#39; to indicate the desired API version. By default, when set to &#39;0&#39;, it automatically selects the latest stable version. ",
+              "format": "int32"
+            },
+            "x-example": 0
+          },
+          {
+            "name": "EntityName",
+            "in": "path",
+            "description": "The name of entity",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The name of entity",
+              "default": ""
+            }
+          },
+          {
+            "name": "SubEntityName",
+            "in": "path",
+            "description": "The name of subentity",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The name of subentity",
+              "default": ""
+            }
+          },
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the {RestApi} record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the {RestApi} record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `{ParentEntityPrimaryKey}` field is used.\n\nExample: \n```\n{ParentExtraUniqueFields}\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `{ParentEntityPrimaryKey}` field is used.\n\nExample: \n```\n{ParentExtraUniqueFields}\n```",
+              "default": ""
+            }
+          },
+          {
+            "name": "SubId",
+            "in": "path",
+            "description": "The identifier of the {EntityName} record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the {EntityName} record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+              "default": ""
+            }
+          },
+          {
+            "name": "SubName",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `{EntityPrimaryKey}` field is used.\n\nExample: \n```\n{ExtraUniqueFields}\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `{EntityPrimaryKey}` field is used.\n\nExample: \n```\n{ExtraUniqueFields}\n```",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted `{EntityName}` information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TextRecord"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CloneOfEndpoint/rest/doc/{Name}": {
+      "get": {
+        "tags": [
+          "doc"
+        ],
+        "description": "Serializes to the Open API document as a string in the JSON format.",
+        "operationId": "OpenApi",
+        "parameters": [
+          {
+            "name": "Name",
+            "in": "path",
+            "description": "The name of OpenApi document",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The name of OpenApi document",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The document of OpenApi.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OpenApi"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CloneOfEndpoint/rest/doc/{Versionid}/{FormatId}/{Name}/": {
+      "get": {
+        "tags": [
+          "doc"
+        ],
+        "description": "Serializes to the Open API document as a string in the JSON or Yaml format and represents all patches of OpenAPI V2.0 or V3.0.1and Agile.Now V1.0 spec.",
+        "operationId": "GetDocument",
+        "parameters": [
+          {
+            "name": "VersionId",
+            "in": "path",
+            "description": "The identifier of version. Supported values are ; v1, v2 and v3",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of version. Supported values are ; v1, v2 and v3",
+              "default": ""
+            }
+          },
+          {
+            "name": "FormatId",
+            "in": "path",
+            "description": "The identifier of format. Supported values are ; Json and Yaml",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of format. Supported values are ; Json and Yaml",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "path",
+            "description": "The name of OpenApi document",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The name of OpenApi document",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The document of OpenApi.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "description": "The document of OpenApi.",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Meta": {
+        "required": [
+          "TotalItems",
+          "CurrentPage",
+          "PageSize",
+          "Type"
+        ],
+        "type": "object",
+        "properties": {
+          "TotalItems": {
+            "type": "integer",
+            "description": "This field represents the total number of items available in the entire dataset, not just the items returned in the current response. It's useful for implementing pagination, as clients can use it to calculate the number of pages or total available items.",
+            "format": "int32",
+            "default": 0,
+            "example": 1000
+          },
+          "CurrentPage": {
+            "type": "integer",
+            "description": "This field specifies the current page of results being returned. It's often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.",
+            "format": "int32",
+            "default": 1,
+            "example": 50
+          },
+          "PageSize": {
+            "type": "integer",
+            "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.",
+            "format": "int32",
+            "default": 50,
+            "example": 50
+          },
+          "Type": {
+            "type": "string",
+            "description": "The type of the record",
+            "example": "User"
+          }
+        },
+        "description": "The object provides metadata about the list of items returned in the API response. It typically includes information that helps clients understand and work with the data."
+      },
+      "Error": {
+        "required": [
+          "Errors",
+          "StatusCode"
+        ],
+        "type": "object",
+        "properties": {
+          "Error": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "default": ""
+            },
+            "description": "Human-readable explanation of the errors"
+          },
+          "Type": {
+            "type": "string",
+            "description": "URI identifier that categorizes the error",
+            "default": ""
+          },
+          "Title": {
+            "type": "string",
+            "description": "Brief, human-readable message about the error",
+            "default": ""
+          },
+          "StatusCode": {
+            "type": "integer",
+            "description": "The HTTP response code",
+            "format": "int32",
+            "example": 400
+          },
+          "Instance": {
+            "type": "string",
+            "description": "URI that identifies the specific occurrence of the error",
+            "default": ""
+          },
+          "RequestKey": {
+            "type": "string",
+            "description": "Provides a request key that identifies the current request.",
+            "default": ""
+          }
+        },
+        "description": "The list of errors. Throw specific exceptions based on the received error."
+      },
+      "TextRecord": {
+        "type": "object",
+        "properties": {
+          "Text": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "description": ""
+      },
+      "Contact": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The identifying name of the contact person/organization.",
+            "default": ""
+          },
+          "url": {
+            "type": "string",
+            "description": "The URL pointing to the contact information. MUST be in the format of a URL.",
+            "default": ""
+          },
+          "email": {
+            "type": "string",
+            "description": "The email address of the contact person/organization. MUST be in the format of an email address.",
+            "default": ""
+          }
+        },
+        "description": "The contact information for the exposed API."
+      },
+      "ExternalDoc": {
+        "required": [
+          "Url"
+        ],
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "A short description of the target documentation. CommonMark syntax MAY be used for rich text representation.",
+            "default": ""
+          },
+          "url": {
+            "type": "string",
+            "description": "The URL for the target documentation. Value MUST be in the format of a URL.",
+            "default": ""
+          }
+        },
+        "description": "Additional external documentation for this operation."
+      },
+      "Info": {
+        "required": [
+          "Title",
+          "Version"
+        ],
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "The title of the API.",
+            "default": ""
+          },
+          "description": {
+            "type": "string",
+            "description": "A short description of the API. CommonMark syntax MAY be used for rich text representation.",
+            "default": ""
+          },
+          "version": {
+            "type": "string",
+            "description": "The version of the OpenAPI document (which is distinct from the OpenAPI Specification version or the API implementation version).",
+            "default": ""
+          },
+          "termsOfService": {
+            "type": "string",
+            "description": "A URL to the Terms of Service for the API. MUST be in the format of a URL.",
+            "default": ""
+          },
+          "contact": {
+            "$ref": "#/components/schemas/Contact"
+          },
+          "license": {
+            "$ref": "#/components/schemas/License"
+          }
+        },
+        "description": "The object provides metadata about the API."
+      },
+      "License": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "REQUIRED. The license name used for the API.",
+            "default": ""
+          },
+          "url": {
+            "type": "string",
+            "description": "A URL to the license used for the API. MUST be in the format of a URL.",
+            "default": ""
+          }
+        },
+        "description": "License information for the exposed API."
+      },
+      "OpenApi": {
+        "type": "object",
+        "properties": {
+          "info": {
+            "$ref": "#/components/schemas/Info"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TagItem"
+            },
+            "description": "A list of tags used by the specification with additional metadata. The order of the tags can be used to reflect on their order by the parsing tools. Not all tags that are used by the Operation Object must be declared. The tags that are not declared MAY be organized randomly or based on the tools&#39; logic. Each tag name in the list MUST be unique."
+          },
+          "paths": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PathItem"
+            },
+            "description": "Holds the relative paths to the individual endpoints and their operations."
+          },
+          "servers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ServerItem"
+            },
+            "description": "A list representing a Servers."
+          },
+          "securitySchemes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SecurityScheme"
+            },
+            "description": "Lists the required security schemes to execute this operation. The name used for each property MUST correspond to a security scheme declared in the Security Schemes under the Components Object.\n\nDefines a security scheme that can be used by the operations. Supported schemes are HTTP authentication, an API key (either as a header, a cookie parameter or as a query parameter), OAuth2&#39;s common flows (implicit, password, client credentials and authorization code) as defined in RFC6749, and OpenID Connect Discovery."
+          },
+          "schemas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SchemaItem"
+            },
+            "description": "The Schema Object allows the definition of input and output data types. These types can be objects, but also primitives and arrays. This object is an extended subset of the JSON Schema Specification Wright Draft 00."
+          },
+          "responses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Response"
+            },
+            "description": "The list of possible responses as they are returned from executing this operation."
+          },
+          "externalDocs": {
+            "$ref": "#/components/schemas/ExternalDoc"
+          }
+        },
+        "description": "This is the root document object of the OpenAPI document."
+      },
+      "ParameterItem": {
+        "required": [
+          "Name",
+          "Kind",
+          "DataType"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of parameter",
+            "default": ""
+          },
+          "kind": {
+            "type": "string",
+            "description": "There are four possible parameter locations specified by the in field:\n\nPath - Used together with Path Templating, where the parameter value is actually part of the operation&#39;s URL. This does not include the host or base path of the API. For example, in /items/{itemId}, the path parameter is itemId.\nQuery - Parameters that are appended to the URL. For example, in /items?id=###, the query parameter is id.\nHeader - Custom headers that are expected as part of the request. Note that RFC7230 states header names are case insensitive.\nCookie - Used to pass a specific cookie value to the API.",
+            "default": ""
+          },
+          "dataType": {
+            "type": "string",
+            "description": "Type of parameter.\n    \nNone = No object type,\nArray = An array\nBoolean = A boolean value,\nInteger = An integer value,\nNull = A null,\nNumber = An number value,\nObject = An object,\nString = A string,\nFile = A file (used in Swagger specifications)",
+            "default": ""
+          },
+          "ref": {
+            "type": "string",
+            "description": "Allows for an external definition of this path item. The referenced structure MUST be in the format of a Path Item Object. In case a Path Item Object field appears both in the defined object and the referenced object, the behavior is undefined.",
+            "default": ""
+          },
+          "description": {
+            "type": "string",
+            "description": "A brief description of the parameter. This could contain examples of use. CommonMark syntax MAY be used for rich text representation.",
+            "default": ""
+          },
+          "isRequired": {
+            "type": "boolean",
+            "description": "Determines whether this parameter is mandatory. If the parameter location is &quot;path&quot;, this property is REQUIRED and its value MUST be true. Otherwise, the property MAY be included and its default value is false.",
+            "example": false
+          },
+          "default": {
+            "type": "string",
+            "description": "The default value represents what would be assumed by the consumer of the input as the value of the schema if one is not provided",
+            "default": ""
+          },
+          "example": {
+            "type": "string",
+            "description": "A free-form property to include an example of an instance for this schema. To represent examples that cannot be naturally represented in JSON or YAML, a string value can be used to contain the example with escaping where necessary.",
+            "default": ""
+          }
+        },
+        "description": "Describes a single operation parameter.\n\nA unique parameter is defined by a combination of a name and location."
+      },
+      "PathItem": {
+        "required": [
+          "OperationId"
+        ],
+        "type": "object",
+        "properties": {
+          "operationId": {
+            "type": "string",
+            "description": "Unique string used to identify the operation. The id MUST be unique among all operations described in the API. The operationId value is case-sensitive. Tools and libraries MAY use the operationId to uniquely identify an operation, therefore, it is RECOMMENDED to follow common programming naming conventions.",
+            "default": ""
+          },
+          "httpMethod": {
+            "type": "string",
+            "description": "A definition of an operation on this path.\nGET, PUT, POST, DELETE",
+            "default": ""
+          },
+          "path": {
+            "type": "string",
+            "description": "A relative path to an individual endpoint. Example : /Endpoint/rest/api/v1/{EntityName}/{Id}",
+            "default": ""
+          },
+          "description": {
+            "type": "string",
+            "description": "An optional, string description, intended to apply to all operations in this path. CommonMark syntax MAY be used for rich text representation.",
+            "default": ""
+          },
+          "tag": {
+            "type": "string",
+            "description": "A tag for API documentation control. Tag can be used for logical grouping of operations by resources or any other qualifier.",
+            "default": ""
+          },
+          "parameters": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ParameterItem"
+            },
+            "description": "A list of parameters that are applicable for this operation."
+          },
+          "responses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Response"
+            },
+            "description": "The list of possible responses as they are returned from executing this operation."
+          },
+          "type": {
+            "type": "string",
+            "description": "The type of the security scheme. Valid values are &quot;apiKey&quot;, &quot;http&quot;, &quot;oauth2&quot;, &quot;openIdConnect&quot;.",
+            "default": ""
+          },
+          "scopes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "default": ""
+            },
+            "description": "Lists the required security schemes to execute this operation. The name used for each property MUST correspond to a security scheme declared in the Security Schemes under the Components Object.\n\nIf the security scheme is of type &quot;oauth2&quot; or &quot;openIdConnect&quot;, then the value is a list of scope names required for the execution, and the list MAY be empty if authorization does not require a specified scope. For other security scheme types, the array MUST be empty."
+          },
+          "deprecated": {
+            "type": "boolean",
+            "description": "Declares this operation to be deprecated. Consumers SHOULD refrain from usage of the declared operation. Default value is false.",
+            "example": false
+          },
+          "meta": {
+            "type": "string",
+            "description": "If meta-object information is specified, the service automatically adds an intermediate object that contains the metadata and a list or object that is normally returned from the REST service.\n\nMeta parameter value is : &quot;Departments&quot;\n\nAttention; The schema (Meta parameter value) must not exist in the swagger document and the template document must contain a &quot;Meta&quot; schema, otherwise the conversion will not be performed.\n\n** Original response **\n```json\n{\n   &quot;schema&quot;:{\n      &quot;type&quot;:&quot;array&quot;,\n      &quot;items&quot;:{\n         &quot;$ref&quot;:&quot;#/components/schemas/Department&quot;\n      },\n      &quot;description&quot;:&quot;Departments information&quot;\n   }\n}\n\n** Custom response **\n```json\n{\n   &quot;schema&quot;:{\n      &quot;type&quot;:&quot;object&quot;,\n      &quot;properties&quot;:{\n         &quot;Meta&quot;:{\n            &quot;$ref&quot;:&quot;#/components/schemas/Meta&quot;\n         },\n         &quot;Departments&quot;:{\n            &quot;type&quot;:&quot;array&quot;,\n            &quot;items&quot;:{\n               &quot;$ref&quot;:&quot;#/components/schemas/Department&quot;\n            },\n            &quot;description&quot;:&quot;Departments information&quot;\n         }\n      }\n   }\n}\n```",
+            "default": ""
+          }
+        },
+        "description": "Holds the relative paths to the individual endpoints and their operations. The path is appended to the URL from the Server Object in order to construct the full URL. The Paths MAY be empty, due to ACL constraints."
+      },
+      "Response": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "description": "Any HTTP status code can be used as the property name, but only one property per code,",
+            "format": "int32",
+            "example": 0
+          },
+          "contentType": {
+            "type": "string",
+            "description": "Each Media Type Object provides schema and examples for the media type identified by its key.\n\nExample application/json, application/octet-stream or text/plain.\n\nIf the property is a primitive, or an array of primitive values, the default Content-Type is text/plain\nIf the property is complex, or an array of complex values, the default Content-Type is application/json\nIf the property is a type: string with format: binary or format: base64 (aka a file object), the default Content-Type is application/octet-stream",
+            "default": ""
+          },
+          "description": {
+            "type": "string",
+            "description": "A brief description of the parameter. This could contain examples of use. CommonMark syntax MAY be used for rich text representation.",
+            "default": ""
+          },
+          "example": {
+            "type": "string",
+            "description": "A free-form property to include an example of an instance for this schema. To represent examples that cannot be naturally represented in JSON or YAML, a string value can be used to contain the example with escaping where necessary.",
+            "default": ""
+          },
+          "parameters": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ParameterItem"
+            },
+            "description": "A list of parameters that are applicable for this response."
+          }
+        },
+        "description": "The response as they are returned from executing this operation."
+      },
+      "SchemaItem": {
+        "required": [
+          "Name",
+          "DataType"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of schema",
+            "default": ""
+          },
+          "description": {
+            "type": "string",
+            "description": "An optional, string description, intended to apply to all operations in this path. CommonMark syntax MAY be used for rich text representation.",
+            "default": ""
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of schema.\n    \nNone = No object type,\nArray = An array\nBoolean = A boolean value,\nInteger = An integer value,\nNull = A null,\nNumber = An number value,\nObject = An object,\nString = A string,\nFile = A file (used in Swagger specifications)",
+            "default": ""
+          },
+          "properties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ParameterItem"
+            },
+            "description": "A list of parameters that are applicable for this operation."
+          }
+        },
+        "description": "The Schema Object allows the definition of input and output data types. These types can be objects, but also primitives and arrays. This object is an extended subset of the JSON Schema Specification Wright Draft 00."
+      },
+      "ScopeItem": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of scope. Example : save:department",
+            "default": ""
+          },
+          "description": {
+            "type": "string",
+            "description": "A short description of the scope documentation. CommonMark syntax MAY be used for rich text representation.",
+            "default": ""
+          }
+        },
+        "description": "A object the required security schemes to execute this operation."
+      },
+      "SecurityScheme": {
+        "type": "object",
+        "properties": {
+          "schemeName": {
+            "type": "string",
+            "description": "The name of the security scheme.",
+            "default": ""
+          },
+          "type": {
+            "type": "string",
+            "description": "The type of the security scheme. Valid values are &quot;apiKey&quot;, &quot;http&quot;, &quot;oauth2&quot;, &quot;openIdConnect&quot;.",
+            "default": ""
+          },
+          "scheme": {
+            "type": "string",
+            "description": "The scheme of the security scheme. Valid values are; Http autentication: &quot;Basic&quot;, &quot;Bearer&quot; (default Basic). ApiKey autentication: &quot;Query&quot;, &quot;Header&quot;, &quot;Cookie&quot; (default Query).",
+            "default": ""
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the security scheme parameter.  Examle: X-API-Key",
+            "default": ""
+          },
+          "flows": {
+            "type": "string",
+            "description": "Allows configuration of the supported OAuth Flows. A comma-separated list of the flows.\n\nOAuth2&#39;s common flows (&quot;Implicit&quot;, &quot;Password&quot;, &quot;ClientCredentials&quot; and &quot;AuthorizationCode&quot;)\nE.g. Password, ClientCredentials",
+            "default": ""
+          },
+          "description": {
+            "type": "string",
+            "description": "A short description for security scheme. CommonMark syntax MAY be used for rich text representation.",
+            "default": ""
+          },
+          "authorizationUrl": {
+            "type": "string",
+            "description": "The authorization URL to be used for this flow. This MUST be in the form of a URL.\nApplies To : oauth2 (&quot;implicit&quot;, &quot;authorizationCode&quot;)",
+            "default": ""
+          },
+          "tokenUrl": {
+            "type": "string",
+            "description": "The token URL to be used for this flow. This MUST be in the form of a URL.\nApplies To : oauth2 (&quot;password&quot;, &quot;clientCredentials&quot;, &quot;authorizationCode&quot;).",
+            "default": ""
+          },
+          "refreshUrl": {
+            "type": "string",
+            "description": "The URL to be used for obtaining refresh tokens. This MUST be in the form of a URL.\nApplies To : oauth2.",
+            "default": ""
+          },
+          "openIdConnectUrl": {
+            "type": "string",
+            "description": "OpenId Connect URL to discover OAuth2 configuration values. This MUST be in the form of a URL. The OpenID Connect standard requires the use of TLS.",
+            "default": ""
+          },
+          "scopes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ScopeItem"
+            },
+            "description": "The available scopes for the OAuth2 security scheme. A map between the scope name and a short description for it. The map MAY be empty."
+          }
+        },
+        "description": "Defines a security scheme that can be used by the operations. The security model must be specified in the template json file."
+      },
+      "ServerItem": {
+        "required": [
+          "Url"
+        ],
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "A URL to the target host. This URL supports Server Variables and MAY be relative, to indicate that the host location is relative to the location where the OpenAPI document is being served. Variable substitutions will be made when a variable is named in {brackets}.\n\nYou can use dev.esystems.fi and that will automatically generated.",
+            "default": ""
+          },
+          "description": {
+            "type": "string",
+            "description": "An optional string describing the host designated by the URL. CommonMark syntax MAY be used for rich text representation.",
+            "default": ""
+          },
+          "variables": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VariableItem"
+            },
+            "description": "A map between a variable name and its value. The value is used for substitution in the server&#39;s URL template."
+          }
+        },
+        "description": "An object representing a Server."
+      },
+      "TagItem": {
+        "required": [
+          "Name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the tag.",
+            "default": ""
+          },
+          "description": {
+            "type": "string",
+            "description": "A short description for the tag. CommonMark syntax MAY be used for rich text representation.",
+            "default": ""
+          },
+          "securityScheme": {
+            "type": "string",
+            "description": "The type of the security scheme. Valid values are &quot;apiKey&quot;, &quot;http&quot;, &quot;oauth2&quot;, &quot;openIdConnect&quot;.\n\nThe security model must be specified in the template json file.",
+            "default": ""
+          },
+          "externalDocs": {
+            "$ref": "#/components/schemas/ExternalDoc"
+          },
+          "responses": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32",
+              "example": 0
+            },
+            "description": "The list of possible responses as they are returned from executing this tag."
+          }
+        },
+        "description": "Adds metadata to a single tag that is used by the Operation Object. It is not mandatory to have a Tag Object per tag defined in the Operation Object instances."
+      },
+      "VariableItem": {
+        "required": [
+          "Name",
+          "Default"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "An enumeration of string values to be used if the substitution options are from a limited set. The array SHOULD NOT be empty.",
+            "default": ""
+          },
+          "default": {
+            "type": "string",
+            "description": "The default value to use for substitution, which SHALL be sent if an alternate value is not supplied. Note this behavior is different than the Schema Object&#39;s treatment of default values, because in those cases parameter values are optional. If the enum is defined, the value SHOULD exist in the enum&#39;s values.",
+            "default": ""
+          },
+          "description": {
+            "type": "string",
+            "description": "An optional description for the server variable. CommonMark syntax MAY be used for rich text representation.",
+            "default": ""
+          }
+        },
+        "description": "An object representing a Server Variable for server URL template substitution."
+      }
+    },
+    "responses": {
+      "400": {
+        "description": "Bad Request - The user has provided input that the browser is unable to convert.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "Errors": [
+                "The user has provided input that the browser is unable to convert.",
+                "There are multiple rows in the database for the same value",
+                "The value does not match the specified entity structure",
+                "..."
+              ],
+              "Type": "/Errors/Bad Input",
+              "Title": "Bad Request",
+              "StatusCode": 400,
+              "Instance": "/OpenApi/rest/Xzy",
+              "RequestKey": "894ea43c-b8a6-4195-9a9c-82c07d9cc33a"
+            }
+          }
+        }
+      },
+      "401": {
+        "description": "Unauthorized - The response status code indicates that the client request has not been completed because it lacks valid authentication credentials for the requested resource.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "Errors": [
+                "The session Id or OAuth token used has expired or is invalid."
+              ],
+              "Type": "/Errors/Unauthorized",
+              "Title": "Unauthorized",
+              "StatusCode": 401,
+              "Instance": "/OpenApi/rest/Xzy",
+              "RequestKey": "894ea43c-b8a6-4195-9a9c-82c07d9cc33a"
+            }
+          }
+        }
+      },
+      "403": {
+        "description": "Forbidden - The user does not have access to execute operation",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "Errors": [
+                "The user does not have access to execute operation"
+              ],
+              "Type": "/Errors/Permission",
+              "Title": "Bad Request",
+              "StatusCode": 403,
+              "Instance": "/OpenApi/rest/Xzy",
+              "RequestKey": "894ea43c-b8a6-4195-9a9c-82c07d9cc33a"
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Not Found - The requested resource does not exist.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "Errors": [
+                "The requested resource does not exist"
+              ],
+              "Type": "/Errors/Not Found",
+              "Title": "Not Found",
+              "StatusCode": 404,
+              "Instance": "/OpenApi/rest/Xzy",
+              "RequestKey": "894ea43c-b8a6-4195-9a9c-82c07d9cc33a"
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal Server Error - An internal server error is an error on the web server you're trying to access.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "Errors": [
+                "An internal server error is an error on the web server you're trying to access."
+              ],
+              "Type": "/Errors/Internal Server Error",
+              "Title": "Internal Server Error",
+              "StatusCode": 500,
+              "Instance": "/OpenApi/rest/Xzy",
+              "RequestKey": "894ea43c-b8a6-4195-9a9c-82c07d9cc33a"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "OAuth2": {
+        "type": "oauth2",
+        "description": "oAuth autentication flow",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://dev.esystems.fi/oAuth/rest/v2/Token",
+            "refreshUrl": "https://dev.esystems.fi/oAuth/rest/v2/Token",
+            "scopes": { }
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "api",
+      "description": "The REST API interface executes Agile.Now system calls securely and dynamically"
+    },
+    {
+      "name": "doc",
+      "description": "Serializes to the Open API document as a string in the json and Yaml formats and represents OpenAPI V2.0 and V3.0 spec."
+    },
+    {
+      "name": "Doc",
+      "description": ""
+    }
+  ]
+}
