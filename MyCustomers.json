@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.107"
+    "version": "3.0.108"
   },
   "servers": [
     {
@@ -714,67 +714,19 @@
         "description": "The field object structure"
       },
       "MyCustomerInsertData": {
-        "required": [
-          "Id",
-          "Name",
-          "Is_Active"
-        ],
         "type": "object",
         "properties": {
-          "Id": {
-            "type": "integer",
-            "description": "The guid to identify the customer",
-            "format": "int64",
-            "default": 0,
-            "example": 0
-          },
-          "Name": {
+          "ExternalId": {
             "type": "string",
-            "description": "The name of the customer"
+            "description": "The external identifier of the customer"
           },
-          "ParentCustomerId": {
-            "$ref": "#/components/schemas/FieldType"
-          },
-          "OwnerId": {
-            "$ref": "#/components/schemas/FieldType"
-          },
-          "Is_Active": {
-            "type": "boolean",
-            "description": "Defines if the customer is active and can be used",
-            "default": false,
-            "example": false
-          },
-          "ModifiedOn": {
+          "SapId": {
             "type": "string",
-            "description": "The date the record was updated",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
+            "description": "This field is the SAP Id and you can use this between the two systems"
           },
-          "ModifiedBy": {
-            "$ref": "#/components/schemas/FieldType"
-          },
-          "CreatedBy": {
-            "$ref": "#/components/schemas/FieldType"
-          },
-          "CreatedOn": {
+          "Attribute1": {
             "type": "string",
-            "description": "The date the record was created",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
-          },
-          "Attribute2": {
-            "type": "string",
-            "description": "Attribute2 text"
-          },
-          "Attribute3": {
-            "type": "string",
-            "description": "Attribute3 text"
-          },
-          "Attribute4": {
-            "type": "string",
-            "description": "Attribute4 text"
+            "description": "Attribute1 text"
           }
         },
         "description": "The record of MyCustomer information."
