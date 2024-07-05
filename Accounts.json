@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "2.0.62"
+    "version": "2.0.63"
   },
   "servers": [
     {
@@ -73,7 +73,8 @@
           {
             "OAuth2": [
               "AccessManager:Read",
-              "AccessUser:Read"
+              "AccessUser:Read",
+              "Account:Read"
             ]
           }
         ]
@@ -145,7 +146,8 @@
           {
             "OAuth2": [
               "AccessManager:Update",
-              "AccessUser:Update"
+              "AccessUser:Update",
+              "Account:Update"
             ]
           }
         ]
@@ -205,7 +207,8 @@
           {
             "OAuth2": [
               "AccessManager:Delete",
-              "AccessUser:Delete"
+              "AccessUser:Delete",
+              "Account:Delete"
             ]
           }
         ]
@@ -297,7 +300,8 @@
           {
             "OAuth2": [
               "AccessManager:Read",
-              "AccessUser:Read"
+              "AccessUser:Read",
+              "Account:Read"
             ]
           }
         ]
@@ -350,7 +354,8 @@
           {
             "OAuth2": [
               "AccessManager:Create, Update",
-              "AccessUser:Create, Update"
+              "AccessUser:Create, Update",
+              "Account:Create, Update"
             ]
           }
         ]
@@ -401,7 +406,8 @@
           {
             "OAuth2": [
               "AccessManager:Create",
-              "AccessUser:Create"
+              "AccessUser:Create",
+              "Account:Create"
             ]
           }
         ]
@@ -512,7 +518,8 @@
           {
             "OAuth2": [
               "AccessManager:Read",
-              "AccessUser:Read"
+              "AccessUser:Read",
+              "Account:Read"
             ]
           }
         ]
@@ -586,7 +593,8 @@
           {
             "OAuth2": [
               "AccessManager:Create, Update",
-              "AccessUser:Create, Update"
+              "AccessUser:Create, Update",
+              "Account:Create, Update"
             ]
           }
         ]
@@ -667,7 +675,8 @@
           {
             "OAuth2": [
               "AccessManager:Delete",
-              "AccessUser:Delete"
+              "AccessUser:Delete",
+              "Account:Delete"
             ]
           }
         ]
@@ -778,7 +787,8 @@
           {
             "OAuth2": [
               "AccessManager:Read",
-              "AccessUser:Read"
+              "AccessUser:Read",
+              "Account:Read"
             ]
           }
         ]
@@ -852,7 +862,8 @@
           {
             "OAuth2": [
               "AccessManager:Create, Update",
-              "AccessUser:Create, Update"
+              "AccessUser:Create, Update",
+              "Account:Create, Update"
             ]
           }
         ]
@@ -933,7 +944,8 @@
           {
             "OAuth2": [
               "AccessManager:Delete",
-              "AccessUser:Delete"
+              "AccessUser:Delete",
+              "Account:Delete"
             ]
           }
         ]
@@ -1543,14 +1555,19 @@
             "scopes": {
               "AccessManager:Read": "Allows to edit access groups and all related data. (ABAC) permissions required to perform a function.",
               "AccessUser:Read": "Allows to review access groups and all related data. (ABAC) permissions required to perform a function.",
+              "Account:Read": "Account role. (ABAC) permissions required to perform a function.",
               "AccessManager:Create, Update": "Allows to edit access groups and all related data. (ABAC) permissions required to perform a function.",
               "AccessUser:Create, Update": "Allows to review access groups and all related data. (ABAC) permissions required to perform a function.",
+              "Account:Create, Update": "Account role. (ABAC) permissions required to perform a function.",
               "AccessManager:Create": "Allows to edit access groups and all related data. (ABAC) permissions required to perform a function.",
               "AccessUser:Create": "Allows to review access groups and all related data. (ABAC) permissions required to perform a function.",
+              "Account:Create": "Account role. (ABAC) permissions required to perform a function.",
               "AccessManager:Update": "Allows to edit access groups and all related data. (ABAC) permissions required to perform a function.",
               "AccessUser:Update": "Allows to review access groups and all related data. (ABAC) permissions required to perform a function.",
+              "Account:Update": "Account role. (ABAC) permissions required to perform a function.",
               "AccessManager:Delete": "Allows to edit access groups and all related data. (ABAC) permissions required to perform a function.",
-              "AccessUser:Delete": "Allows to review access groups and all related data. (ABAC) permissions required to perform a function."
+              "AccessUser:Delete": "Allows to review access groups and all related data. (ABAC) permissions required to perform a function.",
+              "Account:Delete": "Account role. (ABAC) permissions required to perform a function."
             }
           }
         }
