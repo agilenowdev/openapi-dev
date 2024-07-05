@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 Agile.Now.AccessHub.sln
 README.md
 api/openapi.yaml
@@ -40,6 +39,9 @@ docs/Locations.md
 docs/LocationsApi.md
 docs/LocationsData.md
 docs/Meta.md
+docs/Picture.md
+docs/PictureData.md
+docs/Pictures.md
 docs/Tenant.md
 docs/TenantData.md
 docs/Tenants.md
@@ -50,11 +52,6 @@ docs/Users.md
 docs/UsersData.md
 git_push.sh
 src/Agile.Now.AccessHub.Test/Agile.Now.AccessHub.Test.csproj
-src/Agile.Now.AccessHub.Test/Api/AccountsApiTests.cs
-src/Agile.Now.AccessHub.Test/Api/ConnectionsApiTests.cs
-src/Agile.Now.AccessHub.Test/Api/DepartmentsApiTests.cs
-src/Agile.Now.AccessHub.Test/Api/EntitiesApiTests.cs
-src/Agile.Now.AccessHub.Test/Api/LocationsApiTests.cs
 src/Agile.Now.AccessHub/Agile.Now.AccessHub.csproj
 src/Agile.Now.AccessHub/Api/AccountsApi.cs
 src/Agile.Now.AccessHub/Api/ConnectionsApi.cs
@@ -112,6 +109,9 @@ src/Agile.Now.AccessHub/Model/LocationText.cs
 src/Agile.Now.AccessHub/Model/Locations.cs
 src/Agile.Now.AccessHub/Model/LocationsData.cs
 src/Agile.Now.AccessHub/Model/Meta.cs
+src/Agile.Now.AccessHub/Model/Picture.cs
+src/Agile.Now.AccessHub/Model/PictureData.cs
+src/Agile.Now.AccessHub/Model/Pictures.cs
 src/Agile.Now.AccessHub/Model/Tenant.cs
 src/Agile.Now.AccessHub/Model/TenantData.cs
 src/Agile.Now.AccessHub/Model/Tenants.cs

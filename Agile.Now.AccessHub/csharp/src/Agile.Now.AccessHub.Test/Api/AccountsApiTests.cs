@@ -81,6 +81,21 @@ namespace Agile.Now.AccessHub.Test.Api
         }
 
         /// <summary>
+        /// Test DeleteAccountPicture
+        /// </summary>
+        [Fact]
+        public void DeleteAccountPictureTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string id = null;
+            //string subId = null;
+            //string? name = null;
+            //string? subName = null;
+            //var response = instance.DeleteAccountPicture(id, subId, name, subName);
+            //Assert.IsType<Picture>(response);
+        }
+
+        /// <summary>
         /// Test DeleteAccountTenant
         /// </summary>
         [Fact]
@@ -166,6 +181,20 @@ namespace Agile.Now.AccessHub.Test.Api
             //AccountData accountData = null;
             //var response = instance.UpsertAccount(accountData);
             //Assert.IsType<Account>(response);
+        }
+
+        /// <summary>
+        /// Test UpsertAccountPicture
+        /// </summary>
+        [Fact]
+        public void UpsertAccountPictureTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string id = null;
+            //PictureData pictureData = null;
+            //string? name = null;
+            //var response = instance.UpsertAccountPicture(id, pictureData, name);
+            //Assert.IsType<Picture>(response);
         }
 
         /// <summary>
