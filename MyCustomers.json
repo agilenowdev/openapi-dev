@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.132"
+    "version": "3.0.133"
   },
   "servers": [
     {
@@ -849,10 +849,6 @@
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
-          },
-          "Attribute1": {
-            "type": "string",
-            "description": "Attribute1 text"
           },
           "Attribute2": {
             "type": "string",
