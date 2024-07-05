@@ -1,0 +1,1046 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Customers API",
+    "description": "## Introduction\r\nThe OpenAPI Specification (OAS) defines a standard, language-agnostic interface to RESTful APIs which allows both humans and computers to discover and understand the capabilities of the service without access to source code, documentation, or through network traffic inspection. When properly defined, a consumer can understand and interact with the remote service with a minimal amount of implementation logic.\r\n\r\nAn OpenAPI definition can then be used by documentation generation tools to display the API, code generation tools to generate servers and clients in various programming languages, testing tools, and many other use cases.\r\n\r\n| Version | URL | Description |\r\n| --- | --- | --- |\r\n| v3 | https://dev.esystems.fi/Endpoint/rest/Doc/v3/Json/Customers_API | Serializes to the Open API document as a string in the JSON format and represents all patches of OpenAPI V3.0 spec (e.g. 3.0.0, 3.0.1). |\r\n| v3 | https://dev.esystems.fi/Endpoint/rest/Doc/v3/Yaml/Customers_API | Serializes to the Open API document as a string in the Yaml format and represents all patches of OpenAPI V3.0 spec (e.g. 3.0.0, 3.0.1). |\r\n| v2 | https://dev.esystems.fi/Endpoint/rest/Doc/v2/Json/Customers_API | Serializes to the Open API document as a string in the JSON format and represents OpenAPI V2.0 spec.|\r\n| v2 | https://dev.esystems.fi/Endpoint/rest/Doc/v2/Yaml/Customers_API | Serializes to the Open API document as a string in the Yaml format and represents OpenAPI V2.0 spec. |",
+    "contact": { },
+    "license": {
+      "name": "BSD-3 license",
+      "url": "https://opensource.org/licenses/BSD-3-Clause"
+    },
+    "version": "v3.0.56"
+  },
+  "servers": [
+    {
+      "url": "https://dev.esystems.fi",
+      "description": "Default entry point of service"
+    }
+  ],
+  "paths": {
+    "/AgileNowDemo/rest/Customers/GetCustomers": {
+      "get": {
+        "tags": [
+          "Customers"
+        ],
+        "description": "Customer search service. The API returns the list of an customers using a search parameters.",
+        "operationId": "GetCustomers",
+        "parameters": [
+          {
+            "name": "Fields",
+            "in": "query",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\n{EntityAttributes}\n```",
+            "schema": {
+              "type": "string",
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\n{EntityAttributes}\n```",
+              "default": ""
+            }
+          },
+          {
+            "name": "Filters",
+            "in": "query",
+            "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.\n\nThe name of the entity field. Example: `Name` or relation field `OwnerId.Name`\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn\n\nYou can add multiple values separated by comma when using the `In`, `NotIn` operators.\nExample of text field; `USA; FIN; ARE`\nExample of numeric field; `1, 2, 3`\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+            "schema": {
+              "type": "string",
+              "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.\n\nThe name of the entity field. Example: `Name` or relation field `OwnerId.Name`\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn\n\nYou can add multiple values separated by comma when using the `In`, `NotIn` operators.\nExample of text field; `USA; FIN; ARE`\nExample of numeric field; `1, 2, 3`\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+              "default": ""
+            }
+          },
+          {
+            "name": "Orders",
+            "in": "query",
+            "description": "The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: \n```\nName DESC, CreatedOn ASC\n```",
+            "schema": {
+              "type": "string",
+              "description": "The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: \n```\nName DESC, CreatedOn ASC\n```",
+              "default": ""
+            }
+          },
+          {
+            "name": "CurrentPage",
+            "in": "query",
+            "description": "This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.",
+            "schema": {
+              "type": "integer",
+              "description": "This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.",
+              "format": "int32"
+            },
+            "x-example": 0
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.\n\nThe value ranges from `1` to `1000` and defaults to `50`.",
+            "schema": {
+              "type": "integer",
+              "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.\n\nThe value ranges from `1` to `1000` and defaults to `50`.",
+              "format": "int32"
+            },
+            "x-example": 0
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Results of customers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ICustomer"
+                  },
+                  "description": "Results of customers"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [ ]
+          }
+        ]
+      }
+    },
+    "/AgileNowDemo/rest/Customers/GetCustomersQuery": {
+      "get": {
+        "tags": [
+          "Customers"
+        ],
+        "description": "Customer search service. The API returns the list of an customers using a search parameters.",
+        "operationId": "GetCustomersQuery",
+        "parameters": [
+          {
+            "name": "Filters",
+            "in": "query",
+            "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.\n\nThe name of the entity field. Example: `Name` or relation field `OwnerId.Name`\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn\n\nYou can add multiple values separated by comma when using the `In`, `NotIn` operators.\nExample of text field; `USA; FIN; ARE`\nExample of numeric field; `1, 2, 3`\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+            "schema": {
+              "type": "string",
+              "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.\n\nThe name of the entity field. Example: `Name` or relation field `OwnerId.Name`\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn\n\nYou can add multiple values separated by comma when using the `In`, `NotIn` operators.\nExample of text field; `USA; FIN; ARE`\nExample of numeric field; `1, 2, 3`\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+              "default": ""
+            }
+          },
+          {
+            "name": "Orders",
+            "in": "query",
+            "description": "The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: \n```\nName DESC, CreatedOn ASC\n```",
+            "schema": {
+              "type": "string",
+              "description": "The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: \n```\nName DESC, CreatedOn ASC\n```",
+              "default": ""
+            }
+          },
+          {
+            "name": "CurrentPage",
+            "in": "query",
+            "description": "This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.",
+            "schema": {
+              "type": "integer",
+              "description": "This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.",
+              "format": "int32"
+            },
+            "x-example": 0
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.\n\nThe value ranges from `1` to `1000` and defaults to `50`.",
+            "schema": {
+              "type": "integer",
+              "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.\n\nThe value ranges from `1` to `1000` and defaults to `50`.",
+              "format": "int32"
+            },
+            "x-example": 0
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Results of customers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Customers"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [ ]
+          }
+        ]
+      }
+    },
+    "/AgileNowDemo/rest/Customers/GetCustomersSQL": {
+      "post": {
+        "tags": [
+          "Customers"
+        ],
+        "description": "Customer search service. The API returns the list of an customers using a search parameters.",
+        "operationId": "GetCustomersSQL",
+        "requestBody": {
+          "description": "Record search parameters and filters",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Search"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Search"
+        },
+        "responses": {
+          "200": {
+            "description": "Results of customers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ICustomers"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [ ]
+          }
+        ]
+      }
+    },
+    "/AgileNowDemo/rest/Customers/SaveCustomer": {
+      "post": {
+        "tags": [
+          "Customers"
+        ],
+        "description": "Customer saving service. The API checks the entered record and if any errors, returns an error list. Saves entity to the database and if any errors, returns an error list. Returns the record of a customer structure list within valid values. ",
+        "operationId": "SaveCustomer",
+        "requestBody": {
+          "description": "The customer of demo application",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ICustomerPost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Record"
+        },
+        "responses": {
+          "200": {
+            "description": "The resultset of customer(s)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ICustomer"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [ ]
+          }
+        ]
+      }
+    },
+    "/AgileNowDemo/rest/Customers/SaveCustomers": {
+      "post": {
+        "tags": [
+          "Customers"
+        ],
+        "description": "Customers saving service. The API checks the entered record list and if any errors, returns an error list. Saves entity list to the database and if any errors, returns an error list. Returns the list of a customers structure list within valid values. ",
+        "operationId": "SaveCustomers",
+        "requestBody": {
+          "description": "The data loading record of customer saving.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomersData"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Data"
+        },
+        "responses": {
+          "200": {
+            "description": "The resultset of customer(s)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ICustomer"
+                  },
+                  "description": "The resultset of customer(s)"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [ ]
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Meta": {
+        "required": [
+          "TotalItems",
+          "CurrentPage",
+          "PageSize",
+          "Type"
+        ],
+        "type": "object",
+        "properties": {
+          "TotalItems": {
+            "type": "integer",
+            "description": "This field represents the total number of items available in the entire dataset, not just the items returned in the current response. It's useful for implementing pagination, as clients can use it to calculate the number of pages or total available items.",
+            "format": "int32",
+            "default": 0,
+            "example": 1000
+          },
+          "CurrentPage": {
+            "type": "integer",
+            "description": "This field specifies the current page of results being returned. It's often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.",
+            "format": "int32",
+            "default": 1,
+            "example": 50
+          },
+          "PageSize": {
+            "type": "integer",
+            "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.",
+            "format": "int32",
+            "default": 50,
+            "example": 50
+          },
+          "Type": {
+            "type": "string",
+            "description": "The type of the record",
+            "example": "User"
+          }
+        },
+        "description": "The object provides metadata about the list of items returned in the API response. It typically includes information that helps clients understand and work with the data."
+      },
+      "Error": {
+        "required": [
+          "Errors",
+          "StatusCode"
+        ],
+        "type": "object",
+        "properties": {
+          "Error": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "default": ""
+            },
+            "description": "Human-readable explanation of the errors"
+          },
+          "Type": {
+            "type": "string",
+            "description": "URI identifier that categorizes the error",
+            "default": ""
+          },
+          "Title": {
+            "type": "string",
+            "description": "Brief, human-readable message about the error",
+            "default": ""
+          },
+          "StatusCode": {
+            "type": "integer",
+            "description": "The HTTP response code",
+            "format": "int32",
+            "example": 400
+          },
+          "Instance": {
+            "type": "string",
+            "description": "URI that identifies the specific occurrence of the error",
+            "default": ""
+          },
+          "RequestKey": {
+            "type": "string",
+            "description": "Provides a request key that identifies the current request.",
+            "default": ""
+          }
+        },
+        "description": "The list of errors. Throw specific exceptions based on the received error."
+      },
+      "AbstractLong": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "description": "The primary key of the record row. If the Id attribute is used, then it must be unique",
+            "format": "int64",
+            "example": 1234567891234567
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identier of the record row. If the External Id attribute is used, then it must be unique",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the record row",
+            "default": ""
+          },
+          "Type": {
+            "type": "string",
+            "description": "The type of the record object",
+            "default": ""
+          }
+        },
+        "description": "The abstract object structure"
+      },
+      "CustomersData": {
+        "type": "object",
+        "properties": {
+          "Extra": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ListValidation"
+            }
+          },
+          "IsFullValidation": {
+            "type": "boolean",
+            "description": "If the value is true, the data quality of all fields are checked. This has an effect on performance.",
+            "example": false
+          },
+          "Customers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ICustomerData"
+            },
+            "description": "The list of customer data record"
+          }
+        },
+        "description": "The data loading record of customer saving"
+      },
+      "FieldType": {
+        "required": [
+          "Value"
+        ],
+        "type": "object",
+        "properties": {
+          "Field": {
+            "type": "string",
+            "description": "The name of the data field",
+            "default": ""
+          },
+          "Value": {
+            "type": "string",
+            "description": "The value of the data row",
+            "default": ""
+          }
+        },
+        "description": "The field object structure"
+      },
+      "Filter": {
+        "required": [
+          "Field",
+          "Value"
+        ],
+        "type": "object",
+        "properties": {
+          "Field": {
+            "type": "string",
+            "description": "The name of the database field. Example: &quot;Name&quot; or relation field &quot;OwnerId.Name&quot;",
+            "default": ""
+          },
+          "Value": {
+            "type": "string",
+            "description": "The value of the filter.\n\nYou can add multiple values separated by comma when using the &quot;In&quot;, &quot;Not In&quot; operators.\nExample of text field; USA;FIN;RUS\nExample of numeric field; 1,2,3",
+            "default": ""
+          },
+          "Operator": {
+            "type": "string",
+            "description": "The operator must be a standard comparison operator (=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, Not In)",
+            "default": ""
+          },
+          "Condition": {
+            "type": "string",
+            "description": "The AND and OR operators are used to filter records based on more than one condition",
+            "default": ""
+          },
+          "Type": {
+            "type": "string",
+            "description": "The type of the attribute",
+            "default": ""
+          }
+        },
+        "description": "In the context of List methods, filtering of resources can be achieved using SQL filter parameters. \n\nThese SQL filters provide a mechanism to specify optional search criteria, allowing you to refine the results of your queries. Additionally, you have the flexibility to use parent tables as search filters. \n\nFor instance, if the `Employee` table contains a `DepartmentId` field, you can search for a department name by referencing the `DepartmentId.Name` field name. It&#39;s important to note that all fields within the parent table are accessible for filtering purposes.\n\nFor a comprehensive list of supported SQL filter parameters specific to each record, please consult the documentation associated with the relevant method."
+      },
+      "ICustomer": {
+        "required": [
+          "Id",
+          "Name",
+          "Email",
+          "Phone",
+          "PostalCode",
+          "City",
+          "Country",
+          "OwnerId"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "description": "The identifier of customer",
+            "format": "int64",
+            "example": 1234567891234567
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of customer",
+            "default": ""
+          },
+          "Email": {
+            "type": "string",
+            "description": "The email of customer",
+            "default": ""
+          },
+          "Phone": {
+            "type": "string",
+            "description": "The phone number of customer",
+            "default": ""
+          },
+          "Address": {
+            "type": "string",
+            "description": "The address of customer",
+            "default": ""
+          },
+          "PostalCode": {
+            "type": "string",
+            "description": "The postal code of customer",
+            "default": ""
+          },
+          "City": {
+            "type": "string",
+            "description": "The city of customer",
+            "default": ""
+          },
+          "State": {
+            "type": "string",
+            "description": "The state of customer",
+            "default": ""
+          },
+          "Country": {
+            "type": "string",
+            "description": "The country of customer",
+            "default": ""
+          },
+          "OwnerId": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "ModifiedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "ModifiedOn": {
+            "type": "string",
+            "description": "The date the record was updated",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          },
+          "CreatedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The Identifier of the user who created the record",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          }
+        },
+        "description": "The customer of demo application"
+      },
+      "ICustomerData": {
+        "required": [
+          "Id",
+          "Name",
+          "Email",
+          "Phone",
+          "PostalCode",
+          "City",
+          "Country",
+          "OwnerId"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "description": "The identifier of customer",
+            "format": "int64",
+            "example": 1234567891234567
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of customer",
+            "default": ""
+          },
+          "Email": {
+            "type": "string",
+            "description": "The email of customer",
+            "default": ""
+          },
+          "Phone": {
+            "type": "string",
+            "description": "The phone number of customer",
+            "default": ""
+          },
+          "Address": {
+            "type": "string",
+            "description": "The address of customer",
+            "default": ""
+          },
+          "PostalCode": {
+            "type": "string",
+            "description": "The postal code of customer",
+            "default": ""
+          },
+          "City": {
+            "type": "string",
+            "description": "The city of customer",
+            "default": ""
+          },
+          "State": {
+            "type": "string",
+            "description": "The state of customer",
+            "default": ""
+          },
+          "Country": {
+            "type": "string",
+            "description": "The country of customer",
+            "default": ""
+          },
+          "OwnerId": {
+            "type": "string",
+            "description": "The owner identifier of customer (OutSystems user)",
+            "default": ""
+          },
+          "ModifiedOn": {
+            "type": "string",
+            "description": "The date the record was updated",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          },
+          "ModifiedBy": {
+            "type": "string",
+            "description": "The Identifier of the user who updated the record",
+            "default": ""
+          },
+          "CreatedBy": {
+            "type": "string",
+            "description": "The Identifier of the user who created the record",
+            "default": ""
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The Identifier of the user who created the record",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          }
+        },
+        "description": "The excel and data loading record of customer"
+      },
+      "ICustomerPost": {
+        "required": [
+          "Id",
+          "Name",
+          "Email",
+          "Phone",
+          "PostalCode",
+          "City",
+          "Country",
+          "OwnerId"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "description": "The identifier of customer",
+            "format": "int64",
+            "example": 1234567891234567
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of customer",
+            "default": ""
+          },
+          "Email": {
+            "type": "string",
+            "description": "The email of customer",
+            "default": ""
+          },
+          "Phone": {
+            "type": "string",
+            "description": "The phone number of customer",
+            "default": ""
+          },
+          "Address": {
+            "type": "string",
+            "description": "The address of customer",
+            "default": ""
+          },
+          "PostalCode": {
+            "type": "string",
+            "description": "The postal code of customer",
+            "default": ""
+          },
+          "City": {
+            "type": "string",
+            "description": "The city of customer",
+            "default": ""
+          },
+          "State": {
+            "type": "string",
+            "description": "The state of customer",
+            "default": ""
+          },
+          "Country": {
+            "type": "string",
+            "description": "The country of customer",
+            "default": ""
+          },
+          "OwnerId": {
+            "$ref": "#/components/schemas/FieldType"
+          }
+        },
+        "description": "The customer of demo application"
+      },
+      "ICustomers": {
+        "type": "object",
+        "properties": {
+          "Meta": {
+            "$ref": "#/components/schemas/Meta"
+          },
+          "Data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ICustomerData"
+            },
+            "description": "Results of customers"
+          }
+        },
+        "description": ""
+      },
+      "ListValidation": {
+        "required": [
+          "Name"
+        ],
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string",
+            "description": "The name of the entity field.",
+            "default": ""
+          },
+          "Label": {
+            "type": "string",
+            "description": "The label of row",
+            "default": ""
+          },
+          "FieldName": {
+            "type": "string",
+            "description": "The field name of relation database table.\n\nExample; \nThe field name is &quot;TenantId&quot; and is associated with the &quot;Tenant&quot; table. You want to use in the &quot;Tenant&quot; table &quot;Name&quot; field fetching data. Once &quot;Name&quot; is specified, the validation service retrieves the tenant identifier from the &quot;Tenant&quot; table based on the &quot;Name&quot; field.",
+            "default": ""
+          },
+          "Required": {
+            "type": "boolean",
+            "description": "If True, the value is required.",
+            "example": false
+          },
+          "Unique": {
+            "type": "boolean",
+            "description": "If True, the value must be unique in the database and you cannot add multiple values.",
+            "example": false
+          },
+          "Max": {
+            "type": "string",
+            "description": "The max value of input value.",
+            "default": ""
+          },
+          "Min": {
+            "type": "string",
+            "description": "The min value of input value.",
+            "default": ""
+          },
+          "Pattern": {
+            "type": "string",
+            "description": "The pattern of the validation. Searches the input string for an occurrence of a regular expression.",
+            "default": ""
+          },
+          "DefaultValue": {
+            "type": "string",
+            "description": "The default value of row. If the value of the field is empty, the service automatically sets the value in the field. If the value does not match the data type, the value is cleaned. Remember data types.",
+            "default": ""
+          }
+        },
+        "description": "List validation for entity attribute"
+      },
+      "Order": {
+        "required": [
+          "Field"
+        ],
+        "type": "object",
+        "properties": {
+          "Field": {
+            "type": "string",
+            "description": "The name of the database field",
+            "default": ""
+          },
+          "Order": {
+            "type": "string",
+            "description": "Sort order of query (ASC/DESC)",
+            "default": ""
+          }
+        },
+        "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified.\n\nIf not specified, the table label or primary key is used as the default sort order.\n\nYou can also use parent tables as a sorting. For example, the &quot;Employee&quot; table has a &quot;DepartmentId&quot; field, so you can sorting for a department name using the &quot;DepartmentId.Name&quot; field name. All fields in the parent table are available.\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record."
+      },
+      "Search": {
+        "type": "object",
+        "properties": {
+          "Fields": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "default": ""
+            },
+            "description": "The list of database column attributes. If list is empty then all of fields will be returned.\n\nSpecial fields;\n_TotalCount = Attibute returns the number of rows that matches a specified criterion\n_Type = Returns a type of database table"
+          },
+          "Filters": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Filter"
+            },
+            "description": "In the context of List methods, filtering of resources can be achieved using SQL filter parameters. \n\nThese SQL filters provide a mechanism to specify optional search criteria, allowing you to refine the results of your queries. Additionally, you have the flexibility to use parent tables as search filters. \n\nFor instance, if the `Employee` table contains a `DepartmentId` field, you can search for a department name by referencing the `DepartmentId.Name` field name. It&#39;s important to note that all fields within the parent table are accessible for filtering purposes.\n\nFor a comprehensive list of supported SQL filter parameters specific to each record, please consult the documentation associated with the relevant method."
+          },
+          "Orders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Order"
+            },
+            "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified.\n\nIf not specified, the table label or primary key is used as the default sort order."
+          },
+          "StartIndex": {
+            "type": "integer",
+            "description": "If not specified, the first set of resources (number of resources limited by the page size parameter) will be returned.",
+            "format": "int32",
+            "example": 0
+          },
+          "PageSize": {
+            "type": "integer",
+            "description": "This limits the number of resources to be returned in the response. The value ranges from 1 to 1000 and defaults to 50.",
+            "format": "int32",
+            "example": 0
+          }
+        },
+        "description": "Record search parameters and filters for API"
+      },
+      "Customers": {
+        "type": "object",
+        "properties": {
+          "Meta": {
+            "$ref": "#/components/schemas/Meta"
+          },
+          "Data": {
+            "$ref": "#/components/schemas/ICustomer"
+          }
+        },
+        "description": "Results of customers"
+      }
+    },
+    "responses": {
+      "400": {
+        "description": "Bad Request - The user has provided input that the browser is unable to convert.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "Errors": [
+                "The user has provided input that the browser is unable to convert.",
+                "There are multiple rows in the database for the same value",
+                "The value does not match the specified entity structure",
+                "..."
+              ],
+              "Type": "/Errors/Bad Input",
+              "Title": "Bad Request",
+              "StatusCode": 400,
+              "Instance": "/OpenApi/rest/Xzy",
+              "RequestKey": "894ea43c-b8a6-4195-9a9c-82c07d9cc33a"
+            }
+          }
+        }
+      },
+      "401": {
+        "description": "Unauthorized - The response status code indicates that the client request has not been completed because it lacks valid authentication credentials for the requested resource.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "Errors": [
+                "The session Id or OAuth token used has expired or is invalid."
+              ],
+              "Type": "/Errors/Unauthorized",
+              "Title": "Unauthorized",
+              "StatusCode": 401,
+              "Instance": "/OpenApi/rest/Xzy",
+              "RequestKey": "894ea43c-b8a6-4195-9a9c-82c07d9cc33a"
+            }
+          }
+        }
+      },
+      "403": {
+        "description": "Forbidden - The user does not have access to execute operation",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "Errors": [
+                "The user does not have access to execute operation"
+              ],
+              "Type": "/Errors/Permission",
+              "Title": "Bad Request",
+              "StatusCode": 403,
+              "Instance": "/OpenApi/rest/Xzy",
+              "RequestKey": "894ea43c-b8a6-4195-9a9c-82c07d9cc33a"
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Not Found - The requested resource does not exist.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "Errors": [
+                "The requested resource does not exist"
+              ],
+              "Type": "/Errors/Not Found",
+              "Title": "Not Found",
+              "StatusCode": 404,
+              "Instance": "/OpenApi/rest/Xzy",
+              "RequestKey": "894ea43c-b8a6-4195-9a9c-82c07d9cc33a"
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal Server Error - An internal server error is an error on the web server you're trying to access.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "Errors": [
+                "An internal server error is an error on the web server you're trying to access."
+              ],
+              "Type": "/Errors/Internal Server Error",
+              "Title": "Internal Server Error",
+              "StatusCode": 500,
+              "Instance": "/OpenApi/rest/Xzy",
+              "RequestKey": "894ea43c-b8a6-4195-9a9c-82c07d9cc33a"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "OAuth2": {
+        "type": "oauth2",
+        "description": "oAuth autentication flow",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://dev.esystems.fi/oAuth/rest/v2/Token",
+            "refreshUrl": "https://dev.esystems.fi/oAuth/rest/v2/Token",
+            "scopes": { }
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Customers",
+      "description": ""
+    }
+  ]
+}
