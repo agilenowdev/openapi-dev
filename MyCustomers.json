@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.173"
+    "version": "3.0.174"
   },
   "servers": [
     {
@@ -102,7 +102,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/MyCustomerUpdateData"
+                "$ref": "#/components/schemas/MyCustomerData"
               }
             }
           },
@@ -283,7 +283,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/MyCustomerUpsertData"
+                "$ref": "#/components/schemas/MyCustomerData"
               }
             }
           },
@@ -326,7 +326,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/MyCustomerInsertData"
+                "$ref": "#/components/schemas/MyCustomerData"
               }
             }
           },
@@ -617,7 +617,7 @@
         },
         "description": "The list of `MyCustomer` records"
       },
-      "MyCustomerUpsertData": {
+      "MyCustomerData": {
         "required": [
           "Id",
           "Name",
@@ -712,26 +712,6 @@
           }
         },
         "description": "The field object structure"
-      },
-      "MyCustomerInsertData": {
-        "type": "object",
-        "properties": {
-          "Attribute1": {
-            "type": "string",
-            "description": "Attribute1 text"
-          }
-        },
-        "description": "The record of MyCustomer information."
-      },
-      "MyCustomerUpdateData": {
-        "type": "object",
-        "properties": {
-          "Attribute1": {
-            "type": "string",
-            "description": "Attribute1 text"
-          }
-        },
-        "description": "The record of MyCustomer information."
       },
       "MyCustomerText": {
         "required": [
