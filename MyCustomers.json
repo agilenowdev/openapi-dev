@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.154"
+    "version": "3.0.155"
   },
   "servers": [
     {
@@ -371,7 +371,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/MyCustomersData"
+                "$ref": "#/components/schemas/MyCustomerData"
               }
             }
           },
@@ -794,77 +794,6 @@
           }
         },
         "description": "The record of MyCustomer information."
-      },
-      "MyCustomersData": {
-        "type": "object",
-        "properties": {
-          "Extra": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ListValidation"
-            },
-            "description": "List validation for entity attribute"
-          },
-          "IsFullValidation": {
-            "type": "boolean",
-            "description": "If the value is true, the data quality of all fields are checked. This has an effect on performance.",
-            "default": false,
-            "example": false
-          },
-          "MyCustomers": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/MyCustomerText"
-            },
-            "description": "The list of `MyCustomer` data record for import"
-          }
-        },
-        "description": "The data loading record of MyCustomer importing"
-      },
-      "ListValidation": {
-        "required": [
-          "Name"
-        ],
-        "type": "object",
-        "properties": {
-          "Name": {
-            "type": "string",
-            "description": "The name of the entity field."
-          },
-          "FieldName": {
-            "type": "string",
-            "description": "The field name of relation database table.\n\nExample; \nThe field name is &quot;TenantId&quot; and is associated with the &quot;Tenant&quot; table. You want to use in the &quot;Tenant&quot; table &quot;Name&quot; field fetching data. Once &quot;Name&quot; is specified, the validation service retrieves the tenant identifier from the &quot;Tenant&quot; table based on the &quot;Name&quot; field."
-          },
-          "Required": {
-            "type": "boolean",
-            "description": "If True, the value is required.",
-            "default": false,
-            "example": false
-          },
-          "Unique": {
-            "type": "boolean",
-            "description": "If True, the value must be unique in the database and you cannot add multiple values.",
-            "default": false,
-            "example": false
-          },
-          "Max": {
-            "type": "string",
-            "description": "The max value of input value."
-          },
-          "Min": {
-            "type": "string",
-            "description": "The min value of input value."
-          },
-          "Pattern": {
-            "type": "string",
-            "description": "The pattern of the validation. Searches the input string for an occurrence of a regular expression."
-          },
-          "DefaultValue": {
-            "type": "string",
-            "description": "The default value of row. If the value of the field is empty, the service automatically sets the value in the field. If the value does not match the data type, the value is cleaned. Remember data types."
-          }
-        },
-        "description": "List validation for entity attribute"
       }
     },
     "responses": {
