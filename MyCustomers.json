@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.175"
+    "version": "3.0.176"
   },
   "servers": [
     {
@@ -490,14 +490,118 @@
         "description": "The list of errors. Throw specific exceptions based on the received error."
       },
       "MyCustomer": {
+        "required": [
+          "Id",
+          "Name",
+          "Is_Active"
+        ],
         "type": "object",
         "properties": {
-          "Attribute1": {
+          "Id": {
+            "type": "integer",
+            "description": "The guid to identify the customer",
+            "format": "int64",
+            "default": 0,
+            "example": 0
+          },
+          "ExternalId": {
             "type": "string",
-            "description": "Attribute1 text"
+            "description": "The external identifier of the customer"
+          },
+          "SapId": {
+            "type": "string",
+            "description": "This field is the SAP Id and you can use this between the two systems"
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the customer"
+          },
+          "ParentCustomerId": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "OwnerId": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the customer is active and can be used",
+            "default": false,
+            "example": false
+          },
+          "Is_Deleted": {
+            "type": "boolean",
+            "description": "Defines if the customer is deleted and cannot be used",
+            "default": false,
+            "example": false
+          },
+          "ModifiedOn": {
+            "type": "string",
+            "description": "The date the record was updated",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          },
+          "ModifiedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date the record was created",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          },
+          "Attribute2": {
+            "type": "string",
+            "description": "Attribute2 text"
+          },
+          "Attribute3": {
+            "type": "string",
+            "description": "Attribute3 text"
+          },
+          "Attribute4": {
+            "type": "string",
+            "description": "Attribute4 text"
           }
         },
         "description": "The record of MyCustomer information."
+      },
+      "AbstractLong": {
+        "required": [
+          "Id",
+          "ExternalId",
+          "Name",
+          "Type"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "description": "The primary key of the record row. If the Id attribute is used, then it must be unique",
+            "format": "int64",
+            "default": 0,
+            "example": 1234567891234567
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identier of the record row. If the External Id attribute is used, then it must be unique",
+            "example": "3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5"
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the record row",
+            "example": "Bob Normal"
+          },
+          "Type": {
+            "type": "string",
+            "description": "The type of the record object",
+            "example": "User"
+          }
+        },
+        "description": "The abstract object structure"
       },
       "MyCustomers": {
         "type": "object",
@@ -516,21 +620,183 @@
         "description": "The list of `MyCustomer` records"
       },
       "MyCustomerData": {
+        "required": [
+          "Id",
+          "Name",
+          "Is_Active"
+        ],
         "type": "object",
         "properties": {
-          "Attribute1": {
+          "Id": {
+            "type": "integer",
+            "description": "The guid to identify the customer",
+            "format": "int64",
+            "default": 0,
+            "example": 0
+          },
+          "ExternalId": {
             "type": "string",
-            "description": "Attribute1 text"
+            "description": "The external identifier of the customer"
+          },
+          "SapId": {
+            "type": "string",
+            "description": "This field is the SAP Id and you can use this between the two systems"
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the customer"
+          },
+          "ParentCustomerId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "OwnerId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the customer is active and can be used",
+            "default": false,
+            "example": false
+          },
+          "Is_Deleted": {
+            "type": "boolean",
+            "description": "Defines if the customer is deleted and cannot be used",
+            "default": false,
+            "example": false
+          },
+          "ModifiedOn": {
+            "type": "string",
+            "description": "The date the record was updated",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          },
+          "ModifiedBy": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "CreatedBy": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date the record was created",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          },
+          "Attribute2": {
+            "type": "string",
+            "description": "Attribute2 text"
+          },
+          "Attribute3": {
+            "type": "string",
+            "description": "Attribute3 text"
+          },
+          "Attribute4": {
+            "type": "string",
+            "description": "Attribute4 text"
           }
         },
         "description": "The record of MyCustomer information."
       },
-      "MyCustomerText": {
+      "FieldType": {
+        "required": [
+          "Field",
+          "Value"
+        ],
         "type": "object",
         "properties": {
-          "Attribute1": {
+          "Field": {
             "type": "string",
-            "description": "Attribute1 text"
+            "description": "The name of the data field"
+          },
+          "Value": {
+            "type": "string",
+            "description": "The value of the data row"
+          }
+        },
+        "description": "The field object structure"
+      },
+      "MyCustomerText": {
+        "required": [
+          "Id",
+          "Name",
+          "Is_Active"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "description": "The guid to identify the customer",
+            "format": "int64",
+            "default": 0,
+            "example": 0
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the customer"
+          },
+          "SapId": {
+            "type": "string",
+            "description": "This field is the SAP Id and you can use this between the two systems"
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the customer"
+          },
+          "ParentCustomerId": {
+            "type": "string",
+            "description": "The identifier of the parent customer"
+          },
+          "OwnerId": {
+            "type": "string",
+            "description": "The identifier of the user who own the customer"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the customer is active and can be used",
+            "default": false,
+            "example": false
+          },
+          "Is_Deleted": {
+            "type": "boolean",
+            "description": "Defines if the customer is deleted and cannot be used",
+            "default": false,
+            "example": false
+          },
+          "ModifiedOn": {
+            "type": "string",
+            "description": "The date the record was updated",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          },
+          "ModifiedBy": {
+            "type": "string",
+            "description": "The Identifier of the user who updated the record"
+          },
+          "CreatedBy": {
+            "type": "string",
+            "description": "The Identifier of the user who created the record"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date the record was created",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          },
+          "Attribute2": {
+            "type": "string",
+            "description": "Attribute2 text"
+          },
+          "Attribute3": {
+            "type": "string",
+            "description": "Attribute3 text"
+          },
+          "Attribute4": {
+            "type": "string",
+            "description": "Attribute4 text"
           }
         },
         "description": "The record of MyCustomer information."
