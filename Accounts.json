@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "2.0.64"
+    "version": "2.0.65"
   },
   "servers": [
     {
@@ -72,7 +72,8 @@
         "security": [
           {
             "OAuth2": [
-              "Account:Read"
+              "Account:Read",
+              "AccessManager:Read"
             ]
           }
         ]
@@ -143,7 +144,8 @@
         "security": [
           {
             "OAuth2": [
-              "Account:Update"
+              "Account:Update",
+              "AccessManager:Update"
             ]
           }
         ]
@@ -202,7 +204,8 @@
         "security": [
           {
             "OAuth2": [
-              "Account:Delete"
+              "Account:Delete",
+              "AccessManager:Delete"
             ]
           }
         ]
@@ -293,7 +296,8 @@
         "security": [
           {
             "OAuth2": [
-              "Account:Read"
+              "Account:Read",
+              "AccessManager:Read"
             ]
           }
         ]
@@ -345,7 +349,8 @@
         "security": [
           {
             "OAuth2": [
-              "Account:Create, Update"
+              "Account:Create, Update",
+              "AccessManager:Create, Update"
             ]
           }
         ]
@@ -395,7 +400,8 @@
         "security": [
           {
             "OAuth2": [
-              "Account:Create"
+              "Account:Create",
+              "AccessManager:Create"
             ]
           }
         ]
@@ -505,7 +511,8 @@
         "security": [
           {
             "OAuth2": [
-              "Account:Read"
+              "Account:Read",
+              "AccessManager:Read"
             ]
           }
         ]
@@ -578,7 +585,8 @@
         "security": [
           {
             "OAuth2": [
-              "Account:Create, Update"
+              "Account:Create, Update",
+              "AccessManager:Create, Update"
             ]
           }
         ]
@@ -658,7 +666,8 @@
         "security": [
           {
             "OAuth2": [
-              "Account:Delete"
+              "Account:Delete",
+              "AccessManager:Delete"
             ]
           }
         ]
@@ -768,7 +777,8 @@
         "security": [
           {
             "OAuth2": [
-              "Account:Read"
+              "Account:Read",
+              "AccessManager:Read"
             ]
           }
         ]
@@ -841,7 +851,8 @@
         "security": [
           {
             "OAuth2": [
-              "Account:Create, Update"
+              "Account:Create, Update",
+              "AccessManager:Create, Update"
             ]
           }
         ]
@@ -921,7 +932,8 @@
         "security": [
           {
             "OAuth2": [
-              "Account:Delete"
+              "Account:Delete",
+              "AccessManager:Delete"
             ]
           }
         ]
@@ -1530,10 +1542,15 @@
             "refreshUrl": "https://dev.esystems.fi/oAuth/rest/v2/Token",
             "scopes": {
               "Account:Read": "Account role. (ABAC) permissions required to perform a function.",
+              "AccessManager:Read": "Allows to edit access groups and all related data. (ABAC) permissions required to perform a function.",
               "Account:Create, Update": "Account role. (ABAC) permissions required to perform a function.",
+              "AccessManager:Create, Update": "Allows to edit access groups and all related data. (ABAC) permissions required to perform a function.",
               "Account:Create": "Account role. (ABAC) permissions required to perform a function.",
+              "AccessManager:Create": "Allows to edit access groups and all related data. (ABAC) permissions required to perform a function.",
               "Account:Update": "Account role. (ABAC) permissions required to perform a function.",
-              "Account:Delete": "Account role. (ABAC) permissions required to perform a function."
+              "AccessManager:Update": "Allows to edit access groups and all related data. (ABAC) permissions required to perform a function.",
+              "Account:Delete": "Account role. (ABAC) permissions required to perform a function.",
+              "AccessManager:Delete": "Allows to edit access groups and all related data. (ABAC) permissions required to perform a function."
             }
           }
         }
