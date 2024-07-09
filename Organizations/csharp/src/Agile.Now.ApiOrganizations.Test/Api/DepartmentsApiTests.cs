@@ -8,16 +8,12 @@
  */
 
 using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Reflection;
-using RestSharp;
-using Xunit;
-
-using Agile.Now.ApiOrganizations.Client;
+using System.Security.Principal;
 using Agile.Now.ApiOrganizations.Api;
+using Agile.Now.ApiOrganizations.Client;
+using Agile.Now.ApiOrganizations.Model;
+using Microsoft.VisualStudio.TestPlatform.Utilities;
+using Xunit;
 // uncomment below to import models
 //using Agile.Now.ApiOrganizations.Model;
 
@@ -32,16 +28,23 @@ namespace Agile.Now.ApiOrganizations.Test.Api
     /// </remarks>
     public class DepartmentsApiTests : IDisposable
     {
-        private DepartmentsApi instance;
+        private DepartmentsApi api;
 
         public DepartmentsApiTests()
         {
-            instance = new DepartmentsApi();
+            Configuration configuration = new Configuration
+            {
+                BasePath = "https://dev.esystems.fi",
+                OAuthTokenUrl = "https://dev.esystems.fi/oAuth/rest/v2/Token",
+                OAuthFlow = Client.Auth.OAuthFlow.APPLICATION,
+                OAuthClientId = "c8907421-0886-4fb0-b859-d29966762e16",
+                OAuthClientSecret = "1da54fa9-ae11-4db3-9740-1bb47b85cd8e"
+            };
+            api = new DepartmentsApi(configuration);
         }
 
         public void Dispose()
         {
-            // Cleanup when everything is done.
         }
 
         /// <summary>
@@ -50,8 +53,15 @@ namespace Agile.Now.ApiOrganizations.Test.Api
         [Fact]
         public void InstanceTest()
         {
-            // TODO uncomment below to test 'IsType' DepartmentsApi
-            //Assert.IsType<DepartmentsApi>(instance);
+        }
+
+        void AssertDepartmentDataEqual(DepartmentInsertData departmentInsertData, Department department)
+        {
+            Assert.Equal(departmentInsertData.Name, department.Name);
+            Assert.Equal(departmentInsertData.ContactName, department.ContactName);
+            Assert.Equal(departmentInsertData.ContactEmail, department.ContactEmail);
+            Assert.Equal(departmentInsertData.DepartmentTypeId.Value, department.DepartmentTypeId.Id);
+            Assert.Equal(departmentInsertData.CountryId.Value, department.CountryId.Name);
         }
 
         /// <summary>
@@ -60,10 +70,18 @@ namespace Agile.Now.ApiOrganizations.Test.Api
         [Fact]
         public void CreateDepartmentTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //DepartmentInsertData departmentInsertData = null;
-            //var response = instance.CreateDepartment(departmentInsertData);
-            //Assert.IsType<Department>(response);
+            var departmentData = TestDepartmentData.CreateDepartmentData();
+            var createdDepartment = api.CreateDepartment(departmentData);
+            try
+            {
+                //AssertAccountDataEqual(accountData, createdAccount);
+                //Assert.Null(Record.Exception(() => api.GetAccount(createdAccount.Id)));
+                //output.WriteLine($"TenantId= {createdAccount.TenantId.Id}");
+            }
+            finally
+            {
+                api.DeleteDepartment(createdDepartment.Id);
+            }
         }
 
         /// <summary>

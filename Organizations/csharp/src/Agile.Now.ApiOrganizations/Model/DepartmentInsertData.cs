@@ -51,11 +51,6 @@ namespace Agile.Now.ApiOrganizations.Model
         /// <param name="countryId">countryId.</param>
         public DepartmentInsertData(string id = default(string), string externalId = default(string), string name = default(string), FieldType departmentTypeId = default(FieldType), FieldType parentDepartmentId = default(FieldType), string contactName = default(string), string contactEmail = default(string), string contactPhone = default(string), FieldType ownerId = default(FieldType), FieldType countryId = default(FieldType))
         {
-            // to ensure "id" is required (not null)
-            if (id == null)
-            {
-                throw new ArgumentNullException("id is a required property for DepartmentInsertData and cannot be null");
-            }
             this.Id = id;
             // to ensure "name" is required (not null)
             if (name == null)
@@ -82,7 +77,7 @@ namespace Agile.Now.ApiOrganizations.Model
         /// The guid to identify the department
         /// </summary>
         /// <value>The guid to identify the department</value>
-        [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Id", EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>

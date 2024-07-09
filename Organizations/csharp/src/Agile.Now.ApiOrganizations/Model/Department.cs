@@ -64,11 +64,6 @@ namespace Agile.Now.ApiOrganizations.Model
                 throw new ArgumentNullException("id is a required property for Department and cannot be null");
             }
             this.Id = id;
-            // to ensure "name" is required (not null)
-            if (name == null)
-            {
-                throw new ArgumentNullException("name is a required property for Department and cannot be null");
-            }
             this.Name = name;
             // to ensure "departmentTypeId" is required (not null)
             if (departmentTypeId == null)
@@ -110,7 +105,7 @@ namespace Agile.Now.ApiOrganizations.Model
         /// The name of the department
         /// </summary>
         /// <value>The name of the department</value>
-        [DataMember(Name = "Name", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Name", EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -177,7 +172,7 @@ namespace Agile.Now.ApiOrganizations.Model
         /// </summary>
         /// <value>Defines if the department is active and can be used</value>
         /// <example>false</example>
-        [DataMember(Name = "Is_Active", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Is_Active", EmitDefaultValue = true)]
         public bool IsActive { get; set; }
 
         /// <summary>
