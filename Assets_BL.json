@@ -1,0 +1,4081 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Asset API",
+    "description": "## Introduction\r\nThe OpenAPI Specification (OAS) defines a standard, language-agnostic interface to RESTful APIs which allows both humans and computers to discover and understand the capabilities of the service without access to source code, documentation, or through network traffic inspection. When properly defined, a consumer can understand and interact with the remote service with a minimal amount of implementation logic.\r\n\r\nAn OpenAPI definition can then be used by documentation generation tools to display the API, code generation tools to generate servers and clients in various programming languages, testing tools, and many other use cases.\r\n\r\n| Version | URL | Description |\r\n| --- | --- | --- |\r\n| v3 | https://dev.esystems.fi/Endpoint/rest/Doc/v3/Json/Assets_BL | Serializes to the Open API document as a string in the JSON format and represents all patches of OpenAPI V3.0 spec (e.g. 3.0.0, 3.0.1). |\r\n| v3 | https://dev.esystems.fi/Endpoint/rest/Doc/v3/Yaml/Assets_BL | Serializes to the Open API document as a string in the Yaml format and represents all patches of OpenAPI V3.0 spec (e.g. 3.0.0, 3.0.1). |\r\n| v2 | https://dev.esystems.fi/Endpoint/rest/Doc/v2/Json/Assets_BL | Serializes to the Open API document as a string in the JSON format and represents OpenAPI V2.0 spec.|\r\n| v2 | https://dev.esystems.fi/Endpoint/rest/Doc/v2/Yaml/Assets_BL | Serializes to the Open API document as a string in the Yaml format and represents OpenAPI V2.0 spec. |",
+    "contact": { },
+    "license": {
+      "name": "BSD-3 license",
+      "url": "https://opensource.org/licenses/BSD-3-Clause"
+    },
+    "version": "2.0.36"
+  },
+  "servers": [
+    {
+      "url": "https://dev.esystems.fi",
+      "description": "Default entry point of service"
+    }
+  ],
+  "paths": {
+    "/Assets_BL/rest/Certificates/": {
+      "post": {
+        "tags": [
+          "Certificates"
+        ],
+        "description": "Insert or Update (Upsert) a certificate using an ExternalId or Id field value.",
+        "operationId": "UpsertCertificate",
+        "requestBody": {
+          "description": "Certificate information to insert or update.\n\nThe input parameter must be used in the `CertificatePost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CertificatePost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Certificate"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated certificate information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Certificate"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Certificates"
+        ],
+        "description": "Use the method to execute a query that includes information that returns all the results in a single response, or if needed, returns part of the results and an identifier used to retrieve the remaining results.",
+        "operationId": "ListCertificates",
+        "parameters": [
+          {
+            "name": "Fields",
+            "in": "query",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: Name,ExternalId\n\n",
+            "schema": {
+              "type": "string",
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: Name,ExternalId\n\n",
+              "default": ""
+            }
+          },
+          {
+            "name": "Filters",
+            "in": "query",
+            "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the &quot;Employee&quot; table has a &quot;DepartmentId&quot; field, so you can search for a department name using the &quot;DepartmentId.Name&quot; field name. All fields in the parent table are available.\n\nThe name of the database field. Example: &quot;Name&quot; or relation field &quot;OwnerId.Name&quot;\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator (=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn)\n\nYou can add multiple values separated by comma when using the &quot;In&quot;, &quot;NotIn&quot; operators.\nExample of text field; &quot;USA;FIN;RUS&quot;\nExample of numeric field; &quot;1,2,3&quot;\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+            "schema": {
+              "type": "string",
+              "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the &quot;Employee&quot; table has a &quot;DepartmentId&quot; field, so you can search for a department name using the &quot;DepartmentId.Name&quot; field name. All fields in the parent table are available.\n\nThe name of the database field. Example: &quot;Name&quot; or relation field &quot;OwnerId.Name&quot;\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator (=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn)\n\nYou can add multiple values separated by comma when using the &quot;In&quot;, &quot;NotIn&quot; operators.\nExample of text field; &quot;USA;FIN;RUS&quot;\nExample of numeric field; &quot;1,2,3&quot;\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+              "default": ""
+            }
+          },
+          {
+            "name": "Orders",
+            "in": "query",
+            "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: Name DESC,CreatedOn ASC",
+            "schema": {
+              "type": "string",
+              "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: Name DESC,CreatedOn ASC",
+              "default": ""
+            }
+          },
+          {
+            "name": "StartIndex",
+            "in": "query",
+            "description": "The first record to return. Use this parameter to paginate the results. \n\nThe default value is 0. If not specified, the first set of resources (number of resources limited by the page size parameter) will be returned.",
+            "schema": {
+              "type": "integer",
+              "description": "The first record to return. Use this parameter to paginate the results. \n\nThe default value is 0. If not specified, the first set of resources (number of resources limited by the page size parameter) will be returned.",
+              "format": "int32"
+            },
+            "x-example": 0
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "This limits the number of resources to be returned in the response.\n\nThe value ranges from 1 to 1000 and defaults to 50.",
+            "schema": {
+              "type": "integer",
+              "description": "This limits the number of resources to be returned in the response.\n\nThe value ranges from 1 to 1000 and defaults to 50.",
+              "format": "int32"
+            },
+            "x-example": 0
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of certificate information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Certificate"
+                  },
+                  "description": "The list of certificate information"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Assets_BL/rest/Certificates/{Id}": {
+      "delete": {
+        "tags": [
+          "Certificates"
+        ],
+        "description": "Use the query string resource to delete record(s). \n\nSpecify the record ID and use the DELETE method of the resource to delete a record(s).",
+        "operationId": "DeleteCertificate",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the employee\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the employee\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted certificate information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Certificate"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Certificates"
+        ],
+        "description": "Get a record of the Certificate entity. The method returns one record of the entity.\n\nIf the `Id` field value is not matched, then a 404 error is reported (Errors/Not Found), and the error record is returned.\n\nIf the `Id` field value is matched multiple times, then a `400` error is reported (Errors/Multible Rows), and the error record is returned.\n\nIf the value in the `Name` field value does not match, a `400` error is reported (Errors/Invalid Field), and the error record is returned.",
+        "operationId": "GetCertificate",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the equipment\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the equipment\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The record of certificate information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Certificate"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Certificates"
+        ],
+        "description": "Update a certificate using an ExternalId or Id field value.\n\nYou use the `CertificatePost` object resource to update records. Provide the updated record information in your request data and use the PUT method of the resource with a specific record ID to update that record.\n\nThe response body will contain the full `Certificate` object of the updated record if the call is successful.",
+        "operationId": "UpdateCertificate",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the equipment\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the equipment\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Certificate information to update.\n\nThe input parameter must be used in the `ContractTypePost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CertificatePost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Certificate"
+        },
+        "responses": {
+          "200": {
+            "description": "Updated equipment information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Certificate"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Assets_BL/rest/Certificates/Create": {
+      "post": {
+        "tags": [
+          "Certificates"
+        ],
+        "description": "Use the `CertificatePost` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the POST method of the resource.\n\nThe response body will contain the full `Certificate` object of the created record if the call is successful.",
+        "operationId": "CreateCertificate",
+        "requestBody": {
+          "description": "Certificate information to insert.\n\nThe input parameter must be used in the `CertificatePost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CertificatePost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Certificate"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted certificate information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Certificate"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Assets_BL/rest/Certificates/Import": {
+      "post": {
+        "tags": [
+          "Certificates"
+        ],
+        "description": "Insert or Update (Upsert) a list of certificates using an ExternalId or Id field value.",
+        "operationId": "PatchCertificates",
+        "requestBody": {
+          "description": "The list of department information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CertificatesData"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Data"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated list of department information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Certificate"
+                  },
+                  "description": "Inserted or updated list of department information."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Assets_BL/rest/Equipments/": {
+      "get": {
+        "tags": [
+          "Equipments"
+        ],
+        "description": "Use the method to execute a query that includes information that returns all the results in a single response, or if needed, returns part of the results and an identifier used to retrieve the remaining results.",
+        "operationId": "ListEquipments",
+        "parameters": [
+          {
+            "name": "Fields",
+            "in": "query",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: Name,ExternalId\n\n",
+            "schema": {
+              "type": "string",
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: Name,ExternalId\n\n",
+              "default": ""
+            }
+          },
+          {
+            "name": "Filters",
+            "in": "query",
+            "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the &quot;Employee&quot; table has a &quot;DepartmentId&quot; field, so you can search for a department name using the &quot;DepartmentId.Name&quot; field name. All fields in the parent table are available.\n\nThe name of the database field. Example: &quot;Name&quot; or relation field &quot;OwnerId.Name&quot;\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator (=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn)\n\nYou can add multiple values separated by comma when using the &quot;In&quot;, &quot;NotIn&quot; operators.\nExample of text field; &quot;USA;FIN;RUS&quot;\nExample of numeric field; &quot;1,2,3&quot;\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+            "schema": {
+              "type": "string",
+              "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the &quot;Employee&quot; table has a &quot;DepartmentId&quot; field, so you can search for a department name using the &quot;DepartmentId.Name&quot; field name. All fields in the parent table are available.\n\nThe name of the database field. Example: &quot;Name&quot; or relation field &quot;OwnerId.Name&quot;\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator (=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn)\n\nYou can add multiple values separated by comma when using the &quot;In&quot;, &quot;NotIn&quot; operators.\nExample of text field; &quot;USA;FIN;RUS&quot;\nExample of numeric field; &quot;1,2,3&quot;\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+              "default": ""
+            }
+          },
+          {
+            "name": "Orders",
+            "in": "query",
+            "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: Name DESC,CreatedOn ASC",
+            "schema": {
+              "type": "string",
+              "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: Name DESC,CreatedOn ASC",
+              "default": ""
+            }
+          },
+          {
+            "name": "StartIndex",
+            "in": "query",
+            "description": "The first record to return. Use this parameter to paginate the results. \n\nThe default value is 0. If not specified, the first set of resources (number of resources limited by the page size parameter) will be returned.",
+            "schema": {
+              "type": "integer",
+              "description": "The first record to return. Use this parameter to paginate the results. \n\nThe default value is 0. If not specified, the first set of resources (number of resources limited by the page size parameter) will be returned.",
+              "format": "int32"
+            },
+            "x-example": 0
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "This limits the number of resources to be returned in the response.\n\nThe value ranges from 1 to 1000 and defaults to 50.",
+            "schema": {
+              "type": "integer",
+              "description": "This limits the number of resources to be returned in the response.\n\nThe value ranges from 1 to 1000 and defaults to 50.",
+              "format": "int32"
+            },
+            "x-example": 0
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of equipment information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Equipment"
+                  },
+                  "description": "The list of equipment information"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Equipments"
+        ],
+        "description": "Insert or Update (Upsert) a equipment using an ExternalId or Id field value.",
+        "operationId": "UpsertEquipment",
+        "requestBody": {
+          "description": "Equipment information to insert or update.\n\nThe input parameter must be used in the `ContractTypePost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EquipmentPost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Equipment"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated equipment information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Equipment"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Assets_BL/rest/Equipments/{Id}": {
+      "delete": {
+        "tags": [
+          "Equipments"
+        ],
+        "description": "Use the query string resource to delete record(s). \n\nSpecify the record ID and use the DELETE method of the resource to delete a record(s).",
+        "operationId": "DeleteEquipment",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the employee\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the employee\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted equipment information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Equipment"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Equipments"
+        ],
+        "description": "Get a record of the equipment entity. The method returns one record of the entity.\n\nIf the `Id` field value is not matched, then a 404 error is reported (Errors/Not Found), and the error record is returned.\n\nIf the `Id` field value is matched multiple times, then a `400` error is reported (Errors/Multible Rows), and the error record is returned.\n\nIf the value in the `Name` field value does not match, a `400` error is reported (Errors/Invalid Field), and the error record is returned.",
+        "operationId": "GetEquipment",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the equipment\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the equipment\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The record of equipment information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Equipment"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Equipments"
+        ],
+        "description": "Update a equipment using an ExternalId or Id field value.\n\nYou use the `ContractTypePost` object resource to update records. Provide the updated record information in your request data and use the PUT method of the resource with a specific record ID to update that record.\n\nThe response body will contain the full `ContractType` object of the updated record if the call is successful.",
+        "operationId": "UpdateEquipment",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the equipment\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the equipment\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Equipment information to update.\n\nThe input parameter must be used in the `ContractTypePost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EquipmentPost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Equipment"
+        },
+        "responses": {
+          "200": {
+            "description": "Updated equipment information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Equipment"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Assets_BL/rest/Equipments/Create": {
+      "post": {
+        "tags": [
+          "Equipments"
+        ],
+        "description": "Use the `EquipmentPost` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the POST method of the resource.\n\nThe response body will contain the full `ContractType` object of the created record if the call is successful.",
+        "operationId": "CreateEquipment",
+        "requestBody": {
+          "description": "Equipment information to insert.\n\nThe input parameter must be used in the `ContractTypePost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EquipmentPost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Equipment"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted equipment information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Equipment"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Assets_BL/rest/Equipments/Import": {
+      "post": {
+        "tags": [
+          "Equipments"
+        ],
+        "description": "Insert or Update (Upsert) a list of equipments using an ExternalId or Id field value.",
+        "operationId": "PatchEquipments",
+        "requestBody": {
+          "description": "The list of equipment information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EquipmentsData"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Data"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated list of department information. \n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Equipment"
+                  },
+                  "description": "Inserted or updated list of department information. \n"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Assets_BL/rest/Projects/": {
+      "get": {
+        "tags": [
+          "Projects"
+        ],
+        "description": "Use the method to execute a query that includes information that returns all the results in a single response, or if needed, returns part of the results and an identifier used to retrieve the remaining results.",
+        "operationId": "ListProjects",
+        "parameters": [
+          {
+            "name": "Fields",
+            "in": "query",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: Name,ExternalId",
+            "schema": {
+              "type": "string",
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: Name,ExternalId",
+              "default": ""
+            }
+          },
+          {
+            "name": "Filters",
+            "in": "query",
+            "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the &quot;Employee&quot; table has a &quot;DepartmentId&quot; field, so you can search for a department name using the &quot;DepartmentId.Name&quot; field name. All fields in the parent table are available.\n\nThe name of the database field. Example: &quot;Name&quot; or relation field &quot;OwnerId.Name&quot;\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator (=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn)\n\nYou can add multiple values separated by comma when using the &quot;In&quot;, &quot;NotIn&quot; operators.\nExample of text field; &quot;USA;FIN;RUS&quot;\nExample of numeric field; &quot;1,2,3&quot;\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+            "schema": {
+              "type": "string",
+              "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the &quot;Employee&quot; table has a &quot;DepartmentId&quot; field, so you can search for a department name using the &quot;DepartmentId.Name&quot; field name. All fields in the parent table are available.\n\nThe name of the database field. Example: &quot;Name&quot; or relation field &quot;OwnerId.Name&quot;\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator (=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn)\n\nYou can add multiple values separated by comma when using the &quot;In&quot;, &quot;NotIn&quot; operators.\nExample of text field; &quot;USA;FIN;RUS&quot;\nExample of numeric field; &quot;1,2,3&quot;\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+              "default": ""
+            }
+          },
+          {
+            "name": "Orders",
+            "in": "query",
+            "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: Name DESC,CreatedOn ASC",
+            "schema": {
+              "type": "string",
+              "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: Name DESC,CreatedOn ASC",
+              "default": ""
+            }
+          },
+          {
+            "name": "StartIndex",
+            "in": "query",
+            "description": "The first record to return. Use this parameter to paginate the results. \n\nThe default value is 0. If not specified, the first set of resources (number of resources limited by the page size parameter) will be returned.",
+            "schema": {
+              "type": "integer",
+              "description": "The first record to return. Use this parameter to paginate the results. \n\nThe default value is 0. If not specified, the first set of resources (number of resources limited by the page size parameter) will be returned.",
+              "format": "int32"
+            },
+            "x-example": 0
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "This limits the number of resources to be returned in the response.\n\nThe value ranges from 1 to 1000 and defaults to 50.",
+            "schema": {
+              "type": "integer",
+              "description": "This limits the number of resources to be returned in the response.\n\nThe value ranges from 1 to 1000 and defaults to 50.",
+              "format": "int32"
+            },
+            "x-example": 0
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of project information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Project"
+                  },
+                  "description": "The list of project information"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Projects"
+        ],
+        "description": "Insert or Update (Upsert) a project using an ExternalId or Id field value.",
+        "operationId": "UpsertProject",
+        "requestBody": {
+          "description": "Project information to insert or update.\n\nThe input parameter must be used in the `ProjectPost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectPost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Project"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated project information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Project"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Assets_BL/rest/Projects/{Id}": {
+      "put": {
+        "tags": [
+          "Projects"
+        ],
+        "description": "Update a project using an ExternalId or Id field value.\n\nYou use the `ProjectPost` object resource to update records. Provide the updated record information in your request data and use the PUT method of the resource with a specific record ID to update that record.\n\nThe response body will contain the full `Project` object of the updated record if the call is successful.",
+        "operationId": "UpdateProject",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the project.\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the project.\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Project information to update.\n\nThe input parameter must be used in the `ProjectPost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectPost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Project"
+        },
+        "responses": {
+          "200": {
+            "description": "Updated project information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Project"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Projects"
+        ],
+        "description": "Get a record of the project entity. The method returns one record of the entity.\n\nIf the `Id` field value is not matched, then a 404 error is reported (Errors/Not Found), and the error record is returned.\n\nIf the `Id` field value is matched multiple times, then a `400` error is reported (Errors/Multible Rows), and the error record is returned.\n\nIf the value in the `Name` field value does not match, a `400` error is reported (Errors/Invalid Field), and the error record is returned.",
+        "operationId": "GetProject",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the project.\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the project.\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The record of project information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Project"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Projects"
+        ],
+        "description": "Use the query string resource to delete record(s). \n\nSpecify the record ID and use the DELETE method of the resource to delete a record(s).",
+        "operationId": "DeleteProject",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the project.\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the project.\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted project information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Project"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Assets_BL/rest/Projects/{ProjectId}/Skills": {
+      "get": {
+        "tags": [
+          "Projects"
+        ],
+        "description": "Use the method to execute a query that includes information that returns all the results in a single response, or if needed, returns part of the results and an identifier used to retrieve the remaining results.",
+        "operationId": "ListProjectSkills",
+        "parameters": [
+          {
+            "name": "ProjectId",
+            "in": "path",
+            "description": "The identifier of the project.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the project.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          },
+          {
+            "name": "Fields",
+            "in": "query",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: Name,ExternalId",
+            "schema": {
+              "type": "string",
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: Name,ExternalId",
+              "default": ""
+            }
+          },
+          {
+            "name": "Filters",
+            "in": "query",
+            "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the &quot;Employee&quot; table has a &quot;DepartmentId&quot; field, so you can search for a department name using the &quot;DepartmentId.Name&quot; field name. All fields in the parent table are available.\n\nThe name of the database field. Example: &quot;Name&quot; or relation field &quot;OwnerId.Name&quot;\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator (=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn)\n\nYou can add multiple values separated by comma when using the &quot;In&quot;, &quot;NotIn&quot; operators.\nExample of text field; &quot;USA;FIN;RUS&quot;\nExample of numeric field; &quot;1,2,3&quot;\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+            "schema": {
+              "type": "string",
+              "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the &quot;Employee&quot; table has a &quot;DepartmentId&quot; field, so you can search for a department name using the &quot;DepartmentId.Name&quot; field name. All fields in the parent table are available.\n\nThe name of the database field. Example: &quot;Name&quot; or relation field &quot;OwnerId.Name&quot;\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator (=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn)\n\nYou can add multiple values separated by comma when using the &quot;In&quot;, &quot;NotIn&quot; operators.\nExample of text field; &quot;USA;FIN;RUS&quot;\nExample of numeric field; &quot;1,2,3&quot;\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+              "default": ""
+            }
+          },
+          {
+            "name": "Orders",
+            "in": "query",
+            "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: Name DESC,CreatedOn ASC",
+            "schema": {
+              "type": "string",
+              "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: Name DESC,CreatedOn ASC",
+              "default": ""
+            }
+          },
+          {
+            "name": "StartIndex",
+            "in": "query",
+            "description": "The first record to return. Use this parameter to paginate the results.\n\nThe default value is 0. If not specified, the first set of resources (number of resources limited by the page size parameter) will be returned.",
+            "schema": {
+              "type": "integer",
+              "description": "The first record to return. Use this parameter to paginate the results.\n\nThe default value is 0. If not specified, the first set of resources (number of resources limited by the page size parameter) will be returned.",
+              "format": "int32"
+            },
+            "x-example": 0
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "This limits the number of resources to be returned in the response.\n\nThe value ranges from 1 to 1000 and defaults to 50.",
+            "schema": {
+              "type": "integer",
+              "description": "This limits the number of resources to be returned in the response.\n\nThe value ranges from 1 to 1000 and defaults to 50.",
+              "format": "int32"
+            },
+            "x-example": 0
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of project skill information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectSkill"
+                  },
+                  "description": "The list of project skill information"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Projects"
+        ],
+        "description": "Insert or Update (Upsert) a list of project skill using an ExternalId or Id field value.",
+        "operationId": "PatchProjectSkills",
+        "parameters": [
+          {
+            "name": "ProjectId",
+            "in": "path",
+            "description": "The identifier of the project.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the project.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          },
+          {
+            "name": "DeleteNotExists",
+            "in": "query",
+            "description": "The Delete not exists function delete orphan values from a table.\n\nIf you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table.\n\nYou can use &quot;ProjectId&quot; value and then delete orphan skill rows from the table.\n\nYou can use &quot;SkillId&quot; value and then delete orphan project rows from the table.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The Delete not exists function delete orphan values from a table.\n\nIf you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table.\n\nYou can use &quot;ProjectId&quot; value and then delete orphan skill rows from the table.\n\nYou can use &quot;SkillId&quot; value and then delete orphan project rows from the table.",
+              "default": ""
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The list of skills information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/FieldType"
+                },
+                "description": "The list of skills information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields."
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Skills"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated list of skill user information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectSkill"
+                  },
+                  "description": "Inserted or updated list of skill user information."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Assets_BL/rest/Projects/{ProjectId}/Skills/{SkillId}/": {
+      "delete": {
+        "tags": [
+          "Projects"
+        ],
+        "description": "Use the query string resource to delete record(s). The method contains two parameters Id and Name. Specify the record ID and use the DELETE method of the resource to delete a record(s).",
+        "operationId": "DeleteProjectSkill",
+        "parameters": [
+          {
+            "name": "SkillId",
+            "in": "path",
+            "description": "The identifier of the skill.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the skill.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "SkillName",
+            "in": "query",
+            "description": "The name of the database field for team. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field for team. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          },
+          {
+            "name": "ProjectId",
+            "in": "path",
+            "description": "The identifier of the project.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the project.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "ProjectName",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted project skill user information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectSkill"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Assets_BL/rest/Projects/{ProjectId}/Users/{SkillId}/": {
+      "post": {
+        "tags": [
+          "Projects"
+        ],
+        "description": "Insert or Update (Upsert) a project skill using an ExternalId, Email or Id field value.",
+        "operationId": "UpsertProjectSkill",
+        "parameters": [
+          {
+            "name": "ProjectId",
+            "in": "path",
+            "description": "The identifier of the project.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the project.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          },
+          {
+            "name": "SkillId",
+            "in": "path",
+            "description": "The identifier of the skill.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the skill.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "SkillName",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Inserted or updated project skill information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectSkill"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Assets_BL/rest/Projects/Create": {
+      "post": {
+        "tags": [
+          "Projects"
+        ],
+        "description": "Use the `ProjectPost` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the POST method of the resource.\n\nThe response body will contain the full `Project` object of the created record if the call is successful.",
+        "operationId": "CreateProject",
+        "requestBody": {
+          "description": "Project information to insert.\n\nThe input parameter must be used in the `ProjectPost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectPost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Project"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted project information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Project"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Assets_BL/rest/Projects/Import": {
+      "post": {
+        "tags": [
+          "Projects"
+        ],
+        "description": "Insert or Update (Upsert) a list of projects using an ExternalId or Id field value.",
+        "operationId": "PatchProjects",
+        "requestBody": {
+          "description": "The list of project information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectsData"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Data"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated list of project information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Project"
+                  },
+                  "description": "Inserted or updated list of project information."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Assets_BL/rest/Skills/": {
+      "post": {
+        "tags": [
+          "Skills"
+        ],
+        "description": "Insert or Update (Upsert) a skill using an ExternalId or Id field value.",
+        "operationId": "UpsertSkill",
+        "requestBody": {
+          "description": "Skill information to insert or update.\n\nThe input parameter must be used in the `SkillPost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SkillPost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Skill"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated skill information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Skill"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Skills"
+        ],
+        "description": "Use the method to execute a query that includes information that returns all the results in a single response, or if needed, returns part of the results and an identifier used to retrieve the remaining results.",
+        "operationId": "ListSkills",
+        "parameters": [
+          {
+            "name": "Fields",
+            "in": "query",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: Name,ExternalId",
+            "schema": {
+              "type": "string",
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: Name,ExternalId",
+              "default": ""
+            }
+          },
+          {
+            "name": "Filters",
+            "in": "query",
+            "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the &quot;Employee&quot; table has a &quot;DepartmentId&quot; field, so you can search for a department name using the &quot;DepartmentId.Name&quot; field name. All fields in the parent table are available.\n\nThe name of the database field. Example: &quot;Name&quot; or relation field &quot;OwnerId.Name&quot;\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator (=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn)\n\nYou can add multiple values separated by comma when using the &quot;In&quot;, &quot;NotIn&quot; operators.\nExample of text field; &quot;USA;FIN;RUS&quot;\nExample of numeric field; &quot;1,2,3&quot;\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+            "schema": {
+              "type": "string",
+              "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the &quot;Employee&quot; table has a &quot;DepartmentId&quot; field, so you can search for a department name using the &quot;DepartmentId.Name&quot; field name. All fields in the parent table are available.\n\nThe name of the database field. Example: &quot;Name&quot; or relation field &quot;OwnerId.Name&quot;\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator (=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn)\n\nYou can add multiple values separated by comma when using the &quot;In&quot;, &quot;NotIn&quot; operators.\nExample of text field; &quot;USA;FIN;RUS&quot;\nExample of numeric field; &quot;1,2,3&quot;\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+              "default": ""
+            }
+          },
+          {
+            "name": "Orders",
+            "in": "query",
+            "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: Name DESC,CreatedOn ASC",
+            "schema": {
+              "type": "string",
+              "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: Name DESC,CreatedOn ASC",
+              "default": ""
+            }
+          },
+          {
+            "name": "StartIndex",
+            "in": "query",
+            "description": "The first record to return. Use this parameter to paginate the results. \n\nThe default value is 0. If not specified, the first set of resources (number of resources limited by the page size parameter) will be returned.",
+            "schema": {
+              "type": "integer",
+              "description": "The first record to return. Use this parameter to paginate the results. \n\nThe default value is 0. If not specified, the first set of resources (number of resources limited by the page size parameter) will be returned.",
+              "format": "int32"
+            },
+            "x-example": 0
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "This limits the number of resources to be returned in the response.\n\nThe value ranges from 1 to 1000 and defaults to 50.",
+            "schema": {
+              "type": "integer",
+              "description": "This limits the number of resources to be returned in the response.\n\nThe value ranges from 1 to 1000 and defaults to 50.",
+              "format": "int32"
+            },
+            "x-example": 0
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of skill information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Skill"
+                  },
+                  "description": "The list of skill information"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Assets_BL/rest/Skills/{Id}": {
+      "get": {
+        "tags": [
+          "Skills"
+        ],
+        "description": "Get a record of the method. The method contains two parameters `Id` and `Name`. The method returns one record of the entity.\n\nIf the `Id` field value is not matched, then a 404 error is reported (Errors/Not Found), and the error record is returned.\n\nIf the `Id` field value is matched multiple times, then a `400` error is reported (Errors/Multible Rows), and the error record is returned.\n\nIf the value in the `Name` field value does not match, a `400` error is reported (Errors/Invalid Field), and the error record is returned.",
+        "operationId": "GetSkill",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the skill.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the skill.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The record of skill information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Skill"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Skills"
+        ],
+        "description": "Update a skill using an ExternalId or Id field value.\n\nYou use the `SkillPost` object resource to update records. Provide the updated record information in your request data and use the PUT method of the resource with a specific record ID to update that record.\n\nThe response body will contain the full `Skill` object of the updated record if the call is successful.",
+        "operationId": "UpdateSkill",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the skill.\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the skill.\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Skill information to update.\n\nThe input parameter must be used in the `SkillPost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SkillPost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Skill"
+        },
+        "responses": {
+          "200": {
+            "description": "Updated skill information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Skill"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Skills"
+        ],
+        "description": "Use the query string resource to delete record(s). \n\nSpecify the record ID and use the DELETE method of the resource to delete a record(s).",
+        "operationId": "DeleteSkill",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the skill.\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the skill.\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted skill information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Skill"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Assets_BL/rest/Skills/{Id}/Users": {
+      "get": {
+        "tags": [
+          "Skills"
+        ],
+        "description": "Use the method to execute a query that includes information that returns all the results in a single response, or if needed, returns part of the results and an identifier used to retrieve the remaining results.",
+        "operationId": "ListSkillUsers",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the skill.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the skill.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          },
+          {
+            "name": "Fields",
+            "in": "query",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: Name,ExternalId",
+            "schema": {
+              "type": "string",
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: Name,ExternalId",
+              "default": ""
+            }
+          },
+          {
+            "name": "Filters",
+            "in": "query",
+            "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the &quot;Employee&quot; table has a &quot;DepartmentId&quot; field, so you can search for a department name using the &quot;DepartmentId.Name&quot; field name. All fields in the parent table are available.\n\nThe name of the database field. Example: &quot;Name&quot; or relation field &quot;OwnerId.Name&quot;\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator (=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn)\n\nYou can add multiple values separated by comma when using the &quot;In&quot;, &quot;NotIn&quot; operators.\nExample of text field; &quot;USA;FIN;RUS&quot;\nExample of numeric field; &quot;1,2,3&quot;\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+            "schema": {
+              "type": "string",
+              "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the &quot;Employee&quot; table has a &quot;DepartmentId&quot; field, so you can search for a department name using the &quot;DepartmentId.Name&quot; field name. All fields in the parent table are available.\n\nThe name of the database field. Example: &quot;Name&quot; or relation field &quot;OwnerId.Name&quot;\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator (=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn)\n\nYou can add multiple values separated by comma when using the &quot;In&quot;, &quot;NotIn&quot; operators.\nExample of text field; &quot;USA;FIN;RUS&quot;\nExample of numeric field; &quot;1,2,3&quot;\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+              "default": ""
+            }
+          },
+          {
+            "name": "Orders",
+            "in": "query",
+            "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: Name DESC,CreatedOn ASC",
+            "schema": {
+              "type": "string",
+              "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: Name DESC,CreatedOn ASC",
+              "default": ""
+            }
+          },
+          {
+            "name": "StartIndex",
+            "in": "query",
+            "description": "The first record to return. Use this parameter to paginate the results.\n\nThe default value is 0. If not specified, the first set of resources (number of resources limited by the page size parameter) will be returned.",
+            "schema": {
+              "type": "integer",
+              "description": "The first record to return. Use this parameter to paginate the results.\n\nThe default value is 0. If not specified, the first set of resources (number of resources limited by the page size parameter) will be returned.",
+              "format": "int32"
+            },
+            "x-example": 0
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "This limits the number of resources to be returned in the response.\n\nThe value ranges from 1 to 1000 and defaults to 50.",
+            "schema": {
+              "type": "integer",
+              "description": "This limits the number of resources to be returned in the response.\n\nThe value ranges from 1 to 1000 and defaults to 50.",
+              "format": "int32"
+            },
+            "x-example": 0
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of skill user information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SkillUser"
+                  },
+                  "description": "The list of skill user information"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Assets_BL/rest/Skills/{Id}/Users/{UserId}/": {
+      "delete": {
+        "tags": [
+          "Skills"
+        ],
+        "description": "Use the query string resource to delete record(s). The method contains two parameters Id and Name. Specify the record ID and use the DELETE method of the resource to delete a record(s).",
+        "operationId": "DeleteSkillUser",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the skill.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the skill.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field for team. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field for team. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          },
+          {
+            "name": "UserId",
+            "in": "path",
+            "description": "The identifier of the user.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the user.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Username",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted skill user information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SkillUser"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Assets_BL/rest/Skills/{SkillId}/Users": {
+      "post": {
+        "tags": [
+          "Skills"
+        ],
+        "description": "Insert or Update (Upsert) a list of skill users using an ExternalId or Id field value.",
+        "operationId": "PatchSkillUsers",
+        "parameters": [
+          {
+            "name": "SkillId",
+            "in": "path",
+            "description": "The identifier of the skill.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the skill.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          },
+          {
+            "name": "DeleteNotExists",
+            "in": "query",
+            "description": "The Delete not exists function delete orphan values from a table.\n\nIf you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table.\n\nYou can use &quot;SkillId&quot; value and then delete orphan user rows from the table.\n\nYou can use &quot;UserId&quot; value and then delete orphan skill rows from the table.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The Delete not exists function delete orphan values from a table.\n\nIf you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table.\n\nYou can use &quot;SkillId&quot; value and then delete orphan user rows from the table.\n\nYou can use &quot;UserId&quot; value and then delete orphan skill rows from the table.",
+              "default": ""
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The list of users information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/FieldType"
+                },
+                "description": "The list of users information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields."
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Users"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated list of skill user information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SkillUser"
+                  },
+                  "description": "Inserted or updated list of skill user information."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Assets_BL/rest/Skills/{SkillId}/Users/{UserId}/": {
+      "post": {
+        "tags": [
+          "Skills"
+        ],
+        "description": "Insert or Update (Upsert) a skill user using an ExternalId, Email or Id field value.",
+        "operationId": "UpsertSkillUser",
+        "parameters": [
+          {
+            "name": "SkillId",
+            "in": "path",
+            "description": "The identifier of the skill.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the skill.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          },
+          {
+            "name": "UserId",
+            "in": "path",
+            "description": "The identifier of the user.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the user.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Username",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Inserted or updated skill user information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SkillUser"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Assets_BL/rest/Skills/Create": {
+      "post": {
+        "tags": [
+          "Skills"
+        ],
+        "description": "Use the `SkillPost` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the POST method of the resource.\n\nThe response body will contain the full `Skill` object of the created record if the call is successful.",
+        "operationId": "CreateSkill",
+        "requestBody": {
+          "description": "Skill information to insert.\n\nThe input parameter must be used in the `SkillPost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SkillPost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Skill"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted skill information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Skill"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Assets_BL/rest/Skills/Import": {
+      "post": {
+        "tags": [
+          "Skills"
+        ],
+        "description": "Insert or Update (Upsert) a list of skills using an ExternalId or Id field value.",
+        "operationId": "PatchSkills",
+        "requestBody": {
+          "description": "The list of skill information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SkillsData"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Data"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated list of skill information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Skill"
+                  },
+                  "description": "Inserted or updated list of skill information."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Assets_BL/rest/Teams/": {
+      "post": {
+        "tags": [
+          "Teams"
+        ],
+        "description": "Insert or Update (Upsert) a team using an ExternalId or Id field value.",
+        "operationId": "UpsertTeam",
+        "requestBody": {
+          "description": "Team information to insert or update.\n\nThe input parameter must be used in the `TeamPost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TeamPost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Team"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated team information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Team"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Teams"
+        ],
+        "description": "Use the method to execute a query that includes information that returns all the results in a single response, or if needed, returns part of the results and an identifier used to retrieve the remaining results.",
+        "operationId": "ListTeams",
+        "parameters": [
+          {
+            "name": "Fields",
+            "in": "query",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: Name,ExternalId",
+            "schema": {
+              "type": "string",
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: Name,ExternalId",
+              "default": ""
+            }
+          },
+          {
+            "name": "Filters",
+            "in": "query",
+            "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the &quot;Employee&quot; table has a &quot;DepartmentId&quot; field, so you can search for a department name using the &quot;DepartmentId.Name&quot; field name. All fields in the parent table are available.\n\nThe name of the database field. Example: &quot;Name&quot; or relation field &quot;OwnerId.Name&quot;\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator (=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn)\n\nYou can add multiple values separated by comma when using the &quot;In&quot;, &quot;NotIn&quot; operators.\nExample of text field; &quot;USA;FIN;RUS&quot;\nExample of numeric field; &quot;1,2,3&quot;\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+            "schema": {
+              "type": "string",
+              "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the &quot;Employee&quot; table has a &quot;DepartmentId&quot; field, so you can search for a department name using the &quot;DepartmentId.Name&quot; field name. All fields in the parent table are available.\n\nThe name of the database field. Example: &quot;Name&quot; or relation field &quot;OwnerId.Name&quot;\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator (=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn)\n\nYou can add multiple values separated by comma when using the &quot;In&quot;, &quot;NotIn&quot; operators.\nExample of text field; &quot;USA;FIN;RUS&quot;\nExample of numeric field; &quot;1,2,3&quot;\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+              "default": ""
+            }
+          },
+          {
+            "name": "Orders",
+            "in": "query",
+            "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: Name DESC,CreatedOn ASC",
+            "schema": {
+              "type": "string",
+              "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: Name DESC,CreatedOn ASC",
+              "default": ""
+            }
+          },
+          {
+            "name": "StartIndex",
+            "in": "query",
+            "description": "The first record to return. Use this parameter to paginate the results. \n\nThe default value is 0. If not specified, the first set of resources (number of resources limited by the page size parameter) will be returned.",
+            "schema": {
+              "type": "integer",
+              "description": "The first record to return. Use this parameter to paginate the results. \n\nThe default value is 0. If not specified, the first set of resources (number of resources limited by the page size parameter) will be returned.",
+              "format": "int32"
+            },
+            "x-example": 0
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "This limits the number of resources to be returned in the response.\n\nThe value ranges from 1 to 1000 and defaults to 50.",
+            "schema": {
+              "type": "integer",
+              "description": "This limits the number of resources to be returned in the response.\n\nThe value ranges from 1 to 1000 and defaults to 50.",
+              "format": "int32"
+            },
+            "x-example": 0
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of team information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Team"
+                  },
+                  "description": "The list of team information"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Assets_BL/rest/Teams/{Id}": {
+      "put": {
+        "tags": [
+          "Teams"
+        ],
+        "description": "Update a team using an ExternalId or Id field value.\n\nYou use the `TeamPost` object resource to update records. Provide the updated record information in your request data and use the PUT method of the resource with a specific record ID to update that record.\n\nThe response body will contain the full `Team` object of the updated record if the call is successful.",
+        "operationId": "UpdateTeam",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the team.\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the team.\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Team information to update.\n\nThe input parameter must be used in the `TeamPost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TeamPost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Team"
+        },
+        "responses": {
+          "200": {
+            "description": "Updated team information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Team"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Teams"
+        ],
+        "description": "Get a record of the method. The method contains two parameters `Id` and `Name`. The method returns one record of the entity.\n\nIf the `Id` field value is not matched, then a 404 error is reported (Errors/Not Found), and the error record is returned.\n\nIf the `Id` field value is matched multiple times, then a `400` error is reported (Errors/Multible Rows), and the error record is returned.\n\nIf the value in the `Name` field value does not match, a `400` error is reported (Errors/Invalid Field), and the error record is returned.",
+        "operationId": "GetTeam",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the team.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the team.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The record of team information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Team"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Teams"
+        ],
+        "description": "Use the query string resource to delete record(s). \n\nSpecify the record ID and use the DELETE method of the resource to delete a record(s).",
+        "operationId": "DeleteTeam",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the team.\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the team.\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted team information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Team"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Assets_BL/rest/Teams/{Id}/Users": {
+      "post": {
+        "tags": [
+          "Teams"
+        ],
+        "description": "Insert or Update (Upsert) a list of team users using an ExternalId or Id field value.",
+        "operationId": "PatchTeamUsers",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the team.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the team.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          },
+          {
+            "name": "DeleteNotExists",
+            "in": "query",
+            "description": "The Delete not exists function delete orphan values from a table.\n\nIf you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table.\n\nYou can use &quot;TeamId&quot; value and then delete orphan user rows from the table.\n\nYou can use &quot;UserId&quot; value and then delete orphan team rows from the table.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The Delete not exists function delete orphan values from a table.\n\nIf you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table.\n\nYou can use &quot;TeamId&quot; value and then delete orphan user rows from the table.\n\nYou can use &quot;UserId&quot; value and then delete orphan team rows from the table.",
+              "default": ""
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The list of users information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/FieldType"
+                },
+                "description": "The list of users information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields."
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Users"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated list of team user information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TeamUser"
+                  },
+                  "description": "Inserted or updated list of team user information."
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Teams"
+        ],
+        "description": "Use the method to execute a query that includes information that returns all the results in a single response, or if needed, returns part of the results and an identifier used to retrieve the remaining results.",
+        "operationId": "ListTeamUsers",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the team.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the team.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          },
+          {
+            "name": "Fields",
+            "in": "query",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: Name,ExternalId",
+            "schema": {
+              "type": "string",
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: Name,ExternalId",
+              "default": ""
+            }
+          },
+          {
+            "name": "Filters",
+            "in": "query",
+            "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the &quot;Employee&quot; table has a &quot;DepartmentId&quot; field, so you can search for a department name using the &quot;DepartmentId.Name&quot; field name. All fields in the parent table are available.\n\nThe name of the database field. Example: &quot;Name&quot; or relation field &quot;OwnerId.Name&quot;\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator (=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn)\n\nYou can add multiple values separated by comma when using the &quot;In&quot;, &quot;NotIn&quot; operators.\nExample of text field; &quot;USA;FIN;RUS&quot;\nExample of numeric field; &quot;1,2,3&quot;\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+            "schema": {
+              "type": "string",
+              "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the &quot;Employee&quot; table has a &quot;DepartmentId&quot; field, so you can search for a department name using the &quot;DepartmentId.Name&quot; field name. All fields in the parent table are available.\n\nThe name of the database field. Example: &quot;Name&quot; or relation field &quot;OwnerId.Name&quot;\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator (=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn)\n\nYou can add multiple values separated by comma when using the &quot;In&quot;, &quot;NotIn&quot; operators.\nExample of text field; &quot;USA;FIN;RUS&quot;\nExample of numeric field; &quot;1,2,3&quot;\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+              "default": ""
+            }
+          },
+          {
+            "name": "Orders",
+            "in": "query",
+            "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: Name DESC,CreatedOn ASC",
+            "schema": {
+              "type": "string",
+              "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: Name DESC,CreatedOn ASC",
+              "default": ""
+            }
+          },
+          {
+            "name": "StartIndex",
+            "in": "query",
+            "description": "The first record to return. Use this parameter to paginate the results.\n\nThe default value is 0. If not specified, the first set of resources (number of resources limited by the page size parameter) will be returned.",
+            "schema": {
+              "type": "integer",
+              "description": "The first record to return. Use this parameter to paginate the results.\n\nThe default value is 0. If not specified, the first set of resources (number of resources limited by the page size parameter) will be returned.",
+              "format": "int32"
+            },
+            "x-example": 0
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "This limits the number of resources to be returned in the response.\n\nThe value ranges from 1 to 1000 and defaults to 50.",
+            "schema": {
+              "type": "integer",
+              "description": "This limits the number of resources to be returned in the response.\n\nThe value ranges from 1 to 1000 and defaults to 50.",
+              "format": "int32"
+            },
+            "x-example": 0
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of team user information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TeamUser"
+                  },
+                  "description": "The list of team user information"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Assets_BL/rest/Teams/{Id}/Users/{UserId}/": {
+      "delete": {
+        "tags": [
+          "Teams"
+        ],
+        "description": "Use the query string resource to delete record(s). The method contains two parameters Id and Name. Specify the record ID and use the DELETE method of the resource to delete a record(s).",
+        "operationId": "DeleteTeamUser",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the team.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the team.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field for team. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field for team. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          },
+          {
+            "name": "UserId",
+            "in": "path",
+            "description": "The identifier of the user.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the user.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Username",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted team user information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TeamUser"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Teams"
+        ],
+        "description": "Insert or Update (Upsert) a team user using an ExternalId, Email or Id field value.",
+        "operationId": "UpsertTeamUser",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the team.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the team.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          },
+          {
+            "name": "UserId",
+            "in": "path",
+            "description": "The identifier of the user.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the user.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Username",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Inserted or updated team user information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TeamUser"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Assets_BL/rest/Teams/Create": {
+      "post": {
+        "tags": [
+          "Teams"
+        ],
+        "description": "Use the `TeamPost` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the POST method of the resource.\n\nThe response body will contain the full `Team` object of the created record if the call is successful.",
+        "operationId": "CreateTeam",
+        "requestBody": {
+          "description": "Team information to insert.\n\nThe input parameter must be used in the `TeamPost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TeamPost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Team"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted team information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Team"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Assets_BL/rest/Teams/Import": {
+      "post": {
+        "tags": [
+          "Teams"
+        ],
+        "description": "Insert or Update (Upsert) a list of teams using an ExternalId or Id field value.",
+        "operationId": "PatchTeams",
+        "requestBody": {
+          "description": "The list of team information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TeamsData"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Data"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated list of team information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Team"
+                  },
+                  "description": "Inserted or updated list of team information."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Meta": {
+        "required": [
+          "TotalItems",
+          "CurrentPage",
+          "PageSize",
+          "Type"
+        ],
+        "type": "object",
+        "properties": {
+          "TotalItems": {
+            "type": "integer",
+            "description": "This field represents the total number of items available in the entire dataset, not just the items returned in the current response. It's useful for implementing pagination, as clients can use it to calculate the number of pages or total available items.",
+            "format": "int32",
+            "default": 0,
+            "example": 1000
+          },
+          "CurrentPage": {
+            "type": "integer",
+            "description": "This field specifies the current page of results being returned. It's often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.",
+            "format": "int32",
+            "default": 1,
+            "example": 50
+          },
+          "PageSize": {
+            "type": "integer",
+            "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.",
+            "format": "int32",
+            "default": 50,
+            "example": 50
+          },
+          "Type": {
+            "type": "string",
+            "description": "The type of the record",
+            "example": "User"
+          }
+        },
+        "description": "The object provides metadata about the list of items returned in the API response. It typically includes information that helps clients understand and work with the data."
+      },
+      "Error": {
+        "required": [
+          "Errors",
+          "StatusCode"
+        ],
+        "type": "object",
+        "properties": {
+          "Error": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "default": ""
+            },
+            "description": "Human-readable explanation of the errors"
+          },
+          "Type": {
+            "type": "string",
+            "description": "URI identifier that categorizes the error",
+            "default": ""
+          },
+          "Title": {
+            "type": "string",
+            "description": "Brief, human-readable message about the error",
+            "default": ""
+          },
+          "StatusCode": {
+            "type": "integer",
+            "description": "The HTTP response code",
+            "format": "int32",
+            "example": 400
+          },
+          "Instance": {
+            "type": "string",
+            "description": "URI that identifies the specific occurrence of the error",
+            "default": ""
+          },
+          "RequestKey": {
+            "type": "string",
+            "description": "Provides a request key that identifies the current request.",
+            "default": ""
+          }
+        },
+        "description": "The list of errors. Throw specific exceptions based on the received error."
+      },
+      "AbstractLong": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "description": "The primary key of the record row. If the Id attribute is used, then it must be unique",
+            "format": "int64",
+            "example": 1234567891234567
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identier of the record row. If the External Id attribute is used, then it must be unique",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the record row",
+            "default": ""
+          },
+          "Type": {
+            "type": "string",
+            "description": "The type of the record object",
+            "default": ""
+          }
+        },
+        "description": "The abstract object structure"
+      },
+      "Certificate": {
+        "required": [
+          "Id",
+          "Is_Active"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The guid to identify the certificate",
+            "default": ""
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the certificate",
+            "default": ""
+          },
+          "Code": {
+            "type": "string",
+            "description": "The code of certificate",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the certificate",
+            "default": ""
+          },
+          "Description": {
+            "type": "string",
+            "description": "The description of certificate",
+            "default": ""
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the certificate is active and can be used",
+            "example": false
+          },
+          "ModifiedOn": {
+            "type": "string",
+            "description": "The date the record was updated",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          },
+          "ModifiedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date the record was created",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          }
+        },
+        "description": "The type of certificate"
+      },
+      "CertificateData": {
+        "required": [
+          "Id",
+          "Is_Active"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The guid to identify the certificate",
+            "default": ""
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the certificate",
+            "default": ""
+          },
+          "Code": {
+            "type": "string",
+            "description": "The code of certificate",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the certificate",
+            "default": ""
+          },
+          "Description": {
+            "type": "string",
+            "description": "The description of certificate",
+            "default": ""
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the certificate is active and can be used",
+            "example": false
+          }
+        },
+        "description": "Certificate information for data patch"
+      },
+      "CertificatePost": {
+        "required": [
+          "Id",
+          "Is_Active"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The guid to identify the equipment",
+            "default": ""
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the equipment",
+            "default": ""
+          },
+          "Code": {
+            "type": "string",
+            "description": "The code of certificate",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the equipment",
+            "default": ""
+          },
+          "Description": {
+            "type": "string",
+            "description": "Description of the equipment",
+            "default": ""
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the equipment is active and can be used",
+            "example": false
+          },
+          "Is_Deleted": {
+            "type": "boolean",
+            "description": "Defines if the Equipment is deleted and cannot be used",
+            "example": false
+          }
+        },
+        "description": "The type of certificate"
+      },
+      "CertificatesData": {
+        "type": "object",
+        "properties": {
+          "Extra": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ListValidation"
+            }
+          },
+          "IsFullValidation": {
+            "type": "boolean",
+            "description": "If the value is true, the data quality of all fields are checked. This has an effect on performance.",
+            "example": false
+          },
+          "CertificateDatas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CertificateData"
+            },
+            "description": "The list of certificate data record"
+          }
+        },
+        "description": "The data loading record of certificate saving"
+      },
+      "ListValidation": {
+        "required": [
+          "Name"
+        ],
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string",
+            "description": "The name of the entity field.",
+            "default": ""
+          },
+          "Label": {
+            "type": "string",
+            "description": "The label of row",
+            "default": ""
+          },
+          "FieldName": {
+            "type": "string",
+            "description": "The field name of relation database table.\n\nExample; \nThe field name is &quot;TenantId&quot; and is associated with the &quot;Tenant&quot; table. You want to use in the &quot;Tenant&quot; table &quot;Name&quot; field fetching data. Once &quot;Name&quot; is specified, the validation service retrieves the tenant identifier from the &quot;Tenant&quot; table based on the &quot;Name&quot; field.",
+            "default": ""
+          },
+          "Required": {
+            "type": "boolean",
+            "description": "If True, the value is required.",
+            "example": false
+          },
+          "Unique": {
+            "type": "boolean",
+            "description": "If True, the value must be unique in the database and you cannot add multiple values.",
+            "example": false
+          },
+          "Max": {
+            "type": "string",
+            "description": "The max value of input value.",
+            "default": ""
+          },
+          "Min": {
+            "type": "string",
+            "description": "The min value of input value.",
+            "default": ""
+          },
+          "Pattern": {
+            "type": "string",
+            "description": "The pattern of the validation. Searches the input string for an occurrence of a regular expression.",
+            "default": ""
+          },
+          "DefaultValue": {
+            "type": "string",
+            "description": "The default value of row. If the value of the field is empty, the service automatically sets the value in the field. If the value does not match the data type, the value is cleaned. Remember data types.",
+            "default": ""
+          }
+        },
+        "description": "List validation for entity attribute"
+      },
+      "Equipment": {
+        "required": [
+          "Id",
+          "Is_Active"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The guid to identify the equipment",
+            "default": ""
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the equipment",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the equipment",
+            "default": ""
+          },
+          "Description": {
+            "type": "string",
+            "description": "Description of the equipment",
+            "default": ""
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if theequipment is active and can be used",
+            "example": false
+          },
+          "ModifiedOn": {
+            "type": "string",
+            "description": "The date the record was updated",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          },
+          "ModifiedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date the record was created",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          }
+        },
+        "description": "The type of equipment"
+      },
+      "EquipmentData": {
+        "required": [
+          "Id",
+          "Is_Active"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The guid to identify the equipment",
+            "default": ""
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the equipment",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the equipment",
+            "default": ""
+          },
+          "Description": {
+            "type": "string",
+            "description": "Description of the equipment",
+            "default": ""
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the equipment is active and can be used",
+            "example": false
+          },
+          "Is_Deleted": {
+            "type": "boolean",
+            "description": "Defines if the Equipment is deleted and cannot be used",
+            "example": false
+          }
+        },
+        "description": "Equipment information for data patch"
+      },
+      "EquipmentPost": {
+        "required": [
+          "Id",
+          "Is_Active"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The guid to identify the equipment",
+            "default": ""
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the equipment",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the equipment",
+            "default": ""
+          },
+          "Description": {
+            "type": "string",
+            "description": "Description of the equipment",
+            "default": ""
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the equipment is active and can be used",
+            "example": false
+          },
+          "Is_Deleted": {
+            "type": "boolean",
+            "description": "Defines if the Equipment is deleted and cannot be used",
+            "example": false
+          }
+        },
+        "description": "The type of equipment"
+      },
+      "EquipmentsData": {
+        "type": "object",
+        "properties": {
+          "Extra": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ListValidation"
+            }
+          },
+          "IsFullValidation": {
+            "type": "boolean",
+            "description": "If the value is true, the data quality of all fields are checked. This has an effect on performance.",
+            "example": false
+          },
+          "Equipments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EquipmentData"
+            },
+            "description": "The list of equipment data record"
+          }
+        },
+        "description": "The data loading record of equipment saving"
+      },
+      "AbstractText": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The primary key of the record row. If the Id attribute is used, then it must be unique",
+            "default": ""
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identier of the record row. If the External Id attribute is used, then it must be unique",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the record row",
+            "default": ""
+          },
+          "Type": {
+            "type": "string",
+            "description": "The type of the record object",
+            "default": ""
+          }
+        },
+        "description": "The abstract object structure"
+      },
+      "FieldType": {
+        "required": [
+          "Value"
+        ],
+        "type": "object",
+        "properties": {
+          "Field": {
+            "type": "string",
+            "description": "The name of the data field",
+            "default": ""
+          },
+          "Value": {
+            "type": "string",
+            "description": "The value of the data row",
+            "default": ""
+          }
+        },
+        "description": "The field object structure"
+      },
+      "Project": {
+        "required": [
+          "Id",
+          "Name",
+          "Address",
+          "PostalCode",
+          "City",
+          "State",
+          "Is_Active"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The guid to identify the project",
+            "default": ""
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the project",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the project",
+            "default": ""
+          },
+          "Code": {
+            "type": "string",
+            "description": "The code of the project",
+            "default": ""
+          },
+          "TotalSkills": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891234567
+          },
+          "TotalUsers": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891234567
+          },
+          "OwnerId": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "LocationId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "Description": {
+            "type": "string",
+            "description": "The description of project",
+            "default": ""
+          },
+          "CustomerName": {
+            "type": "string",
+            "description": "The name of customer",
+            "default": ""
+          },
+          "CustomerEmail": {
+            "type": "string",
+            "description": "The email of customer",
+            "default": ""
+          },
+          "CustomerPhone": {
+            "type": "string",
+            "description": "The phone of customer",
+            "default": ""
+          },
+          "Address": {
+            "type": "string",
+            "description": "The address of the project",
+            "default": ""
+          },
+          "PostalCode": {
+            "type": "string",
+            "description": "The postal code of the project",
+            "default": ""
+          },
+          "City": {
+            "type": "string",
+            "description": "The city of the project",
+            "default": ""
+          },
+          "State": {
+            "type": "string",
+            "description": "The state of the project",
+            "default": ""
+          },
+          "Phone": {
+            "type": "string",
+            "description": "The phone number of the project",
+            "default": ""
+          },
+          "Email": {
+            "type": "string",
+            "description": "The email address of the project",
+            "default": ""
+          },
+          "StartDate": {
+            "type": "string",
+            "format": "date",
+            "example": "2014-12-31T00:00:00.0000000"
+          },
+          "EndDate": {
+            "type": "string",
+            "format": "date",
+            "example": "2014-12-31T00:00:00.0000000"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the location is active and can be used",
+            "example": false
+          },
+          "ModifiedOn": {
+            "type": "string",
+            "description": "The date on which record was updated",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          },
+          "ModifiedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date on which record was created",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          }
+        },
+        "description": "Project information"
+      },
+      "ProjectData": {
+        "required": [
+          "Id",
+          "Name",
+          "Address",
+          "PostalCode",
+          "City",
+          "State"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The guid to identify the project",
+            "default": ""
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the project",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the project",
+            "default": ""
+          },
+          "Code": {
+            "type": "string",
+            "description": "The code of the project",
+            "default": ""
+          },
+          "OwnerId": {
+            "type": "string",
+            "description": "The owner of the project",
+            "default": ""
+          },
+          "LocationId": {
+            "type": "string",
+            "description": "The country of the location",
+            "default": ""
+          },
+          "Description": {
+            "type": "string",
+            "description": "The description of project",
+            "default": ""
+          },
+          "CustomerName": {
+            "type": "string",
+            "description": "The name of customer",
+            "default": ""
+          },
+          "CustomerEmail": {
+            "type": "string",
+            "description": "The email of customer",
+            "default": ""
+          },
+          "CustomerPhone": {
+            "type": "string",
+            "description": "The phone of customer",
+            "default": ""
+          },
+          "Address": {
+            "type": "string",
+            "description": "The address of the project",
+            "default": ""
+          },
+          "PostalCode": {
+            "type": "string",
+            "description": "The postal code of the project",
+            "default": ""
+          },
+          "City": {
+            "type": "string",
+            "description": "The city of the project",
+            "default": ""
+          },
+          "State": {
+            "type": "string",
+            "description": "The state of the project",
+            "default": ""
+          },
+          "Phone": {
+            "type": "string",
+            "description": "The phone number of the project",
+            "default": ""
+          },
+          "Email": {
+            "type": "string",
+            "description": "The email address of the project",
+            "default": ""
+          },
+          "StartDate": {
+            "type": "string",
+            "format": "date",
+            "example": "2014-12-31T00:00:00.0000000"
+          },
+          "EndDate": {
+            "type": "string",
+            "format": "date",
+            "example": "2014-12-31T00:00:00.0000000"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the location is active and can be used",
+            "example": false
+          }
+        },
+        "description": "Project information for data patch"
+      },
+      "ProjectPost": {
+        "required": [
+          "Id",
+          "Name",
+          "Address",
+          "PostalCode",
+          "City",
+          "State"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The guid to identify the project",
+            "default": ""
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the project",
+            "default": ""
+          },
+          "Code": {
+            "type": "string",
+            "description": "The code of the project",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the project",
+            "default": ""
+          },
+          "Description": {
+            "type": "string",
+            "description": "The description of project",
+            "default": ""
+          },
+          "StartDate": {
+            "type": "string",
+            "format": "date",
+            "example": "2014-12-31T00:00:00.0000000"
+          },
+          "EndDate": {
+            "type": "string",
+            "format": "date",
+            "example": "2014-12-31T00:00:00.0000000"
+          },
+          "CustomerName": {
+            "type": "string",
+            "description": "The name of customer",
+            "default": ""
+          },
+          "CustomerEmail": {
+            "type": "string",
+            "description": "The email of customer",
+            "default": ""
+          },
+          "CustomerPhone": {
+            "type": "string",
+            "description": "The phone of customer",
+            "default": ""
+          },
+          "Address": {
+            "type": "string",
+            "description": "The address of the project",
+            "default": ""
+          },
+          "PostalCode": {
+            "type": "string",
+            "description": "The postal code of the project",
+            "default": ""
+          },
+          "City": {
+            "type": "string",
+            "description": "The city of the project",
+            "default": ""
+          },
+          "State": {
+            "type": "string",
+            "description": "The state of the project",
+            "default": ""
+          },
+          "Phone": {
+            "type": "string",
+            "description": "The phone number of the project",
+            "default": ""
+          },
+          "Email": {
+            "type": "string",
+            "description": "The email address of the project",
+            "default": ""
+          },
+          "LocationId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "OwnerId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the location is active and can be used",
+            "example": false
+          }
+        },
+        "description": "Project information"
+      },
+      "ProjectsData": {
+        "type": "object",
+        "properties": {
+          "Extra": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ListValidation"
+            }
+          },
+          "IsFullValidation": {
+            "type": "boolean",
+            "description": "If the value is true, the data quality of all fields are checked. This has an effect on performance.",
+            "example": false
+          },
+          "Projects": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProjectData"
+            },
+            "description": "The list of project data record"
+          }
+        },
+        "description": "The data loading record of project saving"
+      },
+      "ProjectSkill": {
+        "required": [
+          "Id"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The identifier of user project skill",
+            "default": ""
+          },
+          "ProjectId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "SkillId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "Is_Required": {
+            "type": "boolean",
+            "description": "Determines whether skill is required in order for a user to be involved in a project",
+            "example": false
+          },
+          "ModifiedOn": {
+            "type": "string",
+            "description": "The date on which record was updated",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          },
+          "ModifiedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date on which record was created",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          }
+        },
+        "description": "Project skills. The project gets the relation to the skill."
+      },
+      "Skill": {
+        "required": [
+          "Id",
+          "Name",
+          "Is_Active"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The guid to identify the skill",
+            "default": ""
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the skill",
+            "default": ""
+          },
+          "Code": {
+            "type": "string",
+            "description": "Skill code",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the skill",
+            "default": ""
+          },
+          "Description": {
+            "type": "string",
+            "description": "Description of the skill",
+            "default": ""
+          },
+          "LocationId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the skill is active and can be used",
+            "example": false
+          },
+          "ModifiedOn": {
+            "type": "string",
+            "description": "The date on which record was updated",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          },
+          "ModifiedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date on which record was created",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          }
+        },
+        "description": "Skill information"
+      },
+      "SkillData": {
+        "required": [
+          "Id",
+          "Name",
+          "Is_Active"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The guid to identify the skill",
+            "default": ""
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the skill",
+            "default": ""
+          },
+          "Code": {
+            "type": "string",
+            "description": "Skill code",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the skill",
+            "default": ""
+          },
+          "Description": {
+            "type": "string",
+            "description": "Description of the skill",
+            "default": ""
+          },
+          "LocationId": {
+            "type": "string",
+            "description": "The location of the skill",
+            "default": ""
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the skill is active and can be used",
+            "example": false
+          }
+        },
+        "description": "Skill information for data patch"
+      },
+      "SkillPost": {
+        "required": [
+          "Id",
+          "Name",
+          "Is_Active"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The guid to identify the skill",
+            "default": ""
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the skill",
+            "default": ""
+          },
+          "Code": {
+            "type": "string",
+            "description": "Skill code",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the skill",
+            "default": ""
+          },
+          "Description": {
+            "type": "string",
+            "description": "Description of the skill",
+            "default": ""
+          },
+          "LocationId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the skill is active and can be used",
+            "example": false
+          }
+        },
+        "description": "Skill information"
+      },
+      "SkillsData": {
+        "type": "object",
+        "properties": {
+          "Extra": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ListValidation"
+            }
+          },
+          "IsFullValidation": {
+            "type": "boolean",
+            "description": "If the value is true, the data quality of all fields are checked. This has an effect on performance.",
+            "example": false
+          },
+          "Skills": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SkillData"
+            },
+            "description": "The list of skill data record"
+          }
+        },
+        "description": "The data loading record of skill saving"
+      },
+      "SkillUser": {
+        "required": [
+          "Id"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The identifier of user skill",
+            "default": ""
+          },
+          "SkillId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "UserId": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "ModifiedOn": {
+            "type": "string",
+            "description": "The date on which record was updated",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          },
+          "ModifiedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date on which record was created",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          }
+        },
+        "description": "Skill users. The user gets the rights to the skill."
+      },
+      "Team": {
+        "required": [
+          "Id",
+          "Name",
+          "Is_Active"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The guid to identify the team",
+            "default": ""
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the team",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the team",
+            "default": ""
+          },
+          "ParentTeamId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "HierarchicalName": {
+            "type": "string",
+            "description": "The hierarchical name of the team",
+            "default": ""
+          },
+          "Level": {
+            "type": "integer",
+            "description": "The team level at the hierarchy",
+            "format": "int32",
+            "example": 0
+          },
+          "Description": {
+            "type": "string",
+            "description": "The description of the team",
+            "default": ""
+          },
+          "OwnerId": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the team is active and can be used",
+            "example": false
+          },
+          "TotalUsers": {
+            "type": "integer",
+            "description": "Number of users linked to the team",
+            "format": "int64",
+            "example": 1234567891234567
+          },
+          "ModifiedOn": {
+            "type": "string",
+            "description": "The date the record was updated",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          },
+          "ModifiedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date on which record was created",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          }
+        },
+        "description": "Team information"
+      },
+      "TeamData": {
+        "required": [
+          "Id",
+          "Name",
+          "Is_Active"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The guid to identify the team",
+            "default": ""
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the team",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the team",
+            "default": ""
+          },
+          "ParentTeamId": {
+            "type": "string",
+            "description": "The identifier of the parent team",
+            "default": ""
+          },
+          "HierarchicalName": {
+            "type": "string",
+            "description": "The hierarchical name of the team",
+            "default": ""
+          },
+          "Level": {
+            "type": "integer",
+            "description": "The team level at the hierarchy",
+            "format": "int32",
+            "example": 0
+          },
+          "Description": {
+            "type": "string",
+            "description": "The description of the team",
+            "default": ""
+          },
+          "OwnerId": {
+            "type": "string",
+            "description": "The identifier of the user who own the team",
+            "default": ""
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the team is active and can be used",
+            "example": false
+          }
+        },
+        "description": "Team information"
+      },
+      "TeamPost": {
+        "required": [
+          "Id",
+          "Name",
+          "Is_Active"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The guid to identify the team",
+            "default": ""
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the team",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the team",
+            "default": ""
+          },
+          "ParentTeamId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "HierarchicalName": {
+            "type": "string",
+            "description": "The hierarchical name of the team",
+            "default": ""
+          },
+          "Level": {
+            "type": "integer",
+            "description": "The team level at the hierarchy",
+            "format": "int32",
+            "example": 0
+          },
+          "Description": {
+            "type": "string",
+            "description": "The description of the team",
+            "default": ""
+          },
+          "OwnerId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the team is active and can be used",
+            "example": false
+          }
+        },
+        "description": "Team information"
+      },
+      "TeamsData": {
+        "type": "object",
+        "properties": {
+          "Extra": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ListValidation"
+            }
+          },
+          "IsFullValidation": {
+            "type": "boolean",
+            "description": "If the value is true, the data quality of all fields are checked. This has an effect on performance.",
+            "example": false
+          },
+          "Teams": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TeamData"
+            },
+            "description": "The list of team data record"
+          }
+        },
+        "description": "The data loading record of team saving"
+      },
+      "TeamUser": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The guid to identify the team user",
+            "default": ""
+          },
+          "TeamId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "UserId": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "ModifiedOn": {
+            "type": "string",
+            "description": "The date the record was updated",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          },
+          "ModifiedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date on which record was created",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          }
+        },
+        "description": "User teams. The user gets the relation to the team."
+      }
+    },
+    "responses": {
+      "400": {
+        "description": "Bad Request - The user has provided input that the browser is unable to convert.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "Errors": [
+                "The user has provided input that the browser is unable to convert.",
+                "There are multiple rows in the database for the same value",
+                "The value does not match the specified entity structure",
+                "..."
+              ],
+              "Type": "/Errors/Bad Input",
+              "Title": "Bad Request",
+              "StatusCode": 400,
+              "Instance": "/OpenApi/rest/Xzy",
+              "RequestKey": "894ea43c-b8a6-4195-9a9c-82c07d9cc33a"
+            }
+          }
+        }
+      },
+      "401": {
+        "description": "Unauthorized - The response status code indicates that the client request has not been completed because it lacks valid authentication credentials for the requested resource.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "Errors": [
+                "The session Id or OAuth token used has expired or is invalid."
+              ],
+              "Type": "/Errors/Unauthorized",
+              "Title": "Unauthorized",
+              "StatusCode": 401,
+              "Instance": "/OpenApi/rest/Xzy",
+              "RequestKey": "894ea43c-b8a6-4195-9a9c-82c07d9cc33a"
+            }
+          }
+        }
+      },
+      "403": {
+        "description": "Forbidden - The user does not have access to execute operation",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "Errors": [
+                "The user does not have access to execute operation"
+              ],
+              "Type": "/Errors/Permission",
+              "Title": "Bad Request",
+              "StatusCode": 403,
+              "Instance": "/OpenApi/rest/Xzy",
+              "RequestKey": "894ea43c-b8a6-4195-9a9c-82c07d9cc33a"
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Not Found - The requested resource does not exist.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "Errors": [
+                "The requested resource does not exist"
+              ],
+              "Type": "/Errors/Not Found",
+              "Title": "Not Found",
+              "StatusCode": 404,
+              "Instance": "/OpenApi/rest/Xzy",
+              "RequestKey": "894ea43c-b8a6-4195-9a9c-82c07d9cc33a"
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal Server Error - An internal server error is an error on the web server you're trying to access.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "Errors": [
+                "An internal server error is an error on the web server you're trying to access."
+              ],
+              "Type": "/Errors/Internal Server Error",
+              "Title": "Internal Server Error",
+              "StatusCode": 500,
+              "Instance": "/OpenApi/rest/Xzy",
+              "RequestKey": "894ea43c-b8a6-4195-9a9c-82c07d9cc33a"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "OAuth2": {
+        "type": "oauth2",
+        "description": "oAuth autentication flow",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://dev.esystems.fi/oAuth/rest/v2/Token",
+            "refreshUrl": "https://dev.esystems.fi/oAuth/rest/v2/Token",
+            "scopes": { }
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Certificates",
+      "description": ""
+    },
+    {
+      "name": "Equipments",
+      "description": ""
+    },
+    {
+      "name": "Projects",
+      "description": ""
+    },
+    {
+      "name": "Skills",
+      "description": ""
+    },
+    {
+      "name": "Teams",
+      "description": ""
+    }
+  ]
+}

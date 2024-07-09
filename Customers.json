@@ -1,0 +1,2116 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Customers API documentation",
+    "description": "## Introduction\r\nThe OpenAPI Specification (OAS) defines a standard, language-agnostic interface to RESTful APIs which allows both humans and computers to discover and understand the capabilities of the service without access to source code, documentation, or through network traffic inspection. When properly defined, a consumer can understand and interact with the remote service with a minimal amount of implementation logic.\r\n\r\nAn OpenAPI definition can then be used by documentation generation tools to display the API, code generation tools to generate servers and clients in various programming languages, testing tools, and many other use cases.\r\n\r\n| Version | URL | Description |\r\n| --- | --- | --- |\r\n| v3 | https://dev.esystems.fi/Endpoint/rest/Doc/v3/Json/Customers | Serializes to the Open API document as a string in the JSON format and represents all patches of OpenAPI V3.0 spec (e.g. 3.0.0, 3.0.1). |\r\n| v3 | https://dev.esystems.fi/Endpoint/rest/Doc/v3/Yaml/Customers | Serializes to the Open API document as a string in the Yaml format and represents all patches of OpenAPI V3.0 spec (e.g. 3.0.0, 3.0.1). |\r\n| v2 | https://dev.esystems.fi/Endpoint/rest/Doc/v2/Json/Customers | Serializes to the Open API document as a string in the JSON format and represents OpenAPI V2.0 spec.|\r\n| v2 | https://dev.esystems.fi/Endpoint/rest/Doc/v2/Yaml/Customers | Serializes to the Open API document as a string in the Yaml format and represents OpenAPI V2.0 spec. |",
+    "contact": { },
+    "license": {
+      "name": "BSD-3 license",
+      "url": "https://opensource.org/licenses/BSD-3-Clause"
+    },
+    "version": "3.0.23"
+  },
+  "servers": [
+    {
+      "url": "https://dev.esystems.fi",
+      "description": "Default entry point of service"
+    }
+  ],
+  "paths": {
+    "/Endpoint/rest/api/v1/Customer/{Id}": {
+      "get": {
+        "tags": [
+          "Customers"
+        ],
+        "description": "The method returns one record of the `Customer`.\n\nMethod returns an extended `Customer` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `ParentCustomerId, OwnerId, ModifiedBy, CreatedBy`\n\n### Get a record of Customer\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id,ExternalId, SapId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.",
+        "operationId": "Get Customer",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nExternalId, SapId\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nExternalId, SapId\n```"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The record of `Customer` information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Customer"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "CustomerAdmin:Read",
+              "CustomerUser:Read"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Customers"
+        ],
+        "description": "Use the `CustomerData` object resource to update `Customer` using `Id,ExternalId, SapId` field(s) value.\n\nProvide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record. \n\nThe input parameter must be used in the `CustomerData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `ParentCustomerId, OwnerId, ModifiedBy, CreatedBy`\n\n### Update a record of Customer\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id,ExternalId, SapId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the updated record if the call is successful. Method returns an extended `Customer` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "operationId": "Update Customer",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nExternalId, SapId\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nExternalId, SapId\n```"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Customer information to update.\n\nThe input parameter must be used in the `CustomerData` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomerData"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Record"
+        },
+        "responses": {
+          "200": {
+            "description": "Updated `Customer` information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Customer"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "CustomerAdmin:Update",
+              "CustomerUser:Update"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Customers"
+        ],
+        "description": "Use the query string resource to delete `Customer` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id,ExternalId, SapId` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `Customer` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `ParentCustomerId, OwnerId, ModifiedBy, CreatedBy`\n\n### Delete a record of Customer\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id,ExternalId, SapId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
+        "operationId": "Delete Customer",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nExternalId, SapId\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nExternalId, SapId\n```"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted `Customer` information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Customer"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "CustomerAdmin:Delete",
+              "CustomerUser:Delete"
+            ]
+          }
+        ]
+      }
+    },
+    "/Endpoint/rest/api/v1/Customers": {
+      "get": {
+        "tags": [
+          "Customers"
+        ],
+        "description": "Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.\n\nLeverage the search service to extract the requisite information from the system effectively.\n\nThe method returns a list structured with an extended `Customer` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.\n\nThe foreign key fields involved are: `ParentCustomerId, OwnerId, ModifiedBy, CreatedBy`\n\n### Example\nIt searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.\n\n```http\nfields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000\n```",
+        "operationId": "List Customers",
+        "parameters": [
+          {
+            "name": "Fields",
+            "in": "query",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, ExternalId, SapId, Name, ParentCustomerId, OwnerId, Is_Active, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```",
+            "schema": {
+              "type": "string",
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, ExternalId, SapId, Name, ParentCustomerId, OwnerId, Is_Active, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```"
+            }
+          },
+          {
+            "name": "Filters",
+            "in": "query",
+            "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.\n\nThe name of the entity field. Example: `Name` or relation field `OwnerId.Name`\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn\n\nYou can add multiple values separated by comma when using the `In`, `NotIn` operators.\nExample of text field; `USA; FIN; ARE`\nExample of numeric field; `1, 2, 3`\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+            "schema": {
+              "type": "string",
+              "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.\n\nThe name of the entity field. Example: `Name` or relation field `OwnerId.Name`\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn\n\nYou can add multiple values separated by comma when using the `In`, `NotIn` operators.\nExample of text field; `USA; FIN; ARE`\nExample of numeric field; `1, 2, 3`\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n"
+            }
+          },
+          {
+            "name": "Orders",
+            "in": "query",
+            "description": "The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: \n```\nName DESC, CreatedOn ASC\n```",
+            "schema": {
+              "type": "string",
+              "description": "The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: \n```\nName DESC, CreatedOn ASC\n```"
+            }
+          },
+          {
+            "name": "CurrentPage",
+            "in": "query",
+            "description": "This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.",
+            "schema": {
+              "type": "integer",
+              "description": "This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.\n\nThe value ranges from `1` to `1000` and defaults to `50`.",
+            "schema": {
+              "type": "integer",
+              "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.\n\nThe value ranges from `1` to `1000` and defaults to `50`.",
+              "format": "int32",
+              "default": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of Customers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Customers"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "CustomerAdmin:Read",
+              "CustomerUser:Read"
+            ]
+          }
+        ]
+      }
+    },
+    "/Endpoint/rest/api/v1/Customer": {
+      "patch": {
+        "tags": [
+          "Customers"
+        ],
+        "description": "Use the `CustomerData` object resource to insert or update (Upsert) `Customer` using `Id,ExternalId, SapId` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `CustomerData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `ParentCustomerId, OwnerId, ModifiedBy, CreatedBy`\n\n### Update a record of Customer\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `ExternalId, SapId` field value is not empty and `Id` field value is empty, action try insert record according `ExternalId, SapId` field value (if set, the value is a unique identifier).\n\n### Create a new record of Customer\n* If the value in the `ExternalId, SapId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`CustomerData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Customer` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "operationId": "Upsert Customer",
+        "requestBody": {
+          "description": "`Customer` information to insert or update.\n\nThe input parameter must be used in the `CustomerData` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomerData"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Record"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated `Customer` information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Customer"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "CustomerAdmin:Create, Update",
+              "CustomerUser:Create, Update"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Customers"
+        ],
+        "description": "Use the `CustomerData` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `CustomerData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `ParentCustomerId, OwnerId, ModifiedBy, CreatedBy`\n\n### Create a new record of Customer\n* If the value in the `Id,ExternalId, SapId` fields are empty then action insert a new record according input parameter entity record structure (`CustomerData`).\n* If the value in the `ExternalId, SapId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`CustomerData`).\n* If the `Id,ExternalId, SapId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the created record if the call is successful. Method returns an extended `Customer` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\n",
+        "operationId": "Create Customer",
+        "requestBody": {
+          "description": "`Customer` information to insert.\n\nThe input parameter must be used in the `CustomerData` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomerData"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Record"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted `Customer` information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Customer"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "CustomerAdmin:Create",
+              "CustomerUser:Create"
+            ]
+          }
+        ]
+      }
+    },
+    "/Endpoint/rest/api/v1/Customers/Json": {
+      "patch": {
+        "tags": [
+          "Customers"
+        ],
+        "description": "Use the `CustomersText` object resource to insert or update (Upsert) a list of `CustomerList` using `Id,ExternalId, SapId` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `PATCH` method of the resource.\n\nThe input parameter must be used in the `CustomerList` record structure as text fields in the foreign key fields.\n\nForeign key fields are: `ParentCustomerId, OwnerId, ModifiedBy, CreatedBy`\n\n### Update a record of Customer\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned. You cannot change `Id` field value (primary key).\n* If the `ExternalId, SapId` field value is not empty and `Id` field value is empty, action try insert record according `ExternalId, SapId` field value (if set, the value is a unique identifier).\n\n**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.\n\n### Create a new record of Customer\n* If the value in the `ExternalId, SapId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`CustomerData`).\n\nThe response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `Customer` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.",
+        "operationId": "Patch Customers",
+        "requestBody": {
+          "description": "The list of Customer information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomersData"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Data"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated list of Customer information. \n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Customers"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "CustomerAdmin:Import",
+              "CustomerUser:Import"
+            ]
+          }
+        ]
+      }
+    },
+    "/Endpoint/rest/api/v1/Customer/{Id}/Users": {
+      "get": {
+        "tags": [
+          "Customers"
+        ],
+        "description": "Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.\n\nLeverage the search service to extract the requisite information from the system effectively.\n\nThe method returns a list structured with an extended `User` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.\n\nThe foreign key fields involved are: `CustomerId, UserId, CreatedBy`\n\n### Example\nIt searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.\n\n```http\nfields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000\n```",
+        "operationId": "List Customer Users",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```"
+            }
+          },
+          {
+            "name": "Fields",
+            "in": "query",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, CustomerId, UserId, CreatedBy, CreatedOn\n```",
+            "schema": {
+              "type": "string",
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, CustomerId, UserId, CreatedBy, CreatedOn\n```"
+            }
+          },
+          {
+            "name": "Filters",
+            "in": "query",
+            "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.\n\nThe name of the entity field. Example: `Name` or relation field `OwnerId.Name`\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn\n\nYou can add multiple values separated by comma when using the `In`, `NotIn` operators.\nExample of text field; `USA; FIN; ARE`\nExample of numeric field; `1, 2, 3`\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+            "schema": {
+              "type": "string",
+              "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.\n\nThe name of the entity field. Example: `Name` or relation field `OwnerId.Name`\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn\n\nYou can add multiple values separated by comma when using the `In`, `NotIn` operators.\nExample of text field; `USA; FIN; ARE`\nExample of numeric field; `1, 2, 3`\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n"
+            }
+          },
+          {
+            "name": "Orders",
+            "in": "query",
+            "description": "The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: \n```\nName DESC, CreatedOn ASC\n```",
+            "schema": {
+              "type": "string",
+              "description": "The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: \n```\nName DESC, CreatedOn ASC\n```"
+            }
+          },
+          {
+            "name": "CurrentPage",
+            "in": "query",
+            "description": "This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.",
+            "schema": {
+              "type": "integer",
+              "description": "This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.\n\nThe value ranges from `1` to `1000` and defaults to `50`.",
+            "schema": {
+              "type": "integer",
+              "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.\n\nThe value ranges from `1` to `1000` and defaults to `50`.",
+              "format": "int32",
+              "default": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of Users",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Users"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "CustomerAdmin:Read",
+              "CustomerUser:Read"
+            ]
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Customers"
+        ],
+        "description": "Use the `UsersData` object resource to insert or update (Upsert) a list of `UserData` using `Id,Username, Email` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `UserList` record structure as text fields in the foreign key fields.\n\nForeign key fields are: `CustomerId, UserId, CreatedBy`\n\n### Update a record of User\n* If the `Username, Email` field value is not empty and `Id` field value is empty, action try insert record according `Username, Email` field value (if set, the value is a unique identifier).\n\n**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.\n\n### Create a new record of User\n* If the value in the `Username, Email` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`UserData`).\n\nThe response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `User` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.",
+        "operationId": "Patch Customer Users",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```"
+            }
+          },
+          {
+            "name": "DeleteNotExists",
+            "in": "query",
+            "description": "The Delete not exists function delete orphan values from a table.\n\nIf you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table.",
+            "schema": {
+              "type": "string",
+              "description": "The Delete not exists function delete orphan values from a table.\n\nIf you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table.",
+              "default": "false"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The list of User information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsersData"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Data"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated list of User information. \n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "CustomerAdmin:Create, Update",
+              "CustomerUser:Create, Update"
+            ]
+          }
+        ]
+      }
+    },
+    "/Endpoint/rest/api/v1/Customer/{Id}/User": {
+      "post": {
+        "tags": [
+          "Customers"
+        ],
+        "description": "Use the `UserPost` object resource to insert or update (Upsert) `User` using `Id,Username, Email` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `CustomerId, UserId, CreatedBy`\n\n### Update a record of User\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Username, Email` field value is not empty and `Id` field value is empty, action try insert record according `Username, Email` field value (if set, the value is a unique identifier).\n\n### Create a new record of User\n* If the value in the `Username, Email` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`UserData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `User` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "operationId": "Upsert Customer User",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "`User` information to insert or update.\n\nThe input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserData"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Record"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated `User` information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "CustomerAdmin:Create, Update",
+              "CustomerUser:Create, Update"
+            ]
+          }
+        ]
+      }
+    },
+    "/Endpoint/rest/api/v1/Customer/{Id}/User/{SubId}": {
+      "delete": {
+        "tags": [
+          "Customers"
+        ],
+        "description": "Use the query string resource to delete `User` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `Id,Username, Email` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `User` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `CustomerId, UserId, CreatedBy`\n\n### Delete a record of User\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id,Username, Email` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
+        "operationId": "Delete Customer User",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```"
+            }
+          },
+          {
+            "name": "SubId",
+            "in": "path",
+            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "SubName",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nUsername, Email\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nUsername, Email\n```"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted `User` information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "CustomerAdmin:Delete",
+              "CustomerUser:Delete"
+            ]
+          }
+        ]
+      }
+    },
+    "/Endpoint/rest/api/v1/Customer/{Id}/Contacts": {
+      "get": {
+        "tags": [
+          "Customers"
+        ],
+        "description": "Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.\n\nLeverage the search service to extract the requisite information from the system effectively.\n\nThe method returns a list structured with an extended `Contact` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.\n\nThe foreign key fields involved are: `UserId, CustomerId, ModifiedBy, CreatedBy`\n\n### Example\nIt searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.\n\n```http\nfields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000\n```",
+        "operationId": "List Customer Contacts",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```"
+            }
+          },
+          {
+            "name": "Fields",
+            "in": "query",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, ExternalId, UserId, Name, FirstName, LastName, JobTitle, Phone, Email, CustomerId, Is_Active, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```",
+            "schema": {
+              "type": "string",
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, ExternalId, UserId, Name, FirstName, LastName, JobTitle, Phone, Email, CustomerId, Is_Active, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```"
+            }
+          },
+          {
+            "name": "Filters",
+            "in": "query",
+            "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.\n\nThe name of the entity field. Example: `Name` or relation field `OwnerId.Name`\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn\n\nYou can add multiple values separated by comma when using the `In`, `NotIn` operators.\nExample of text field; `USA; FIN; ARE`\nExample of numeric field; `1, 2, 3`\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+            "schema": {
+              "type": "string",
+              "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.\n\nThe name of the entity field. Example: `Name` or relation field `OwnerId.Name`\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn\n\nYou can add multiple values separated by comma when using the `In`, `NotIn` operators.\nExample of text field; `USA; FIN; ARE`\nExample of numeric field; `1, 2, 3`\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n"
+            }
+          },
+          {
+            "name": "Orders",
+            "in": "query",
+            "description": "The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: \n```\nName DESC, CreatedOn ASC\n```",
+            "schema": {
+              "type": "string",
+              "description": "The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: \n```\nName DESC, CreatedOn ASC\n```"
+            }
+          },
+          {
+            "name": "CurrentPage",
+            "in": "query",
+            "description": "This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.",
+            "schema": {
+              "type": "integer",
+              "description": "This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.\n\nThe value ranges from `1` to `1000` and defaults to `50`.",
+            "schema": {
+              "type": "integer",
+              "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.\n\nThe value ranges from `1` to `1000` and defaults to `50`.",
+              "format": "int32",
+              "default": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of Contacts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contacts"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "CustomerAdmin:Read",
+              "CustomerUser:Read"
+            ]
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Customers"
+        ],
+        "description": "Use the `ContactsData` object resource to insert or update (Upsert) a list of `ContactData` using `Id,Name, ExternalId` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `ContactList` record structure as text fields in the foreign key fields.\n\nForeign key fields are: `UserId, CustomerId, ModifiedBy, CreatedBy`\n\n### Update a record of Contact\n* If the `Name, ExternalId` field value is not empty and `Id` field value is empty, action try insert record according `Name, ExternalId` field value (if set, the value is a unique identifier).\n\n**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.\n\n### Create a new record of Contact\n* If the value in the `Name, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`ContactData`).\n\nThe response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `Contact` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.",
+        "operationId": "Patch Customer Contacts",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```"
+            }
+          },
+          {
+            "name": "DeleteNotExists",
+            "in": "query",
+            "description": "The Delete not exists function delete orphan values from a table.\n\nIf you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table.",
+            "schema": {
+              "type": "string",
+              "description": "The Delete not exists function delete orphan values from a table.\n\nIf you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table.",
+              "default": "false"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The list of Contact information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContactsData"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Data"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated list of Contact information. \n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contact"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "CustomerAdmin:Create, Update",
+              "CustomerUser:Create, Update"
+            ]
+          }
+        ]
+      }
+    },
+    "/Endpoint/rest/api/v1/Customer/{Id}/Contact": {
+      "post": {
+        "tags": [
+          "Customers"
+        ],
+        "description": "Use the `ContactPost` object resource to insert or update (Upsert) `Contact` using `Id,Name, ExternalId` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `ContactData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `UserId, CustomerId, ModifiedBy, CreatedBy`\n\n### Update a record of Contact\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Name, ExternalId` field value is not empty and `Id` field value is empty, action try insert record according `Name, ExternalId` field value (if set, the value is a unique identifier).\n\n### Create a new record of Contact\n* If the value in the `Name, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`ContactData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Contact` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "operationId": "Upsert Customer Contact",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "`Contact` information to insert or update.\n\nThe input parameter must be used in the `ContactData` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContactData"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Record"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated `Contact` information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contact"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "CustomerAdmin:Create, Update",
+              "CustomerUser:Create, Update"
+            ]
+          }
+        ]
+      }
+    },
+    "/Endpoint/rest/api/v1/Customer/{Id}/Contact/{SubId}": {
+      "delete": {
+        "tags": [
+          "Customers"
+        ],
+        "description": "Use the query string resource to delete `Contact` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `Id,Name, ExternalId` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `Contact` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `UserId, CustomerId, ModifiedBy, CreatedBy`\n\n### Delete a record of Contact\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id,Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
+        "operationId": "Delete Customer Contact",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```"
+            }
+          },
+          {
+            "name": "SubId",
+            "in": "path",
+            "description": "The identifier of the Contact record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the Contact record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "SubName",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nName, ExternalId\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nName, ExternalId\n```"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted `Contact` information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contact"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "CustomerAdmin:Delete",
+              "CustomerUser:Delete"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Meta": {
+        "required": [
+          "TotalItems",
+          "CurrentPage",
+          "PageSize",
+          "Type"
+        ],
+        "type": "object",
+        "properties": {
+          "TotalItems": {
+            "type": "integer",
+            "description": "This field represents the total number of items available in the entire dataset, not just the items returned in the current response. It's useful for implementing pagination, as clients can use it to calculate the number of pages or total available items.",
+            "format": "int32",
+            "default": 0,
+            "example": 1000
+          },
+          "CurrentPage": {
+            "type": "integer",
+            "description": "This field specifies the current page of results being returned. It's often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.",
+            "format": "int32",
+            "default": 1,
+            "example": 50
+          },
+          "PageSize": {
+            "type": "integer",
+            "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.",
+            "format": "int32",
+            "default": 50,
+            "example": 50
+          },
+          "Type": {
+            "type": "string",
+            "description": "The type of the record",
+            "example": "User"
+          }
+        },
+        "description": "The object provides metadata about the list of items returned in the API response. It typically includes information that helps clients understand and work with the data."
+      },
+      "Error": {
+        "required": [
+          "Errors",
+          "StatusCode"
+        ],
+        "type": "object",
+        "properties": {
+          "Error": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "default": ""
+            },
+            "description": "Human-readable explanation of the errors"
+          },
+          "Type": {
+            "type": "string",
+            "description": "URI identifier that categorizes the error",
+            "default": ""
+          },
+          "Title": {
+            "type": "string",
+            "description": "Brief, human-readable message about the error",
+            "default": ""
+          },
+          "StatusCode": {
+            "type": "integer",
+            "description": "The HTTP response code",
+            "format": "int32",
+            "example": 400
+          },
+          "Instance": {
+            "type": "string",
+            "description": "URI that identifies the specific occurrence of the error",
+            "default": ""
+          },
+          "RequestKey": {
+            "type": "string",
+            "description": "Provides a request key that identifies the current request.",
+            "default": ""
+          }
+        },
+        "description": "The list of errors. Throw specific exceptions based on the received error."
+      },
+      "Customer": {
+        "required": [
+          "Id",
+          "Name",
+          "Is_Active"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "description": "The guid to identify the customer",
+            "format": "int64",
+            "default": 0,
+            "example": 0
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the customer"
+          },
+          "SapId": {
+            "type": "string",
+            "description": "This field is the SAP Id and you can use this between the two systems"
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the customer"
+          },
+          "ParentCustomerId": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "OwnerId": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the customer is active and can be used",
+            "default": false,
+            "example": false
+          },
+          "ModifiedOn": {
+            "type": "string",
+            "description": "The date the record was updated",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          },
+          "ModifiedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date the record was created",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          }
+        },
+        "description": "The record of Customer information."
+      },
+      "AbstractLong": {
+        "required": [
+          "Id",
+          "ExternalId",
+          "Name",
+          "Type"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "description": "The primary key of the record row. If the Id attribute is used, then it must be unique",
+            "format": "int64",
+            "default": 0,
+            "example": 1234567891234567
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identier of the record row. If the External Id attribute is used, then it must be unique",
+            "example": "3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5"
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the record row",
+            "example": "Bob Normal"
+          },
+          "Type": {
+            "type": "string",
+            "description": "The type of the record object",
+            "example": "User"
+          }
+        },
+        "description": "The abstract object structure"
+      },
+      "Customers": {
+        "type": "object",
+        "properties": {
+          "Meta": {
+            "$ref": "#/components/schemas/Meta"
+          },
+          "Data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Customer"
+            },
+            "description": "The list of `Customer records`"
+          }
+        },
+        "description": "The list of `Customer` records"
+      },
+      "CustomerData": {
+        "required": [
+          "Id",
+          "Name",
+          "Is_Active"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "description": "The guid to identify the customer",
+            "format": "int64",
+            "default": 0,
+            "example": 0
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the customer"
+          },
+          "SapId": {
+            "type": "string",
+            "description": "This field is the SAP Id and you can use this between the two systems"
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the customer"
+          },
+          "ParentCustomerId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "OwnerId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the customer is active and can be used",
+            "default": false,
+            "example": false
+          },
+          "ModifiedOn": {
+            "type": "string",
+            "description": "The date the record was updated",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          },
+          "ModifiedBy": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "CreatedBy": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date the record was created",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          }
+        },
+        "description": "The record of Customer information."
+      },
+      "FieldType": {
+        "required": [
+          "Field",
+          "Value"
+        ],
+        "type": "object",
+        "properties": {
+          "Field": {
+            "type": "string",
+            "description": "The name of the data field"
+          },
+          "Value": {
+            "type": "string",
+            "description": "The value of the data row"
+          }
+        },
+        "description": "The field object structure"
+      },
+      "CustomerText": {
+        "required": [
+          "Id",
+          "Name",
+          "Is_Active"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "description": "The guid to identify the customer",
+            "format": "int64",
+            "default": 0,
+            "example": 0
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the customer"
+          },
+          "SapId": {
+            "type": "string",
+            "description": "This field is the SAP Id and you can use this between the two systems"
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the customer"
+          },
+          "ParentCustomerId": {
+            "type": "string",
+            "description": "The identifier of the parent customer"
+          },
+          "OwnerId": {
+            "type": "string",
+            "description": "The identifier of the user who own the customer"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the customer is active and can be used",
+            "default": false,
+            "example": false
+          },
+          "ModifiedOn": {
+            "type": "string",
+            "description": "The date the record was updated",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          },
+          "ModifiedBy": {
+            "type": "string",
+            "description": "The Identifier of the user who updated the record"
+          },
+          "CreatedBy": {
+            "type": "string",
+            "description": "The Identifier of the user who created the record"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date the record was created",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          }
+        },
+        "description": "The record of Customer information."
+      },
+      "CustomersData": {
+        "type": "object",
+        "properties": {
+          "Extra": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ListValidation"
+            },
+            "description": "List validation for entity attribute"
+          },
+          "IsFullValidation": {
+            "type": "boolean",
+            "description": "If the value is true, the data quality of all fields are checked. This has an effect on performance.",
+            "default": false,
+            "example": false
+          },
+          "Customers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CustomerText"
+            },
+            "description": "The list of `Customer` data record for import"
+          }
+        },
+        "description": "The data loading record of Customer importing"
+      },
+      "ListValidation": {
+        "required": [
+          "Name"
+        ],
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string",
+            "description": "The name of the entity field."
+          },
+          "FieldName": {
+            "type": "string",
+            "description": "The field name of relation database table.\n\nExample; \nThe field name is &quot;TenantId&quot; and is associated with the &quot;Tenant&quot; table. You want to use in the &quot;Tenant&quot; table &quot;Name&quot; field fetching data. Once &quot;Name&quot; is specified, the validation service retrieves the tenant identifier from the &quot;Tenant&quot; table based on the &quot;Name&quot; field."
+          },
+          "Required": {
+            "type": "boolean",
+            "description": "If True, the value is required.",
+            "default": false,
+            "example": false
+          },
+          "Unique": {
+            "type": "boolean",
+            "description": "If True, the value must be unique in the database and you cannot add multiple values.",
+            "default": false,
+            "example": false
+          },
+          "Max": {
+            "type": "string",
+            "description": "The max value of input value."
+          },
+          "Min": {
+            "type": "string",
+            "description": "The min value of input value."
+          },
+          "Pattern": {
+            "type": "string",
+            "description": "The pattern of the validation. Searches the input string for an occurrence of a regular expression."
+          },
+          "DefaultValue": {
+            "type": "string",
+            "description": "The default value of row. If the value of the field is empty, the service automatically sets the value in the field. If the value does not match the data type, the value is cleaned. Remember data types."
+          }
+        },
+        "description": "List validation for entity attribute"
+      },
+      "User": {
+        "required": [
+          "Id"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "description": "The guid to identify the customer user",
+            "format": "int64",
+            "default": 0,
+            "example": 0
+          },
+          "Name": {
+            "type": "string"
+          },
+          "UserId": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date the record was created",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          }
+        },
+        "description": "The record of User information."
+      },
+      "Users": {
+        "type": "object",
+        "properties": {
+          "Meta": {
+            "$ref": "#/components/schemas/Meta"
+          },
+          "Data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/User"
+            },
+            "description": "The list of `User records`"
+          }
+        },
+        "description": "The list of `User` records"
+      },
+      "UserData": {
+        "required": [
+          "Id"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "description": "The guid to identify the customer user",
+            "format": "int64",
+            "default": 0,
+            "example": 0
+          },
+          "Name": {
+            "type": "string"
+          },
+          "UserId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "CreatedBy": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date the record was created",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          }
+        },
+        "description": "The record of User information."
+      },
+      "UserText": {
+        "required": [
+          "Id"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "description": "The guid to identify the customer user",
+            "format": "int64",
+            "default": 0,
+            "example": 0
+          },
+          "Name": {
+            "type": "string"
+          },
+          "UserId": {
+            "type": "string",
+            "description": "The identifier of the user who has link the customer"
+          },
+          "CreatedBy": {
+            "type": "string",
+            "description": "The Identifier of the user who created the record"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date the record was created",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          }
+        },
+        "description": "The record of User information."
+      },
+      "UsersData": {
+        "type": "object",
+        "properties": {
+          "Extra": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ListValidation"
+            },
+            "description": "List validation for entity attribute"
+          },
+          "IsFullValidation": {
+            "type": "boolean",
+            "description": "If the value is true, the data quality of all fields are checked. This has an effect on performance.",
+            "default": false,
+            "example": false
+          },
+          "Users": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserText"
+            },
+            "description": "The list of `User` data record for import"
+          }
+        },
+        "description": "The data loading record of User importing"
+      },
+      "Contact": {
+        "required": [
+          "Id",
+          "Name",
+          "FirstName",
+          "LastName"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "Record identifier"
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external system code of the contact."
+          },
+          "UserId": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the contact"
+          },
+          "FirstName": {
+            "type": "string",
+            "description": "Person's first name"
+          },
+          "LastName": {
+            "type": "string",
+            "description": "Person's last name"
+          },
+          "JobTitle": {
+            "type": "string",
+            "description": "The title of the job the person occupies"
+          },
+          "Phone": {
+            "type": "string",
+            "description": "The phone number of contact"
+          },
+          "Email": {
+            "type": "string",
+            "description": "The e-mail of contact"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the contact is active and can be used",
+            "default": false,
+            "example": false
+          },
+          "ModifiedOn": {
+            "type": "string",
+            "description": "The date the record was updated",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          },
+          "ModifiedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date the record was created",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          }
+        },
+        "description": "The record of Contact information."
+      },
+      "Contacts": {
+        "type": "object",
+        "properties": {
+          "Meta": {
+            "$ref": "#/components/schemas/Meta"
+          },
+          "Data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Contact"
+            },
+            "description": "The list of `Contact records`"
+          }
+        },
+        "description": "The list of `Contact` records"
+      },
+      "ContactData": {
+        "required": [
+          "Id",
+          "Name",
+          "FirstName",
+          "LastName"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "Record identifier"
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external system code of the contact."
+          },
+          "UserId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the contact"
+          },
+          "FirstName": {
+            "type": "string",
+            "description": "Person's first name"
+          },
+          "LastName": {
+            "type": "string",
+            "description": "Person's last name"
+          },
+          "JobTitle": {
+            "type": "string",
+            "description": "The title of the job the person occupies"
+          },
+          "Phone": {
+            "type": "string",
+            "description": "The phone number of contact"
+          },
+          "Email": {
+            "type": "string",
+            "description": "The e-mail of contact"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the contact is active and can be used",
+            "default": false,
+            "example": false
+          },
+          "ModifiedOn": {
+            "type": "string",
+            "description": "The date the record was updated",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          },
+          "ModifiedBy": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "CreatedBy": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date the record was created",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          }
+        },
+        "description": "The record of Contact information."
+      },
+      "ContactText": {
+        "required": [
+          "Id",
+          "Name",
+          "FirstName",
+          "LastName"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "Record identifier"
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external system code of the contact."
+          },
+          "UserId": {
+            "type": "string",
+            "description": "The identifier of the system user this information is for"
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the contact"
+          },
+          "FirstName": {
+            "type": "string",
+            "description": "Person's first name"
+          },
+          "LastName": {
+            "type": "string",
+            "description": "Person's last name"
+          },
+          "JobTitle": {
+            "type": "string",
+            "description": "The title of the job the person occupies"
+          },
+          "Phone": {
+            "type": "string",
+            "description": "The phone number of contact"
+          },
+          "Email": {
+            "type": "string",
+            "description": "The e-mail of contact"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the contact is active and can be used",
+            "default": false,
+            "example": false
+          },
+          "ModifiedOn": {
+            "type": "string",
+            "description": "The date the record was updated",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          },
+          "ModifiedBy": {
+            "type": "string",
+            "description": "The Identifier of the user who updated the record"
+          },
+          "CreatedBy": {
+            "type": "string",
+            "description": "The Identifier of the user who created the record"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date the record was created",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          }
+        },
+        "description": "The record of Contact information."
+      },
+      "ContactsData": {
+        "type": "object",
+        "properties": {
+          "Extra": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ListValidation"
+            },
+            "description": "List validation for entity attribute"
+          },
+          "IsFullValidation": {
+            "type": "boolean",
+            "description": "If the value is true, the data quality of all fields are checked. This has an effect on performance.",
+            "default": false,
+            "example": false
+          },
+          "Contacts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ContactText"
+            },
+            "description": "The list of `Contact` data record for import"
+          }
+        },
+        "description": "The data loading record of Contact importing"
+      }
+    },
+    "responses": {
+      "400": {
+        "description": "Bad Request - The user has provided input that the browser is unable to convert.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "Errors": [
+                "The user has provided input that the browser is unable to convert.",
+                "There are multiple rows in the database for the same value",
+                "The value does not match the specified entity structure",
+                "..."
+              ],
+              "Type": "/Errors/Bad Input",
+              "Title": "Bad Request",
+              "StatusCode": 400,
+              "Instance": "/OpenApi/rest/Xzy",
+              "RequestKey": "894ea43c-b8a6-4195-9a9c-82c07d9cc33a"
+            }
+          }
+        }
+      },
+      "401": {
+        "description": "Unauthorized - The response status code indicates that the client request has not been completed because it lacks valid authentication credentials for the requested resource.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "Errors": [
+                "The session Id or OAuth token used has expired or is invalid."
+              ],
+              "Type": "/Errors/Unauthorized",
+              "Title": "Unauthorized",
+              "StatusCode": 401,
+              "Instance": "/OpenApi/rest/Xzy",
+              "RequestKey": "894ea43c-b8a6-4195-9a9c-82c07d9cc33a"
+            }
+          }
+        }
+      },
+      "403": {
+        "description": "Forbidden - The user does not have access to execute operation",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "Errors": [
+                "The user does not have access to execute operation"
+              ],
+              "Type": "/Errors/Permission",
+              "Title": "Bad Request",
+              "StatusCode": 403,
+              "Instance": "/OpenApi/rest/Xzy",
+              "RequestKey": "894ea43c-b8a6-4195-9a9c-82c07d9cc33a"
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Not Found - The requested resource does not exist.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "Errors": [
+                "The requested resource does not exist"
+              ],
+              "Type": "/Errors/Not Found",
+              "Title": "Not Found",
+              "StatusCode": 404,
+              "Instance": "/OpenApi/rest/Xzy",
+              "RequestKey": "894ea43c-b8a6-4195-9a9c-82c07d9cc33a"
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal Server Error - An internal server error is an error on the web server you're trying to access.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "Errors": [
+                "An internal server error is an error on the web server you're trying to access."
+              ],
+              "Type": "/Errors/Internal Server Error",
+              "Title": "Internal Server Error",
+              "StatusCode": 500,
+              "Instance": "/OpenApi/rest/Xzy",
+              "RequestKey": "894ea43c-b8a6-4195-9a9c-82c07d9cc33a"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "OAuth2": {
+        "type": "oauth2",
+        "description": "oAuth autentication flow",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://dev.esystems.fi/oAuth/rest/v2/Token",
+            "refreshUrl": "https://dev.esystems.fi/oAuth/rest/v2/Token",
+            "scopes": {
+              "CustomerAdmin:Read": "Customer administrator role to manage all customer data... (ABAC) permissions required to perform a function.",
+              "CustomerUser:Read": "Customer role for managing own customer data... (ABAC) permissions required to perform a function.",
+              "CustomerAdmin:Create, Update": "Customer administrator role to manage all customer data... (ABAC) permissions required to perform a function.",
+              "CustomerUser:Create, Update": "Customer role for managing own customer data... (ABAC) permissions required to perform a function.",
+              "CustomerAdmin:Create": "Customer administrator role to manage all customer data... (ABAC) permissions required to perform a function.",
+              "CustomerUser:Create": "Customer role for managing own customer data... (ABAC) permissions required to perform a function.",
+              "CustomerAdmin:Update": "Customer administrator role to manage all customer data... (ABAC) permissions required to perform a function.",
+              "CustomerUser:Update": "Customer role for managing own customer data... (ABAC) permissions required to perform a function.",
+              "CustomerAdmin:Delete": "Customer administrator role to manage all customer data... (ABAC) permissions required to perform a function.",
+              "CustomerUser:Delete": "Customer role for managing own customer data... (ABAC) permissions required to perform a function.",
+              "CustomerAdmin:Import": "Customer administrator role to manage all customer data... (ABAC) permissions required to perform a function.",
+              "CustomerUser:Import": "Customer role for managing own customer data... (ABAC) permissions required to perform a function."
+            }
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Customers",
+      "description": "Customers"
+    }
+  ]
+}

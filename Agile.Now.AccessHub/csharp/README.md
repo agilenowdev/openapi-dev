@@ -159,12 +159,15 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AccountsApi* | [**CreateAccount**](docs/AccountsApi.md#createaccount) | **POST** /Endpoint/rest/api/v1/Account | 
 *AccountsApi* | [**DeleteAccount**](docs/AccountsApi.md#deleteaccount) | **DELETE** /Endpoint/rest/api/v1/Account/{Id} | 
+*AccountsApi* | [**DeleteAccountPicture**](docs/AccountsApi.md#deleteaccountpicture) | **DELETE** /Endpoint/rest/api/v1/Account/{Id}/Picture/{SubId} | 
 *AccountsApi* | [**DeleteAccountTenant**](docs/AccountsApi.md#deleteaccounttenant) | **DELETE** /Endpoint/rest/api/v1/Account/{Id}/Tenant/{SubId} | 
 *AccountsApi* | [**GetAccount**](docs/AccountsApi.md#getaccount) | **GET** /Endpoint/rest/api/v1/Account/{Id} | 
+*AccountsApi* | [**ListAccountPictures**](docs/AccountsApi.md#listaccountpictures) | **GET** /Endpoint/rest/api/v1/Account/{Id}/Pictures | 
 *AccountsApi* | [**ListAccountTenants**](docs/AccountsApi.md#listaccounttenants) | **GET** /Endpoint/rest/api/v1/Account/{Id}/Tenants | 
 *AccountsApi* | [**ListAccounts**](docs/AccountsApi.md#listaccounts) | **GET** /Endpoint/rest/api/v1/Accounts | 
 *AccountsApi* | [**UpdateAccount**](docs/AccountsApi.md#updateaccount) | **PUT** /Endpoint/rest/api/v1/Account/{Id} | 
 *AccountsApi* | [**UpsertAccount**](docs/AccountsApi.md#upsertaccount) | **PATCH** /Endpoint/rest/api/v1/Account | 
+*AccountsApi* | [**UpsertAccountPicture**](docs/AccountsApi.md#upsertaccountpicture) | **POST** /Endpoint/rest/api/v1/Account/{Id}/Picture | 
 *AccountsApi* | [**UpsertAccountTenant**](docs/AccountsApi.md#upsertaccounttenant) | **POST** /Endpoint/rest/api/v1/Account/{Id}/Tenant | 
 *ConnectionsApi* | [**CreateConnection**](docs/ConnectionsApi.md#createconnection) | **POST** /Endpoint/rest/api/v1/Connection | 
 *ConnectionsApi* | [**DeleteConnection**](docs/ConnectionsApi.md#deleteconnection) | **DELETE** /Endpoint/rest/api/v1/Connection/{Id} | 
@@ -236,6 +239,9 @@ Class | Method | HTTP request | Description
  - [Model.Locations](docs/Locations.md)
  - [Model.LocationsData](docs/LocationsData.md)
  - [Model.Meta](docs/Meta.md)
+ - [Model.Picture](docs/Picture.md)
+ - [Model.PictureData](docs/PictureData.md)
+ - [Model.Pictures](docs/Pictures.md)
  - [Model.Tenant](docs/Tenant.md)
  - [Model.TenantData](docs/TenantData.md)
  - [Model.Tenants](docs/Tenants.md)
@@ -260,12 +266,17 @@ Authentication schemes defined for the API:
 - **Scopes**: 
   - AccessManager:Read: Allows to edit access groups and all related data. (ABAC) permissions required to perform a function.
   - AccessUser:Read: Allows to review access groups and all related data. (ABAC) permissions required to perform a function.
+  - Account:Read: Account role. (ABAC) permissions required to perform a function.
   - AccessManager:Create, Update: Allows to edit access groups and all related data. (ABAC) permissions required to perform a function.
   - AccessUser:Create, Update: Allows to review access groups and all related data. (ABAC) permissions required to perform a function.
+  - Account:Create, Update: Account role. (ABAC) permissions required to perform a function.
   - AccessManager:Create: Allows to edit access groups and all related data. (ABAC) permissions required to perform a function.
   - AccessUser:Create: Allows to review access groups and all related data. (ABAC) permissions required to perform a function.
+  - Account:Create: Account role. (ABAC) permissions required to perform a function.
   - AccessManager:Update: Allows to edit access groups and all related data. (ABAC) permissions required to perform a function.
   - AccessUser:Update: Allows to review access groups and all related data. (ABAC) permissions required to perform a function.
+  - Account:Update: Account role. (ABAC) permissions required to perform a function.
   - AccessManager:Delete: Allows to edit access groups and all related data. (ABAC) permissions required to perform a function.
   - AccessUser:Delete: Allows to review access groups and all related data. (ABAC) permissions required to perform a function.
+  - Account:Delete: Account role. (ABAC) permissions required to perform a function.
 
