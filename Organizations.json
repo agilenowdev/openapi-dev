@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "2.0.90"
+    "version": "2.0.91"
   },
   "servers": [
     {
@@ -396,58 +396,6 @@
           {
             "OAuth2": [
               "Department:Create"
-            ]
-          }
-        ]
-      }
-    },
-    "/Endpoint/rest/api/v1/Departments/Json": {
-      "patch": {
-        "tags": [
-          "Departments"
-        ],
-        "description": "Use the `DepartmentsText` object resource to insert or update (Upsert) a list of `DepartmentList` using `Id,Name, ExternalId` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `PATCH` method of the resource.\n\nThe input parameter must be used in the `DepartmentList` record structure as text fields in the foreign key fields.\n\nForeign key fields are: `DepartmentTypeId, ParentDepartmentId, OwnerId, CountryId, ModifiedBy, CreatedBy`\n\n### Update a record of Department\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned. You cannot change `Id` field value (primary key).\n* If the `Name, ExternalId` field value is not empty and `Id` field value is empty, action try insert record according `Name, ExternalId` field value (if set, the value is a unique identifier).\n\n**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.\n\n### Create a new record of Department\n* If the value in the `Name, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`DepartmentInsertData`).\n\nThe response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `Department` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.",
-        "operationId": "Patch Departments",
-        "requestBody": {
-          "description": "The list of Department information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/DepartmentsData"
-              }
-            }
-          },
-          "required": true,
-          "x-bodyName": "Data"
-        },
-        "responses": {
-          "200": {
-            "description": "Inserted or updated list of Department information. \n",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Departments"
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/400"
-          },
-          "401": {
-            "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "500": {
-            "$ref": "#/components/responses/500"
-          }
-        },
-        "security": [
-          {
-            "OAuth2": [
-              "Department:Import"
             ]
           }
         ]
@@ -1176,58 +1124,6 @@
           {
             "OAuth2": [
               "Location:Create"
-            ]
-          }
-        ]
-      }
-    },
-    "/Endpoint/rest/api/v1/Locations/Json": {
-      "patch": {
-        "tags": [
-          "Locations"
-        ],
-        "description": "Use the `LocationsText` object resource to insert or update (Upsert) a list of `LocationList` using `Id,Name,ExternalId` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `PATCH` method of the resource.\n\nThe input parameter must be used in the `LocationList` record structure as text fields in the foreign key fields.\n\nForeign key fields are: `CountryId, TimezoneId, CurrencyId, ModifiedBy, CreatedBy`\n\n### Update a record of Location\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned. You cannot change `Id` field value (primary key).\n* If the `Name,ExternalId` field value is not empty and `Id` field value is empty, action try insert record according `Name,ExternalId` field value (if set, the value is a unique identifier).\n\n**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.\n\n### Create a new record of Location\n* If the value in the `Name,ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`LocationData`).\n\nThe response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `Location` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.",
-        "operationId": "Patch Locations",
-        "requestBody": {
-          "description": "The list of Location information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LocationsData"
-              }
-            }
-          },
-          "required": true,
-          "x-bodyName": "Data"
-        },
-        "responses": {
-          "200": {
-            "description": "Inserted or updated list of Location information. \n",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Locations"
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/400"
-          },
-          "401": {
-            "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "500": {
-            "$ref": "#/components/responses/500"
-          }
-        },
-        "security": [
-          {
-            "OAuth2": [
-              "Location:Import"
             ]
           }
         ]
@@ -2017,167 +1913,6 @@
         },
         "description": "The record of Department information."
       },
-      "DepartmentText": {
-        "required": [
-          "Id",
-          "Name",
-          "DepartmentTypeId",
-          "Is_Active"
-        ],
-        "type": "object",
-        "properties": {
-          "Id": {
-            "type": "string",
-            "description": "The guid to identify the department"
-          },
-          "ExternalId": {
-            "type": "string",
-            "description": "The external identifier of the department"
-          },
-          "Name": {
-            "type": "string",
-            "description": "The name of the department"
-          },
-          "DepartmentTypeId": {
-            "type": "string",
-            "description": "The  type of department"
-          },
-          "ParentDepartmentId": {
-            "type": "string",
-            "description": "The identifier of the parent department"
-          },
-          "HierarchicalName": {
-            "type": "string",
-            "description": "The hierarchical name of the department"
-          },
-          "Level": {
-            "type": "integer",
-            "description": "The department level at the hierarchy",
-            "format": "int32",
-            "default": 0,
-            "example": 0
-          },
-          "ContactName": {
-            "type": "string",
-            "description": "The contact name of company or department"
-          },
-          "ContactEmail": {
-            "type": "string",
-            "description": "The contact email of external company or department"
-          },
-          "ContactPhone": {
-            "type": "string"
-          },
-          "OwnerId": {
-            "type": "string",
-            "description": "The identifier of the user who own the department"
-          },
-          "CountryId": {
-            "type": "string",
-            "description": "The country of the department"
-          },
-          "Is_Active": {
-            "type": "boolean",
-            "description": "Defines if the department is active and can be used",
-            "default": false,
-            "example": false
-          },
-          "ModifiedOn": {
-            "type": "string",
-            "description": "The date the record was updated",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
-          },
-          "ModifiedBy": {
-            "type": "string",
-            "description": "The Identifier of the user who updated the record"
-          },
-          "CreatedBy": {
-            "type": "string",
-            "description": "The Identifier of the user who created the record"
-          },
-          "CreatedOn": {
-            "type": "string",
-            "description": "The date the record was created",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
-          }
-        },
-        "description": "The record of Department information."
-      },
-      "DepartmentsData": {
-        "type": "object",
-        "properties": {
-          "Extra": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ListValidation"
-            },
-            "description": "List validation for entity attribute"
-          },
-          "IsFullValidation": {
-            "type": "boolean",
-            "description": "If the value is true, the data quality of all fields are checked. This has an effect on performance.",
-            "default": false,
-            "example": false
-          },
-          "Departments": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/DepartmentText"
-            },
-            "description": "The list of `Department` data record for import"
-          }
-        },
-        "description": "The data loading record of Department importing"
-      },
-      "ListValidation": {
-        "required": [
-          "Name"
-        ],
-        "type": "object",
-        "properties": {
-          "Name": {
-            "type": "string",
-            "description": "The name of the entity field."
-          },
-          "FieldName": {
-            "type": "string",
-            "description": "The field name of relation database table.\n\nExample; \nThe field name is &quot;TenantId&quot; and is associated with the &quot;Tenant&quot; table. You want to use in the &quot;Tenant&quot; table &quot;Name&quot; field fetching data. Once &quot;Name&quot; is specified, the validation service retrieves the tenant identifier from the &quot;Tenant&quot; table based on the &quot;Name&quot; field."
-          },
-          "Required": {
-            "type": "boolean",
-            "description": "If True, the value is required.",
-            "default": false,
-            "example": false
-          },
-          "Unique": {
-            "type": "boolean",
-            "description": "If True, the value must be unique in the database and you cannot add multiple values.",
-            "default": false,
-            "example": false
-          },
-          "Max": {
-            "type": "string",
-            "description": "The max value of input value."
-          },
-          "Min": {
-            "type": "string",
-            "description": "The min value of input value."
-          },
-          "Pattern": {
-            "type": "string",
-            "description": "The pattern of the validation. Searches the input string for an occurrence of a regular expression."
-          },
-          "DefaultValue": {
-            "type": "string",
-            "description": "The default value of row. If the value of the field is empty, the service automatically sets the value in the field. If the value does not match the data type, the value is cleaned. Remember data types."
-          }
-        },
-        "description": "List validation for entity attribute"
-      },
       "User": {
         "required": [
           "Id"
@@ -2331,6 +2066,51 @@
         },
         "description": "The data loading record of User importing"
       },
+      "ListValidation": {
+        "required": [
+          "Name"
+        ],
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string",
+            "description": "The name of the entity field."
+          },
+          "FieldName": {
+            "type": "string",
+            "description": "The field name of relation database table.\n\nExample; \nThe field name is &quot;TenantId&quot; and is associated with the &quot;Tenant&quot; table. You want to use in the &quot;Tenant&quot; table &quot;Name&quot; field fetching data. Once &quot;Name&quot; is specified, the validation service retrieves the tenant identifier from the &quot;Tenant&quot; table based on the &quot;Name&quot; field."
+          },
+          "Required": {
+            "type": "boolean",
+            "description": "If True, the value is required.",
+            "default": false,
+            "example": false
+          },
+          "Unique": {
+            "type": "boolean",
+            "description": "If True, the value must be unique in the database and you cannot add multiple values.",
+            "default": false,
+            "example": false
+          },
+          "Max": {
+            "type": "string",
+            "description": "The max value of input value."
+          },
+          "Min": {
+            "type": "string",
+            "description": "The min value of input value."
+          },
+          "Pattern": {
+            "type": "string",
+            "description": "The pattern of the validation. Searches the input string for an occurrence of a regular expression."
+          },
+          "DefaultValue": {
+            "type": "string",
+            "description": "The default value of row. If the value of the field is empty, the service automatically sets the value in the field. If the value does not match the data type, the value is cleaned. Remember data types."
+          }
+        },
+        "description": "List validation for entity attribute"
+      },
       "Location": {
         "required": [
           "Id",
@@ -2462,95 +2242,6 @@
           }
         },
         "description": "The record of Location information."
-      },
-      "LocationText": {
-        "required": [
-          "Id",
-          "Name",
-          "Is_Active"
-        ],
-        "type": "object",
-        "properties": {
-          "Id": {
-            "type": "string",
-            "description": "The guid to identify the location"
-          },
-          "ExternalId": {
-            "type": "string",
-            "description": "The external identifier of the location"
-          },
-          "Name": {
-            "type": "string",
-            "description": "The name of the location"
-          },
-          "CountryId": {
-            "type": "string",
-            "description": "The country of the location"
-          },
-          "TimezoneId": {
-            "type": "string",
-            "description": "The timezone of the location"
-          },
-          "CurrencyId": {
-            "type": "string",
-            "description": "The currency of the location"
-          },
-          "Is_Active": {
-            "type": "boolean",
-            "description": "Defines if the location is active and can be used",
-            "default": false,
-            "example": false
-          },
-          "ModifiedOn": {
-            "type": "string",
-            "description": "The date the record was updated",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
-          },
-          "ModifiedBy": {
-            "type": "string",
-            "description": "The Identifier of the user who updated the record"
-          },
-          "CreatedBy": {
-            "type": "string",
-            "description": "The Identifier of the user who created the record"
-          },
-          "CreatedOn": {
-            "type": "string",
-            "description": "The date the record was created",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
-          }
-        },
-        "description": "The record of Location information."
-      },
-      "LocationsData": {
-        "type": "object",
-        "properties": {
-          "Extra": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ListValidation"
-            },
-            "description": "List validation for entity attribute"
-          },
-          "IsFullValidation": {
-            "type": "boolean",
-            "description": "If the value is true, the data quality of all fields are checked. This has an effect on performance.",
-            "default": false,
-            "example": false
-          },
-          "Locations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/LocationText"
-            },
-            "description": "The list of `Location` data record for import"
-          }
-        },
-        "description": "The data loading record of Location importing"
       }
     },
     "responses": {
@@ -2672,13 +2363,11 @@
               "Department:Create": "The role of department concept. (ABAC) permissions required to perform a function.",
               "Department:Update": "The role of department concept. (ABAC) permissions required to perform a function.",
               "Department:Delete": "The role of department concept. (ABAC) permissions required to perform a function.",
-              "Department:Import": "The role of department concept. (ABAC) permissions required to perform a function.",
               "Location:Read": "The role of location concept. (ABAC) permissions required to perform a function.",
               "Location:Create, Update": "The role of location concept. (ABAC) permissions required to perform a function.",
               "Location:Create": "The role of location concept. (ABAC) permissions required to perform a function.",
               "Location:Update": "The role of location concept. (ABAC) permissions required to perform a function.",
-              "Location:Delete": "The role of location concept. (ABAC) permissions required to perform a function.",
-              "Location:Import": "The role of location concept. (ABAC) permissions required to perform a function."
+              "Location:Delete": "The role of location concept. (ABAC) permissions required to perform a function."
             }
           }
         }
