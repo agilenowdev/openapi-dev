@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using Agile.Now.ApiAccounts.Model;
+using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 
 namespace Agile.Now.ApiAccounts.Test.Api
 {
@@ -33,8 +34,10 @@ namespace Agile.Now.ApiAccounts.Test.Api
         public static AccountData[] CreateAccountDataList(int count) =>
             Enumerable.Range(0, count).Select(i => CreateAccountData(i.ToString())).ToArray();
 
-        public static void UpdateAccountData(AccountData accountData)
+        public static void UpdateAccountData(AccountData accountData, string id = null)
         {
+            if (id != null)
+                accountData.Id = id;
             const string updated = "updated";
             accountData.LastName += updated;
             accountData.FirstName += updated;

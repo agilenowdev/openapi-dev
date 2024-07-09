@@ -27,6 +27,17 @@ namespace Agile.Now.ApiOrganizations.Test.Api
         public static DepartmentInsertData[] CreateDepartmentDataList(int count) =>
             Enumerable.Range(0, count).Select(i => CreateDepartmentData(i.ToString())).ToArray();
 
+        public static DepartmentUpsertData ToDepartmentUpsertData(this DepartmentInsertData departmentInsertData) =>
+            new
+            (
+                name: departmentInsertData.Name,
+                departmentTypeId: departmentInsertData.DepartmentTypeId,
+                parentDepartmentId: departmentInsertData.ParentDepartmentId,
+                contactName: departmentInsertData.ContactName,
+                contactEmail: departmentInsertData.ContactEmail,
+                countryId: departmentInsertData.CountryId
+            );
+
         public static DepartmentUpdateData UpdateDepartmentData(DepartmentInsertData departmentInsertData)
         {
             const string updated = "updated";

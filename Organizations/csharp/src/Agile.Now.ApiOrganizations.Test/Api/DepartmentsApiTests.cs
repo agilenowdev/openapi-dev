@@ -261,7 +261,7 @@ namespace Agile.Now.ApiOrganizations.Test.Api
             var createdDepartment = api.CreateDepartment(departmentData);
             try
             {
-                var updatedDepertmentData =  TestDepartmentData.UpdateDepartmentData(departmentData);
+                var updatedDepertmentData = TestDepartmentData.UpdateDepartmentData(departmentData);
                 var updatedDepartment = api.UpdateDepartment(createdDepartment.Id, updatedDepertmentData);
                 AssertDepartmentDataEqual(departmentData, updatedDepartment);
             }
@@ -275,12 +275,21 @@ namespace Agile.Now.ApiOrganizations.Test.Api
         /// Test UpsertDepartment
         /// </summary>
         [Fact]
-        public void UpsertDepartmentTest()
+        public void Test_UpsertDepartment()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //DepartmentUpsertData departmentUpsertData = null;
-            //var response = instance.UpsertDepartment(departmentUpsertData);
-            //Assert.IsType<Department>(response);
+            var departmentData = TestDepartmentData.CreateDepartmentData();
+            var createdDepartment = api.UpsertDepartment(departmentData.ToDepartmentUpsertData());
+            try
+            {
+                Assert.Null(Record.Exception(() => api.GetDepartment(createdDepartment.Id)));
+                TestDepartmentData.UpdateDepartmentData(departmentData);
+                var updatedDepartment = api.UpsertDepartment(departmentData.ToDepartmentUpsertData());
+                AssertDepartmentDataEqual(departmentData, updatedDepartment);
+            }
+            finally
+            {
+                api.DeleteDepartment(createdDepartment.Id);
+            }
         }
 
         /// <summary>
