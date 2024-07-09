@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Agile.Now.ApiOrganizations.Model;
 
 namespace Agile.Now.ApiOrganizations.Test.Api
@@ -17,9 +18,24 @@ namespace Agile.Now.ApiOrganizations.Test.Api
                 contactName: name,
                 contactEmail: name + "@agilenow.io"
             )
-            { 
-                CountryId = new("Name", "Finland")
+            {
+                CountryId = new("Name", "Finland"),
+
             };
+        }
+
+        public static DepartmentInsertData[] CreateDepartmentDataList(int count) =>
+            Enumerable.Range(0, count).Select(i => CreateDepartmentData(i.ToString())).ToArray();
+
+        public static DepartmentUpdateData UpdateDepartmentData(DepartmentInsertData departmentInsertData)
+        {
+            const string updated = "updated";
+            return new
+            (
+                name: departmentInsertData.Name,
+                contactName: departmentInsertData.ContactName = departmentInsertData.ContactName += updated,
+                contactEmail: departmentInsertData.ContactEmail = updated + departmentInsertData.ContactEmail
+            );
         }
     }
 }

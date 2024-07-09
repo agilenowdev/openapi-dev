@@ -8,6 +8,7 @@
  */
 
 using System;
+using System.Linq;
 using System.Security.Principal;
 using Agile.Now.ApiOrganizations.Api;
 using Agile.Now.ApiOrganizations.Client;
@@ -68,15 +69,13 @@ namespace Agile.Now.ApiOrganizations.Test.Api
         /// Test CreateDepartment
         /// </summary>
         [Fact]
-        public void CreateDepartmentTest()
+        public void Test_CreateDepartment()
         {
             var departmentData = TestDepartmentData.CreateDepartmentData();
             var createdDepartment = api.CreateDepartment(departmentData);
             try
             {
-                //AssertAccountDataEqual(accountData, createdAccount);
-                //Assert.Null(Record.Exception(() => api.GetAccount(createdAccount.Id)));
-                //output.WriteLine($"TenantId= {createdAccount.TenantId.Id}");
+                AssertDepartmentDataEqual(departmentData, createdDepartment);
             }
             finally
             {
@@ -85,16 +84,25 @@ namespace Agile.Now.ApiOrganizations.Test.Api
         }
 
         /// <summary>
-        /// Test DeleteDepartment
+        /// Test DeleteDepartment by Id
         /// </summary>
         [Fact]
-        public void DeleteDepartmentTest()
+        public void Test_DeleteDepartment_ById()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string? name = null;
-            //var response = instance.DeleteDepartment(id, name);
-            //Assert.IsType<Department>(response);
+            var createdDepartment = api.CreateDepartment(TestDepartmentData.CreateDepartmentData());
+            api.DeleteDepartment(createdDepartment.Id);
+            Assert.Throws<ApiException>(() => api.GetDepartment(createdDepartment.Id));
+        }
+
+        /// <summary>
+        /// Test DeleteDepartment by Name
+        /// </summary>
+        [Fact]
+        public void Test_DeleteDepartment_ByName()
+        {
+            var createdDepartment = api.CreateDepartment(TestDepartmentData.CreateDepartmentData());
+            api.DeleteDepartment(createdDepartment.Id);
+            Assert.Throws<ApiException>(() => api.GetDepartment(createdDepartment.Name, "Name"));
         }
 
         /// <summary>
@@ -113,16 +121,47 @@ namespace Agile.Now.ApiOrganizations.Test.Api
         }
 
         /// <summary>
-        /// Test GetDepartment
+        /// Test GetDepartment by Id
         /// </summary>
         [Fact]
-        public void GetDepartmentTest()
+        public void Test_GetDepartment_ById()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string? name = null;
-            //var response = instance.GetDepartment(id, name);
-            //Assert.IsType<Department>(response);
+            var createdDepartment = api.CreateDepartment(TestDepartmentData.CreateDepartmentData());
+            try
+            {
+                Assert.Null(Record.Exception(() =>
+                {
+                    var existingDepartment = api.GetDepartment(createdDepartment.Id);
+                    Assert.Equal(createdDepartment.Id, existingDepartment.Id);
+                    return existingDepartment;
+                }));
+            }
+            finally
+            {
+                api.DeleteDepartment(createdDepartment.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test GetDepartment by Name
+        /// </summary>
+        [Fact]
+        public void Test_GetDepartment_ByName()
+        {
+            var createdDepartment = api.CreateDepartment(TestDepartmentData.CreateDepartmentData());
+            try
+            {
+                Assert.Null(Record.Exception(() =>
+                {
+                    var existingDepartment = api.GetDepartment(createdDepartment.Name, "Name");
+                    Assert.Equal(createdDepartment.Id, existingDepartment.Id);
+                    return existingDepartment;
+                }));
+            }
+            finally
+            {
+                api.DeleteDepartment(createdDepartment.Id);
+            }
         }
 
         /// <summary>
@@ -144,19 +183,45 @@ namespace Agile.Now.ApiOrganizations.Test.Api
         }
 
         /// <summary>
-        /// Test ListDepartments
+        /// Test ListDepartments by Id
         /// </summary>
         [Fact]
-        public void ListDepartmentsTest()
+        public void Test_ListDepartments_ById()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string? fields = null;
-            //string? filters = null;
-            //string? orders = null;
-            //int? currentPage = null;
-            //int? pageSize = null;
-            //var response = instance.ListDepartments(fields, filters, orders, currentPage, pageSize);
-            //Assert.IsType<Departments>(response);
+            var DepartmentData = TestDepartmentData.CreateDepartmentDataList(2);
+            var createdDepartments = DepartmentData.Select(i => api.CreateDepartment(i)).ToArray();
+            try
+            {
+                var foundDepartments = api.ListDepartments(
+                    filters: $"Id In {string.Join("; ", createdDepartments.Select(i => i.Id))}").Data;
+                Assert.Equal(foundDepartments.Count, createdDepartments.Length);
+            }
+            finally
+            {
+                foreach (var i in createdDepartments)
+                    api.DeleteDepartment(i.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test ListDepartments by UserName
+        /// </summary>
+        [Fact]
+        public void Test_ListDepartments_ByUserName()
+        {
+            var DepartmentData = TestDepartmentData.CreateDepartmentDataList(2);
+            var createdDepartments = DepartmentData.Select(i => api.CreateDepartment(i)).ToArray();
+            try
+            {
+                var foundDepartments = api.ListDepartments(
+                    filters: $"Name In {string.Join("; ", createdDepartments.Select(i => i.Name))}");
+                Assert.Equal(foundDepartments.Data.Count, createdDepartments.Length);
+            }
+            finally
+            {
+                foreach (var i in createdDepartments)
+                    api.DeleteDepartment(i.Id);
+            }
         }
 
         /// <summary>
@@ -190,14 +255,20 @@ namespace Agile.Now.ApiOrganizations.Test.Api
         /// Test UpdateDepartment
         /// </summary>
         [Fact]
-        public void UpdateDepartmentTest()
+        public void Test_UpdateDepartment()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //DepartmentUpdateData departmentUpdateData = null;
-            //string? name = null;
-            //var response = instance.UpdateDepartment(id, departmentUpdateData, name);
-            //Assert.IsType<Department>(response);
+            var departmentData = TestDepartmentData.CreateDepartmentData();
+            var createdDepartment = api.CreateDepartment(departmentData);
+            try
+            {
+                var updatedDepertmentData =  TestDepartmentData.UpdateDepartmentData(departmentData);
+                var updatedDepartment = api.UpdateDepartment(createdDepartment.Id, updatedDepertmentData);
+                AssertDepartmentDataEqual(departmentData, updatedDepartment);
+            }
+            finally
+            {
+                api.DeleteDepartment(createdDepartment.Id);
+            }
         }
 
         /// <summary>
