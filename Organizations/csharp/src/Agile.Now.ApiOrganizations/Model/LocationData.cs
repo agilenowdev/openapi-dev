@@ -52,11 +52,6 @@ namespace Agile.Now.ApiOrganizations.Model
         /// <param name="createdOn">The date the record was created (default to &quot;1900-01-01T00:00Z&quot;).</param>
         public LocationData(string id = default(string), string externalId = default(string), string name = default(string), FieldType countryId = default(FieldType), FieldType timezoneId = default(FieldType), FieldType currencyId = default(FieldType), bool isActive = false, DateTime modifiedOn = default(DateTime), FieldType modifiedBy = default(FieldType), FieldType createdBy = default(FieldType), DateTime createdOn = default(DateTime))
         {
-            // to ensure "id" is required (not null)
-            if (id == null)
-            {
-                throw new ArgumentNullException("id is a required property for LocationData and cannot be null");
-            }
             this.Id = id;
             // to ensure "name" is required (not null)
             if (name == null)
@@ -79,7 +74,7 @@ namespace Agile.Now.ApiOrganizations.Model
         /// The guid to identify the location
         /// </summary>
         /// <value>The guid to identify the location</value>
-        [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Id", EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>

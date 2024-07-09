@@ -4,7 +4,7 @@ using Agile.Now.ApiOrganizations.Model;
 
 namespace Agile.Now.ApiOrganizations.Test.Api
 {
-    internal static class TestDepartmentData
+    internal static class TestDepartmentsData
     {
         public static DepartmentInsertData CreateDepartmentData(string suffix = null)
         {

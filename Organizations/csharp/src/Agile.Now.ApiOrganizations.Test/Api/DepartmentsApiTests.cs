@@ -71,7 +71,7 @@ namespace Agile.Now.ApiOrganizations.Test.Api
         [Fact]
         public void Test_CreateDepartment()
         {
-            var departmentData = TestDepartmentData.CreateDepartmentData();
+            var departmentData = TestDepartmentsData.CreateDepartmentData();
             var createdDepartment = api.CreateDepartment(departmentData);
             try
             {
@@ -89,7 +89,7 @@ namespace Agile.Now.ApiOrganizations.Test.Api
         [Fact]
         public void Test_DeleteDepartment_ById()
         {
-            var createdDepartment = api.CreateDepartment(TestDepartmentData.CreateDepartmentData());
+            var createdDepartment = api.CreateDepartment(TestDepartmentsData.CreateDepartmentData());
             api.DeleteDepartment(createdDepartment.Id);
             Assert.Throws<ApiException>(() => api.GetDepartment(createdDepartment.Id));
         }
@@ -100,7 +100,7 @@ namespace Agile.Now.ApiOrganizations.Test.Api
         [Fact]
         public void Test_DeleteDepartment_ByName()
         {
-            var createdDepartment = api.CreateDepartment(TestDepartmentData.CreateDepartmentData());
+            var createdDepartment = api.CreateDepartment(TestDepartmentsData.CreateDepartmentData());
             api.DeleteDepartment(createdDepartment.Id);
             Assert.Throws<ApiException>(() => api.GetDepartment(createdDepartment.Name, "Name"));
         }
@@ -126,7 +126,7 @@ namespace Agile.Now.ApiOrganizations.Test.Api
         [Fact]
         public void Test_GetDepartment_ById()
         {
-            var createdDepartment = api.CreateDepartment(TestDepartmentData.CreateDepartmentData());
+            var createdDepartment = api.CreateDepartment(TestDepartmentsData.CreateDepartmentData());
             try
             {
                 Assert.Null(Record.Exception(() =>
@@ -148,7 +148,7 @@ namespace Agile.Now.ApiOrganizations.Test.Api
         [Fact]
         public void Test_GetDepartment_ByName()
         {
-            var createdDepartment = api.CreateDepartment(TestDepartmentData.CreateDepartmentData());
+            var createdDepartment = api.CreateDepartment(TestDepartmentsData.CreateDepartmentData());
             try
             {
                 Assert.Null(Record.Exception(() =>
@@ -188,7 +188,7 @@ namespace Agile.Now.ApiOrganizations.Test.Api
         [Fact]
         public void Test_ListDepartments_ById()
         {
-            var DepartmentData = TestDepartmentData.CreateDepartmentDataList(2);
+            var DepartmentData = TestDepartmentsData.CreateDepartmentDataList(2);
             var createdDepartments = DepartmentData.Select(i => api.CreateDepartment(i)).ToArray();
             try
             {
@@ -209,7 +209,7 @@ namespace Agile.Now.ApiOrganizations.Test.Api
         [Fact]
         public void Test_ListDepartments_ByUserName()
         {
-            var DepartmentData = TestDepartmentData.CreateDepartmentDataList(2);
+            var DepartmentData = TestDepartmentsData.CreateDepartmentDataList(2);
             var createdDepartments = DepartmentData.Select(i => api.CreateDepartment(i)).ToArray();
             try
             {
@@ -257,11 +257,11 @@ namespace Agile.Now.ApiOrganizations.Test.Api
         [Fact]
         public void Test_UpdateDepartment()
         {
-            var departmentData = TestDepartmentData.CreateDepartmentData();
+            var departmentData = TestDepartmentsData.CreateDepartmentData();
             var createdDepartment = api.CreateDepartment(departmentData);
             try
             {
-                var updatedDepertmentData = TestDepartmentData.UpdateDepartmentData(departmentData);
+                var updatedDepertmentData = TestDepartmentsData.UpdateDepartmentData(departmentData);
                 var updatedDepartment = api.UpdateDepartment(createdDepartment.Id, updatedDepertmentData);
                 AssertDepartmentDataEqual(departmentData, updatedDepartment);
             }
@@ -277,12 +277,12 @@ namespace Agile.Now.ApiOrganizations.Test.Api
         [Fact]
         public void Test_UpsertDepartment()
         {
-            var departmentData = TestDepartmentData.CreateDepartmentData();
+            var departmentData = TestDepartmentsData.CreateDepartmentData();
             var createdDepartment = api.UpsertDepartment(departmentData.ToDepartmentUpsertData());
             try
             {
                 Assert.Null(Record.Exception(() => api.GetDepartment(createdDepartment.Id)));
-                TestDepartmentData.UpdateDepartmentData(departmentData, createdDepartment.Id);
+                TestDepartmentsData.UpdateDepartmentData(departmentData, createdDepartment.Id);
                 var updatedDepartment = api.UpsertDepartment(departmentData.ToDepartmentUpsertData());
                 AssertDepartmentDataEqual(departmentData, updatedDepartment);
             }
