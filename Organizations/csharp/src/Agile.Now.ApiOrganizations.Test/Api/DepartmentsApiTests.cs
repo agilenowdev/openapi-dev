@@ -282,7 +282,7 @@ namespace Agile.Now.ApiOrganizations.Test.Api
             try
             {
                 Assert.Null(Record.Exception(() => api.GetDepartment(createdDepartment.Id)));
-                TestDepartmentData.UpdateDepartmentData(departmentData);
+                TestDepartmentData.UpdateDepartmentData(departmentData, createdDepartment.Id);
                 var updatedDepartment = api.UpsertDepartment(departmentData.ToDepartmentUpsertData());
                 AssertDepartmentDataEqual(departmentData, updatedDepartment);
             }

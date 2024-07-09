@@ -38,8 +38,10 @@ namespace Agile.Now.ApiOrganizations.Test.Api
                 countryId: departmentInsertData.CountryId
             );
 
-        public static DepartmentUpdateData UpdateDepartmentData(DepartmentInsertData departmentInsertData)
+        public static DepartmentUpdateData UpdateDepartmentData(DepartmentInsertData departmentInsertData, string id = null)
         {
+            if (id != null)
+                departmentInsertData.Id = id;
             const string updated = "updated";
             return new
             (
