@@ -26,50 +26,34 @@ using OpenAPIDateConverter = Agile.Now.ApiAccounts.Client.OpenAPIDateConverter;
 namespace Agile.Now.ApiAccounts.Model
 {
     /// <summary>
-    /// The field object structure
+    /// The list of &#x60;Picture&#x60; records
     /// </summary>
-    [DataContract(Name = "FieldType")]
-    public partial class FieldType : IValidatableObject
+    [DataContract(Name = "Pictures")]
+    public partial class Pictures : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="FieldType" /> class.
+        /// Initializes a new instance of the <see cref="Pictures" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected FieldType() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FieldType" /> class.
-        /// </summary>
-        /// <param name="field">The name of the data field (required).</param>
-        /// <param name="value">The value of the data row (required).</param>
-        public FieldType(string field = default(string), string value = default(string))
+        /// <param name="meta">meta.</param>
+        /// <param name="data">The list of &#x60;Picture records&#x60;.</param>
+        public Pictures(Meta meta = default(Meta), List<Picture> data = default(List<Picture>))
         {
-            // to ensure "field" is required (not null)
-            if (field == null)
-            {
-                throw new ArgumentNullException("field is a required property for FieldType and cannot be null");
-            }
-            this.Field = field;
-            // to ensure "value" is required (not null)
-            if (value == null)
-            {
-                throw new ArgumentNullException("value is a required property for FieldType and cannot be null");
-            }
-            this.Value = value;
+            this.Meta = meta;
+            this.Data = data;
         }
 
         /// <summary>
-        /// The name of the data field
+        /// Gets or Sets Meta
         /// </summary>
-        /// <value>The name of the data field</value>
-        [DataMember(Name = "Field", IsRequired = true, EmitDefaultValue = true)]
-        public string Field { get; set; }
+        [DataMember(Name = "Meta", EmitDefaultValue = false)]
+        public Meta Meta { get; set; }
 
         /// <summary>
-        /// The value of the data row
+        /// The list of &#x60;Picture records&#x60;
         /// </summary>
-        /// <value>The value of the data row</value>
-        [DataMember(Name = "Value", IsRequired = true, EmitDefaultValue = true)]
-        public string Value { get; set; }
+        /// <value>The list of &#x60;Picture records&#x60;</value>
+        [DataMember(Name = "Data", EmitDefaultValue = false)]
+        public List<Picture> Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,9 +62,9 @@ namespace Agile.Now.ApiAccounts.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class FieldType {\n");
-            sb.Append("  Field: ").Append(Field).Append("\n");
-            sb.Append("  Value: ").Append(Value).Append("\n");
+            sb.Append("class Pictures {\n");
+            sb.Append("  Meta: ").Append(Meta).Append("\n");
+            sb.Append("  Data: ").Append(Data).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

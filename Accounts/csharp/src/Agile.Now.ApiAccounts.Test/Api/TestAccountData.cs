@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Net.Sockets;
-using System.Runtime.CompilerServices;
 using System.Text;
 using Agile.Now.ApiAccounts.Model;
-using Newtonsoft.Json.Linq;
 
 namespace Agile.Now.ApiAccounts.Test.Api
 {
