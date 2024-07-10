@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.185"
+    "version": "3.0.186"
   },
   "servers": [
     {
@@ -971,10 +971,18 @@
             "description": "The name of the customer"
           },
           "ParentCustomerId": {
-            "$ref": "#/components/schemas/AbstractLong"
+            "type": "integer",
+            "description": "The identifier of the parent customer",
+            "format": "int64",
+            "default": 0,
+            "example": 0
           },
           "OwnerId": {
-            "$ref": "#/components/schemas/AbstractLong"
+            "type": "integer",
+            "description": "The identifier of the user who own the customer",
+            "format": "int64",
+            "default": 0,
+            "example": 0
           },
           "Is_Active": {
             "type": "boolean",
@@ -996,10 +1004,18 @@
             "example": "1900-01-01T00:00:00Z"
           },
           "ModifiedBy": {
-            "$ref": "#/components/schemas/AbstractLong"
+            "type": "integer",
+            "description": "The Identifier of the user who updated the record",
+            "format": "int64",
+            "default": 0,
+            "example": 0
           },
           "CreatedBy": {
-            "$ref": "#/components/schemas/AbstractLong"
+            "type": "integer",
+            "description": "The Identifier of the user who created the record",
+            "format": "int64",
+            "default": 0,
+            "example": 0
           },
           "CreatedOn": {
             "type": "string",
@@ -1022,40 +1038,6 @@
           }
         },
         "description": "The record of MyCustomer information."
-      },
-      "AbstractLong": {
-        "required": [
-          "Id",
-          "ExternalId",
-          "Name",
-          "Type"
-        ],
-        "type": "object",
-        "properties": {
-          "Id": {
-            "type": "integer",
-            "description": "The primary key of the record row. If the Id attribute is used, then it must be unique",
-            "format": "int64",
-            "default": 0,
-            "example": 1234567891234567
-          },
-          "ExternalId": {
-            "type": "string",
-            "description": "The external identier of the record row. If the External Id attribute is used, then it must be unique",
-            "example": "3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5"
-          },
-          "Name": {
-            "type": "string",
-            "description": "The name of the record row",
-            "example": "Bob Normal"
-          },
-          "Type": {
-            "type": "string",
-            "description": "The type of the record object",
-            "example": "User"
-          }
-        },
-        "description": "The abstract object structure"
       },
       "MyCustomers": {
         "type": "object",
