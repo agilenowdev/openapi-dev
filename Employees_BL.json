@@ -1,0 +1,3945 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Employee API",
+    "description": "## Introduction\r\nThe OpenAPI Specification (OAS) defines a standard, language-agnostic interface to RESTful APIs which allows both humans and computers to discover and understand the capabilities of the service without access to source code, documentation, or through network traffic inspection. When properly defined, a consumer can understand and interact with the remote service with a minimal amount of implementation logic.\r\n\r\nAn OpenAPI definition can then be used by documentation generation tools to display the API, code generation tools to generate servers and clients in various programming languages, testing tools, and many other use cases.\r\n\r\n| Version | URL | Description |\r\n| --- | --- | --- |\r\n| v3 | https://dev.esystems.fi/Endpoint/rest/Doc/v3/Json/Employees_BL | Serializes to the Open API document as a string in the JSON format and represents all patches of OpenAPI V3.0 spec (e.g. 3.0.0, 3.0.1). |\r\n| v3 | https://dev.esystems.fi/Endpoint/rest/Doc/v3/Yaml/Employees_BL | Serializes to the Open API document as a string in the Yaml format and represents all patches of OpenAPI V3.0 spec (e.g. 3.0.0, 3.0.1). |\r\n| v2 | https://dev.esystems.fi/Endpoint/rest/Doc/v2/Json/Employees_BL | Serializes to the Open API document as a string in the JSON format and represents OpenAPI V2.0 spec.|\r\n| v2 | https://dev.esystems.fi/Endpoint/rest/Doc/v2/Yaml/Employees_BL | Serializes to the Open API document as a string in the Yaml format and represents OpenAPI V2.0 spec. |",
+    "contact": { },
+    "license": {
+      "name": "BSD-3 license",
+      "url": "https://opensource.org/licenses/BSD-3-Clause"
+    },
+    "version": "2.0.28"
+  },
+  "servers": [
+    {
+      "url": "https://dev.esystems.fi",
+      "description": "Default entry point of service"
+    }
+  ],
+  "paths": {
+    "/Employees_BL/rest/ContractType/": {
+      "post": {
+        "tags": [
+          "ContractType"
+        ],
+        "description": "Insert or Update (Upsert) a contract type using an ExternalId or Id field value.",
+        "operationId": "UpsertContractType",
+        "requestBody": {
+          "description": "Contract type information to insert or update.\n\nThe input parameter must be used in the `ContractTypePost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContractTypePost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "ContractType"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated contract type information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContractType"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "ContractType"
+        ],
+        "description": "Use the method to execute a query that includes information that returns all the results in a single response, or if needed, returns part of the results and an identifier used to retrieve the remaining results.",
+        "operationId": "ListContractType",
+        "parameters": [
+          {
+            "name": "Fields",
+            "in": "query",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: Name,ExternalId\n\n",
+            "schema": {
+              "type": "string",
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: Name,ExternalId\n\n",
+              "default": ""
+            }
+          },
+          {
+            "name": "Filters",
+            "in": "query",
+            "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the &quot;Employee&quot; table has a &quot;DepartmentId&quot; field, so you can search for a department name using the &quot;DepartmentId.Name&quot; field name. All fields in the parent table are available.\n\nThe name of the database field. Example: &quot;Name&quot; or relation field &quot;OwnerId.Name&quot;\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator (=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn)\n\nYou can add multiple values separated by comma when using the &quot;In&quot;, &quot;NotIn&quot; operators.\nExample of text field; &quot;USA;FIN;RUS&quot;\nExample of numeric field; &quot;1,2,3&quot;\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+            "schema": {
+              "type": "string",
+              "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the &quot;Employee&quot; table has a &quot;DepartmentId&quot; field, so you can search for a department name using the &quot;DepartmentId.Name&quot; field name. All fields in the parent table are available.\n\nThe name of the database field. Example: &quot;Name&quot; or relation field &quot;OwnerId.Name&quot;\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator (=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn)\n\nYou can add multiple values separated by comma when using the &quot;In&quot;, &quot;NotIn&quot; operators.\nExample of text field; &quot;USA;FIN;RUS&quot;\nExample of numeric field; &quot;1,2,3&quot;\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+              "default": ""
+            }
+          },
+          {
+            "name": "Orders",
+            "in": "query",
+            "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: Name DESC,CreatedOn ASC",
+            "schema": {
+              "type": "string",
+              "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: Name DESC,CreatedOn ASC",
+              "default": ""
+            }
+          },
+          {
+            "name": "StartIndex",
+            "in": "query",
+            "description": "The first record to return. Use this parameter to paginate the results. \n\nThe default value is 0. If not specified, the first set of resources (number of resources limited by the page size parameter) will be returned.",
+            "schema": {
+              "type": "integer",
+              "description": "The first record to return. Use this parameter to paginate the results. \n\nThe default value is 0. If not specified, the first set of resources (number of resources limited by the page size parameter) will be returned.",
+              "format": "int32"
+            },
+            "x-example": 0
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "This limits the number of resources to be returned in the response.\n\nThe value ranges from 1 to 1000 and defaults to 50.",
+            "schema": {
+              "type": "integer",
+              "description": "This limits the number of resources to be returned in the response.\n\nThe value ranges from 1 to 1000 and defaults to 50.",
+              "format": "int32"
+            },
+            "x-example": 0
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of contract types information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ContractType"
+                  },
+                  "description": "The list of contract types information"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Employees_BL/rest/ContractType/{Id}": {
+      "put": {
+        "tags": [
+          "ContractType"
+        ],
+        "description": "Update a contract type using an ExternalId or Id field value.\n\nYou use the `ContractTypePost` object resource to update records. Provide the updated record information in your request data and use the PUT method of the resource with a specific record ID to update that record.\n\nThe response body will contain the full `ContractType` object of the updated record if the call is successful.",
+        "operationId": "UpdateContractType",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the contract type.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the contract type.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Contract type information to update.\n\nThe input parameter must be used in the `ContractTypePost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContractTypePost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "ContractType"
+        },
+        "responses": {
+          "200": {
+            "description": "Updated contract type information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContractType"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "ContractType"
+        ],
+        "description": "Use the query string resource to delete record(s). \n\nSpecify the record ID and use the DELETE method of the resource to delete a record(s).",
+        "operationId": "DeleteContractType",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the contract type.\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the contract type.\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted contract type information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContractType"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "ContractType"
+        ],
+        "description": "Get a record of the contract type entity. The method returns one record of the entity.\n\nIf the `Id` field value is not matched, then a 404 error is reported (Errors/Not Found), and the error record is returned.\n\nIf the `Id` field value is matched multiple times, then a `400` error is reported (Errors/Multible Rows), and the error record is returned.\n\nIf the value in the `Name` field value does not match, a `400` error is reported (Errors/Invalid Field), and the error record is returned.",
+        "operationId": "GetContractType",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the contract type.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the contract type.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The record of contract type information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContractType"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Employees_BL/rest/ContractType/Create": {
+      "post": {
+        "tags": [
+          "ContractType"
+        ],
+        "description": "Use the `ContractTypePost` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the POST method of the resource.\n\nThe response body will contain the full `ContractType` object of the created record if the call is successful.",
+        "operationId": "CreateContractType",
+        "requestBody": {
+          "description": "Contract type information to insert.\n\nThe input parameter must be used in the `ContractTypePost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContractTypePost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "ContractType"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted Contract type information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContractType"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Employees_BL/rest/DocumentType/": {
+      "get": {
+        "tags": [
+          "DocumentType"
+        ],
+        "description": "Use the method to execute a query that includes information that returns all the results in a single response, or if needed, returns part of the results and an identifier used to retrieve the remaining results.",
+        "operationId": "ListDocumentType",
+        "parameters": [
+          {
+            "name": "Fields",
+            "in": "query",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: Name,ExternalId\n\n",
+            "schema": {
+              "type": "string",
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: Name,ExternalId\n\n",
+              "default": ""
+            }
+          },
+          {
+            "name": "Filters",
+            "in": "query",
+            "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the &quot;Employee&quot; table has a &quot;DepartmentId&quot; field, so you can search for a department name using the &quot;DepartmentId.Name&quot; field name. All fields in the parent table are available.\n\nThe name of the database field. Example: &quot;Name&quot; or relation field &quot;OwnerId.Name&quot;\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator (=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn)\n\nYou can add multiple values separated by comma when using the &quot;In&quot;, &quot;NotIn&quot; operators.\nExample of text field; &quot;USA;FIN;RUS&quot;\nExample of numeric field; &quot;1,2,3&quot;\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+            "schema": {
+              "type": "string",
+              "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the &quot;Employee&quot; table has a &quot;DepartmentId&quot; field, so you can search for a department name using the &quot;DepartmentId.Name&quot; field name. All fields in the parent table are available.\n\nThe name of the database field. Example: &quot;Name&quot; or relation field &quot;OwnerId.Name&quot;\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator (=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn)\n\nYou can add multiple values separated by comma when using the &quot;In&quot;, &quot;NotIn&quot; operators.\nExample of text field; &quot;USA;FIN;RUS&quot;\nExample of numeric field; &quot;1,2,3&quot;\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+              "default": ""
+            }
+          },
+          {
+            "name": "Orders",
+            "in": "query",
+            "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: Name DESC,CreatedOn ASC",
+            "schema": {
+              "type": "string",
+              "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: Name DESC,CreatedOn ASC",
+              "default": ""
+            }
+          },
+          {
+            "name": "StartIndex",
+            "in": "query",
+            "description": "The first record to return. Use this parameter to paginate the results. \n\nThe default value is 0. If not specified, the first set of resources (number of resources limited by the page size parameter) will be returned.",
+            "schema": {
+              "type": "integer",
+              "description": "The first record to return. Use this parameter to paginate the results. \n\nThe default value is 0. If not specified, the first set of resources (number of resources limited by the page size parameter) will be returned.",
+              "format": "int32"
+            },
+            "x-example": 0
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "This limits the number of resources to be returned in the response.\n\nThe value ranges from 1 to 1000 and defaults to 50.",
+            "schema": {
+              "type": "integer",
+              "description": "This limits the number of resources to be returned in the response.\n\nThe value ranges from 1 to 1000 and defaults to 50.",
+              "format": "int32"
+            },
+            "x-example": 0
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of document type information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DocumentType"
+                  },
+                  "description": "The list of document type information"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "DocumentType"
+        ],
+        "description": "Insert or Update (Upsert) a document type using an ExternalId or Id field value.",
+        "operationId": "UpsertDocumentType",
+        "requestBody": {
+          "description": "Document type information to insert or update.\n\nThe input parameter must be used in the `DocumentTypePost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DocumentTypePost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "DocumentType"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated document type information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocumentType"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Employees_BL/rest/DocumentType/{Id}": {
+      "delete": {
+        "tags": [
+          "DocumentType"
+        ],
+        "description": "Use the query string resource to delete record(s). \n\nSpecify the record ID and use the DELETE method of the resource to delete a record(s).",
+        "operationId": "DeleteDocumentType",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the document type.\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the document type.\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted document type information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocumentType"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "DocumentType"
+        ],
+        "description": "Update a document type using an ExternalId or Id field value.\n\nYou use the `DocumentTypePost` object resource to update records. Provide the updated record information in your request data and use the PUT method of the resource with a specific record ID to update that record.\n\nThe response body will contain the full `DocumentType` object of the updated record if the call is successful.",
+        "operationId": "UpdateDocumentType",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the document type.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the document type.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Document type information to update.\n\nThe input parameter must be used in the `DocumentTypePost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DocumentTypePost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "DocumentType"
+        },
+        "responses": {
+          "200": {
+            "description": "Updated document type information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocumentType"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "DocumentType"
+        ],
+        "description": "Get a record of the document type entity. The method returns one record of the entity.\n\nIf the `Id` field value is not matched, then a 404 error is reported (Errors/Not Found), and the error record is returned.\n\nIf the `Id` field value is matched multiple times, then a `400` error is reported (Errors/Multible Rows), and the error record is returned.\n\nIf the value in the `Name` field value does not match, a `400` error is reported (Errors/Invalid Field), and the error record is returned.",
+        "operationId": "GetDocumentType",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the document type.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the document type.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The record of document type information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocumentType"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Employees_BL/rest/DocumentType/Create": {
+      "post": {
+        "tags": [
+          "DocumentType"
+        ],
+        "description": "Use the `DocumentTypePost` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the POST method of the resource.\n\nThe response body will contain the full `DocumentType` object of the created record if the call is successful.",
+        "operationId": "CreateDocumentType",
+        "requestBody": {
+          "description": "Document type to insert.\n\nThe input parameter must be used in the `DocumentTypePost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DocumentTypePost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "DocumentType"
+        },
+        "responses": {
+          "200": {
+            "description": "Document type information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocumentType"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Employees_BL/rest/EmergencyContact/": {
+      "post": {
+        "tags": [
+          "EmergencyContact"
+        ],
+        "description": "Insert or Update (Upsert) a emergency contact using an ExternalId or Id field value.",
+        "operationId": "UpsertEmergencyContact",
+        "requestBody": {
+          "description": "Emergency contact information to insert or update.\n\nThe input parameter must be used in the `EmergencyContactPost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmergencyContactPost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "EmergencyContact"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated emergency contact information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmergencyContact"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "EmergencyContact"
+        ],
+        "description": "Use the method to execute a query that includes information that returns all the results in a single response, or if needed, returns part of the results and an identifier used to retrieve the remaining results.",
+        "operationId": "ListEmergencyContact",
+        "parameters": [
+          {
+            "name": "Fields",
+            "in": "query",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: Name,ExternalId\n\n",
+            "schema": {
+              "type": "string",
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: Name,ExternalId\n\n",
+              "default": ""
+            }
+          },
+          {
+            "name": "Filters",
+            "in": "query",
+            "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the &quot;Employee&quot; table has a &quot;DepartmentId&quot; field, so you can search for a department name using the &quot;DepartmentId.Name&quot; field name. All fields in the parent table are available.\n\nThe name of the database field. Example: &quot;Name&quot; or relation field &quot;OwnerId.Name&quot;\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator (=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn)\n\nYou can add multiple values separated by comma when using the &quot;In&quot;, &quot;NotIn&quot; operators.\nExample of text field; &quot;USA;FIN;RUS&quot;\nExample of numeric field; &quot;1,2,3&quot;\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+            "schema": {
+              "type": "string",
+              "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the &quot;Employee&quot; table has a &quot;DepartmentId&quot; field, so you can search for a department name using the &quot;DepartmentId.Name&quot; field name. All fields in the parent table are available.\n\nThe name of the database field. Example: &quot;Name&quot; or relation field &quot;OwnerId.Name&quot;\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator (=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn)\n\nYou can add multiple values separated by comma when using the &quot;In&quot;, &quot;NotIn&quot; operators.\nExample of text field; &quot;USA;FIN;RUS&quot;\nExample of numeric field; &quot;1,2,3&quot;\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+              "default": ""
+            }
+          },
+          {
+            "name": "Orders",
+            "in": "query",
+            "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: Name DESC,CreatedOn ASC",
+            "schema": {
+              "type": "string",
+              "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: Name DESC,CreatedOn ASC",
+              "default": ""
+            }
+          },
+          {
+            "name": "StartIndex",
+            "in": "query",
+            "description": "The first record to return. Use this parameter to paginate the results. \n\nThe default value is 0. If not specified, the first set of resources (number of resources limited by the page size parameter) will be returned.",
+            "schema": {
+              "type": "integer",
+              "description": "The first record to return. Use this parameter to paginate the results. \n\nThe default value is 0. If not specified, the first set of resources (number of resources limited by the page size parameter) will be returned.",
+              "format": "int32"
+            },
+            "x-example": 0
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "This limits the number of resources to be returned in the response.\n\nThe value ranges from 1 to 1000 and defaults to 50.",
+            "schema": {
+              "type": "integer",
+              "description": "This limits the number of resources to be returned in the response.\n\nThe value ranges from 1 to 1000 and defaults to 50.",
+              "format": "int32"
+            },
+            "x-example": 0
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of emergency contacts information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EmergencyContact"
+                  },
+                  "description": "The list of emergency contacts information"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Employees_BL/rest/EmergencyContact/{Id}": {
+      "put": {
+        "tags": [
+          "EmergencyContact"
+        ],
+        "description": "Update a emergency contact using an ExternalId or Id field value.\n\nYou use the `EmergencyContactPost` object resource to update records. Provide the updated record information in your request data and use the PUT method of the resource with a specific record ID to update that record.\n\nThe response body will contain the full `EmergencyContact` object of the updated record if the call is successful.",
+        "operationId": "UpdateEmergencyContact",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the emergency contact.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the emergency contact.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Emergency contact information to update.\n\nThe input parameter must be used in the `EmergencyContactPost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmergencyContactPost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "EmergencyContact"
+        },
+        "responses": {
+          "200": {
+            "description": "Updated emergency contact information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmergencyContact"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "EmergencyContact"
+        ],
+        "description": "Use the query string resource to delete record(s). \n\nSpecify the record ID and use the DELETE method of the resource to delete a record(s).",
+        "operationId": "DeleteEmergencyContact",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the emergency contact.\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the emergency contact.\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted emergency contact information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmergencyContact"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "EmergencyContact"
+        ],
+        "description": "Get a record of the emergency contact entity. The method returns one record of the entity.\n\nIf the `Id` field value is not matched, then a 404 error is reported (Errors/Not Found), and the error record is returned.\n\nIf the `Id` field value is matched multiple times, then a `400` error is reported (Errors/Multible Rows), and the error record is returned.\n\nIf the value in the `Name` field value does not match, a `400` error is reported (Errors/Invalid Field), and the error record is returned.",
+        "operationId": "GetEmergencyContact",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the emergency contact.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the emergency contact.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The record of emergency contact information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmergencyContact"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Employees_BL/rest/EmergencyContact/Create": {
+      "post": {
+        "tags": [
+          "EmergencyContact"
+        ],
+        "description": "Use the `EmergencyContactPost` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the POST method of the resource.\n\nThe response body will contain the full `EmergencyContact` object of the created record if the call is successful.",
+        "operationId": "CreateEmergencyContact",
+        "requestBody": {
+          "description": "Emergency contact to insert.\n\nThe input parameter must be used in the `EmergencyContactPost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmergencyContactPost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "EmergencyContact"
+        },
+        "responses": {
+          "200": {
+            "description": "Emergency contact information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmergencyContact"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Employees_BL/rest/Employee/": {
+      "post": {
+        "tags": [
+          "Employee"
+        ],
+        "description": "Insert or Update (Upsert) an employee using an ExternalId or Id field value.",
+        "operationId": "UpsertEmployee",
+        "requestBody": {
+          "description": "Employee information to insert or update.\n\nThe input parameter must be used in the `EmployeePost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmployeePost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Employee"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated employee information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Employee"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Employee"
+        ],
+        "description": "Use the method to execute a query that includes information that returns all the results in a single response, or if needed, returns part of the results and an identifier used to retrieve the remaining results.",
+        "operationId": "ListEmployee",
+        "parameters": [
+          {
+            "name": "Fields",
+            "in": "query",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: Name,ExternalId\n\n",
+            "schema": {
+              "type": "string",
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: Name,ExternalId\n\n",
+              "default": ""
+            }
+          },
+          {
+            "name": "Filters",
+            "in": "query",
+            "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the &quot;Employee&quot; table has a &quot;DepartmentId&quot; field, so you can search for a department name using the &quot;DepartmentId.Name&quot; field name. All fields in the parent table are available.\n\nThe name of the database field. Example: &quot;Name&quot; or relation field &quot;OwnerId.Name&quot;\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator (=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn)\n\nYou can add multiple values separated by comma when using the &quot;In&quot;, &quot;NotIn&quot; operators.\nExample of text field; &quot;USA;FIN;RUS&quot;\nExample of numeric field; &quot;1,2,3&quot;\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+            "schema": {
+              "type": "string",
+              "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the &quot;Employee&quot; table has a &quot;DepartmentId&quot; field, so you can search for a department name using the &quot;DepartmentId.Name&quot; field name. All fields in the parent table are available.\n\nThe name of the database field. Example: &quot;Name&quot; or relation field &quot;OwnerId.Name&quot;\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator (=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn)\n\nYou can add multiple values separated by comma when using the &quot;In&quot;, &quot;NotIn&quot; operators.\nExample of text field; &quot;USA;FIN;RUS&quot;\nExample of numeric field; &quot;1,2,3&quot;\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+              "default": ""
+            }
+          },
+          {
+            "name": "Orders",
+            "in": "query",
+            "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: Name DESC,CreatedOn ASC",
+            "schema": {
+              "type": "string",
+              "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: Name DESC,CreatedOn ASC",
+              "default": ""
+            }
+          },
+          {
+            "name": "StartIndex",
+            "in": "query",
+            "description": "The first record to return. Use this parameter to paginate the results. \n\nThe default value is 0. If not specified, the first set of resources (number of resources limited by the page size parameter) will be returned.",
+            "schema": {
+              "type": "integer",
+              "description": "The first record to return. Use this parameter to paginate the results. \n\nThe default value is 0. If not specified, the first set of resources (number of resources limited by the page size parameter) will be returned.",
+              "format": "int32"
+            },
+            "x-example": 0
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "This limits the number of resources to be returned in the response.\n\nThe value ranges from 1 to 1000 and defaults to 50.",
+            "schema": {
+              "type": "integer",
+              "description": "This limits the number of resources to be returned in the response.\n\nThe value ranges from 1 to 1000 and defaults to 50.",
+              "format": "int32"
+            },
+            "x-example": 0
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of employees information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Employee"
+                  },
+                  "description": "The list of employees information"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Employees_BL/rest/Employee/{Id}": {
+      "delete": {
+        "tags": [
+          "Employee"
+        ],
+        "description": "Use the query string resource to delete record(s). \n\nSpecify the record ID and use the DELETE method of the resource to delete a record(s).",
+        "operationId": "DeleteEmployee",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the employee.\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the employee.\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted employee information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Employee"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Employee"
+        ],
+        "description": "Get a record of the employee entity. The method returns one record of the entity.\n\nIf the `Id` field value is not matched, then a 404 error is reported (Errors/Not Found), and the error record is returned.\n\nIf the `Id` field value is matched multiple times, then a `400` error is reported (Errors/Multible Rows), and the error record is returned.\n\nIf the value in the `Name` field value does not match, a `400` error is reported (Errors/Invalid Field), and the error record is returned.",
+        "operationId": "GetEmployee",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the employee.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the employee.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The record of employee information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Employee"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Employee"
+        ],
+        "description": "Update an employee using an ExternalId or Id field value.\n\nYou use the `EmployeePost` object resource to update records. Provide the updated record information in your request data and use the PUT method of the resource with a specific record ID to update that record.\n\nThe response body will contain the full `Employee` object of the updated record if the call is successful.",
+        "operationId": "UpdateEmployee",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the employee.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the employee.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Employee information to update.\n\nThe input parameter must be used in the `EmployeePost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmployeePost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Employee"
+        },
+        "responses": {
+          "200": {
+            "description": "Updated employee information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Employee"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Employees_BL/rest/Employee/Create": {
+      "post": {
+        "tags": [
+          "Employee"
+        ],
+        "description": "Use the `EmployeePost` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the POST method of the resource.\n\nThe response body will contain the full `Employee` object of the created record if the call is successful.",
+        "operationId": "CreateEmployee",
+        "requestBody": {
+          "description": "Employee information to insert.\n\nThe input parameter must be used in the `EmployeePost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmployeePost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Employee"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted employee information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Employee"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Employees_BL/rest/EmployeeAddress/": {
+      "post": {
+        "tags": [
+          "EmployeeAddress"
+        ],
+        "description": "Insert or Update (Upsert) an employee address using an ExternalId or Id field value.",
+        "operationId": "UpsertEmployeeAddress",
+        "requestBody": {
+          "description": "Employee address information to insert or update.\n\nThe input parameter must be used in the `EmployeeAddressPost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmployeeAddressPost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "EmployeeAddress"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated employee address information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployeeAddress"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "EmployeeAddress"
+        ],
+        "description": "Use the method to execute a query that includes information that returns all the results in a single response, or if needed, returns part of the results and an identifier used to retrieve the remaining results.",
+        "operationId": "ListEmployeeAddress",
+        "parameters": [
+          {
+            "name": "Fields",
+            "in": "query",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: Name,ExternalId\n\n",
+            "schema": {
+              "type": "string",
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: Name,ExternalId\n\n",
+              "default": ""
+            }
+          },
+          {
+            "name": "Filters",
+            "in": "query",
+            "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the &quot;Employee&quot; table has a &quot;DepartmentId&quot; field, so you can search for a department name using the &quot;DepartmentId.Name&quot; field name. All fields in the parent table are available.\n\nThe name of the database field. Example: &quot;Name&quot; or relation field &quot;OwnerId.Name&quot;\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator (=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn)\n\nYou can add multiple values separated by comma when using the &quot;In&quot;, &quot;NotIn&quot; operators.\nExample of text field; &quot;USA;FIN;RUS&quot;\nExample of numeric field; &quot;1,2,3&quot;\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+            "schema": {
+              "type": "string",
+              "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the &quot;Employee&quot; table has a &quot;DepartmentId&quot; field, so you can search for a department name using the &quot;DepartmentId.Name&quot; field name. All fields in the parent table are available.\n\nThe name of the database field. Example: &quot;Name&quot; or relation field &quot;OwnerId.Name&quot;\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator (=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn)\n\nYou can add multiple values separated by comma when using the &quot;In&quot;, &quot;NotIn&quot; operators.\nExample of text field; &quot;USA;FIN;RUS&quot;\nExample of numeric field; &quot;1,2,3&quot;\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+              "default": ""
+            }
+          },
+          {
+            "name": "Orders",
+            "in": "query",
+            "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: Name DESC,CreatedOn ASC",
+            "schema": {
+              "type": "string",
+              "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: Name DESC,CreatedOn ASC",
+              "default": ""
+            }
+          },
+          {
+            "name": "StartIndex",
+            "in": "query",
+            "description": "The first record to return. Use this parameter to paginate the results. \n\nThe default value is 0. If not specified, the first set of resources (number of resources limited by the page size parameter) will be returned.",
+            "schema": {
+              "type": "integer",
+              "description": "The first record to return. Use this parameter to paginate the results. \n\nThe default value is 0. If not specified, the first set of resources (number of resources limited by the page size parameter) will be returned.",
+              "format": "int32"
+            },
+            "x-example": 0
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "This limits the number of resources to be returned in the response.\n\nThe value ranges from 1 to 1000 and defaults to 50.",
+            "schema": {
+              "type": "integer",
+              "description": "This limits the number of resources to be returned in the response.\n\nThe value ranges from 1 to 1000 and defaults to 50.",
+              "format": "int32"
+            },
+            "x-example": 0
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of employee addresses information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EmployeeAddress"
+                  },
+                  "description": "The list of employee addresses information"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Employees_BL/rest/EmployeeAddress/{Id}": {
+      "delete": {
+        "tags": [
+          "EmployeeAddress"
+        ],
+        "description": "Use the query string resource to delete record(s). \n\nSpecify the record ID and use the DELETE method of the resource to delete a record(s).",
+        "operationId": "DeleteEmployeeAddress",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the employee address.\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the employee address.\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted employee address information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployeeAddress"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "EmployeeAddress"
+        ],
+        "description": "Get a record of the employee address entity. The method returns one record of the entity.\n\nIf the `Id` field value is not matched, then a 404 error is reported (Errors/Not Found), and the error record is returned.\n\nIf the `Id` field value is matched multiple times, then a `400` error is reported (Errors/Multible Rows), and the error record is returned.\n\nIf the value in the `Name` field value does not match, a `400` error is reported (Errors/Invalid Field), and the error record is returned.",
+        "operationId": "GetEmployeeAddress",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the employee address.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the employee address.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The record of employee address information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployeeAddress"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "EmployeeAddress"
+        ],
+        "description": "Update an employee address using an ExternalId or Id field value.\n\nYou use the `EmployeeAddressPost` object resource to update records. Provide the updated record information in your request data and use the PUT method of the resource with a specific record ID to update that record.\n\nThe response body will contain the full `EmployeeAddress` object of the updated record if the call is successful.",
+        "operationId": "UpdateEmployeeAddress",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the employee address.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the employee address.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Employee address information to update.\n\nThe input parameter must be used in the `EmployeeAddressPost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmployeeAddressPost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "EmployeeAddress"
+        },
+        "responses": {
+          "200": {
+            "description": "Updated employee address information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployeeAddress"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Employees_BL/rest/EmployeeAddress/Create": {
+      "post": {
+        "tags": [
+          "EmployeeAddress"
+        ],
+        "description": "Use the `EmployeeAddressPost` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the POST method of the resource.\n\nThe response body will contain the full `EmployeeAddress` object of the created record if the call is successful.",
+        "operationId": "CreateEmployeeAddress",
+        "requestBody": {
+          "description": "Employee address information to insert.\n\nThe input parameter must be used in the `EmployeeAddressPost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmployeeAddressPost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "EmployeeAddress"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted employee address information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployeeAddress"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Employees_BL/rest/EmployeeContract/": {
+      "post": {
+        "tags": [
+          "EmployeeContract"
+        ],
+        "description": "Insert or Update (Upsert) an employee contract using an ExternalId or Id field value.",
+        "operationId": "UpsertEmployeeContract",
+        "requestBody": {
+          "description": "EmployeeContract information to insert or update.\n\nThe input parameter must be used in the `EmployeeContractPost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmployeeContractPost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "EmployeeContract"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated employee contract information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployeeContract"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "EmployeeContract"
+        ],
+        "description": "Use the method to execute a query that includes information that returns all the results in a single response, or if needed, returns part of the results and an identifier used to retrieve the remaining results.",
+        "operationId": "ListEmployeeContract",
+        "parameters": [
+          {
+            "name": "Fields",
+            "in": "query",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: Name,ExternalId\n\n",
+            "schema": {
+              "type": "string",
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: Name,ExternalId\n\n",
+              "default": ""
+            }
+          },
+          {
+            "name": "Filters",
+            "in": "query",
+            "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the &quot;Employee&quot; table has a &quot;DepartmentId&quot; field, so you can search for a department name using the &quot;DepartmentId.Name&quot; field name. All fields in the parent table are available.\n\nThe name of the database field. Example: &quot;Name&quot; or relation field &quot;OwnerId.Name&quot;\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator (=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn)\n\nYou can add multiple values separated by comma when using the &quot;In&quot;, &quot;NotIn&quot; operators.\nExample of text field; &quot;USA;FIN;RUS&quot;\nExample of numeric field; &quot;1,2,3&quot;\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+            "schema": {
+              "type": "string",
+              "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the &quot;Employee&quot; table has a &quot;DepartmentId&quot; field, so you can search for a department name using the &quot;DepartmentId.Name&quot; field name. All fields in the parent table are available.\n\nThe name of the database field. Example: &quot;Name&quot; or relation field &quot;OwnerId.Name&quot;\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator (=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn)\n\nYou can add multiple values separated by comma when using the &quot;In&quot;, &quot;NotIn&quot; operators.\nExample of text field; &quot;USA;FIN;RUS&quot;\nExample of numeric field; &quot;1,2,3&quot;\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+              "default": ""
+            }
+          },
+          {
+            "name": "Orders",
+            "in": "query",
+            "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: Name DESC,CreatedOn ASC",
+            "schema": {
+              "type": "string",
+              "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: Name DESC,CreatedOn ASC",
+              "default": ""
+            }
+          },
+          {
+            "name": "StartIndex",
+            "in": "query",
+            "description": "The first record to return. Use this parameter to paginate the results. \n\nThe default value is 0. If not specified, the first set of resources (number of resources limited by the page size parameter) will be returned.",
+            "schema": {
+              "type": "integer",
+              "description": "The first record to return. Use this parameter to paginate the results. \n\nThe default value is 0. If not specified, the first set of resources (number of resources limited by the page size parameter) will be returned.",
+              "format": "int32"
+            },
+            "x-example": 0
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "This limits the number of resources to be returned in the response.\n\nThe value ranges from 1 to 1000 and defaults to 50.",
+            "schema": {
+              "type": "integer",
+              "description": "This limits the number of resources to be returned in the response.\n\nThe value ranges from 1 to 1000 and defaults to 50.",
+              "format": "int32"
+            },
+            "x-example": 0
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of employee contracts information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EmployeeContract"
+                  },
+                  "description": "The list of employee contracts information"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Employees_BL/rest/EmployeeContract/{Id}": {
+      "get": {
+        "tags": [
+          "EmployeeContract"
+        ],
+        "description": "Get a record of the employee contract entity. The method returns one record of the entity.\n\nIf the `Id` field value is not matched, then a 404 error is reported (Errors/Not Found), and the error record is returned.\n\nIf the `Id` field value is matched multiple times, then a `400` error is reported (Errors/Multible Rows), and the error record is returned.\n\nIf the value in the `Name` field value does not match, a `400` error is reported (Errors/Invalid Field), and the error record is returned.",
+        "operationId": "GetEmployeeContract",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the employee contract.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the employee contract.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The record of employee contract information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployeeContract"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "EmployeeContract"
+        ],
+        "description": "Use the query string resource to delete record(s). \n\nSpecify the record ID and use the DELETE method of the resource to delete a record(s).",
+        "operationId": "DeleteEmployeeContract",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the employee contract.\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the employee contract.\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted employee contract information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployeeContract"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "EmployeeContract"
+        ],
+        "description": "Update an employee contract using an ExternalId or Id field value.\n\nYou use the `EmployeeContractPost` object resource to update records. Provide the updated record information in your request data and use the PUT method of the resource with a specific record ID to update that record.\n\nThe response body will contain the full `EmployeeContract` object of the updated record if the call is successful.",
+        "operationId": "UpdateEmployeeContract",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the employee contract.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the employee contract.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Employee contract information to update.\n\nThe input parameter must be used in the `EmployeeContractPost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmployeeContractPost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "EmployeeContract"
+        },
+        "responses": {
+          "200": {
+            "description": "Updated employee contract information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployeeContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Employees_BL/rest/EmployeeContract/Create": {
+      "post": {
+        "tags": [
+          "EmployeeContract"
+        ],
+        "description": "Use the `EmployeeContractPost` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the POST method of the resource.\n\nThe response body will contain the full `EmployeeContract` object of the created record if the call is successful.",
+        "operationId": "CreateEmployeeContract",
+        "requestBody": {
+          "description": "Employee contract information to insert.\n\nThe input parameter must be used in the `EmployeeContractPost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmployeeContractPost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "EmployeeContract"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted employee contract information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployeeContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Employees_BL/rest/EmployeeDocument/": {
+      "get": {
+        "tags": [
+          "EmployeeDocument"
+        ],
+        "description": "Use the method to execute a query that includes information that returns all the results in a single response, or if needed, returns part of the results and an identifier used to retrieve the remaining results.",
+        "operationId": "ListEmployeeDocument",
+        "parameters": [
+          {
+            "name": "Fields",
+            "in": "query",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: Name,ExternalId\n\n",
+            "schema": {
+              "type": "string",
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: Name,ExternalId\n\n",
+              "default": ""
+            }
+          },
+          {
+            "name": "Filters",
+            "in": "query",
+            "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the &quot;Employee&quot; table has a &quot;DepartmentId&quot; field, so you can search for a department name using the &quot;DepartmentId.Name&quot; field name. All fields in the parent table are available.\n\nThe name of the database field. Example: &quot;Name&quot; or relation field &quot;OwnerId.Name&quot;\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator (=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn)\n\nYou can add multiple values separated by comma when using the &quot;In&quot;, &quot;NotIn&quot; operators.\nExample of text field; &quot;USA;FIN;RUS&quot;\nExample of numeric field; &quot;1,2,3&quot;\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+            "schema": {
+              "type": "string",
+              "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the &quot;Employee&quot; table has a &quot;DepartmentId&quot; field, so you can search for a department name using the &quot;DepartmentId.Name&quot; field name. All fields in the parent table are available.\n\nThe name of the database field. Example: &quot;Name&quot; or relation field &quot;OwnerId.Name&quot;\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator (=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn)\n\nYou can add multiple values separated by comma when using the &quot;In&quot;, &quot;NotIn&quot; operators.\nExample of text field; &quot;USA;FIN;RUS&quot;\nExample of numeric field; &quot;1,2,3&quot;\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+              "default": ""
+            }
+          },
+          {
+            "name": "Orders",
+            "in": "query",
+            "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: Name DESC,CreatedOn ASC",
+            "schema": {
+              "type": "string",
+              "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: Name DESC,CreatedOn ASC",
+              "default": ""
+            }
+          },
+          {
+            "name": "StartIndex",
+            "in": "query",
+            "description": "The first record to return. Use this parameter to paginate the results. \n\nThe default value is 0. If not specified, the first set of resources (number of resources limited by the page size parameter) will be returned.",
+            "schema": {
+              "type": "integer",
+              "description": "The first record to return. Use this parameter to paginate the results. \n\nThe default value is 0. If not specified, the first set of resources (number of resources limited by the page size parameter) will be returned.",
+              "format": "int32"
+            },
+            "x-example": 0
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "This limits the number of resources to be returned in the response.\n\nThe value ranges from 1 to 1000 and defaults to 50.",
+            "schema": {
+              "type": "integer",
+              "description": "This limits the number of resources to be returned in the response.\n\nThe value ranges from 1 to 1000 and defaults to 50.",
+              "format": "int32"
+            },
+            "x-example": 0
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of employee documents information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EmployeeDocument"
+                  },
+                  "description": "The list of employee documents information"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "EmployeeDocument"
+        ],
+        "description": "Insert or Update (Upsert) a employee document using an ExternalId or Id field value.",
+        "operationId": "UpsertEmployeeDocument",
+        "requestBody": {
+          "description": "Empoyee document information to insert or update.\n\nThe input parameter must be used in the `EmployeeDocumentWithBinaryPost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmployeeDocumentPost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "EmployeeDocument"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated employee document information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployeeDocument"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Employees_BL/rest/EmployeeDocument/{Id}": {
+      "delete": {
+        "tags": [
+          "EmployeeDocument"
+        ],
+        "description": "Use the query string resource to delete record(s). \n\nSpecify the record ID and use the DELETE method of the resource to delete a record(s).",
+        "operationId": "DeleteEmployeeDocument",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the employee document.\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the employee document.\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted employee document information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployeeDocument"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "EmployeeDocument"
+        ],
+        "description": "Get a record of the employee document entity with document content. The method returns one record of the entity.\n\nIf the `Id` field value is not matched, then a 404 error is reported (Errors/Not Found), and the error record is returned.\n\nIf the `Id` field value is matched multiple times, then a `400` error is reported (Errors/Multible Rows), and the error record is returned.\n\nIf the value in the `Name` field value does not match, a `400` error is reported (Errors/Invalid Field), and the error record is returned.",
+        "operationId": "GetEmployeeDocument",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the employee document.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the employee document.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The record of employee document information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployeeDocument"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "EmployeeDocument"
+        ],
+        "description": "Update a employee document using an ExternalId or Id field value.\n\nYou use the `EmployeeDocumentWithBinaryPost` object resource to update records. Provide the updated record information in your request data and use the PUT method of the resource with a specific record ID to update that record.\n\nThe response body will contain the full `EmployeeDocument` object of the updated record if the call is successful.",
+        "operationId": "UpdateEmployeeDocument",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the employee document.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the employee document.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Employee document information to update.\n\nThe input parameter must be used in the `EmployeeDocumentWithBinaryPost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmployeeDocumentPost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "EmployeeDocument"
+        },
+        "responses": {
+          "200": {
+            "description": "Updated employee document information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployeeDocument"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Employees_BL/rest/EmployeeDocument/Create": {
+      "post": {
+        "tags": [
+          "EmployeeDocument"
+        ],
+        "description": "Use the `EmployeeDocumentWithBinaryPost` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the POST method of the resource.\n\nThe response body will contain the full `EmployeeDocument` object of the created record if the call is successful.",
+        "operationId": "CreateEmployeeDocument",
+        "requestBody": {
+          "description": "Employee document information to insert.\n\nThe input parameter must be used in the `EmployeeDocumentWithBinaryPost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmployeeDocumentPost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "EmployeeDocument"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted employee document information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployeeDocument"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Employees_BL/rest/EmployeePosition/": {
+      "get": {
+        "tags": [
+          "EmployeePosition"
+        ],
+        "description": "Use the method to execute a query that includes information that returns all the results in a single response, or if needed, returns part of the results and an identifier used to retrieve the remaining results.",
+        "operationId": "ListEmployeePosition",
+        "parameters": [
+          {
+            "name": "Fields",
+            "in": "query",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: Name,ExternalId\n\n",
+            "schema": {
+              "type": "string",
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: Name,ExternalId\n\n",
+              "default": ""
+            }
+          },
+          {
+            "name": "Filters",
+            "in": "query",
+            "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the &quot;Employee&quot; table has a &quot;DepartmentId&quot; field, so you can search for a department name using the &quot;DepartmentId.Name&quot; field name. All fields in the parent table are available.\n\nThe name of the database field. Example: &quot;Name&quot; or relation field &quot;OwnerId.Name&quot;\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator (=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn)\n\nYou can add multiple values separated by comma when using the &quot;In&quot;, &quot;NotIn&quot; operators.\nExample of text field; &quot;USA;FIN;RUS&quot;\nExample of numeric field; &quot;1,2,3&quot;\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+            "schema": {
+              "type": "string",
+              "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the &quot;Employee&quot; table has a &quot;DepartmentId&quot; field, so you can search for a department name using the &quot;DepartmentId.Name&quot; field name. All fields in the parent table are available.\n\nThe name of the database field. Example: &quot;Name&quot; or relation field &quot;OwnerId.Name&quot;\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator (=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn)\n\nYou can add multiple values separated by comma when using the &quot;In&quot;, &quot;NotIn&quot; operators.\nExample of text field; &quot;USA;FIN;RUS&quot;\nExample of numeric field; &quot;1,2,3&quot;\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+              "default": ""
+            }
+          },
+          {
+            "name": "Orders",
+            "in": "query",
+            "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: Name DESC,CreatedOn ASC",
+            "schema": {
+              "type": "string",
+              "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: Name DESC,CreatedOn ASC",
+              "default": ""
+            }
+          },
+          {
+            "name": "StartIndex",
+            "in": "query",
+            "description": "The first record to return. Use this parameter to paginate the results. \n\nThe default value is 0. If not specified, the first set of resources (number of resources limited by the page size parameter) will be returned.",
+            "schema": {
+              "type": "integer",
+              "description": "The first record to return. Use this parameter to paginate the results. \n\nThe default value is 0. If not specified, the first set of resources (number of resources limited by the page size parameter) will be returned.",
+              "format": "int32"
+            },
+            "x-example": 0
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "This limits the number of resources to be returned in the response.\n\nThe value ranges from 1 to 1000 and defaults to 50.",
+            "schema": {
+              "type": "integer",
+              "description": "This limits the number of resources to be returned in the response.\n\nThe value ranges from 1 to 1000 and defaults to 50.",
+              "format": "int32"
+            },
+            "x-example": 0
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of employee positions information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EmployeePosition"
+                  },
+                  "description": "The list of employee positions information"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "EmployeePosition"
+        ],
+        "description": "Insert or Update (Upsert) an employee position using an ExternalId or Id field value.",
+        "operationId": "UpsertEmployeePosition",
+        "requestBody": {
+          "description": "Employee position information to insert or update.\n\nThe input parameter must be used in the `EmployeePositionPost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmployeePositionPost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "EmployeePosition"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated employee position information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployeePosition"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Employees_BL/rest/EmployeePosition/{Id}": {
+      "delete": {
+        "tags": [
+          "EmployeePosition"
+        ],
+        "description": "Use the query string resource to delete record(s). \n\nSpecify the record ID and use the DELETE method of the resource to delete a record(s).",
+        "operationId": "DeleteEmployeePosition",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the employee position.\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the employee position.\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted employee position information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployeePosition"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "EmployeePosition"
+        ],
+        "description": "Get a record of the employee position entity. The method returns one record of the entity.\n\nIf the `Id` field value is not matched, then a 404 error is reported (Errors/Not Found), and the error record is returned.\n\nIf the `Id` field value is matched multiple times, then a `400` error is reported (Errors/Multible Rows), and the error record is returned.\n\nIf the value in the `Name` field value does not match, a `400` error is reported (Errors/Invalid Field), and the error record is returned.",
+        "operationId": "GetEmployeePosition",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the employee position.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the employee position.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The record of employee position information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployeePosition"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "EmployeePosition"
+        ],
+        "description": "Update an employee position using an ExternalId or Id field value.\n\nYou use the `EmployeePositionPost` object resource to update records. Provide the updated record information in your request data and use the PUT method of the resource with a specific record ID to update that record.\n\nThe response body will contain the full `EmployeePosition` object of the updated record if the call is successful.",
+        "operationId": "UpdateEmployeePosition",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the employee position.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the employee position.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Employee position information to update.\n\nThe input parameter must be used in the `EmployeePositionPost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmployeePositionPost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "EmployeePosition"
+        },
+        "responses": {
+          "200": {
+            "description": "Updated employee position information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployeePosition"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Employees_BL/rest/EmployeePosition/Create": {
+      "post": {
+        "tags": [
+          "EmployeePosition"
+        ],
+        "description": "Use the `EmployeePositionPost` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the POST method of the resource.\n\nThe response body will contain the full `EmployeePosition` object of the created record if the call is successful.",
+        "operationId": "CreateEmployeePosition",
+        "requestBody": {
+          "description": "Employee position information to insert.\n\nThe input parameter must be used in the `EmployeePost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmployeePositionPost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "EmployeePosition"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted employee position information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployeePosition"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Employees_BL/rest/RelationshipType/": {
+      "get": {
+        "tags": [
+          "RelationshipType"
+        ],
+        "description": "Use the method to execute a query that includes information that returns all the results in a single response, or if needed, returns part of the results and an identifier used to retrieve the remaining results.",
+        "operationId": "ListRelationshipType",
+        "parameters": [
+          {
+            "name": "Fields",
+            "in": "query",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: Name,ExternalId\n\n",
+            "schema": {
+              "type": "string",
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: Name,ExternalId\n\n",
+              "default": ""
+            }
+          },
+          {
+            "name": "Filters",
+            "in": "query",
+            "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the &quot;Employee&quot; table has a &quot;DepartmentId&quot; field, so you can search for a department name using the &quot;DepartmentId.Name&quot; field name. All fields in the parent table are available.\n\nThe name of the database field. Example: &quot;Name&quot; or relation field &quot;OwnerId.Name&quot;\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator (=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn)\n\nYou can add multiple values separated by comma when using the &quot;In&quot;, &quot;NotIn&quot; operators.\nExample of text field; &quot;USA;FIN;RUS&quot;\nExample of numeric field; &quot;1,2,3&quot;\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+            "schema": {
+              "type": "string",
+              "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the &quot;Employee&quot; table has a &quot;DepartmentId&quot; field, so you can search for a department name using the &quot;DepartmentId.Name&quot; field name. All fields in the parent table are available.\n\nThe name of the database field. Example: &quot;Name&quot; or relation field &quot;OwnerId.Name&quot;\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator (=, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn)\n\nYou can add multiple values separated by comma when using the &quot;In&quot;, &quot;NotIn&quot; operators.\nExample of text field; &quot;USA;FIN;RUS&quot;\nExample of numeric field; &quot;1,2,3&quot;\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+              "default": ""
+            }
+          },
+          {
+            "name": "Orders",
+            "in": "query",
+            "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: Name DESC,CreatedOn ASC",
+            "schema": {
+              "type": "string",
+              "description": "The sort_by parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: Name DESC,CreatedOn ASC",
+              "default": ""
+            }
+          },
+          {
+            "name": "StartIndex",
+            "in": "query",
+            "description": "The first record to return. Use this parameter to paginate the results. \n\nThe default value is 0. If not specified, the first set of resources (number of resources limited by the page size parameter) will be returned.",
+            "schema": {
+              "type": "integer",
+              "description": "The first record to return. Use this parameter to paginate the results. \n\nThe default value is 0. If not specified, the first set of resources (number of resources limited by the page size parameter) will be returned.",
+              "format": "int32"
+            },
+            "x-example": 0
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "This limits the number of resources to be returned in the response.\n\nThe value ranges from 1 to 1000 and defaults to 50.",
+            "schema": {
+              "type": "integer",
+              "description": "This limits the number of resources to be returned in the response.\n\nThe value ranges from 1 to 1000 and defaults to 50.",
+              "format": "int32"
+            },
+            "x-example": 0
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of relationship types information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RelationshipType"
+                  },
+                  "description": "The list of relationship types information"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "RelationshipType"
+        ],
+        "description": "Insert or Update (Upsert) a relationship type using an ExternalId or Id field value.",
+        "operationId": "UpsertRelationshipType",
+        "requestBody": {
+          "description": "Relationship type information to insert or update.\n\nThe input parameter must be used in the `RelationshipTypePost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RelationshipTypePost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "RelationshipType"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated relationship type information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RelationshipType"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Employees_BL/rest/RelationshipType/{Id}": {
+      "delete": {
+        "tags": [
+          "RelationshipType"
+        ],
+        "description": "Use the query string resource to delete record(s). \n\nSpecify the record ID and use the DELETE method of the resource to delete a record(s).",
+        "operationId": "DeleteRelationshipType",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the relationship type.\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the relationship type.\n\nExample : 4AE05E2D-AD5C-4234-978D-E42044AB1B6B",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted relationship type information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RelationshipType"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "RelationshipType"
+        ],
+        "description": "Update a relationship type using an ExternalId or Id field value.\n\nYou use the `RelationshipTypePost` object resource to update records. Provide the updated record information in your request data and use the PUT method of the resource with a specific record ID to update that record.\n\nThe response body will contain the full `RelationshipType` object of the updated record if the call is successful.",
+        "operationId": "UpdateRelationshipType",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the relationship type.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the relationship type.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Relationship type information to update.\n\nThe input parameter must be used in the `RelationshipTypePost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RelationshipTypePost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "RelationshipType"
+        },
+        "responses": {
+          "200": {
+            "description": "Updated relationship type information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RelationshipType"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "RelationshipType"
+        ],
+        "description": "Get a record of the relationship type entity. The method returns one record of the entity.\n\nIf the `Id` field value is not matched, then a 404 error is reported (Errors/Not Found), and the error record is returned.\n\nIf the `Id` field value is matched multiple times, then a `400` error is reported (Errors/Multible Rows), and the error record is returned.\n\nIf the value in the `Name` field value does not match, a `400` error is reported (Errors/Invalid Field), and the error record is returned.",
+        "operationId": "GetRelationshipType",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the relationship type.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the relationship type.\n\nExample : 473F10E5-DBEE-41F3-B85B-020D2787C2EF",
+              "default": ""
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the table primary key is used.\n\nExample : ExternalId or Name",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The record of relationship type information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RelationshipType"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Employees_BL/rest/RelationshipType/Create": {
+      "post": {
+        "tags": [
+          "RelationshipType"
+        ],
+        "description": "Use the `RelationshipTypePost` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the POST method of the resource.\n\nThe response body will contain the full `RelationshipType` object of the created record if the call is successful.",
+        "operationId": "CreateRelationshipType",
+        "requestBody": {
+          "description": "Relationship type information to insert.\n\nThe input parameter must be used in the `RelationshipTypePost` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RelationshipTypePost"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "RelationshipType"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted relationship type information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RelationshipType"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Meta": {
+        "required": [
+          "TotalItems",
+          "CurrentPage",
+          "PageSize",
+          "Type"
+        ],
+        "type": "object",
+        "properties": {
+          "TotalItems": {
+            "type": "integer",
+            "description": "This field represents the total number of items available in the entire dataset, not just the items returned in the current response. It's useful for implementing pagination, as clients can use it to calculate the number of pages or total available items.",
+            "format": "int32",
+            "default": 0,
+            "example": 1000
+          },
+          "CurrentPage": {
+            "type": "integer",
+            "description": "This field specifies the current page of results being returned. It's often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.",
+            "format": "int32",
+            "default": 1,
+            "example": 50
+          },
+          "PageSize": {
+            "type": "integer",
+            "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.",
+            "format": "int32",
+            "default": 50,
+            "example": 50
+          },
+          "Type": {
+            "type": "string",
+            "description": "The type of the record",
+            "example": "User"
+          }
+        },
+        "description": "The object provides metadata about the list of items returned in the API response. It typically includes information that helps clients understand and work with the data."
+      },
+      "Error": {
+        "required": [
+          "Errors",
+          "StatusCode"
+        ],
+        "type": "object",
+        "properties": {
+          "Error": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "default": ""
+            },
+            "description": "Human-readable explanation of the errors"
+          },
+          "Type": {
+            "type": "string",
+            "description": "URI identifier that categorizes the error",
+            "default": ""
+          },
+          "Title": {
+            "type": "string",
+            "description": "Brief, human-readable message about the error",
+            "default": ""
+          },
+          "StatusCode": {
+            "type": "integer",
+            "description": "The HTTP response code",
+            "format": "int32",
+            "example": 400
+          },
+          "Instance": {
+            "type": "string",
+            "description": "URI that identifies the specific occurrence of the error",
+            "default": ""
+          },
+          "RequestKey": {
+            "type": "string",
+            "description": "Provides a request key that identifies the current request.",
+            "default": ""
+          }
+        },
+        "description": "The list of errors. Throw specific exceptions based on the received error."
+      },
+      "AbstractLong": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "description": "The primary key of the record row. If the Id attribute is used, then it must be unique",
+            "format": "int64",
+            "example": 1234567891234567
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identier of the record row. If the External Id attribute is used, then it must be unique",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the record row",
+            "default": ""
+          },
+          "Type": {
+            "type": "string",
+            "description": "The type of the record object",
+            "default": ""
+          }
+        },
+        "description": "The abstract object structure"
+      },
+      "ContractType": {
+        "required": [
+          "Id",
+          "Is_Active"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The guid to identify the employee status",
+            "default": ""
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the contract type",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the employee status",
+            "default": ""
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the contract type is active and can be used",
+            "example": false
+          },
+          "Is_External": {
+            "type": "boolean",
+            "description": "Defines of contract type is external contract and not directly via company",
+            "example": false
+          },
+          "ModifiedOn": {
+            "type": "string",
+            "description": "The date the record was updated",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          },
+          "ModifiedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date the record was created",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          }
+        },
+        "description": "The type of employee contract"
+      },
+      "ContractTypePost": {
+        "required": [
+          "Id",
+          "Is_Active"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The guid to identify the employee status",
+            "default": ""
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the contract type",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the employee status",
+            "default": ""
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the contract type is active and can be used",
+            "example": false
+          },
+          "Is_External": {
+            "type": "boolean",
+            "description": "Defines of contract type is external contract and not directly via company",
+            "example": false
+          }
+        },
+        "description": "The type of employee contract"
+      },
+      "DocumentType": {
+        "required": [
+          "Id",
+          "Is_Active"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The guid to identify the document type",
+            "default": ""
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the document type",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the document type",
+            "default": ""
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the document type is active and can be used",
+            "example": false
+          },
+          "ModifiedOn": {
+            "type": "string",
+            "description": "The date the record was updated",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          },
+          "ModifiedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date the record was created",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          }
+        },
+        "description": "The type of employee document"
+      },
+      "DocumentTypePost": {
+        "required": [
+          "Id",
+          "Is_Active"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The guid to identify the document type",
+            "default": ""
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the document type",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the document type",
+            "default": ""
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the document type is active and can be used",
+            "example": false
+          }
+        },
+        "description": "The type of employee document"
+      },
+      "AbstractText": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The primary key of the record row. If the Id attribute is used, then it must be unique",
+            "default": ""
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identier of the record row. If the External Id attribute is used, then it must be unique",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the record row",
+            "default": ""
+          },
+          "Type": {
+            "type": "string",
+            "description": "The type of the record object",
+            "default": ""
+          }
+        },
+        "description": "The abstract object structure"
+      },
+      "EmergencyContact": {
+        "required": [
+          "Id",
+          "Name",
+          "Phone",
+          "Is_Active"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The identifier of emergency contact",
+            "default": ""
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the emergency contact",
+            "default": ""
+          },
+          "EmployeeId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "RelationshipTypeId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the emergency contact",
+            "default": ""
+          },
+          "Phone": {
+            "type": "string",
+            "description": "The phone number of emergency contact",
+            "default": ""
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the emergency contact is active and can be used",
+            "example": false
+          },
+          "ModifiedOn": {
+            "type": "string",
+            "description": "The date the record was updated",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          },
+          "ModifiedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date the record was created",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          }
+        },
+        "description": "The emergency contact of employee"
+      },
+      "EmergencyContactPost": {
+        "required": [
+          "Id",
+          "Name",
+          "Phone",
+          "Is_Active"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The identifier of emergency contact",
+            "default": ""
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the emergency contact",
+            "default": ""
+          },
+          "EmployeeId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "RelationshipTypeId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the emergency contact",
+            "default": ""
+          },
+          "Phone": {
+            "type": "string",
+            "description": "The phone number of emergency contact",
+            "default": ""
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the emergency contact is active and can be used",
+            "example": false
+          }
+        },
+        "description": "The emergency contact of employee"
+      },
+      "FieldType": {
+        "required": [
+          "Value"
+        ],
+        "type": "object",
+        "properties": {
+          "Field": {
+            "type": "string",
+            "description": "The name of the data field",
+            "default": ""
+          },
+          "Value": {
+            "type": "string",
+            "description": "The value of the data row",
+            "default": ""
+          }
+        },
+        "description": "The field object structure"
+      },
+      "Employee": {
+        "required": [
+          "Id",
+          "Name",
+          "FirstName",
+          "LastName",
+          "Phone",
+          "CreatedOn"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The identifier of employee",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the employee. Data is synchronized from account with internal user",
+            "default": ""
+          },
+          "SSN": {
+            "type": "string",
+            "description": "The social security number of employee",
+            "default": ""
+          },
+          "Birthday": {
+            "type": "string",
+            "description": "The birthday of employee",
+            "format": "date",
+            "example": "2014-12-31T00:00:00.0000000"
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the employee",
+            "default": ""
+          },
+          "FirstName": {
+            "type": "string",
+            "description": "Person&#39;s first name. Data is synchronized from account with internal user",
+            "default": ""
+          },
+          "LastName": {
+            "type": "string",
+            "description": "Person&#39;s last name. Data is synchronized from account with internal user",
+            "default": ""
+          },
+          "Phone": {
+            "type": "string",
+            "description": "The phone number of account. The phone number is unique in the system. Data is synchronized from account with internal user",
+            "default": ""
+          },
+          "Email": {
+            "type": "string",
+            "description": "The e-mail of account. The email is unique in the system. Data is synchronized from account with internal user",
+            "default": ""
+          },
+          "UserId": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "LanguageId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "CountryId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "CurrentDepartmentId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the employee is active and can be used",
+            "example": false
+          },
+          "Is_External": {
+            "type": "boolean",
+            "description": "Defines if the employee is external.",
+            "example": false
+          },
+          "ModifiedOn": {
+            "type": "string",
+            "description": "The date the record was updated",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          },
+          "ModifiedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date the record was created",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          }
+        },
+        "description": "Basic information of an employee"
+      },
+      "EmployeePost": {
+        "required": [
+          "Id",
+          "Name",
+          "FirstName",
+          "LastName",
+          "Phone"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The identifier of employee",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the employee. Data is synchronized from account with internal user",
+            "default": ""
+          },
+          "SSN": {
+            "type": "string",
+            "description": "The social security number of employee",
+            "default": ""
+          },
+          "Birthday": {
+            "type": "string",
+            "description": "The birthday of employee",
+            "format": "date",
+            "example": "2014-12-31T00:00:00.0000000"
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the employee",
+            "default": ""
+          },
+          "FirstName": {
+            "type": "string",
+            "description": "Person&#39;s first name. Data is synchronized from account with internal user",
+            "default": ""
+          },
+          "LastName": {
+            "type": "string",
+            "description": "Person&#39;s last name. Data is synchronized from account with internal user",
+            "default": ""
+          },
+          "Phone": {
+            "type": "string",
+            "description": "The phone number of account. The phone number is unique in the system. Data is synchronized from account with internal user",
+            "default": ""
+          },
+          "Email": {
+            "type": "string",
+            "description": "The e-mail of account. The email is unique in the system. Data is synchronized from account with internal user",
+            "default": ""
+          },
+          "UserId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "LanguageId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "CountryId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "CurrentDepartmentId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the employee is active and can be used",
+            "example": false
+          },
+          "Is_External": {
+            "type": "boolean",
+            "description": "Defines if the employee is external.",
+            "example": false
+          }
+        },
+        "description": "Employee information to store"
+      },
+      "EmployeeAddress": {
+        "required": [
+          "Id",
+          "Address",
+          "Is_Active"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The identifier of employee address",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the employee address",
+            "default": ""
+          },
+          "EmployeeId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the employee address",
+            "default": ""
+          },
+          "Is_AddressValid": {
+            "type": "boolean",
+            "description": "Determines if the address is valid",
+            "example": false
+          },
+          "FormattedAddress": {
+            "type": "string",
+            "description": "The formatted address of location. Example It&#228;merenkatu 1, 00180 Helsinki, Finland",
+            "default": ""
+          },
+          "Address": {
+            "type": "string",
+            "description": "The home address of the employee",
+            "default": ""
+          },
+          "Address2": {
+            "type": "string",
+            "description": "The second additional line of the address card, printed between the name and the street address",
+            "default": ""
+          },
+          "PostalCode": {
+            "type": "string",
+            "description": "The postal code of the address",
+            "default": ""
+          },
+          "City": {
+            "type": "string",
+            "description": "The city of the address",
+            "default": ""
+          },
+          "CountryId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "Latitude": {
+            "type": "number",
+            "description": "The latitude of address",
+            "example": 0.1
+          },
+          "Longitude": {
+            "type": "number",
+            "description": "The longitude of address",
+            "example": 0.1
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the employee address is active and can be used",
+            "example": false
+          },
+          "ModifiedOn": {
+            "type": "string",
+            "description": "The date the record was updated",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          },
+          "ModifiedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date the record was created",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          }
+        },
+        "description": "The personal address of employee"
+      },
+      "EmployeeAddressPost": {
+        "required": [
+          "Id",
+          "Address",
+          "Is_Active"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The identifier of employee address",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the employee address",
+            "default": ""
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the employee address",
+            "default": ""
+          },
+          "EmployeeId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "Address": {
+            "type": "string",
+            "description": "The home address of the employee",
+            "default": ""
+          },
+          "Address2": {
+            "type": "string",
+            "description": "The second additional line of the address card, printed between the name and the street address",
+            "default": ""
+          },
+          "PostalCode": {
+            "type": "string",
+            "description": "The postal code of the address",
+            "default": ""
+          },
+          "City": {
+            "type": "string",
+            "description": "The city of the address",
+            "default": ""
+          },
+          "CountryId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the employee address is active and can be used",
+            "example": false
+          }
+        },
+        "description": "The personal address of employee"
+      },
+      "EmployeeContract": {
+        "required": [
+          "Id"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The identifier of the employee contract",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the employee contract",
+            "default": ""
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the employee contract",
+            "default": ""
+          },
+          "EmployeeId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "EmployeePositionId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "StartDate": {
+            "type": "string",
+            "description": "The start date of the employee contract",
+            "format": "date",
+            "example": "2014-12-31T00:00:00.0000000"
+          },
+          "EndDate": {
+            "type": "string",
+            "description": "The end date of the employee contract",
+            "format": "date",
+            "example": "2014-12-31T00:00:00.0000000"
+          },
+          "TaxCode": {
+            "type": "string",
+            "description": "The tax code  of the employee",
+            "default": ""
+          },
+          "OnboardingStatusId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "OnBoardingDueDate": {
+            "type": "string",
+            "description": "The onboarding due date of the employee contract",
+            "format": "date",
+            "example": "2014-12-31T00:00:00.0000000"
+          },
+          "ContractTypeId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "LocationId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "DepartmentId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "SupervisorId": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "OnboardingProcessId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the employee contract is active and can be used",
+            "example": false
+          },
+          "Is_Onboarding": {
+            "type": "boolean",
+            "description": "Defines if the employee contract is onboarding and waiting actions",
+            "example": false
+          },
+          "Is_Consent": {
+            "type": "boolean",
+            "description": "Consent is an unambiguous and clear expression of the data subject&#39;s wishes, by which he or she accepts the processing of his or her personal data. Data subjects cannot give their consent through silence, pre-ticked boxes or inactivity.",
+            "example": false
+          },
+          "ModifiedOn": {
+            "type": "string",
+            "description": "The date the record was updated",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          },
+          "ModifiedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date the record was created",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          }
+        },
+        "description": "Contract information of an employee"
+      },
+      "EmployeeContractPost": {
+        "required": [
+          "Id"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The identifier of the employee contract",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the employee contract",
+            "default": ""
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the employee contract",
+            "default": ""
+          },
+          "EmployeeId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "EmployeePositionId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "StartDate": {
+            "type": "string",
+            "description": "The start date of the employee contract",
+            "format": "date",
+            "example": "2014-12-31T00:00:00.0000000"
+          },
+          "EndDate": {
+            "type": "string",
+            "description": "The end date of the employee contract",
+            "format": "date",
+            "example": "2014-12-31T00:00:00.0000000"
+          },
+          "TaxCode": {
+            "type": "string",
+            "description": "The tax code  of the employee",
+            "default": ""
+          },
+          "OnboardingStatusId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "OnBoardingDueDate": {
+            "type": "string",
+            "description": "The onboarding due date of the employee contract",
+            "format": "date",
+            "example": "2014-12-31T00:00:00.0000000"
+          },
+          "ContractTypeId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "LocationId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "DepartmentId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "SupervisorId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "OnboardingProcessId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the employee contract is active and can be used",
+            "example": false
+          },
+          "Is_Onboarding": {
+            "type": "boolean",
+            "description": "Defines if the employee contract is onboarding and waiting actions",
+            "example": false
+          },
+          "Is_Consent": {
+            "type": "boolean",
+            "description": "Consent is an unambiguous and clear expression of the data subject&#39;s wishes, by which he or she accepts the processing of his or her personal data. Data subjects cannot give their consent through silence, pre-ticked boxes or inactivity.",
+            "example": false
+          }
+        },
+        "description": "Contract information of an employee"
+      },
+      "EmployeeDocument": {
+        "required": [
+          "Id",
+          "Is_Active"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The guid to identify the employee document",
+            "default": ""
+          },
+          "EmployeeContractId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "DocumentTypeId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the employee document",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the employee document",
+            "default": ""
+          },
+          "FileTypeId": {
+            "type": "string",
+            "description": "The type of document",
+            "default": ""
+          },
+          "FileSize": {
+            "type": "integer",
+            "description": "The document size in kilobytes",
+            "format": "int64",
+            "example": 1234567891234567
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the employee document is active and can be used",
+            "example": false
+          },
+          "DocumentContent": {
+            "type": "string",
+            "description": "The binary content of the document. Content is only available with one record. When searching the list, the value is empty."
+          },
+          "ModifiedOn": {
+            "type": "string",
+            "description": "The date the record was updated",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          },
+          "ModifiedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date the record was created",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          }
+        },
+        "description": "The document of employee"
+      },
+      "EmployeeDocumentPost": {
+        "required": [
+          "Id",
+          "Is_Active"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The guid to identify the employee document",
+            "default": ""
+          },
+          "EmployeeContractId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "DocumentTypeId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the employee document",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the employee document",
+            "default": ""
+          },
+          "FileTypeId": {
+            "type": "string",
+            "description": "The type of document",
+            "default": ""
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the employee document is active and can be used",
+            "example": false
+          },
+          "DocumentContent": {
+            "type": "string",
+            "description": "The binary content of the document. If the value is empty the existing binary will not be updated."
+          }
+        },
+        "description": "The document of employee"
+      },
+      "EmployeePosition": {
+        "required": [
+          "Id",
+          "Is_Active"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The guid to identify the employee status",
+            "default": ""
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the employee position",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the employee position",
+            "default": ""
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the employee position is active and can be used",
+            "example": false
+          },
+          "ModifiedOn": {
+            "type": "string",
+            "description": "The date the record was updated",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          },
+          "ModifiedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date the record was created",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          }
+        },
+        "description": "The status of employee"
+      },
+      "EmployeePositionPost": {
+        "required": [
+          "Id",
+          "Is_Active"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The guid to identify the employee status",
+            "default": ""
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the employee position",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the employee position",
+            "default": ""
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the employee position is active and can be used",
+            "example": false
+          }
+        },
+        "description": "The status of employee"
+      },
+      "RelationshipType": {
+        "required": [
+          "Id",
+          "Is_Active"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The guid to identify the relationship type",
+            "default": ""
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the relationship type",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the relationship type",
+            "default": ""
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the relationship type is active and can be used",
+            "example": false
+          },
+          "ModifiedOn": {
+            "type": "string",
+            "description": "The date the record was updated",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          },
+          "ModifiedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date the record was created",
+            "format": "date-time",
+            "example": "2014-12-31T23:59:59.9380000+00:00"
+          }
+        },
+        "description": "The type of employee emergency contact relationship"
+      },
+      "RelationshipTypePost": {
+        "required": [
+          "Id",
+          "Is_Active"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The guid to identify the relationship type",
+            "default": ""
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the relationship type",
+            "default": ""
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the relationship type",
+            "default": ""
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the relationship type is active and can be used",
+            "example": false
+          }
+        },
+        "description": "The type of employee emergency contact relationship"
+      }
+    },
+    "responses": {
+      "400": {
+        "description": "Bad Request - The user has provided input that the browser is unable to convert.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "Errors": [
+                "The user has provided input that the browser is unable to convert.",
+                "There are multiple rows in the database for the same value",
+                "The value does not match the specified entity structure",
+                "..."
+              ],
+              "Type": "/Errors/Bad Input",
+              "Title": "Bad Request",
+              "StatusCode": 400,
+              "Instance": "/OpenApi/rest/Xzy",
+              "RequestKey": "894ea43c-b8a6-4195-9a9c-82c07d9cc33a"
+            }
+          }
+        }
+      },
+      "401": {
+        "description": "Unauthorized - The response status code indicates that the client request has not been completed because it lacks valid authentication credentials for the requested resource.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "Errors": [
+                "The session Id or OAuth token used has expired or is invalid."
+              ],
+              "Type": "/Errors/Unauthorized",
+              "Title": "Unauthorized",
+              "StatusCode": 401,
+              "Instance": "/OpenApi/rest/Xzy",
+              "RequestKey": "894ea43c-b8a6-4195-9a9c-82c07d9cc33a"
+            }
+          }
+        }
+      },
+      "403": {
+        "description": "Forbidden - The user does not have access to execute operation",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "Errors": [
+                "The user does not have access to execute operation"
+              ],
+              "Type": "/Errors/Permission",
+              "Title": "Bad Request",
+              "StatusCode": 403,
+              "Instance": "/OpenApi/rest/Xzy",
+              "RequestKey": "894ea43c-b8a6-4195-9a9c-82c07d9cc33a"
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Not Found - The requested resource does not exist.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "Errors": [
+                "The requested resource does not exist"
+              ],
+              "Type": "/Errors/Not Found",
+              "Title": "Not Found",
+              "StatusCode": 404,
+              "Instance": "/OpenApi/rest/Xzy",
+              "RequestKey": "894ea43c-b8a6-4195-9a9c-82c07d9cc33a"
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal Server Error - An internal server error is an error on the web server you're trying to access.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "Errors": [
+                "An internal server error is an error on the web server you're trying to access."
+              ],
+              "Type": "/Errors/Internal Server Error",
+              "Title": "Internal Server Error",
+              "StatusCode": 500,
+              "Instance": "/OpenApi/rest/Xzy",
+              "RequestKey": "894ea43c-b8a6-4195-9a9c-82c07d9cc33a"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "OAuth2": {
+        "type": "oauth2",
+        "description": "oAuth autentication flow",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://dev.esystems.fi/oAuth/rest/v2/Token",
+            "refreshUrl": "https://dev.esystems.fi/oAuth/rest/v2/Token",
+            "scopes": { }
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "ContractType",
+      "description": ""
+    },
+    {
+      "name": "DocumentType",
+      "description": ""
+    },
+    {
+      "name": "EmergencyContact",
+      "description": ""
+    },
+    {
+      "name": "Employee",
+      "description": ""
+    },
+    {
+      "name": "EmployeeAddress",
+      "description": ""
+    },
+    {
+      "name": "EmployeeContract",
+      "description": ""
+    },
+    {
+      "name": "EmployeeDocument",
+      "description": ""
+    },
+    {
+      "name": "EmployeePosition",
+      "description": ""
+    },
+    {
+      "name": "RelationshipType",
+      "description": ""
+    }
+  ]
+}
