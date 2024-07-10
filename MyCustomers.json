@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.181"
+    "version": "3.0.182"
   },
   "servers": [
     {
@@ -1008,10 +1008,6 @@
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
           },
-          "Attribute1": {
-            "type": "string",
-            "description": "Attribute1 text"
-          },
           "Attribute2": {
             "type": "string",
             "description": "Attribute2 text"
@@ -1142,10 +1138,6 @@
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
           },
-          "Attribute1": {
-            "type": "string",
-            "description": "Attribute1 text"
-          },
           "Attribute2": {
             "type": "string",
             "description": "Attribute2 text"
@@ -1247,10 +1239,6 @@
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
-          },
-          "Attribute1": {
-            "type": "string",
-            "description": "Attribute1 text"
           },
           "Attribute2": {
             "type": "string",
@@ -1419,10 +1407,6 @@
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
           },
-          "Attribute1": {
-            "type": "string",
-            "description": "Attribute1 text"
-          },
           "Attribute2": {
             "type": "string",
             "description": "Attribute2 text"
@@ -1534,10 +1518,6 @@
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
-          },
-          "Attribute1": {
-            "type": "string",
-            "description": "Attribute1 text"
           },
           "Attribute2": {
             "type": "string",
