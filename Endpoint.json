@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.358"
+    "version": "3.0.359"
   },
   "servers": [
     {
@@ -277,12 +277,12 @@
           }
         ],
         "requestBody": {
-          "description": "`{EntityName}` information to insert.\n\nThe input parameter must be used in the `{EntityNameInsertData}` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "description": "`{EntityName}` information to insert.\n\nThe input parameter must be used in the `{ShemaName}` record structure inside the `FieldType` parameter in the foreign key fields.",
           "content": {
             "text/plain": {
               "schema": {
                 "type": "string",
-                "description": "`{EntityName}` information to insert.\n\nThe input parameter must be used in the `{EntityNameInsertData}` record structure inside the `FieldType` parameter in the foreign key fields.",
+                "description": "`{EntityName}` information to insert.\n\nThe input parameter must be used in the `{ShemaName}` record structure inside the `FieldType` parameter in the foreign key fields.",
                 "default": ""
               }
             }
