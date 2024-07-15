@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.353"
+    "version": "3.0.354"
   },
   "servers": [
     {
@@ -1269,6 +1269,25 @@
         },
         "description": "This is the root document object of the OpenAPI document."
       },
+      "ParameterEnum": {
+        "required": [
+          "Value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "description": "The value of the parameter enum.",
+            "default": ""
+          },
+          "description": {
+            "type": "string",
+            "description": "A brief description of the parameter enum. This could contain examples of use.",
+            "default": ""
+          }
+        },
+        "description": "Describes a single operation parameter enum."
+      },
       "ParameterItem": {
         "required": [
           "Name",
@@ -1316,6 +1335,13 @@
             "type": "string",
             "description": "A free-form property to include an example of an instance for this schema. To represent examples that cannot be naturally represented in JSON or YAML, a string value can be used to contain the example with escaping where necessary.",
             "default": ""
+          },
+          "enum": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ParameterEnum"
+            },
+            "description": "A list of enum values for the parameter."
           }
         },
         "description": "Describes a single operation parameter.\n\nA unique parameter is defined by a combination of a name and location."
@@ -1356,7 +1382,7 @@
             "items": {
               "$ref": "#/components/schemas/ParameterItem"
             },
-            "description": "A list of parameters that are applicable for this operation."
+            "description": "A list of input parameters that are applicable for this operation."
           },
           "responses": {
             "type": "array",
@@ -1452,7 +1478,7 @@
             "items": {
               "$ref": "#/components/schemas/ParameterItem"
             },
-            "description": "A list of parameters that are applicable for this operation."
+            "description": "A list of parameters that are applicable for this schema."
           }
         },
         "description": "The Schema Object allows the definition of input and output data types. These types can be objects, but also primitives and arrays. This object is an extended subset of the JSON Schema Specification Wright Draft 00."
