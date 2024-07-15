@@ -27,67 +27,118 @@ using OpenAPIDateConverter = Agile.Now.AccessHub.Client.OpenAPIDateConverter;
 namespace Agile.Now.AccessHub.Model
 {
     /// <summary>
-    /// The record of Location information.
+    /// The record of Department information.
     /// </summary>
-    [DataContract(Name = "LocationData")]
-    public partial class LocationData : IValidatableObject
+    [DataContract(Name = "DepartmentData")]
+    public partial class DepartmentData : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="LocationData" /> class.
+        /// Initializes a new instance of the <see cref="DepartmentData" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected LocationData() { }
+        protected DepartmentData() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="LocationData" /> class.
+        /// Initializes a new instance of the <see cref="DepartmentData" /> class.
         /// </summary>
-        /// <param name="id">The guid to identify the location (required).</param>
-        /// <param name="externalId">The external identifier of the location.</param>
-        /// <param name="name">The name of the location (required).</param>
+        /// <param name="id">The guid to identify the department (required).</param>
+        /// <param name="externalId">The external identifier of the department.</param>
+        /// <param name="name">The name of the department (required).</param>
+        /// <param name="departmentTypeId">departmentTypeId (required).</param>
+        /// <param name="parentDepartmentId">parentDepartmentId.</param>
+        /// <param name="contactName">The contact name of company or department.</param>
+        /// <param name="contactEmail">The contact email of external company or department.</param>
+        /// <param name="contactPhone">contactPhone.</param>
+        /// <param name="ownerId">ownerId.</param>
         /// <param name="countryId">countryId.</param>
-        /// <param name="timezoneId">timezoneId.</param>
-        /// <param name="currencyId">currencyId.</param>
-        /// <param name="isActive">Defines if the location is active and can be used (required) (default to false).</param>
-        public LocationData(string id = default(string), string externalId = default(string), string name = default(string), FieldType countryId = default(FieldType), FieldType timezoneId = default(FieldType), FieldType currencyId = default(FieldType), bool isActive = false)
+        /// <param name="isActive">Defines if the department is active and can be used (required) (default to false).</param>
+        public DepartmentData(string id = default(string), string externalId = default(string), string name = default(string), FieldType departmentTypeId = default(FieldType), FieldType parentDepartmentId = default(FieldType), string contactName = default(string), string contactEmail = default(string), string contactPhone = default(string), FieldType ownerId = default(FieldType), FieldType countryId = default(FieldType), bool isActive = false)
         {
             // to ensure "id" is required (not null)
             if (id == null)
             {
-                throw new ArgumentNullException("id is a required property for LocationData and cannot be null");
+                throw new ArgumentNullException("id is a required property for DepartmentData and cannot be null");
             }
             this.Id = id;
             // to ensure "name" is required (not null)
             if (name == null)
             {
-                throw new ArgumentNullException("name is a required property for LocationData and cannot be null");
+                throw new ArgumentNullException("name is a required property for DepartmentData and cannot be null");
             }
             this.Name = name;
+            // to ensure "departmentTypeId" is required (not null)
+            if (departmentTypeId == null)
+            {
+                throw new ArgumentNullException("departmentTypeId is a required property for DepartmentData and cannot be null");
+            }
+            this.DepartmentTypeId = departmentTypeId;
             this.IsActive = isActive;
             this.ExternalId = externalId;
+            this.ParentDepartmentId = parentDepartmentId;
+            this.ContactName = contactName;
+            this.ContactEmail = contactEmail;
+            this.ContactPhone = contactPhone;
+            this.OwnerId = ownerId;
             this.CountryId = countryId;
-            this.TimezoneId = timezoneId;
-            this.CurrencyId = currencyId;
         }
 
         /// <summary>
-        /// The guid to identify the location
+        /// The guid to identify the department
         /// </summary>
-        /// <value>The guid to identify the location</value>
+        /// <value>The guid to identify the department</value>
         [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>
-        /// The external identifier of the location
+        /// The external identifier of the department
         /// </summary>
-        /// <value>The external identifier of the location</value>
+        /// <value>The external identifier of the department</value>
         [DataMember(Name = "ExternalId", EmitDefaultValue = false)]
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// The name of the location
+        /// The name of the department
         /// </summary>
-        /// <value>The name of the location</value>
+        /// <value>The name of the department</value>
         [DataMember(Name = "Name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DepartmentTypeId
+        /// </summary>
+        [DataMember(Name = "DepartmentTypeId", IsRequired = true, EmitDefaultValue = true)]
+        public FieldType DepartmentTypeId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ParentDepartmentId
+        /// </summary>
+        [DataMember(Name = "ParentDepartmentId", EmitDefaultValue = false)]
+        public FieldType ParentDepartmentId { get; set; }
+
+        /// <summary>
+        /// The contact name of company or department
+        /// </summary>
+        /// <value>The contact name of company or department</value>
+        [DataMember(Name = "ContactName", EmitDefaultValue = false)]
+        public string ContactName { get; set; }
+
+        /// <summary>
+        /// The contact email of external company or department
+        /// </summary>
+        /// <value>The contact email of external company or department</value>
+        [DataMember(Name = "ContactEmail", EmitDefaultValue = false)]
+        public string ContactEmail { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ContactPhone
+        /// </summary>
+        [DataMember(Name = "ContactPhone", EmitDefaultValue = false)]
+        public string ContactPhone { get; set; }
+
+        /// <summary>
+        /// Gets or Sets OwnerId
+        /// </summary>
+        [DataMember(Name = "OwnerId", EmitDefaultValue = false)]
+        public FieldType OwnerId { get; set; }
 
         /// <summary>
         /// Gets or Sets CountryId
@@ -96,21 +147,9 @@ namespace Agile.Now.AccessHub.Model
         public FieldType CountryId { get; set; }
 
         /// <summary>
-        /// Gets or Sets TimezoneId
+        /// Defines if the department is active and can be used
         /// </summary>
-        [DataMember(Name = "TimezoneId", EmitDefaultValue = false)]
-        public FieldType TimezoneId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CurrencyId
-        /// </summary>
-        [DataMember(Name = "CurrencyId", EmitDefaultValue = false)]
-        public FieldType CurrencyId { get; set; }
-
-        /// <summary>
-        /// Defines if the location is active and can be used
-        /// </summary>
-        /// <value>Defines if the location is active and can be used</value>
+        /// <value>Defines if the department is active and can be used</value>
         /// <example>false</example>
         [DataMember(Name = "Is_Active", IsRequired = true, EmitDefaultValue = true)]
         public bool IsActive { get; set; }
@@ -122,13 +161,17 @@ namespace Agile.Now.AccessHub.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class LocationData {\n");
+            sb.Append("class DepartmentData {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  DepartmentTypeId: ").Append(DepartmentTypeId).Append("\n");
+            sb.Append("  ParentDepartmentId: ").Append(ParentDepartmentId).Append("\n");
+            sb.Append("  ContactName: ").Append(ContactName).Append("\n");
+            sb.Append("  ContactEmail: ").Append(ContactEmail).Append("\n");
+            sb.Append("  ContactPhone: ").Append(ContactPhone).Append("\n");
+            sb.Append("  OwnerId: ").Append(OwnerId).Append("\n");
             sb.Append("  CountryId: ").Append(CountryId).Append("\n");
-            sb.Append("  TimezoneId: ").Append(TimezoneId).Append("\n");
-            sb.Append("  CurrencyId: ").Append(CurrencyId).Append("\n");
             sb.Append("  IsActive: ").Append(IsActive).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

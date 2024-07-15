@@ -27,45 +27,93 @@ using OpenAPIDateConverter = Agile.Now.AccessHub.Client.OpenAPIDateConverter;
 namespace Agile.Now.AccessHub.Model
 {
     /// <summary>
-    /// The record of User information.
+    /// The record of Location information.
     /// </summary>
-    [DataContract(Name = "UserText")]
-    public partial class UserText : IValidatableObject
+    [DataContract(Name = "LocationInsertData")]
+    public partial class LocationInsertData : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="UserText" /> class.
+        /// Initializes a new instance of the <see cref="LocationInsertData" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected UserText() { }
+        protected LocationInsertData() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="UserText" /> class.
+        /// Initializes a new instance of the <see cref="LocationInsertData" /> class.
         /// </summary>
-        /// <param name="id">The identifier of user department (required).</param>
-        /// <param name="userId">The identifier of the user who has link the department.</param>
-        public UserText(string id = default(string), string userId = default(string))
+        /// <param name="id">The guid to identify the location (required).</param>
+        /// <param name="externalId">The external identifier of the location.</param>
+        /// <param name="name">The name of the location (required).</param>
+        /// <param name="countryId">countryId.</param>
+        /// <param name="timezoneId">timezoneId.</param>
+        /// <param name="currencyId">currencyId.</param>
+        /// <param name="isActive">Defines if the location is active and can be used (required) (default to false).</param>
+        public LocationInsertData(string id = default(string), string externalId = default(string), string name = default(string), FieldType countryId = default(FieldType), FieldType timezoneId = default(FieldType), FieldType currencyId = default(FieldType), bool isActive = false)
         {
             // to ensure "id" is required (not null)
             if (id == null)
             {
-                throw new ArgumentNullException("id is a required property for UserText and cannot be null");
+                throw new ArgumentNullException("id is a required property for LocationInsertData and cannot be null");
             }
             this.Id = id;
-            this.UserId = userId;
+            // to ensure "name" is required (not null)
+            if (name == null)
+            {
+                throw new ArgumentNullException("name is a required property for LocationInsertData and cannot be null");
+            }
+            this.Name = name;
+            this.IsActive = isActive;
+            this.ExternalId = externalId;
+            this.CountryId = countryId;
+            this.TimezoneId = timezoneId;
+            this.CurrencyId = currencyId;
         }
 
         /// <summary>
-        /// The identifier of user department
+        /// The guid to identify the location
         /// </summary>
-        /// <value>The identifier of user department</value>
+        /// <value>The guid to identify the location</value>
         [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>
-        /// The identifier of the user who has link the department
+        /// The external identifier of the location
         /// </summary>
-        /// <value>The identifier of the user who has link the department</value>
-        [DataMember(Name = "UserId", EmitDefaultValue = false)]
-        public string UserId { get; set; }
+        /// <value>The external identifier of the location</value>
+        [DataMember(Name = "ExternalId", EmitDefaultValue = false)]
+        public string ExternalId { get; set; }
+
+        /// <summary>
+        /// The name of the location
+        /// </summary>
+        /// <value>The name of the location</value>
+        [DataMember(Name = "Name", IsRequired = true, EmitDefaultValue = true)]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CountryId
+        /// </summary>
+        [DataMember(Name = "CountryId", EmitDefaultValue = false)]
+        public FieldType CountryId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TimezoneId
+        /// </summary>
+        [DataMember(Name = "TimezoneId", EmitDefaultValue = false)]
+        public FieldType TimezoneId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CurrencyId
+        /// </summary>
+        [DataMember(Name = "CurrencyId", EmitDefaultValue = false)]
+        public FieldType CurrencyId { get; set; }
+
+        /// <summary>
+        /// Defines if the location is active and can be used
+        /// </summary>
+        /// <value>Defines if the location is active and can be used</value>
+        /// <example>false</example>
+        [DataMember(Name = "Is_Active", IsRequired = true, EmitDefaultValue = true)]
+        public bool IsActive { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -74,9 +122,14 @@ namespace Agile.Now.AccessHub.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class UserText {\n");
+            sb.Append("class LocationInsertData {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  UserId: ").Append(UserId).Append("\n");
+            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  CountryId: ").Append(CountryId).Append("\n");
+            sb.Append("  TimezoneId: ").Append(TimezoneId).Append("\n");
+            sb.Append("  CurrencyId: ").Append(CurrencyId).Append("\n");
+            sb.Append("  IsActive: ").Append(IsActive).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

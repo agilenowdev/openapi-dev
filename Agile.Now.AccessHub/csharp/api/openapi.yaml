@@ -170,7 +170,6 @@ paths:
       - OAuth2:
         - AccessManager:Delete
         - AccessUser:Delete
-        - Account:Delete
       tags:
       - Accounts
     get:
@@ -290,7 +289,6 @@ paths:
       - OAuth2:
         - AccessManager:Read
         - AccessUser:Read
-        - Account:Read
       tags:
       - Accounts
     put:
@@ -428,7 +426,6 @@ paths:
       - OAuth2:
         - AccessManager:Update
         - AccessUser:Update
-        - Account:Update
       tags:
       - Accounts
   /Endpoint/rest/api/v1/Accounts:
@@ -655,7 +652,6 @@ paths:
       - OAuth2:
         - AccessManager:Read
         - AccessUser:Read
-        - Account:Read
       tags:
       - Accounts
   /Endpoint/rest/api/v1/Account:
@@ -764,7 +760,6 @@ paths:
       - OAuth2:
         - "AccessManager:Create, Update"
         - "AccessUser:Create, Update"
-        - "Account:Create, Update"
       tags:
       - Accounts
     post:
@@ -871,7 +866,6 @@ paths:
       - OAuth2:
         - AccessManager:Create
         - AccessUser:Create
-        - Account:Create
       tags:
       - Accounts
   /Endpoint/rest/api/v1/Account/{Id}/Tenants:
@@ -1123,7 +1117,6 @@ paths:
       - OAuth2:
         - AccessManager:Read
         - AccessUser:Read
-        - Account:Read
       tags:
       - Accounts
   /Endpoint/rest/api/v1/Account/{Id}/Tenant:
@@ -1261,7 +1254,6 @@ paths:
       - OAuth2:
         - "AccessManager:Create, Update"
         - "AccessUser:Create, Update"
-        - "Account:Create, Update"
       tags:
       - Accounts
   /Endpoint/rest/api/v1/Account/{Id}/Tenant/{SubId}:
@@ -1412,7 +1404,6 @@ paths:
       - OAuth2:
         - AccessManager:Delete
         - AccessUser:Delete
-        - Account:Delete
       tags:
       - Accounts
   /Endpoint/rest/api/v1/Account/{Id}/Pictures:
@@ -1664,7 +1655,6 @@ paths:
       - OAuth2:
         - AccessManager:Read
         - AccessUser:Read
-        - Account:Read
       tags:
       - Accounts
   /Endpoint/rest/api/v1/Account/{Id}/Picture:
@@ -1802,7 +1792,6 @@ paths:
       - OAuth2:
         - "AccessManager:Create, Update"
         - "AccessUser:Create, Update"
-        - "Account:Create, Update"
       tags:
       - Accounts
   /Endpoint/rest/api/v1/Account/{Id}/Picture/{SubId}:
@@ -1953,13 +1942,12 @@ paths:
       - OAuth2:
         - AccessManager:Delete
         - AccessUser:Delete
-        - Account:Delete
       tags:
       - Accounts
   /Endpoint/rest/api/v1/Department/{Id}:
     delete:
       description: |-
-        Use the query string resource to delete `Department` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id,Name, ExternalId` field(s) value and use the `DELETE` method of the resource to delete a record.
+        Use the query string resource to delete `Department` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id, Name, ExternalId` field(s) value and use the `DELETE` method of the resource to delete a record.
 
         Method returns an extended `Department` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
@@ -1968,7 +1956,7 @@ paths:
         ### Delete a record of Department
         * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
         * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
-        * If the `Id,Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+        * If the `Id, Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
         The response body will contain the object of the deleted record if the call is successful.
       operationId: Delete Department
@@ -2088,7 +2076,7 @@ paths:
         ### Get a record of Department
         * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
         * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
-        * If the `Id,Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+        * If the `Id, Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
       operationId: Get Department
       parameters:
       - description: |-
@@ -2197,7 +2185,7 @@ paths:
       - Departments
     put:
       description: "Use the `DepartmentUpdateData` object resource to update `Department`\
-        \ using `Id,Name, ExternalId` field(s) value.\n\nProvide the updated record\
+        \ using `Id, Name, ExternalId` field(s) value.\n\nProvide the updated record\
         \ information in your request data and use the `PUT` method of the resource\
         \ with a specific record ID to update that record. \n\nThe input parameter\
         \ must be used in the `DepartmentUpdateData` record structure inside the `FieldType`\
@@ -2207,7 +2195,7 @@ paths:
         \ `404` error is reported (`Errors/Not Found`), and the error record is returned..\
         \ You cannot change `Id` field value (primary key).\n* If the `Id` field value\
         \ is matched multiple times, then a `400` error is reported (`Errors/Multible\
-        \ Rows`), and the error record is returned.\n* If the `Id,Name, ExternalId`\
+        \ Rows`), and the error record is returned.\n* If the `Id, Name, ExternalId`\
         \ field value is matched multiple times, then a `400` error is reported (`Errors/Multible\
         \ Rows`), and the error record is returned.\n\nThe response body will contain\
         \ the object of the updated record if the call is successful. Method returns\
@@ -2560,11 +2548,11 @@ paths:
   /Endpoint/rest/api/v1/Department:
     patch:
       description: |-
-        Use the `DepartmentUpsertData` object resource to insert or update (Upsert) `Department` using `Id,Name, ExternalId` field(s) value.
+        Use the `DepartmentData` object resource to insert or update (Upsert) `Department` using `Id, Name, ExternalId` field(s) value.
 
         You can supply the required field values in the request data, and then use the `POST` method of the resource.
 
-        The input parameter must be used in the `DepartmentUpsertData` record structure inside the `FieldType` parameter in the foreign key fields.
+        The input parameter must be used in the `DepartmentData` record structure inside the `FieldType` parameter in the foreign key fields.
 
         Foreign key fields are: `DepartmentTypeId, ParentDepartmentId, OwnerId, CountryId, ModifiedBy, CreatedBy`
 
@@ -2573,7 +2561,7 @@ paths:
         * If the `Name, ExternalId` field value is not empty and `Id` field value is empty, action try insert record according `Name, ExternalId` field value (if set, the value is a unique identifier).
 
         ### Create a new record of Department
-        * If the value in the `Name, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`DepartmentInsertData`).
+        * If the value in the `Name, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`DepartmentData`).
 
         The response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Department` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
       operationId: Upsert Department
@@ -2581,11 +2569,11 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DepartmentUpsertData'
+              $ref: '#/components/schemas/DepartmentData'
         description: |-
           `Department` information to insert or update.
 
-          The input parameter must be used in the `DepartmentUpsertData` record structure inside the `FieldType` parameter in the foreign key fields.
+          The input parameter must be used in the `DepartmentData` record structure inside the `FieldType` parameter in the foreign key fields.
         required: true
         x-bodyName: Record
       responses:
@@ -2675,9 +2663,9 @@ paths:
         Foreign key fields are: `DepartmentTypeId, ParentDepartmentId, OwnerId, CountryId, ModifiedBy, CreatedBy`
 
         ### Create a new record of Department
-        * If the value in the `Id,Name, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`DepartmentInsertData`).
+        * If the value in the `Id, Name, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`DepartmentInsertData`).
         * If the value in the `Name, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`DepartmentInsertData`).
-        * If the `Id,Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+        * If the `Id, Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
         The response body will contain the object of the created record if the call is successful. Method returns an extended `Department` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
@@ -2767,115 +2755,6 @@ paths:
       security:
       - OAuth2:
         - Department:Create
-      tags:
-      - Departments
-  /Endpoint/rest/api/v1/Departments/Json:
-    patch:
-      description: |-
-        Use the `DepartmentsText` object resource to insert or update (Upsert) a list of `DepartmentList` using `Id,Name, ExternalId` field(s) value.
-
-        You can supply the required field values in the request data, and then use the `PATCH` method of the resource.
-
-        The input parameter must be used in the `DepartmentList` record structure as text fields in the foreign key fields.
-
-        Foreign key fields are: `DepartmentTypeId, ParentDepartmentId, OwnerId, CountryId, ModifiedBy, CreatedBy`
-
-        ### Update a record of Department
-        * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned. You cannot change `Id` field value (primary key).
-        * If the `Name, ExternalId` field value is not empty and `Id` field value is empty, action try insert record according `Name, ExternalId` field value (if set, the value is a unique identifier).
-
-        **Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.
-
-        ### Create a new record of Department
-        * If the value in the `Name, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`DepartmentInsertData`).
-
-        The response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `Department` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.
-      operationId: Patch Departments
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DepartmentsData'
-        description: |-
-          The list of Department information to insert or update.
-
-          The input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.
-        required: true
-        x-bodyName: Data
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Departments'
-          description: "Inserted or updated list of Department information. \n"
-        "400":
-          content:
-            application/json:
-              example:
-                Errors:
-                - The user has provided input that the browser is unable to convert.
-                - There are multiple rows in the database for the same value
-                - The value does not match the specified entity structure
-                - '...'
-                Type: /Errors/Bad Input
-                Title: Bad Request
-                StatusCode: 400
-                Instance: /OpenApi/rest/Xzy
-                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Bad Request - The user has provided input that the browser
-            is unable to convert.
-        "401":
-          content:
-            application/json:
-              example:
-                Errors:
-                - The session Id or OAuth token used has expired or is invalid.
-                Type: /Errors/Unauthorized
-                Title: Unauthorized
-                StatusCode: 401
-                Instance: /OpenApi/rest/Xzy
-                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Unauthorized - The response status code indicates that the
-            client request has not been completed because it lacks valid authentication
-            credentials for the requested resource.
-        "403":
-          content:
-            application/json:
-              example:
-                Errors:
-                - The user does not have access to execute operation
-                Type: /Errors/Permission
-                Title: Bad Request
-                StatusCode: 403
-                Instance: /OpenApi/rest/Xzy
-                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Forbidden - The user does not have access to execute operation
-        "500":
-          content:
-            application/json:
-              example:
-                Errors:
-                - An internal server error is an error on the web server you're trying
-                  to access.
-                Type: /Errors/Internal Server Error
-                Title: Internal Server Error
-                StatusCode: 500
-                Instance: /OpenApi/rest/Xzy
-                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Internal Server Error - An internal server error is an error
-            on the web server you're trying to access.
-      security:
-      - OAuth2:
-        - Department:Import
       tags:
       - Departments
   /Endpoint/rest/api/v1/Department/{Id}/Users:
@@ -3568,7 +3447,7 @@ paths:
   /Endpoint/rest/api/v1/Location/{Id}:
     delete:
       description: |-
-        Use the query string resource to delete `Location` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id,Name,ExternalId` field(s) value and use the `DELETE` method of the resource to delete a record.
+        Use the query string resource to delete `Location` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id, Name, ExternalId` field(s) value and use the `DELETE` method of the resource to delete a record.
 
         Method returns an extended `Location` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
@@ -3577,7 +3456,7 @@ paths:
         ### Delete a record of Location
         * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
         * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
-        * If the `Id,Name,ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+        * If the `Id, Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
         The response body will contain the object of the deleted record if the call is successful.
       operationId: Delete Location
@@ -3697,7 +3576,7 @@ paths:
         ### Get a record of Location
         * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
         * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
-        * If the `Id,Name,ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+        * If the `Id, Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
       operationId: Get Location
       parameters:
       - description: |-
@@ -3805,24 +3684,24 @@ paths:
       tags:
       - Locations
     put:
-      description: "Use the `LocationData` object resource to update `Location` using\
-        \ `Id,Name,ExternalId` field(s) value.\n\nProvide the updated record information\
-        \ in your request data and use the `PUT` method of the resource with a specific\
-        \ record ID to update that record. \n\nThe input parameter must be used in\
-        \ the `LocationData` record structure inside the `FieldType` parameter in\
-        \ the foreign key fields.\n\nForeign key fields are: `CountryId, TimezoneId,\
-        \ CurrencyId, ModifiedBy, CreatedBy`\n\n### Update a record of Location\n\
-        * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not\
-        \ Found`), and the error record is returned.. You cannot change `Id` field\
-        \ value (primary key).\n* If the `Id` field value is matched multiple times,\
-        \ then a `400` error is reported (`Errors/Multible Rows`), and the error record\
-        \ is returned.\n* If the `Id,Name,ExternalId` field value is matched multiple\
-        \ times, then a `400` error is reported (`Errors/Multible Rows`), and the\
-        \ error record is returned.\n\nThe response body will contain the object of\
-        \ the updated record if the call is successful. Method returns an extended\
-        \ `Location` structure. Here, all foreign key fields are abstract object structures,\
-        \ utilizing `AbstractText` or `AbstractLong` data types, offering a detailed\
-        \ view of the data and related entities."
+      description: "Use the `LocationUpdateData` object resource to update `Location`\
+        \ using `Id, Name, ExternalId` field(s) value.\n\nProvide the updated record\
+        \ information in your request data and use the `PUT` method of the resource\
+        \ with a specific record ID to update that record. \n\nThe input parameter\
+        \ must be used in the `LocationUpdateData` record structure inside the `FieldType`\
+        \ parameter in the foreign key fields.\n\nForeign key fields are: `CountryId,\
+        \ TimezoneId, CurrencyId, ModifiedBy, CreatedBy`\n\n### Update a record of\
+        \ Location\n* If the `Id` field value is not matched, then a `404` error is\
+        \ reported (`Errors/Not Found`), and the error record is returned.. You cannot\
+        \ change `Id` field value (primary key).\n* If the `Id` field value is matched\
+        \ multiple times, then a `400` error is reported (`Errors/Multible Rows`),\
+        \ and the error record is returned.\n* If the `Id, Name, ExternalId` field\
+        \ value is matched multiple times, then a `400` error is reported (`Errors/Multible\
+        \ Rows`), and the error record is returned.\n\nThe response body will contain\
+        \ the object of the updated record if the call is successful. Method returns\
+        \ an extended `Location` structure. Here, all foreign key fields are abstract\
+        \ object structures, utilizing `AbstractText` or `AbstractLong` data types,\
+        \ offering a detailed view of the data and related entities."
       operationId: Update Location
       parameters:
       - description: |-
@@ -3857,11 +3736,11 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/LocationData'
+              $ref: '#/components/schemas/LocationUpdateData'
         description: |-
           Location information to update.
 
-          The input parameter must be used in the `LocationData` record structure inside the `FieldType` parameter in the foreign key fields.
+          The input parameter must be used in the `LocationUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.
         required: true
         x-bodyName: Record
       responses:
@@ -4167,7 +4046,7 @@ paths:
   /Endpoint/rest/api/v1/Location:
     patch:
       description: |-
-        Use the `LocationData` object resource to insert or update (Upsert) `Location` using `Id,Name,ExternalId` field(s) value.
+        Use the `LocationData` object resource to insert or update (Upsert) `Location` using `Id, Name, ExternalId` field(s) value.
 
         You can supply the required field values in the request data, and then use the `POST` method of the resource.
 
@@ -4273,18 +4152,18 @@ paths:
       - Locations
     post:
       description: |+
-        Use the `LocationData` object resource to create new records.
+        Use the `LocationInsertData` object resource to create new records.
 
         You can supply the required field values in the request data, and then use the `POST` method of the resource.
 
-        The input parameter must be used in the `LocationData` record structure inside the `FieldType` parameter in the foreign key fields.
+        The input parameter must be used in the `LocationInsertData` record structure inside the `FieldType` parameter in the foreign key fields.
 
         Foreign key fields are: `CountryId, TimezoneId, CurrencyId, ModifiedBy, CreatedBy`
 
         ### Create a new record of Location
-        * If the value in the `Id,Name,ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`LocationData`).
-        * If the value in the `Name,ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`LocationData`).
-        * If the `Id,Name,ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+        * If the value in the `Id, Name, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`LocationInsertData`).
+        * If the value in the `Name,ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`LocationInsertData`).
+        * If the `Id, Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
         The response body will contain the object of the created record if the call is successful. Method returns an extended `Location` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
@@ -4293,11 +4172,11 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/LocationData'
+              $ref: '#/components/schemas/LocationInsertData'
         description: |-
           `Location` information to insert.
 
-          The input parameter must be used in the `LocationData` record structure inside the `FieldType` parameter in the foreign key fields.
+          The input parameter must be used in the `LocationInsertData` record structure inside the `FieldType` parameter in the foreign key fields.
         required: true
         x-bodyName: Record
       responses:
@@ -4374,115 +4253,6 @@ paths:
       security:
       - OAuth2:
         - Location:Create
-      tags:
-      - Locations
-  /Endpoint/rest/api/v1/Locations/Json:
-    patch:
-      description: |-
-        Use the `LocationsText` object resource to insert or update (Upsert) a list of `LocationList` using `Id,Name,ExternalId` field(s) value.
-
-        You can supply the required field values in the request data, and then use the `PATCH` method of the resource.
-
-        The input parameter must be used in the `LocationList` record structure as text fields in the foreign key fields.
-
-        Foreign key fields are: `CountryId, TimezoneId, CurrencyId, ModifiedBy, CreatedBy`
-
-        ### Update a record of Location
-        * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned. You cannot change `Id` field value (primary key).
-        * If the `Name,ExternalId` field value is not empty and `Id` field value is empty, action try insert record according `Name,ExternalId` field value (if set, the value is a unique identifier).
-
-        **Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.
-
-        ### Create a new record of Location
-        * If the value in the `Name,ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`LocationData`).
-
-        The response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `Location` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.
-      operationId: Patch Locations
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/LocationsData'
-        description: |-
-          The list of Location information to insert or update.
-
-          The input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.
-        required: true
-        x-bodyName: Data
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Locations'
-          description: "Inserted or updated list of Location information. \n"
-        "400":
-          content:
-            application/json:
-              example:
-                Errors:
-                - The user has provided input that the browser is unable to convert.
-                - There are multiple rows in the database for the same value
-                - The value does not match the specified entity structure
-                - '...'
-                Type: /Errors/Bad Input
-                Title: Bad Request
-                StatusCode: 400
-                Instance: /OpenApi/rest/Xzy
-                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Bad Request - The user has provided input that the browser
-            is unable to convert.
-        "401":
-          content:
-            application/json:
-              example:
-                Errors:
-                - The session Id or OAuth token used has expired or is invalid.
-                Type: /Errors/Unauthorized
-                Title: Unauthorized
-                StatusCode: 401
-                Instance: /OpenApi/rest/Xzy
-                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Unauthorized - The response status code indicates that the
-            client request has not been completed because it lacks valid authentication
-            credentials for the requested resource.
-        "403":
-          content:
-            application/json:
-              example:
-                Errors:
-                - The user does not have access to execute operation
-                Type: /Errors/Permission
-                Title: Bad Request
-                StatusCode: 403
-                Instance: /OpenApi/rest/Xzy
-                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Forbidden - The user does not have access to execute operation
-        "500":
-          content:
-            application/json:
-              example:
-                Errors:
-                - An internal server error is an error on the web server you're trying
-                  to access.
-                Type: /Errors/Internal Server Error
-                Title: Internal Server Error
-                StatusCode: 500
-                Instance: /OpenApi/rest/Xzy
-                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Internal Server Error - An internal server error is an error
-            on the web server you're trying to access.
-      security:
-      - OAuth2:
-        - Location:Import
       tags:
       - Locations
   /Endpoint/rest/api/v1/Location/{Id}/Users:
@@ -7918,38 +7688,28 @@ components:
             $ref: '#/components/schemas/Department'
           type: array
       type: object
-    DepartmentUpsertData:
+    DepartmentData:
       description: The record of Department information.
       example:
         DepartmentTypeId:
           Field: Field
           Value: Value
+        ContactPhone: ContactPhone
         CountryId:
           Field: Field
           Value: Value
-        CreatedBy:
-          Field: Field
-          Value: Value
-        ModifiedOn: 1900-01-01T00:00:00Z
-        ExternalId: ExternalId
-        ParentDepartmentId:
-          Field: Field
-          Value: Value
-        ModifiedBy:
-          Field: Field
-          Value: Value
-        HierarchicalName: HierarchicalName
-        Name: Name
-        ContactPhone: ContactPhone
         OwnerId:
           Field: Field
           Value: Value
         Is_Active: false
+        ExternalId: ExternalId
         ContactEmail: ContactEmail
-        Level: 0
         Id: Id
-        CreatedOn: 1900-01-01T00:00:00Z
+        ParentDepartmentId:
+          Field: Field
+          Value: Value
         ContactName: ContactName
+        Name: Name
       properties:
         Id:
           description: The guid to identify the department
@@ -7964,15 +7724,6 @@ components:
           $ref: '#/components/schemas/FieldType'
         ParentDepartmentId:
           $ref: '#/components/schemas/FieldType'
-        HierarchicalName:
-          description: The hierarchical name of the department
-          type: string
-        Level:
-          default: 0
-          description: The department level at the hierarchy
-          example: 0
-          format: int32
-          type: integer
         ContactName:
           description: The contact name of company or department
           type: string
@@ -7990,22 +7741,6 @@ components:
           description: Defines if the department is active and can be used
           example: false
           type: boolean
-        ModifiedOn:
-          default: 1900-01-01T00:00:00Z
-          description: The date the record was updated
-          example: 1900-01-01T00:00:00Z
-          format: date-time
-          type: string
-        ModifiedBy:
-          $ref: '#/components/schemas/FieldType'
-        CreatedBy:
-          $ref: '#/components/schemas/FieldType'
-        CreatedOn:
-          default: 1900-01-01T00:00:00Z
-          description: The date the record was created
-          example: 1900-01-01T00:00:00Z
-          format: date-time
-          type: string
       required:
       - DepartmentTypeId
       - Id
@@ -8105,220 +7840,6 @@ components:
           type: boolean
       required:
       - Is_Active
-      - Name
-      type: object
-    DepartmentText:
-      description: The record of Department information.
-      example:
-        DepartmentTypeId: DepartmentTypeId
-        CountryId: CountryId
-        CreatedBy: CreatedBy
-        ModifiedOn: 1900-01-01T00:00:00Z
-        ExternalId: ExternalId
-        ParentDepartmentId: ParentDepartmentId
-        ModifiedBy: ModifiedBy
-        HierarchicalName: HierarchicalName
-        Name: Name
-        ContactPhone: ContactPhone
-        OwnerId: OwnerId
-        Is_Active: false
-        ContactEmail: ContactEmail
-        Level: 0
-        Id: Id
-        CreatedOn: 1900-01-01T00:00:00Z
-        ContactName: ContactName
-      properties:
-        Id:
-          description: The guid to identify the department
-          type: string
-        ExternalId:
-          description: The external identifier of the department
-          type: string
-        Name:
-          description: The name of the department
-          type: string
-        DepartmentTypeId:
-          description: The  type of department
-          type: string
-        ParentDepartmentId:
-          description: The identifier of the parent department
-          type: string
-        HierarchicalName:
-          description: The hierarchical name of the department
-          type: string
-        Level:
-          default: 0
-          description: The department level at the hierarchy
-          example: 0
-          format: int32
-          type: integer
-        ContactName:
-          description: The contact name of company or department
-          type: string
-        ContactEmail:
-          description: The contact email of external company or department
-          type: string
-        ContactPhone:
-          type: string
-        OwnerId:
-          description: The identifier of the user who own the department
-          type: string
-        CountryId:
-          description: The country of the department
-          type: string
-        Is_Active:
-          default: false
-          description: Defines if the department is active and can be used
-          example: false
-          type: boolean
-        ModifiedOn:
-          default: 1900-01-01T00:00:00Z
-          description: The date the record was updated
-          example: 1900-01-01T00:00:00Z
-          format: date-time
-          type: string
-        ModifiedBy:
-          description: The Identifier of the user who updated the record
-          type: string
-        CreatedBy:
-          description: The Identifier of the user who created the record
-          type: string
-        CreatedOn:
-          default: 1900-01-01T00:00:00Z
-          description: The date the record was created
-          example: 1900-01-01T00:00:00Z
-          format: date-time
-          type: string
-      required:
-      - DepartmentTypeId
-      - Id
-      - Is_Active
-      - Name
-      type: object
-    DepartmentsData:
-      description: The data loading record of Department importing
-      example:
-        Departments:
-        - DepartmentTypeId: DepartmentTypeId
-          CountryId: CountryId
-          CreatedBy: CreatedBy
-          ModifiedOn: 1900-01-01T00:00:00Z
-          ExternalId: ExternalId
-          ParentDepartmentId: ParentDepartmentId
-          ModifiedBy: ModifiedBy
-          HierarchicalName: HierarchicalName
-          Name: Name
-          ContactPhone: ContactPhone
-          OwnerId: OwnerId
-          Is_Active: false
-          ContactEmail: ContactEmail
-          Level: 0
-          Id: Id
-          CreatedOn: 1900-01-01T00:00:00Z
-          ContactName: ContactName
-        - DepartmentTypeId: DepartmentTypeId
-          CountryId: CountryId
-          CreatedBy: CreatedBy
-          ModifiedOn: 1900-01-01T00:00:00Z
-          ExternalId: ExternalId
-          ParentDepartmentId: ParentDepartmentId
-          ModifiedBy: ModifiedBy
-          HierarchicalName: HierarchicalName
-          Name: Name
-          ContactPhone: ContactPhone
-          OwnerId: OwnerId
-          Is_Active: false
-          ContactEmail: ContactEmail
-          Level: 0
-          Id: Id
-          CreatedOn: 1900-01-01T00:00:00Z
-          ContactName: ContactName
-        Extra:
-        - Pattern: Pattern
-          DefaultValue: DefaultValue
-          Min: Min
-          Required: false
-          Max: Max
-          Unique: false
-          FieldName: FieldName
-          Name: Name
-        - Pattern: Pattern
-          DefaultValue: DefaultValue
-          Min: Min
-          Required: false
-          Max: Max
-          Unique: false
-          FieldName: FieldName
-          Name: Name
-        IsFullValidation: false
-      properties:
-        Extra:
-          description: List validation for entity attribute
-          items:
-            $ref: '#/components/schemas/ListValidation'
-          type: array
-        IsFullValidation:
-          default: false
-          description: "If the value is true, the data quality of all fields are checked.\
-            \ This has an effect on performance."
-          example: false
-          type: boolean
-        Departments:
-          description: The list of `Department` data record for import
-          items:
-            $ref: '#/components/schemas/DepartmentText'
-          type: array
-      type: object
-    ListValidation:
-      description: List validation for entity attribute
-      example:
-        Pattern: Pattern
-        DefaultValue: DefaultValue
-        Min: Min
-        Required: false
-        Max: Max
-        Unique: false
-        FieldName: FieldName
-        Name: Name
-      properties:
-        Name:
-          description: The name of the entity field.
-          type: string
-        FieldName:
-          description: "The field name of relation database table.\n\nExample; \n\
-            The field name is &quot;TenantId&quot; and is associated with the &quot;Tenant&quot;\
-            \ table. You want to use in the &quot;Tenant&quot; table &quot;Name&quot;\
-            \ field fetching data. Once &quot;Name&quot; is specified, the validation\
-            \ service retrieves the tenant identifier from the &quot;Tenant&quot;\
-            \ table based on the &quot;Name&quot; field."
-          type: string
-        Required:
-          default: false
-          description: "If True, the value is required."
-          example: false
-          type: boolean
-        Unique:
-          default: false
-          description: "If True, the value must be unique in the database and you\
-            \ cannot add multiple values."
-          example: false
-          type: boolean
-        Max:
-          description: The max value of input value.
-          type: string
-        Min:
-          description: The min value of input value.
-          type: string
-        Pattern:
-          description: The pattern of the validation. Searches the input string for
-            an occurrence of a regular expression.
-          type: string
-        DefaultValue:
-          description: "The default value of row. If the value of the field is empty,\
-            \ the service automatically sets the value in the field. If the value\
-            \ does not match the data type, the value is cleaned. Remember data types."
-          type: string
-      required:
       - Name
       type: object
     User:
@@ -8424,76 +7945,30 @@ components:
     UserData:
       description: The record of User information.
       example:
-        CreatedBy:
-          Field: Field
-          Value: Value
-        ModifiedOn: 1900-01-01T00:00:00Z
         UserId:
           Field: Field
           Value: Value
         Id: Id
-        CreatedOn: 1900-01-01T00:00:00Z
-        ModifiedBy:
-          Field: Field
-          Value: Value
       properties:
         Id:
           description: The identifier of user department
           type: string
         UserId:
           $ref: '#/components/schemas/FieldType'
-        ModifiedOn:
-          default: 1900-01-01T00:00:00Z
-          description: The date the record was updated
-          example: 1900-01-01T00:00:00Z
-          format: date-time
-          type: string
-        ModifiedBy:
-          $ref: '#/components/schemas/FieldType'
-        CreatedBy:
-          $ref: '#/components/schemas/FieldType'
-        CreatedOn:
-          default: 1900-01-01T00:00:00Z
-          description: The date the record was created
-          example: 1900-01-01T00:00:00Z
-          format: date-time
-          type: string
       required:
       - Id
       type: object
     UserText:
       description: The record of User information.
       example:
-        CreatedBy: CreatedBy
-        ModifiedOn: 1900-01-01T00:00:00Z
         UserId: UserId
         Id: Id
-        CreatedOn: 1900-01-01T00:00:00Z
-        ModifiedBy: ModifiedBy
       properties:
         Id:
           description: The identifier of user department
           type: string
         UserId:
           description: The identifier of the user who has link the department
-          type: string
-        ModifiedOn:
-          default: 1900-01-01T00:00:00Z
-          description: The date the record was updated
-          example: 1900-01-01T00:00:00Z
-          format: date-time
-          type: string
-        ModifiedBy:
-          description: The Identifier of the user who updated the record
-          type: string
-        CreatedBy:
-          description: The Identifier of the user who created the record
-          type: string
-        CreatedOn:
-          default: 1900-01-01T00:00:00Z
-          description: The date the record was created
-          example: 1900-01-01T00:00:00Z
-          format: date-time
           type: string
       required:
       - Id
@@ -8520,18 +7995,10 @@ components:
           Name: Name
         IsFullValidation: false
         Users:
-        - CreatedBy: CreatedBy
-          ModifiedOn: 1900-01-01T00:00:00Z
-          UserId: UserId
+        - UserId: UserId
           Id: Id
-          CreatedOn: 1900-01-01T00:00:00Z
-          ModifiedBy: ModifiedBy
-        - CreatedBy: CreatedBy
-          ModifiedOn: 1900-01-01T00:00:00Z
-          UserId: UserId
+        - UserId: UserId
           Id: Id
-          CreatedOn: 1900-01-01T00:00:00Z
-          ModifiedBy: ModifiedBy
       properties:
         Extra:
           description: List validation for entity attribute
@@ -8549,6 +8016,58 @@ components:
           items:
             $ref: '#/components/schemas/UserText'
           type: array
+      type: object
+    ListValidation:
+      description: List validation for entity attribute
+      example:
+        Pattern: Pattern
+        DefaultValue: DefaultValue
+        Min: Min
+        Required: false
+        Max: Max
+        Unique: false
+        FieldName: FieldName
+        Name: Name
+      properties:
+        Name:
+          description: The name of the entity field.
+          type: string
+        FieldName:
+          description: "The field name of relation database table.\n\nExample; \n\
+            The field name is &quot;TenantId&quot; and is associated with the &quot;Tenant&quot;\
+            \ table. You want to use in the &quot;Tenant&quot; table &quot;Name&quot;\
+            \ field fetching data. Once &quot;Name&quot; is specified, the validation\
+            \ service retrieves the tenant identifier from the &quot;Tenant&quot;\
+            \ table based on the &quot;Name&quot; field."
+          type: string
+        Required:
+          default: false
+          description: "If True, the value is required."
+          example: false
+          type: boolean
+        Unique:
+          default: false
+          description: "If True, the value must be unique in the database and you\
+            \ cannot add multiple values."
+          example: false
+          type: boolean
+        Max:
+          description: The max value of input value.
+          type: string
+        Min:
+          description: The min value of input value.
+          type: string
+        Pattern:
+          description: The pattern of the validation. Searches the input string for
+            an occurrence of a regular expression.
+          type: string
+        DefaultValue:
+          description: "The default value of row. If the value of the field is empty,\
+            \ the service automatically sets the value in the field. If the value\
+            \ does not match the data type, the value is cleaned. Remember data types."
+          type: string
+      required:
+      - Name
       type: object
     Location:
       description: The record of Location information.
@@ -8712,18 +8231,10 @@ components:
         CountryId:
           Field: Field
           Value: Value
-        CreatedBy:
-          Field: Field
-          Value: Value
         Is_Active: false
-        ModifiedOn: 1900-01-01T00:00:00Z
         ExternalId: ExternalId
         Id: Id
         TimezoneId:
-          Field: Field
-          Value: Value
-        CreatedOn: 1900-01-01T00:00:00Z
-        ModifiedBy:
           Field: Field
           Value: Value
         CurrencyId:
@@ -8751,40 +8262,26 @@ components:
           description: Defines if the location is active and can be used
           example: false
           type: boolean
-        ModifiedOn:
-          default: 1900-01-01T00:00:00Z
-          description: The date the record was updated
-          example: 1900-01-01T00:00:00Z
-          format: date-time
-          type: string
-        ModifiedBy:
-          $ref: '#/components/schemas/FieldType'
-        CreatedBy:
-          $ref: '#/components/schemas/FieldType'
-        CreatedOn:
-          default: 1900-01-01T00:00:00Z
-          description: The date the record was created
-          example: 1900-01-01T00:00:00Z
-          format: date-time
-          type: string
       required:
       - Id
       - Is_Active
       - Name
       type: object
-    LocationText:
+    LocationInsertData:
       description: The record of Location information.
       example:
-        CountryId: CountryId
-        CreatedBy: CreatedBy
+        CountryId:
+          Field: Field
+          Value: Value
         Is_Active: false
-        ModifiedOn: 1900-01-01T00:00:00Z
         ExternalId: ExternalId
         Id: Id
-        TimezoneId: TimezoneId
-        CreatedOn: 1900-01-01T00:00:00Z
-        ModifiedBy: ModifiedBy
-        CurrencyId: CurrencyId
+        TimezoneId:
+          Field: Field
+          Value: Value
+        CurrencyId:
+          Field: Field
+          Value: Value
         Name: Name
       properties:
         Id:
@@ -8797,103 +8294,50 @@ components:
           description: The name of the location
           type: string
         CountryId:
-          description: The country of the location
-          type: string
+          $ref: '#/components/schemas/FieldType'
         TimezoneId:
-          description: The timezone of the location
-          type: string
+          $ref: '#/components/schemas/FieldType'
         CurrencyId:
-          description: The currency of the location
-          type: string
+          $ref: '#/components/schemas/FieldType'
         Is_Active:
           default: false
           description: Defines if the location is active and can be used
           example: false
           type: boolean
-        ModifiedOn:
-          default: 1900-01-01T00:00:00Z
-          description: The date the record was updated
-          example: 1900-01-01T00:00:00Z
-          format: date-time
-          type: string
-        ModifiedBy:
-          description: The Identifier of the user who updated the record
-          type: string
-        CreatedBy:
-          description: The Identifier of the user who created the record
-          type: string
-        CreatedOn:
-          default: 1900-01-01T00:00:00Z
-          description: The date the record was created
-          example: 1900-01-01T00:00:00Z
-          format: date-time
-          type: string
       required:
       - Id
       - Is_Active
       - Name
       type: object
-    LocationsData:
-      description: The data loading record of Location importing
+    LocationUpdateData:
+      description: The record of Location information.
       example:
-        Extra:
-        - Pattern: Pattern
-          DefaultValue: DefaultValue
-          Min: Min
-          Required: false
-          Max: Max
-          Unique: false
-          FieldName: FieldName
-          Name: Name
-        - Pattern: Pattern
-          DefaultValue: DefaultValue
-          Min: Min
-          Required: false
-          Max: Max
-          Unique: false
-          FieldName: FieldName
-          Name: Name
-        IsFullValidation: false
-        Locations:
-        - CountryId: CountryId
-          CreatedBy: CreatedBy
-          Is_Active: false
-          ModifiedOn: 1900-01-01T00:00:00Z
-          ExternalId: ExternalId
-          Id: Id
-          TimezoneId: TimezoneId
-          CreatedOn: 1900-01-01T00:00:00Z
-          ModifiedBy: ModifiedBy
-          CurrencyId: CurrencyId
-          Name: Name
-        - CountryId: CountryId
-          CreatedBy: CreatedBy
-          Is_Active: false
-          ModifiedOn: 1900-01-01T00:00:00Z
-          ExternalId: ExternalId
-          Id: Id
-          TimezoneId: TimezoneId
-          CreatedOn: 1900-01-01T00:00:00Z
-          ModifiedBy: ModifiedBy
-          CurrencyId: CurrencyId
-          Name: Name
+        CountryId:
+          Field: Field
+          Value: Value
+        ExternalId: ExternalId
+        TimezoneId:
+          Field: Field
+          Value: Value
+        CurrencyId:
+          Field: Field
+          Value: Value
+        Name: Name
       properties:
-        Extra:
-          description: List validation for entity attribute
-          items:
-            $ref: '#/components/schemas/ListValidation'
-          type: array
-        IsFullValidation:
-          default: false
-          description: "If the value is true, the data quality of all fields are checked.\
-            \ This has an effect on performance."
-          example: false
-          type: boolean
-        Locations:
-          description: The list of `Location` data record for import
-          items:
-            $ref: '#/components/schemas/LocationText'
-          type: array
+        ExternalId:
+          description: The external identifier of the location
+          type: string
+        Name:
+          description: The name of the location
+          type: string
+        CountryId:
+          $ref: '#/components/schemas/FieldType'
+        TimezoneId:
+          $ref: '#/components/schemas/FieldType'
+        CurrencyId:
+          $ref: '#/components/schemas/FieldType'
+      required:
+      - Name
       type: object
     Connection:
       description: The record of Connection information.
@@ -9512,31 +8956,22 @@ components:
               (ABAC) permissions required to perform a function.
             AccessUser:Read: Allows to review access groups and all related data.
               (ABAC) permissions required to perform a function.
-            Account:Read: Account role. (ABAC) permissions required to perform a function.
             AccessManager:Create, Update: Allows to edit access groups and all related
               data. (ABAC) permissions required to perform a function.
             AccessUser:Create, Update: Allows to review access groups and all related
               data. (ABAC) permissions required to perform a function.
-            Account:Create, Update: Account role. (ABAC) permissions required to perform
-              a function.
             AccessManager:Create: Allows to edit access groups and all related data.
               (ABAC) permissions required to perform a function.
             AccessUser:Create: Allows to review access groups and all related data.
               (ABAC) permissions required to perform a function.
-            Account:Create: Account role. (ABAC) permissions required to perform a
-              function.
             AccessManager:Update: Allows to edit access groups and all related data.
               (ABAC) permissions required to perform a function.
             AccessUser:Update: Allows to review access groups and all related data.
               (ABAC) permissions required to perform a function.
-            Account:Update: Account role. (ABAC) permissions required to perform a
-              function.
             AccessManager:Delete: Allows to edit access groups and all related data.
               (ABAC) permissions required to perform a function.
             AccessUser:Delete: Allows to review access groups and all related data.
               (ABAC) permissions required to perform a function.
-            Account:Delete: Account role. (ABAC) permissions required to perform a
-              function.
           tokenUrl: https://dev.esystems.fi/oAuth/rest/v2/Token
       type: oauth2
 

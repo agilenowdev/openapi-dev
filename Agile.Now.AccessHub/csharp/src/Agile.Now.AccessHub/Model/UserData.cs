@@ -42,11 +42,7 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         /// <param name="id">The identifier of user department (required).</param>
         /// <param name="userId">userId.</param>
-        /// <param name="modifiedOn">The date the record was updated (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        /// <param name="modifiedBy">modifiedBy.</param>
-        /// <param name="createdBy">createdBy.</param>
-        /// <param name="createdOn">The date the record was created (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public UserData(string id = default(string), FieldType userId = default(FieldType), DateTime modifiedOn = default(DateTime), FieldType modifiedBy = default(FieldType), FieldType createdBy = default(FieldType), DateTime createdOn = default(DateTime))
+        public UserData(string id = default(string), FieldType userId = default(FieldType))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -55,10 +51,6 @@ namespace Agile.Now.AccessHub.Model
             }
             this.Id = id;
             this.UserId = userId;
-            this.ModifiedOn = modifiedOn;
-            this.ModifiedBy = modifiedBy;
-            this.CreatedBy = createdBy;
-            this.CreatedOn = createdOn;
         }
 
         /// <summary>
@@ -75,34 +67,6 @@ namespace Agile.Now.AccessHub.Model
         public FieldType UserId { get; set; }
 
         /// <summary>
-        /// The date the record was updated
-        /// </summary>
-        /// <value>The date the record was updated</value>
-        /// <example>1900-01-01T00:00Z</example>
-        [DataMember(Name = "ModifiedOn", EmitDefaultValue = false)]
-        public DateTime ModifiedOn { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ModifiedBy
-        /// </summary>
-        [DataMember(Name = "ModifiedBy", EmitDefaultValue = false)]
-        public FieldType ModifiedBy { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CreatedBy
-        /// </summary>
-        [DataMember(Name = "CreatedBy", EmitDefaultValue = false)]
-        public FieldType CreatedBy { get; set; }
-
-        /// <summary>
-        /// The date the record was created
-        /// </summary>
-        /// <value>The date the record was created</value>
-        /// <example>1900-01-01T00:00Z</example>
-        [DataMember(Name = "CreatedOn", EmitDefaultValue = false)]
-        public DateTime CreatedOn { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -112,10 +76,6 @@ namespace Agile.Now.AccessHub.Model
             sb.Append("class UserData {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
-            sb.Append("  ModifiedOn: ").Append(ModifiedOn).Append("\n");
-            sb.Append("  ModifiedBy: ").Append(ModifiedBy).Append("\n");
-            sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
-            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

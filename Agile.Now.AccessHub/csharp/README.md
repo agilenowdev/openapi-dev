@@ -186,7 +186,6 @@ Class | Method | HTTP request | Description
 *DepartmentsApi* | [**ListDepartmentUsers**](docs/DepartmentsApi.md#listdepartmentusers) | **GET** /Endpoint/rest/api/v1/Department/{Id}/Users | 
 *DepartmentsApi* | [**ListDepartments**](docs/DepartmentsApi.md#listdepartments) | **GET** /Endpoint/rest/api/v1/Departments | 
 *DepartmentsApi* | [**PatchDepartmentUsers**](docs/DepartmentsApi.md#patchdepartmentusers) | **PATCH** /Endpoint/rest/api/v1/Department/{Id}/Users | 
-*DepartmentsApi* | [**PatchDepartments**](docs/DepartmentsApi.md#patchdepartments) | **PATCH** /Endpoint/rest/api/v1/Departments/Json | 
 *DepartmentsApi* | [**UpdateDepartment**](docs/DepartmentsApi.md#updatedepartment) | **PUT** /Endpoint/rest/api/v1/Department/{Id} | 
 *DepartmentsApi* | [**UpsertDepartment**](docs/DepartmentsApi.md#upsertdepartment) | **PATCH** /Endpoint/rest/api/v1/Department | 
 *DepartmentsApi* | [**UpsertDepartmentUser**](docs/DepartmentsApi.md#upsertdepartmentuser) | **POST** /Endpoint/rest/api/v1/Department/{Id}/User | 
@@ -199,7 +198,6 @@ Class | Method | HTTP request | Description
 *LocationsApi* | [**ListLocationUsers**](docs/LocationsApi.md#listlocationusers) | **GET** /Endpoint/rest/api/v1/Location/{Id}/Users | 
 *LocationsApi* | [**ListLocations**](docs/LocationsApi.md#listlocations) | **GET** /Endpoint/rest/api/v1/Locations | 
 *LocationsApi* | [**PatchLocationUsers**](docs/LocationsApi.md#patchlocationusers) | **PATCH** /Endpoint/rest/api/v1/Location/{Id}/Users | 
-*LocationsApi* | [**PatchLocations**](docs/LocationsApi.md#patchlocations) | **PATCH** /Endpoint/rest/api/v1/Locations/Json | 
 *LocationsApi* | [**UpdateLocation**](docs/LocationsApi.md#updatelocation) | **PUT** /Endpoint/rest/api/v1/Location/{Id} | 
 *LocationsApi* | [**UpsertLocation**](docs/LocationsApi.md#upsertlocation) | **PATCH** /Endpoint/rest/api/v1/Location | 
 *LocationsApi* | [**UpsertLocationUser**](docs/LocationsApi.md#upsertlocationuser) | **POST** /Endpoint/rest/api/v1/Location/{Id}/User | 
@@ -222,12 +220,10 @@ Class | Method | HTTP request | Description
  - [Model.ConnectionData](docs/ConnectionData.md)
  - [Model.Connections](docs/Connections.md)
  - [Model.Department](docs/Department.md)
+ - [Model.DepartmentData](docs/DepartmentData.md)
  - [Model.DepartmentInsertData](docs/DepartmentInsertData.md)
- - [Model.DepartmentText](docs/DepartmentText.md)
  - [Model.DepartmentUpdateData](docs/DepartmentUpdateData.md)
- - [Model.DepartmentUpsertData](docs/DepartmentUpsertData.md)
  - [Model.Departments](docs/Departments.md)
- - [Model.DepartmentsData](docs/DepartmentsData.md)
  - [Model.Entities](docs/Entities.md)
  - [Model.Entity](docs/Entity.md)
  - [Model.Error](docs/Error.md)
@@ -235,9 +231,9 @@ Class | Method | HTTP request | Description
  - [Model.ListValidation](docs/ListValidation.md)
  - [Model.Location](docs/Location.md)
  - [Model.LocationData](docs/LocationData.md)
- - [Model.LocationText](docs/LocationText.md)
+ - [Model.LocationInsertData](docs/LocationInsertData.md)
+ - [Model.LocationUpdateData](docs/LocationUpdateData.md)
  - [Model.Locations](docs/Locations.md)
- - [Model.LocationsData](docs/LocationsData.md)
  - [Model.Meta](docs/Meta.md)
  - [Model.Picture](docs/Picture.md)
  - [Model.PictureData](docs/PictureData.md)
@@ -266,17 +262,12 @@ Authentication schemes defined for the API:
 - **Scopes**: 
   - AccessManager:Read: Allows to edit access groups and all related data. (ABAC) permissions required to perform a function.
   - AccessUser:Read: Allows to review access groups and all related data. (ABAC) permissions required to perform a function.
-  - Account:Read: Account role. (ABAC) permissions required to perform a function.
   - AccessManager:Create, Update: Allows to edit access groups and all related data. (ABAC) permissions required to perform a function.
   - AccessUser:Create, Update: Allows to review access groups and all related data. (ABAC) permissions required to perform a function.
-  - Account:Create, Update: Account role. (ABAC) permissions required to perform a function.
   - AccessManager:Create: Allows to edit access groups and all related data. (ABAC) permissions required to perform a function.
   - AccessUser:Create: Allows to review access groups and all related data. (ABAC) permissions required to perform a function.
-  - Account:Create: Account role. (ABAC) permissions required to perform a function.
   - AccessManager:Update: Allows to edit access groups and all related data. (ABAC) permissions required to perform a function.
   - AccessUser:Update: Allows to review access groups and all related data. (ABAC) permissions required to perform a function.
-  - Account:Update: Account role. (ABAC) permissions required to perform a function.
   - AccessManager:Delete: Allows to edit access groups and all related data. (ABAC) permissions required to perform a function.
   - AccessUser:Delete: Allows to review access groups and all related data. (ABAC) permissions required to perform a function.
-  - Account:Delete: Account role. (ABAC) permissions required to perform a function.
 
