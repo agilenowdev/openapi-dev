@@ -7760,6 +7760,7 @@ components:
         OwnerId:
           Field: Field
           Value: Value
+        Is_Active: false
         ExternalId: ExternalId
         ContactEmail: ContactEmail
         Id: Id
@@ -7794,9 +7795,15 @@ components:
           $ref: '#/components/schemas/FieldType'
         CountryId:
           $ref: '#/components/schemas/FieldType'
+        Is_Active:
+          default: false
+          description: Defines if the department is active and can be used
+          example: false
+          type: boolean
       required:
       - DepartmentTypeId
       - Id
+      - Is_Active
       - Name
       type: object
     DepartmentUpdateData:
@@ -8315,6 +8322,7 @@ components:
         CountryId:
           Field: Field
           Value: Value
+        Is_Active: false
         ExternalId: ExternalId
         TimezoneId:
           Field: Field
@@ -8336,7 +8344,13 @@ components:
           $ref: '#/components/schemas/FieldType'
         CurrencyId:
           $ref: '#/components/schemas/FieldType'
+        Is_Active:
+          default: false
+          description: Defines if the location is active and can be used
+          example: false
+          type: boolean
       required:
+      - Is_Active
       - Name
       type: object
     Connection:

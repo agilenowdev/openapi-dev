@@ -45,7 +45,8 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="countryId">countryId.</param>
         /// <param name="timezoneId">timezoneId.</param>
         /// <param name="currencyId">currencyId.</param>
-        public LocationUpdateData(string externalId = default(string), string name = default(string), FieldType countryId = default(FieldType), FieldType timezoneId = default(FieldType), FieldType currencyId = default(FieldType))
+        /// <param name="isActive">Defines if the location is active and can be used (required) (default to false).</param>
+        public LocationUpdateData(string externalId = default(string), string name = default(string), FieldType countryId = default(FieldType), FieldType timezoneId = default(FieldType), FieldType currencyId = default(FieldType), bool isActive = false)
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -53,6 +54,7 @@ namespace Agile.Now.AccessHub.Model
                 throw new ArgumentNullException("name is a required property for LocationUpdateData and cannot be null");
             }
             this.Name = name;
+            this.IsActive = isActive;
             this.ExternalId = externalId;
             this.CountryId = countryId;
             this.TimezoneId = timezoneId;
@@ -92,6 +94,14 @@ namespace Agile.Now.AccessHub.Model
         public FieldType CurrencyId { get; set; }
 
         /// <summary>
+        /// Defines if the location is active and can be used
+        /// </summary>
+        /// <value>Defines if the location is active and can be used</value>
+        /// <example>false</example>
+        [DataMember(Name = "Is_Active", IsRequired = true, EmitDefaultValue = true)]
+        public bool IsActive { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -104,6 +114,7 @@ namespace Agile.Now.AccessHub.Model
             sb.Append("  CountryId: ").Append(CountryId).Append("\n");
             sb.Append("  TimezoneId: ").Append(TimezoneId).Append("\n");
             sb.Append("  CurrencyId: ").Append(CurrencyId).Append("\n");
+            sb.Append("  IsActive: ").Append(IsActive).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

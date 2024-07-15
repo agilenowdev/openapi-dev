@@ -3945,7 +3945,8 @@
         "required": [
           "Id",
           "Name",
-          "DepartmentTypeId"
+          "DepartmentTypeId",
+          "Is_Active"
         ],
         "type": "object",
         "properties": {
@@ -3983,6 +3984,12 @@
           },
           "CountryId": {
             "$ref": "#/components/schemas/FieldType"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the department is active and can be used",
+            "default": false,
+            "example": false
           }
         },
         "description": "The record of Department information."
@@ -4336,7 +4343,8 @@
       },
       "LocationUpdateData": {
         "required": [
-          "Name"
+          "Name",
+          "Is_Active"
         ],
         "type": "object",
         "properties": {
@@ -4356,6 +4364,12 @@
           },
           "CurrencyId": {
             "$ref": "#/components/schemas/FieldType"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the location is active and can be used",
+            "default": false,
+            "example": false
           }
         },
         "description": "The record of Location information."

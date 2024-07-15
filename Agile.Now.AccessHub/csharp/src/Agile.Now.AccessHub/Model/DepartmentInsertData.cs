@@ -50,7 +50,8 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="contactPhone">contactPhone.</param>
         /// <param name="ownerId">ownerId.</param>
         /// <param name="countryId">countryId.</param>
-        public DepartmentInsertData(string id = default(string), string externalId = default(string), string name = default(string), FieldType departmentTypeId = default(FieldType), FieldType parentDepartmentId = default(FieldType), string contactName = default(string), string contactEmail = default(string), string contactPhone = default(string), FieldType ownerId = default(FieldType), FieldType countryId = default(FieldType))
+        /// <param name="isActive">Defines if the department is active and can be used (required) (default to false).</param>
+        public DepartmentInsertData(string id = default(string), string externalId = default(string), string name = default(string), FieldType departmentTypeId = default(FieldType), FieldType parentDepartmentId = default(FieldType), string contactName = default(string), string contactEmail = default(string), string contactPhone = default(string), FieldType ownerId = default(FieldType), FieldType countryId = default(FieldType), bool isActive = false)
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -70,6 +71,7 @@ namespace Agile.Now.AccessHub.Model
                 throw new ArgumentNullException("departmentTypeId is a required property for DepartmentInsertData and cannot be null");
             }
             this.DepartmentTypeId = departmentTypeId;
+            this.IsActive = isActive;
             this.ExternalId = externalId;
             this.ParentDepartmentId = parentDepartmentId;
             this.ContactName = contactName;
@@ -145,6 +147,14 @@ namespace Agile.Now.AccessHub.Model
         public FieldType CountryId { get; set; }
 
         /// <summary>
+        /// Defines if the department is active and can be used
+        /// </summary>
+        /// <value>Defines if the department is active and can be used</value>
+        /// <example>false</example>
+        [DataMember(Name = "Is_Active", IsRequired = true, EmitDefaultValue = true)]
+        public bool IsActive { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -162,6 +172,7 @@ namespace Agile.Now.AccessHub.Model
             sb.Append("  ContactPhone: ").Append(ContactPhone).Append("\n");
             sb.Append("  OwnerId: ").Append(OwnerId).Append("\n");
             sb.Append("  CountryId: ").Append(CountryId).Append("\n");
+            sb.Append("  IsActive: ").Append(IsActive).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
