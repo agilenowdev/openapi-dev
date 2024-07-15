@@ -304,7 +304,7 @@
         "tags": [
           "Departments"
         ],
-        "description": "Use the `{EntityNameUpsertData}` object resource to insert or update (Upsert) `Department` using `Id,Name, ExternalId` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\n{Request_Upsert_Record}\n\nForeign key fields are: `DepartmentTypeId, ParentDepartmentId, OwnerId, CountryId, ModifiedBy, CreatedBy`\n\n### Update a record of Department\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Name, ExternalId` field value is not empty and `Id` field value is empty, action try insert record according `Name, ExternalId` field value (if set, the value is a unique identifier).\n\n### Create a new record of Department\n* If the value in the `Name, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`{ShemaName}`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Department` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "description": "Use the `{EntityNameUpsertData}` object resource to insert or update (Upsert) `Department` using `Id,Name, ExternalId` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\n{Request_Upsert_Record}\n\nForeign key fields are: `DepartmentTypeId, ParentDepartmentId, OwnerId, CountryId, ModifiedBy, CreatedBy`\n\n### Update a record of Department\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Name, ExternalId` field value is not empty and `Id` field value is empty, action try insert record according `Name, ExternalId` field value (if set, the value is a unique identifier).\n\n### Create a new record of Department\n* If the value in the `Name, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`DepartmentData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Department` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
         "operationId": "Upsert Department",
         "requestBody": {
           "description": "`Department` information to insert or update.\n\nThe input parameter must be used in the `{EntityNameUpsertData}` record structure inside the `FieldType` parameter in the foreign key fields.",
@@ -354,7 +354,7 @@
         "tags": [
           "Departments"
         ],
-        "description": "Use the `{EntityNameInsertData}` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\n{Request_Insert_Record}\n\nForeign key fields are: `DepartmentTypeId, ParentDepartmentId, OwnerId, CountryId, ModifiedBy, CreatedBy`\n\n### Create a new record of Department\n* If the value in the `Id,Name, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`{ShemaName}`).\n* If the value in the `Name, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`{ShemaName}`).\n* If the `Id,Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the created record if the call is successful. Method returns an extended `Department` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\n",
+        "description": "Use the `{EntityNameInsertData}` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\n{Request_Insert_Record}\n\nForeign key fields are: `DepartmentTypeId, ParentDepartmentId, OwnerId, CountryId, ModifiedBy, CreatedBy`\n\n### Create a new record of Department\n* If the value in the `Id,Name, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`DepartmentInsertData`).\n* If the value in the `Name, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`DepartmentInsertData`).\n* If the `Id,Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the created record if the call is successful. Method returns an extended `Department` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\n",
         "operationId": "Create Department",
         "requestBody": {
           "description": "`Department` information to insert.\n\nThe input parameter must be used in the `{EntityNameInsertData}` record structure inside the `FieldType` parameter in the foreign key fields.",
@@ -514,7 +514,7 @@
         "tags": [
           "Departments"
         ],
-        "description": "Use the `UsersData` object resource to insert or update (Upsert) a list of `UserData` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `UserList` record structure as text fields in the foreign key fields.\n\nForeign key fields are: `DepartmentId, UserId, ModifiedBy, CreatedBy`\n\n### Update a record of User\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.\n\n### Create a new record of User\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`{ShemaName}`).\n\nThe response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `User` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.",
+        "description": "Use the `UsersData` object resource to insert or update (Upsert) a list of `UserData` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `UserList` record structure as text fields in the foreign key fields.\n\nForeign key fields are: `DepartmentId, UserId, ModifiedBy, CreatedBy`\n\n### Update a record of User\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.\n\n### Create a new record of User\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`UserData`).\n\nThe response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `User` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.",
         "operationId": "Patch Department Users",
         "parameters": [
           {
@@ -597,7 +597,7 @@
         "tags": [
           "Departments"
         ],
-        "description": "Use the `UserPost` object resource to insert or update (Upsert) `User` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `{ShemaName}` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `DepartmentId, UserId, ModifiedBy, CreatedBy`\n\n### Update a record of User\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n### Create a new record of User\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`{ShemaName}`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `User` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "description": "Use the `UserPost` object resource to insert or update (Upsert) `User` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `DepartmentId, UserId, ModifiedBy, CreatedBy`\n\n### Update a record of User\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n### Create a new record of User\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`UserData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `User` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
         "operationId": "Upsert Department User",
         "parameters": [
           {
@@ -1032,7 +1032,7 @@
         "tags": [
           "Locations"
         ],
-        "description": "Use the `{EntityNameUpsertData}` object resource to insert or update (Upsert) `Location` using `Id,Name,ExternalId` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\n{Request_Upsert_Record}\n\nForeign key fields are: `CountryId, TimezoneId, CurrencyId, ModifiedBy, CreatedBy`\n\n### Update a record of Location\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Name,ExternalId` field value is not empty and `Id` field value is empty, action try insert record according `Name,ExternalId` field value (if set, the value is a unique identifier).\n\n### Create a new record of Location\n* If the value in the `Name,ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`{ShemaName}`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Location` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "description": "Use the `{EntityNameUpsertData}` object resource to insert or update (Upsert) `Location` using `Id,Name,ExternalId` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\n{Request_Upsert_Record}\n\nForeign key fields are: `CountryId, TimezoneId, CurrencyId, ModifiedBy, CreatedBy`\n\n### Update a record of Location\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Name,ExternalId` field value is not empty and `Id` field value is empty, action try insert record according `Name,ExternalId` field value (if set, the value is a unique identifier).\n\n### Create a new record of Location\n* If the value in the `Name,ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`LocationData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Location` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
         "operationId": "Upsert Location",
         "requestBody": {
           "description": "`Location` information to insert or update.\n\nThe input parameter must be used in the `{EntityNameUpsertData}` record structure inside the `FieldType` parameter in the foreign key fields.",
@@ -1082,7 +1082,7 @@
         "tags": [
           "Locations"
         ],
-        "description": "Use the `{EntityNameInsertData}` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\n{Request_Insert_Record}\n\nForeign key fields are: `CountryId, TimezoneId, CurrencyId, ModifiedBy, CreatedBy`\n\n### Create a new record of Location\n* If the value in the `Id,Name,ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`{ShemaName}`).\n* If the value in the `Name,ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`{ShemaName}`).\n* If the `Id,Name,ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the created record if the call is successful. Method returns an extended `Location` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\n",
+        "description": "Use the `{EntityNameInsertData}` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\n{Request_Insert_Record}\n\nForeign key fields are: `CountryId, TimezoneId, CurrencyId, ModifiedBy, CreatedBy`\n\n### Create a new record of Location\n* If the value in the `Id,Name,ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`LocationData`).\n* If the value in the `Name,ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`LocationData`).\n* If the `Id,Name,ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the created record if the call is successful. Method returns an extended `Location` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\n",
         "operationId": "Create Location",
         "requestBody": {
           "description": "`Location` information to insert.\n\nThe input parameter must be used in the `{EntityNameInsertData}` record structure inside the `FieldType` parameter in the foreign key fields.",
@@ -1242,7 +1242,7 @@
         "tags": [
           "Locations"
         ],
-        "description": "Use the `UsersData` object resource to insert or update (Upsert) a list of `UserData` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `UserList` record structure as text fields in the foreign key fields.\n\nForeign key fields are: `LocationId, UserId, ModifiedBy, CreatedBy`\n\n### Update a record of User\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.\n\n### Create a new record of User\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`{ShemaName}`).\n\nThe response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `User` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.",
+        "description": "Use the `UsersData` object resource to insert or update (Upsert) a list of `UserData` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `UserList` record structure as text fields in the foreign key fields.\n\nForeign key fields are: `LocationId, UserId, ModifiedBy, CreatedBy`\n\n### Update a record of User\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.\n\n### Create a new record of User\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`UserData`).\n\nThe response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `User` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.",
         "operationId": "Patch Location Users",
         "parameters": [
           {
@@ -1325,7 +1325,7 @@
         "tags": [
           "Locations"
         ],
-        "description": "Use the `UserPost` object resource to insert or update (Upsert) `User` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `{ShemaName}` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `LocationId, UserId, ModifiedBy, CreatedBy`\n\n### Update a record of User\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n### Create a new record of User\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`{ShemaName}`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `User` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "description": "Use the `UserPost` object resource to insert or update (Upsert) `User` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `LocationId, UserId, ModifiedBy, CreatedBy`\n\n### Update a record of User\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n### Create a new record of User\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`UserData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `User` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
         "operationId": "Upsert Location User",
         "parameters": [
           {
@@ -1640,7 +1640,7 @@
             "example": "1900-01-01T00:00:00Z"
           }
         },
-        "description": "The record of {ShemaName} information."
+        "description": "The record of DepartmentData information."
       },
       "AbstractText": {
         "required": [
@@ -1726,7 +1726,7 @@
       },
       "DepartmentData": {
         "type": "object",
-        "description": "The record of {ShemaName} information."
+        "description": "The record of DepartmentData information."
       },
       "DepartmentInsertData": {
         "required": [
@@ -1772,7 +1772,7 @@
             "$ref": "#/components/schemas/FieldType"
           }
         },
-        "description": "The record of {ShemaName} information."
+        "description": "The record of DepartmentInsertData information."
       },
       "FieldType": {
         "required": [
@@ -1831,7 +1831,7 @@
             "example": false
           }
         },
-        "description": "The record of {ShemaName} information."
+        "description": "The record of DepartmentUpdateData information."
       },
       "User": {
         "required": [
@@ -1867,7 +1867,7 @@
             "example": "1900-01-01T00:00:00Z"
           }
         },
-        "description": "The record of {ShemaName} information."
+        "description": "The record of UserData information."
       },
       "Users": {
         "type": "object",
@@ -1919,7 +1919,7 @@
             "example": "1900-01-01T00:00:00Z"
           }
         },
-        "description": "The record of {ShemaName} information."
+        "description": "The record of UserData information."
       },
       "UserText": {
         "required": [
@@ -1958,7 +1958,7 @@
             "example": "1900-01-01T00:00:00Z"
           }
         },
-        "description": "The record of {ShemaName} information."
+        "description": "The record of UserData information."
       },
       "UsersData": {
         "type": "object",
@@ -2087,7 +2087,7 @@
             "example": "1900-01-01T00:00:00Z"
           }
         },
-        "description": "The record of {ShemaName} information."
+        "description": "The record of LocationData information."
       },
       "Locations": {
         "type": "object",
@@ -2167,7 +2167,7 @@
             "example": "1900-01-01T00:00:00Z"
           }
         },
-        "description": "The record of {ShemaName} information."
+        "description": "The record of LocationData information."
       }
     },
     "responses": {
