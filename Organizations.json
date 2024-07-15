@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "2.0.93"
+    "version": "2.0.94"
   },
   "servers": [
     {
@@ -1946,26 +1946,6 @@
           },
           "UserId": {
             "$ref": "#/components/schemas/FieldType"
-          },
-          "ModifiedOn": {
-            "type": "string",
-            "description": "The date the record was updated",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
-          },
-          "ModifiedBy": {
-            "$ref": "#/components/schemas/FieldType"
-          },
-          "CreatedBy": {
-            "$ref": "#/components/schemas/FieldType"
-          },
-          "CreatedOn": {
-            "type": "string",
-            "description": "The date the record was created",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
           }
         },
         "description": "The record of User information."
@@ -1983,28 +1963,6 @@
           "UserId": {
             "type": "string",
             "description": "The identifier of the user who has link the department"
-          },
-          "ModifiedOn": {
-            "type": "string",
-            "description": "The date the record was updated",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
-          },
-          "ModifiedBy": {
-            "type": "string",
-            "description": "The Identifier of the user who updated the record"
-          },
-          "CreatedBy": {
-            "type": "string",
-            "description": "The Identifier of the user who created the record"
-          },
-          "CreatedOn": {
-            "type": "string",
-            "description": "The date the record was created",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
           }
         },
         "description": "The record of User information."
