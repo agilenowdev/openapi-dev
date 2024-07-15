@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "2.0.94"
+    "version": "2.0.95"
   },
   "servers": [
     {
@@ -2115,8 +2115,7 @@
       "LocationData": {
         "required": [
           "Id",
-          "Name",
-          "Is_Active"
+          "Name"
         ],
         "type": "object",
         "properties": {
@@ -2140,38 +2139,6 @@
           },
           "CurrencyId": {
             "$ref": "#/components/schemas/FieldType"
-          },
-          "Is_Active": {
-            "type": "boolean",
-            "description": "Defines if the location is active and can be used",
-            "default": false,
-            "example": false
-          },
-          "Is_Deleted": {
-            "type": "boolean",
-            "description": "Defines if the location is deleted and cannot be used",
-            "default": false,
-            "example": false
-          },
-          "ModifiedOn": {
-            "type": "string",
-            "description": "The date the record was updated",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
-          },
-          "ModifiedBy": {
-            "$ref": "#/components/schemas/FieldType"
-          },
-          "CreatedBy": {
-            "$ref": "#/components/schemas/FieldType"
-          },
-          "CreatedOn": {
-            "type": "string",
-            "description": "The date the record was created",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
           }
         },
         "description": "The record of Location information."
