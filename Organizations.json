@@ -1640,7 +1640,7 @@
             "example": "1900-01-01T00:00:00Z"
           }
         },
-        "description": "The record of DepartmentData information."
+        "description": "The record of Department information."
       },
       "AbstractText": {
         "required": [
@@ -1726,7 +1726,7 @@
       },
       "DepartmentData": {
         "type": "object",
-        "description": "The record of DepartmentData information."
+        "description": "The record of Department information."
       },
       "DepartmentInsertData": {
         "required": [
@@ -1772,7 +1772,7 @@
             "$ref": "#/components/schemas/FieldType"
           }
         },
-        "description": "The record of DepartmentInsertData information."
+        "description": "The record of Department information."
       },
       "FieldType": {
         "required": [
@@ -1831,7 +1831,7 @@
             "example": false
           }
         },
-        "description": "The record of DepartmentUpdateData information."
+        "description": "The record of Department information."
       },
       "User": {
         "required": [
@@ -1867,7 +1867,7 @@
             "example": "1900-01-01T00:00:00Z"
           }
         },
-        "description": "The record of UserData information."
+        "description": "The record of User information."
       },
       "Users": {
         "type": "object",
@@ -1919,7 +1919,7 @@
             "example": "1900-01-01T00:00:00Z"
           }
         },
-        "description": "The record of UserData information."
+        "description": "The record of User information."
       },
       "UserText": {
         "required": [
@@ -1958,7 +1958,7 @@
             "example": "1900-01-01T00:00:00Z"
           }
         },
-        "description": "The record of UserData information."
+        "description": "The record of User information."
       },
       "UsersData": {
         "type": "object",
@@ -2087,7 +2087,7 @@
             "example": "1900-01-01T00:00:00Z"
           }
         },
-        "description": "The record of LocationData information."
+        "description": "The record of Location information."
       },
       "Locations": {
         "type": "object",
@@ -2167,7 +2167,7 @@
             "example": "1900-01-01T00:00:00Z"
           }
         },
-        "description": "The record of LocationData information."
+        "description": "The record of Location information."
       }
     },
     "responses": {
