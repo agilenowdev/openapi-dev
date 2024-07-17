@@ -1184,7 +1184,16 @@
             "description": "Attribute4 text"
           },
           "CustomerType": {
-            "$ref": "#/components/schemas/FieldType"
+            "enum": [
+              "Internal",
+              "External"
+            ],
+            "type": "string",
+            "description": "The identifier of the customer",
+            "x-enumDescriptions": {
+              "Internal": "Internal",
+              "External": "External"
+            }
           }
         },
         "description": "The record of MyCustomer information."
