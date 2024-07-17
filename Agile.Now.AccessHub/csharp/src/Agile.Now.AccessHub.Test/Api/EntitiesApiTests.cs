@@ -63,7 +63,7 @@ namespace Agile.Now.AccessHub.Test.Api
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
-            //string? name = null;
+            //string name = null;
             //var response = instance.GetEntity(id, name);
             //Assert.IsType<Entity>(response);
         }
@@ -75,9 +75,9 @@ namespace Agile.Now.AccessHub.Test.Api
         public void ListEntitiesTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string? fields = null;
-            //string? filters = null;
-            //string? orders = null;
+            //string fields = null;
+            //string filters = null;
+            //string orders = null;
             //int? currentPage = null;
             //int? pageSize = null;
             //var response = instance.ListEntities(fields, filters, orders, currentPage, pageSize);

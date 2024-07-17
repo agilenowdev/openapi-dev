@@ -62,8 +62,8 @@ namespace Agile.Now.AccessHub.Test.Api
         public void CreateLocationTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //LocationData locationData = null;
-            //var response = instance.CreateLocation(locationData);
+            //LocationInsertData locationInsertData = null;
+            //var response = instance.CreateLocation(locationInsertData);
             //Assert.IsType<Location>(response);
         }
 
@@ -75,7 +75,7 @@ namespace Agile.Now.AccessHub.Test.Api
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
-            //string? name = null;
+            //string name = null;
             //var response = instance.DeleteLocation(id, name);
             //Assert.IsType<Location>(response);
         }
@@ -89,8 +89,8 @@ namespace Agile.Now.AccessHub.Test.Api
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
             //string subId = null;
-            //string? name = null;
-            //string? subName = null;
+            //string name = null;
+            //string subName = null;
             //var response = instance.DeleteLocationUser(id, subId, name, subName);
             //Assert.IsType<User>(response);
         }
@@ -103,7 +103,7 @@ namespace Agile.Now.AccessHub.Test.Api
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
-            //string? name = null;
+            //string name = null;
             //var response = instance.GetLocation(id, name);
             //Assert.IsType<Location>(response);
         }
@@ -116,10 +116,10 @@ namespace Agile.Now.AccessHub.Test.Api
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
-            //string? name = null;
-            //string? fields = null;
-            //string? filters = null;
-            //string? orders = null;
+            //string name = null;
+            //string fields = null;
+            //string filters = null;
+            //string orders = null;
             //int? currentPage = null;
             //int? pageSize = null;
             //var response = instance.ListLocationUsers(id, name, fields, filters, orders, currentPage, pageSize);
@@ -133,9 +133,9 @@ namespace Agile.Now.AccessHub.Test.Api
         public void ListLocationsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string? fields = null;
-            //string? filters = null;
-            //string? orders = null;
+            //string fields = null;
+            //string filters = null;
+            //string orders = null;
             //int? currentPage = null;
             //int? pageSize = null;
             //var response = instance.ListLocations(fields, filters, orders, currentPage, pageSize);
@@ -151,22 +151,10 @@ namespace Agile.Now.AccessHub.Test.Api
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
             //UsersData usersData = null;
-            //string? name = null;
-            //string? deleteNotExists = null;
+            //string name = null;
+            //string deleteNotExists = null;
             //var response = instance.PatchLocationUsers(id, usersData, name, deleteNotExists);
             //Assert.IsType<User>(response);
-        }
-
-        /// <summary>
-        /// Test PatchLocations
-        /// </summary>
-        [Fact]
-        public void PatchLocationsTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //LocationsData locationsData = null;
-            //var response = instance.PatchLocations(locationsData);
-            //Assert.IsType<Locations>(response);
         }
 
         /// <summary>
@@ -177,9 +165,9 @@ namespace Agile.Now.AccessHub.Test.Api
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
-            //LocationData locationData = null;
-            //string? name = null;
-            //var response = instance.UpdateLocation(id, locationData, name);
+            //LocationUpdateData locationUpdateData = null;
+            //string name = null;
+            //var response = instance.UpdateLocation(id, locationUpdateData, name);
             //Assert.IsType<Location>(response);
         }
 
@@ -204,7 +192,7 @@ namespace Agile.Now.AccessHub.Test.Api
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
             //UserData userData = null;
-            //string? name = null;
+            //string name = null;
             //var response = instance.UpsertLocationUser(id, userData, name);
             //Assert.IsType<User>(response);
         }

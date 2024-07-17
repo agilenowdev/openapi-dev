@@ -75,7 +75,7 @@ namespace Agile.Now.AccessHub.Test.Api
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
-            //string? name = null;
+            //string name = null;
             //var response = instance.DeleteDepartment(id, name);
             //Assert.IsType<Department>(response);
         }
@@ -89,8 +89,8 @@ namespace Agile.Now.AccessHub.Test.Api
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
             //string subId = null;
-            //string? name = null;
-            //string? subName = null;
+            //string name = null;
+            //string subName = null;
             //var response = instance.DeleteDepartmentUser(id, subId, name, subName);
             //Assert.IsType<User>(response);
         }
@@ -103,7 +103,7 @@ namespace Agile.Now.AccessHub.Test.Api
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
-            //string? name = null;
+            //string name = null;
             //var response = instance.GetDepartment(id, name);
             //Assert.IsType<Department>(response);
         }
@@ -116,10 +116,10 @@ namespace Agile.Now.AccessHub.Test.Api
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
-            //string? name = null;
-            //string? fields = null;
-            //string? filters = null;
-            //string? orders = null;
+            //string name = null;
+            //string fields = null;
+            //string filters = null;
+            //string orders = null;
             //int? currentPage = null;
             //int? pageSize = null;
             //var response = instance.ListDepartmentUsers(id, name, fields, filters, orders, currentPage, pageSize);
@@ -133,9 +133,9 @@ namespace Agile.Now.AccessHub.Test.Api
         public void ListDepartmentsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string? fields = null;
-            //string? filters = null;
-            //string? orders = null;
+            //string fields = null;
+            //string filters = null;
+            //string orders = null;
             //int? currentPage = null;
             //int? pageSize = null;
             //var response = instance.ListDepartments(fields, filters, orders, currentPage, pageSize);
@@ -151,22 +151,10 @@ namespace Agile.Now.AccessHub.Test.Api
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
             //UsersData usersData = null;
-            //string? name = null;
-            //string? deleteNotExists = null;
+            //string name = null;
+            //string deleteNotExists = null;
             //var response = instance.PatchDepartmentUsers(id, usersData, name, deleteNotExists);
             //Assert.IsType<User>(response);
-        }
-
-        /// <summary>
-        /// Test PatchDepartments
-        /// </summary>
-        [Fact]
-        public void PatchDepartmentsTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //DepartmentsData departmentsData = null;
-            //var response = instance.PatchDepartments(departmentsData);
-            //Assert.IsType<Departments>(response);
         }
 
         /// <summary>
@@ -178,7 +166,7 @@ namespace Agile.Now.AccessHub.Test.Api
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
             //DepartmentUpdateData departmentUpdateData = null;
-            //string? name = null;
+            //string name = null;
             //var response = instance.UpdateDepartment(id, departmentUpdateData, name);
             //Assert.IsType<Department>(response);
         }
@@ -190,8 +178,8 @@ namespace Agile.Now.AccessHub.Test.Api
         public void UpsertDepartmentTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //DepartmentUpsertData departmentUpsertData = null;
-            //var response = instance.UpsertDepartment(departmentUpsertData);
+            //DepartmentData departmentData = null;
+            //var response = instance.UpsertDepartment(departmentData);
             //Assert.IsType<Department>(response);
         }
 
@@ -204,7 +192,7 @@ namespace Agile.Now.AccessHub.Test.Api
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
             //UserData userData = null;
-            //string? name = null;
+            //string name = null;
             //var response = instance.UpsertDepartmentUser(id, userData, name);
             //Assert.IsType<User>(response);
         }

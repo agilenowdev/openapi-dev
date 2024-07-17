@@ -50,6 +50,11 @@ docs/Users.md
 docs/UsersData.md
 git_push.sh
 src/Agile.Now.AccessHub.Test/Agile.Now.AccessHub.Test.csproj
+src/Agile.Now.AccessHub.Test/Api/AccountsApiTests.cs
+src/Agile.Now.AccessHub.Test/Api/ConnectionsApiTests.cs
+src/Agile.Now.AccessHub.Test/Api/DepartmentsApiTests.cs
+src/Agile.Now.AccessHub.Test/Api/EntitiesApiTests.cs
+src/Agile.Now.AccessHub.Test/Api/LocationsApiTests.cs
 src/Agile.Now.AccessHub/Agile.Now.AccessHub.csproj
 src/Agile.Now.AccessHub/Api/AccountsApi.cs
 src/Agile.Now.AccessHub/Api/ConnectionsApi.cs

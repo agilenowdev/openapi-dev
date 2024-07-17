@@ -75,7 +75,7 @@ namespace Agile.Now.AccessHub.Test.Api
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
-            //string? name = null;
+            //string name = null;
             //var response = instance.DeleteAccount(id, name);
             //Assert.IsType<Account>(response);
         }
@@ -89,8 +89,8 @@ namespace Agile.Now.AccessHub.Test.Api
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
             //string subId = null;
-            //string? name = null;
-            //string? subName = null;
+            //string name = null;
+            //string subName = null;
             //var response = instance.DeleteAccountPicture(id, subId, name, subName);
             //Assert.IsType<Picture>(response);
         }
@@ -104,8 +104,8 @@ namespace Agile.Now.AccessHub.Test.Api
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
             //string subId = null;
-            //string? name = null;
-            //string? subName = null;
+            //string name = null;
+            //string subName = null;
             //var response = instance.DeleteAccountTenant(id, subId, name, subName);
             //Assert.IsType<Tenant>(response);
         }
@@ -118,9 +118,27 @@ namespace Agile.Now.AccessHub.Test.Api
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
-            //string? name = null;
+            //string name = null;
             //var response = instance.GetAccount(id, name);
             //Assert.IsType<Account>(response);
+        }
+
+        /// <summary>
+        /// Test ListAccountPictures
+        /// </summary>
+        [Fact]
+        public void ListAccountPicturesTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string id = null;
+            //string name = null;
+            //string fields = null;
+            //string filters = null;
+            //string orders = null;
+            //int? currentPage = null;
+            //int? pageSize = null;
+            //var response = instance.ListAccountPictures(id, name, fields, filters, orders, currentPage, pageSize);
+            //Assert.IsType<Pictures>(response);
         }
 
         /// <summary>
@@ -131,10 +149,10 @@ namespace Agile.Now.AccessHub.Test.Api
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
-            //string? name = null;
-            //string? fields = null;
-            //string? filters = null;
-            //string? orders = null;
+            //string name = null;
+            //string fields = null;
+            //string filters = null;
+            //string orders = null;
             //int? currentPage = null;
             //int? pageSize = null;
             //var response = instance.ListAccountTenants(id, name, fields, filters, orders, currentPage, pageSize);
@@ -148,9 +166,9 @@ namespace Agile.Now.AccessHub.Test.Api
         public void ListAccountsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string? fields = null;
-            //string? filters = null;
-            //string? orders = null;
+            //string fields = null;
+            //string filters = null;
+            //string orders = null;
             //int? currentPage = null;
             //int? pageSize = null;
             //var response = instance.ListAccounts(fields, filters, orders, currentPage, pageSize);
@@ -166,7 +184,7 @@ namespace Agile.Now.AccessHub.Test.Api
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
             //AccountData accountData = null;
-            //string? name = null;
+            //string name = null;
             //var response = instance.UpdateAccount(id, accountData, name);
             //Assert.IsType<Account>(response);
         }
@@ -192,7 +210,7 @@ namespace Agile.Now.AccessHub.Test.Api
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
             //PictureData pictureData = null;
-            //string? name = null;
+            //string name = null;
             //var response = instance.UpsertAccountPicture(id, pictureData, name);
             //Assert.IsType<Picture>(response);
         }
@@ -206,7 +224,7 @@ namespace Agile.Now.AccessHub.Test.Api
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
             //TenantData tenantData = null;
-            //string? name = null;
+            //string name = null;
             //var response = instance.UpsertAccountTenant(id, tenantData, name);
             //Assert.IsType<Tenant>(response);
         }

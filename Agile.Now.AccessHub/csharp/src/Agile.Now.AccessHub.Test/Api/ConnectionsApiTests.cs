@@ -75,7 +75,7 @@ namespace Agile.Now.AccessHub.Test.Api
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
-            //string? name = null;
+            //string name = null;
             //var response = instance.DeleteConnection(id, name);
             //Assert.IsType<Connection>(response);
         }
@@ -89,8 +89,8 @@ namespace Agile.Now.AccessHub.Test.Api
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
             //string subId = null;
-            //string? name = null;
-            //string? subName = null;
+            //string name = null;
+            //string subName = null;
             //var response = instance.DeleteConnectionConfig(id, subId, name, subName);
             //Assert.IsType<Config>(response);
         }
@@ -103,7 +103,7 @@ namespace Agile.Now.AccessHub.Test.Api
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
-            //string? name = null;
+            //string name = null;
             //var response = instance.GetConnection(id, name);
             //Assert.IsType<Connection>(response);
         }
@@ -116,10 +116,10 @@ namespace Agile.Now.AccessHub.Test.Api
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
-            //string? name = null;
-            //string? fields = null;
-            //string? filters = null;
-            //string? orders = null;
+            //string name = null;
+            //string fields = null;
+            //string filters = null;
+            //string orders = null;
             //int? currentPage = null;
             //int? pageSize = null;
             //var response = instance.ListConnectionConfigs(id, name, fields, filters, orders, currentPage, pageSize);
@@ -133,9 +133,9 @@ namespace Agile.Now.AccessHub.Test.Api
         public void ListConnectionsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string? fields = null;
-            //string? filters = null;
-            //string? orders = null;
+            //string fields = null;
+            //string filters = null;
+            //string orders = null;
             //int? currentPage = null;
             //int? pageSize = null;
             //var response = instance.ListConnections(fields, filters, orders, currentPage, pageSize);
@@ -151,8 +151,8 @@ namespace Agile.Now.AccessHub.Test.Api
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
             //ConfigsData configsData = null;
-            //string? name = null;
-            //string? deleteNotExists = null;
+            //string name = null;
+            //string deleteNotExists = null;
             //var response = instance.PatchConnectionConfigs(id, configsData, name, deleteNotExists);
             //Assert.IsType<Config>(response);
         }
@@ -166,7 +166,7 @@ namespace Agile.Now.AccessHub.Test.Api
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
             //ConnectionData connectionData = null;
-            //string? name = null;
+            //string name = null;
             //var response = instance.UpdateConnection(id, connectionData, name);
             //Assert.IsType<Connection>(response);
         }
@@ -192,7 +192,7 @@ namespace Agile.Now.AccessHub.Test.Api
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
             //ConfigData configData = null;
-            //string? name = null;
+            //string name = null;
             //var response = instance.UpsertConnectionConfig(id, configData, name);
             //Assert.IsType<Config>(response);
         }
