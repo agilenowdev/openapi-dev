@@ -7691,13 +7691,9 @@ components:
     DepartmentData:
       description: The record of Department information.
       example:
-        DepartmentTypeId:
-          Field: Field
-          Value: Value
+        DepartmentTypeId: External
         ContactPhone: ContactPhone
-        CountryId:
-          Field: Field
-          Value: Value
+        CountryId: AFG
         OwnerId:
           Field: Field
           Value: Value
@@ -7721,7 +7717,14 @@ components:
           description: The name of the department
           type: string
         DepartmentTypeId:
-          $ref: '#/components/schemas/FieldType'
+          description: The  type of department
+          enum:
+          - External
+          - Internal
+          type: string
+          x-enumDescriptions:
+            External: External
+            Internal: Internal
         ParentDepartmentId:
           $ref: '#/components/schemas/FieldType'
         ContactName:
@@ -7735,7 +7738,512 @@ components:
         OwnerId:
           $ref: '#/components/schemas/FieldType'
         CountryId:
-          $ref: '#/components/schemas/FieldType'
+          description: The country of the department
+          enum:
+          - AFG
+          - ALA
+          - ALB
+          - DZA
+          - ASM
+          - AND
+          - AGO
+          - AIA
+          - ATA
+          - ATG
+          - ARG
+          - ARM
+          - ABW
+          - AUS
+          - AUT
+          - AZE
+          - AZO
+          - BHS
+          - BHR
+          - BGD
+          - BRB
+          - BLR
+          - BEL
+          - BLZ
+          - BEN
+          - BMU
+          - BTN
+          - BOL
+          - BIH
+          - BWA
+          - BVT
+          - BRA
+          - IOT
+          - VGB
+          - BRN
+          - BGR
+          - BFA
+          - BDI
+          - KHM
+          - CMR
+          - CAN
+          - CPV
+          - CYM
+          - CAF
+          - TCD
+          - CHL
+          - CHN
+          - CXR
+          - CCK
+          - COL
+          - COM
+          - COG
+          - COK
+          - CRI
+          - CIV
+          - HRV
+          - CUB
+          - CYP
+          - CZE
+          - COD
+          - DNK
+          - DJI
+          - DMA
+          - DOM
+          - ECU
+          - EGY
+          - SLV
+          - GNQ
+          - ERI
+          - EST
+          - SWZ
+          - ETH
+          - EUE
+          - FLK
+          - FRO
+          - FSM
+          - FJI
+          - FIN
+          - FRA
+          - GUF
+          - PYF
+          - ATF
+          - GAB
+          - GMB
+          - GEO
+          - DEU
+          - GHA
+          - GIB
+          - GRC
+          - GRL
+          - GRD
+          - GLP
+          - GUM
+          - GTM
+          - GGY
+          - GIN
+          - GNB
+          - GUY
+          - HTI
+          - HMD
+          - VAT
+          - HND
+          - HKG
+          - HUN
+          - ISL
+          - IND
+          - IDN
+          - IRN
+          - IRQ
+          - IRL
+          - IMN
+          - ISR
+          - ITA
+          - JAM
+          - JPN
+          - JEY
+          - JOR
+          - KAZ
+          - KEN
+          - KIR
+          - XKX
+          - KWT
+          - KGZ
+          - LAO
+          - LVA
+          - LBN
+          - LSO
+          - LBR
+          - LBY
+          - LIE
+          - LTU
+          - LUX
+          - MAC
+          - MKD
+          - MDG
+          - MWI
+          - MYS
+          - MDV
+          - MLI
+          - MLT
+          - MHL
+          - MTQ
+          - MRT
+          - MUS
+          - MYT
+          - MEX
+          - MDA
+          - MCO
+          - MNG
+          - MNE
+          - MSR
+          - MAR
+          - MOZ
+          - MMR
+          - NAM
+          - NRU
+          - NPL
+          - NLD
+          - ANT
+          - NCL
+          - NZL
+          - NIC
+          - NER
+          - NGA
+          - NIU
+          - NFK
+          - PRK
+          - MNP
+          - NOR
+          - OMN
+          - PAK
+          - PLW
+          - PSE
+          - PAN
+          - PNG
+          - PRY
+          - PER
+          - PHL
+          - PCN
+          - POL
+          - PRT
+          - PRI
+          - QAT
+          - REU
+          - ROU
+          - RUS
+          - RWA
+          - SHN
+          - KNA
+          - LCA
+          - SPM
+          - VCT
+          - BLM
+          - MAF
+          - WSM
+          - SMR
+          - STP
+          - SAU
+          - SEN
+          - SRB
+          - SYC
+          - SLE
+          - SGP
+          - SVK
+          - SVN
+          - SLB
+          - SOM
+          - SOL
+          - ZAF
+          - SGS
+          - KOR
+          - SSD
+          - ESP
+          - LKA
+          - SDN
+          - SUR
+          - SJM
+          - SWE
+          - CHE
+          - SYR
+          - TWN
+          - TJK
+          - TZA
+          - THA
+          - TLS
+          - TGO
+          - TKL
+          - TON
+          - TTO
+          - TUN
+          - TUR
+          - TKM
+          - TCA
+          - TUV
+          - UGA
+          - UKR
+          - ARE
+          - GBR
+          - UMI
+          - USA
+          - URY
+          - UZB
+          - VUT
+          - VEN
+          - VNM
+          - VIR
+          - WLF
+          - ESH
+          - YEM
+          - ZMB
+          - ZWE
+          type: string
+          x-enumDescriptions:
+            AFG: Afghanistan
+            ALA: Aland Islands
+            ALB: Albania
+            DZA: Algeria
+            ASM: American Samoa
+            AND: Andorra
+            AGO: Angola
+            AIA: Anguilla
+            ATA: Antarctica
+            ATG: Antigua and Barbuda
+            ARG: Argentina
+            ARM: Armenia
+            ABW: Aruba
+            AUS: Australia
+            AUT: Austria
+            AZE: Azerbaijan
+            AZO: Azores
+            BHS: Bahamas
+            BHR: Bahrain
+            BGD: Bangladesh
+            BRB: Barbados
+            BLR: Belarus
+            BEL: Belgium
+            BLZ: Belize
+            BEN: Benin
+            BMU: Bermuda
+            BTN: Bhutan
+            BOL: Bolivia
+            BIH: Bosnia and Herzegovina
+            BWA: Botswana
+            BVT: Bouvet Island
+            BRA: Brazil
+            IOT: British Indian Ocean Territory
+            VGB: British Virgin Islands
+            BRN: Brunei Darussalam
+            BGR: Bulgaria
+            BFA: Burkina Faso
+            BDI: Burundi
+            KHM: Cambodia
+            CMR: Cameroon
+            CAN: Canada
+            CPV: Cape Verde
+            CYM: Cayman Islands
+            CAF: Central African Republic
+            TCD: Chad
+            CHL: Chile
+            CHN: China
+            CXR: Christmas Island
+            CCK: Cocos (Keeling) Islands
+            COL: Colombia
+            COM: Comoros
+            COG: Congo (Brazzaville)
+            COK: Cook Islands
+            CRI: Costa Rica
+            CIV: C�te d'Ivoire
+            HRV: Croatia
+            CUB: Cuba
+            CYP: Cyprus
+            CZE: Czech Republic
+            COD: Democratic Republic of the Congo
+            DNK: Denmark
+            DJI: Djibouti
+            DMA: Dominica
+            DOM: Dominican Republic
+            ECU: Ecuador
+            EGY: Egypt
+            SLV: El Salvador
+            GNQ: Equatorial Guinea
+            ERI: Eritrea
+            EST: Estonia
+            SWZ: Eswatini
+            ETH: Ethiopia
+            EUE: Europe diplomat
+            FLK: Falkland Islands (Malvinas)
+            FRO: Faroe Islands
+            FSM: Federated States of Micronesia
+            FJI: Fiji
+            FIN: Finland
+            FRA: France
+            GUF: French Guiana
+            PYF: French Polynesia
+            ATF: French Southern Territories
+            GAB: Gabon
+            GMB: Gambia
+            GEO: Georgia
+            DEU: Germany
+            GHA: Ghana
+            GIB: Gibraltar
+            GRC: Greece
+            GRL: Greenland
+            GRD: Grenada
+            GLP: Guadeloupe
+            GUM: Guam
+            GTM: Guatemala
+            GGY: Guernsey
+            GIN: Guinea
+            GNB: Guinea-Bissau
+            GUY: Guyana
+            HTI: Haiti
+            HMD: Heard Island and Mcdonald Islands
+            VAT: Holy See (Vatican City State)
+            HND: Honduras
+            HKG: Hong Kong (CN)
+            HUN: Hungary
+            ISL: Iceland
+            IND: India
+            IDN: Indonesia
+            IRN: Iran
+            IRQ: Iraq
+            IRL: Ireland
+            IMN: Isle of Man
+            ISR: Israel
+            ITA: Italy
+            JAM: Jamaica
+            JPN: Japan
+            JEY: Jersey
+            JOR: Jordan
+            KAZ: Kazakhstan
+            KEN: Kenya
+            KIR: Kiribati
+            XKX: Kosovo
+            KWT: Kuwait
+            KGZ: Kyrgyzstan
+            LAO: Lao PDR
+            LVA: Latvia
+            LBN: Lebanon
+            LSO: Lesotho
+            LBR: Liberia
+            LBY: Libya
+            LIE: Liechtenstein
+            LTU: Lithuania
+            LUX: Luxembourg
+            MAC: Macao (CN)
+            MKD: Macedonia
+            MDG: Madagascar
+            MWI: Malawi
+            MYS: Malaysia
+            MDV: Maldives
+            MLI: Mali
+            MLT: Malta
+            MHL: Marshall Islands
+            MTQ: Martinique
+            MRT: Mauritania
+            MUS: Mauritius
+            MYT: Mayotte
+            MEX: Mexico
+            MDA: Moldova
+            MCO: Monaco
+            MNG: Mongolia
+            MNE: Montenegro
+            MSR: Montserrat
+            MAR: Morocco
+            MOZ: Mozambique
+            MMR: Myanmar
+            NAM: Namibia
+            NRU: Nauru
+            NPL: Nepal
+            NLD: Netherlands
+            ANT: Netherlands Antilles
+            NCL: New Caledonia
+            NZL: New Zealand
+            NIC: Nicaragua
+            NER: Niger
+            NGA: Nigeria
+            NIU: Niue
+            NFK: Norfolk Island
+            PRK: North Korea
+            MNP: Northern Mariana Islands
+            NOR: Norway
+            OMN: Oman
+            PAK: Pakistan
+            PLW: Palau
+            PSE: "Palestinian Territory, Occupied"
+            PAN: Panama
+            PNG: Papua New Guinea
+            PRY: Paraguay
+            PER: Peru
+            PHL: Philippines
+            PCN: Pitcairn Island
+            POL: Poland
+            PRT: Portugal
+            PRI: Puerto Rico
+            QAT: Qatar
+            REU: R�union
+            ROU: Romania
+            RUS: Russian Federation
+            RWA: Rwanda
+            SHN: Saint Helena
+            KNA: Saint Kitts and Nevis
+            LCA: Saint Lucia
+            SPM: Saint Pierre and Miquelon
+            VCT: Saint Vincent and Grenadines
+            BLM: Saint-Barth�lemy
+            MAF: Saint-Martin (French part)
+            WSM: Samoa
+            SMR: San Marino
+            STP: Sao Tome and Principe
+            SAU: Saudi Arabia
+            SEN: Senegal
+            SRB: Serbia
+            SYC: Seychelles
+            SLE: Sierra Leone
+            SGP: Singapore
+            SVK: Slovakia
+            SVN: Slovenia
+            SLB: Solomon Islands
+            SOM: Somalia
+            SOL: Somaliland
+            ZAF: South Africa
+            SGS: South Georgia and the South Sandwich Islands
+            KOR: South Korea
+            SSD: South Sudan
+            ESP: Spain
+            LKA: Sri Lanka
+            SDN: Sudan
+            SUR: Suriname
+            SJM: Svalbard and Jan Mayen Islands
+            SWE: Sweden
+            CHE: Switzerland
+            SYR: Syrian Arab Republic (Syria)
+            TWN: Taiwan (CN)
+            TJK: Tajikistan
+            TZA: Tanzania
+            THA: Thailand
+            TLS: Timor-Leste
+            TGO: Togo
+            TKL: Tokelau
+            TON: Tonga
+            TTO: Trinidad and Tobago
+            TUN: Tunisia
+            TUR: Turkey
+            TKM: Turkmenistan
+            TCA: Turks and Caicos Islands
+            TUV: Tuvalu
+            UGA: Uganda
+            UKR: Ukraine
+            ARE: United Arab Emirates
+            GBR: United Kingdom
+            UMI: United States Minor Outlying Islands
+            USA: United States of America
+            URY: Uruguay
+            UZB: Uzbekistan
+            VUT: Vanuatu
+            VEN: Venezuela
+            VNM: Vietnam
+            VIR: "Virgin Islands, US"
+            WLF: Wallis and Futuna Islands
+            ESH: Western Sahara
+            YEM: Yemen
+            ZMB: Zambia
+            ZWE: Zimbabwe
         Is_Active:
           default: false
           description: Defines if the department is active and can be used
@@ -7750,13 +8258,9 @@ components:
     DepartmentInsertData:
       description: The record of Department information.
       example:
-        DepartmentTypeId:
-          Field: Field
-          Value: Value
+        DepartmentTypeId: External
         ContactPhone: ContactPhone
-        CountryId:
-          Field: Field
-          Value: Value
+        CountryId: AFG
         OwnerId:
           Field: Field
           Value: Value
@@ -7780,7 +8284,14 @@ components:
           description: The name of the department
           type: string
         DepartmentTypeId:
-          $ref: '#/components/schemas/FieldType'
+          description: The  type of department
+          enum:
+          - External
+          - Internal
+          type: string
+          x-enumDescriptions:
+            External: External
+            Internal: Internal
         ParentDepartmentId:
           $ref: '#/components/schemas/FieldType'
         ContactName:
@@ -7794,7 +8305,512 @@ components:
         OwnerId:
           $ref: '#/components/schemas/FieldType'
         CountryId:
-          $ref: '#/components/schemas/FieldType'
+          description: The country of the department
+          enum:
+          - AFG
+          - ALA
+          - ALB
+          - DZA
+          - ASM
+          - AND
+          - AGO
+          - AIA
+          - ATA
+          - ATG
+          - ARG
+          - ARM
+          - ABW
+          - AUS
+          - AUT
+          - AZE
+          - AZO
+          - BHS
+          - BHR
+          - BGD
+          - BRB
+          - BLR
+          - BEL
+          - BLZ
+          - BEN
+          - BMU
+          - BTN
+          - BOL
+          - BIH
+          - BWA
+          - BVT
+          - BRA
+          - IOT
+          - VGB
+          - BRN
+          - BGR
+          - BFA
+          - BDI
+          - KHM
+          - CMR
+          - CAN
+          - CPV
+          - CYM
+          - CAF
+          - TCD
+          - CHL
+          - CHN
+          - CXR
+          - CCK
+          - COL
+          - COM
+          - COG
+          - COK
+          - CRI
+          - CIV
+          - HRV
+          - CUB
+          - CYP
+          - CZE
+          - COD
+          - DNK
+          - DJI
+          - DMA
+          - DOM
+          - ECU
+          - EGY
+          - SLV
+          - GNQ
+          - ERI
+          - EST
+          - SWZ
+          - ETH
+          - EUE
+          - FLK
+          - FRO
+          - FSM
+          - FJI
+          - FIN
+          - FRA
+          - GUF
+          - PYF
+          - ATF
+          - GAB
+          - GMB
+          - GEO
+          - DEU
+          - GHA
+          - GIB
+          - GRC
+          - GRL
+          - GRD
+          - GLP
+          - GUM
+          - GTM
+          - GGY
+          - GIN
+          - GNB
+          - GUY
+          - HTI
+          - HMD
+          - VAT
+          - HND
+          - HKG
+          - HUN
+          - ISL
+          - IND
+          - IDN
+          - IRN
+          - IRQ
+          - IRL
+          - IMN
+          - ISR
+          - ITA
+          - JAM
+          - JPN
+          - JEY
+          - JOR
+          - KAZ
+          - KEN
+          - KIR
+          - XKX
+          - KWT
+          - KGZ
+          - LAO
+          - LVA
+          - LBN
+          - LSO
+          - LBR
+          - LBY
+          - LIE
+          - LTU
+          - LUX
+          - MAC
+          - MKD
+          - MDG
+          - MWI
+          - MYS
+          - MDV
+          - MLI
+          - MLT
+          - MHL
+          - MTQ
+          - MRT
+          - MUS
+          - MYT
+          - MEX
+          - MDA
+          - MCO
+          - MNG
+          - MNE
+          - MSR
+          - MAR
+          - MOZ
+          - MMR
+          - NAM
+          - NRU
+          - NPL
+          - NLD
+          - ANT
+          - NCL
+          - NZL
+          - NIC
+          - NER
+          - NGA
+          - NIU
+          - NFK
+          - PRK
+          - MNP
+          - NOR
+          - OMN
+          - PAK
+          - PLW
+          - PSE
+          - PAN
+          - PNG
+          - PRY
+          - PER
+          - PHL
+          - PCN
+          - POL
+          - PRT
+          - PRI
+          - QAT
+          - REU
+          - ROU
+          - RUS
+          - RWA
+          - SHN
+          - KNA
+          - LCA
+          - SPM
+          - VCT
+          - BLM
+          - MAF
+          - WSM
+          - SMR
+          - STP
+          - SAU
+          - SEN
+          - SRB
+          - SYC
+          - SLE
+          - SGP
+          - SVK
+          - SVN
+          - SLB
+          - SOM
+          - SOL
+          - ZAF
+          - SGS
+          - KOR
+          - SSD
+          - ESP
+          - LKA
+          - SDN
+          - SUR
+          - SJM
+          - SWE
+          - CHE
+          - SYR
+          - TWN
+          - TJK
+          - TZA
+          - THA
+          - TLS
+          - TGO
+          - TKL
+          - TON
+          - TTO
+          - TUN
+          - TUR
+          - TKM
+          - TCA
+          - TUV
+          - UGA
+          - UKR
+          - ARE
+          - GBR
+          - UMI
+          - USA
+          - URY
+          - UZB
+          - VUT
+          - VEN
+          - VNM
+          - VIR
+          - WLF
+          - ESH
+          - YEM
+          - ZMB
+          - ZWE
+          type: string
+          x-enumDescriptions:
+            AFG: Afghanistan
+            ALA: Aland Islands
+            ALB: Albania
+            DZA: Algeria
+            ASM: American Samoa
+            AND: Andorra
+            AGO: Angola
+            AIA: Anguilla
+            ATA: Antarctica
+            ATG: Antigua and Barbuda
+            ARG: Argentina
+            ARM: Armenia
+            ABW: Aruba
+            AUS: Australia
+            AUT: Austria
+            AZE: Azerbaijan
+            AZO: Azores
+            BHS: Bahamas
+            BHR: Bahrain
+            BGD: Bangladesh
+            BRB: Barbados
+            BLR: Belarus
+            BEL: Belgium
+            BLZ: Belize
+            BEN: Benin
+            BMU: Bermuda
+            BTN: Bhutan
+            BOL: Bolivia
+            BIH: Bosnia and Herzegovina
+            BWA: Botswana
+            BVT: Bouvet Island
+            BRA: Brazil
+            IOT: British Indian Ocean Territory
+            VGB: British Virgin Islands
+            BRN: Brunei Darussalam
+            BGR: Bulgaria
+            BFA: Burkina Faso
+            BDI: Burundi
+            KHM: Cambodia
+            CMR: Cameroon
+            CAN: Canada
+            CPV: Cape Verde
+            CYM: Cayman Islands
+            CAF: Central African Republic
+            TCD: Chad
+            CHL: Chile
+            CHN: China
+            CXR: Christmas Island
+            CCK: Cocos (Keeling) Islands
+            COL: Colombia
+            COM: Comoros
+            COG: Congo (Brazzaville)
+            COK: Cook Islands
+            CRI: Costa Rica
+            CIV: C�te d'Ivoire
+            HRV: Croatia
+            CUB: Cuba
+            CYP: Cyprus
+            CZE: Czech Republic
+            COD: Democratic Republic of the Congo
+            DNK: Denmark
+            DJI: Djibouti
+            DMA: Dominica
+            DOM: Dominican Republic
+            ECU: Ecuador
+            EGY: Egypt
+            SLV: El Salvador
+            GNQ: Equatorial Guinea
+            ERI: Eritrea
+            EST: Estonia
+            SWZ: Eswatini
+            ETH: Ethiopia
+            EUE: Europe diplomat
+            FLK: Falkland Islands (Malvinas)
+            FRO: Faroe Islands
+            FSM: Federated States of Micronesia
+            FJI: Fiji
+            FIN: Finland
+            FRA: France
+            GUF: French Guiana
+            PYF: French Polynesia
+            ATF: French Southern Territories
+            GAB: Gabon
+            GMB: Gambia
+            GEO: Georgia
+            DEU: Germany
+            GHA: Ghana
+            GIB: Gibraltar
+            GRC: Greece
+            GRL: Greenland
+            GRD: Grenada
+            GLP: Guadeloupe
+            GUM: Guam
+            GTM: Guatemala
+            GGY: Guernsey
+            GIN: Guinea
+            GNB: Guinea-Bissau
+            GUY: Guyana
+            HTI: Haiti
+            HMD: Heard Island and Mcdonald Islands
+            VAT: Holy See (Vatican City State)
+            HND: Honduras
+            HKG: Hong Kong (CN)
+            HUN: Hungary
+            ISL: Iceland
+            IND: India
+            IDN: Indonesia
+            IRN: Iran
+            IRQ: Iraq
+            IRL: Ireland
+            IMN: Isle of Man
+            ISR: Israel
+            ITA: Italy
+            JAM: Jamaica
+            JPN: Japan
+            JEY: Jersey
+            JOR: Jordan
+            KAZ: Kazakhstan
+            KEN: Kenya
+            KIR: Kiribati
+            XKX: Kosovo
+            KWT: Kuwait
+            KGZ: Kyrgyzstan
+            LAO: Lao PDR
+            LVA: Latvia
+            LBN: Lebanon
+            LSO: Lesotho
+            LBR: Liberia
+            LBY: Libya
+            LIE: Liechtenstein
+            LTU: Lithuania
+            LUX: Luxembourg
+            MAC: Macao (CN)
+            MKD: Macedonia
+            MDG: Madagascar
+            MWI: Malawi
+            MYS: Malaysia
+            MDV: Maldives
+            MLI: Mali
+            MLT: Malta
+            MHL: Marshall Islands
+            MTQ: Martinique
+            MRT: Mauritania
+            MUS: Mauritius
+            MYT: Mayotte
+            MEX: Mexico
+            MDA: Moldova
+            MCO: Monaco
+            MNG: Mongolia
+            MNE: Montenegro
+            MSR: Montserrat
+            MAR: Morocco
+            MOZ: Mozambique
+            MMR: Myanmar
+            NAM: Namibia
+            NRU: Nauru
+            NPL: Nepal
+            NLD: Netherlands
+            ANT: Netherlands Antilles
+            NCL: New Caledonia
+            NZL: New Zealand
+            NIC: Nicaragua
+            NER: Niger
+            NGA: Nigeria
+            NIU: Niue
+            NFK: Norfolk Island
+            PRK: North Korea
+            MNP: Northern Mariana Islands
+            NOR: Norway
+            OMN: Oman
+            PAK: Pakistan
+            PLW: Palau
+            PSE: "Palestinian Territory, Occupied"
+            PAN: Panama
+            PNG: Papua New Guinea
+            PRY: Paraguay
+            PER: Peru
+            PHL: Philippines
+            PCN: Pitcairn Island
+            POL: Poland
+            PRT: Portugal
+            PRI: Puerto Rico
+            QAT: Qatar
+            REU: R�union
+            ROU: Romania
+            RUS: Russian Federation
+            RWA: Rwanda
+            SHN: Saint Helena
+            KNA: Saint Kitts and Nevis
+            LCA: Saint Lucia
+            SPM: Saint Pierre and Miquelon
+            VCT: Saint Vincent and Grenadines
+            BLM: Saint-Barth�lemy
+            MAF: Saint-Martin (French part)
+            WSM: Samoa
+            SMR: San Marino
+            STP: Sao Tome and Principe
+            SAU: Saudi Arabia
+            SEN: Senegal
+            SRB: Serbia
+            SYC: Seychelles
+            SLE: Sierra Leone
+            SGP: Singapore
+            SVK: Slovakia
+            SVN: Slovenia
+            SLB: Solomon Islands
+            SOM: Somalia
+            SOL: Somaliland
+            ZAF: South Africa
+            SGS: South Georgia and the South Sandwich Islands
+            KOR: South Korea
+            SSD: South Sudan
+            ESP: Spain
+            LKA: Sri Lanka
+            SDN: Sudan
+            SUR: Suriname
+            SJM: Svalbard and Jan Mayen Islands
+            SWE: Sweden
+            CHE: Switzerland
+            SYR: Syrian Arab Republic (Syria)
+            TWN: Taiwan (CN)
+            TJK: Tajikistan
+            TZA: Tanzania
+            THA: Thailand
+            TLS: Timor-Leste
+            TGO: Togo
+            TKL: Tokelau
+            TON: Tonga
+            TTO: Trinidad and Tobago
+            TUN: Tunisia
+            TUR: Turkey
+            TKM: Turkmenistan
+            TCA: Turks and Caicos Islands
+            TUV: Tuvalu
+            UGA: Uganda
+            UKR: Ukraine
+            ARE: United Arab Emirates
+            GBR: United Kingdom
+            UMI: United States Minor Outlying Islands
+            USA: United States of America
+            URY: Uruguay
+            UZB: Uzbekistan
+            VUT: Vanuatu
+            VEN: Venezuela
+            VNM: Vietnam
+            VIR: "Virgin Islands, US"
+            WLF: Wallis and Futuna Islands
+            ESH: Western Sahara
+            YEM: Yemen
+            ZMB: Zambia
+            ZWE: Zimbabwe
         Is_Active:
           default: false
           description: Defines if the department is active and can be used
@@ -7810,9 +8826,7 @@ components:
       description: The record of Department information.
       example:
         ContactPhone: ContactPhone
-        CountryId:
-          Field: Field
-          Value: Value
+        CountryId: AFG
         OwnerId:
           Field: Field
           Value: Value
@@ -7839,7 +8853,512 @@ components:
         OwnerId:
           $ref: '#/components/schemas/FieldType'
         CountryId:
-          $ref: '#/components/schemas/FieldType'
+          description: The country of the department
+          enum:
+          - AFG
+          - ALA
+          - ALB
+          - DZA
+          - ASM
+          - AND
+          - AGO
+          - AIA
+          - ATA
+          - ATG
+          - ARG
+          - ARM
+          - ABW
+          - AUS
+          - AUT
+          - AZE
+          - AZO
+          - BHS
+          - BHR
+          - BGD
+          - BRB
+          - BLR
+          - BEL
+          - BLZ
+          - BEN
+          - BMU
+          - BTN
+          - BOL
+          - BIH
+          - BWA
+          - BVT
+          - BRA
+          - IOT
+          - VGB
+          - BRN
+          - BGR
+          - BFA
+          - BDI
+          - KHM
+          - CMR
+          - CAN
+          - CPV
+          - CYM
+          - CAF
+          - TCD
+          - CHL
+          - CHN
+          - CXR
+          - CCK
+          - COL
+          - COM
+          - COG
+          - COK
+          - CRI
+          - CIV
+          - HRV
+          - CUB
+          - CYP
+          - CZE
+          - COD
+          - DNK
+          - DJI
+          - DMA
+          - DOM
+          - ECU
+          - EGY
+          - SLV
+          - GNQ
+          - ERI
+          - EST
+          - SWZ
+          - ETH
+          - EUE
+          - FLK
+          - FRO
+          - FSM
+          - FJI
+          - FIN
+          - FRA
+          - GUF
+          - PYF
+          - ATF
+          - GAB
+          - GMB
+          - GEO
+          - DEU
+          - GHA
+          - GIB
+          - GRC
+          - GRL
+          - GRD
+          - GLP
+          - GUM
+          - GTM
+          - GGY
+          - GIN
+          - GNB
+          - GUY
+          - HTI
+          - HMD
+          - VAT
+          - HND
+          - HKG
+          - HUN
+          - ISL
+          - IND
+          - IDN
+          - IRN
+          - IRQ
+          - IRL
+          - IMN
+          - ISR
+          - ITA
+          - JAM
+          - JPN
+          - JEY
+          - JOR
+          - KAZ
+          - KEN
+          - KIR
+          - XKX
+          - KWT
+          - KGZ
+          - LAO
+          - LVA
+          - LBN
+          - LSO
+          - LBR
+          - LBY
+          - LIE
+          - LTU
+          - LUX
+          - MAC
+          - MKD
+          - MDG
+          - MWI
+          - MYS
+          - MDV
+          - MLI
+          - MLT
+          - MHL
+          - MTQ
+          - MRT
+          - MUS
+          - MYT
+          - MEX
+          - MDA
+          - MCO
+          - MNG
+          - MNE
+          - MSR
+          - MAR
+          - MOZ
+          - MMR
+          - NAM
+          - NRU
+          - NPL
+          - NLD
+          - ANT
+          - NCL
+          - NZL
+          - NIC
+          - NER
+          - NGA
+          - NIU
+          - NFK
+          - PRK
+          - MNP
+          - NOR
+          - OMN
+          - PAK
+          - PLW
+          - PSE
+          - PAN
+          - PNG
+          - PRY
+          - PER
+          - PHL
+          - PCN
+          - POL
+          - PRT
+          - PRI
+          - QAT
+          - REU
+          - ROU
+          - RUS
+          - RWA
+          - SHN
+          - KNA
+          - LCA
+          - SPM
+          - VCT
+          - BLM
+          - MAF
+          - WSM
+          - SMR
+          - STP
+          - SAU
+          - SEN
+          - SRB
+          - SYC
+          - SLE
+          - SGP
+          - SVK
+          - SVN
+          - SLB
+          - SOM
+          - SOL
+          - ZAF
+          - SGS
+          - KOR
+          - SSD
+          - ESP
+          - LKA
+          - SDN
+          - SUR
+          - SJM
+          - SWE
+          - CHE
+          - SYR
+          - TWN
+          - TJK
+          - TZA
+          - THA
+          - TLS
+          - TGO
+          - TKL
+          - TON
+          - TTO
+          - TUN
+          - TUR
+          - TKM
+          - TCA
+          - TUV
+          - UGA
+          - UKR
+          - ARE
+          - GBR
+          - UMI
+          - USA
+          - URY
+          - UZB
+          - VUT
+          - VEN
+          - VNM
+          - VIR
+          - WLF
+          - ESH
+          - YEM
+          - ZMB
+          - ZWE
+          type: string
+          x-enumDescriptions:
+            AFG: Afghanistan
+            ALA: Aland Islands
+            ALB: Albania
+            DZA: Algeria
+            ASM: American Samoa
+            AND: Andorra
+            AGO: Angola
+            AIA: Anguilla
+            ATA: Antarctica
+            ATG: Antigua and Barbuda
+            ARG: Argentina
+            ARM: Armenia
+            ABW: Aruba
+            AUS: Australia
+            AUT: Austria
+            AZE: Azerbaijan
+            AZO: Azores
+            BHS: Bahamas
+            BHR: Bahrain
+            BGD: Bangladesh
+            BRB: Barbados
+            BLR: Belarus
+            BEL: Belgium
+            BLZ: Belize
+            BEN: Benin
+            BMU: Bermuda
+            BTN: Bhutan
+            BOL: Bolivia
+            BIH: Bosnia and Herzegovina
+            BWA: Botswana
+            BVT: Bouvet Island
+            BRA: Brazil
+            IOT: British Indian Ocean Territory
+            VGB: British Virgin Islands
+            BRN: Brunei Darussalam
+            BGR: Bulgaria
+            BFA: Burkina Faso
+            BDI: Burundi
+            KHM: Cambodia
+            CMR: Cameroon
+            CAN: Canada
+            CPV: Cape Verde
+            CYM: Cayman Islands
+            CAF: Central African Republic
+            TCD: Chad
+            CHL: Chile
+            CHN: China
+            CXR: Christmas Island
+            CCK: Cocos (Keeling) Islands
+            COL: Colombia
+            COM: Comoros
+            COG: Congo (Brazzaville)
+            COK: Cook Islands
+            CRI: Costa Rica
+            CIV: C�te d'Ivoire
+            HRV: Croatia
+            CUB: Cuba
+            CYP: Cyprus
+            CZE: Czech Republic
+            COD: Democratic Republic of the Congo
+            DNK: Denmark
+            DJI: Djibouti
+            DMA: Dominica
+            DOM: Dominican Republic
+            ECU: Ecuador
+            EGY: Egypt
+            SLV: El Salvador
+            GNQ: Equatorial Guinea
+            ERI: Eritrea
+            EST: Estonia
+            SWZ: Eswatini
+            ETH: Ethiopia
+            EUE: Europe diplomat
+            FLK: Falkland Islands (Malvinas)
+            FRO: Faroe Islands
+            FSM: Federated States of Micronesia
+            FJI: Fiji
+            FIN: Finland
+            FRA: France
+            GUF: French Guiana
+            PYF: French Polynesia
+            ATF: French Southern Territories
+            GAB: Gabon
+            GMB: Gambia
+            GEO: Georgia
+            DEU: Germany
+            GHA: Ghana
+            GIB: Gibraltar
+            GRC: Greece
+            GRL: Greenland
+            GRD: Grenada
+            GLP: Guadeloupe
+            GUM: Guam
+            GTM: Guatemala
+            GGY: Guernsey
+            GIN: Guinea
+            GNB: Guinea-Bissau
+            GUY: Guyana
+            HTI: Haiti
+            HMD: Heard Island and Mcdonald Islands
+            VAT: Holy See (Vatican City State)
+            HND: Honduras
+            HKG: Hong Kong (CN)
+            HUN: Hungary
+            ISL: Iceland
+            IND: India
+            IDN: Indonesia
+            IRN: Iran
+            IRQ: Iraq
+            IRL: Ireland
+            IMN: Isle of Man
+            ISR: Israel
+            ITA: Italy
+            JAM: Jamaica
+            JPN: Japan
+            JEY: Jersey
+            JOR: Jordan
+            KAZ: Kazakhstan
+            KEN: Kenya
+            KIR: Kiribati
+            XKX: Kosovo
+            KWT: Kuwait
+            KGZ: Kyrgyzstan
+            LAO: Lao PDR
+            LVA: Latvia
+            LBN: Lebanon
+            LSO: Lesotho
+            LBR: Liberia
+            LBY: Libya
+            LIE: Liechtenstein
+            LTU: Lithuania
+            LUX: Luxembourg
+            MAC: Macao (CN)
+            MKD: Macedonia
+            MDG: Madagascar
+            MWI: Malawi
+            MYS: Malaysia
+            MDV: Maldives
+            MLI: Mali
+            MLT: Malta
+            MHL: Marshall Islands
+            MTQ: Martinique
+            MRT: Mauritania
+            MUS: Mauritius
+            MYT: Mayotte
+            MEX: Mexico
+            MDA: Moldova
+            MCO: Monaco
+            MNG: Mongolia
+            MNE: Montenegro
+            MSR: Montserrat
+            MAR: Morocco
+            MOZ: Mozambique
+            MMR: Myanmar
+            NAM: Namibia
+            NRU: Nauru
+            NPL: Nepal
+            NLD: Netherlands
+            ANT: Netherlands Antilles
+            NCL: New Caledonia
+            NZL: New Zealand
+            NIC: Nicaragua
+            NER: Niger
+            NGA: Nigeria
+            NIU: Niue
+            NFK: Norfolk Island
+            PRK: North Korea
+            MNP: Northern Mariana Islands
+            NOR: Norway
+            OMN: Oman
+            PAK: Pakistan
+            PLW: Palau
+            PSE: "Palestinian Territory, Occupied"
+            PAN: Panama
+            PNG: Papua New Guinea
+            PRY: Paraguay
+            PER: Peru
+            PHL: Philippines
+            PCN: Pitcairn Island
+            POL: Poland
+            PRT: Portugal
+            PRI: Puerto Rico
+            QAT: Qatar
+            REU: R�union
+            ROU: Romania
+            RUS: Russian Federation
+            RWA: Rwanda
+            SHN: Saint Helena
+            KNA: Saint Kitts and Nevis
+            LCA: Saint Lucia
+            SPM: Saint Pierre and Miquelon
+            VCT: Saint Vincent and Grenadines
+            BLM: Saint-Barth�lemy
+            MAF: Saint-Martin (French part)
+            WSM: Samoa
+            SMR: San Marino
+            STP: Sao Tome and Principe
+            SAU: Saudi Arabia
+            SEN: Senegal
+            SRB: Serbia
+            SYC: Seychelles
+            SLE: Sierra Leone
+            SGP: Singapore
+            SVK: Slovakia
+            SVN: Slovenia
+            SLB: Solomon Islands
+            SOM: Somalia
+            SOL: Somaliland
+            ZAF: South Africa
+            SGS: South Georgia and the South Sandwich Islands
+            KOR: South Korea
+            SSD: South Sudan
+            ESP: Spain
+            LKA: Sri Lanka
+            SDN: Sudan
+            SUR: Suriname
+            SJM: Svalbard and Jan Mayen Islands
+            SWE: Sweden
+            CHE: Switzerland
+            SYR: Syrian Arab Republic (Syria)
+            TWN: Taiwan (CN)
+            TJK: Tajikistan
+            TZA: Tanzania
+            THA: Thailand
+            TLS: Timor-Leste
+            TGO: Togo
+            TKL: Tokelau
+            TON: Tonga
+            TTO: Trinidad and Tobago
+            TUN: Tunisia
+            TUR: Turkey
+            TKM: Turkmenistan
+            TCA: Turks and Caicos Islands
+            TUV: Tuvalu
+            UGA: Uganda
+            UKR: Ukraine
+            ARE: United Arab Emirates
+            GBR: United Kingdom
+            UMI: United States Minor Outlying Islands
+            USA: United States of America
+            URY: Uruguay
+            UZB: Uzbekistan
+            VUT: Vanuatu
+            VEN: Venezuela
+            VNM: Vietnam
+            VIR: "Virgin Islands, US"
+            WLF: Wallis and Futuna Islands
+            ESH: Western Sahara
+            YEM: Yemen
+            ZMB: Zambia
+            ZWE: Zimbabwe
         Is_Active:
           default: false
           description: Defines if the department is active and can be used
@@ -8235,18 +9754,12 @@ components:
     LocationData:
       description: The record of Location information.
       example:
-        CountryId:
-          Field: Field
-          Value: Value
+        CountryId: AFG
         Is_Active: false
         ExternalId: ExternalId
         Id: Id
-        TimezoneId:
-          Field: Field
-          Value: Value
-        CurrencyId:
-          Field: Field
-          Value: Value
+        TimezoneId: Afghanistan Standard Time
+        CurrencyId: AUD
         Name: Name
       properties:
         Id:
@@ -8259,11 +9772,757 @@ components:
           description: The name of the location
           type: string
         CountryId:
-          $ref: '#/components/schemas/FieldType'
+          description: The country of the location
+          enum:
+          - AFG
+          - ALA
+          - ALB
+          - DZA
+          - ASM
+          - AND
+          - AGO
+          - AIA
+          - ATA
+          - ATG
+          - ARG
+          - ARM
+          - ABW
+          - AUS
+          - AUT
+          - AZE
+          - AZO
+          - BHS
+          - BHR
+          - BGD
+          - BRB
+          - BLR
+          - BEL
+          - BLZ
+          - BEN
+          - BMU
+          - BTN
+          - BOL
+          - BIH
+          - BWA
+          - BVT
+          - BRA
+          - IOT
+          - VGB
+          - BRN
+          - BGR
+          - BFA
+          - BDI
+          - KHM
+          - CMR
+          - CAN
+          - CPV
+          - CYM
+          - CAF
+          - TCD
+          - CHL
+          - CHN
+          - CXR
+          - CCK
+          - COL
+          - COM
+          - COG
+          - COK
+          - CRI
+          - CIV
+          - HRV
+          - CUB
+          - CYP
+          - CZE
+          - COD
+          - DNK
+          - DJI
+          - DMA
+          - DOM
+          - ECU
+          - EGY
+          - SLV
+          - GNQ
+          - ERI
+          - EST
+          - SWZ
+          - ETH
+          - EUE
+          - FLK
+          - FRO
+          - FSM
+          - FJI
+          - FIN
+          - FRA
+          - GUF
+          - PYF
+          - ATF
+          - GAB
+          - GMB
+          - GEO
+          - DEU
+          - GHA
+          - GIB
+          - GRC
+          - GRL
+          - GRD
+          - GLP
+          - GUM
+          - GTM
+          - GGY
+          - GIN
+          - GNB
+          - GUY
+          - HTI
+          - HMD
+          - VAT
+          - HND
+          - HKG
+          - HUN
+          - ISL
+          - IND
+          - IDN
+          - IRN
+          - IRQ
+          - IRL
+          - IMN
+          - ISR
+          - ITA
+          - JAM
+          - JPN
+          - JEY
+          - JOR
+          - KAZ
+          - KEN
+          - KIR
+          - XKX
+          - KWT
+          - KGZ
+          - LAO
+          - LVA
+          - LBN
+          - LSO
+          - LBR
+          - LBY
+          - LIE
+          - LTU
+          - LUX
+          - MAC
+          - MKD
+          - MDG
+          - MWI
+          - MYS
+          - MDV
+          - MLI
+          - MLT
+          - MHL
+          - MTQ
+          - MRT
+          - MUS
+          - MYT
+          - MEX
+          - MDA
+          - MCO
+          - MNG
+          - MNE
+          - MSR
+          - MAR
+          - MOZ
+          - MMR
+          - NAM
+          - NRU
+          - NPL
+          - NLD
+          - ANT
+          - NCL
+          - NZL
+          - NIC
+          - NER
+          - NGA
+          - NIU
+          - NFK
+          - PRK
+          - MNP
+          - NOR
+          - OMN
+          - PAK
+          - PLW
+          - PSE
+          - PAN
+          - PNG
+          - PRY
+          - PER
+          - PHL
+          - PCN
+          - POL
+          - PRT
+          - PRI
+          - QAT
+          - REU
+          - ROU
+          - RUS
+          - RWA
+          - SHN
+          - KNA
+          - LCA
+          - SPM
+          - VCT
+          - BLM
+          - MAF
+          - WSM
+          - SMR
+          - STP
+          - SAU
+          - SEN
+          - SRB
+          - SYC
+          - SLE
+          - SGP
+          - SVK
+          - SVN
+          - SLB
+          - SOM
+          - SOL
+          - ZAF
+          - SGS
+          - KOR
+          - SSD
+          - ESP
+          - LKA
+          - SDN
+          - SUR
+          - SJM
+          - SWE
+          - CHE
+          - SYR
+          - TWN
+          - TJK
+          - TZA
+          - THA
+          - TLS
+          - TGO
+          - TKL
+          - TON
+          - TTO
+          - TUN
+          - TUR
+          - TKM
+          - TCA
+          - TUV
+          - UGA
+          - UKR
+          - ARE
+          - GBR
+          - UMI
+          - USA
+          - URY
+          - UZB
+          - VUT
+          - VEN
+          - VNM
+          - VIR
+          - WLF
+          - ESH
+          - YEM
+          - ZMB
+          - ZWE
+          type: string
+          x-enumDescriptions:
+            AFG: Afghanistan
+            ALA: Aland Islands
+            ALB: Albania
+            DZA: Algeria
+            ASM: American Samoa
+            AND: Andorra
+            AGO: Angola
+            AIA: Anguilla
+            ATA: Antarctica
+            ATG: Antigua and Barbuda
+            ARG: Argentina
+            ARM: Armenia
+            ABW: Aruba
+            AUS: Australia
+            AUT: Austria
+            AZE: Azerbaijan
+            AZO: Azores
+            BHS: Bahamas
+            BHR: Bahrain
+            BGD: Bangladesh
+            BRB: Barbados
+            BLR: Belarus
+            BEL: Belgium
+            BLZ: Belize
+            BEN: Benin
+            BMU: Bermuda
+            BTN: Bhutan
+            BOL: Bolivia
+            BIH: Bosnia and Herzegovina
+            BWA: Botswana
+            BVT: Bouvet Island
+            BRA: Brazil
+            IOT: British Indian Ocean Territory
+            VGB: British Virgin Islands
+            BRN: Brunei Darussalam
+            BGR: Bulgaria
+            BFA: Burkina Faso
+            BDI: Burundi
+            KHM: Cambodia
+            CMR: Cameroon
+            CAN: Canada
+            CPV: Cape Verde
+            CYM: Cayman Islands
+            CAF: Central African Republic
+            TCD: Chad
+            CHL: Chile
+            CHN: China
+            CXR: Christmas Island
+            CCK: Cocos (Keeling) Islands
+            COL: Colombia
+            COM: Comoros
+            COG: Congo (Brazzaville)
+            COK: Cook Islands
+            CRI: Costa Rica
+            CIV: C�te d'Ivoire
+            HRV: Croatia
+            CUB: Cuba
+            CYP: Cyprus
+            CZE: Czech Republic
+            COD: Democratic Republic of the Congo
+            DNK: Denmark
+            DJI: Djibouti
+            DMA: Dominica
+            DOM: Dominican Republic
+            ECU: Ecuador
+            EGY: Egypt
+            SLV: El Salvador
+            GNQ: Equatorial Guinea
+            ERI: Eritrea
+            EST: Estonia
+            SWZ: Eswatini
+            ETH: Ethiopia
+            EUE: Europe diplomat
+            FLK: Falkland Islands (Malvinas)
+            FRO: Faroe Islands
+            FSM: Federated States of Micronesia
+            FJI: Fiji
+            FIN: Finland
+            FRA: France
+            GUF: French Guiana
+            PYF: French Polynesia
+            ATF: French Southern Territories
+            GAB: Gabon
+            GMB: Gambia
+            GEO: Georgia
+            DEU: Germany
+            GHA: Ghana
+            GIB: Gibraltar
+            GRC: Greece
+            GRL: Greenland
+            GRD: Grenada
+            GLP: Guadeloupe
+            GUM: Guam
+            GTM: Guatemala
+            GGY: Guernsey
+            GIN: Guinea
+            GNB: Guinea-Bissau
+            GUY: Guyana
+            HTI: Haiti
+            HMD: Heard Island and Mcdonald Islands
+            VAT: Holy See (Vatican City State)
+            HND: Honduras
+            HKG: Hong Kong (CN)
+            HUN: Hungary
+            ISL: Iceland
+            IND: India
+            IDN: Indonesia
+            IRN: Iran
+            IRQ: Iraq
+            IRL: Ireland
+            IMN: Isle of Man
+            ISR: Israel
+            ITA: Italy
+            JAM: Jamaica
+            JPN: Japan
+            JEY: Jersey
+            JOR: Jordan
+            KAZ: Kazakhstan
+            KEN: Kenya
+            KIR: Kiribati
+            XKX: Kosovo
+            KWT: Kuwait
+            KGZ: Kyrgyzstan
+            LAO: Lao PDR
+            LVA: Latvia
+            LBN: Lebanon
+            LSO: Lesotho
+            LBR: Liberia
+            LBY: Libya
+            LIE: Liechtenstein
+            LTU: Lithuania
+            LUX: Luxembourg
+            MAC: Macao (CN)
+            MKD: Macedonia
+            MDG: Madagascar
+            MWI: Malawi
+            MYS: Malaysia
+            MDV: Maldives
+            MLI: Mali
+            MLT: Malta
+            MHL: Marshall Islands
+            MTQ: Martinique
+            MRT: Mauritania
+            MUS: Mauritius
+            MYT: Mayotte
+            MEX: Mexico
+            MDA: Moldova
+            MCO: Monaco
+            MNG: Mongolia
+            MNE: Montenegro
+            MSR: Montserrat
+            MAR: Morocco
+            MOZ: Mozambique
+            MMR: Myanmar
+            NAM: Namibia
+            NRU: Nauru
+            NPL: Nepal
+            NLD: Netherlands
+            ANT: Netherlands Antilles
+            NCL: New Caledonia
+            NZL: New Zealand
+            NIC: Nicaragua
+            NER: Niger
+            NGA: Nigeria
+            NIU: Niue
+            NFK: Norfolk Island
+            PRK: North Korea
+            MNP: Northern Mariana Islands
+            NOR: Norway
+            OMN: Oman
+            PAK: Pakistan
+            PLW: Palau
+            PSE: "Palestinian Territory, Occupied"
+            PAN: Panama
+            PNG: Papua New Guinea
+            PRY: Paraguay
+            PER: Peru
+            PHL: Philippines
+            PCN: Pitcairn Island
+            POL: Poland
+            PRT: Portugal
+            PRI: Puerto Rico
+            QAT: Qatar
+            REU: R�union
+            ROU: Romania
+            RUS: Russian Federation
+            RWA: Rwanda
+            SHN: Saint Helena
+            KNA: Saint Kitts and Nevis
+            LCA: Saint Lucia
+            SPM: Saint Pierre and Miquelon
+            VCT: Saint Vincent and Grenadines
+            BLM: Saint-Barth�lemy
+            MAF: Saint-Martin (French part)
+            WSM: Samoa
+            SMR: San Marino
+            STP: Sao Tome and Principe
+            SAU: Saudi Arabia
+            SEN: Senegal
+            SRB: Serbia
+            SYC: Seychelles
+            SLE: Sierra Leone
+            SGP: Singapore
+            SVK: Slovakia
+            SVN: Slovenia
+            SLB: Solomon Islands
+            SOM: Somalia
+            SOL: Somaliland
+            ZAF: South Africa
+            SGS: South Georgia and the South Sandwich Islands
+            KOR: South Korea
+            SSD: South Sudan
+            ESP: Spain
+            LKA: Sri Lanka
+            SDN: Sudan
+            SUR: Suriname
+            SJM: Svalbard and Jan Mayen Islands
+            SWE: Sweden
+            CHE: Switzerland
+            SYR: Syrian Arab Republic (Syria)
+            TWN: Taiwan (CN)
+            TJK: Tajikistan
+            TZA: Tanzania
+            THA: Thailand
+            TLS: Timor-Leste
+            TGO: Togo
+            TKL: Tokelau
+            TON: Tonga
+            TTO: Trinidad and Tobago
+            TUN: Tunisia
+            TUR: Turkey
+            TKM: Turkmenistan
+            TCA: Turks and Caicos Islands
+            TUV: Tuvalu
+            UGA: Uganda
+            UKR: Ukraine
+            ARE: United Arab Emirates
+            GBR: United Kingdom
+            UMI: United States Minor Outlying Islands
+            USA: United States of America
+            URY: Uruguay
+            UZB: Uzbekistan
+            VUT: Vanuatu
+            VEN: Venezuela
+            VNM: Vietnam
+            VIR: "Virgin Islands, US"
+            WLF: Wallis and Futuna Islands
+            ESH: Western Sahara
+            YEM: Yemen
+            ZMB: Zambia
+            ZWE: Zimbabwe
         TimezoneId:
-          $ref: '#/components/schemas/FieldType'
+          description: The timezone of the location
+          enum:
+          - Afghanistan Standard Time
+          - Alaskan Standard Time
+          - Arab Standard Time
+          - Arabian Standard Time
+          - Arabic Standard Time
+          - Argentina Standard Time
+          - Atlantic Standard Time
+          - AUS Central Standard Time
+          - AUS Eastern Standard Time
+          - Azerbaijan Standard Time
+          - Azores Standard Time
+          - Canada Central Standard Time
+          - Cape Verde Standard Time
+          - Caucasus Standard Time
+          - Cen. Australia Standard Time
+          - Central America Standard Time
+          - Central Asia Standard Time
+          - Central Brazilian Standard Time
+          - Central Europe Standard Time
+          - Central European Standard Time
+          - Central Pacific Standard Time
+          - Central Standard Time
+          - Central Standard Time (Mexico)
+          - China Standard Time
+          - Dateline Standard Time
+          - E. Africa Standard Time
+          - E. Australia Standard Time
+          - E. Europe Standard Time
+          - E. South America Standard Time
+          - Eastern Standard Time
+          - Egypt Standard Time
+          - Ekaterinburg Standard Time
+          - Fiji Standard Time
+          - FLE Standard Time
+          - Georgian Standard Time
+          - GMT Standard Time
+          - Greenland Standard Time
+          - Greenwich Standard Time
+          - GTB Standard Time
+          - Hawaiian Standard Time
+          - India Standard Time
+          - Iran Standard Time
+          - Israel Standard Time
+          - Jordan Standard Time
+          - Korea Standard Time
+          - Mauritius Standard Time
+          - Mid-Atlantic Standard Time
+          - Middle East Standard Time
+          - Montevideo Standard Time
+          - Morocco Standard Time
+          - Mountain Standard Time
+          - Mountain Standard Time (Mexico)
+          - Myanmar Standard Time
+          - N. Central Asia Standard Time
+          - Namibia Standard Time
+          - Nepal Standard Time
+          - New Zealand Standard Time
+          - Newfoundland Standard Time
+          - North Asia East Standard Time
+          - North Asia Standard Time
+          - Pacific SA Standard Time
+          - Pacific Standard Time
+          - Pacific Standard Time (Mexico)
+          - Pakistan Standard Time
+          - Romance Standard Time
+          - Russian Standard Time
+          - SA Eastern Standard Time
+          - SA Pacific Standard Time
+          - SA Western Standard Time
+          - Samoa Standard Time
+          - SE Asia Standard Time
+          - Singapore Standard Time
+          - South Africa Standard Time
+          - Sri Lanka Standard Time
+          - Taipei Standard Time
+          - Tasmania Standard Time
+          - Tokyo Standard Time
+          - Tonga Standard Time
+          - US Eastern Standard Time
+          - US Mountain Standard Time
+          - UTC
+          - Venezuela Standard Time
+          - Vladivostok Standard Time
+          - W. Australia Standard Time
+          - W. Central Africa Standard Time
+          - W. Europe Standard Time
+          - West Asia Standard Time
+          - West Pacific Standard Time
+          - Yakutsk Standard Time
+          type: string
+          x-enumDescriptions:
+            Afghanistan Standard Time: (GMT+04:30) Kabul
+            Alaskan Standard Time: (GMT-09:00) Alaska
+            Arab Standard Time: "(GMT+03:00) Kuwait, Riyadh"
+            Arabian Standard Time: "(GMT+04:00) Abu Dhabi, Muscat"
+            Arabic Standard Time: (GMT+03:00) Baghdad
+            Argentina Standard Time: (GMT-03:00) Buenos Aires
+            Atlantic Standard Time: (GMT-04:00) Atlantic Time (Canada)
+            AUS Central Standard Time: (GMT+09:30) Darwin
+            AUS Eastern Standard Time: "(GMT+10:00) Canberra, Melbourne, Sydney"
+            Azerbaijan Standard Time: (GMT+04:00) Baku
+            Azores Standard Time: (GMT-01:00) Azores
+            Canada Central Standard Time: (GMT-06:00) Saskatchewan
+            Cape Verde Standard Time: (GMT-01:00) Cape Verde Is.
+            Caucasus Standard Time: (GMT+04:00) Yerevan
+            Cen. Australia Standard Time: (GMT+09:30) Adelaide
+            Central America Standard Time: (GMT-06:00) Central America
+            Central Asia Standard Time: "(GMT+06:00) Astana, Dhaka"
+            Central Brazilian Standard Time: (GMT-04:00) Manaus
+            Central Europe Standard Time: "(GMT+01:00) Belgrade, Bratislava, Budapest,\
+              \ Ljubljana, Prague"
+            Central European Standard Time: "(GMT+01:00) Sarajevo, Skopje, Warsaw,\
+              \ Zagreb"
+            Central Pacific Standard Time: "(GMT+11:00) Magadan, Solomon Is., New\
+              \ Caledonia"
+            Central Standard Time: (GMT-06:00) Central Time (US & Canada)
+            Central Standard Time (Mexico): "(GMT-06:00) Guadalajara, Mexico City,\
+              \ Monterrey"
+            China Standard Time: "(GMT+08:00) Beijing, Chongqing, Hong Kong, Urumqi"
+            Dateline Standard Time: (GMT-12:00) International Date Line West
+            E. Africa Standard Time: (GMT+03:00) Nairobi
+            E. Australia Standard Time: (GMT+10:00) Brisbane
+            E. Europe Standard Time: (GMT+02:00) Minsk
+            E. South America Standard Time: (GMT-03:00) Brasilia
+            Eastern Standard Time: (GMT-05:00) Eastern Time (US & Canada)
+            Egypt Standard Time: (GMT+02:00) Cairo
+            Ekaterinburg Standard Time: (GMT+05:00) Ekaterinburg
+            Fiji Standard Time: "(GMT+12:00) Fiji, Kamchatka, Marshall Is."
+            FLE Standard Time: "(GMT+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn,\
+              \ Vilnius"
+            Georgian Standard Time: (GMT+03:00) Tbilisi
+            GMT Standard Time: "(GMT) Greenwich Mean Time : Dublin, Edinburgh, Lisbon,\
+              \ London"
+            Greenland Standard Time: (GMT-03:00) Greenland
+            Greenwich Standard Time: "(GMT) Monrovia, Reykjavik"
+            GTB Standard Time: "(GMT+02:00) Athens, Bucharest, Istanbul"
+            Hawaiian Standard Time: (GMT-10:00) Hawaii
+            India Standard Time: "(GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi"
+            Iran Standard Time: (GMT+03:30) Tehran
+            Israel Standard Time: (GMT+02:00) Jerusalem
+            Jordan Standard Time: (GMT+02:00) Amman
+            Korea Standard Time: (GMT+09:00) Seoul
+            Mauritius Standard Time: (GMT+04:00) Port Louis
+            Mid-Atlantic Standard Time: (GMT-02:00) Mid-Atlantic
+            Middle East Standard Time: (GMT+02:00) Beirut
+            Montevideo Standard Time: (GMT-03:00) Montevideo
+            Morocco Standard Time: (GMT) Casablanca
+            Mountain Standard Time: (GMT-07:00) Mountain Time (US & Canada)
+            Mountain Standard Time (Mexico): "(GMT-07:00) Chihuahua, La Paz, Mazatlan"
+            Myanmar Standard Time: (GMT+06:30) Yangon (Rangoon)
+            N. Central Asia Standard Time: "(GMT+06:00) Almaty, Novosibirsk"
+            Namibia Standard Time: (GMT+02:00) Windhoek
+            Nepal Standard Time: (GMT+05:45) Kathmandu
+            New Zealand Standard Time: "(GMT+12:00) Auckland, Wellington"
+            Newfoundland Standard Time: (GMT-03:30) Newfoundland
+            North Asia East Standard Time: "(GMT+08:00) Irkutsk, Ulaan Bataar"
+            North Asia Standard Time: (GMT+07:00) Krasnoyarsk
+            Pacific SA Standard Time: (GMT-04:00) Santiago
+            Pacific Standard Time: (GMT-08:00) Pacific Time (US & Canada)
+            Pacific Standard Time (Mexico): "(GMT-08:00) Tijuana, Baja California"
+            Pakistan Standard Time: "(GMT+05:00) Islamabad, Karachi"
+            Romance Standard Time: "(GMT+01:00) Brussels, Copenhagen, Madrid, Paris"
+            Russian Standard Time: "(GMT+03:00) Moscow, St. Petersburg, Volgograd"
+            SA Eastern Standard Time: (GMT-03:00) Georgetown
+            SA Pacific Standard Time: "(GMT-05:00) Bogota, Lima, Quito, Rio Branco"
+            SA Western Standard Time: (GMT-04:00) La Paz
+            Samoa Standard Time: "(GMT-11:00) Midway Island, Samoa"
+            SE Asia Standard Time: "(GMT+07:00) Bangkok, Hanoi, Jakarta"
+            Singapore Standard Time: "(GMT+08:00) Kuala Lumpur, Singapore"
+            South Africa Standard Time: "(GMT+02:00) Harare, Pretoria"
+            Sri Lanka Standard Time: (GMT+05:30) Sri Jayawardenepura
+            Taipei Standard Time: (GMT+08:00) Taipei
+            Tasmania Standard Time: (GMT+10:00) Hobart
+            Tokyo Standard Time: "(GMT+09:00) Osaka, Sapporo, Tokyo"
+            Tonga Standard Time: (GMT+13:00) Nuku'alofa
+            US Eastern Standard Time: (GMT-05:00) Indiana (East)
+            US Mountain Standard Time: (GMT-07:00) Arizona
+            UTC: UTC
+            Venezuela Standard Time: (GMT-04:30) Caracas
+            Vladivostok Standard Time: (GMT+10:00) Vladivostok
+            W. Australia Standard Time: (GMT+08:00) Perth
+            W. Central Africa Standard Time: (GMT+01:00) West Central Africa
+            W. Europe Standard Time: "(GMT+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm,\
+              \ Vienna"
+            West Asia Standard Time: (GMT+05:00) Tashkent
+            West Pacific Standard Time: "(GMT+10:00) Guam, Port Moresby"
+            Yakutsk Standard Time: (GMT+09:00) Yakutsk
         CurrencyId:
-          $ref: '#/components/schemas/FieldType'
+          description: The currency of the location
+          enum:
+          - AUD
+          - BHD
+          - BGN
+          - CAD
+          - CNY
+          - HRK
+          - CZK
+          - DKK
+          - AED
+          - EUR
+          - GBP
+          - HKD
+          - HUF
+          - ISK
+          - JPY
+          - NOK
+          - PLN
+          - RUB
+          - SGD
+          - SEK
+          - CHF
+          - THB
+          - TRY
+          - UAH
+          - USD
+          type: string
+          x-enumDescriptions:
+            AUD: Australian Dollar
+            BHD: Bahraini Dinar
+            BGN: Bulgarian Lev
+            CAD: Canadian Dollar
+            CNY: Chinese Yuan Renminbi
+            HRK: Croatian Kuna
+            CZK: Czech Koruna
+            DKK: Danish Krone
+            AED: Emirati Dirham
+            EUR: Euro
+            GBP: Great British Pound
+            HKD: Hong Kong Dollar
+            HUF: Hungarian Forint
+            ISK: Icelandic krona
+            JPY: Japanese Yen
+            NOK: Norwegian Krone
+            PLN: Polish Zloty
+            RUB: Russian Ruble
+            SGD: Singapore Dollar
+            SEK: Swedish Kroner
+            CHF: Swiss Franc
+            THB: Thailand Baht
+            TRY: Turkish Lira
+            UAH: Ukrainian hryvnia
+            USD: United States Dollar
         Is_Active:
           default: false
           description: Defines if the location is active and can be used
@@ -8277,18 +10536,12 @@ components:
     LocationInsertData:
       description: The record of Location information.
       example:
-        CountryId:
-          Field: Field
-          Value: Value
+        CountryId: AFG
         Is_Active: false
         ExternalId: ExternalId
         Id: Id
-        TimezoneId:
-          Field: Field
-          Value: Value
-        CurrencyId:
-          Field: Field
-          Value: Value
+        TimezoneId: Afghanistan Standard Time
+        CurrencyId: AUD
         Name: Name
       properties:
         Id:
@@ -8301,11 +10554,757 @@ components:
           description: The name of the location
           type: string
         CountryId:
-          $ref: '#/components/schemas/FieldType'
+          description: The country of the location
+          enum:
+          - AFG
+          - ALA
+          - ALB
+          - DZA
+          - ASM
+          - AND
+          - AGO
+          - AIA
+          - ATA
+          - ATG
+          - ARG
+          - ARM
+          - ABW
+          - AUS
+          - AUT
+          - AZE
+          - AZO
+          - BHS
+          - BHR
+          - BGD
+          - BRB
+          - BLR
+          - BEL
+          - BLZ
+          - BEN
+          - BMU
+          - BTN
+          - BOL
+          - BIH
+          - BWA
+          - BVT
+          - BRA
+          - IOT
+          - VGB
+          - BRN
+          - BGR
+          - BFA
+          - BDI
+          - KHM
+          - CMR
+          - CAN
+          - CPV
+          - CYM
+          - CAF
+          - TCD
+          - CHL
+          - CHN
+          - CXR
+          - CCK
+          - COL
+          - COM
+          - COG
+          - COK
+          - CRI
+          - CIV
+          - HRV
+          - CUB
+          - CYP
+          - CZE
+          - COD
+          - DNK
+          - DJI
+          - DMA
+          - DOM
+          - ECU
+          - EGY
+          - SLV
+          - GNQ
+          - ERI
+          - EST
+          - SWZ
+          - ETH
+          - EUE
+          - FLK
+          - FRO
+          - FSM
+          - FJI
+          - FIN
+          - FRA
+          - GUF
+          - PYF
+          - ATF
+          - GAB
+          - GMB
+          - GEO
+          - DEU
+          - GHA
+          - GIB
+          - GRC
+          - GRL
+          - GRD
+          - GLP
+          - GUM
+          - GTM
+          - GGY
+          - GIN
+          - GNB
+          - GUY
+          - HTI
+          - HMD
+          - VAT
+          - HND
+          - HKG
+          - HUN
+          - ISL
+          - IND
+          - IDN
+          - IRN
+          - IRQ
+          - IRL
+          - IMN
+          - ISR
+          - ITA
+          - JAM
+          - JPN
+          - JEY
+          - JOR
+          - KAZ
+          - KEN
+          - KIR
+          - XKX
+          - KWT
+          - KGZ
+          - LAO
+          - LVA
+          - LBN
+          - LSO
+          - LBR
+          - LBY
+          - LIE
+          - LTU
+          - LUX
+          - MAC
+          - MKD
+          - MDG
+          - MWI
+          - MYS
+          - MDV
+          - MLI
+          - MLT
+          - MHL
+          - MTQ
+          - MRT
+          - MUS
+          - MYT
+          - MEX
+          - MDA
+          - MCO
+          - MNG
+          - MNE
+          - MSR
+          - MAR
+          - MOZ
+          - MMR
+          - NAM
+          - NRU
+          - NPL
+          - NLD
+          - ANT
+          - NCL
+          - NZL
+          - NIC
+          - NER
+          - NGA
+          - NIU
+          - NFK
+          - PRK
+          - MNP
+          - NOR
+          - OMN
+          - PAK
+          - PLW
+          - PSE
+          - PAN
+          - PNG
+          - PRY
+          - PER
+          - PHL
+          - PCN
+          - POL
+          - PRT
+          - PRI
+          - QAT
+          - REU
+          - ROU
+          - RUS
+          - RWA
+          - SHN
+          - KNA
+          - LCA
+          - SPM
+          - VCT
+          - BLM
+          - MAF
+          - WSM
+          - SMR
+          - STP
+          - SAU
+          - SEN
+          - SRB
+          - SYC
+          - SLE
+          - SGP
+          - SVK
+          - SVN
+          - SLB
+          - SOM
+          - SOL
+          - ZAF
+          - SGS
+          - KOR
+          - SSD
+          - ESP
+          - LKA
+          - SDN
+          - SUR
+          - SJM
+          - SWE
+          - CHE
+          - SYR
+          - TWN
+          - TJK
+          - TZA
+          - THA
+          - TLS
+          - TGO
+          - TKL
+          - TON
+          - TTO
+          - TUN
+          - TUR
+          - TKM
+          - TCA
+          - TUV
+          - UGA
+          - UKR
+          - ARE
+          - GBR
+          - UMI
+          - USA
+          - URY
+          - UZB
+          - VUT
+          - VEN
+          - VNM
+          - VIR
+          - WLF
+          - ESH
+          - YEM
+          - ZMB
+          - ZWE
+          type: string
+          x-enumDescriptions:
+            AFG: Afghanistan
+            ALA: Aland Islands
+            ALB: Albania
+            DZA: Algeria
+            ASM: American Samoa
+            AND: Andorra
+            AGO: Angola
+            AIA: Anguilla
+            ATA: Antarctica
+            ATG: Antigua and Barbuda
+            ARG: Argentina
+            ARM: Armenia
+            ABW: Aruba
+            AUS: Australia
+            AUT: Austria
+            AZE: Azerbaijan
+            AZO: Azores
+            BHS: Bahamas
+            BHR: Bahrain
+            BGD: Bangladesh
+            BRB: Barbados
+            BLR: Belarus
+            BEL: Belgium
+            BLZ: Belize
+            BEN: Benin
+            BMU: Bermuda
+            BTN: Bhutan
+            BOL: Bolivia
+            BIH: Bosnia and Herzegovina
+            BWA: Botswana
+            BVT: Bouvet Island
+            BRA: Brazil
+            IOT: British Indian Ocean Territory
+            VGB: British Virgin Islands
+            BRN: Brunei Darussalam
+            BGR: Bulgaria
+            BFA: Burkina Faso
+            BDI: Burundi
+            KHM: Cambodia
+            CMR: Cameroon
+            CAN: Canada
+            CPV: Cape Verde
+            CYM: Cayman Islands
+            CAF: Central African Republic
+            TCD: Chad
+            CHL: Chile
+            CHN: China
+            CXR: Christmas Island
+            CCK: Cocos (Keeling) Islands
+            COL: Colombia
+            COM: Comoros
+            COG: Congo (Brazzaville)
+            COK: Cook Islands
+            CRI: Costa Rica
+            CIV: C�te d'Ivoire
+            HRV: Croatia
+            CUB: Cuba
+            CYP: Cyprus
+            CZE: Czech Republic
+            COD: Democratic Republic of the Congo
+            DNK: Denmark
+            DJI: Djibouti
+            DMA: Dominica
+            DOM: Dominican Republic
+            ECU: Ecuador
+            EGY: Egypt
+            SLV: El Salvador
+            GNQ: Equatorial Guinea
+            ERI: Eritrea
+            EST: Estonia
+            SWZ: Eswatini
+            ETH: Ethiopia
+            EUE: Europe diplomat
+            FLK: Falkland Islands (Malvinas)
+            FRO: Faroe Islands
+            FSM: Federated States of Micronesia
+            FJI: Fiji
+            FIN: Finland
+            FRA: France
+            GUF: French Guiana
+            PYF: French Polynesia
+            ATF: French Southern Territories
+            GAB: Gabon
+            GMB: Gambia
+            GEO: Georgia
+            DEU: Germany
+            GHA: Ghana
+            GIB: Gibraltar
+            GRC: Greece
+            GRL: Greenland
+            GRD: Grenada
+            GLP: Guadeloupe
+            GUM: Guam
+            GTM: Guatemala
+            GGY: Guernsey
+            GIN: Guinea
+            GNB: Guinea-Bissau
+            GUY: Guyana
+            HTI: Haiti
+            HMD: Heard Island and Mcdonald Islands
+            VAT: Holy See (Vatican City State)
+            HND: Honduras
+            HKG: Hong Kong (CN)
+            HUN: Hungary
+            ISL: Iceland
+            IND: India
+            IDN: Indonesia
+            IRN: Iran
+            IRQ: Iraq
+            IRL: Ireland
+            IMN: Isle of Man
+            ISR: Israel
+            ITA: Italy
+            JAM: Jamaica
+            JPN: Japan
+            JEY: Jersey
+            JOR: Jordan
+            KAZ: Kazakhstan
+            KEN: Kenya
+            KIR: Kiribati
+            XKX: Kosovo
+            KWT: Kuwait
+            KGZ: Kyrgyzstan
+            LAO: Lao PDR
+            LVA: Latvia
+            LBN: Lebanon
+            LSO: Lesotho
+            LBR: Liberia
+            LBY: Libya
+            LIE: Liechtenstein
+            LTU: Lithuania
+            LUX: Luxembourg
+            MAC: Macao (CN)
+            MKD: Macedonia
+            MDG: Madagascar
+            MWI: Malawi
+            MYS: Malaysia
+            MDV: Maldives
+            MLI: Mali
+            MLT: Malta
+            MHL: Marshall Islands
+            MTQ: Martinique
+            MRT: Mauritania
+            MUS: Mauritius
+            MYT: Mayotte
+            MEX: Mexico
+            MDA: Moldova
+            MCO: Monaco
+            MNG: Mongolia
+            MNE: Montenegro
+            MSR: Montserrat
+            MAR: Morocco
+            MOZ: Mozambique
+            MMR: Myanmar
+            NAM: Namibia
+            NRU: Nauru
+            NPL: Nepal
+            NLD: Netherlands
+            ANT: Netherlands Antilles
+            NCL: New Caledonia
+            NZL: New Zealand
+            NIC: Nicaragua
+            NER: Niger
+            NGA: Nigeria
+            NIU: Niue
+            NFK: Norfolk Island
+            PRK: North Korea
+            MNP: Northern Mariana Islands
+            NOR: Norway
+            OMN: Oman
+            PAK: Pakistan
+            PLW: Palau
+            PSE: "Palestinian Territory, Occupied"
+            PAN: Panama
+            PNG: Papua New Guinea
+            PRY: Paraguay
+            PER: Peru
+            PHL: Philippines
+            PCN: Pitcairn Island
+            POL: Poland
+            PRT: Portugal
+            PRI: Puerto Rico
+            QAT: Qatar
+            REU: R�union
+            ROU: Romania
+            RUS: Russian Federation
+            RWA: Rwanda
+            SHN: Saint Helena
+            KNA: Saint Kitts and Nevis
+            LCA: Saint Lucia
+            SPM: Saint Pierre and Miquelon
+            VCT: Saint Vincent and Grenadines
+            BLM: Saint-Barth�lemy
+            MAF: Saint-Martin (French part)
+            WSM: Samoa
+            SMR: San Marino
+            STP: Sao Tome and Principe
+            SAU: Saudi Arabia
+            SEN: Senegal
+            SRB: Serbia
+            SYC: Seychelles
+            SLE: Sierra Leone
+            SGP: Singapore
+            SVK: Slovakia
+            SVN: Slovenia
+            SLB: Solomon Islands
+            SOM: Somalia
+            SOL: Somaliland
+            ZAF: South Africa
+            SGS: South Georgia and the South Sandwich Islands
+            KOR: South Korea
+            SSD: South Sudan
+            ESP: Spain
+            LKA: Sri Lanka
+            SDN: Sudan
+            SUR: Suriname
+            SJM: Svalbard and Jan Mayen Islands
+            SWE: Sweden
+            CHE: Switzerland
+            SYR: Syrian Arab Republic (Syria)
+            TWN: Taiwan (CN)
+            TJK: Tajikistan
+            TZA: Tanzania
+            THA: Thailand
+            TLS: Timor-Leste
+            TGO: Togo
+            TKL: Tokelau
+            TON: Tonga
+            TTO: Trinidad and Tobago
+            TUN: Tunisia
+            TUR: Turkey
+            TKM: Turkmenistan
+            TCA: Turks and Caicos Islands
+            TUV: Tuvalu
+            UGA: Uganda
+            UKR: Ukraine
+            ARE: United Arab Emirates
+            GBR: United Kingdom
+            UMI: United States Minor Outlying Islands
+            USA: United States of America
+            URY: Uruguay
+            UZB: Uzbekistan
+            VUT: Vanuatu
+            VEN: Venezuela
+            VNM: Vietnam
+            VIR: "Virgin Islands, US"
+            WLF: Wallis and Futuna Islands
+            ESH: Western Sahara
+            YEM: Yemen
+            ZMB: Zambia
+            ZWE: Zimbabwe
         TimezoneId:
-          $ref: '#/components/schemas/FieldType'
+          description: The timezone of the location
+          enum:
+          - Afghanistan Standard Time
+          - Alaskan Standard Time
+          - Arab Standard Time
+          - Arabian Standard Time
+          - Arabic Standard Time
+          - Argentina Standard Time
+          - Atlantic Standard Time
+          - AUS Central Standard Time
+          - AUS Eastern Standard Time
+          - Azerbaijan Standard Time
+          - Azores Standard Time
+          - Canada Central Standard Time
+          - Cape Verde Standard Time
+          - Caucasus Standard Time
+          - Cen. Australia Standard Time
+          - Central America Standard Time
+          - Central Asia Standard Time
+          - Central Brazilian Standard Time
+          - Central Europe Standard Time
+          - Central European Standard Time
+          - Central Pacific Standard Time
+          - Central Standard Time
+          - Central Standard Time (Mexico)
+          - China Standard Time
+          - Dateline Standard Time
+          - E. Africa Standard Time
+          - E. Australia Standard Time
+          - E. Europe Standard Time
+          - E. South America Standard Time
+          - Eastern Standard Time
+          - Egypt Standard Time
+          - Ekaterinburg Standard Time
+          - Fiji Standard Time
+          - FLE Standard Time
+          - Georgian Standard Time
+          - GMT Standard Time
+          - Greenland Standard Time
+          - Greenwich Standard Time
+          - GTB Standard Time
+          - Hawaiian Standard Time
+          - India Standard Time
+          - Iran Standard Time
+          - Israel Standard Time
+          - Jordan Standard Time
+          - Korea Standard Time
+          - Mauritius Standard Time
+          - Mid-Atlantic Standard Time
+          - Middle East Standard Time
+          - Montevideo Standard Time
+          - Morocco Standard Time
+          - Mountain Standard Time
+          - Mountain Standard Time (Mexico)
+          - Myanmar Standard Time
+          - N. Central Asia Standard Time
+          - Namibia Standard Time
+          - Nepal Standard Time
+          - New Zealand Standard Time
+          - Newfoundland Standard Time
+          - North Asia East Standard Time
+          - North Asia Standard Time
+          - Pacific SA Standard Time
+          - Pacific Standard Time
+          - Pacific Standard Time (Mexico)
+          - Pakistan Standard Time
+          - Romance Standard Time
+          - Russian Standard Time
+          - SA Eastern Standard Time
+          - SA Pacific Standard Time
+          - SA Western Standard Time
+          - Samoa Standard Time
+          - SE Asia Standard Time
+          - Singapore Standard Time
+          - South Africa Standard Time
+          - Sri Lanka Standard Time
+          - Taipei Standard Time
+          - Tasmania Standard Time
+          - Tokyo Standard Time
+          - Tonga Standard Time
+          - US Eastern Standard Time
+          - US Mountain Standard Time
+          - UTC
+          - Venezuela Standard Time
+          - Vladivostok Standard Time
+          - W. Australia Standard Time
+          - W. Central Africa Standard Time
+          - W. Europe Standard Time
+          - West Asia Standard Time
+          - West Pacific Standard Time
+          - Yakutsk Standard Time
+          type: string
+          x-enumDescriptions:
+            Afghanistan Standard Time: (GMT+04:30) Kabul
+            Alaskan Standard Time: (GMT-09:00) Alaska
+            Arab Standard Time: "(GMT+03:00) Kuwait, Riyadh"
+            Arabian Standard Time: "(GMT+04:00) Abu Dhabi, Muscat"
+            Arabic Standard Time: (GMT+03:00) Baghdad
+            Argentina Standard Time: (GMT-03:00) Buenos Aires
+            Atlantic Standard Time: (GMT-04:00) Atlantic Time (Canada)
+            AUS Central Standard Time: (GMT+09:30) Darwin
+            AUS Eastern Standard Time: "(GMT+10:00) Canberra, Melbourne, Sydney"
+            Azerbaijan Standard Time: (GMT+04:00) Baku
+            Azores Standard Time: (GMT-01:00) Azores
+            Canada Central Standard Time: (GMT-06:00) Saskatchewan
+            Cape Verde Standard Time: (GMT-01:00) Cape Verde Is.
+            Caucasus Standard Time: (GMT+04:00) Yerevan
+            Cen. Australia Standard Time: (GMT+09:30) Adelaide
+            Central America Standard Time: (GMT-06:00) Central America
+            Central Asia Standard Time: "(GMT+06:00) Astana, Dhaka"
+            Central Brazilian Standard Time: (GMT-04:00) Manaus
+            Central Europe Standard Time: "(GMT+01:00) Belgrade, Bratislava, Budapest,\
+              \ Ljubljana, Prague"
+            Central European Standard Time: "(GMT+01:00) Sarajevo, Skopje, Warsaw,\
+              \ Zagreb"
+            Central Pacific Standard Time: "(GMT+11:00) Magadan, Solomon Is., New\
+              \ Caledonia"
+            Central Standard Time: (GMT-06:00) Central Time (US & Canada)
+            Central Standard Time (Mexico): "(GMT-06:00) Guadalajara, Mexico City,\
+              \ Monterrey"
+            China Standard Time: "(GMT+08:00) Beijing, Chongqing, Hong Kong, Urumqi"
+            Dateline Standard Time: (GMT-12:00) International Date Line West
+            E. Africa Standard Time: (GMT+03:00) Nairobi
+            E. Australia Standard Time: (GMT+10:00) Brisbane
+            E. Europe Standard Time: (GMT+02:00) Minsk
+            E. South America Standard Time: (GMT-03:00) Brasilia
+            Eastern Standard Time: (GMT-05:00) Eastern Time (US & Canada)
+            Egypt Standard Time: (GMT+02:00) Cairo
+            Ekaterinburg Standard Time: (GMT+05:00) Ekaterinburg
+            Fiji Standard Time: "(GMT+12:00) Fiji, Kamchatka, Marshall Is."
+            FLE Standard Time: "(GMT+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn,\
+              \ Vilnius"
+            Georgian Standard Time: (GMT+03:00) Tbilisi
+            GMT Standard Time: "(GMT) Greenwich Mean Time : Dublin, Edinburgh, Lisbon,\
+              \ London"
+            Greenland Standard Time: (GMT-03:00) Greenland
+            Greenwich Standard Time: "(GMT) Monrovia, Reykjavik"
+            GTB Standard Time: "(GMT+02:00) Athens, Bucharest, Istanbul"
+            Hawaiian Standard Time: (GMT-10:00) Hawaii
+            India Standard Time: "(GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi"
+            Iran Standard Time: (GMT+03:30) Tehran
+            Israel Standard Time: (GMT+02:00) Jerusalem
+            Jordan Standard Time: (GMT+02:00) Amman
+            Korea Standard Time: (GMT+09:00) Seoul
+            Mauritius Standard Time: (GMT+04:00) Port Louis
+            Mid-Atlantic Standard Time: (GMT-02:00) Mid-Atlantic
+            Middle East Standard Time: (GMT+02:00) Beirut
+            Montevideo Standard Time: (GMT-03:00) Montevideo
+            Morocco Standard Time: (GMT) Casablanca
+            Mountain Standard Time: (GMT-07:00) Mountain Time (US & Canada)
+            Mountain Standard Time (Mexico): "(GMT-07:00) Chihuahua, La Paz, Mazatlan"
+            Myanmar Standard Time: (GMT+06:30) Yangon (Rangoon)
+            N. Central Asia Standard Time: "(GMT+06:00) Almaty, Novosibirsk"
+            Namibia Standard Time: (GMT+02:00) Windhoek
+            Nepal Standard Time: (GMT+05:45) Kathmandu
+            New Zealand Standard Time: "(GMT+12:00) Auckland, Wellington"
+            Newfoundland Standard Time: (GMT-03:30) Newfoundland
+            North Asia East Standard Time: "(GMT+08:00) Irkutsk, Ulaan Bataar"
+            North Asia Standard Time: (GMT+07:00) Krasnoyarsk
+            Pacific SA Standard Time: (GMT-04:00) Santiago
+            Pacific Standard Time: (GMT-08:00) Pacific Time (US & Canada)
+            Pacific Standard Time (Mexico): "(GMT-08:00) Tijuana, Baja California"
+            Pakistan Standard Time: "(GMT+05:00) Islamabad, Karachi"
+            Romance Standard Time: "(GMT+01:00) Brussels, Copenhagen, Madrid, Paris"
+            Russian Standard Time: "(GMT+03:00) Moscow, St. Petersburg, Volgograd"
+            SA Eastern Standard Time: (GMT-03:00) Georgetown
+            SA Pacific Standard Time: "(GMT-05:00) Bogota, Lima, Quito, Rio Branco"
+            SA Western Standard Time: (GMT-04:00) La Paz
+            Samoa Standard Time: "(GMT-11:00) Midway Island, Samoa"
+            SE Asia Standard Time: "(GMT+07:00) Bangkok, Hanoi, Jakarta"
+            Singapore Standard Time: "(GMT+08:00) Kuala Lumpur, Singapore"
+            South Africa Standard Time: "(GMT+02:00) Harare, Pretoria"
+            Sri Lanka Standard Time: (GMT+05:30) Sri Jayawardenepura
+            Taipei Standard Time: (GMT+08:00) Taipei
+            Tasmania Standard Time: (GMT+10:00) Hobart
+            Tokyo Standard Time: "(GMT+09:00) Osaka, Sapporo, Tokyo"
+            Tonga Standard Time: (GMT+13:00) Nuku'alofa
+            US Eastern Standard Time: (GMT-05:00) Indiana (East)
+            US Mountain Standard Time: (GMT-07:00) Arizona
+            UTC: UTC
+            Venezuela Standard Time: (GMT-04:30) Caracas
+            Vladivostok Standard Time: (GMT+10:00) Vladivostok
+            W. Australia Standard Time: (GMT+08:00) Perth
+            W. Central Africa Standard Time: (GMT+01:00) West Central Africa
+            W. Europe Standard Time: "(GMT+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm,\
+              \ Vienna"
+            West Asia Standard Time: (GMT+05:00) Tashkent
+            West Pacific Standard Time: "(GMT+10:00) Guam, Port Moresby"
+            Yakutsk Standard Time: (GMT+09:00) Yakutsk
         CurrencyId:
-          $ref: '#/components/schemas/FieldType'
+          description: The currency of the location
+          enum:
+          - AUD
+          - BHD
+          - BGN
+          - CAD
+          - CNY
+          - HRK
+          - CZK
+          - DKK
+          - AED
+          - EUR
+          - GBP
+          - HKD
+          - HUF
+          - ISK
+          - JPY
+          - NOK
+          - PLN
+          - RUB
+          - SGD
+          - SEK
+          - CHF
+          - THB
+          - TRY
+          - UAH
+          - USD
+          type: string
+          x-enumDescriptions:
+            AUD: Australian Dollar
+            BHD: Bahraini Dinar
+            BGN: Bulgarian Lev
+            CAD: Canadian Dollar
+            CNY: Chinese Yuan Renminbi
+            HRK: Croatian Kuna
+            CZK: Czech Koruna
+            DKK: Danish Krone
+            AED: Emirati Dirham
+            EUR: Euro
+            GBP: Great British Pound
+            HKD: Hong Kong Dollar
+            HUF: Hungarian Forint
+            ISK: Icelandic krona
+            JPY: Japanese Yen
+            NOK: Norwegian Krone
+            PLN: Polish Zloty
+            RUB: Russian Ruble
+            SGD: Singapore Dollar
+            SEK: Swedish Kroner
+            CHF: Swiss Franc
+            THB: Thailand Baht
+            TRY: Turkish Lira
+            UAH: Ukrainian hryvnia
+            USD: United States Dollar
         Is_Active:
           default: false
           description: Defines if the location is active and can be used
@@ -8319,17 +11318,11 @@ components:
     LocationUpdateData:
       description: The record of Location information.
       example:
-        CountryId:
-          Field: Field
-          Value: Value
+        CountryId: AFG
         Is_Active: false
         ExternalId: ExternalId
-        TimezoneId:
-          Field: Field
-          Value: Value
-        CurrencyId:
-          Field: Field
-          Value: Value
+        TimezoneId: Afghanistan Standard Time
+        CurrencyId: AUD
         Name: Name
       properties:
         ExternalId:
@@ -8339,11 +11332,757 @@ components:
           description: The name of the location
           type: string
         CountryId:
-          $ref: '#/components/schemas/FieldType'
+          description: The country of the location
+          enum:
+          - AFG
+          - ALA
+          - ALB
+          - DZA
+          - ASM
+          - AND
+          - AGO
+          - AIA
+          - ATA
+          - ATG
+          - ARG
+          - ARM
+          - ABW
+          - AUS
+          - AUT
+          - AZE
+          - AZO
+          - BHS
+          - BHR
+          - BGD
+          - BRB
+          - BLR
+          - BEL
+          - BLZ
+          - BEN
+          - BMU
+          - BTN
+          - BOL
+          - BIH
+          - BWA
+          - BVT
+          - BRA
+          - IOT
+          - VGB
+          - BRN
+          - BGR
+          - BFA
+          - BDI
+          - KHM
+          - CMR
+          - CAN
+          - CPV
+          - CYM
+          - CAF
+          - TCD
+          - CHL
+          - CHN
+          - CXR
+          - CCK
+          - COL
+          - COM
+          - COG
+          - COK
+          - CRI
+          - CIV
+          - HRV
+          - CUB
+          - CYP
+          - CZE
+          - COD
+          - DNK
+          - DJI
+          - DMA
+          - DOM
+          - ECU
+          - EGY
+          - SLV
+          - GNQ
+          - ERI
+          - EST
+          - SWZ
+          - ETH
+          - EUE
+          - FLK
+          - FRO
+          - FSM
+          - FJI
+          - FIN
+          - FRA
+          - GUF
+          - PYF
+          - ATF
+          - GAB
+          - GMB
+          - GEO
+          - DEU
+          - GHA
+          - GIB
+          - GRC
+          - GRL
+          - GRD
+          - GLP
+          - GUM
+          - GTM
+          - GGY
+          - GIN
+          - GNB
+          - GUY
+          - HTI
+          - HMD
+          - VAT
+          - HND
+          - HKG
+          - HUN
+          - ISL
+          - IND
+          - IDN
+          - IRN
+          - IRQ
+          - IRL
+          - IMN
+          - ISR
+          - ITA
+          - JAM
+          - JPN
+          - JEY
+          - JOR
+          - KAZ
+          - KEN
+          - KIR
+          - XKX
+          - KWT
+          - KGZ
+          - LAO
+          - LVA
+          - LBN
+          - LSO
+          - LBR
+          - LBY
+          - LIE
+          - LTU
+          - LUX
+          - MAC
+          - MKD
+          - MDG
+          - MWI
+          - MYS
+          - MDV
+          - MLI
+          - MLT
+          - MHL
+          - MTQ
+          - MRT
+          - MUS
+          - MYT
+          - MEX
+          - MDA
+          - MCO
+          - MNG
+          - MNE
+          - MSR
+          - MAR
+          - MOZ
+          - MMR
+          - NAM
+          - NRU
+          - NPL
+          - NLD
+          - ANT
+          - NCL
+          - NZL
+          - NIC
+          - NER
+          - NGA
+          - NIU
+          - NFK
+          - PRK
+          - MNP
+          - NOR
+          - OMN
+          - PAK
+          - PLW
+          - PSE
+          - PAN
+          - PNG
+          - PRY
+          - PER
+          - PHL
+          - PCN
+          - POL
+          - PRT
+          - PRI
+          - QAT
+          - REU
+          - ROU
+          - RUS
+          - RWA
+          - SHN
+          - KNA
+          - LCA
+          - SPM
+          - VCT
+          - BLM
+          - MAF
+          - WSM
+          - SMR
+          - STP
+          - SAU
+          - SEN
+          - SRB
+          - SYC
+          - SLE
+          - SGP
+          - SVK
+          - SVN
+          - SLB
+          - SOM
+          - SOL
+          - ZAF
+          - SGS
+          - KOR
+          - SSD
+          - ESP
+          - LKA
+          - SDN
+          - SUR
+          - SJM
+          - SWE
+          - CHE
+          - SYR
+          - TWN
+          - TJK
+          - TZA
+          - THA
+          - TLS
+          - TGO
+          - TKL
+          - TON
+          - TTO
+          - TUN
+          - TUR
+          - TKM
+          - TCA
+          - TUV
+          - UGA
+          - UKR
+          - ARE
+          - GBR
+          - UMI
+          - USA
+          - URY
+          - UZB
+          - VUT
+          - VEN
+          - VNM
+          - VIR
+          - WLF
+          - ESH
+          - YEM
+          - ZMB
+          - ZWE
+          type: string
+          x-enumDescriptions:
+            AFG: Afghanistan
+            ALA: Aland Islands
+            ALB: Albania
+            DZA: Algeria
+            ASM: American Samoa
+            AND: Andorra
+            AGO: Angola
+            AIA: Anguilla
+            ATA: Antarctica
+            ATG: Antigua and Barbuda
+            ARG: Argentina
+            ARM: Armenia
+            ABW: Aruba
+            AUS: Australia
+            AUT: Austria
+            AZE: Azerbaijan
+            AZO: Azores
+            BHS: Bahamas
+            BHR: Bahrain
+            BGD: Bangladesh
+            BRB: Barbados
+            BLR: Belarus
+            BEL: Belgium
+            BLZ: Belize
+            BEN: Benin
+            BMU: Bermuda
+            BTN: Bhutan
+            BOL: Bolivia
+            BIH: Bosnia and Herzegovina
+            BWA: Botswana
+            BVT: Bouvet Island
+            BRA: Brazil
+            IOT: British Indian Ocean Territory
+            VGB: British Virgin Islands
+            BRN: Brunei Darussalam
+            BGR: Bulgaria
+            BFA: Burkina Faso
+            BDI: Burundi
+            KHM: Cambodia
+            CMR: Cameroon
+            CAN: Canada
+            CPV: Cape Verde
+            CYM: Cayman Islands
+            CAF: Central African Republic
+            TCD: Chad
+            CHL: Chile
+            CHN: China
+            CXR: Christmas Island
+            CCK: Cocos (Keeling) Islands
+            COL: Colombia
+            COM: Comoros
+            COG: Congo (Brazzaville)
+            COK: Cook Islands
+            CRI: Costa Rica
+            CIV: C�te d'Ivoire
+            HRV: Croatia
+            CUB: Cuba
+            CYP: Cyprus
+            CZE: Czech Republic
+            COD: Democratic Republic of the Congo
+            DNK: Denmark
+            DJI: Djibouti
+            DMA: Dominica
+            DOM: Dominican Republic
+            ECU: Ecuador
+            EGY: Egypt
+            SLV: El Salvador
+            GNQ: Equatorial Guinea
+            ERI: Eritrea
+            EST: Estonia
+            SWZ: Eswatini
+            ETH: Ethiopia
+            EUE: Europe diplomat
+            FLK: Falkland Islands (Malvinas)
+            FRO: Faroe Islands
+            FSM: Federated States of Micronesia
+            FJI: Fiji
+            FIN: Finland
+            FRA: France
+            GUF: French Guiana
+            PYF: French Polynesia
+            ATF: French Southern Territories
+            GAB: Gabon
+            GMB: Gambia
+            GEO: Georgia
+            DEU: Germany
+            GHA: Ghana
+            GIB: Gibraltar
+            GRC: Greece
+            GRL: Greenland
+            GRD: Grenada
+            GLP: Guadeloupe
+            GUM: Guam
+            GTM: Guatemala
+            GGY: Guernsey
+            GIN: Guinea
+            GNB: Guinea-Bissau
+            GUY: Guyana
+            HTI: Haiti
+            HMD: Heard Island and Mcdonald Islands
+            VAT: Holy See (Vatican City State)
+            HND: Honduras
+            HKG: Hong Kong (CN)
+            HUN: Hungary
+            ISL: Iceland
+            IND: India
+            IDN: Indonesia
+            IRN: Iran
+            IRQ: Iraq
+            IRL: Ireland
+            IMN: Isle of Man
+            ISR: Israel
+            ITA: Italy
+            JAM: Jamaica
+            JPN: Japan
+            JEY: Jersey
+            JOR: Jordan
+            KAZ: Kazakhstan
+            KEN: Kenya
+            KIR: Kiribati
+            XKX: Kosovo
+            KWT: Kuwait
+            KGZ: Kyrgyzstan
+            LAO: Lao PDR
+            LVA: Latvia
+            LBN: Lebanon
+            LSO: Lesotho
+            LBR: Liberia
+            LBY: Libya
+            LIE: Liechtenstein
+            LTU: Lithuania
+            LUX: Luxembourg
+            MAC: Macao (CN)
+            MKD: Macedonia
+            MDG: Madagascar
+            MWI: Malawi
+            MYS: Malaysia
+            MDV: Maldives
+            MLI: Mali
+            MLT: Malta
+            MHL: Marshall Islands
+            MTQ: Martinique
+            MRT: Mauritania
+            MUS: Mauritius
+            MYT: Mayotte
+            MEX: Mexico
+            MDA: Moldova
+            MCO: Monaco
+            MNG: Mongolia
+            MNE: Montenegro
+            MSR: Montserrat
+            MAR: Morocco
+            MOZ: Mozambique
+            MMR: Myanmar
+            NAM: Namibia
+            NRU: Nauru
+            NPL: Nepal
+            NLD: Netherlands
+            ANT: Netherlands Antilles
+            NCL: New Caledonia
+            NZL: New Zealand
+            NIC: Nicaragua
+            NER: Niger
+            NGA: Nigeria
+            NIU: Niue
+            NFK: Norfolk Island
+            PRK: North Korea
+            MNP: Northern Mariana Islands
+            NOR: Norway
+            OMN: Oman
+            PAK: Pakistan
+            PLW: Palau
+            PSE: "Palestinian Territory, Occupied"
+            PAN: Panama
+            PNG: Papua New Guinea
+            PRY: Paraguay
+            PER: Peru
+            PHL: Philippines
+            PCN: Pitcairn Island
+            POL: Poland
+            PRT: Portugal
+            PRI: Puerto Rico
+            QAT: Qatar
+            REU: R�union
+            ROU: Romania
+            RUS: Russian Federation
+            RWA: Rwanda
+            SHN: Saint Helena
+            KNA: Saint Kitts and Nevis
+            LCA: Saint Lucia
+            SPM: Saint Pierre and Miquelon
+            VCT: Saint Vincent and Grenadines
+            BLM: Saint-Barth�lemy
+            MAF: Saint-Martin (French part)
+            WSM: Samoa
+            SMR: San Marino
+            STP: Sao Tome and Principe
+            SAU: Saudi Arabia
+            SEN: Senegal
+            SRB: Serbia
+            SYC: Seychelles
+            SLE: Sierra Leone
+            SGP: Singapore
+            SVK: Slovakia
+            SVN: Slovenia
+            SLB: Solomon Islands
+            SOM: Somalia
+            SOL: Somaliland
+            ZAF: South Africa
+            SGS: South Georgia and the South Sandwich Islands
+            KOR: South Korea
+            SSD: South Sudan
+            ESP: Spain
+            LKA: Sri Lanka
+            SDN: Sudan
+            SUR: Suriname
+            SJM: Svalbard and Jan Mayen Islands
+            SWE: Sweden
+            CHE: Switzerland
+            SYR: Syrian Arab Republic (Syria)
+            TWN: Taiwan (CN)
+            TJK: Tajikistan
+            TZA: Tanzania
+            THA: Thailand
+            TLS: Timor-Leste
+            TGO: Togo
+            TKL: Tokelau
+            TON: Tonga
+            TTO: Trinidad and Tobago
+            TUN: Tunisia
+            TUR: Turkey
+            TKM: Turkmenistan
+            TCA: Turks and Caicos Islands
+            TUV: Tuvalu
+            UGA: Uganda
+            UKR: Ukraine
+            ARE: United Arab Emirates
+            GBR: United Kingdom
+            UMI: United States Minor Outlying Islands
+            USA: United States of America
+            URY: Uruguay
+            UZB: Uzbekistan
+            VUT: Vanuatu
+            VEN: Venezuela
+            VNM: Vietnam
+            VIR: "Virgin Islands, US"
+            WLF: Wallis and Futuna Islands
+            ESH: Western Sahara
+            YEM: Yemen
+            ZMB: Zambia
+            ZWE: Zimbabwe
         TimezoneId:
-          $ref: '#/components/schemas/FieldType'
+          description: The timezone of the location
+          enum:
+          - Afghanistan Standard Time
+          - Alaskan Standard Time
+          - Arab Standard Time
+          - Arabian Standard Time
+          - Arabic Standard Time
+          - Argentina Standard Time
+          - Atlantic Standard Time
+          - AUS Central Standard Time
+          - AUS Eastern Standard Time
+          - Azerbaijan Standard Time
+          - Azores Standard Time
+          - Canada Central Standard Time
+          - Cape Verde Standard Time
+          - Caucasus Standard Time
+          - Cen. Australia Standard Time
+          - Central America Standard Time
+          - Central Asia Standard Time
+          - Central Brazilian Standard Time
+          - Central Europe Standard Time
+          - Central European Standard Time
+          - Central Pacific Standard Time
+          - Central Standard Time
+          - Central Standard Time (Mexico)
+          - China Standard Time
+          - Dateline Standard Time
+          - E. Africa Standard Time
+          - E. Australia Standard Time
+          - E. Europe Standard Time
+          - E. South America Standard Time
+          - Eastern Standard Time
+          - Egypt Standard Time
+          - Ekaterinburg Standard Time
+          - Fiji Standard Time
+          - FLE Standard Time
+          - Georgian Standard Time
+          - GMT Standard Time
+          - Greenland Standard Time
+          - Greenwich Standard Time
+          - GTB Standard Time
+          - Hawaiian Standard Time
+          - India Standard Time
+          - Iran Standard Time
+          - Israel Standard Time
+          - Jordan Standard Time
+          - Korea Standard Time
+          - Mauritius Standard Time
+          - Mid-Atlantic Standard Time
+          - Middle East Standard Time
+          - Montevideo Standard Time
+          - Morocco Standard Time
+          - Mountain Standard Time
+          - Mountain Standard Time (Mexico)
+          - Myanmar Standard Time
+          - N. Central Asia Standard Time
+          - Namibia Standard Time
+          - Nepal Standard Time
+          - New Zealand Standard Time
+          - Newfoundland Standard Time
+          - North Asia East Standard Time
+          - North Asia Standard Time
+          - Pacific SA Standard Time
+          - Pacific Standard Time
+          - Pacific Standard Time (Mexico)
+          - Pakistan Standard Time
+          - Romance Standard Time
+          - Russian Standard Time
+          - SA Eastern Standard Time
+          - SA Pacific Standard Time
+          - SA Western Standard Time
+          - Samoa Standard Time
+          - SE Asia Standard Time
+          - Singapore Standard Time
+          - South Africa Standard Time
+          - Sri Lanka Standard Time
+          - Taipei Standard Time
+          - Tasmania Standard Time
+          - Tokyo Standard Time
+          - Tonga Standard Time
+          - US Eastern Standard Time
+          - US Mountain Standard Time
+          - UTC
+          - Venezuela Standard Time
+          - Vladivostok Standard Time
+          - W. Australia Standard Time
+          - W. Central Africa Standard Time
+          - W. Europe Standard Time
+          - West Asia Standard Time
+          - West Pacific Standard Time
+          - Yakutsk Standard Time
+          type: string
+          x-enumDescriptions:
+            Afghanistan Standard Time: (GMT+04:30) Kabul
+            Alaskan Standard Time: (GMT-09:00) Alaska
+            Arab Standard Time: "(GMT+03:00) Kuwait, Riyadh"
+            Arabian Standard Time: "(GMT+04:00) Abu Dhabi, Muscat"
+            Arabic Standard Time: (GMT+03:00) Baghdad
+            Argentina Standard Time: (GMT-03:00) Buenos Aires
+            Atlantic Standard Time: (GMT-04:00) Atlantic Time (Canada)
+            AUS Central Standard Time: (GMT+09:30) Darwin
+            AUS Eastern Standard Time: "(GMT+10:00) Canberra, Melbourne, Sydney"
+            Azerbaijan Standard Time: (GMT+04:00) Baku
+            Azores Standard Time: (GMT-01:00) Azores
+            Canada Central Standard Time: (GMT-06:00) Saskatchewan
+            Cape Verde Standard Time: (GMT-01:00) Cape Verde Is.
+            Caucasus Standard Time: (GMT+04:00) Yerevan
+            Cen. Australia Standard Time: (GMT+09:30) Adelaide
+            Central America Standard Time: (GMT-06:00) Central America
+            Central Asia Standard Time: "(GMT+06:00) Astana, Dhaka"
+            Central Brazilian Standard Time: (GMT-04:00) Manaus
+            Central Europe Standard Time: "(GMT+01:00) Belgrade, Bratislava, Budapest,\
+              \ Ljubljana, Prague"
+            Central European Standard Time: "(GMT+01:00) Sarajevo, Skopje, Warsaw,\
+              \ Zagreb"
+            Central Pacific Standard Time: "(GMT+11:00) Magadan, Solomon Is., New\
+              \ Caledonia"
+            Central Standard Time: (GMT-06:00) Central Time (US & Canada)
+            Central Standard Time (Mexico): "(GMT-06:00) Guadalajara, Mexico City,\
+              \ Monterrey"
+            China Standard Time: "(GMT+08:00) Beijing, Chongqing, Hong Kong, Urumqi"
+            Dateline Standard Time: (GMT-12:00) International Date Line West
+            E. Africa Standard Time: (GMT+03:00) Nairobi
+            E. Australia Standard Time: (GMT+10:00) Brisbane
+            E. Europe Standard Time: (GMT+02:00) Minsk
+            E. South America Standard Time: (GMT-03:00) Brasilia
+            Eastern Standard Time: (GMT-05:00) Eastern Time (US & Canada)
+            Egypt Standard Time: (GMT+02:00) Cairo
+            Ekaterinburg Standard Time: (GMT+05:00) Ekaterinburg
+            Fiji Standard Time: "(GMT+12:00) Fiji, Kamchatka, Marshall Is."
+            FLE Standard Time: "(GMT+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn,\
+              \ Vilnius"
+            Georgian Standard Time: (GMT+03:00) Tbilisi
+            GMT Standard Time: "(GMT) Greenwich Mean Time : Dublin, Edinburgh, Lisbon,\
+              \ London"
+            Greenland Standard Time: (GMT-03:00) Greenland
+            Greenwich Standard Time: "(GMT) Monrovia, Reykjavik"
+            GTB Standard Time: "(GMT+02:00) Athens, Bucharest, Istanbul"
+            Hawaiian Standard Time: (GMT-10:00) Hawaii
+            India Standard Time: "(GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi"
+            Iran Standard Time: (GMT+03:30) Tehran
+            Israel Standard Time: (GMT+02:00) Jerusalem
+            Jordan Standard Time: (GMT+02:00) Amman
+            Korea Standard Time: (GMT+09:00) Seoul
+            Mauritius Standard Time: (GMT+04:00) Port Louis
+            Mid-Atlantic Standard Time: (GMT-02:00) Mid-Atlantic
+            Middle East Standard Time: (GMT+02:00) Beirut
+            Montevideo Standard Time: (GMT-03:00) Montevideo
+            Morocco Standard Time: (GMT) Casablanca
+            Mountain Standard Time: (GMT-07:00) Mountain Time (US & Canada)
+            Mountain Standard Time (Mexico): "(GMT-07:00) Chihuahua, La Paz, Mazatlan"
+            Myanmar Standard Time: (GMT+06:30) Yangon (Rangoon)
+            N. Central Asia Standard Time: "(GMT+06:00) Almaty, Novosibirsk"
+            Namibia Standard Time: (GMT+02:00) Windhoek
+            Nepal Standard Time: (GMT+05:45) Kathmandu
+            New Zealand Standard Time: "(GMT+12:00) Auckland, Wellington"
+            Newfoundland Standard Time: (GMT-03:30) Newfoundland
+            North Asia East Standard Time: "(GMT+08:00) Irkutsk, Ulaan Bataar"
+            North Asia Standard Time: (GMT+07:00) Krasnoyarsk
+            Pacific SA Standard Time: (GMT-04:00) Santiago
+            Pacific Standard Time: (GMT-08:00) Pacific Time (US & Canada)
+            Pacific Standard Time (Mexico): "(GMT-08:00) Tijuana, Baja California"
+            Pakistan Standard Time: "(GMT+05:00) Islamabad, Karachi"
+            Romance Standard Time: "(GMT+01:00) Brussels, Copenhagen, Madrid, Paris"
+            Russian Standard Time: "(GMT+03:00) Moscow, St. Petersburg, Volgograd"
+            SA Eastern Standard Time: (GMT-03:00) Georgetown
+            SA Pacific Standard Time: "(GMT-05:00) Bogota, Lima, Quito, Rio Branco"
+            SA Western Standard Time: (GMT-04:00) La Paz
+            Samoa Standard Time: "(GMT-11:00) Midway Island, Samoa"
+            SE Asia Standard Time: "(GMT+07:00) Bangkok, Hanoi, Jakarta"
+            Singapore Standard Time: "(GMT+08:00) Kuala Lumpur, Singapore"
+            South Africa Standard Time: "(GMT+02:00) Harare, Pretoria"
+            Sri Lanka Standard Time: (GMT+05:30) Sri Jayawardenepura
+            Taipei Standard Time: (GMT+08:00) Taipei
+            Tasmania Standard Time: (GMT+10:00) Hobart
+            Tokyo Standard Time: "(GMT+09:00) Osaka, Sapporo, Tokyo"
+            Tonga Standard Time: (GMT+13:00) Nuku'alofa
+            US Eastern Standard Time: (GMT-05:00) Indiana (East)
+            US Mountain Standard Time: (GMT-07:00) Arizona
+            UTC: UTC
+            Venezuela Standard Time: (GMT-04:30) Caracas
+            Vladivostok Standard Time: (GMT+10:00) Vladivostok
+            W. Australia Standard Time: (GMT+08:00) Perth
+            W. Central Africa Standard Time: (GMT+01:00) West Central Africa
+            W. Europe Standard Time: "(GMT+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm,\
+              \ Vienna"
+            West Asia Standard Time: (GMT+05:00) Tashkent
+            West Pacific Standard Time: "(GMT+10:00) Guam, Port Moresby"
+            Yakutsk Standard Time: (GMT+09:00) Yakutsk
         CurrencyId:
-          $ref: '#/components/schemas/FieldType'
+          description: The currency of the location
+          enum:
+          - AUD
+          - BHD
+          - BGN
+          - CAD
+          - CNY
+          - HRK
+          - CZK
+          - DKK
+          - AED
+          - EUR
+          - GBP
+          - HKD
+          - HUF
+          - ISK
+          - JPY
+          - NOK
+          - PLN
+          - RUB
+          - SGD
+          - SEK
+          - CHF
+          - THB
+          - TRY
+          - UAH
+          - USD
+          type: string
+          x-enumDescriptions:
+            AUD: Australian Dollar
+            BHD: Bahraini Dinar
+            BGN: Bulgarian Lev
+            CAD: Canadian Dollar
+            CNY: Chinese Yuan Renminbi
+            HRK: Croatian Kuna
+            CZK: Czech Koruna
+            DKK: Danish Krone
+            AED: Emirati Dirham
+            EUR: Euro
+            GBP: Great British Pound
+            HKD: Hong Kong Dollar
+            HUF: Hungarian Forint
+            ISK: Icelandic krona
+            JPY: Japanese Yen
+            NOK: Norwegian Krone
+            PLN: Polish Zloty
+            RUB: Russian Ruble
+            SGD: Singapore Dollar
+            SEK: Swedish Kroner
+            CHF: Swiss Franc
+            THB: Thailand Baht
+            TRY: Turkish Lira
+            UAH: Ukrainian hryvnia
+            USD: United States Dollar
         Is_Active:
           default: false
           description: Defines if the location is active and can be used
