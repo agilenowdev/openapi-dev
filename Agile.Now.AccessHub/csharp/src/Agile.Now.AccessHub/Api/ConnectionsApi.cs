@@ -56,7 +56,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Connection</returns>
-        Connection DeleteConnection(string id, string name = default(string), int operationIndex = 0);
+        Connection DeleteConnection(string id, string name = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -69,7 +69,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Connection</returns>
-        ApiResponse<Connection> DeleteConnectionWithHttpInfo(string id, string name = default(string), int operationIndex = 0);
+        ApiResponse<Connection> DeleteConnectionWithHttpInfo(string id, string name = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -83,7 +83,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="subName">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Config</returns>
-        Config DeleteConnectionConfig(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0);
+        Config DeleteConnectionConfig(string id, string subId, string name = default, string subName = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -98,7 +98,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="subName">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Config</returns>
-        ApiResponse<Config> DeleteConnectionConfigWithHttpInfo(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0);
+        ApiResponse<Config> DeleteConnectionConfigWithHttpInfo(string id, string subId, string name = default, string subName = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -110,7 +110,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Connection</returns>
-        Connection GetConnection(string id, string name = default(string), int operationIndex = 0);
+        Connection GetConnection(string id, string name = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -123,7 +123,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Connection</returns>
-        ApiResponse<Connection> GetConnectionWithHttpInfo(string id, string name = default(string), int operationIndex = 0);
+        ApiResponse<Connection> GetConnectionWithHttpInfo(string id, string name = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -140,7 +140,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Configs</returns>
-        Configs ListConnectionConfigs(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0);
+        Configs ListConnectionConfigs(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -158,7 +158,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Configs</returns>
-        ApiResponse<Configs> ListConnectionConfigsWithHttpInfo(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0);
+        ApiResponse<Configs> ListConnectionConfigsWithHttpInfo(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -173,7 +173,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Connections</returns>
-        Connections ListConnections(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0);
+        Connections ListConnections(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -189,7 +189,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Connections</returns>
-        ApiResponse<Connections> ListConnectionsWithHttpInfo(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0);
+        ApiResponse<Connections> ListConnectionsWithHttpInfo(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -203,7 +203,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Config</returns>
-        Config PatchConnectionConfigs(string id, ConfigsData configsData, string name = default(string), string deleteNotExists = default(string), int operationIndex = 0);
+        Config PatchConnectionConfigs(string id, ConfigsData configsData, string name = default, string deleteNotExists = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -218,7 +218,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Config</returns>
-        ApiResponse<Config> PatchConnectionConfigsWithHttpInfo(string id, ConfigsData configsData, string name = default(string), string deleteNotExists = default(string), int operationIndex = 0);
+        ApiResponse<Config> PatchConnectionConfigsWithHttpInfo(string id, ConfigsData configsData, string name = default, string deleteNotExists = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -231,7 +231,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Connection</returns>
-        Connection UpdateConnection(string id, ConnectionData connectionData, string name = default(string), int operationIndex = 0);
+        Connection UpdateConnection(string id, ConnectionData connectionData, string name = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -245,7 +245,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Connection</returns>
-        ApiResponse<Connection> UpdateConnectionWithHttpInfo(string id, ConnectionData connectionData, string name = default(string), int operationIndex = 0);
+        ApiResponse<Connection> UpdateConnectionWithHttpInfo(string id, ConnectionData connectionData, string name = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -281,7 +281,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Config</returns>
-        Config UpsertConnectionConfig(string id, ConfigData configData, string name = default(string), int operationIndex = 0);
+        Config UpsertConnectionConfig(string id, ConfigData configData, string name = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -295,7 +295,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Config</returns>
-        ApiResponse<Config> UpsertConnectionConfigWithHttpInfo(string id, ConfigData configData, string name = default(string), int operationIndex = 0);
+        ApiResponse<Config> UpsertConnectionConfigWithHttpInfo(string id, ConfigData configData, string name = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -316,7 +316,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Connection</returns>
-        System.Threading.Tasks.Task<Connection> CreateConnectionAsync(ConnectionData connectionData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Connection> CreateConnectionAsync(ConnectionData connectionData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -329,7 +329,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Connection)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Connection>> CreateConnectionWithHttpInfoAsync(ConnectionData connectionData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Connection>> CreateConnectionWithHttpInfoAsync(ConnectionData connectionData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -342,7 +342,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Connection</returns>
-        System.Threading.Tasks.Task<Connection> DeleteConnectionAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Connection> DeleteConnectionAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -356,7 +356,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Connection)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Connection>> DeleteConnectionWithHttpInfoAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Connection>> DeleteConnectionWithHttpInfoAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -371,7 +371,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Config</returns>
-        System.Threading.Tasks.Task<Config> DeleteConnectionConfigAsync(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Config> DeleteConnectionConfigAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -387,7 +387,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Config)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Config>> DeleteConnectionConfigWithHttpInfoAsync(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Config>> DeleteConnectionConfigWithHttpInfoAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -400,7 +400,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Connection</returns>
-        System.Threading.Tasks.Task<Connection> GetConnectionAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Connection> GetConnectionAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -414,7 +414,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Connection)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Connection>> GetConnectionWithHttpInfoAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Connection>> GetConnectionWithHttpInfoAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -432,7 +432,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Configs</returns>
-        System.Threading.Tasks.Task<Configs> ListConnectionConfigsAsync(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Configs> ListConnectionConfigsAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -451,7 +451,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Configs)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Configs>> ListConnectionConfigsWithHttpInfoAsync(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Configs>> ListConnectionConfigsWithHttpInfoAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -467,7 +467,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Connections</returns>
-        System.Threading.Tasks.Task<Connections> ListConnectionsAsync(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Connections> ListConnectionsAsync(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -484,7 +484,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Connections)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Connections>> ListConnectionsWithHttpInfoAsync(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Connections>> ListConnectionsWithHttpInfoAsync(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -499,7 +499,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Config</returns>
-        System.Threading.Tasks.Task<Config> PatchConnectionConfigsAsync(string id, ConfigsData configsData, string name = default(string), string deleteNotExists = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Config> PatchConnectionConfigsAsync(string id, ConfigsData configsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -515,7 +515,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Config)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Config>> PatchConnectionConfigsWithHttpInfoAsync(string id, ConfigsData configsData, string name = default(string), string deleteNotExists = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Config>> PatchConnectionConfigsWithHttpInfoAsync(string id, ConfigsData configsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -529,7 +529,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Connection</returns>
-        System.Threading.Tasks.Task<Connection> UpdateConnectionAsync(string id, ConnectionData connectionData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Connection> UpdateConnectionAsync(string id, ConnectionData connectionData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -544,7 +544,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Connection)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Connection>> UpdateConnectionWithHttpInfoAsync(string id, ConnectionData connectionData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Connection>> UpdateConnectionWithHttpInfoAsync(string id, ConnectionData connectionData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -556,7 +556,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Connection</returns>
-        System.Threading.Tasks.Task<Connection> UpsertConnectionAsync(ConnectionData connectionData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Connection> UpsertConnectionAsync(ConnectionData connectionData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -569,7 +569,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Connection)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Connection>> UpsertConnectionWithHttpInfoAsync(ConnectionData connectionData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Connection>> UpsertConnectionWithHttpInfoAsync(ConnectionData connectionData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -583,7 +583,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Config</returns>
-        System.Threading.Tasks.Task<Config> UpsertConnectionConfigAsync(string id, ConfigData configData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Config> UpsertConnectionConfigAsync(string id, ConfigData configData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -598,7 +598,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Config)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Config>> UpsertConnectionConfigWithHttpInfoAsync(string id, ConfigData configData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Config>> UpsertConnectionConfigWithHttpInfoAsync(string id, ConfigData configData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -668,13 +668,9 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="configuration">The configuration object.</param>
         public ConnectionsApi(ISynchronousClient client, IAsynchronousClient asyncClient, IReadableConfiguration configuration)
         {
-            if (client == null) throw new ArgumentNullException("client");
-            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
-            if (configuration == null) throw new ArgumentNullException("configuration");
-
-            Client = client;
-            AsynchronousClient = asyncClient;
-            Configuration = configuration;
+            Client = client ?? throw new ArgumentNullException("client");
+            AsynchronousClient = asyncClient ?? throw new ArgumentNullException("asyncClient");
+            Configuration = configuration ?? throw new ArgumentNullException("configuration");
             ExceptionFactory = Agile.Now.AccessHub.Client.Configuration.DefaultExceptionFactory;
         }
 
@@ -742,10 +738,7 @@ namespace Agile.Now.AccessHub.Api
         public ApiResponse<Connection> CreateConnectionWithHttpInfo(ConnectionData connectionData, int operationIndex = 0)
         {
             // verify the required parameter 'connectionData' is set
-            if (connectionData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'connectionData' when calling ConnectionsApi->CreateConnection");
-            }
+            connectionData = connectionData ?? throw new ApiException(400, "Missing required parameter 'connectionData' when calling ConnectionsApi->CreateConnection");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -814,7 +807,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Connection</returns>
-        public async System.Threading.Tasks.Task<Connection> CreateConnectionAsync(ConnectionData connectionData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Connection> CreateConnectionAsync(ConnectionData connectionData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Connection> localVarResponse = await CreateConnectionWithHttpInfoAsync(connectionData, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -828,13 +821,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Connection)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Connection>> CreateConnectionWithHttpInfoAsync(ConnectionData connectionData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Connection>> CreateConnectionWithHttpInfoAsync(ConnectionData connectionData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'connectionData' is set
-            if (connectionData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'connectionData' when calling ConnectionsApi->CreateConnection");
-            }
+            connectionData = connectionData ?? throw new ApiException(400, "Missing required parameter 'connectionData' when calling ConnectionsApi->CreateConnection");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -905,7 +895,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Connection</returns>
-        public Connection DeleteConnection(string id, string name = default(string), int operationIndex = 0)
+        public Connection DeleteConnection(string id, string name = default, int operationIndex = 0)
         {
             ApiResponse<Connection> localVarResponse = DeleteConnectionWithHttpInfo(id, name);
             return localVarResponse.Data;
@@ -919,13 +909,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Connection</returns>
-        public ApiResponse<Connection> DeleteConnectionWithHttpInfo(string id, string name = default(string), int operationIndex = 0)
+        public ApiResponse<Connection> DeleteConnectionWithHttpInfo(string id, string name = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling ConnectionsApi->DeleteConnection");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling ConnectionsApi->DeleteConnection");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -998,7 +985,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Connection</returns>
-        public async System.Threading.Tasks.Task<Connection> DeleteConnectionAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Connection> DeleteConnectionAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Connection> localVarResponse = await DeleteConnectionWithHttpInfoAsync(id, name, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1013,13 +1000,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Connection)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Connection>> DeleteConnectionWithHttpInfoAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Connection>> DeleteConnectionWithHttpInfoAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling ConnectionsApi->DeleteConnection");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling ConnectionsApi->DeleteConnection");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -1095,7 +1079,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="subName">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Config</returns>
-        public Config DeleteConnectionConfig(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0)
+        public Config DeleteConnectionConfig(string id, string subId, string name = default, string subName = default, int operationIndex = 0)
         {
             ApiResponse<Config> localVarResponse = DeleteConnectionConfigWithHttpInfo(id, subId, name, subName);
             return localVarResponse.Data;
@@ -1111,19 +1095,13 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="subName">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Config</returns>
-        public ApiResponse<Config> DeleteConnectionConfigWithHttpInfo(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0)
+        public ApiResponse<Config> DeleteConnectionConfigWithHttpInfo(string id, string subId, string name = default, string subName = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling ConnectionsApi->DeleteConnectionConfig");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling ConnectionsApi->DeleteConnectionConfig");
 
             // verify the required parameter 'subId' is set
-            if (subId == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'subId' when calling ConnectionsApi->DeleteConnectionConfig");
-            }
+            subId = subId ?? throw new ApiException(400, "Missing required parameter 'subId' when calling ConnectionsApi->DeleteConnectionConfig");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -1203,7 +1181,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Config</returns>
-        public async System.Threading.Tasks.Task<Config> DeleteConnectionConfigAsync(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Config> DeleteConnectionConfigAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Config> localVarResponse = await DeleteConnectionConfigWithHttpInfoAsync(id, subId, name, subName, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1220,19 +1198,13 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Config)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Config>> DeleteConnectionConfigWithHttpInfoAsync(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Config>> DeleteConnectionConfigWithHttpInfoAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling ConnectionsApi->DeleteConnectionConfig");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling ConnectionsApi->DeleteConnectionConfig");
 
             // verify the required parameter 'subId' is set
-            if (subId == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'subId' when calling ConnectionsApi->DeleteConnectionConfig");
-            }
+            subId = subId ?? throw new ApiException(400, "Missing required parameter 'subId' when calling ConnectionsApi->DeleteConnectionConfig");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -1311,7 +1283,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Connection</returns>
-        public Connection GetConnection(string id, string name = default(string), int operationIndex = 0)
+        public Connection GetConnection(string id, string name = default, int operationIndex = 0)
         {
             ApiResponse<Connection> localVarResponse = GetConnectionWithHttpInfo(id, name);
             return localVarResponse.Data;
@@ -1325,13 +1297,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Connection</returns>
-        public ApiResponse<Connection> GetConnectionWithHttpInfo(string id, string name = default(string), int operationIndex = 0)
+        public ApiResponse<Connection> GetConnectionWithHttpInfo(string id, string name = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling ConnectionsApi->GetConnection");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling ConnectionsApi->GetConnection");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -1404,7 +1373,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Connection</returns>
-        public async System.Threading.Tasks.Task<Connection> GetConnectionAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Connection> GetConnectionAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Connection> localVarResponse = await GetConnectionWithHttpInfoAsync(id, name, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1419,13 +1388,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Connection)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Connection>> GetConnectionWithHttpInfoAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Connection>> GetConnectionWithHttpInfoAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling ConnectionsApi->GetConnection");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling ConnectionsApi->GetConnection");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -1504,7 +1470,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Configs</returns>
-        public Configs ListConnectionConfigs(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0)
+        public Configs ListConnectionConfigs(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0)
         {
             ApiResponse<Configs> localVarResponse = ListConnectionConfigsWithHttpInfo(id, name, fields, filters, orders, currentPage, pageSize);
             return localVarResponse.Data;
@@ -1523,13 +1489,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Configs</returns>
-        public ApiResponse<Configs> ListConnectionConfigsWithHttpInfo(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0)
+        public ApiResponse<Configs> ListConnectionConfigsWithHttpInfo(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling ConnectionsApi->ListConnectionConfigs");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling ConnectionsApi->ListConnectionConfigs");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -1627,7 +1590,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Configs</returns>
-        public async System.Threading.Tasks.Task<Configs> ListConnectionConfigsAsync(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Configs> ListConnectionConfigsAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Configs> localVarResponse = await ListConnectionConfigsWithHttpInfoAsync(id, name, fields, filters, orders, currentPage, pageSize, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1647,13 +1610,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Configs)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Configs>> ListConnectionConfigsWithHttpInfoAsync(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Configs>> ListConnectionConfigsWithHttpInfoAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling ConnectionsApi->ListConnectionConfigs");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling ConnectionsApi->ListConnectionConfigs");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -1750,7 +1710,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Connections</returns>
-        public Connections ListConnections(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0)
+        public Connections ListConnections(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0)
         {
             ApiResponse<Connections> localVarResponse = ListConnectionsWithHttpInfo(fields, filters, orders, currentPage, pageSize);
             return localVarResponse.Data;
@@ -1767,7 +1727,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Connections</returns>
-        public ApiResponse<Connections> ListConnectionsWithHttpInfo(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0)
+        public ApiResponse<Connections> ListConnectionsWithHttpInfo(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0)
         {
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -1858,7 +1818,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Connections</returns>
-        public async System.Threading.Tasks.Task<Connections> ListConnectionsAsync(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Connections> ListConnectionsAsync(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Connections> localVarResponse = await ListConnectionsWithHttpInfoAsync(fields, filters, orders, currentPage, pageSize, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1876,7 +1836,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Connections)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Connections>> ListConnectionsWithHttpInfoAsync(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Connections>> ListConnectionsWithHttpInfoAsync(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -1967,7 +1927,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Config</returns>
-        public Config PatchConnectionConfigs(string id, ConfigsData configsData, string name = default(string), string deleteNotExists = default(string), int operationIndex = 0)
+        public Config PatchConnectionConfigs(string id, ConfigsData configsData, string name = default, string deleteNotExists = default, int operationIndex = 0)
         {
             ApiResponse<Config> localVarResponse = PatchConnectionConfigsWithHttpInfo(id, configsData, name, deleteNotExists);
             return localVarResponse.Data;
@@ -1983,19 +1943,13 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Config</returns>
-        public ApiResponse<Config> PatchConnectionConfigsWithHttpInfo(string id, ConfigsData configsData, string name = default(string), string deleteNotExists = default(string), int operationIndex = 0)
+        public ApiResponse<Config> PatchConnectionConfigsWithHttpInfo(string id, ConfigsData configsData, string name = default, string deleteNotExists = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling ConnectionsApi->PatchConnectionConfigs");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling ConnectionsApi->PatchConnectionConfigs");
 
             // verify the required parameter 'configsData' is set
-            if (configsData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'configsData' when calling ConnectionsApi->PatchConnectionConfigs");
-            }
+            configsData = configsData ?? throw new ApiException(400, "Missing required parameter 'configsData' when calling ConnectionsApi->PatchConnectionConfigs");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -2076,7 +2030,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Config</returns>
-        public async System.Threading.Tasks.Task<Config> PatchConnectionConfigsAsync(string id, ConfigsData configsData, string name = default(string), string deleteNotExists = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Config> PatchConnectionConfigsAsync(string id, ConfigsData configsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Config> localVarResponse = await PatchConnectionConfigsWithHttpInfoAsync(id, configsData, name, deleteNotExists, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -2093,19 +2047,13 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Config)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Config>> PatchConnectionConfigsWithHttpInfoAsync(string id, ConfigsData configsData, string name = default(string), string deleteNotExists = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Config>> PatchConnectionConfigsWithHttpInfoAsync(string id, ConfigsData configsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling ConnectionsApi->PatchConnectionConfigs");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling ConnectionsApi->PatchConnectionConfigs");
 
             // verify the required parameter 'configsData' is set
-            if (configsData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'configsData' when calling ConnectionsApi->PatchConnectionConfigs");
-            }
+            configsData = configsData ?? throw new ApiException(400, "Missing required parameter 'configsData' when calling ConnectionsApi->PatchConnectionConfigs");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -2186,7 +2134,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Connection</returns>
-        public Connection UpdateConnection(string id, ConnectionData connectionData, string name = default(string), int operationIndex = 0)
+        public Connection UpdateConnection(string id, ConnectionData connectionData, string name = default, int operationIndex = 0)
         {
             ApiResponse<Connection> localVarResponse = UpdateConnectionWithHttpInfo(id, connectionData, name);
             return localVarResponse.Data;
@@ -2201,19 +2149,13 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Connection</returns>
-        public ApiResponse<Connection> UpdateConnectionWithHttpInfo(string id, ConnectionData connectionData, string name = default(string), int operationIndex = 0)
+        public ApiResponse<Connection> UpdateConnectionWithHttpInfo(string id, ConnectionData connectionData, string name = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling ConnectionsApi->UpdateConnection");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling ConnectionsApi->UpdateConnection");
 
             // verify the required parameter 'connectionData' is set
-            if (connectionData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'connectionData' when calling ConnectionsApi->UpdateConnection");
-            }
+            connectionData = connectionData ?? throw new ApiException(400, "Missing required parameter 'connectionData' when calling ConnectionsApi->UpdateConnection");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -2289,7 +2231,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Connection</returns>
-        public async System.Threading.Tasks.Task<Connection> UpdateConnectionAsync(string id, ConnectionData connectionData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Connection> UpdateConnectionAsync(string id, ConnectionData connectionData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Connection> localVarResponse = await UpdateConnectionWithHttpInfoAsync(id, connectionData, name, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -2305,19 +2247,13 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Connection)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Connection>> UpdateConnectionWithHttpInfoAsync(string id, ConnectionData connectionData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Connection>> UpdateConnectionWithHttpInfoAsync(string id, ConnectionData connectionData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling ConnectionsApi->UpdateConnection");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling ConnectionsApi->UpdateConnection");
 
             // verify the required parameter 'connectionData' is set
-            if (connectionData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'connectionData' when calling ConnectionsApi->UpdateConnection");
-            }
+            connectionData = connectionData ?? throw new ApiException(400, "Missing required parameter 'connectionData' when calling ConnectionsApi->UpdateConnection");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -2408,10 +2344,7 @@ namespace Agile.Now.AccessHub.Api
         public ApiResponse<Connection> UpsertConnectionWithHttpInfo(ConnectionData connectionData, int operationIndex = 0)
         {
             // verify the required parameter 'connectionData' is set
-            if (connectionData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'connectionData' when calling ConnectionsApi->UpsertConnection");
-            }
+            connectionData = connectionData ?? throw new ApiException(400, "Missing required parameter 'connectionData' when calling ConnectionsApi->UpsertConnection");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -2480,7 +2413,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Connection</returns>
-        public async System.Threading.Tasks.Task<Connection> UpsertConnectionAsync(ConnectionData connectionData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Connection> UpsertConnectionAsync(ConnectionData connectionData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Connection> localVarResponse = await UpsertConnectionWithHttpInfoAsync(connectionData, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -2494,13 +2427,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Connection)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Connection>> UpsertConnectionWithHttpInfoAsync(ConnectionData connectionData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Connection>> UpsertConnectionWithHttpInfoAsync(ConnectionData connectionData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'connectionData' is set
-            if (connectionData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'connectionData' when calling ConnectionsApi->UpsertConnection");
-            }
+            connectionData = connectionData ?? throw new ApiException(400, "Missing required parameter 'connectionData' when calling ConnectionsApi->UpsertConnection");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -2572,7 +2502,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Config</returns>
-        public Config UpsertConnectionConfig(string id, ConfigData configData, string name = default(string), int operationIndex = 0)
+        public Config UpsertConnectionConfig(string id, ConfigData configData, string name = default, int operationIndex = 0)
         {
             ApiResponse<Config> localVarResponse = UpsertConnectionConfigWithHttpInfo(id, configData, name);
             return localVarResponse.Data;
@@ -2587,19 +2517,13 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Config</returns>
-        public ApiResponse<Config> UpsertConnectionConfigWithHttpInfo(string id, ConfigData configData, string name = default(string), int operationIndex = 0)
+        public ApiResponse<Config> UpsertConnectionConfigWithHttpInfo(string id, ConfigData configData, string name = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling ConnectionsApi->UpsertConnectionConfig");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling ConnectionsApi->UpsertConnectionConfig");
 
             // verify the required parameter 'configData' is set
-            if (configData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'configData' when calling ConnectionsApi->UpsertConnectionConfig");
-            }
+            configData = configData ?? throw new ApiException(400, "Missing required parameter 'configData' when calling ConnectionsApi->UpsertConnectionConfig");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -2675,7 +2599,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Config</returns>
-        public async System.Threading.Tasks.Task<Config> UpsertConnectionConfigAsync(string id, ConfigData configData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Config> UpsertConnectionConfigAsync(string id, ConfigData configData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Config> localVarResponse = await UpsertConnectionConfigWithHttpInfoAsync(id, configData, name, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -2691,19 +2615,13 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Config)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Config>> UpsertConnectionConfigWithHttpInfoAsync(string id, ConfigData configData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Config>> UpsertConnectionConfigWithHttpInfoAsync(string id, ConfigData configData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling ConnectionsApi->UpsertConnectionConfig");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling ConnectionsApi->UpsertConnectionConfig");
 
             // verify the required parameter 'configData' is set
-            if (configData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'configData' when calling ConnectionsApi->UpsertConnectionConfig");
-            }
+            configData = configData ?? throw new ApiException(400, "Missing required parameter 'configData' when calling ConnectionsApi->UpsertConnectionConfig");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();

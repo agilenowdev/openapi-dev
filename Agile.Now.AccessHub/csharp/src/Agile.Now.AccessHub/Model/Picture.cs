@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = Agile.Now.AccessHub.Client.OpenAPIDateConverter;
 
@@ -31,11 +32,11 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="filename">Filename of account picture.</param>
         /// <param name="varPicture">Picture of account.</param>
         /// <param name="createdOn">Date the record was created (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public Picture(string filename = default(string), System.IO.Stream varPicture = default(System.IO.Stream), DateTime createdOn = default(DateTime))
+        public Picture(string filename = default, System.IO.Stream varPicture = default, DateTime createdOn = default)
         {
-            this.Filename = filename;
-            this.VarPicture = varPicture;
-            this.CreatedOn = createdOn;
+            Filename = filename;
+            VarPicture = varPicture;
+            CreatedOn = createdOn;
         }
 
         /// <summary>
@@ -81,7 +82,7 @@ namespace Agile.Now.AccessHub.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -89,7 +90,7 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

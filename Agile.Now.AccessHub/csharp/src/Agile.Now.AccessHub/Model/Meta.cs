@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = Agile.Now.AccessHub.Client.OpenAPIDateConverter;
 
@@ -37,17 +38,14 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="currentPage">This field specifies the current page of results being returned. It&#39;s often used in conjunction with &#x60;PageSize&#x60; to manage pagination by indicating which subset of the total data is currently being retrieved. (required) (default to 1).</param>
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed. (required) (default to 50).</param>
         /// <param name="type">The type of the record (required).</param>
-        public Meta(int totalItems = 0, int currentPage = 1, int pageSize = 50, string type = default(string))
+        public Meta(int totalItems = 0, int currentPage = 1, int pageSize = 50, string type = default)
         {
-            this.TotalItems = totalItems;
-            this.CurrentPage = currentPage;
-            this.PageSize = pageSize;
+            TotalItems = totalItems;
+            CurrentPage = currentPage;
+            PageSize = pageSize;
             // to ensure "type" is required (not null)
-            if (type == null)
-            {
-                throw new ArgumentNullException("type is a required property for Meta and cannot be null");
-            }
-            this.Type = type;
+            type = type ?? throw new ArgumentNullException("type is a required property for Meta and cannot be null");
+            Type = type;
         }
 
         /// <summary>
@@ -104,7 +102,7 @@ namespace Agile.Now.AccessHub.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -112,7 +110,7 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

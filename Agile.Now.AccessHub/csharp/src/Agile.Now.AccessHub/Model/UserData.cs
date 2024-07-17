@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = Agile.Now.AccessHub.Client.OpenAPIDateConverter;
 
@@ -35,15 +36,12 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         /// <param name="id">The identifier of user department (required).</param>
         /// <param name="userId">userId.</param>
-        public UserData(string id = default(string), FieldType userId = default(FieldType))
+        public UserData(string id = default, FieldType userId = default)
         {
             // to ensure "id" is required (not null)
-            if (id == null)
-            {
-                throw new ArgumentNullException("id is a required property for UserData and cannot be null");
-            }
-            this.Id = id;
-            this.UserId = userId;
+            id = id ?? throw new ArgumentNullException("id is a required property for UserData and cannot be null");
+            Id = id;
+            UserId = userId;
         }
 
         /// <summary>
@@ -79,7 +77,7 @@ namespace Agile.Now.AccessHub.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -87,7 +85,7 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

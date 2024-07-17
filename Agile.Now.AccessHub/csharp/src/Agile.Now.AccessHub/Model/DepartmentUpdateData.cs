@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = Agile.Now.AccessHub.Client.OpenAPIDateConverter;
 
@@ -1562,21 +1563,18 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="ownerId">ownerId.</param>
         /// <param name="countryId">The country of the department.</param>
         /// <param name="isActive">Defines if the department is active and can be used (required) (default to false).</param>
-        public DepartmentUpdateData(string externalId = default(string), string name = default(string), string contactName = default(string), string contactEmail = default(string), string contactPhone = default(string), FieldType ownerId = default(FieldType), CountryIdEnum? countryId = default(CountryIdEnum?), bool isActive = false)
+        public DepartmentUpdateData(string externalId = default, string name = default, string contactName = default, string contactEmail = default, string contactPhone = default, FieldType ownerId = default, CountryIdEnum? countryId = default, bool isActive = false)
         {
             // to ensure "name" is required (not null)
-            if (name == null)
-            {
-                throw new ArgumentNullException("name is a required property for DepartmentUpdateData and cannot be null");
-            }
-            this.Name = name;
-            this.IsActive = isActive;
-            this.ExternalId = externalId;
-            this.ContactName = contactName;
-            this.ContactEmail = contactEmail;
-            this.ContactPhone = contactPhone;
-            this.OwnerId = ownerId;
-            this.CountryId = countryId;
+            name = name ?? throw new ArgumentNullException("name is a required property for DepartmentUpdateData and cannot be null");
+            Name = name;
+            IsActive = isActive;
+            ExternalId = externalId;
+            ContactName = contactName;
+            ContactEmail = contactEmail;
+            ContactPhone = contactPhone;
+            OwnerId = ownerId;
+            CountryId = countryId;
         }
 
         /// <summary>
@@ -1653,7 +1651,7 @@ namespace Agile.Now.AccessHub.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -1661,7 +1659,7 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

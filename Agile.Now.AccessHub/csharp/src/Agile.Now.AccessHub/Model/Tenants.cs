@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = Agile.Now.AccessHub.Client.OpenAPIDateConverter;
 
@@ -30,10 +31,10 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         /// <param name="meta">meta.</param>
         /// <param name="data">The list of &#x60;Tenant records&#x60;.</param>
-        public Tenants(Meta meta = default(Meta), List<Tenant> data = default(List<Tenant>))
+        public Tenants(Meta meta = default, List<Tenant> data = default)
         {
-            this.Meta = meta;
-            this.Data = data;
+            Meta = meta;
+            Data = data;
         }
 
         /// <summary>
@@ -69,7 +70,7 @@ namespace Agile.Now.AccessHub.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -77,7 +78,7 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

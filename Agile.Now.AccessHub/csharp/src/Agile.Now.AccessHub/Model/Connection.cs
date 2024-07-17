@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = Agile.Now.AccessHub.Client.OpenAPIDateConverter;
 
@@ -45,35 +46,26 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="modifiedOn">The date the record was updated. (default to &quot;1900-01-01T00:00Z&quot;).</param>
         /// <param name="createdBy">createdBy.</param>
         /// <param name="createdOn">The date the record was created. (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public Connection(string id = default(string), string name = default(string), string description = default(string), string apiKey = default(string), string secretKey = default(string), string uRL = default(string), bool isActive = false, bool isSystem = false, AbstractLong modifiedBy = default(AbstractLong), DateTime modifiedOn = default(DateTime), AbstractLong createdBy = default(AbstractLong), DateTime createdOn = default(DateTime))
+        public Connection(string id = default, string name = default, string description = default, string apiKey = default, string secretKey = default, string uRL = default, bool isActive = false, bool isSystem = false, AbstractLong modifiedBy = default, DateTime modifiedOn = default, AbstractLong createdBy = default, DateTime createdOn = default)
         {
             // to ensure "id" is required (not null)
-            if (id == null)
-            {
-                throw new ArgumentNullException("id is a required property for Connection and cannot be null");
-            }
-            this.Id = id;
+            id = id ?? throw new ArgumentNullException("id is a required property for Connection and cannot be null");
+            Id = id;
             // to ensure "name" is required (not null)
-            if (name == null)
-            {
-                throw new ArgumentNullException("name is a required property for Connection and cannot be null");
-            }
-            this.Name = name;
+            name = name ?? throw new ArgumentNullException("name is a required property for Connection and cannot be null");
+            Name = name;
             // to ensure "uRL" is required (not null)
-            if (uRL == null)
-            {
-                throw new ArgumentNullException("uRL is a required property for Connection and cannot be null");
-            }
-            this.URL = uRL;
-            this.Description = description;
-            this.ApiKey = apiKey;
-            this.SecretKey = secretKey;
-            this.IsActive = isActive;
-            this.IsSystem = isSystem;
-            this.ModifiedBy = modifiedBy;
-            this.ModifiedOn = modifiedOn;
-            this.CreatedBy = createdBy;
-            this.CreatedOn = createdOn;
+            uRL = uRL ?? throw new ArgumentNullException("uRL is a required property for Connection and cannot be null");
+            URL = uRL;
+            Description = description;
+            ApiKey = apiKey;
+            SecretKey = secretKey;
+            IsActive = isActive;
+            IsSystem = isSystem;
+            ModifiedBy = modifiedBy;
+            ModifiedOn = modifiedOn;
+            CreatedBy = createdBy;
+            CreatedOn = createdOn;
         }
 
         /// <summary>
@@ -192,7 +184,7 @@ namespace Agile.Now.AccessHub.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -200,7 +192,7 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

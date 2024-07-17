@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = Agile.Now.AccessHub.Client.OpenAPIDateConverter;
 
@@ -39,34 +40,22 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="internalConfigId">internalConfigId (required).</param>
         /// <param name="isActive">If true, the entity is active (default to false).</param>
         /// <param name="createdOn">The date the record was created. (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public Entity(string id = default(string), string name = default(string), string application = default(string), AbstractText internalConfigId = default(AbstractText), bool isActive = false, DateTime createdOn = default(DateTime))
+        public Entity(string id = default, string name = default, string application = default, AbstractText internalConfigId = default, bool isActive = false, DateTime createdOn = default)
         {
             // to ensure "id" is required (not null)
-            if (id == null)
-            {
-                throw new ArgumentNullException("id is a required property for Entity and cannot be null");
-            }
-            this.Id = id;
+            id = id ?? throw new ArgumentNullException("id is a required property for Entity and cannot be null");
+            Id = id;
             // to ensure "name" is required (not null)
-            if (name == null)
-            {
-                throw new ArgumentNullException("name is a required property for Entity and cannot be null");
-            }
-            this.Name = name;
+            name = name ?? throw new ArgumentNullException("name is a required property for Entity and cannot be null");
+            Name = name;
             // to ensure "application" is required (not null)
-            if (application == null)
-            {
-                throw new ArgumentNullException("application is a required property for Entity and cannot be null");
-            }
-            this.Application = application;
+            application = application ?? throw new ArgumentNullException("application is a required property for Entity and cannot be null");
+            Application = application;
             // to ensure "internalConfigId" is required (not null)
-            if (internalConfigId == null)
-            {
-                throw new ArgumentNullException("internalConfigId is a required property for Entity and cannot be null");
-            }
-            this.InternalConfigId = internalConfigId;
-            this.IsActive = isActive;
-            this.CreatedOn = createdOn;
+            internalConfigId = internalConfigId ?? throw new ArgumentNullException("internalConfigId is a required property for Entity and cannot be null");
+            InternalConfigId = internalConfigId;
+            IsActive = isActive;
+            CreatedOn = createdOn;
         }
 
         /// <summary>
@@ -136,7 +125,7 @@ namespace Agile.Now.AccessHub.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -144,7 +133,7 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

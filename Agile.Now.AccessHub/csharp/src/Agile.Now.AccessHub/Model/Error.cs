@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = Agile.Now.AccessHub.Client.OpenAPIDateConverter;
 
@@ -39,18 +40,18 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="statusCode">The HTTP response code (required).</param>
         /// <param name="instance">URI that identifies the specific occurrence of the error (default to &quot;&quot;).</param>
         /// <param name="requestKey">Provides a request key that identifies the current request. (default to &quot;&quot;).</param>
-        public Error(List<string> varError = default(List<string>), string type = @"", string title = @"", int statusCode = default(int), string instance = @"", string requestKey = @"")
+        public Error(List<string> varError = default, string type = @"", string title = @"", int statusCode = default, string instance = @"", string requestKey = @"")
         {
-            this.StatusCode = statusCode;
-            this.VarError = varError;
+            StatusCode = statusCode;
+            VarError = varError;
             // use default value if no "type" provided
-            this.Type = type ?? @"";
+            Type = type ?? @"";
             // use default value if no "title" provided
-            this.Title = title ?? @"";
+            Title = title ?? @"";
             // use default value if no "instance" provided
-            this.Instance = instance ?? @"";
+            Instance = instance ?? @"";
             // use default value if no "requestKey" provided
-            this.RequestKey = requestKey ?? @"";
+            RequestKey = requestKey ?? @"";
         }
 
         /// <summary>
@@ -120,7 +121,7 @@ namespace Agile.Now.AccessHub.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -128,7 +129,7 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

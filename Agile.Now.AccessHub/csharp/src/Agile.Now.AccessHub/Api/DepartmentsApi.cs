@@ -56,7 +56,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Department</returns>
-        Department DeleteDepartment(string id, string name = default(string), int operationIndex = 0);
+        Department DeleteDepartment(string id, string name = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -69,7 +69,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Department</returns>
-        ApiResponse<Department> DeleteDepartmentWithHttpInfo(string id, string name = default(string), int operationIndex = 0);
+        ApiResponse<Department> DeleteDepartmentWithHttpInfo(string id, string name = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -83,7 +83,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="subName">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>User</returns>
-        User DeleteDepartmentUser(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0);
+        User DeleteDepartmentUser(string id, string subId, string name = default, string subName = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -98,7 +98,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="subName">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of User</returns>
-        ApiResponse<User> DeleteDepartmentUserWithHttpInfo(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0);
+        ApiResponse<User> DeleteDepartmentUserWithHttpInfo(string id, string subId, string name = default, string subName = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -110,7 +110,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Department</returns>
-        Department GetDepartment(string id, string name = default(string), int operationIndex = 0);
+        Department GetDepartment(string id, string name = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -123,7 +123,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Department</returns>
-        ApiResponse<Department> GetDepartmentWithHttpInfo(string id, string name = default(string), int operationIndex = 0);
+        ApiResponse<Department> GetDepartmentWithHttpInfo(string id, string name = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -140,7 +140,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Users</returns>
-        Users ListDepartmentUsers(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0);
+        Users ListDepartmentUsers(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -158,7 +158,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Users</returns>
-        ApiResponse<Users> ListDepartmentUsersWithHttpInfo(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0);
+        ApiResponse<Users> ListDepartmentUsersWithHttpInfo(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -173,7 +173,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Departments</returns>
-        Departments ListDepartments(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0);
+        Departments ListDepartments(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -189,7 +189,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Departments</returns>
-        ApiResponse<Departments> ListDepartmentsWithHttpInfo(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0);
+        ApiResponse<Departments> ListDepartmentsWithHttpInfo(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -203,7 +203,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>User</returns>
-        User PatchDepartmentUsers(string id, UsersData usersData, string name = default(string), string deleteNotExists = default(string), int operationIndex = 0);
+        User PatchDepartmentUsers(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -218,7 +218,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of User</returns>
-        ApiResponse<User> PatchDepartmentUsersWithHttpInfo(string id, UsersData usersData, string name = default(string), string deleteNotExists = default(string), int operationIndex = 0);
+        ApiResponse<User> PatchDepartmentUsersWithHttpInfo(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -231,7 +231,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Department</returns>
-        Department UpdateDepartment(string id, DepartmentUpdateData departmentUpdateData, string name = default(string), int operationIndex = 0);
+        Department UpdateDepartment(string id, DepartmentUpdateData departmentUpdateData, string name = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -245,7 +245,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Department</returns>
-        ApiResponse<Department> UpdateDepartmentWithHttpInfo(string id, DepartmentUpdateData departmentUpdateData, string name = default(string), int operationIndex = 0);
+        ApiResponse<Department> UpdateDepartmentWithHttpInfo(string id, DepartmentUpdateData departmentUpdateData, string name = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -281,7 +281,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>User</returns>
-        User UpsertDepartmentUser(string id, UserData userData, string name = default(string), int operationIndex = 0);
+        User UpsertDepartmentUser(string id, UserData userData, string name = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -295,7 +295,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of User</returns>
-        ApiResponse<User> UpsertDepartmentUserWithHttpInfo(string id, UserData userData, string name = default(string), int operationIndex = 0);
+        ApiResponse<User> UpsertDepartmentUserWithHttpInfo(string id, UserData userData, string name = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -316,7 +316,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Department</returns>
-        System.Threading.Tasks.Task<Department> CreateDepartmentAsync(DepartmentInsertData departmentInsertData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Department> CreateDepartmentAsync(DepartmentInsertData departmentInsertData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -329,7 +329,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Department)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Department>> CreateDepartmentWithHttpInfoAsync(DepartmentInsertData departmentInsertData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Department>> CreateDepartmentWithHttpInfoAsync(DepartmentInsertData departmentInsertData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -342,7 +342,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Department</returns>
-        System.Threading.Tasks.Task<Department> DeleteDepartmentAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Department> DeleteDepartmentAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -356,7 +356,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Department)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Department>> DeleteDepartmentWithHttpInfoAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Department>> DeleteDepartmentWithHttpInfoAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -371,7 +371,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of User</returns>
-        System.Threading.Tasks.Task<User> DeleteDepartmentUserAsync(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<User> DeleteDepartmentUserAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -387,7 +387,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (User)</returns>
-        System.Threading.Tasks.Task<ApiResponse<User>> DeleteDepartmentUserWithHttpInfoAsync(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<User>> DeleteDepartmentUserWithHttpInfoAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -400,7 +400,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Department</returns>
-        System.Threading.Tasks.Task<Department> GetDepartmentAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Department> GetDepartmentAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -414,7 +414,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Department)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Department>> GetDepartmentWithHttpInfoAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Department>> GetDepartmentWithHttpInfoAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -432,7 +432,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Users</returns>
-        System.Threading.Tasks.Task<Users> ListDepartmentUsersAsync(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Users> ListDepartmentUsersAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -451,7 +451,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Users)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Users>> ListDepartmentUsersWithHttpInfoAsync(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Users>> ListDepartmentUsersWithHttpInfoAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -467,7 +467,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Departments</returns>
-        System.Threading.Tasks.Task<Departments> ListDepartmentsAsync(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Departments> ListDepartmentsAsync(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -484,7 +484,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Departments)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Departments>> ListDepartmentsWithHttpInfoAsync(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Departments>> ListDepartmentsWithHttpInfoAsync(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -499,7 +499,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of User</returns>
-        System.Threading.Tasks.Task<User> PatchDepartmentUsersAsync(string id, UsersData usersData, string name = default(string), string deleteNotExists = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<User> PatchDepartmentUsersAsync(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -515,7 +515,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (User)</returns>
-        System.Threading.Tasks.Task<ApiResponse<User>> PatchDepartmentUsersWithHttpInfoAsync(string id, UsersData usersData, string name = default(string), string deleteNotExists = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<User>> PatchDepartmentUsersWithHttpInfoAsync(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -529,7 +529,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Department</returns>
-        System.Threading.Tasks.Task<Department> UpdateDepartmentAsync(string id, DepartmentUpdateData departmentUpdateData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Department> UpdateDepartmentAsync(string id, DepartmentUpdateData departmentUpdateData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -544,7 +544,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Department)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Department>> UpdateDepartmentWithHttpInfoAsync(string id, DepartmentUpdateData departmentUpdateData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Department>> UpdateDepartmentWithHttpInfoAsync(string id, DepartmentUpdateData departmentUpdateData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -556,7 +556,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Department</returns>
-        System.Threading.Tasks.Task<Department> UpsertDepartmentAsync(DepartmentData departmentData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Department> UpsertDepartmentAsync(DepartmentData departmentData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -569,7 +569,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Department)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Department>> UpsertDepartmentWithHttpInfoAsync(DepartmentData departmentData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Department>> UpsertDepartmentWithHttpInfoAsync(DepartmentData departmentData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -583,7 +583,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of User</returns>
-        System.Threading.Tasks.Task<User> UpsertDepartmentUserAsync(string id, UserData userData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<User> UpsertDepartmentUserAsync(string id, UserData userData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -598,7 +598,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (User)</returns>
-        System.Threading.Tasks.Task<ApiResponse<User>> UpsertDepartmentUserWithHttpInfoAsync(string id, UserData userData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<User>> UpsertDepartmentUserWithHttpInfoAsync(string id, UserData userData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -668,13 +668,9 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="configuration">The configuration object.</param>
         public DepartmentsApi(ISynchronousClient client, IAsynchronousClient asyncClient, IReadableConfiguration configuration)
         {
-            if (client == null) throw new ArgumentNullException("client");
-            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
-            if (configuration == null) throw new ArgumentNullException("configuration");
-
-            Client = client;
-            AsynchronousClient = asyncClient;
-            Configuration = configuration;
+            Client = client ?? throw new ArgumentNullException("client");
+            AsynchronousClient = asyncClient ?? throw new ArgumentNullException("asyncClient");
+            Configuration = configuration ?? throw new ArgumentNullException("configuration");
             ExceptionFactory = Agile.Now.AccessHub.Client.Configuration.DefaultExceptionFactory;
         }
 
@@ -742,10 +738,7 @@ namespace Agile.Now.AccessHub.Api
         public ApiResponse<Department> CreateDepartmentWithHttpInfo(DepartmentInsertData departmentInsertData, int operationIndex = 0)
         {
             // verify the required parameter 'departmentInsertData' is set
-            if (departmentInsertData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'departmentInsertData' when calling DepartmentsApi->CreateDepartment");
-            }
+            departmentInsertData = departmentInsertData ?? throw new ApiException(400, "Missing required parameter 'departmentInsertData' when calling DepartmentsApi->CreateDepartment");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -814,7 +807,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Department</returns>
-        public async System.Threading.Tasks.Task<Department> CreateDepartmentAsync(DepartmentInsertData departmentInsertData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Department> CreateDepartmentAsync(DepartmentInsertData departmentInsertData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Department> localVarResponse = await CreateDepartmentWithHttpInfoAsync(departmentInsertData, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -828,13 +821,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Department)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Department>> CreateDepartmentWithHttpInfoAsync(DepartmentInsertData departmentInsertData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Department>> CreateDepartmentWithHttpInfoAsync(DepartmentInsertData departmentInsertData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'departmentInsertData' is set
-            if (departmentInsertData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'departmentInsertData' when calling DepartmentsApi->CreateDepartment");
-            }
+            departmentInsertData = departmentInsertData ?? throw new ApiException(400, "Missing required parameter 'departmentInsertData' when calling DepartmentsApi->CreateDepartment");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -905,7 +895,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Department</returns>
-        public Department DeleteDepartment(string id, string name = default(string), int operationIndex = 0)
+        public Department DeleteDepartment(string id, string name = default, int operationIndex = 0)
         {
             ApiResponse<Department> localVarResponse = DeleteDepartmentWithHttpInfo(id, name);
             return localVarResponse.Data;
@@ -919,13 +909,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Department</returns>
-        public ApiResponse<Department> DeleteDepartmentWithHttpInfo(string id, string name = default(string), int operationIndex = 0)
+        public ApiResponse<Department> DeleteDepartmentWithHttpInfo(string id, string name = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->DeleteDepartment");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->DeleteDepartment");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -998,7 +985,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Department</returns>
-        public async System.Threading.Tasks.Task<Department> DeleteDepartmentAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Department> DeleteDepartmentAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Department> localVarResponse = await DeleteDepartmentWithHttpInfoAsync(id, name, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1013,13 +1000,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Department)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Department>> DeleteDepartmentWithHttpInfoAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Department>> DeleteDepartmentWithHttpInfoAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->DeleteDepartment");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->DeleteDepartment");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -1095,7 +1079,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="subName">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>User</returns>
-        public User DeleteDepartmentUser(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0)
+        public User DeleteDepartmentUser(string id, string subId, string name = default, string subName = default, int operationIndex = 0)
         {
             ApiResponse<User> localVarResponse = DeleteDepartmentUserWithHttpInfo(id, subId, name, subName);
             return localVarResponse.Data;
@@ -1111,19 +1095,13 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="subName">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of User</returns>
-        public ApiResponse<User> DeleteDepartmentUserWithHttpInfo(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0)
+        public ApiResponse<User> DeleteDepartmentUserWithHttpInfo(string id, string subId, string name = default, string subName = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->DeleteDepartmentUser");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->DeleteDepartmentUser");
 
             // verify the required parameter 'subId' is set
-            if (subId == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'subId' when calling DepartmentsApi->DeleteDepartmentUser");
-            }
+            subId = subId ?? throw new ApiException(400, "Missing required parameter 'subId' when calling DepartmentsApi->DeleteDepartmentUser");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -1203,7 +1181,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of User</returns>
-        public async System.Threading.Tasks.Task<User> DeleteDepartmentUserAsync(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<User> DeleteDepartmentUserAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<User> localVarResponse = await DeleteDepartmentUserWithHttpInfoAsync(id, subId, name, subName, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1220,19 +1198,13 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (User)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<User>> DeleteDepartmentUserWithHttpInfoAsync(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<User>> DeleteDepartmentUserWithHttpInfoAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->DeleteDepartmentUser");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->DeleteDepartmentUser");
 
             // verify the required parameter 'subId' is set
-            if (subId == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'subId' when calling DepartmentsApi->DeleteDepartmentUser");
-            }
+            subId = subId ?? throw new ApiException(400, "Missing required parameter 'subId' when calling DepartmentsApi->DeleteDepartmentUser");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -1311,7 +1283,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Department</returns>
-        public Department GetDepartment(string id, string name = default(string), int operationIndex = 0)
+        public Department GetDepartment(string id, string name = default, int operationIndex = 0)
         {
             ApiResponse<Department> localVarResponse = GetDepartmentWithHttpInfo(id, name);
             return localVarResponse.Data;
@@ -1325,13 +1297,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Department</returns>
-        public ApiResponse<Department> GetDepartmentWithHttpInfo(string id, string name = default(string), int operationIndex = 0)
+        public ApiResponse<Department> GetDepartmentWithHttpInfo(string id, string name = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->GetDepartment");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->GetDepartment");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -1404,7 +1373,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Department</returns>
-        public async System.Threading.Tasks.Task<Department> GetDepartmentAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Department> GetDepartmentAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Department> localVarResponse = await GetDepartmentWithHttpInfoAsync(id, name, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1419,13 +1388,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Department)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Department>> GetDepartmentWithHttpInfoAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Department>> GetDepartmentWithHttpInfoAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->GetDepartment");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->GetDepartment");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -1504,7 +1470,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Users</returns>
-        public Users ListDepartmentUsers(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0)
+        public Users ListDepartmentUsers(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0)
         {
             ApiResponse<Users> localVarResponse = ListDepartmentUsersWithHttpInfo(id, name, fields, filters, orders, currentPage, pageSize);
             return localVarResponse.Data;
@@ -1523,13 +1489,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Users</returns>
-        public ApiResponse<Users> ListDepartmentUsersWithHttpInfo(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0)
+        public ApiResponse<Users> ListDepartmentUsersWithHttpInfo(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->ListDepartmentUsers");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->ListDepartmentUsers");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -1627,7 +1590,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Users</returns>
-        public async System.Threading.Tasks.Task<Users> ListDepartmentUsersAsync(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Users> ListDepartmentUsersAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Users> localVarResponse = await ListDepartmentUsersWithHttpInfoAsync(id, name, fields, filters, orders, currentPage, pageSize, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1647,13 +1610,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Users)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Users>> ListDepartmentUsersWithHttpInfoAsync(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Users>> ListDepartmentUsersWithHttpInfoAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->ListDepartmentUsers");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->ListDepartmentUsers");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -1750,7 +1710,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Departments</returns>
-        public Departments ListDepartments(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0)
+        public Departments ListDepartments(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0)
         {
             ApiResponse<Departments> localVarResponse = ListDepartmentsWithHttpInfo(fields, filters, orders, currentPage, pageSize);
             return localVarResponse.Data;
@@ -1767,7 +1727,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Departments</returns>
-        public ApiResponse<Departments> ListDepartmentsWithHttpInfo(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0)
+        public ApiResponse<Departments> ListDepartmentsWithHttpInfo(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0)
         {
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -1858,7 +1818,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Departments</returns>
-        public async System.Threading.Tasks.Task<Departments> ListDepartmentsAsync(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Departments> ListDepartmentsAsync(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Departments> localVarResponse = await ListDepartmentsWithHttpInfoAsync(fields, filters, orders, currentPage, pageSize, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1876,7 +1836,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Departments)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Departments>> ListDepartmentsWithHttpInfoAsync(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Departments>> ListDepartmentsWithHttpInfoAsync(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -1967,7 +1927,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>User</returns>
-        public User PatchDepartmentUsers(string id, UsersData usersData, string name = default(string), string deleteNotExists = default(string), int operationIndex = 0)
+        public User PatchDepartmentUsers(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0)
         {
             ApiResponse<User> localVarResponse = PatchDepartmentUsersWithHttpInfo(id, usersData, name, deleteNotExists);
             return localVarResponse.Data;
@@ -1983,19 +1943,13 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of User</returns>
-        public ApiResponse<User> PatchDepartmentUsersWithHttpInfo(string id, UsersData usersData, string name = default(string), string deleteNotExists = default(string), int operationIndex = 0)
+        public ApiResponse<User> PatchDepartmentUsersWithHttpInfo(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->PatchDepartmentUsers");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->PatchDepartmentUsers");
 
             // verify the required parameter 'usersData' is set
-            if (usersData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'usersData' when calling DepartmentsApi->PatchDepartmentUsers");
-            }
+            usersData = usersData ?? throw new ApiException(400, "Missing required parameter 'usersData' when calling DepartmentsApi->PatchDepartmentUsers");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -2076,7 +2030,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of User</returns>
-        public async System.Threading.Tasks.Task<User> PatchDepartmentUsersAsync(string id, UsersData usersData, string name = default(string), string deleteNotExists = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<User> PatchDepartmentUsersAsync(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<User> localVarResponse = await PatchDepartmentUsersWithHttpInfoAsync(id, usersData, name, deleteNotExists, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -2093,19 +2047,13 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (User)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<User>> PatchDepartmentUsersWithHttpInfoAsync(string id, UsersData usersData, string name = default(string), string deleteNotExists = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<User>> PatchDepartmentUsersWithHttpInfoAsync(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->PatchDepartmentUsers");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->PatchDepartmentUsers");
 
             // verify the required parameter 'usersData' is set
-            if (usersData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'usersData' when calling DepartmentsApi->PatchDepartmentUsers");
-            }
+            usersData = usersData ?? throw new ApiException(400, "Missing required parameter 'usersData' when calling DepartmentsApi->PatchDepartmentUsers");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -2186,7 +2134,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Department</returns>
-        public Department UpdateDepartment(string id, DepartmentUpdateData departmentUpdateData, string name = default(string), int operationIndex = 0)
+        public Department UpdateDepartment(string id, DepartmentUpdateData departmentUpdateData, string name = default, int operationIndex = 0)
         {
             ApiResponse<Department> localVarResponse = UpdateDepartmentWithHttpInfo(id, departmentUpdateData, name);
             return localVarResponse.Data;
@@ -2201,19 +2149,13 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Department</returns>
-        public ApiResponse<Department> UpdateDepartmentWithHttpInfo(string id, DepartmentUpdateData departmentUpdateData, string name = default(string), int operationIndex = 0)
+        public ApiResponse<Department> UpdateDepartmentWithHttpInfo(string id, DepartmentUpdateData departmentUpdateData, string name = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->UpdateDepartment");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->UpdateDepartment");
 
             // verify the required parameter 'departmentUpdateData' is set
-            if (departmentUpdateData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'departmentUpdateData' when calling DepartmentsApi->UpdateDepartment");
-            }
+            departmentUpdateData = departmentUpdateData ?? throw new ApiException(400, "Missing required parameter 'departmentUpdateData' when calling DepartmentsApi->UpdateDepartment");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -2289,7 +2231,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Department</returns>
-        public async System.Threading.Tasks.Task<Department> UpdateDepartmentAsync(string id, DepartmentUpdateData departmentUpdateData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Department> UpdateDepartmentAsync(string id, DepartmentUpdateData departmentUpdateData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Department> localVarResponse = await UpdateDepartmentWithHttpInfoAsync(id, departmentUpdateData, name, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -2305,19 +2247,13 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Department)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Department>> UpdateDepartmentWithHttpInfoAsync(string id, DepartmentUpdateData departmentUpdateData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Department>> UpdateDepartmentWithHttpInfoAsync(string id, DepartmentUpdateData departmentUpdateData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->UpdateDepartment");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->UpdateDepartment");
 
             // verify the required parameter 'departmentUpdateData' is set
-            if (departmentUpdateData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'departmentUpdateData' when calling DepartmentsApi->UpdateDepartment");
-            }
+            departmentUpdateData = departmentUpdateData ?? throw new ApiException(400, "Missing required parameter 'departmentUpdateData' when calling DepartmentsApi->UpdateDepartment");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -2408,10 +2344,7 @@ namespace Agile.Now.AccessHub.Api
         public ApiResponse<Department> UpsertDepartmentWithHttpInfo(DepartmentData departmentData, int operationIndex = 0)
         {
             // verify the required parameter 'departmentData' is set
-            if (departmentData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'departmentData' when calling DepartmentsApi->UpsertDepartment");
-            }
+            departmentData = departmentData ?? throw new ApiException(400, "Missing required parameter 'departmentData' when calling DepartmentsApi->UpsertDepartment");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -2480,7 +2413,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Department</returns>
-        public async System.Threading.Tasks.Task<Department> UpsertDepartmentAsync(DepartmentData departmentData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Department> UpsertDepartmentAsync(DepartmentData departmentData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Department> localVarResponse = await UpsertDepartmentWithHttpInfoAsync(departmentData, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -2494,13 +2427,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Department)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Department>> UpsertDepartmentWithHttpInfoAsync(DepartmentData departmentData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Department>> UpsertDepartmentWithHttpInfoAsync(DepartmentData departmentData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'departmentData' is set
-            if (departmentData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'departmentData' when calling DepartmentsApi->UpsertDepartment");
-            }
+            departmentData = departmentData ?? throw new ApiException(400, "Missing required parameter 'departmentData' when calling DepartmentsApi->UpsertDepartment");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -2572,7 +2502,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>User</returns>
-        public User UpsertDepartmentUser(string id, UserData userData, string name = default(string), int operationIndex = 0)
+        public User UpsertDepartmentUser(string id, UserData userData, string name = default, int operationIndex = 0)
         {
             ApiResponse<User> localVarResponse = UpsertDepartmentUserWithHttpInfo(id, userData, name);
             return localVarResponse.Data;
@@ -2587,19 +2517,13 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of User</returns>
-        public ApiResponse<User> UpsertDepartmentUserWithHttpInfo(string id, UserData userData, string name = default(string), int operationIndex = 0)
+        public ApiResponse<User> UpsertDepartmentUserWithHttpInfo(string id, UserData userData, string name = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->UpsertDepartmentUser");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->UpsertDepartmentUser");
 
             // verify the required parameter 'userData' is set
-            if (userData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'userData' when calling DepartmentsApi->UpsertDepartmentUser");
-            }
+            userData = userData ?? throw new ApiException(400, "Missing required parameter 'userData' when calling DepartmentsApi->UpsertDepartmentUser");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -2675,7 +2599,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of User</returns>
-        public async System.Threading.Tasks.Task<User> UpsertDepartmentUserAsync(string id, UserData userData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<User> UpsertDepartmentUserAsync(string id, UserData userData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<User> localVarResponse = await UpsertDepartmentUserWithHttpInfoAsync(id, userData, name, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -2691,19 +2615,13 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (User)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<User>> UpsertDepartmentUserWithHttpInfoAsync(string id, UserData userData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<User>> UpsertDepartmentUserWithHttpInfoAsync(string id, UserData userData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->UpsertDepartmentUser");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->UpsertDepartmentUser");
 
             // verify the required parameter 'userData' is set
-            if (userData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'userData' when calling DepartmentsApi->UpsertDepartmentUser");
-            }
+            userData = userData ?? throw new ApiException(400, "Missing required parameter 'userData' when calling DepartmentsApi->UpsertDepartmentUser");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();

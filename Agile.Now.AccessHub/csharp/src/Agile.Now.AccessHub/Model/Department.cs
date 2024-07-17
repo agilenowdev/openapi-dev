@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = Agile.Now.AccessHub.Client.OpenAPIDateConverter;
 
@@ -50,40 +51,31 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="modifiedBy">modifiedBy.</param>
         /// <param name="createdBy">createdBy.</param>
         /// <param name="createdOn">The date the record was created (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public Department(string id = default(string), string externalId = default(string), string name = default(string), AbstractText departmentTypeId = default(AbstractText), AbstractText parentDepartmentId = default(AbstractText), string hierarchicalName = default(string), int level = 0, string contactName = default(string), string contactEmail = default(string), string contactPhone = default(string), AbstractLong ownerId = default(AbstractLong), AbstractText countryId = default(AbstractText), bool isActive = false, DateTime modifiedOn = default(DateTime), AbstractLong modifiedBy = default(AbstractLong), AbstractLong createdBy = default(AbstractLong), DateTime createdOn = default(DateTime))
+        public Department(string id = default, string externalId = default, string name = default, AbstractText departmentTypeId = default, AbstractText parentDepartmentId = default, string hierarchicalName = default, int level = 0, string contactName = default, string contactEmail = default, string contactPhone = default, AbstractLong ownerId = default, AbstractText countryId = default, bool isActive = false, DateTime modifiedOn = default, AbstractLong modifiedBy = default, AbstractLong createdBy = default, DateTime createdOn = default)
         {
             // to ensure "id" is required (not null)
-            if (id == null)
-            {
-                throw new ArgumentNullException("id is a required property for Department and cannot be null");
-            }
-            this.Id = id;
+            id = id ?? throw new ArgumentNullException("id is a required property for Department and cannot be null");
+            Id = id;
             // to ensure "name" is required (not null)
-            if (name == null)
-            {
-                throw new ArgumentNullException("name is a required property for Department and cannot be null");
-            }
-            this.Name = name;
+            name = name ?? throw new ArgumentNullException("name is a required property for Department and cannot be null");
+            Name = name;
             // to ensure "departmentTypeId" is required (not null)
-            if (departmentTypeId == null)
-            {
-                throw new ArgumentNullException("departmentTypeId is a required property for Department and cannot be null");
-            }
-            this.DepartmentTypeId = departmentTypeId;
-            this.IsActive = isActive;
-            this.ExternalId = externalId;
-            this.ParentDepartmentId = parentDepartmentId;
-            this.HierarchicalName = hierarchicalName;
-            this.Level = level;
-            this.ContactName = contactName;
-            this.ContactEmail = contactEmail;
-            this.ContactPhone = contactPhone;
-            this.OwnerId = ownerId;
-            this.CountryId = countryId;
-            this.ModifiedOn = modifiedOn;
-            this.ModifiedBy = modifiedBy;
-            this.CreatedBy = createdBy;
-            this.CreatedOn = createdOn;
+            departmentTypeId = departmentTypeId ?? throw new ArgumentNullException("departmentTypeId is a required property for Department and cannot be null");
+            DepartmentTypeId = departmentTypeId;
+            IsActive = isActive;
+            ExternalId = externalId;
+            ParentDepartmentId = parentDepartmentId;
+            HierarchicalName = hierarchicalName;
+            Level = level;
+            ContactName = contactName;
+            ContactEmail = contactEmail;
+            ContactPhone = contactPhone;
+            OwnerId = ownerId;
+            CountryId = countryId;
+            ModifiedOn = modifiedOn;
+            ModifiedBy = modifiedBy;
+            CreatedBy = createdBy;
+            CreatedOn = createdOn;
         }
 
         /// <summary>
@@ -237,7 +229,7 @@ namespace Agile.Now.AccessHub.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -245,7 +237,7 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

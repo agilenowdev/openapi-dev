@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = Agile.Now.AccessHub.Client.OpenAPIDateConverter;
 
@@ -50,50 +51,35 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="isActive">Defines if the account is active and can be used (default to false).</param>
         /// <param name="modifiedOn">The date the record was updated (default to &quot;1900-01-01T00:00Z&quot;).</param>
         /// <param name="createdOn">The date the record was created (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public Account(string id = default(string), AbstractLong tenantId = default(AbstractLong), string name = default(string), string firstName = default(string), string lastName = default(string), string phone = default(string), string email = default(string), AbstractText languageId = default(AbstractText), AbstractText timezoneId = default(AbstractText), AbstractText dateFormatId = default(AbstractText), string username = default(string), string externalId = default(string), bool notifyByEmail = false, bool notifyBySMS = false, bool isActive = false, DateTime modifiedOn = default(DateTime), DateTime createdOn = default(DateTime))
+        public Account(string id = default, AbstractLong tenantId = default, string name = default, string firstName = default, string lastName = default, string phone = default, string email = default, AbstractText languageId = default, AbstractText timezoneId = default, AbstractText dateFormatId = default, string username = default, string externalId = default, bool notifyByEmail = false, bool notifyBySMS = false, bool isActive = false, DateTime modifiedOn = default, DateTime createdOn = default)
         {
             // to ensure "id" is required (not null)
-            if (id == null)
-            {
-                throw new ArgumentNullException("id is a required property for Account and cannot be null");
-            }
-            this.Id = id;
+            id = id ?? throw new ArgumentNullException("id is a required property for Account and cannot be null");
+            Id = id;
             // to ensure "firstName" is required (not null)
-            if (firstName == null)
-            {
-                throw new ArgumentNullException("firstName is a required property for Account and cannot be null");
-            }
-            this.FirstName = firstName;
+            firstName = firstName ?? throw new ArgumentNullException("firstName is a required property for Account and cannot be null");
+            FirstName = firstName;
             // to ensure "lastName" is required (not null)
-            if (lastName == null)
-            {
-                throw new ArgumentNullException("lastName is a required property for Account and cannot be null");
-            }
-            this.LastName = lastName;
+            lastName = lastName ?? throw new ArgumentNullException("lastName is a required property for Account and cannot be null");
+            LastName = lastName;
             // to ensure "email" is required (not null)
-            if (email == null)
-            {
-                throw new ArgumentNullException("email is a required property for Account and cannot be null");
-            }
-            this.Email = email;
+            email = email ?? throw new ArgumentNullException("email is a required property for Account and cannot be null");
+            Email = email;
             // to ensure "username" is required (not null)
-            if (username == null)
-            {
-                throw new ArgumentNullException("username is a required property for Account and cannot be null");
-            }
-            this.Username = username;
-            this.TenantId = tenantId;
-            this.Name = name;
-            this.Phone = phone;
-            this.LanguageId = languageId;
-            this.TimezoneId = timezoneId;
-            this.DateFormatId = dateFormatId;
-            this.ExternalId = externalId;
-            this.NotifyByEmail = notifyByEmail;
-            this.NotifyBySMS = notifyBySMS;
-            this.IsActive = isActive;
-            this.ModifiedOn = modifiedOn;
-            this.CreatedOn = createdOn;
+            username = username ?? throw new ArgumentNullException("username is a required property for Account and cannot be null");
+            Username = username;
+            TenantId = tenantId;
+            Name = name;
+            Phone = phone;
+            LanguageId = languageId;
+            TimezoneId = timezoneId;
+            DateFormatId = dateFormatId;
+            ExternalId = externalId;
+            NotifyByEmail = notifyByEmail;
+            NotifyBySMS = notifyBySMS;
+            IsActive = isActive;
+            ModifiedOn = modifiedOn;
+            CreatedOn = createdOn;
         }
 
         /// <summary>
@@ -251,7 +237,7 @@ namespace Agile.Now.AccessHub.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -259,7 +245,7 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

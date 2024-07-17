@@ -33,7 +33,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Entity</returns>
-        Entity GetEntity(string id, string name = default(string), int operationIndex = 0);
+        Entity GetEntity(string id, string name = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -46,7 +46,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Entity</returns>
-        ApiResponse<Entity> GetEntityWithHttpInfo(string id, string name = default(string), int operationIndex = 0);
+        ApiResponse<Entity> GetEntityWithHttpInfo(string id, string name = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -61,7 +61,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Entities</returns>
-        Entities ListEntities(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0);
+        Entities ListEntities(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -77,7 +77,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Entities</returns>
-        ApiResponse<Entities> ListEntitiesWithHttpInfo(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0);
+        ApiResponse<Entities> ListEntitiesWithHttpInfo(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -99,7 +99,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Entity</returns>
-        System.Threading.Tasks.Task<Entity> GetEntityAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Entity> GetEntityAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -113,7 +113,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Entity)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Entity>> GetEntityWithHttpInfoAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Entity>> GetEntityWithHttpInfoAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -129,7 +129,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Entities</returns>
-        System.Threading.Tasks.Task<Entities> ListEntitiesAsync(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Entities> ListEntitiesAsync(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -146,7 +146,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Entities)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Entities>> ListEntitiesWithHttpInfoAsync(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Entities>> ListEntitiesWithHttpInfoAsync(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -216,13 +216,9 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="configuration">The configuration object.</param>
         public EntitiesApi(ISynchronousClient client, IAsynchronousClient asyncClient, IReadableConfiguration configuration)
         {
-            if (client == null) throw new ArgumentNullException("client");
-            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
-            if (configuration == null) throw new ArgumentNullException("configuration");
-
-            Client = client;
-            AsynchronousClient = asyncClient;
-            Configuration = configuration;
+            Client = client ?? throw new ArgumentNullException("client");
+            AsynchronousClient = asyncClient ?? throw new ArgumentNullException("asyncClient");
+            Configuration = configuration ?? throw new ArgumentNullException("configuration");
             ExceptionFactory = Agile.Now.AccessHub.Client.Configuration.DefaultExceptionFactory;
         }
 
@@ -275,7 +271,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Entity</returns>
-        public Entity GetEntity(string id, string name = default(string), int operationIndex = 0)
+        public Entity GetEntity(string id, string name = default, int operationIndex = 0)
         {
             ApiResponse<Entity> localVarResponse = GetEntityWithHttpInfo(id, name);
             return localVarResponse.Data;
@@ -289,13 +285,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Entity</returns>
-        public ApiResponse<Entity> GetEntityWithHttpInfo(string id, string name = default(string), int operationIndex = 0)
+        public ApiResponse<Entity> GetEntityWithHttpInfo(string id, string name = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling EntitiesApi->GetEntity");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling EntitiesApi->GetEntity");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -368,7 +361,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Entity</returns>
-        public async System.Threading.Tasks.Task<Entity> GetEntityAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Entity> GetEntityAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Entity> localVarResponse = await GetEntityWithHttpInfoAsync(id, name, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -383,13 +376,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Entity)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Entity>> GetEntityWithHttpInfoAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Entity>> GetEntityWithHttpInfoAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling EntitiesApi->GetEntity");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling EntitiesApi->GetEntity");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -466,7 +456,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Entities</returns>
-        public Entities ListEntities(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0)
+        public Entities ListEntities(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0)
         {
             ApiResponse<Entities> localVarResponse = ListEntitiesWithHttpInfo(fields, filters, orders, currentPage, pageSize);
             return localVarResponse.Data;
@@ -483,7 +473,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Entities</returns>
-        public ApiResponse<Entities> ListEntitiesWithHttpInfo(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0)
+        public ApiResponse<Entities> ListEntitiesWithHttpInfo(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0)
         {
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -574,7 +564,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Entities</returns>
-        public async System.Threading.Tasks.Task<Entities> ListEntitiesAsync(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Entities> ListEntitiesAsync(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Entities> localVarResponse = await ListEntitiesWithHttpInfoAsync(fields, filters, orders, currentPage, pageSize, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -592,7 +582,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Entities)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Entities>> ListEntitiesWithHttpInfoAsync(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Entities>> ListEntitiesWithHttpInfoAsync(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
 
             RequestOptions localVarRequestOptions = new RequestOptions();

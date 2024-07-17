@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = Agile.Now.AccessHub.Client.OpenAPIDateConverter;
 
@@ -41,21 +42,18 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="min">The min value of input value..</param>
         /// <param name="pattern">The pattern of the validation. Searches the input string for an occurrence of a regular expression..</param>
         /// <param name="defaultValue">The default value of row. If the value of the field is empty, the service automatically sets the value in the field. If the value does not match the data type, the value is cleaned. Remember data types..</param>
-        public ListValidation(string name = default(string), string fieldName = default(string), bool required = false, bool unique = false, string max = default(string), string min = default(string), string pattern = default(string), string defaultValue = default(string))
+        public ListValidation(string name = default, string fieldName = default, bool required = false, bool unique = false, string max = default, string min = default, string pattern = default, string defaultValue = default)
         {
             // to ensure "name" is required (not null)
-            if (name == null)
-            {
-                throw new ArgumentNullException("name is a required property for ListValidation and cannot be null");
-            }
-            this.Name = name;
-            this.FieldName = fieldName;
-            this.Required = required;
-            this.Unique = unique;
-            this.Max = max;
-            this.Min = min;
-            this.Pattern = pattern;
-            this.DefaultValue = defaultValue;
+            name = name ?? throw new ArgumentNullException("name is a required property for ListValidation and cannot be null");
+            Name = name;
+            FieldName = fieldName;
+            Required = required;
+            Unique = unique;
+            Max = max;
+            Min = min;
+            Pattern = pattern;
+            DefaultValue = defaultValue;
         }
 
         /// <summary>
@@ -142,7 +140,7 @@ namespace Agile.Now.AccessHub.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -150,7 +148,7 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

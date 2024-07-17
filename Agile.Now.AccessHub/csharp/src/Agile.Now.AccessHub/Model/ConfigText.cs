@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = Agile.Now.AccessHub.Client.OpenAPIDateConverter;
 
@@ -43,28 +44,22 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="modifiedOn">The date the record was updated. (default to &quot;1900-01-01T00:00Z&quot;).</param>
         /// <param name="createdBy">The Identifier of the user who created the record.</param>
         /// <param name="createdOn">The date the record was created. (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public ConfigText(string id = default(string), string webhookEntityId = default(string), bool hasCreateAccess = false, bool hasUpdateAccess = false, bool hasDeleteAccess = false, bool isActive = false, string modifiedBy = default(string), DateTime modifiedOn = default(DateTime), string createdBy = default(string), DateTime createdOn = default(DateTime))
+        public ConfigText(string id = default, string webhookEntityId = default, bool hasCreateAccess = false, bool hasUpdateAccess = false, bool hasDeleteAccess = false, bool isActive = false, string modifiedBy = default, DateTime modifiedOn = default, string createdBy = default, DateTime createdOn = default)
         {
             // to ensure "id" is required (not null)
-            if (id == null)
-            {
-                throw new ArgumentNullException("id is a required property for ConfigText and cannot be null");
-            }
-            this.Id = id;
+            id = id ?? throw new ArgumentNullException("id is a required property for ConfigText and cannot be null");
+            Id = id;
             // to ensure "webhookEntityId" is required (not null)
-            if (webhookEntityId == null)
-            {
-                throw new ArgumentNullException("webhookEntityId is a required property for ConfigText and cannot be null");
-            }
-            this.WebhookEntityId = webhookEntityId;
-            this.HasCreateAccess = hasCreateAccess;
-            this.HasUpdateAccess = hasUpdateAccess;
-            this.HasDeleteAccess = hasDeleteAccess;
-            this.IsActive = isActive;
-            this.ModifiedBy = modifiedBy;
-            this.ModifiedOn = modifiedOn;
-            this.CreatedBy = createdBy;
-            this.CreatedOn = createdOn;
+            webhookEntityId = webhookEntityId ?? throw new ArgumentNullException("webhookEntityId is a required property for ConfigText and cannot be null");
+            WebhookEntityId = webhookEntityId;
+            HasCreateAccess = hasCreateAccess;
+            HasUpdateAccess = hasUpdateAccess;
+            HasDeleteAccess = hasDeleteAccess;
+            IsActive = isActive;
+            ModifiedBy = modifiedBy;
+            ModifiedOn = modifiedOn;
+            CreatedBy = createdBy;
+            CreatedOn = createdOn;
         }
 
         /// <summary>
@@ -171,7 +166,7 @@ namespace Agile.Now.AccessHub.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -179,7 +174,7 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

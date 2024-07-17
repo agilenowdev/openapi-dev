@@ -56,7 +56,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name,ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Location</returns>
-        Location DeleteLocation(string id, string name = default(string), int operationIndex = 0);
+        Location DeleteLocation(string id, string name = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -69,7 +69,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name,ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Location</returns>
-        ApiResponse<Location> DeleteLocationWithHttpInfo(string id, string name = default(string), int operationIndex = 0);
+        ApiResponse<Location> DeleteLocationWithHttpInfo(string id, string name = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -83,7 +83,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="subName">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>User</returns>
-        User DeleteLocationUser(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0);
+        User DeleteLocationUser(string id, string subId, string name = default, string subName = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -98,7 +98,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="subName">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of User</returns>
-        ApiResponse<User> DeleteLocationUserWithHttpInfo(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0);
+        ApiResponse<User> DeleteLocationUserWithHttpInfo(string id, string subId, string name = default, string subName = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -110,7 +110,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name,ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Location</returns>
-        Location GetLocation(string id, string name = default(string), int operationIndex = 0);
+        Location GetLocation(string id, string name = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -123,7 +123,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name,ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Location</returns>
-        ApiResponse<Location> GetLocationWithHttpInfo(string id, string name = default(string), int operationIndex = 0);
+        ApiResponse<Location> GetLocationWithHttpInfo(string id, string name = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -140,7 +140,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Users</returns>
-        Users ListLocationUsers(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0);
+        Users ListLocationUsers(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -158,7 +158,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Users</returns>
-        ApiResponse<Users> ListLocationUsersWithHttpInfo(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0);
+        ApiResponse<Users> ListLocationUsersWithHttpInfo(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -173,7 +173,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Locations</returns>
-        Locations ListLocations(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0);
+        Locations ListLocations(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -189,7 +189,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Locations</returns>
-        ApiResponse<Locations> ListLocationsWithHttpInfo(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0);
+        ApiResponse<Locations> ListLocationsWithHttpInfo(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -203,7 +203,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>User</returns>
-        User PatchLocationUsers(string id, UsersData usersData, string name = default(string), string deleteNotExists = default(string), int operationIndex = 0);
+        User PatchLocationUsers(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -218,7 +218,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of User</returns>
-        ApiResponse<User> PatchLocationUsersWithHttpInfo(string id, UsersData usersData, string name = default(string), string deleteNotExists = default(string), int operationIndex = 0);
+        ApiResponse<User> PatchLocationUsersWithHttpInfo(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -231,7 +231,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name,ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Location</returns>
-        Location UpdateLocation(string id, LocationUpdateData locationUpdateData, string name = default(string), int operationIndex = 0);
+        Location UpdateLocation(string id, LocationUpdateData locationUpdateData, string name = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -245,7 +245,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name,ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Location</returns>
-        ApiResponse<Location> UpdateLocationWithHttpInfo(string id, LocationUpdateData locationUpdateData, string name = default(string), int operationIndex = 0);
+        ApiResponse<Location> UpdateLocationWithHttpInfo(string id, LocationUpdateData locationUpdateData, string name = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -281,7 +281,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>User</returns>
-        User UpsertLocationUser(string id, UserData userData, string name = default(string), int operationIndex = 0);
+        User UpsertLocationUser(string id, UserData userData, string name = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -295,7 +295,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of User</returns>
-        ApiResponse<User> UpsertLocationUserWithHttpInfo(string id, UserData userData, string name = default(string), int operationIndex = 0);
+        ApiResponse<User> UpsertLocationUserWithHttpInfo(string id, UserData userData, string name = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -316,7 +316,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Location</returns>
-        System.Threading.Tasks.Task<Location> CreateLocationAsync(LocationInsertData locationInsertData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Location> CreateLocationAsync(LocationInsertData locationInsertData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -329,7 +329,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Location)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Location>> CreateLocationWithHttpInfoAsync(LocationInsertData locationInsertData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Location>> CreateLocationWithHttpInfoAsync(LocationInsertData locationInsertData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -342,7 +342,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Location</returns>
-        System.Threading.Tasks.Task<Location> DeleteLocationAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Location> DeleteLocationAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -356,7 +356,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Location)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Location>> DeleteLocationWithHttpInfoAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Location>> DeleteLocationWithHttpInfoAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -371,7 +371,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of User</returns>
-        System.Threading.Tasks.Task<User> DeleteLocationUserAsync(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<User> DeleteLocationUserAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -387,7 +387,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (User)</returns>
-        System.Threading.Tasks.Task<ApiResponse<User>> DeleteLocationUserWithHttpInfoAsync(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<User>> DeleteLocationUserWithHttpInfoAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -400,7 +400,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Location</returns>
-        System.Threading.Tasks.Task<Location> GetLocationAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Location> GetLocationAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -414,7 +414,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Location)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Location>> GetLocationWithHttpInfoAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Location>> GetLocationWithHttpInfoAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -432,7 +432,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Users</returns>
-        System.Threading.Tasks.Task<Users> ListLocationUsersAsync(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Users> ListLocationUsersAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -451,7 +451,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Users)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Users>> ListLocationUsersWithHttpInfoAsync(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Users>> ListLocationUsersWithHttpInfoAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -467,7 +467,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Locations</returns>
-        System.Threading.Tasks.Task<Locations> ListLocationsAsync(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Locations> ListLocationsAsync(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -484,7 +484,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Locations)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Locations>> ListLocationsWithHttpInfoAsync(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Locations>> ListLocationsWithHttpInfoAsync(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -499,7 +499,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of User</returns>
-        System.Threading.Tasks.Task<User> PatchLocationUsersAsync(string id, UsersData usersData, string name = default(string), string deleteNotExists = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<User> PatchLocationUsersAsync(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -515,7 +515,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (User)</returns>
-        System.Threading.Tasks.Task<ApiResponse<User>> PatchLocationUsersWithHttpInfoAsync(string id, UsersData usersData, string name = default(string), string deleteNotExists = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<User>> PatchLocationUsersWithHttpInfoAsync(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -529,7 +529,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Location</returns>
-        System.Threading.Tasks.Task<Location> UpdateLocationAsync(string id, LocationUpdateData locationUpdateData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Location> UpdateLocationAsync(string id, LocationUpdateData locationUpdateData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -544,7 +544,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Location)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Location>> UpdateLocationWithHttpInfoAsync(string id, LocationUpdateData locationUpdateData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Location>> UpdateLocationWithHttpInfoAsync(string id, LocationUpdateData locationUpdateData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -556,7 +556,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Location</returns>
-        System.Threading.Tasks.Task<Location> UpsertLocationAsync(LocationData locationData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Location> UpsertLocationAsync(LocationData locationData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -569,7 +569,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Location)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Location>> UpsertLocationWithHttpInfoAsync(LocationData locationData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Location>> UpsertLocationWithHttpInfoAsync(LocationData locationData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -583,7 +583,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of User</returns>
-        System.Threading.Tasks.Task<User> UpsertLocationUserAsync(string id, UserData userData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<User> UpsertLocationUserAsync(string id, UserData userData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -598,7 +598,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (User)</returns>
-        System.Threading.Tasks.Task<ApiResponse<User>> UpsertLocationUserWithHttpInfoAsync(string id, UserData userData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<User>> UpsertLocationUserWithHttpInfoAsync(string id, UserData userData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -668,13 +668,9 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="configuration">The configuration object.</param>
         public LocationsApi(ISynchronousClient client, IAsynchronousClient asyncClient, IReadableConfiguration configuration)
         {
-            if (client == null) throw new ArgumentNullException("client");
-            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
-            if (configuration == null) throw new ArgumentNullException("configuration");
-
-            Client = client;
-            AsynchronousClient = asyncClient;
-            Configuration = configuration;
+            Client = client ?? throw new ArgumentNullException("client");
+            AsynchronousClient = asyncClient ?? throw new ArgumentNullException("asyncClient");
+            Configuration = configuration ?? throw new ArgumentNullException("configuration");
             ExceptionFactory = Agile.Now.AccessHub.Client.Configuration.DefaultExceptionFactory;
         }
 
@@ -742,10 +738,7 @@ namespace Agile.Now.AccessHub.Api
         public ApiResponse<Location> CreateLocationWithHttpInfo(LocationInsertData locationInsertData, int operationIndex = 0)
         {
             // verify the required parameter 'locationInsertData' is set
-            if (locationInsertData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'locationInsertData' when calling LocationsApi->CreateLocation");
-            }
+            locationInsertData = locationInsertData ?? throw new ApiException(400, "Missing required parameter 'locationInsertData' when calling LocationsApi->CreateLocation");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -814,7 +807,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Location</returns>
-        public async System.Threading.Tasks.Task<Location> CreateLocationAsync(LocationInsertData locationInsertData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Location> CreateLocationAsync(LocationInsertData locationInsertData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Location> localVarResponse = await CreateLocationWithHttpInfoAsync(locationInsertData, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -828,13 +821,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Location)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Location>> CreateLocationWithHttpInfoAsync(LocationInsertData locationInsertData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Location>> CreateLocationWithHttpInfoAsync(LocationInsertData locationInsertData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'locationInsertData' is set
-            if (locationInsertData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'locationInsertData' when calling LocationsApi->CreateLocation");
-            }
+            locationInsertData = locationInsertData ?? throw new ApiException(400, "Missing required parameter 'locationInsertData' when calling LocationsApi->CreateLocation");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -905,7 +895,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name,ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Location</returns>
-        public Location DeleteLocation(string id, string name = default(string), int operationIndex = 0)
+        public Location DeleteLocation(string id, string name = default, int operationIndex = 0)
         {
             ApiResponse<Location> localVarResponse = DeleteLocationWithHttpInfo(id, name);
             return localVarResponse.Data;
@@ -919,13 +909,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name,ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Location</returns>
-        public ApiResponse<Location> DeleteLocationWithHttpInfo(string id, string name = default(string), int operationIndex = 0)
+        public ApiResponse<Location> DeleteLocationWithHttpInfo(string id, string name = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->DeleteLocation");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->DeleteLocation");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -998,7 +985,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Location</returns>
-        public async System.Threading.Tasks.Task<Location> DeleteLocationAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Location> DeleteLocationAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Location> localVarResponse = await DeleteLocationWithHttpInfoAsync(id, name, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1013,13 +1000,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Location)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Location>> DeleteLocationWithHttpInfoAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Location>> DeleteLocationWithHttpInfoAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->DeleteLocation");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->DeleteLocation");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -1095,7 +1079,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="subName">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>User</returns>
-        public User DeleteLocationUser(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0)
+        public User DeleteLocationUser(string id, string subId, string name = default, string subName = default, int operationIndex = 0)
         {
             ApiResponse<User> localVarResponse = DeleteLocationUserWithHttpInfo(id, subId, name, subName);
             return localVarResponse.Data;
@@ -1111,19 +1095,13 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="subName">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of User</returns>
-        public ApiResponse<User> DeleteLocationUserWithHttpInfo(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0)
+        public ApiResponse<User> DeleteLocationUserWithHttpInfo(string id, string subId, string name = default, string subName = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->DeleteLocationUser");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->DeleteLocationUser");
 
             // verify the required parameter 'subId' is set
-            if (subId == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'subId' when calling LocationsApi->DeleteLocationUser");
-            }
+            subId = subId ?? throw new ApiException(400, "Missing required parameter 'subId' when calling LocationsApi->DeleteLocationUser");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -1203,7 +1181,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of User</returns>
-        public async System.Threading.Tasks.Task<User> DeleteLocationUserAsync(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<User> DeleteLocationUserAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<User> localVarResponse = await DeleteLocationUserWithHttpInfoAsync(id, subId, name, subName, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1220,19 +1198,13 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (User)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<User>> DeleteLocationUserWithHttpInfoAsync(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<User>> DeleteLocationUserWithHttpInfoAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->DeleteLocationUser");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->DeleteLocationUser");
 
             // verify the required parameter 'subId' is set
-            if (subId == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'subId' when calling LocationsApi->DeleteLocationUser");
-            }
+            subId = subId ?? throw new ApiException(400, "Missing required parameter 'subId' when calling LocationsApi->DeleteLocationUser");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -1311,7 +1283,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name,ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Location</returns>
-        public Location GetLocation(string id, string name = default(string), int operationIndex = 0)
+        public Location GetLocation(string id, string name = default, int operationIndex = 0)
         {
             ApiResponse<Location> localVarResponse = GetLocationWithHttpInfo(id, name);
             return localVarResponse.Data;
@@ -1325,13 +1297,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name,ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Location</returns>
-        public ApiResponse<Location> GetLocationWithHttpInfo(string id, string name = default(string), int operationIndex = 0)
+        public ApiResponse<Location> GetLocationWithHttpInfo(string id, string name = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->GetLocation");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->GetLocation");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -1404,7 +1373,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Location</returns>
-        public async System.Threading.Tasks.Task<Location> GetLocationAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Location> GetLocationAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Location> localVarResponse = await GetLocationWithHttpInfoAsync(id, name, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1419,13 +1388,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Location)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Location>> GetLocationWithHttpInfoAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Location>> GetLocationWithHttpInfoAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->GetLocation");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->GetLocation");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -1504,7 +1470,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Users</returns>
-        public Users ListLocationUsers(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0)
+        public Users ListLocationUsers(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0)
         {
             ApiResponse<Users> localVarResponse = ListLocationUsersWithHttpInfo(id, name, fields, filters, orders, currentPage, pageSize);
             return localVarResponse.Data;
@@ -1523,13 +1489,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Users</returns>
-        public ApiResponse<Users> ListLocationUsersWithHttpInfo(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0)
+        public ApiResponse<Users> ListLocationUsersWithHttpInfo(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->ListLocationUsers");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->ListLocationUsers");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -1627,7 +1590,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Users</returns>
-        public async System.Threading.Tasks.Task<Users> ListLocationUsersAsync(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Users> ListLocationUsersAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Users> localVarResponse = await ListLocationUsersWithHttpInfoAsync(id, name, fields, filters, orders, currentPage, pageSize, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1647,13 +1610,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Users)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Users>> ListLocationUsersWithHttpInfoAsync(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Users>> ListLocationUsersWithHttpInfoAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->ListLocationUsers");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->ListLocationUsers");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -1750,7 +1710,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Locations</returns>
-        public Locations ListLocations(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0)
+        public Locations ListLocations(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0)
         {
             ApiResponse<Locations> localVarResponse = ListLocationsWithHttpInfo(fields, filters, orders, currentPage, pageSize);
             return localVarResponse.Data;
@@ -1767,7 +1727,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Locations</returns>
-        public ApiResponse<Locations> ListLocationsWithHttpInfo(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0)
+        public ApiResponse<Locations> ListLocationsWithHttpInfo(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0)
         {
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -1858,7 +1818,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Locations</returns>
-        public async System.Threading.Tasks.Task<Locations> ListLocationsAsync(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Locations> ListLocationsAsync(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Locations> localVarResponse = await ListLocationsWithHttpInfoAsync(fields, filters, orders, currentPage, pageSize, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1876,7 +1836,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Locations)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Locations>> ListLocationsWithHttpInfoAsync(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Locations>> ListLocationsWithHttpInfoAsync(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -1967,7 +1927,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>User</returns>
-        public User PatchLocationUsers(string id, UsersData usersData, string name = default(string), string deleteNotExists = default(string), int operationIndex = 0)
+        public User PatchLocationUsers(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0)
         {
             ApiResponse<User> localVarResponse = PatchLocationUsersWithHttpInfo(id, usersData, name, deleteNotExists);
             return localVarResponse.Data;
@@ -1983,19 +1943,13 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of User</returns>
-        public ApiResponse<User> PatchLocationUsersWithHttpInfo(string id, UsersData usersData, string name = default(string), string deleteNotExists = default(string), int operationIndex = 0)
+        public ApiResponse<User> PatchLocationUsersWithHttpInfo(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->PatchLocationUsers");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->PatchLocationUsers");
 
             // verify the required parameter 'usersData' is set
-            if (usersData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'usersData' when calling LocationsApi->PatchLocationUsers");
-            }
+            usersData = usersData ?? throw new ApiException(400, "Missing required parameter 'usersData' when calling LocationsApi->PatchLocationUsers");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -2076,7 +2030,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of User</returns>
-        public async System.Threading.Tasks.Task<User> PatchLocationUsersAsync(string id, UsersData usersData, string name = default(string), string deleteNotExists = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<User> PatchLocationUsersAsync(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<User> localVarResponse = await PatchLocationUsersWithHttpInfoAsync(id, usersData, name, deleteNotExists, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -2093,19 +2047,13 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (User)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<User>> PatchLocationUsersWithHttpInfoAsync(string id, UsersData usersData, string name = default(string), string deleteNotExists = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<User>> PatchLocationUsersWithHttpInfoAsync(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->PatchLocationUsers");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->PatchLocationUsers");
 
             // verify the required parameter 'usersData' is set
-            if (usersData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'usersData' when calling LocationsApi->PatchLocationUsers");
-            }
+            usersData = usersData ?? throw new ApiException(400, "Missing required parameter 'usersData' when calling LocationsApi->PatchLocationUsers");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -2186,7 +2134,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name,ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Location</returns>
-        public Location UpdateLocation(string id, LocationUpdateData locationUpdateData, string name = default(string), int operationIndex = 0)
+        public Location UpdateLocation(string id, LocationUpdateData locationUpdateData, string name = default, int operationIndex = 0)
         {
             ApiResponse<Location> localVarResponse = UpdateLocationWithHttpInfo(id, locationUpdateData, name);
             return localVarResponse.Data;
@@ -2201,19 +2149,13 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name,ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Location</returns>
-        public ApiResponse<Location> UpdateLocationWithHttpInfo(string id, LocationUpdateData locationUpdateData, string name = default(string), int operationIndex = 0)
+        public ApiResponse<Location> UpdateLocationWithHttpInfo(string id, LocationUpdateData locationUpdateData, string name = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->UpdateLocation");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->UpdateLocation");
 
             // verify the required parameter 'locationUpdateData' is set
-            if (locationUpdateData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'locationUpdateData' when calling LocationsApi->UpdateLocation");
-            }
+            locationUpdateData = locationUpdateData ?? throw new ApiException(400, "Missing required parameter 'locationUpdateData' when calling LocationsApi->UpdateLocation");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -2289,7 +2231,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Location</returns>
-        public async System.Threading.Tasks.Task<Location> UpdateLocationAsync(string id, LocationUpdateData locationUpdateData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Location> UpdateLocationAsync(string id, LocationUpdateData locationUpdateData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Location> localVarResponse = await UpdateLocationWithHttpInfoAsync(id, locationUpdateData, name, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -2305,19 +2247,13 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Location)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Location>> UpdateLocationWithHttpInfoAsync(string id, LocationUpdateData locationUpdateData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Location>> UpdateLocationWithHttpInfoAsync(string id, LocationUpdateData locationUpdateData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->UpdateLocation");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->UpdateLocation");
 
             // verify the required parameter 'locationUpdateData' is set
-            if (locationUpdateData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'locationUpdateData' when calling LocationsApi->UpdateLocation");
-            }
+            locationUpdateData = locationUpdateData ?? throw new ApiException(400, "Missing required parameter 'locationUpdateData' when calling LocationsApi->UpdateLocation");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -2408,10 +2344,7 @@ namespace Agile.Now.AccessHub.Api
         public ApiResponse<Location> UpsertLocationWithHttpInfo(LocationData locationData, int operationIndex = 0)
         {
             // verify the required parameter 'locationData' is set
-            if (locationData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'locationData' when calling LocationsApi->UpsertLocation");
-            }
+            locationData = locationData ?? throw new ApiException(400, "Missing required parameter 'locationData' when calling LocationsApi->UpsertLocation");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -2480,7 +2413,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Location</returns>
-        public async System.Threading.Tasks.Task<Location> UpsertLocationAsync(LocationData locationData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Location> UpsertLocationAsync(LocationData locationData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Location> localVarResponse = await UpsertLocationWithHttpInfoAsync(locationData, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -2494,13 +2427,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Location)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Location>> UpsertLocationWithHttpInfoAsync(LocationData locationData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Location>> UpsertLocationWithHttpInfoAsync(LocationData locationData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'locationData' is set
-            if (locationData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'locationData' when calling LocationsApi->UpsertLocation");
-            }
+            locationData = locationData ?? throw new ApiException(400, "Missing required parameter 'locationData' when calling LocationsApi->UpsertLocation");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -2572,7 +2502,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>User</returns>
-        public User UpsertLocationUser(string id, UserData userData, string name = default(string), int operationIndex = 0)
+        public User UpsertLocationUser(string id, UserData userData, string name = default, int operationIndex = 0)
         {
             ApiResponse<User> localVarResponse = UpsertLocationUserWithHttpInfo(id, userData, name);
             return localVarResponse.Data;
@@ -2587,19 +2517,13 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of User</returns>
-        public ApiResponse<User> UpsertLocationUserWithHttpInfo(string id, UserData userData, string name = default(string), int operationIndex = 0)
+        public ApiResponse<User> UpsertLocationUserWithHttpInfo(string id, UserData userData, string name = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->UpsertLocationUser");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->UpsertLocationUser");
 
             // verify the required parameter 'userData' is set
-            if (userData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'userData' when calling LocationsApi->UpsertLocationUser");
-            }
+            userData = userData ?? throw new ApiException(400, "Missing required parameter 'userData' when calling LocationsApi->UpsertLocationUser");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -2675,7 +2599,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of User</returns>
-        public async System.Threading.Tasks.Task<User> UpsertLocationUserAsync(string id, UserData userData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<User> UpsertLocationUserAsync(string id, UserData userData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<User> localVarResponse = await UpsertLocationUserWithHttpInfoAsync(id, userData, name, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -2691,19 +2615,13 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (User)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<User>> UpsertLocationUserWithHttpInfoAsync(string id, UserData userData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<User>> UpsertLocationUserWithHttpInfoAsync(string id, UserData userData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->UpsertLocationUser");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->UpsertLocationUser");
 
             // verify the required parameter 'userData' is set
-            if (userData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'userData' when calling LocationsApi->UpsertLocationUser");
-            }
+            userData = userData ?? throw new ApiException(400, "Missing required parameter 'userData' when calling LocationsApi->UpsertLocationUser");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();

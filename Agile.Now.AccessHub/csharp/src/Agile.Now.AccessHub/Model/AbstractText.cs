@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = Agile.Now.AccessHub.Client.OpenAPIDateConverter;
 
@@ -37,32 +38,20 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="externalId">The external identier of the record row. If the External Id attribute is used, then it must be unique (required).</param>
         /// <param name="name">The name of the record row (required).</param>
         /// <param name="type">The type of the record object (required).</param>
-        public AbstractText(string id = default(string), string externalId = default(string), string name = default(string), string type = default(string))
+        public AbstractText(string id = default, string externalId = default, string name = default, string type = default)
         {
             // to ensure "id" is required (not null)
-            if (id == null)
-            {
-                throw new ArgumentNullException("id is a required property for AbstractText and cannot be null");
-            }
-            this.Id = id;
+            id = id ?? throw new ArgumentNullException("id is a required property for AbstractText and cannot be null");
+            Id = id;
             // to ensure "externalId" is required (not null)
-            if (externalId == null)
-            {
-                throw new ArgumentNullException("externalId is a required property for AbstractText and cannot be null");
-            }
-            this.ExternalId = externalId;
+            externalId = externalId ?? throw new ArgumentNullException("externalId is a required property for AbstractText and cannot be null");
+            ExternalId = externalId;
             // to ensure "name" is required (not null)
-            if (name == null)
-            {
-                throw new ArgumentNullException("name is a required property for AbstractText and cannot be null");
-            }
-            this.Name = name;
+            name = name ?? throw new ArgumentNullException("name is a required property for AbstractText and cannot be null");
+            Name = name;
             // to ensure "type" is required (not null)
-            if (type == null)
-            {
-                throw new ArgumentNullException("type is a required property for AbstractText and cannot be null");
-            }
-            this.Type = type;
+            type = type ?? throw new ArgumentNullException("type is a required property for AbstractText and cannot be null");
+            Type = type;
         }
 
         /// <summary>
@@ -119,7 +108,7 @@ namespace Agile.Now.AccessHub.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -127,7 +116,7 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

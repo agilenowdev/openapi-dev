@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = Agile.Now.AccessHub.Client.OpenAPIDateConverter;
 
@@ -2275,25 +2276,19 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="timezoneId">The timezone of the location.</param>
         /// <param name="currencyId">The currency of the location.</param>
         /// <param name="isActive">Defines if the location is active and can be used (required) (default to false).</param>
-        public LocationInsertData(string id = default(string), string externalId = default(string), string name = default(string), CountryIdEnum? countryId = default(CountryIdEnum?), TimezoneIdEnum? timezoneId = default(TimezoneIdEnum?), CurrencyIdEnum? currencyId = default(CurrencyIdEnum?), bool isActive = false)
+        public LocationInsertData(string id = default, string externalId = default, string name = default, CountryIdEnum? countryId = default, TimezoneIdEnum? timezoneId = default, CurrencyIdEnum? currencyId = default, bool isActive = false)
         {
             // to ensure "id" is required (not null)
-            if (id == null)
-            {
-                throw new ArgumentNullException("id is a required property for LocationInsertData and cannot be null");
-            }
-            this.Id = id;
+            id = id ?? throw new ArgumentNullException("id is a required property for LocationInsertData and cannot be null");
+            Id = id;
             // to ensure "name" is required (not null)
-            if (name == null)
-            {
-                throw new ArgumentNullException("name is a required property for LocationInsertData and cannot be null");
-            }
-            this.Name = name;
-            this.IsActive = isActive;
-            this.ExternalId = externalId;
-            this.CountryId = countryId;
-            this.TimezoneId = timezoneId;
-            this.CurrencyId = currencyId;
+            name = name ?? throw new ArgumentNullException("name is a required property for LocationInsertData and cannot be null");
+            Name = name;
+            IsActive = isActive;
+            ExternalId = externalId;
+            CountryId = countryId;
+            TimezoneId = timezoneId;
+            CurrencyId = currencyId;
         }
 
         /// <summary>
@@ -2350,7 +2345,7 @@ namespace Agile.Now.AccessHub.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -2358,7 +2353,7 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

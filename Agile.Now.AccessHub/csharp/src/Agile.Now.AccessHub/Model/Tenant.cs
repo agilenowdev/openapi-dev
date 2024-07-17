@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = Agile.Now.AccessHub.Client.OpenAPIDateConverter;
 
@@ -36,21 +37,15 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="userId">userId (required).</param>
         /// <param name="tenantId">tenantId (required).</param>
         /// <param name="createdOn">The date the record was created (required) (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public Tenant(AbstractLong userId = default(AbstractLong), AbstractLong tenantId = default(AbstractLong), DateTime createdOn = default(DateTime))
+        public Tenant(AbstractLong userId = default, AbstractLong tenantId = default, DateTime createdOn = default)
         {
             // to ensure "userId" is required (not null)
-            if (userId == null)
-            {
-                throw new ArgumentNullException("userId is a required property for Tenant and cannot be null");
-            }
-            this.UserId = userId;
+            userId = userId ?? throw new ArgumentNullException("userId is a required property for Tenant and cannot be null");
+            UserId = userId;
             // to ensure "tenantId" is required (not null)
-            if (tenantId == null)
-            {
-                throw new ArgumentNullException("tenantId is a required property for Tenant and cannot be null");
-            }
-            this.TenantId = tenantId;
-            this.CreatedOn = createdOn;
+            tenantId = tenantId ?? throw new ArgumentNullException("tenantId is a required property for Tenant and cannot be null");
+            TenantId = tenantId;
+            CreatedOn = createdOn;
         }
 
         /// <summary>
@@ -94,7 +89,7 @@ namespace Agile.Now.AccessHub.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -102,7 +97,7 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

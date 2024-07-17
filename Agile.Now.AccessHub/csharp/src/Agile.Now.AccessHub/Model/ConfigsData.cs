@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = Agile.Now.AccessHub.Client.OpenAPIDateConverter;
 
@@ -31,11 +32,11 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="extra">List validation for entity attribute.</param>
         /// <param name="isFullValidation">If the value is true, the data quality of all fields are checked. This has an effect on performance. (default to false).</param>
         /// <param name="configs">The list of &#x60;Config&#x60; data record for import.</param>
-        public ConfigsData(List<ListValidation> extra = default(List<ListValidation>), bool isFullValidation = false, List<ConfigText> configs = default(List<ConfigText>))
+        public ConfigsData(List<ListValidation> extra = default, bool isFullValidation = false, List<ConfigText> configs = default)
         {
-            this.Extra = extra;
-            this.IsFullValidation = isFullValidation;
-            this.Configs = configs;
+            Extra = extra;
+            IsFullValidation = isFullValidation;
+            Configs = configs;
         }
 
         /// <summary>
@@ -81,7 +82,7 @@ namespace Agile.Now.AccessHub.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -89,7 +90,7 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

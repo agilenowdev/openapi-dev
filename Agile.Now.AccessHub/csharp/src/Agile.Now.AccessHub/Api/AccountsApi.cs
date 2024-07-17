@@ -56,7 +56,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Username, ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Account</returns>
-        Account DeleteAccount(string id, string name = default(string), int operationIndex = 0);
+        Account DeleteAccount(string id, string name = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -69,7 +69,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Username, ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Account</returns>
-        ApiResponse<Account> DeleteAccountWithHttpInfo(string id, string name = default(string), int operationIndex = 0);
+        ApiResponse<Account> DeleteAccountWithHttpInfo(string id, string name = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -83,7 +83,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="subName">The name of the database field. If empty, the entity `AccountId` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Picture</returns>
-        Picture DeleteAccountPicture(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0);
+        Picture DeleteAccountPicture(string id, string subId, string name = default, string subName = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -98,7 +98,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="subName">The name of the database field. If empty, the entity `AccountId` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Picture</returns>
-        ApiResponse<Picture> DeleteAccountPictureWithHttpInfo(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0);
+        ApiResponse<Picture> DeleteAccountPictureWithHttpInfo(string id, string subId, string name = default, string subName = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -112,7 +112,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="subName">The name of the database field. If empty, the entity `UserId` field is used.  Example:  ``` TenantId.Name ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Tenant</returns>
-        Tenant DeleteAccountTenant(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0);
+        Tenant DeleteAccountTenant(string id, string subId, string name = default, string subName = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -127,7 +127,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="subName">The name of the database field. If empty, the entity `UserId` field is used.  Example:  ``` TenantId.Name ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Tenant</returns>
-        ApiResponse<Tenant> DeleteAccountTenantWithHttpInfo(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0);
+        ApiResponse<Tenant> DeleteAccountTenantWithHttpInfo(string id, string subId, string name = default, string subName = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -139,7 +139,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Username, ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Account</returns>
-        Account GetAccount(string id, string name = default(string), int operationIndex = 0);
+        Account GetAccount(string id, string name = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -152,7 +152,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Username, ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Account</returns>
-        ApiResponse<Account> GetAccountWithHttpInfo(string id, string name = default(string), int operationIndex = 0);
+        ApiResponse<Account> GetAccountWithHttpInfo(string id, string name = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -169,7 +169,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Pictures</returns>
-        Pictures ListAccountPictures(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0);
+        Pictures ListAccountPictures(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -187,7 +187,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Pictures</returns>
-        ApiResponse<Pictures> ListAccountPicturesWithHttpInfo(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0);
+        ApiResponse<Pictures> ListAccountPicturesWithHttpInfo(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -204,7 +204,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Tenants</returns>
-        Tenants ListAccountTenants(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0);
+        Tenants ListAccountTenants(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -222,7 +222,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Tenants</returns>
-        ApiResponse<Tenants> ListAccountTenantsWithHttpInfo(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0);
+        ApiResponse<Tenants> ListAccountTenantsWithHttpInfo(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -237,7 +237,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Accounts</returns>
-        Accounts ListAccounts(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0);
+        Accounts ListAccounts(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -253,7 +253,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Accounts</returns>
-        ApiResponse<Accounts> ListAccountsWithHttpInfo(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0);
+        ApiResponse<Accounts> ListAccountsWithHttpInfo(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -266,7 +266,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Username, ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Account</returns>
-        Account UpdateAccount(string id, AccountData accountData, string name = default(string), int operationIndex = 0);
+        Account UpdateAccount(string id, AccountData accountData, string name = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -280,7 +280,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Username, ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Account</returns>
-        ApiResponse<Account> UpdateAccountWithHttpInfo(string id, AccountData accountData, string name = default(string), int operationIndex = 0);
+        ApiResponse<Account> UpdateAccountWithHttpInfo(string id, AccountData accountData, string name = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -316,7 +316,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Picture</returns>
-        Picture UpsertAccountPicture(string id, PictureData pictureData, string name = default(string), int operationIndex = 0);
+        Picture UpsertAccountPicture(string id, PictureData pictureData, string name = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -330,7 +330,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Picture</returns>
-        ApiResponse<Picture> UpsertAccountPictureWithHttpInfo(string id, PictureData pictureData, string name = default(string), int operationIndex = 0);
+        ApiResponse<Picture> UpsertAccountPictureWithHttpInfo(string id, PictureData pictureData, string name = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -343,7 +343,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Tenant</returns>
-        Tenant UpsertAccountTenant(string id, TenantData tenantData, string name = default(string), int operationIndex = 0);
+        Tenant UpsertAccountTenant(string id, TenantData tenantData, string name = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -357,7 +357,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Tenant</returns>
-        ApiResponse<Tenant> UpsertAccountTenantWithHttpInfo(string id, TenantData tenantData, string name = default(string), int operationIndex = 0);
+        ApiResponse<Tenant> UpsertAccountTenantWithHttpInfo(string id, TenantData tenantData, string name = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -378,7 +378,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Account</returns>
-        System.Threading.Tasks.Task<Account> CreateAccountAsync(AccountData accountData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Account> CreateAccountAsync(AccountData accountData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -391,7 +391,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Account)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Account>> CreateAccountWithHttpInfoAsync(AccountData accountData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Account>> CreateAccountWithHttpInfoAsync(AccountData accountData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -404,7 +404,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Account</returns>
-        System.Threading.Tasks.Task<Account> DeleteAccountAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Account> DeleteAccountAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -418,7 +418,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Account)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Account>> DeleteAccountWithHttpInfoAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Account>> DeleteAccountWithHttpInfoAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -433,7 +433,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Picture</returns>
-        System.Threading.Tasks.Task<Picture> DeleteAccountPictureAsync(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Picture> DeleteAccountPictureAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -449,7 +449,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Picture)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Picture>> DeleteAccountPictureWithHttpInfoAsync(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Picture>> DeleteAccountPictureWithHttpInfoAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -464,7 +464,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Tenant</returns>
-        System.Threading.Tasks.Task<Tenant> DeleteAccountTenantAsync(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Tenant> DeleteAccountTenantAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -480,7 +480,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Tenant)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Tenant>> DeleteAccountTenantWithHttpInfoAsync(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Tenant>> DeleteAccountTenantWithHttpInfoAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -493,7 +493,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Account</returns>
-        System.Threading.Tasks.Task<Account> GetAccountAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Account> GetAccountAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -507,7 +507,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Account)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Account>> GetAccountWithHttpInfoAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Account>> GetAccountWithHttpInfoAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -525,7 +525,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Pictures</returns>
-        System.Threading.Tasks.Task<Pictures> ListAccountPicturesAsync(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Pictures> ListAccountPicturesAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -544,7 +544,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Pictures)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Pictures>> ListAccountPicturesWithHttpInfoAsync(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Pictures>> ListAccountPicturesWithHttpInfoAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -562,7 +562,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Tenants</returns>
-        System.Threading.Tasks.Task<Tenants> ListAccountTenantsAsync(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Tenants> ListAccountTenantsAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -581,7 +581,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Tenants)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Tenants>> ListAccountTenantsWithHttpInfoAsync(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Tenants>> ListAccountTenantsWithHttpInfoAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -597,7 +597,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Accounts</returns>
-        System.Threading.Tasks.Task<Accounts> ListAccountsAsync(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Accounts> ListAccountsAsync(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -614,7 +614,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Accounts)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Accounts>> ListAccountsWithHttpInfoAsync(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Accounts>> ListAccountsWithHttpInfoAsync(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -628,7 +628,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Account</returns>
-        System.Threading.Tasks.Task<Account> UpdateAccountAsync(string id, AccountData accountData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Account> UpdateAccountAsync(string id, AccountData accountData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -643,7 +643,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Account)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Account>> UpdateAccountWithHttpInfoAsync(string id, AccountData accountData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Account>> UpdateAccountWithHttpInfoAsync(string id, AccountData accountData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -655,7 +655,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Account</returns>
-        System.Threading.Tasks.Task<Account> UpsertAccountAsync(AccountData accountData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Account> UpsertAccountAsync(AccountData accountData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -668,7 +668,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Account)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Account>> UpsertAccountWithHttpInfoAsync(AccountData accountData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Account>> UpsertAccountWithHttpInfoAsync(AccountData accountData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -682,7 +682,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Picture</returns>
-        System.Threading.Tasks.Task<Picture> UpsertAccountPictureAsync(string id, PictureData pictureData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Picture> UpsertAccountPictureAsync(string id, PictureData pictureData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -697,7 +697,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Picture)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Picture>> UpsertAccountPictureWithHttpInfoAsync(string id, PictureData pictureData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Picture>> UpsertAccountPictureWithHttpInfoAsync(string id, PictureData pictureData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -711,7 +711,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Tenant</returns>
-        System.Threading.Tasks.Task<Tenant> UpsertAccountTenantAsync(string id, TenantData tenantData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Tenant> UpsertAccountTenantAsync(string id, TenantData tenantData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -726,7 +726,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Tenant)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Tenant>> UpsertAccountTenantWithHttpInfoAsync(string id, TenantData tenantData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Tenant>> UpsertAccountTenantWithHttpInfoAsync(string id, TenantData tenantData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -796,13 +796,9 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="configuration">The configuration object.</param>
         public AccountsApi(ISynchronousClient client, IAsynchronousClient asyncClient, IReadableConfiguration configuration)
         {
-            if (client == null) throw new ArgumentNullException("client");
-            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
-            if (configuration == null) throw new ArgumentNullException("configuration");
-
-            Client = client;
-            AsynchronousClient = asyncClient;
-            Configuration = configuration;
+            Client = client ?? throw new ArgumentNullException("client");
+            AsynchronousClient = asyncClient ?? throw new ArgumentNullException("asyncClient");
+            Configuration = configuration ?? throw new ArgumentNullException("configuration");
             ExceptionFactory = Agile.Now.AccessHub.Client.Configuration.DefaultExceptionFactory;
         }
 
@@ -870,10 +866,7 @@ namespace Agile.Now.AccessHub.Api
         public ApiResponse<Account> CreateAccountWithHttpInfo(AccountData accountData, int operationIndex = 0)
         {
             // verify the required parameter 'accountData' is set
-            if (accountData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'accountData' when calling AccountsApi->CreateAccount");
-            }
+            accountData = accountData ?? throw new ApiException(400, "Missing required parameter 'accountData' when calling AccountsApi->CreateAccount");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -942,7 +935,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Account</returns>
-        public async System.Threading.Tasks.Task<Account> CreateAccountAsync(AccountData accountData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Account> CreateAccountAsync(AccountData accountData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Account> localVarResponse = await CreateAccountWithHttpInfoAsync(accountData, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -956,13 +949,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Account)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Account>> CreateAccountWithHttpInfoAsync(AccountData accountData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Account>> CreateAccountWithHttpInfoAsync(AccountData accountData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'accountData' is set
-            if (accountData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'accountData' when calling AccountsApi->CreateAccount");
-            }
+            accountData = accountData ?? throw new ApiException(400, "Missing required parameter 'accountData' when calling AccountsApi->CreateAccount");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -1033,7 +1023,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Username, ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Account</returns>
-        public Account DeleteAccount(string id, string name = default(string), int operationIndex = 0)
+        public Account DeleteAccount(string id, string name = default, int operationIndex = 0)
         {
             ApiResponse<Account> localVarResponse = DeleteAccountWithHttpInfo(id, name);
             return localVarResponse.Data;
@@ -1047,13 +1037,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Username, ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Account</returns>
-        public ApiResponse<Account> DeleteAccountWithHttpInfo(string id, string name = default(string), int operationIndex = 0)
+        public ApiResponse<Account> DeleteAccountWithHttpInfo(string id, string name = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->DeleteAccount");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->DeleteAccount");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -1126,7 +1113,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Account</returns>
-        public async System.Threading.Tasks.Task<Account> DeleteAccountAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Account> DeleteAccountAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Account> localVarResponse = await DeleteAccountWithHttpInfoAsync(id, name, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1141,13 +1128,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Account)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Account>> DeleteAccountWithHttpInfoAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Account>> DeleteAccountWithHttpInfoAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->DeleteAccount");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->DeleteAccount");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -1223,7 +1207,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="subName">The name of the database field. If empty, the entity `AccountId` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Picture</returns>
-        public Picture DeleteAccountPicture(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0)
+        public Picture DeleteAccountPicture(string id, string subId, string name = default, string subName = default, int operationIndex = 0)
         {
             ApiResponse<Picture> localVarResponse = DeleteAccountPictureWithHttpInfo(id, subId, name, subName);
             return localVarResponse.Data;
@@ -1239,19 +1223,13 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="subName">The name of the database field. If empty, the entity `AccountId` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Picture</returns>
-        public ApiResponse<Picture> DeleteAccountPictureWithHttpInfo(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0)
+        public ApiResponse<Picture> DeleteAccountPictureWithHttpInfo(string id, string subId, string name = default, string subName = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->DeleteAccountPicture");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->DeleteAccountPicture");
 
             // verify the required parameter 'subId' is set
-            if (subId == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'subId' when calling AccountsApi->DeleteAccountPicture");
-            }
+            subId = subId ?? throw new ApiException(400, "Missing required parameter 'subId' when calling AccountsApi->DeleteAccountPicture");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -1331,7 +1309,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Picture</returns>
-        public async System.Threading.Tasks.Task<Picture> DeleteAccountPictureAsync(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Picture> DeleteAccountPictureAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Picture> localVarResponse = await DeleteAccountPictureWithHttpInfoAsync(id, subId, name, subName, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1348,19 +1326,13 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Picture)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Picture>> DeleteAccountPictureWithHttpInfoAsync(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Picture>> DeleteAccountPictureWithHttpInfoAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->DeleteAccountPicture");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->DeleteAccountPicture");
 
             // verify the required parameter 'subId' is set
-            if (subId == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'subId' when calling AccountsApi->DeleteAccountPicture");
-            }
+            subId = subId ?? throw new ApiException(400, "Missing required parameter 'subId' when calling AccountsApi->DeleteAccountPicture");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -1441,7 +1413,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="subName">The name of the database field. If empty, the entity `UserId` field is used.  Example:  ``` TenantId.Name ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Tenant</returns>
-        public Tenant DeleteAccountTenant(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0)
+        public Tenant DeleteAccountTenant(string id, string subId, string name = default, string subName = default, int operationIndex = 0)
         {
             ApiResponse<Tenant> localVarResponse = DeleteAccountTenantWithHttpInfo(id, subId, name, subName);
             return localVarResponse.Data;
@@ -1457,19 +1429,13 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="subName">The name of the database field. If empty, the entity `UserId` field is used.  Example:  ``` TenantId.Name ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Tenant</returns>
-        public ApiResponse<Tenant> DeleteAccountTenantWithHttpInfo(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0)
+        public ApiResponse<Tenant> DeleteAccountTenantWithHttpInfo(string id, string subId, string name = default, string subName = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->DeleteAccountTenant");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->DeleteAccountTenant");
 
             // verify the required parameter 'subId' is set
-            if (subId == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'subId' when calling AccountsApi->DeleteAccountTenant");
-            }
+            subId = subId ?? throw new ApiException(400, "Missing required parameter 'subId' when calling AccountsApi->DeleteAccountTenant");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -1549,7 +1515,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Tenant</returns>
-        public async System.Threading.Tasks.Task<Tenant> DeleteAccountTenantAsync(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Tenant> DeleteAccountTenantAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Tenant> localVarResponse = await DeleteAccountTenantWithHttpInfoAsync(id, subId, name, subName, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1566,19 +1532,13 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Tenant)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Tenant>> DeleteAccountTenantWithHttpInfoAsync(string id, string subId, string name = default(string), string subName = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Tenant>> DeleteAccountTenantWithHttpInfoAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->DeleteAccountTenant");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->DeleteAccountTenant");
 
             // verify the required parameter 'subId' is set
-            if (subId == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'subId' when calling AccountsApi->DeleteAccountTenant");
-            }
+            subId = subId ?? throw new ApiException(400, "Missing required parameter 'subId' when calling AccountsApi->DeleteAccountTenant");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -1657,7 +1617,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Username, ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Account</returns>
-        public Account GetAccount(string id, string name = default(string), int operationIndex = 0)
+        public Account GetAccount(string id, string name = default, int operationIndex = 0)
         {
             ApiResponse<Account> localVarResponse = GetAccountWithHttpInfo(id, name);
             return localVarResponse.Data;
@@ -1671,13 +1631,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Username, ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Account</returns>
-        public ApiResponse<Account> GetAccountWithHttpInfo(string id, string name = default(string), int operationIndex = 0)
+        public ApiResponse<Account> GetAccountWithHttpInfo(string id, string name = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->GetAccount");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->GetAccount");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -1750,7 +1707,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Account</returns>
-        public async System.Threading.Tasks.Task<Account> GetAccountAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Account> GetAccountAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Account> localVarResponse = await GetAccountWithHttpInfoAsync(id, name, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1765,13 +1722,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Account)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Account>> GetAccountWithHttpInfoAsync(string id, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Account>> GetAccountWithHttpInfoAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->GetAccount");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->GetAccount");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -1850,7 +1804,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Pictures</returns>
-        public Pictures ListAccountPictures(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0)
+        public Pictures ListAccountPictures(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0)
         {
             ApiResponse<Pictures> localVarResponse = ListAccountPicturesWithHttpInfo(id, name, fields, filters, orders, currentPage, pageSize);
             return localVarResponse.Data;
@@ -1869,13 +1823,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Pictures</returns>
-        public ApiResponse<Pictures> ListAccountPicturesWithHttpInfo(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0)
+        public ApiResponse<Pictures> ListAccountPicturesWithHttpInfo(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->ListAccountPictures");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->ListAccountPictures");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -1973,7 +1924,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Pictures</returns>
-        public async System.Threading.Tasks.Task<Pictures> ListAccountPicturesAsync(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Pictures> ListAccountPicturesAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Pictures> localVarResponse = await ListAccountPicturesWithHttpInfoAsync(id, name, fields, filters, orders, currentPage, pageSize, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1993,13 +1944,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Pictures)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Pictures>> ListAccountPicturesWithHttpInfoAsync(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Pictures>> ListAccountPicturesWithHttpInfoAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->ListAccountPictures");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->ListAccountPictures");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -2098,7 +2046,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Tenants</returns>
-        public Tenants ListAccountTenants(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0)
+        public Tenants ListAccountTenants(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0)
         {
             ApiResponse<Tenants> localVarResponse = ListAccountTenantsWithHttpInfo(id, name, fields, filters, orders, currentPage, pageSize);
             return localVarResponse.Data;
@@ -2117,13 +2065,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Tenants</returns>
-        public ApiResponse<Tenants> ListAccountTenantsWithHttpInfo(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0)
+        public ApiResponse<Tenants> ListAccountTenantsWithHttpInfo(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->ListAccountTenants");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->ListAccountTenants");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -2221,7 +2166,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Tenants</returns>
-        public async System.Threading.Tasks.Task<Tenants> ListAccountTenantsAsync(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Tenants> ListAccountTenantsAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Tenants> localVarResponse = await ListAccountTenantsWithHttpInfoAsync(id, name, fields, filters, orders, currentPage, pageSize, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -2241,13 +2186,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Tenants)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Tenants>> ListAccountTenantsWithHttpInfoAsync(string id, string name = default(string), string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Tenants>> ListAccountTenantsWithHttpInfoAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->ListAccountTenants");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->ListAccountTenants");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -2344,7 +2286,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Accounts</returns>
-        public Accounts ListAccounts(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0)
+        public Accounts ListAccounts(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0)
         {
             ApiResponse<Accounts> localVarResponse = ListAccountsWithHttpInfo(fields, filters, orders, currentPage, pageSize);
             return localVarResponse.Data;
@@ -2361,7 +2303,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Accounts</returns>
-        public ApiResponse<Accounts> ListAccountsWithHttpInfo(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0)
+        public ApiResponse<Accounts> ListAccountsWithHttpInfo(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0)
         {
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -2452,7 +2394,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Accounts</returns>
-        public async System.Threading.Tasks.Task<Accounts> ListAccountsAsync(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Accounts> ListAccountsAsync(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Accounts> localVarResponse = await ListAccountsWithHttpInfoAsync(fields, filters, orders, currentPage, pageSize, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -2470,7 +2412,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Accounts)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Accounts>> ListAccountsWithHttpInfoAsync(string fields = default(string), string filters = default(string), string orders = default(string), int? currentPage = default(int?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Accounts>> ListAccountsWithHttpInfoAsync(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -2560,7 +2502,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Username, ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Account</returns>
-        public Account UpdateAccount(string id, AccountData accountData, string name = default(string), int operationIndex = 0)
+        public Account UpdateAccount(string id, AccountData accountData, string name = default, int operationIndex = 0)
         {
             ApiResponse<Account> localVarResponse = UpdateAccountWithHttpInfo(id, accountData, name);
             return localVarResponse.Data;
@@ -2575,19 +2517,13 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Username, ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Account</returns>
-        public ApiResponse<Account> UpdateAccountWithHttpInfo(string id, AccountData accountData, string name = default(string), int operationIndex = 0)
+        public ApiResponse<Account> UpdateAccountWithHttpInfo(string id, AccountData accountData, string name = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->UpdateAccount");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->UpdateAccount");
 
             // verify the required parameter 'accountData' is set
-            if (accountData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'accountData' when calling AccountsApi->UpdateAccount");
-            }
+            accountData = accountData ?? throw new ApiException(400, "Missing required parameter 'accountData' when calling AccountsApi->UpdateAccount");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -2663,7 +2599,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Account</returns>
-        public async System.Threading.Tasks.Task<Account> UpdateAccountAsync(string id, AccountData accountData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Account> UpdateAccountAsync(string id, AccountData accountData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Account> localVarResponse = await UpdateAccountWithHttpInfoAsync(id, accountData, name, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -2679,19 +2615,13 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Account)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Account>> UpdateAccountWithHttpInfoAsync(string id, AccountData accountData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Account>> UpdateAccountWithHttpInfoAsync(string id, AccountData accountData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->UpdateAccount");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->UpdateAccount");
 
             // verify the required parameter 'accountData' is set
-            if (accountData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'accountData' when calling AccountsApi->UpdateAccount");
-            }
+            accountData = accountData ?? throw new ApiException(400, "Missing required parameter 'accountData' when calling AccountsApi->UpdateAccount");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -2782,10 +2712,7 @@ namespace Agile.Now.AccessHub.Api
         public ApiResponse<Account> UpsertAccountWithHttpInfo(AccountData accountData, int operationIndex = 0)
         {
             // verify the required parameter 'accountData' is set
-            if (accountData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'accountData' when calling AccountsApi->UpsertAccount");
-            }
+            accountData = accountData ?? throw new ApiException(400, "Missing required parameter 'accountData' when calling AccountsApi->UpsertAccount");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -2854,7 +2781,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Account</returns>
-        public async System.Threading.Tasks.Task<Account> UpsertAccountAsync(AccountData accountData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Account> UpsertAccountAsync(AccountData accountData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Account> localVarResponse = await UpsertAccountWithHttpInfoAsync(accountData, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -2868,13 +2795,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Account)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Account>> UpsertAccountWithHttpInfoAsync(AccountData accountData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Account>> UpsertAccountWithHttpInfoAsync(AccountData accountData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'accountData' is set
-            if (accountData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'accountData' when calling AccountsApi->UpsertAccount");
-            }
+            accountData = accountData ?? throw new ApiException(400, "Missing required parameter 'accountData' when calling AccountsApi->UpsertAccount");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -2946,7 +2870,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Picture</returns>
-        public Picture UpsertAccountPicture(string id, PictureData pictureData, string name = default(string), int operationIndex = 0)
+        public Picture UpsertAccountPicture(string id, PictureData pictureData, string name = default, int operationIndex = 0)
         {
             ApiResponse<Picture> localVarResponse = UpsertAccountPictureWithHttpInfo(id, pictureData, name);
             return localVarResponse.Data;
@@ -2961,19 +2885,13 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Picture</returns>
-        public ApiResponse<Picture> UpsertAccountPictureWithHttpInfo(string id, PictureData pictureData, string name = default(string), int operationIndex = 0)
+        public ApiResponse<Picture> UpsertAccountPictureWithHttpInfo(string id, PictureData pictureData, string name = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->UpsertAccountPicture");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->UpsertAccountPicture");
 
             // verify the required parameter 'pictureData' is set
-            if (pictureData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'pictureData' when calling AccountsApi->UpsertAccountPicture");
-            }
+            pictureData = pictureData ?? throw new ApiException(400, "Missing required parameter 'pictureData' when calling AccountsApi->UpsertAccountPicture");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -3049,7 +2967,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Picture</returns>
-        public async System.Threading.Tasks.Task<Picture> UpsertAccountPictureAsync(string id, PictureData pictureData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Picture> UpsertAccountPictureAsync(string id, PictureData pictureData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Picture> localVarResponse = await UpsertAccountPictureWithHttpInfoAsync(id, pictureData, name, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -3065,19 +2983,13 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Picture)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Picture>> UpsertAccountPictureWithHttpInfoAsync(string id, PictureData pictureData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Picture>> UpsertAccountPictureWithHttpInfoAsync(string id, PictureData pictureData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->UpsertAccountPicture");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->UpsertAccountPicture");
 
             // verify the required parameter 'pictureData' is set
-            if (pictureData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'pictureData' when calling AccountsApi->UpsertAccountPicture");
-            }
+            pictureData = pictureData ?? throw new ApiException(400, "Missing required parameter 'pictureData' when calling AccountsApi->UpsertAccountPicture");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -3154,7 +3066,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Tenant</returns>
-        public Tenant UpsertAccountTenant(string id, TenantData tenantData, string name = default(string), int operationIndex = 0)
+        public Tenant UpsertAccountTenant(string id, TenantData tenantData, string name = default, int operationIndex = 0)
         {
             ApiResponse<Tenant> localVarResponse = UpsertAccountTenantWithHttpInfo(id, tenantData, name);
             return localVarResponse.Data;
@@ -3169,19 +3081,13 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Tenant</returns>
-        public ApiResponse<Tenant> UpsertAccountTenantWithHttpInfo(string id, TenantData tenantData, string name = default(string), int operationIndex = 0)
+        public ApiResponse<Tenant> UpsertAccountTenantWithHttpInfo(string id, TenantData tenantData, string name = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->UpsertAccountTenant");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->UpsertAccountTenant");
 
             // verify the required parameter 'tenantData' is set
-            if (tenantData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'tenantData' when calling AccountsApi->UpsertAccountTenant");
-            }
+            tenantData = tenantData ?? throw new ApiException(400, "Missing required parameter 'tenantData' when calling AccountsApi->UpsertAccountTenant");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -3257,7 +3163,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Tenant</returns>
-        public async System.Threading.Tasks.Task<Tenant> UpsertAccountTenantAsync(string id, TenantData tenantData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Tenant> UpsertAccountTenantAsync(string id, TenantData tenantData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             ApiResponse<Tenant> localVarResponse = await UpsertAccountTenantWithHttpInfoAsync(id, tenantData, name, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -3273,19 +3179,13 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Tenant)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Tenant>> UpsertAccountTenantWithHttpInfoAsync(string id, TenantData tenantData, string name = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Tenant>> UpsertAccountTenantWithHttpInfoAsync(string id, TenantData tenantData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->UpsertAccountTenant");
-            }
+            id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->UpsertAccountTenant");
 
             // verify the required parameter 'tenantData' is set
-            if (tenantData == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'tenantData' when calling AccountsApi->UpsertAccountTenant");
-            }
+            tenantData = tenantData ?? throw new ApiException(400, "Missing required parameter 'tenantData' when calling AccountsApi->UpsertAccountTenant");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();

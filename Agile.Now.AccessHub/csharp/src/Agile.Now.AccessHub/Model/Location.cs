@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = Agile.Now.AccessHub.Client.OpenAPIDateConverter;
 
@@ -44,29 +45,23 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="modifiedBy">modifiedBy.</param>
         /// <param name="createdBy">createdBy.</param>
         /// <param name="createdOn">The date the record was created (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public Location(string id = default(string), string externalId = default(string), string name = default(string), AbstractText countryId = default(AbstractText), AbstractText timezoneId = default(AbstractText), AbstractText currencyId = default(AbstractText), bool isActive = false, DateTime modifiedOn = default(DateTime), AbstractLong modifiedBy = default(AbstractLong), AbstractLong createdBy = default(AbstractLong), DateTime createdOn = default(DateTime))
+        public Location(string id = default, string externalId = default, string name = default, AbstractText countryId = default, AbstractText timezoneId = default, AbstractText currencyId = default, bool isActive = false, DateTime modifiedOn = default, AbstractLong modifiedBy = default, AbstractLong createdBy = default, DateTime createdOn = default)
         {
             // to ensure "id" is required (not null)
-            if (id == null)
-            {
-                throw new ArgumentNullException("id is a required property for Location and cannot be null");
-            }
-            this.Id = id;
+            id = id ?? throw new ArgumentNullException("id is a required property for Location and cannot be null");
+            Id = id;
             // to ensure "name" is required (not null)
-            if (name == null)
-            {
-                throw new ArgumentNullException("name is a required property for Location and cannot be null");
-            }
-            this.Name = name;
-            this.IsActive = isActive;
-            this.ExternalId = externalId;
-            this.CountryId = countryId;
-            this.TimezoneId = timezoneId;
-            this.CurrencyId = currencyId;
-            this.ModifiedOn = modifiedOn;
-            this.ModifiedBy = modifiedBy;
-            this.CreatedBy = createdBy;
-            this.CreatedOn = createdOn;
+            name = name ?? throw new ArgumentNullException("name is a required property for Location and cannot be null");
+            Name = name;
+            IsActive = isActive;
+            ExternalId = externalId;
+            CountryId = countryId;
+            TimezoneId = timezoneId;
+            CurrencyId = currencyId;
+            ModifiedOn = modifiedOn;
+            ModifiedBy = modifiedBy;
+            CreatedBy = createdBy;
+            CreatedOn = createdOn;
         }
 
         /// <summary>
@@ -173,7 +168,7 @@ namespace Agile.Now.AccessHub.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         /// <summary>
@@ -181,7 +176,7 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }
