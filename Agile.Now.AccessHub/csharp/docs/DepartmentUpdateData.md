@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **ContactEmail** | **string** | The contact email of external company or department | [optional] 
 **ContactPhone** | **string** |  | [optional] 
 **OwnerId** | [**FieldType**](FieldType.md) |  | [optional] 
-**CountryId** | **string** | The country of the department | [optional] 
+**CountryId** | **EnumCountry** |  | [optional] 
 **IsActive** | **bool** | Defines if the department is active and can be used | [default to false]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
