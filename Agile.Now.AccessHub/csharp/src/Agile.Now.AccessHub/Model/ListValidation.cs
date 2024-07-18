@@ -61,7 +61,7 @@ namespace Agile.Now.AccessHub.Model
         /// Initializes a new instance of the <see cref="ListValidation" /> class.
         /// </summary>
         /// <param name="name">The name of the entity field. (required).</param>
-        /// <param name="fieldName">The field name of relation database table.  Example;  The field name is &amp;quot;TenantId&amp;quot; and is associated with the &amp;quot;Tenant&amp;quot; table. You want to use in the &amp;quot;Tenant&amp;quot; table &amp;quot;Name&amp;quot; field fetching data. Once &amp;quot;Name&amp;quot; is specified, the validation service retrieves the tenant identifier from the &amp;quot;Tenant&amp;quot; table based on the &amp;quot;Name&amp;quot; field..</param>
+        /// <param name="fieldName">The field name of relation database table.  Example;  The field name is &quot;TenantId&quot; and is associated with the &quot;Tenant&quot; table. You want to use in the &quot;Tenant&quot; table &quot;Name&quot; field fetching data. Once &quot;Name&quot; is specified, the validation service retrieves the tenant identifier from the &quot;Tenant&quot; table based on the &quot;Name&quot; field..</param>
         /// <param name="required">If True, the value is required. (default to false).</param>
         /// <param name="unique">If True, the value must be unique in the database and you cannot add multiple values. (default to false).</param>
         /// <param name="max">The max value of input value..</param>
@@ -90,7 +90,7 @@ namespace Agile.Now.AccessHub.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// The field name of relation database table.  Example;  The field name is &amp;quot;TenantId&amp;quot; and is associated with the &amp;quot;Tenant&amp;quot; table. You want to use in the &amp;quot;Tenant&amp;quot; table &amp;quot;Name&amp;quot; field fetching data. Once &amp;quot;Name&amp;quot; is specified, the validation service retrieves the tenant identifier from the &amp;quot;Tenant&amp;quot; table based on the &amp;quot;Name&amp;quot; field.
+        /// The field name of relation database table.  Example;  The field name is &quot;TenantId&quot; and is associated with the &quot;Tenant&quot; table. You want to use in the &quot;Tenant&quot; table &quot;Name&quot; field fetching data. Once &quot;Name&quot; is specified, the validation service retrieves the tenant identifier from the &quot;Tenant&quot; table based on the &quot;Name&quot; field.
         /// </summary>
         /// <value>The field name of relation database table.  Example;  The field name is &amp;quot;TenantId&amp;quot; and is associated with the &amp;quot;Tenant&amp;quot; table. You want to use in the &amp;quot;Tenant&amp;quot; table &amp;quot;Name&amp;quot; field fetching data. Once &amp;quot;Name&amp;quot; is specified, the validation service retrieves the tenant identifier from the &amp;quot;Tenant&amp;quot; table based on the &amp;quot;Name&amp;quot; field.</value>
         [DataMember(Name = "FieldName", EmitDefaultValue = false)]

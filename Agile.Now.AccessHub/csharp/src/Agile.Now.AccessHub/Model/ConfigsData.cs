@@ -57,7 +57,7 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         /// <param name="extra">List validation for entity attribute.</param>
         /// <param name="isFullValidation">If the value is true, the data quality of all fields are checked. This has an effect on performance. (default to false).</param>
-        /// <param name="configs">The list of &#x60;Config&#x60; data record for import.</param>
+        /// <param name="configs">The list of `Config` data record for import.</param>
         public ConfigsData(List<ListValidation> extra = default, bool isFullValidation = false, List<ConfigText> configs = default)
         {
             Extra = extra;
@@ -81,7 +81,7 @@ namespace Agile.Now.AccessHub.Model
         public bool IsFullValidation { get; set; }
 
         /// <summary>
-        /// The list of &#x60;Config&#x60; data record for import
+        /// The list of `Config` data record for import
         /// </summary>
         /// <value>The list of &#x60;Config&#x60; data record for import</value>
         [DataMember(Name = "Configs", EmitDefaultValue = false)]

@@ -47,7 +47,7 @@ using OpenAPIDateConverter = Agile.Now.AccessHub.Client.OpenAPIDateConverter;
 namespace Agile.Now.AccessHub.Model
 {
     /// <summary>
-    /// The list of &#x60;Config&#x60; records
+    /// The list of `Config` records
     /// </summary>
     [DataContract(Name = "Configs")]
     public partial class Configs : IValidatableObject
@@ -56,7 +56,7 @@ namespace Agile.Now.AccessHub.Model
         /// Initializes a new instance of the <see cref="Configs" /> class.
         /// </summary>
         /// <param name="meta">meta.</param>
-        /// <param name="data">The list of &#x60;Config records&#x60;.</param>
+        /// <param name="data">The list of `Config records`.</param>
         public Configs(Meta meta = default, List<Config> data = default)
         {
             Meta = meta;
@@ -70,7 +70,7 @@ namespace Agile.Now.AccessHub.Model
         public Meta Meta { get; set; }
 
         /// <summary>
-        /// The list of &#x60;Config records&#x60;
+        /// The list of `Config records`
         /// </summary>
         /// <value>The list of &#x60;Config records&#x60;</value>
         [DataMember(Name = "Data", EmitDefaultValue = false)]

@@ -60,8 +60,8 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Meta" /> class.
         /// </summary>
-        /// <param name="totalItems">This field represents the total number of items available in the entire dataset, not just the items returned in the current response. It&#39;s useful for implementing pagination, as clients can use it to calculate the number of pages or total available items. (required) (default to 0).</param>
-        /// <param name="currentPage">This field specifies the current page of results being returned. It&#39;s often used in conjunction with &#x60;PageSize&#x60; to manage pagination by indicating which subset of the total data is currently being retrieved. (required) (default to 1).</param>
+        /// <param name="totalItems">This field represents the total number of items available in the entire dataset, not just the items returned in the current response. It's useful for implementing pagination, as clients can use it to calculate the number of pages or total available items. (required) (default to 0).</param>
+        /// <param name="currentPage">This field specifies the current page of results being returned. It's often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved. (required) (default to 1).</param>
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed. (required) (default to 50).</param>
         /// <param name="type">The type of the record (required).</param>
         public Meta(int totalItems = 0, int currentPage = 1, int pageSize = 50, string type = default)
@@ -75,7 +75,7 @@ namespace Agile.Now.AccessHub.Model
         }
 
         /// <summary>
-        /// This field represents the total number of items available in the entire dataset, not just the items returned in the current response. It&#39;s useful for implementing pagination, as clients can use it to calculate the number of pages or total available items.
+        /// This field represents the total number of items available in the entire dataset, not just the items returned in the current response. It's useful for implementing pagination, as clients can use it to calculate the number of pages or total available items.
         /// </summary>
         /// <value>This field represents the total number of items available in the entire dataset, not just the items returned in the current response. It&#39;s useful for implementing pagination, as clients can use it to calculate the number of pages or total available items.</value>
         /// <example>1000</example>
@@ -83,7 +83,7 @@ namespace Agile.Now.AccessHub.Model
         public int TotalItems { get; set; }
 
         /// <summary>
-        /// This field specifies the current page of results being returned. It&#39;s often used in conjunction with &#x60;PageSize&#x60; to manage pagination by indicating which subset of the total data is currently being retrieved.
+        /// This field specifies the current page of results being returned. It's often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.
         /// </summary>
         /// <value>This field specifies the current page of results being returned. It&#39;s often used in conjunction with &#x60;PageSize&#x60; to manage pagination by indicating which subset of the total data is currently being retrieved.</value>
         /// <example>50</example>

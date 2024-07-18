@@ -63,8 +63,8 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="id">The identifier of account (required).</param>
         /// <param name="tenantId">tenantId.</param>
         /// <param name="name">The name of the account.</param>
-        /// <param name="firstName">Person&#39;s first name (required).</param>
-        /// <param name="lastName">Person&#39;s last name (required).</param>
+        /// <param name="firstName">Person's first name (required).</param>
+        /// <param name="lastName">Person's last name (required).</param>
         /// <param name="phone">The phone number of account. The phone number is unique in the system.</param>
         /// <param name="email">The e-mail of account. The email is unique in the system (required).</param>
         /// <param name="languageId">languageId.</param>
@@ -129,14 +129,14 @@ namespace Agile.Now.AccessHub.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Person&#39;s first name
+        /// Person's first name
         /// </summary>
         /// <value>Person&#39;s first name</value>
         [DataMember(Name = "FirstName", IsRequired = true, EmitDefaultValue = true)]
         public string FirstName { get; set; }
 
         /// <summary>
-        /// Person&#39;s last name
+        /// Person's last name
         /// </summary>
         /// <value>Person&#39;s last name</value>
         [DataMember(Name = "LastName", IsRequired = true, EmitDefaultValue = true)]

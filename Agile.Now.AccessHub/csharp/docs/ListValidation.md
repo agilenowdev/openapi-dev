@@ -6,7 +6,7 @@ List validation for entity attribute
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | The name of the entity field. | 
-**FieldName** | **string** | The field name of relation database table.  Example;  The field name is &amp;quot;TenantId&amp;quot; and is associated with the &amp;quot;Tenant&amp;quot; table. You want to use in the &amp;quot;Tenant&amp;quot; table &amp;quot;Name&amp;quot; field fetching data. Once &amp;quot;Name&amp;quot; is specified, the validation service retrieves the tenant identifier from the &amp;quot;Tenant&amp;quot; table based on the &amp;quot;Name&amp;quot; field. | [optional] 
+**FieldName** | **string** | The field name of relation database table.  Example;  The field name is &quot;TenantId&quot; and is associated with the &quot;Tenant&quot; table. You want to use in the &quot;Tenant&quot; table &quot;Name&quot; field fetching data. Once &quot;Name&quot; is specified, the validation service retrieves the tenant identifier from the &quot;Tenant&quot; table based on the &quot;Name&quot; field. | [optional] 
 **Required** | **bool** | If True, the value is required. | [optional] [default to false]
 **Unique** | **bool** | If True, the value must be unique in the database and you cannot add multiple values. | [optional] [default to false]
 **Max** | **string** | The max value of input value. | [optional] 

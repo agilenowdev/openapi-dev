@@ -47,7 +47,7 @@ using OpenAPIDateConverter = Agile.Now.AccessHub.Client.OpenAPIDateConverter;
 namespace Agile.Now.AccessHub.Model
 {
     /// <summary>
-    /// The list of &#x60;Picture&#x60; records
+    /// The list of `Picture` records
     /// </summary>
     [DataContract(Name = "Pictures")]
     public partial class Pictures : IValidatableObject
@@ -56,7 +56,7 @@ namespace Agile.Now.AccessHub.Model
         /// Initializes a new instance of the <see cref="Pictures" /> class.
         /// </summary>
         /// <param name="meta">meta.</param>
-        /// <param name="data">The list of &#x60;Picture records&#x60;.</param>
+        /// <param name="data">The list of `Picture records`.</param>
         public Pictures(Meta meta = default, List<Picture> data = default)
         {
             Meta = meta;
@@ -70,7 +70,7 @@ namespace Agile.Now.AccessHub.Model
         public Meta Meta { get; set; }
 
         /// <summary>
-        /// The list of &#x60;Picture records&#x60;
+        /// The list of `Picture records`
         /// </summary>
         /// <value>The list of &#x60;Picture records&#x60;</value>
         [DataMember(Name = "Data", EmitDefaultValue = false)]
