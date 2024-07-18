@@ -95,5 +95,5 @@ Name | Value | Description | Notes
 **Gmt1000GuamPortMoresby** | **West Pacific Standard Time** | (GMT+10:00) Guam, Port Moresby |
 **Gmt0900Yakutsk** | **Yakutsk Standard Time** | (GMT+09:00) Yakutsk |
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
+[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 
