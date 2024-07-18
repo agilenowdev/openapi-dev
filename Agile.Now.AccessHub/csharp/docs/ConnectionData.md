@@ -13,9 +13,9 @@ Name | Type | Description | Notes
 **URL** | **string** | Webhook external service URL-address | 
 **IsActive** | **bool** | If true, the configuration is active | [optional] [default to false]
 **IsSystem** | **bool** | If true, the configuration is internal to the system and not visible in the user interface | [optional] [default to false]
-**ModifiedBy** | [**FieldType**](FieldType.md) |  | [optional] 
+**ModifiedBy** | [**FieldType**](FieldType.md) | The FieldType object structure | [optional] 
 **ModifiedOn** | **DateTime** | The date the record was updated. | [optional] [default to "1900-01-01T00:00Z"]
-**CreatedBy** | [**FieldType**](FieldType.md) |  | [optional] 
+**CreatedBy** | [**FieldType**](FieldType.md) | The FieldType object structure | [optional] 
 **CreatedOn** | **DateTime** | The date the record was created. | [optional] [default to "1900-01-01T00:00Z"]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

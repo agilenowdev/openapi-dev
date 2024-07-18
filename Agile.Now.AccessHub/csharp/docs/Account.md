@@ -6,15 +6,15 @@ The record of Account information.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | The identifier of account | 
-**TenantId** | [**AbstractLong**](AbstractLong.md) |  | [optional] 
+**TenantId** | [**AbstractLong**](AbstractLong.md) | The AbstractLong object structure | [optional] 
 **Name** | **string** | The name of the account | [optional] 
 **FirstName** | **string** | Person&#39;s first name | 
 **LastName** | **string** | Person&#39;s last name | 
 **Phone** | **string** | The phone number of account. The phone number is unique in the system | [optional] 
 **Email** | **string** | The e-mail of account. The email is unique in the system | 
-**LanguageId** | [**AbstractText**](AbstractText.md) |  | [optional] 
-**TimezoneId** | [**AbstractText**](AbstractText.md) |  | [optional] 
-**DateFormatId** | [**AbstractText**](AbstractText.md) |  | [optional] 
+**LanguageId** | [**AbstractText**](AbstractText.md) | The AbstractText object structure | [optional] 
+**TimezoneId** | [**AbstractText**](AbstractText.md) | The AbstractText object structure | [optional] 
+**DateFormatId** | [**AbstractText**](AbstractText.md) | The AbstractText object structure | [optional] 
 **Username** | **string** | Username used to log in into the system. The username is unique in the system | 
 **ExternalId** | **string** | External Authentication identifier. Example Azure AD guid | [optional] 
 **NotifyByEmail** | **bool** | Defines if a person should get notifications via e-mail | [optional] [default to false]
