@@ -19,8 +19,22 @@ All URIs are relative to *https://dev.esystems.fi*
 # **CreateLocation**
 > Location CreateLocation (LocationInsertData locationInsertData)
 
+Use the `LocationInsertData` object resource to create new records.
 
-Use the `LocationInsertData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `LocationInsertData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `CountryId, TimezoneId, CurrencyId, ModifiedBy, CreatedBy`  ### Create a new record of Location * If the value in the `Id, Name, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`LocationInsertData`). * If the value in the `Name,ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`LocationInsertData`). * If the `Id, Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `Location` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
+You can supply the required field values in the request data, and then use the `POST` method of the resource.
+
+The input parameter must be used in the `LocationInsertData` record structure inside the `FieldType` parameter in the foreign key fields.
+
+Foreign key fields are: `CountryId, TimezoneId, CurrencyId, ModifiedBy, CreatedBy`
+
+### Create a new record of Location
+* If the value in the `Id, Name, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`LocationInsertData`).
+* If the value in the `Name,ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`LocationInsertData`).
+* If the `Id, Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+
+The response body will contain the object of the created record if the call is successful. Method returns an extended `Location` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+
+
 
 ### Example
 ```csharp
@@ -114,8 +128,18 @@ catch (ApiException e)
 # **DeleteLocation**
 > Location DeleteLocation (string id, string name = null)
 
+Use the query string resource to delete `Location` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id, Name, ExternalId` field(s) value and use the `DELETE` method of the resource to delete a record.
 
-Use the query string resource to delete `Location` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id, Name, ExternalId` field(s) value and use the `DELETE` method of the resource to delete a record.  Method returns an extended `Location` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  Foreign key fields are: `CountryId, TimezoneId, CurrencyId, ModifiedBy, CreatedBy`  ### Delete a record of Location * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned. * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id, Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the deleted record if the call is successful.
+Method returns an extended `Location` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+
+Foreign key fields are: `CountryId, TimezoneId, CurrencyId, ModifiedBy, CreatedBy`
+
+### Delete a record of Location
+* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
+* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+* If the `Id, Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+
+The response body will contain the object of the deleted record if the call is successful.
 
 ### Example
 ```csharp
@@ -211,8 +235,18 @@ catch (ApiException e)
 # **DeleteLocationUser**
 > User DeleteLocationUser (string id, string subId, string name = null, string subName = null)
 
+Use the query string resource to delete `User` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `Id` field(s) value and use the `DELETE` method of the resource to delete a record.
 
-Use the query string resource to delete `User` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `Id` field(s) value and use the `DELETE` method of the resource to delete a record.  Method returns an extended `User` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  Foreign key fields are: `LocationId, UserId, ModifiedBy, CreatedBy`  ### Delete a record of User * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned. * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the deleted record if the call is successful.
+Method returns an extended `User` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+
+Foreign key fields are: `LocationId, UserId, ModifiedBy, CreatedBy`
+
+### Delete a record of User
+* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
+* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+
+The response body will contain the object of the deleted record if the call is successful.
 
 ### Example
 ```csharp
@@ -312,8 +346,16 @@ catch (ApiException e)
 # **GetLocation**
 > Location GetLocation (string id, string name = null)
 
+The method returns one record of the `Location`.
 
-The method returns one record of the `Location`.  Method returns an extended `Location` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  Foreign key fields are: `CountryId, TimezoneId, CurrencyId, ModifiedBy, CreatedBy`  ### Get a record of Location * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned. * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id, Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+Method returns an extended `Location` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+
+Foreign key fields are: `CountryId, TimezoneId, CurrencyId, ModifiedBy, CreatedBy`
+
+### Get a record of Location
+* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
+* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+* If the `Id, Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
 ### Example
 ```csharp
@@ -409,8 +451,20 @@ catch (ApiException e)
 # **ListLocationUsers**
 > Users ListLocationUsers (string id, string name = null, string fields = null, string filters = null, string orders = null, int? currentPage = null, int? pageSize = null)
 
+Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.
 
-Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.  Leverage the search service to extract the requisite information from the system effectively.  The method returns a list structured with an extended `User` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.  The foreign key fields involved are: `LocationId, UserId, ModifiedBy, CreatedBy`  ### Example It searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.  ```http fields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000 ```
+Leverage the search service to extract the requisite information from the system effectively.
+
+The method returns a list structured with an extended `User` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.
+
+The foreign key fields involved are: `LocationId, UserId, ModifiedBy, CreatedBy`
+
+### Example
+It searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.
+
+```http
+fields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000
+```
 
 ### Example
 ```csharp
@@ -516,8 +570,20 @@ catch (ApiException e)
 # **ListLocations**
 > Locations ListLocations (string fields = null, string filters = null, string orders = null, int? currentPage = null, int? pageSize = null)
 
+Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.
 
-Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.  Leverage the search service to extract the requisite information from the system effectively.  The method returns a list structured with an extended `Location` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.  The foreign key fields involved are: `CountryId, TimezoneId, CurrencyId, ModifiedBy, CreatedBy`  ### Example It searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.  ```http fields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000 ```
+Leverage the search service to extract the requisite information from the system effectively.
+
+The method returns a list structured with an extended `Location` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.
+
+The foreign key fields involved are: `CountryId, TimezoneId, CurrencyId, ModifiedBy, CreatedBy`
+
+### Example
+It searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.
+
+```http
+fields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000
+```
 
 ### Example
 ```csharp
@@ -619,8 +685,23 @@ catch (ApiException e)
 # **PatchLocationUsers**
 > User PatchLocationUsers (string id, UsersData usersData, string name = null, string deleteNotExists = null)
 
+Use the `UsersData` object resource to insert or update (Upsert) a list of `UserData` using `Id` field(s) value.
 
-Use the `UsersData` object resource to insert or update (Upsert) a list of `UserData` using `Id` field(s) value.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `UserList` record structure as text fields in the foreign key fields.  Foreign key fields are: `LocationId, UserId, ModifiedBy, CreatedBy`  ### Update a record of User * When the Id field value is not provided, the system will automatically initiate the insertion of a new record.  **Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.  ### Create a new record of User * If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`UserData`).  The response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `User` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.
+You can supply the required field values in the request data, and then use the `POST` method of the resource.
+
+The input parameter must be used in the `UserList` record structure as text fields in the foreign key fields.
+
+Foreign key fields are: `LocationId, UserId, ModifiedBy, CreatedBy`
+
+### Update a record of User
+* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.
+
+**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.
+
+### Create a new record of User
+* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`UserData`).
+
+The response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `User` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.
 
 ### Example
 ```csharp
@@ -720,8 +801,20 @@ catch (ApiException e)
 # **UpdateLocation**
 > Location UpdateLocation (string id, LocationUpdateData locationUpdateData, string name = null)
 
+Use the `LocationUpdateData` object resource to update `Location` using `Id, Name, ExternalId` field(s) value.
 
-Use the `LocationUpdateData` object resource to update `Location` using `Id, Name, ExternalId` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `LocationUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `CountryId, TimezoneId, CurrencyId, ModifiedBy, CreatedBy`  ### Update a record of Location * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id, Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `Location` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record. 
+
+The input parameter must be used in the `LocationUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.
+
+Foreign key fields are: `CountryId, TimezoneId, CurrencyId, ModifiedBy, CreatedBy`
+
+### Update a record of Location
+* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).
+* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+* If the `Id, Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+
+The response body will contain the object of the updated record if the call is successful. Method returns an extended `Location` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
 ### Example
 ```csharp
@@ -819,8 +912,22 @@ catch (ApiException e)
 # **UpsertLocation**
 > Location UpsertLocation (LocationData locationData)
 
+Use the `LocationData` object resource to insert or update (Upsert) `Location` using `Id, Name, ExternalId` field(s) value.
 
-Use the `LocationData` object resource to insert or update (Upsert) `Location` using `Id, Name, ExternalId` field(s) value.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `LocationData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `CountryId, TimezoneId, CurrencyId, ModifiedBy, CreatedBy`  ### Update a record of Location * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Name,ExternalId` field value is not empty and `Id` field value is empty, action try insert record according `Name,ExternalId` field value (if set, the value is a unique identifier).  ### Create a new record of Location * If the value in the `Name,ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`LocationData`).  The response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Location` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+You can supply the required field values in the request data, and then use the `POST` method of the resource.
+
+The input parameter must be used in the `LocationData` record structure inside the `FieldType` parameter in the foreign key fields.
+
+Foreign key fields are: `CountryId, TimezoneId, CurrencyId, ModifiedBy, CreatedBy`
+
+### Update a record of Location
+* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).
+* If the `Name,ExternalId` field value is not empty and `Id` field value is empty, action try insert record according `Name,ExternalId` field value (if set, the value is a unique identifier).
+
+### Create a new record of Location
+* If the value in the `Name,ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`LocationData`).
+
+The response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Location` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
 ### Example
 ```csharp
@@ -914,8 +1021,22 @@ catch (ApiException e)
 # **UpsertLocationUser**
 > User UpsertLocationUser (string id, UserData userData, string name = null)
 
+Use the `UserPost` object resource to insert or update (Upsert) `User` using `Id` field(s) value.
 
-Use the `UserPost` object resource to insert or update (Upsert) `User` using `Id` field(s) value.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `LocationId, UserId, ModifiedBy, CreatedBy`  ### Update a record of User * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * When the Id field value is not provided, the system will automatically initiate the insertion of a new record.  ### Create a new record of User * If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`UserData`).  The response body will contain the object of the updated or created record if the call is successful. Method returns an extended `User` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+You can supply the required field values in the request data, and then use the `POST` method of the resource.
+
+The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.
+
+Foreign key fields are: `LocationId, UserId, ModifiedBy, CreatedBy`
+
+### Update a record of User
+* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).
+* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.
+
+### Create a new record of User
+* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`UserData`).
+
+The response body will contain the object of the updated or created record if the call is successful. Method returns an extended `User` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
 ### Example
 ```csharp

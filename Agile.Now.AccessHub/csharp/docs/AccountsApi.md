@@ -21,8 +21,22 @@ All URIs are relative to *https://dev.esystems.fi*
 # **CreateAccount**
 > Account CreateAccount (AccountData accountData)
 
+Use the `AccountData` object resource to create new records.
 
-Use the `AccountData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Create a new record of Account * If the value in the `Id,Username, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`). * If the value in the `Username, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`). * If the `Id,Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
+You can supply the required field values in the request data, and then use the `POST` method of the resource.
+
+The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.
+
+Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`
+
+### Create a new record of Account
+* If the value in the `Id,Username, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`).
+* If the value in the `Username, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`).
+* If the `Id,Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+
+The response body will contain the object of the created record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+
+
 
 ### Example
 ```csharp
@@ -116,8 +130,18 @@ catch (ApiException e)
 # **DeleteAccount**
 > Account DeleteAccount (string id, string name = null)
 
+Use the query string resource to delete `Account` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id,Username, ExternalId` field(s) value and use the `DELETE` method of the resource to delete a record.
 
-Use the query string resource to delete `Account` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id,Username, ExternalId` field(s) value and use the `DELETE` method of the resource to delete a record.  Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Delete a record of Account * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned. * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id,Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the deleted record if the call is successful.
+Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+
+Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`
+
+### Delete a record of Account
+* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
+* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+* If the `Id,Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+
+The response body will contain the object of the deleted record if the call is successful.
 
 ### Example
 ```csharp
@@ -213,8 +237,18 @@ catch (ApiException e)
 # **DeleteAccountPicture**
 > Picture DeleteAccountPicture (string id, string subId, string name = null, string subName = null)
 
+Use the query string resource to delete `Picture` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `AccountId` field(s) value and use the `DELETE` method of the resource to delete a record.
 
-Use the query string resource to delete `Picture` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `AccountId` field(s) value and use the `DELETE` method of the resource to delete a record.  Method returns an extended `Picture` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  Foreign key fields are: `AccountId`  ### Delete a record of Picture * If the `AccountId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned. * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `AccountId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the deleted record if the call is successful.
+Method returns an extended `Picture` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+
+Foreign key fields are: `AccountId`
+
+### Delete a record of Picture
+* If the `AccountId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
+* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+* If the `AccountId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+
+The response body will contain the object of the deleted record if the call is successful.
 
 ### Example
 ```csharp
@@ -314,8 +348,18 @@ catch (ApiException e)
 # **DeleteAccountTenant**
 > Tenant DeleteAccountTenant (string id, string subId, string name = null, string subName = null)
 
+Use the query string resource to delete `Tenant` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `UserId,TenantId.Name` field(s) value and use the `DELETE` method of the resource to delete a record.
 
-Use the query string resource to delete `Tenant` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `UserId,TenantId.Name` field(s) value and use the `DELETE` method of the resource to delete a record.  Method returns an extended `Tenant` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  Foreign key fields are: `UserId, TenantId, AccountId`  ### Delete a record of Tenant * If the `UserId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned. * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `UserId,TenantId.Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the deleted record if the call is successful.
+Method returns an extended `Tenant` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+
+Foreign key fields are: `UserId, TenantId, AccountId`
+
+### Delete a record of Tenant
+* If the `UserId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
+* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+* If the `UserId,TenantId.Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+
+The response body will contain the object of the deleted record if the call is successful.
 
 ### Example
 ```csharp
@@ -415,8 +459,16 @@ catch (ApiException e)
 # **GetAccount**
 > Account GetAccount (string id, string name = null)
 
+The method returns one record of the `Account`.
 
-The method returns one record of the `Account`.  Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Get a record of Account * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned. * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id,Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+
+Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`
+
+### Get a record of Account
+* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
+* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+* If the `Id,Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
 ### Example
 ```csharp
@@ -512,8 +564,20 @@ catch (ApiException e)
 # **ListAccountPictures**
 > Pictures ListAccountPictures (string id, string name = null, string fields = null, string filters = null, string orders = null, int? currentPage = null, int? pageSize = null)
 
+Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.
 
-Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.  Leverage the search service to extract the requisite information from the system effectively.  The method returns a list structured with an extended `Picture` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.  The foreign key fields involved are: `AccountId`  ### Example It searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.  ```http fields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000 ```
+Leverage the search service to extract the requisite information from the system effectively.
+
+The method returns a list structured with an extended `Picture` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.
+
+The foreign key fields involved are: `AccountId`
+
+### Example
+It searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.
+
+```http
+fields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000
+```
 
 ### Example
 ```csharp
@@ -619,8 +683,20 @@ catch (ApiException e)
 # **ListAccountTenants**
 > Tenants ListAccountTenants (string id, string name = null, string fields = null, string filters = null, string orders = null, int? currentPage = null, int? pageSize = null)
 
+Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.
 
-Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.  Leverage the search service to extract the requisite information from the system effectively.  The method returns a list structured with an extended `Tenant` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.  The foreign key fields involved are: `UserId, TenantId, AccountId`  ### Example It searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.  ```http fields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000 ```
+Leverage the search service to extract the requisite information from the system effectively.
+
+The method returns a list structured with an extended `Tenant` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.
+
+The foreign key fields involved are: `UserId, TenantId, AccountId`
+
+### Example
+It searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.
+
+```http
+fields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000
+```
 
 ### Example
 ```csharp
@@ -726,8 +802,20 @@ catch (ApiException e)
 # **ListAccounts**
 > Accounts ListAccounts (string fields = null, string filters = null, string orders = null, int? currentPage = null, int? pageSize = null)
 
+Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.
 
-Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.  Leverage the search service to extract the requisite information from the system effectively.  The method returns a list structured with an extended `Account` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.  The foreign key fields involved are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Example It searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.  ```http fields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000 ```
+Leverage the search service to extract the requisite information from the system effectively.
+
+The method returns a list structured with an extended `Account` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.
+
+The foreign key fields involved are: `TenantId, LanguageId, TimezoneId, DateFormatId`
+
+### Example
+It searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.
+
+```http
+fields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000
+```
 
 ### Example
 ```csharp
@@ -829,8 +917,20 @@ catch (ApiException e)
 # **UpdateAccount**
 > Account UpdateAccount (string id, AccountData accountData, string name = null)
 
+Use the `AccountData` object resource to update `Account` using `Id,Username, ExternalId` field(s) value.
 
-Use the `AccountData` object resource to update `Account` using `Id,Username, ExternalId` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Update a record of Account * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id,Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record. 
+
+The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.
+
+Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`
+
+### Update a record of Account
+* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).
+* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+* If the `Id,Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+
+The response body will contain the object of the updated record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
 ### Example
 ```csharp
@@ -928,8 +1028,22 @@ catch (ApiException e)
 # **UpsertAccount**
 > Account UpsertAccount (AccountData accountData)
 
+Use the `AccountData` object resource to insert or update (Upsert) `Account` using `Id,Username, ExternalId` field(s) value.
 
-Use the `AccountData` object resource to insert or update (Upsert) `Account` using `Id,Username, ExternalId` field(s) value.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Update a record of Account * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Username, ExternalId` field value is not empty and `Id` field value is empty, action try insert record according `Username, ExternalId` field value (if set, the value is a unique identifier).  ### Create a new record of Account * If the value in the `Username, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`).  The response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+You can supply the required field values in the request data, and then use the `POST` method of the resource.
+
+The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.
+
+Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`
+
+### Update a record of Account
+* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).
+* If the `Username, ExternalId` field value is not empty and `Id` field value is empty, action try insert record according `Username, ExternalId` field value (if set, the value is a unique identifier).
+
+### Create a new record of Account
+* If the value in the `Username, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`).
+
+The response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
 ### Example
 ```csharp
@@ -1023,8 +1137,22 @@ catch (ApiException e)
 # **UpsertAccountPicture**
 > Picture UpsertAccountPicture (string id, PictureData pictureData, string name = null)
 
+Use the `PicturePost` object resource to insert or update (Upsert) `Picture` using `AccountId` field(s) value.
 
-Use the `PicturePost` object resource to insert or update (Upsert) `Picture` using `AccountId` field(s) value.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `PictureData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `AccountId`  ### Update a record of Picture * If the `AccountId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `AccountId` field value (primary key). * When the AccountId field value is not provided, the system will automatically initiate the insertion of a new record.  ### Create a new record of Picture * If the value in the `AccountId` field is empty then action insert a new record according input parameter entity record structure (`PictureData`).  The response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Picture` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+You can supply the required field values in the request data, and then use the `POST` method of the resource.
+
+The input parameter must be used in the `PictureData` record structure inside the `FieldType` parameter in the foreign key fields.
+
+Foreign key fields are: `AccountId`
+
+### Update a record of Picture
+* If the `AccountId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `AccountId` field value (primary key).
+* When the AccountId field value is not provided, the system will automatically initiate the insertion of a new record.
+
+### Create a new record of Picture
+* If the value in the `AccountId` field is empty then action insert a new record according input parameter entity record structure (`PictureData`).
+
+The response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Picture` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
 ### Example
 ```csharp
@@ -1122,8 +1250,22 @@ catch (ApiException e)
 # **UpsertAccountTenant**
 > Tenant UpsertAccountTenant (string id, TenantData tenantData, string name = null)
 
+Use the `TenantPost` object resource to insert or update (Upsert) `Tenant` using `UserId,TenantId.Name` field(s) value.
 
-Use the `TenantPost` object resource to insert or update (Upsert) `Tenant` using `UserId,TenantId.Name` field(s) value.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `TenantData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `UserId, TenantId, AccountId`  ### Update a record of Tenant * If the `UserId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `UserId` field value (primary key). * If the `TenantId.Name` field value is not empty and `UserId` field value is empty, action try insert record according `TenantId.Name` field value (if set, the value is a unique identifier).  ### Create a new record of Tenant * If the value in the `TenantId.Name` and `UserId` fields are empty then action insert a new record according input parameter entity record structure (`TenantData`).  The response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Tenant` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+You can supply the required field values in the request data, and then use the `POST` method of the resource.
+
+The input parameter must be used in the `TenantData` record structure inside the `FieldType` parameter in the foreign key fields.
+
+Foreign key fields are: `UserId, TenantId, AccountId`
+
+### Update a record of Tenant
+* If the `UserId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `UserId` field value (primary key).
+* If the `TenantId.Name` field value is not empty and `UserId` field value is empty, action try insert record according `TenantId.Name` field value (if set, the value is a unique identifier).
+
+### Create a new record of Tenant
+* If the value in the `TenantId.Name` and `UserId` fields are empty then action insert a new record according input parameter entity record structure (`TenantData`).
+
+The response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Tenant` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
 ### Example
 ```csharp
