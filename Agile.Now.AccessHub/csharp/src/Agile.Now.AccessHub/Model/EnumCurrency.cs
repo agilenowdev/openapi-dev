@@ -54,154 +54,154 @@ namespace Agile.Now.AccessHub.Model
     public enum EnumCurrency
     {
         /// <summary>
-        /// Enum AUD for value: AUD
+        /// Enum Australian Dollar for value: AUD
         /// </summary>
         [EnumMember(Value = "AUD")]
-        AUD = 1,
+        AustralianDollar = 1,
 
         /// <summary>
-        /// Enum BHD for value: BHD
+        /// Enum Bahraini Dinar for value: BHD
         /// </summary>
         [EnumMember(Value = "BHD")]
-        BHD = 2,
+        BahrainiDinar = 2,
 
         /// <summary>
-        /// Enum BGN for value: BGN
+        /// Enum Bulgarian Lev for value: BGN
         /// </summary>
         [EnumMember(Value = "BGN")]
-        BGN = 3,
+        BulgarianLev = 3,
 
         /// <summary>
-        /// Enum CAD for value: CAD
+        /// Enum Canadian Dollar for value: CAD
         /// </summary>
         [EnumMember(Value = "CAD")]
-        CAD = 4,
+        CanadianDollar = 4,
 
         /// <summary>
-        /// Enum CNY for value: CNY
+        /// Enum Chinese Yuan Renminbi for value: CNY
         /// </summary>
         [EnumMember(Value = "CNY")]
-        CNY = 5,
+        ChineseYuanRenminbi = 5,
 
         /// <summary>
-        /// Enum HRK for value: HRK
+        /// Enum Croatian Kuna for value: HRK
         /// </summary>
         [EnumMember(Value = "HRK")]
-        HRK = 6,
+        CroatianKuna = 6,
 
         /// <summary>
-        /// Enum CZK for value: CZK
+        /// Enum Czech Koruna for value: CZK
         /// </summary>
         [EnumMember(Value = "CZK")]
-        CZK = 7,
+        CzechKoruna = 7,
 
         /// <summary>
-        /// Enum DKK for value: DKK
+        /// Enum Danish Krone for value: DKK
         /// </summary>
         [EnumMember(Value = "DKK")]
-        DKK = 8,
+        DanishKrone = 8,
 
         /// <summary>
-        /// Enum AED for value: AED
+        /// Enum Emirati Dirham for value: AED
         /// </summary>
         [EnumMember(Value = "AED")]
-        AED = 9,
+        EmiratiDirham = 9,
 
         /// <summary>
-        /// Enum EUR for value: EUR
+        /// Enum Euro for value: EUR
         /// </summary>
         [EnumMember(Value = "EUR")]
-        EUR = 10,
+        Euro = 10,
 
         /// <summary>
-        /// Enum GBP for value: GBP
+        /// Enum Great British Pound for value: GBP
         /// </summary>
         [EnumMember(Value = "GBP")]
-        GBP = 11,
+        GreatBritishPound = 11,
 
         /// <summary>
-        /// Enum HKD for value: HKD
+        /// Enum Hong Kong Dollar for value: HKD
         /// </summary>
         [EnumMember(Value = "HKD")]
-        HKD = 12,
+        HongKongDollar = 12,
 
         /// <summary>
-        /// Enum HUF for value: HUF
+        /// Enum Hungarian Forint for value: HUF
         /// </summary>
         [EnumMember(Value = "HUF")]
-        HUF = 13,
+        HungarianForint = 13,
 
         /// <summary>
-        /// Enum ISK for value: ISK
+        /// Enum Icelandic krona for value: ISK
         /// </summary>
         [EnumMember(Value = "ISK")]
-        ISK = 14,
+        IcelandicKrona = 14,
 
         /// <summary>
-        /// Enum JPY for value: JPY
+        /// Enum Japanese Yen for value: JPY
         /// </summary>
         [EnumMember(Value = "JPY")]
-        JPY = 15,
+        JapaneseYen = 15,
 
         /// <summary>
-        /// Enum NOK for value: NOK
+        /// Enum Norwegian Krone for value: NOK
         /// </summary>
         [EnumMember(Value = "NOK")]
-        NOK = 16,
+        NorwegianKrone = 16,
 
         /// <summary>
-        /// Enum PLN for value: PLN
+        /// Enum Polish Zloty for value: PLN
         /// </summary>
         [EnumMember(Value = "PLN")]
-        PLN = 17,
+        PolishZloty = 17,
 
         /// <summary>
-        /// Enum RUB for value: RUB
+        /// Enum Russian Ruble for value: RUB
         /// </summary>
         [EnumMember(Value = "RUB")]
-        RUB = 18,
+        RussianRuble = 18,
 
         /// <summary>
-        /// Enum SGD for value: SGD
+        /// Enum Singapore Dollar for value: SGD
         /// </summary>
         [EnumMember(Value = "SGD")]
-        SGD = 19,
+        SingaporeDollar = 19,
 
         /// <summary>
-        /// Enum SEK for value: SEK
+        /// Enum Swedish Kroner for value: SEK
         /// </summary>
         [EnumMember(Value = "SEK")]
-        SEK = 20,
+        SwedishKroner = 20,
 
         /// <summary>
-        /// Enum CHF for value: CHF
+        /// Enum Swiss Franc for value: CHF
         /// </summary>
         [EnumMember(Value = "CHF")]
-        CHF = 21,
+        SwissFranc = 21,
 
         /// <summary>
-        /// Enum THB for value: THB
+        /// Enum Thailand Baht for value: THB
         /// </summary>
         [EnumMember(Value = "THB")]
-        THB = 22,
+        ThailandBaht = 22,
 
         /// <summary>
-        /// Enum TRY for value: TRY
+        /// Enum Turkish Lira for value: TRY
         /// </summary>
         [EnumMember(Value = "TRY")]
-        TRY = 23,
+        TurkishLira = 23,
 
         /// <summary>
-        /// Enum UAH for value: UAH
+        /// Enum Ukrainian hryvnia for value: UAH
         /// </summary>
         [EnumMember(Value = "UAH")]
-        UAH = 24,
+        UkrainianHryvnia = 24,
 
         /// <summary>
-        /// Enum USD for value: USD
+        /// Enum United States Dollar for value: USD
         /// </summary>
         [EnumMember(Value = "USD")]
-        USD = 25
+        UnitedStatesDollar = 25
     }
 
     /// <summary>
@@ -227,79 +227,79 @@ namespace Agile.Now.AccessHub.Model
         public static EnumCurrency? FromStringOrDefault(string value)
         {
             if (value.Equals("AUD"))
-                return EnumCurrency.AUD;
+                return EnumCurrency.AustralianDollar;
 
             if (value.Equals("BHD"))
-                return EnumCurrency.BHD;
+                return EnumCurrency.BahrainiDinar;
 
             if (value.Equals("BGN"))
-                return EnumCurrency.BGN;
+                return EnumCurrency.BulgarianLev;
 
             if (value.Equals("CAD"))
-                return EnumCurrency.CAD;
+                return EnumCurrency.CanadianDollar;
 
             if (value.Equals("CNY"))
-                return EnumCurrency.CNY;
+                return EnumCurrency.ChineseYuanRenminbi;
 
             if (value.Equals("HRK"))
-                return EnumCurrency.HRK;
+                return EnumCurrency.CroatianKuna;
 
             if (value.Equals("CZK"))
-                return EnumCurrency.CZK;
+                return EnumCurrency.CzechKoruna;
 
             if (value.Equals("DKK"))
-                return EnumCurrency.DKK;
+                return EnumCurrency.DanishKrone;
 
             if (value.Equals("AED"))
-                return EnumCurrency.AED;
+                return EnumCurrency.EmiratiDirham;
 
             if (value.Equals("EUR"))
-                return EnumCurrency.EUR;
+                return EnumCurrency.Euro;
 
             if (value.Equals("GBP"))
-                return EnumCurrency.GBP;
+                return EnumCurrency.GreatBritishPound;
 
             if (value.Equals("HKD"))
-                return EnumCurrency.HKD;
+                return EnumCurrency.HongKongDollar;
 
             if (value.Equals("HUF"))
-                return EnumCurrency.HUF;
+                return EnumCurrency.HungarianForint;
 
             if (value.Equals("ISK"))
-                return EnumCurrency.ISK;
+                return EnumCurrency.IcelandicKrona;
 
             if (value.Equals("JPY"))
-                return EnumCurrency.JPY;
+                return EnumCurrency.JapaneseYen;
 
             if (value.Equals("NOK"))
-                return EnumCurrency.NOK;
+                return EnumCurrency.NorwegianKrone;
 
             if (value.Equals("PLN"))
-                return EnumCurrency.PLN;
+                return EnumCurrency.PolishZloty;
 
             if (value.Equals("RUB"))
-                return EnumCurrency.RUB;
+                return EnumCurrency.RussianRuble;
 
             if (value.Equals("SGD"))
-                return EnumCurrency.SGD;
+                return EnumCurrency.SingaporeDollar;
 
             if (value.Equals("SEK"))
-                return EnumCurrency.SEK;
+                return EnumCurrency.SwedishKroner;
 
             if (value.Equals("CHF"))
-                return EnumCurrency.CHF;
+                return EnumCurrency.SwissFranc;
 
             if (value.Equals("THB"))
-                return EnumCurrency.THB;
+                return EnumCurrency.ThailandBaht;
 
             if (value.Equals("TRY"))
-                return EnumCurrency.TRY;
+                return EnumCurrency.TurkishLira;
 
             if (value.Equals("UAH"))
-                return EnumCurrency.UAH;
+                return EnumCurrency.UkrainianHryvnia;
 
             if (value.Equals("USD"))
-                return EnumCurrency.USD;
+                return EnumCurrency.UnitedStatesDollar;
 
             return null;
         }

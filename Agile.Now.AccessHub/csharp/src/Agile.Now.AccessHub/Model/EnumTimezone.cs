@@ -54,538 +54,538 @@ namespace Agile.Now.AccessHub.Model
     public enum EnumTimezone
     {
         /// <summary>
-        /// Enum AfghanistanStandardTime for value: Afghanistan Standard Time
+        /// Enum (GMT+04:30) Kabul for value: Afghanistan Standard Time
         /// </summary>
         [EnumMember(Value = "Afghanistan Standard Time")]
-        AfghanistanStandardTime = 1,
+        Gmt0430Kabul = 1,
 
         /// <summary>
-        /// Enum AlaskanStandardTime for value: Alaskan Standard Time
+        /// Enum (GMT-09:00) Alaska for value: Alaskan Standard Time
         /// </summary>
         [EnumMember(Value = "Alaskan Standard Time")]
-        AlaskanStandardTime = 2,
+        Gmt0900Alaska = 2,
 
         /// <summary>
-        /// Enum ArabStandardTime for value: Arab Standard Time
+        /// Enum (GMT+03:00) Kuwait, Riyadh for value: Arab Standard Time
         /// </summary>
         [EnumMember(Value = "Arab Standard Time")]
-        ArabStandardTime = 3,
+        Gmt0300KuwaitRiyadh = 3,
 
         /// <summary>
-        /// Enum ArabianStandardTime for value: Arabian Standard Time
+        /// Enum (GMT+04:00) Abu Dhabi, Muscat for value: Arabian Standard Time
         /// </summary>
         [EnumMember(Value = "Arabian Standard Time")]
-        ArabianStandardTime = 4,
+        Gmt0400AbuDhabiMuscat = 4,
 
         /// <summary>
-        /// Enum ArabicStandardTime for value: Arabic Standard Time
+        /// Enum (GMT+03:00) Baghdad for value: Arabic Standard Time
         /// </summary>
         [EnumMember(Value = "Arabic Standard Time")]
-        ArabicStandardTime = 5,
+        Gmt0300Baghdad = 5,
 
         /// <summary>
-        /// Enum ArgentinaStandardTime for value: Argentina Standard Time
+        /// Enum (GMT-03:00) Buenos Aires for value: Argentina Standard Time
         /// </summary>
         [EnumMember(Value = "Argentina Standard Time")]
-        ArgentinaStandardTime = 6,
+        Gmt0300BuenosAires = 6,
 
         /// <summary>
-        /// Enum AtlanticStandardTime for value: Atlantic Standard Time
+        /// Enum (GMT-04:00) Atlantic Time (Canada) for value: Atlantic Standard Time
         /// </summary>
         [EnumMember(Value = "Atlantic Standard Time")]
-        AtlanticStandardTime = 7,
+        Gmt0400AtlanticTimeCanada = 7,
 
         /// <summary>
-        /// Enum AUSCentralStandardTime for value: AUS Central Standard Time
+        /// Enum (GMT+09:30) Darwin for value: AUS Central Standard Time
         /// </summary>
         [EnumMember(Value = "AUS Central Standard Time")]
-        AUSCentralStandardTime = 8,
+        Gmt0930Darwin = 8,
 
         /// <summary>
-        /// Enum AUSEasternStandardTime for value: AUS Eastern Standard Time
+        /// Enum (GMT+10:00) Canberra, Melbourne, Sydney for value: AUS Eastern Standard Time
         /// </summary>
         [EnumMember(Value = "AUS Eastern Standard Time")]
-        AUSEasternStandardTime = 9,
+        Gmt1000CanberraMelbourneSydney = 9,
 
         /// <summary>
-        /// Enum AzerbaijanStandardTime for value: Azerbaijan Standard Time
+        /// Enum (GMT+04:00) Baku for value: Azerbaijan Standard Time
         /// </summary>
         [EnumMember(Value = "Azerbaijan Standard Time")]
-        AzerbaijanStandardTime = 10,
+        Gmt0400Baku = 10,
 
         /// <summary>
-        /// Enum AzoresStandardTime for value: Azores Standard Time
+        /// Enum (GMT-01:00) Azores for value: Azores Standard Time
         /// </summary>
         [EnumMember(Value = "Azores Standard Time")]
-        AzoresStandardTime = 11,
+        Gmt0100Azores = 11,
 
         /// <summary>
-        /// Enum CanadaCentralStandardTime for value: Canada Central Standard Time
+        /// Enum (GMT-06:00) Saskatchewan for value: Canada Central Standard Time
         /// </summary>
         [EnumMember(Value = "Canada Central Standard Time")]
-        CanadaCentralStandardTime = 12,
+        Gmt0600Saskatchewan = 12,
 
         /// <summary>
-        /// Enum CapeVerdeStandardTime for value: Cape Verde Standard Time
+        /// Enum (GMT-01:00) Cape Verde Is. for value: Cape Verde Standard Time
         /// </summary>
         [EnumMember(Value = "Cape Verde Standard Time")]
-        CapeVerdeStandardTime = 13,
+        Gmt0100CapeVerdeIs = 13,
 
         /// <summary>
-        /// Enum CaucasusStandardTime for value: Caucasus Standard Time
+        /// Enum (GMT+04:00) Yerevan for value: Caucasus Standard Time
         /// </summary>
         [EnumMember(Value = "Caucasus Standard Time")]
-        CaucasusStandardTime = 14,
+        Gmt0400Yerevan = 14,
 
         /// <summary>
-        /// Enum CenAustraliaStandardTime for value: Cen. Australia Standard Time
+        /// Enum (GMT+09:30) Adelaide for value: Cen. Australia Standard Time
         /// </summary>
         [EnumMember(Value = "Cen. Australia Standard Time")]
-        CenAustraliaStandardTime = 15,
+        Gmt0930Adelaide = 15,
 
         /// <summary>
-        /// Enum CentralAmericaStandardTime for value: Central America Standard Time
+        /// Enum (GMT-06:00) Central America for value: Central America Standard Time
         /// </summary>
         [EnumMember(Value = "Central America Standard Time")]
-        CentralAmericaStandardTime = 16,
+        Gmt0600CentralAmerica = 16,
 
         /// <summary>
-        /// Enum CentralAsiaStandardTime for value: Central Asia Standard Time
+        /// Enum (GMT+06:00) Astana, Dhaka for value: Central Asia Standard Time
         /// </summary>
         [EnumMember(Value = "Central Asia Standard Time")]
-        CentralAsiaStandardTime = 17,
+        Gmt0600AstanaDhaka = 17,
 
         /// <summary>
-        /// Enum CentralBrazilianStandardTime for value: Central Brazilian Standard Time
+        /// Enum (GMT-04:00) Manaus for value: Central Brazilian Standard Time
         /// </summary>
         [EnumMember(Value = "Central Brazilian Standard Time")]
-        CentralBrazilianStandardTime = 18,
+        Gmt0400Manaus = 18,
 
         /// <summary>
-        /// Enum CentralEuropeStandardTime for value: Central Europe Standard Time
+        /// Enum (GMT+01:00) Belgrade, Bratislava, Budapest, Ljubljana, Prague for value: Central Europe Standard Time
         /// </summary>
         [EnumMember(Value = "Central Europe Standard Time")]
-        CentralEuropeStandardTime = 19,
+        Gmt0100BelgradeBratislavaBudapestLjubljanaPrague = 19,
 
         /// <summary>
-        /// Enum CentralEuropeanStandardTime for value: Central European Standard Time
+        /// Enum (GMT+01:00) Sarajevo, Skopje, Warsaw, Zagreb for value: Central European Standard Time
         /// </summary>
         [EnumMember(Value = "Central European Standard Time")]
-        CentralEuropeanStandardTime = 20,
+        Gmt0100SarajevoSkopjeWarsawZagreb = 20,
 
         /// <summary>
-        /// Enum CentralPacificStandardTime for value: Central Pacific Standard Time
+        /// Enum (GMT+11:00) Magadan, Solomon Is., New Caledonia for value: Central Pacific Standard Time
         /// </summary>
         [EnumMember(Value = "Central Pacific Standard Time")]
-        CentralPacificStandardTime = 21,
+        Gmt1100MagadanSolomonIsNewCaledonia = 21,
 
         /// <summary>
-        /// Enum CentralStandardTime for value: Central Standard Time
+        /// Enum (GMT-06:00) Central Time (US &amp; Canada) for value: Central Standard Time
         /// </summary>
         [EnumMember(Value = "Central Standard Time")]
-        CentralStandardTime = 22,
+        Gmt0600CentralTimeUsCanada = 22,
 
         /// <summary>
-        /// Enum CentralStandardTimeMexico for value: Central Standard Time (Mexico)
+        /// Enum (GMT-06:00) Guadalajara, Mexico City, Monterrey for value: Central Standard Time (Mexico)
         /// </summary>
         [EnumMember(Value = "Central Standard Time (Mexico)")]
-        CentralStandardTimeMexico = 23,
+        Gmt0600GuadalajaraMexicoCityMonterrey = 23,
 
         /// <summary>
-        /// Enum ChinaStandardTime for value: China Standard Time
+        /// Enum (GMT+08:00) Beijing, Chongqing, Hong Kong, Urumqi for value: China Standard Time
         /// </summary>
         [EnumMember(Value = "China Standard Time")]
-        ChinaStandardTime = 24,
+        Gmt0800BeijingChongqingHongKongUrumqi = 24,
 
         /// <summary>
-        /// Enum DatelineStandardTime for value: Dateline Standard Time
+        /// Enum (GMT-12:00) International Date Line West for value: Dateline Standard Time
         /// </summary>
         [EnumMember(Value = "Dateline Standard Time")]
-        DatelineStandardTime = 25,
+        Gmt1200InternationalDateLineWest = 25,
 
         /// <summary>
-        /// Enum EAfricaStandardTime for value: E. Africa Standard Time
+        /// Enum (GMT+03:00) Nairobi for value: E. Africa Standard Time
         /// </summary>
         [EnumMember(Value = "E. Africa Standard Time")]
-        EAfricaStandardTime = 26,
+        Gmt0300Nairobi = 26,
 
         /// <summary>
-        /// Enum EAustraliaStandardTime for value: E. Australia Standard Time
+        /// Enum (GMT+10:00) Brisbane for value: E. Australia Standard Time
         /// </summary>
         [EnumMember(Value = "E. Australia Standard Time")]
-        EAustraliaStandardTime = 27,
+        Gmt1000Brisbane = 27,
 
         /// <summary>
-        /// Enum EEuropeStandardTime for value: E. Europe Standard Time
+        /// Enum (GMT+02:00) Minsk for value: E. Europe Standard Time
         /// </summary>
         [EnumMember(Value = "E. Europe Standard Time")]
-        EEuropeStandardTime = 28,
+        Gmt0200Minsk = 28,
 
         /// <summary>
-        /// Enum ESouthAmericaStandardTime for value: E. South America Standard Time
+        /// Enum (GMT-03:00) Brasilia for value: E. South America Standard Time
         /// </summary>
         [EnumMember(Value = "E. South America Standard Time")]
-        ESouthAmericaStandardTime = 29,
+        Gmt0300Brasilia = 29,
 
         /// <summary>
-        /// Enum EasternStandardTime for value: Eastern Standard Time
+        /// Enum (GMT-05:00) Eastern Time (US &amp; Canada) for value: Eastern Standard Time
         /// </summary>
         [EnumMember(Value = "Eastern Standard Time")]
-        EasternStandardTime = 30,
+        Gmt0500EasternTimeUsCanada = 30,
 
         /// <summary>
-        /// Enum EgyptStandardTime for value: Egypt Standard Time
+        /// Enum (GMT+02:00) Cairo for value: Egypt Standard Time
         /// </summary>
         [EnumMember(Value = "Egypt Standard Time")]
-        EgyptStandardTime = 31,
+        Gmt0200Cairo = 31,
 
         /// <summary>
-        /// Enum EkaterinburgStandardTime for value: Ekaterinburg Standard Time
+        /// Enum (GMT+05:00) Ekaterinburg for value: Ekaterinburg Standard Time
         /// </summary>
         [EnumMember(Value = "Ekaterinburg Standard Time")]
-        EkaterinburgStandardTime = 32,
+        Gmt0500Ekaterinburg = 32,
 
         /// <summary>
-        /// Enum FijiStandardTime for value: Fiji Standard Time
+        /// Enum (GMT+12:00) Fiji, Kamchatka, Marshall Is. for value: Fiji Standard Time
         /// </summary>
         [EnumMember(Value = "Fiji Standard Time")]
-        FijiStandardTime = 33,
+        Gmt1200FijiKamchatkaMarshallIs = 33,
 
         /// <summary>
-        /// Enum FLEStandardTime for value: FLE Standard Time
+        /// Enum (GMT+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius for value: FLE Standard Time
         /// </summary>
         [EnumMember(Value = "FLE Standard Time")]
-        FLEStandardTime = 34,
+        Gmt0200HelsinkiKyivRigaSofiaTallinnVilnius = 34,
 
         /// <summary>
-        /// Enum GeorgianStandardTime for value: Georgian Standard Time
+        /// Enum (GMT+03:00) Tbilisi for value: Georgian Standard Time
         /// </summary>
         [EnumMember(Value = "Georgian Standard Time")]
-        GeorgianStandardTime = 35,
+        Gmt0300Tbilisi = 35,
 
         /// <summary>
-        /// Enum GMTStandardTime for value: GMT Standard Time
+        /// Enum (GMT) Greenwich Mean Time : Dublin, Edinburgh, Lisbon, London for value: GMT Standard Time
         /// </summary>
         [EnumMember(Value = "GMT Standard Time")]
-        GMTStandardTime = 36,
+        GmtGreenwichMeanTimeDublinEdinburghLisbonLondon = 36,
 
         /// <summary>
-        /// Enum GreenlandStandardTime for value: Greenland Standard Time
+        /// Enum (GMT-03:00) Greenland for value: Greenland Standard Time
         /// </summary>
         [EnumMember(Value = "Greenland Standard Time")]
-        GreenlandStandardTime = 37,
+        Gmt0300Greenland = 37,
 
         /// <summary>
-        /// Enum GreenwichStandardTime for value: Greenwich Standard Time
+        /// Enum (GMT) Monrovia, Reykjavik for value: Greenwich Standard Time
         /// </summary>
         [EnumMember(Value = "Greenwich Standard Time")]
-        GreenwichStandardTime = 38,
+        GmtMonroviaReykjavik = 38,
 
         /// <summary>
-        /// Enum GTBStandardTime for value: GTB Standard Time
+        /// Enum (GMT+02:00) Athens, Bucharest, Istanbul for value: GTB Standard Time
         /// </summary>
         [EnumMember(Value = "GTB Standard Time")]
-        GTBStandardTime = 39,
+        Gmt0200AthensBucharestIstanbul = 39,
 
         /// <summary>
-        /// Enum HawaiianStandardTime for value: Hawaiian Standard Time
+        /// Enum (GMT-10:00) Hawaii for value: Hawaiian Standard Time
         /// </summary>
         [EnumMember(Value = "Hawaiian Standard Time")]
-        HawaiianStandardTime = 40,
+        Gmt1000Hawaii = 40,
 
         /// <summary>
-        /// Enum IndiaStandardTime for value: India Standard Time
+        /// Enum (GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi for value: India Standard Time
         /// </summary>
         [EnumMember(Value = "India Standard Time")]
-        IndiaStandardTime = 41,
+        Gmt0530ChennaiKolkataMumbaiNewDelhi = 41,
 
         /// <summary>
-        /// Enum IranStandardTime for value: Iran Standard Time
+        /// Enum (GMT+03:30) Tehran for value: Iran Standard Time
         /// </summary>
         [EnumMember(Value = "Iran Standard Time")]
-        IranStandardTime = 42,
+        Gmt0330Tehran = 42,
 
         /// <summary>
-        /// Enum IsraelStandardTime for value: Israel Standard Time
+        /// Enum (GMT+02:00) Jerusalem for value: Israel Standard Time
         /// </summary>
         [EnumMember(Value = "Israel Standard Time")]
-        IsraelStandardTime = 43,
+        Gmt0200Jerusalem = 43,
 
         /// <summary>
-        /// Enum JordanStandardTime for value: Jordan Standard Time
+        /// Enum (GMT+02:00) Amman for value: Jordan Standard Time
         /// </summary>
         [EnumMember(Value = "Jordan Standard Time")]
-        JordanStandardTime = 44,
+        Gmt0200Amman = 44,
 
         /// <summary>
-        /// Enum KoreaStandardTime for value: Korea Standard Time
+        /// Enum (GMT+09:00) Seoul for value: Korea Standard Time
         /// </summary>
         [EnumMember(Value = "Korea Standard Time")]
-        KoreaStandardTime = 45,
+        Gmt0900Seoul = 45,
 
         /// <summary>
-        /// Enum MauritiusStandardTime for value: Mauritius Standard Time
+        /// Enum (GMT+04:00) Port Louis for value: Mauritius Standard Time
         /// </summary>
         [EnumMember(Value = "Mauritius Standard Time")]
-        MauritiusStandardTime = 46,
+        Gmt0400PortLouis = 46,
 
         /// <summary>
-        /// Enum MidAtlanticStandardTime for value: Mid-Atlantic Standard Time
+        /// Enum (GMT-02:00) Mid-Atlantic for value: Mid-Atlantic Standard Time
         /// </summary>
         [EnumMember(Value = "Mid-Atlantic Standard Time")]
-        MidAtlanticStandardTime = 47,
+        Gmt0200MidAtlantic = 47,
 
         /// <summary>
-        /// Enum MiddleEastStandardTime for value: Middle East Standard Time
+        /// Enum (GMT+02:00) Beirut for value: Middle East Standard Time
         /// </summary>
         [EnumMember(Value = "Middle East Standard Time")]
-        MiddleEastStandardTime = 48,
+        Gmt0200Beirut = 48,
 
         /// <summary>
-        /// Enum MontevideoStandardTime for value: Montevideo Standard Time
+        /// Enum (GMT-03:00) Montevideo for value: Montevideo Standard Time
         /// </summary>
         [EnumMember(Value = "Montevideo Standard Time")]
-        MontevideoStandardTime = 49,
+        Gmt0300Montevideo = 49,
 
         /// <summary>
-        /// Enum MoroccoStandardTime for value: Morocco Standard Time
+        /// Enum (GMT) Casablanca for value: Morocco Standard Time
         /// </summary>
         [EnumMember(Value = "Morocco Standard Time")]
-        MoroccoStandardTime = 50,
+        GmtCasablanca = 50,
 
         /// <summary>
-        /// Enum MountainStandardTime for value: Mountain Standard Time
+        /// Enum (GMT-07:00) Mountain Time (US &amp; Canada) for value: Mountain Standard Time
         /// </summary>
         [EnumMember(Value = "Mountain Standard Time")]
-        MountainStandardTime = 51,
+        Gmt0700MountainTimeUsCanada = 51,
 
         /// <summary>
-        /// Enum MountainStandardTimeMexico for value: Mountain Standard Time (Mexico)
+        /// Enum (GMT-07:00) Chihuahua, La Paz, Mazatlan for value: Mountain Standard Time (Mexico)
         /// </summary>
         [EnumMember(Value = "Mountain Standard Time (Mexico)")]
-        MountainStandardTimeMexico = 52,
+        Gmt0700ChihuahuaLaPazMazatlan = 52,
 
         /// <summary>
-        /// Enum MyanmarStandardTime for value: Myanmar Standard Time
+        /// Enum (GMT+06:30) Yangon (Rangoon) for value: Myanmar Standard Time
         /// </summary>
         [EnumMember(Value = "Myanmar Standard Time")]
-        MyanmarStandardTime = 53,
+        Gmt0630YangonRangoon = 53,
 
         /// <summary>
-        /// Enum NCentralAsiaStandardTime for value: N. Central Asia Standard Time
+        /// Enum (GMT+06:00) Almaty, Novosibirsk for value: N. Central Asia Standard Time
         /// </summary>
         [EnumMember(Value = "N. Central Asia Standard Time")]
-        NCentralAsiaStandardTime = 54,
+        Gmt0600AlmatyNovosibirsk = 54,
 
         /// <summary>
-        /// Enum NamibiaStandardTime for value: Namibia Standard Time
+        /// Enum (GMT+02:00) Windhoek for value: Namibia Standard Time
         /// </summary>
         [EnumMember(Value = "Namibia Standard Time")]
-        NamibiaStandardTime = 55,
+        Gmt0200Windhoek = 55,
 
         /// <summary>
-        /// Enum NepalStandardTime for value: Nepal Standard Time
+        /// Enum (GMT+05:45) Kathmandu for value: Nepal Standard Time
         /// </summary>
         [EnumMember(Value = "Nepal Standard Time")]
-        NepalStandardTime = 56,
+        Gmt0545Kathmandu = 56,
 
         /// <summary>
-        /// Enum NewZealandStandardTime for value: New Zealand Standard Time
+        /// Enum (GMT+12:00) Auckland, Wellington for value: New Zealand Standard Time
         /// </summary>
         [EnumMember(Value = "New Zealand Standard Time")]
-        NewZealandStandardTime = 57,
+        Gmt1200AucklandWellington = 57,
 
         /// <summary>
-        /// Enum NewfoundlandStandardTime for value: Newfoundland Standard Time
+        /// Enum (GMT-03:30) Newfoundland for value: Newfoundland Standard Time
         /// </summary>
         [EnumMember(Value = "Newfoundland Standard Time")]
-        NewfoundlandStandardTime = 58,
+        Gmt0330Newfoundland = 58,
 
         /// <summary>
-        /// Enum NorthAsiaEastStandardTime for value: North Asia East Standard Time
+        /// Enum (GMT+08:00) Irkutsk, Ulaan Bataar for value: North Asia East Standard Time
         /// </summary>
         [EnumMember(Value = "North Asia East Standard Time")]
-        NorthAsiaEastStandardTime = 59,
+        Gmt0800IrkutskUlaanBataar = 59,
 
         /// <summary>
-        /// Enum NorthAsiaStandardTime for value: North Asia Standard Time
+        /// Enum (GMT+07:00) Krasnoyarsk for value: North Asia Standard Time
         /// </summary>
         [EnumMember(Value = "North Asia Standard Time")]
-        NorthAsiaStandardTime = 60,
+        Gmt0700Krasnoyarsk = 60,
 
         /// <summary>
-        /// Enum PacificSAStandardTime for value: Pacific SA Standard Time
+        /// Enum (GMT-04:00) Santiago for value: Pacific SA Standard Time
         /// </summary>
         [EnumMember(Value = "Pacific SA Standard Time")]
-        PacificSAStandardTime = 61,
+        Gmt0400Santiago = 61,
 
         /// <summary>
-        /// Enum PacificStandardTime for value: Pacific Standard Time
+        /// Enum (GMT-08:00) Pacific Time (US &amp; Canada) for value: Pacific Standard Time
         /// </summary>
         [EnumMember(Value = "Pacific Standard Time")]
-        PacificStandardTime = 62,
+        Gmt0800PacificTimeUsCanada = 62,
 
         /// <summary>
-        /// Enum PacificStandardTimeMexico for value: Pacific Standard Time (Mexico)
+        /// Enum (GMT-08:00) Tijuana, Baja California for value: Pacific Standard Time (Mexico)
         /// </summary>
         [EnumMember(Value = "Pacific Standard Time (Mexico)")]
-        PacificStandardTimeMexico = 63,
+        Gmt0800TijuanaBajaCalifornia = 63,
 
         /// <summary>
-        /// Enum PakistanStandardTime for value: Pakistan Standard Time
+        /// Enum (GMT+05:00) Islamabad, Karachi for value: Pakistan Standard Time
         /// </summary>
         [EnumMember(Value = "Pakistan Standard Time")]
-        PakistanStandardTime = 64,
+        Gmt0500IslamabadKarachi = 64,
 
         /// <summary>
-        /// Enum RomanceStandardTime for value: Romance Standard Time
+        /// Enum (GMT+01:00) Brussels, Copenhagen, Madrid, Paris for value: Romance Standard Time
         /// </summary>
         [EnumMember(Value = "Romance Standard Time")]
-        RomanceStandardTime = 65,
+        Gmt0100BrusselsCopenhagenMadridParis = 65,
 
         /// <summary>
-        /// Enum RussianStandardTime for value: Russian Standard Time
+        /// Enum (GMT+03:00) Moscow, St. Petersburg, Volgograd for value: Russian Standard Time
         /// </summary>
         [EnumMember(Value = "Russian Standard Time")]
-        RussianStandardTime = 66,
+        Gmt0300MoscowStPetersburgVolgograd = 66,
 
         /// <summary>
-        /// Enum SAEasternStandardTime for value: SA Eastern Standard Time
+        /// Enum (GMT-03:00) Georgetown for value: SA Eastern Standard Time
         /// </summary>
         [EnumMember(Value = "SA Eastern Standard Time")]
-        SAEasternStandardTime = 67,
+        Gmt0300Georgetown = 67,
 
         /// <summary>
-        /// Enum SAPacificStandardTime for value: SA Pacific Standard Time
+        /// Enum (GMT-05:00) Bogota, Lima, Quito, Rio Branco for value: SA Pacific Standard Time
         /// </summary>
         [EnumMember(Value = "SA Pacific Standard Time")]
-        SAPacificStandardTime = 68,
+        Gmt0500BogotaLimaQuitoRioBranco = 68,
 
         /// <summary>
-        /// Enum SAWesternStandardTime for value: SA Western Standard Time
+        /// Enum (GMT-04:00) La Paz for value: SA Western Standard Time
         /// </summary>
         [EnumMember(Value = "SA Western Standard Time")]
-        SAWesternStandardTime = 69,
+        Gmt0400LaPaz = 69,
 
         /// <summary>
-        /// Enum SamoaStandardTime for value: Samoa Standard Time
+        /// Enum (GMT-11:00) Midway Island, Samoa for value: Samoa Standard Time
         /// </summary>
         [EnumMember(Value = "Samoa Standard Time")]
-        SamoaStandardTime = 70,
+        Gmt1100MidwayIslandSamoa = 70,
 
         /// <summary>
-        /// Enum SEAsiaStandardTime for value: SE Asia Standard Time
+        /// Enum (GMT+07:00) Bangkok, Hanoi, Jakarta for value: SE Asia Standard Time
         /// </summary>
         [EnumMember(Value = "SE Asia Standard Time")]
-        SEAsiaStandardTime = 71,
+        Gmt0700BangkokHanoiJakarta = 71,
 
         /// <summary>
-        /// Enum SingaporeStandardTime for value: Singapore Standard Time
+        /// Enum (GMT+08:00) Kuala Lumpur, Singapore for value: Singapore Standard Time
         /// </summary>
         [EnumMember(Value = "Singapore Standard Time")]
-        SingaporeStandardTime = 72,
+        Gmt0800KualaLumpurSingapore = 72,
 
         /// <summary>
-        /// Enum SouthAfricaStandardTime for value: South Africa Standard Time
+        /// Enum (GMT+02:00) Harare, Pretoria for value: South Africa Standard Time
         /// </summary>
         [EnumMember(Value = "South Africa Standard Time")]
-        SouthAfricaStandardTime = 73,
+        Gmt0200HararePretoria = 73,
 
         /// <summary>
-        /// Enum SriLankaStandardTime for value: Sri Lanka Standard Time
+        /// Enum (GMT+05:30) Sri Jayawardenepura for value: Sri Lanka Standard Time
         /// </summary>
         [EnumMember(Value = "Sri Lanka Standard Time")]
-        SriLankaStandardTime = 74,
+        Gmt0530SriJayawardenepura = 74,
 
         /// <summary>
-        /// Enum TaipeiStandardTime for value: Taipei Standard Time
+        /// Enum (GMT+08:00) Taipei for value: Taipei Standard Time
         /// </summary>
         [EnumMember(Value = "Taipei Standard Time")]
-        TaipeiStandardTime = 75,
+        Gmt0800Taipei = 75,
 
         /// <summary>
-        /// Enum TasmaniaStandardTime for value: Tasmania Standard Time
+        /// Enum (GMT+10:00) Hobart for value: Tasmania Standard Time
         /// </summary>
         [EnumMember(Value = "Tasmania Standard Time")]
-        TasmaniaStandardTime = 76,
+        Gmt1000Hobart = 76,
 
         /// <summary>
-        /// Enum TokyoStandardTime for value: Tokyo Standard Time
+        /// Enum (GMT+09:00) Osaka, Sapporo, Tokyo for value: Tokyo Standard Time
         /// </summary>
         [EnumMember(Value = "Tokyo Standard Time")]
-        TokyoStandardTime = 77,
+        Gmt0900OsakaSapporoTokyo = 77,
 
         /// <summary>
-        /// Enum TongaStandardTime for value: Tonga Standard Time
+        /// Enum (GMT+13:00) Nuku&#39;alofa for value: Tonga Standard Time
         /// </summary>
         [EnumMember(Value = "Tonga Standard Time")]
-        TongaStandardTime = 78,
+        Gmt1300NukuAlofa = 78,
 
         /// <summary>
-        /// Enum USEasternStandardTime for value: US Eastern Standard Time
+        /// Enum (GMT-05:00) Indiana (East) for value: US Eastern Standard Time
         /// </summary>
         [EnumMember(Value = "US Eastern Standard Time")]
-        USEasternStandardTime = 79,
+        Gmt0500IndianaEast = 79,
 
         /// <summary>
-        /// Enum USMountainStandardTime for value: US Mountain Standard Time
+        /// Enum (GMT-07:00) Arizona for value: US Mountain Standard Time
         /// </summary>
         [EnumMember(Value = "US Mountain Standard Time")]
-        USMountainStandardTime = 80,
+        Gmt0700Arizona = 80,
 
         /// <summary>
         /// Enum UTC for value: UTC
         /// </summary>
         [EnumMember(Value = "UTC")]
-        UTC = 81,
+        Utc = 81,
 
         /// <summary>
-        /// Enum VenezuelaStandardTime for value: Venezuela Standard Time
+        /// Enum (GMT-04:30) Caracas for value: Venezuela Standard Time
         /// </summary>
         [EnumMember(Value = "Venezuela Standard Time")]
-        VenezuelaStandardTime = 82,
+        Gmt0430Caracas = 82,
 
         /// <summary>
-        /// Enum VladivostokStandardTime for value: Vladivostok Standard Time
+        /// Enum (GMT+10:00) Vladivostok for value: Vladivostok Standard Time
         /// </summary>
         [EnumMember(Value = "Vladivostok Standard Time")]
-        VladivostokStandardTime = 83,
+        Gmt1000Vladivostok = 83,
 
         /// <summary>
-        /// Enum WAustraliaStandardTime for value: W. Australia Standard Time
+        /// Enum (GMT+08:00) Perth for value: W. Australia Standard Time
         /// </summary>
         [EnumMember(Value = "W. Australia Standard Time")]
-        WAustraliaStandardTime = 84,
+        Gmt0800Perth = 84,
 
         /// <summary>
-        /// Enum WCentralAfricaStandardTime for value: W. Central Africa Standard Time
+        /// Enum (GMT+01:00) West Central Africa for value: W. Central Africa Standard Time
         /// </summary>
         [EnumMember(Value = "W. Central Africa Standard Time")]
-        WCentralAfricaStandardTime = 85,
+        Gmt0100WestCentralAfrica = 85,
 
         /// <summary>
-        /// Enum WEuropeStandardTime for value: W. Europe Standard Time
+        /// Enum (GMT+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna for value: W. Europe Standard Time
         /// </summary>
         [EnumMember(Value = "W. Europe Standard Time")]
-        WEuropeStandardTime = 86,
+        Gmt0100AmsterdamBerlinBernRomeStockholmVienna = 86,
 
         /// <summary>
-        /// Enum WestAsiaStandardTime for value: West Asia Standard Time
+        /// Enum (GMT+05:00) Tashkent for value: West Asia Standard Time
         /// </summary>
         [EnumMember(Value = "West Asia Standard Time")]
-        WestAsiaStandardTime = 87,
+        Gmt0500Tashkent = 87,
 
         /// <summary>
-        /// Enum WestPacificStandardTime for value: West Pacific Standard Time
+        /// Enum (GMT+10:00) Guam, Port Moresby for value: West Pacific Standard Time
         /// </summary>
         [EnumMember(Value = "West Pacific Standard Time")]
-        WestPacificStandardTime = 88,
+        Gmt1000GuamPortMoresby = 88,
 
         /// <summary>
-        /// Enum YakutskStandardTime for value: Yakutsk Standard Time
+        /// Enum (GMT+09:00) Yakutsk for value: Yakutsk Standard Time
         /// </summary>
         [EnumMember(Value = "Yakutsk Standard Time")]
-        YakutskStandardTime = 89
+        Gmt0900Yakutsk = 89
     }
 
     /// <summary>
@@ -611,271 +611,271 @@ namespace Agile.Now.AccessHub.Model
         public static EnumTimezone? FromStringOrDefault(string value)
         {
             if (value.Equals("Afghanistan Standard Time"))
-                return EnumTimezone.AfghanistanStandardTime;
+                return EnumTimezone.Gmt0430Kabul;
 
             if (value.Equals("Alaskan Standard Time"))
-                return EnumTimezone.AlaskanStandardTime;
+                return EnumTimezone.Gmt0900Alaska;
 
             if (value.Equals("Arab Standard Time"))
-                return EnumTimezone.ArabStandardTime;
+                return EnumTimezone.Gmt0300KuwaitRiyadh;
 
             if (value.Equals("Arabian Standard Time"))
-                return EnumTimezone.ArabianStandardTime;
+                return EnumTimezone.Gmt0400AbuDhabiMuscat;
 
             if (value.Equals("Arabic Standard Time"))
-                return EnumTimezone.ArabicStandardTime;
+                return EnumTimezone.Gmt0300Baghdad;
 
             if (value.Equals("Argentina Standard Time"))
-                return EnumTimezone.ArgentinaStandardTime;
+                return EnumTimezone.Gmt0300BuenosAires;
 
             if (value.Equals("Atlantic Standard Time"))
-                return EnumTimezone.AtlanticStandardTime;
+                return EnumTimezone.Gmt0400AtlanticTimeCanada;
 
             if (value.Equals("AUS Central Standard Time"))
-                return EnumTimezone.AUSCentralStandardTime;
+                return EnumTimezone.Gmt0930Darwin;
 
             if (value.Equals("AUS Eastern Standard Time"))
-                return EnumTimezone.AUSEasternStandardTime;
+                return EnumTimezone.Gmt1000CanberraMelbourneSydney;
 
             if (value.Equals("Azerbaijan Standard Time"))
-                return EnumTimezone.AzerbaijanStandardTime;
+                return EnumTimezone.Gmt0400Baku;
 
             if (value.Equals("Azores Standard Time"))
-                return EnumTimezone.AzoresStandardTime;
+                return EnumTimezone.Gmt0100Azores;
 
             if (value.Equals("Canada Central Standard Time"))
-                return EnumTimezone.CanadaCentralStandardTime;
+                return EnumTimezone.Gmt0600Saskatchewan;
 
             if (value.Equals("Cape Verde Standard Time"))
-                return EnumTimezone.CapeVerdeStandardTime;
+                return EnumTimezone.Gmt0100CapeVerdeIs;
 
             if (value.Equals("Caucasus Standard Time"))
-                return EnumTimezone.CaucasusStandardTime;
+                return EnumTimezone.Gmt0400Yerevan;
 
             if (value.Equals("Cen. Australia Standard Time"))
-                return EnumTimezone.CenAustraliaStandardTime;
+                return EnumTimezone.Gmt0930Adelaide;
 
             if (value.Equals("Central America Standard Time"))
-                return EnumTimezone.CentralAmericaStandardTime;
+                return EnumTimezone.Gmt0600CentralAmerica;
 
             if (value.Equals("Central Asia Standard Time"))
-                return EnumTimezone.CentralAsiaStandardTime;
+                return EnumTimezone.Gmt0600AstanaDhaka;
 
             if (value.Equals("Central Brazilian Standard Time"))
-                return EnumTimezone.CentralBrazilianStandardTime;
+                return EnumTimezone.Gmt0400Manaus;
 
             if (value.Equals("Central Europe Standard Time"))
-                return EnumTimezone.CentralEuropeStandardTime;
+                return EnumTimezone.Gmt0100BelgradeBratislavaBudapestLjubljanaPrague;
 
             if (value.Equals("Central European Standard Time"))
-                return EnumTimezone.CentralEuropeanStandardTime;
+                return EnumTimezone.Gmt0100SarajevoSkopjeWarsawZagreb;
 
             if (value.Equals("Central Pacific Standard Time"))
-                return EnumTimezone.CentralPacificStandardTime;
+                return EnumTimezone.Gmt1100MagadanSolomonIsNewCaledonia;
 
             if (value.Equals("Central Standard Time"))
-                return EnumTimezone.CentralStandardTime;
+                return EnumTimezone.Gmt0600CentralTimeUsCanada;
 
             if (value.Equals("Central Standard Time (Mexico)"))
-                return EnumTimezone.CentralStandardTimeMexico;
+                return EnumTimezone.Gmt0600GuadalajaraMexicoCityMonterrey;
 
             if (value.Equals("China Standard Time"))
-                return EnumTimezone.ChinaStandardTime;
+                return EnumTimezone.Gmt0800BeijingChongqingHongKongUrumqi;
 
             if (value.Equals("Dateline Standard Time"))
-                return EnumTimezone.DatelineStandardTime;
+                return EnumTimezone.Gmt1200InternationalDateLineWest;
 
             if (value.Equals("E. Africa Standard Time"))
-                return EnumTimezone.EAfricaStandardTime;
+                return EnumTimezone.Gmt0300Nairobi;
 
             if (value.Equals("E. Australia Standard Time"))
-                return EnumTimezone.EAustraliaStandardTime;
+                return EnumTimezone.Gmt1000Brisbane;
 
             if (value.Equals("E. Europe Standard Time"))
-                return EnumTimezone.EEuropeStandardTime;
+                return EnumTimezone.Gmt0200Minsk;
 
             if (value.Equals("E. South America Standard Time"))
-                return EnumTimezone.ESouthAmericaStandardTime;
+                return EnumTimezone.Gmt0300Brasilia;
 
             if (value.Equals("Eastern Standard Time"))
-                return EnumTimezone.EasternStandardTime;
+                return EnumTimezone.Gmt0500EasternTimeUsCanada;
 
             if (value.Equals("Egypt Standard Time"))
-                return EnumTimezone.EgyptStandardTime;
+                return EnumTimezone.Gmt0200Cairo;
 
             if (value.Equals("Ekaterinburg Standard Time"))
-                return EnumTimezone.EkaterinburgStandardTime;
+                return EnumTimezone.Gmt0500Ekaterinburg;
 
             if (value.Equals("Fiji Standard Time"))
-                return EnumTimezone.FijiStandardTime;
+                return EnumTimezone.Gmt1200FijiKamchatkaMarshallIs;
 
             if (value.Equals("FLE Standard Time"))
-                return EnumTimezone.FLEStandardTime;
+                return EnumTimezone.Gmt0200HelsinkiKyivRigaSofiaTallinnVilnius;
 
             if (value.Equals("Georgian Standard Time"))
-                return EnumTimezone.GeorgianStandardTime;
+                return EnumTimezone.Gmt0300Tbilisi;
 
             if (value.Equals("GMT Standard Time"))
-                return EnumTimezone.GMTStandardTime;
+                return EnumTimezone.GmtGreenwichMeanTimeDublinEdinburghLisbonLondon;
 
             if (value.Equals("Greenland Standard Time"))
-                return EnumTimezone.GreenlandStandardTime;
+                return EnumTimezone.Gmt0300Greenland;
 
             if (value.Equals("Greenwich Standard Time"))
-                return EnumTimezone.GreenwichStandardTime;
+                return EnumTimezone.GmtMonroviaReykjavik;
 
             if (value.Equals("GTB Standard Time"))
-                return EnumTimezone.GTBStandardTime;
+                return EnumTimezone.Gmt0200AthensBucharestIstanbul;
 
             if (value.Equals("Hawaiian Standard Time"))
-                return EnumTimezone.HawaiianStandardTime;
+                return EnumTimezone.Gmt1000Hawaii;
 
             if (value.Equals("India Standard Time"))
-                return EnumTimezone.IndiaStandardTime;
+                return EnumTimezone.Gmt0530ChennaiKolkataMumbaiNewDelhi;
 
             if (value.Equals("Iran Standard Time"))
-                return EnumTimezone.IranStandardTime;
+                return EnumTimezone.Gmt0330Tehran;
 
             if (value.Equals("Israel Standard Time"))
-                return EnumTimezone.IsraelStandardTime;
+                return EnumTimezone.Gmt0200Jerusalem;
 
             if (value.Equals("Jordan Standard Time"))
-                return EnumTimezone.JordanStandardTime;
+                return EnumTimezone.Gmt0200Amman;
 
             if (value.Equals("Korea Standard Time"))
-                return EnumTimezone.KoreaStandardTime;
+                return EnumTimezone.Gmt0900Seoul;
 
             if (value.Equals("Mauritius Standard Time"))
-                return EnumTimezone.MauritiusStandardTime;
+                return EnumTimezone.Gmt0400PortLouis;
 
             if (value.Equals("Mid-Atlantic Standard Time"))
-                return EnumTimezone.MidAtlanticStandardTime;
+                return EnumTimezone.Gmt0200MidAtlantic;
 
             if (value.Equals("Middle East Standard Time"))
-                return EnumTimezone.MiddleEastStandardTime;
+                return EnumTimezone.Gmt0200Beirut;
 
             if (value.Equals("Montevideo Standard Time"))
-                return EnumTimezone.MontevideoStandardTime;
+                return EnumTimezone.Gmt0300Montevideo;
 
             if (value.Equals("Morocco Standard Time"))
-                return EnumTimezone.MoroccoStandardTime;
+                return EnumTimezone.GmtCasablanca;
 
             if (value.Equals("Mountain Standard Time"))
-                return EnumTimezone.MountainStandardTime;
+                return EnumTimezone.Gmt0700MountainTimeUsCanada;
 
             if (value.Equals("Mountain Standard Time (Mexico)"))
-                return EnumTimezone.MountainStandardTimeMexico;
+                return EnumTimezone.Gmt0700ChihuahuaLaPazMazatlan;
 
             if (value.Equals("Myanmar Standard Time"))
-                return EnumTimezone.MyanmarStandardTime;
+                return EnumTimezone.Gmt0630YangonRangoon;
 
             if (value.Equals("N. Central Asia Standard Time"))
-                return EnumTimezone.NCentralAsiaStandardTime;
+                return EnumTimezone.Gmt0600AlmatyNovosibirsk;
 
             if (value.Equals("Namibia Standard Time"))
-                return EnumTimezone.NamibiaStandardTime;
+                return EnumTimezone.Gmt0200Windhoek;
 
             if (value.Equals("Nepal Standard Time"))
-                return EnumTimezone.NepalStandardTime;
+                return EnumTimezone.Gmt0545Kathmandu;
 
             if (value.Equals("New Zealand Standard Time"))
-                return EnumTimezone.NewZealandStandardTime;
+                return EnumTimezone.Gmt1200AucklandWellington;
 
             if (value.Equals("Newfoundland Standard Time"))
-                return EnumTimezone.NewfoundlandStandardTime;
+                return EnumTimezone.Gmt0330Newfoundland;
 
             if (value.Equals("North Asia East Standard Time"))
-                return EnumTimezone.NorthAsiaEastStandardTime;
+                return EnumTimezone.Gmt0800IrkutskUlaanBataar;
 
             if (value.Equals("North Asia Standard Time"))
-                return EnumTimezone.NorthAsiaStandardTime;
+                return EnumTimezone.Gmt0700Krasnoyarsk;
 
             if (value.Equals("Pacific SA Standard Time"))
-                return EnumTimezone.PacificSAStandardTime;
+                return EnumTimezone.Gmt0400Santiago;
 
             if (value.Equals("Pacific Standard Time"))
-                return EnumTimezone.PacificStandardTime;
+                return EnumTimezone.Gmt0800PacificTimeUsCanada;
 
             if (value.Equals("Pacific Standard Time (Mexico)"))
-                return EnumTimezone.PacificStandardTimeMexico;
+                return EnumTimezone.Gmt0800TijuanaBajaCalifornia;
 
             if (value.Equals("Pakistan Standard Time"))
-                return EnumTimezone.PakistanStandardTime;
+                return EnumTimezone.Gmt0500IslamabadKarachi;
 
             if (value.Equals("Romance Standard Time"))
-                return EnumTimezone.RomanceStandardTime;
+                return EnumTimezone.Gmt0100BrusselsCopenhagenMadridParis;
 
             if (value.Equals("Russian Standard Time"))
-                return EnumTimezone.RussianStandardTime;
+                return EnumTimezone.Gmt0300MoscowStPetersburgVolgograd;
 
             if (value.Equals("SA Eastern Standard Time"))
-                return EnumTimezone.SAEasternStandardTime;
+                return EnumTimezone.Gmt0300Georgetown;
 
             if (value.Equals("SA Pacific Standard Time"))
-                return EnumTimezone.SAPacificStandardTime;
+                return EnumTimezone.Gmt0500BogotaLimaQuitoRioBranco;
 
             if (value.Equals("SA Western Standard Time"))
-                return EnumTimezone.SAWesternStandardTime;
+                return EnumTimezone.Gmt0400LaPaz;
 
             if (value.Equals("Samoa Standard Time"))
-                return EnumTimezone.SamoaStandardTime;
+                return EnumTimezone.Gmt1100MidwayIslandSamoa;
 
             if (value.Equals("SE Asia Standard Time"))
-                return EnumTimezone.SEAsiaStandardTime;
+                return EnumTimezone.Gmt0700BangkokHanoiJakarta;
 
             if (value.Equals("Singapore Standard Time"))
-                return EnumTimezone.SingaporeStandardTime;
+                return EnumTimezone.Gmt0800KualaLumpurSingapore;
 
             if (value.Equals("South Africa Standard Time"))
-                return EnumTimezone.SouthAfricaStandardTime;
+                return EnumTimezone.Gmt0200HararePretoria;
 
             if (value.Equals("Sri Lanka Standard Time"))
-                return EnumTimezone.SriLankaStandardTime;
+                return EnumTimezone.Gmt0530SriJayawardenepura;
 
             if (value.Equals("Taipei Standard Time"))
-                return EnumTimezone.TaipeiStandardTime;
+                return EnumTimezone.Gmt0800Taipei;
 
             if (value.Equals("Tasmania Standard Time"))
-                return EnumTimezone.TasmaniaStandardTime;
+                return EnumTimezone.Gmt1000Hobart;
 
             if (value.Equals("Tokyo Standard Time"))
-                return EnumTimezone.TokyoStandardTime;
+                return EnumTimezone.Gmt0900OsakaSapporoTokyo;
 
             if (value.Equals("Tonga Standard Time"))
-                return EnumTimezone.TongaStandardTime;
+                return EnumTimezone.Gmt1300NukuAlofa;
 
             if (value.Equals("US Eastern Standard Time"))
-                return EnumTimezone.USEasternStandardTime;
+                return EnumTimezone.Gmt0500IndianaEast;
 
             if (value.Equals("US Mountain Standard Time"))
-                return EnumTimezone.USMountainStandardTime;
+                return EnumTimezone.Gmt0700Arizona;
 
             if (value.Equals("UTC"))
-                return EnumTimezone.UTC;
+                return EnumTimezone.Utc;
 
             if (value.Equals("Venezuela Standard Time"))
-                return EnumTimezone.VenezuelaStandardTime;
+                return EnumTimezone.Gmt0430Caracas;
 
             if (value.Equals("Vladivostok Standard Time"))
-                return EnumTimezone.VladivostokStandardTime;
+                return EnumTimezone.Gmt1000Vladivostok;
 
             if (value.Equals("W. Australia Standard Time"))
-                return EnumTimezone.WAustraliaStandardTime;
+                return EnumTimezone.Gmt0800Perth;
 
             if (value.Equals("W. Central Africa Standard Time"))
-                return EnumTimezone.WCentralAfricaStandardTime;
+                return EnumTimezone.Gmt0100WestCentralAfrica;
 
             if (value.Equals("W. Europe Standard Time"))
-                return EnumTimezone.WEuropeStandardTime;
+                return EnumTimezone.Gmt0100AmsterdamBerlinBernRomeStockholmVienna;
 
             if (value.Equals("West Asia Standard Time"))
-                return EnumTimezone.WestAsiaStandardTime;
+                return EnumTimezone.Gmt0500Tashkent;
 
             if (value.Equals("West Pacific Standard Time"))
-                return EnumTimezone.WestPacificStandardTime;
+                return EnumTimezone.Gmt1000GuamPortMoresby;
 
             if (value.Equals("Yakutsk Standard Time"))
-                return EnumTimezone.YakutskStandardTime;
+                return EnumTimezone.Gmt0900Yakutsk;
 
             return null;
         }

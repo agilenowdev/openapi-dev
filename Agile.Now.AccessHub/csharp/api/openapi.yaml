@@ -7672,9 +7672,15 @@ components:
       - External
       - Internal
       type: string
-      x-enumDescriptions:
-        External: External
-        Internal: Internal
+      x-enums:
+      - value: External
+        name: External
+        description: External
+        isString: true
+      - value: Internal
+        name: Internal
+        description: Internal
+        isString: true
     EnumCountry:
       description: The enum of Country.
       enum:
@@ -7930,258 +7936,1011 @@ components:
       - ZMB
       - ZWE
       type: string
-      x-enumDescriptions:
-        AFG: Afghanistan
-        ALA: Aland Islands
-        ALB: Albania
-        DZA: Algeria
-        ASM: American Samoa
-        AND: Andorra
-        AGO: Angola
-        AIA: Anguilla
-        ATA: Antarctica
-        ATG: Antigua and Barbuda
-        ARG: Argentina
-        ARM: Armenia
-        ABW: Aruba
-        AUS: Australia
-        AUT: Austria
-        AZE: Azerbaijan
-        AZO: Azores
-        BHS: Bahamas
-        BHR: Bahrain
-        BGD: Bangladesh
-        BRB: Barbados
-        BLR: Belarus
-        BEL: Belgium
-        BLZ: Belize
-        BEN: Benin
-        BMU: Bermuda
-        BTN: Bhutan
-        BOL: Bolivia
-        BIH: Bosnia and Herzegovina
-        BWA: Botswana
-        BVT: Bouvet Island
-        BRA: Brazil
-        IOT: British Indian Ocean Territory
-        VGB: British Virgin Islands
-        BRN: Brunei Darussalam
-        BGR: Bulgaria
-        BFA: Burkina Faso
-        BDI: Burundi
-        KHM: Cambodia
-        CMR: Cameroon
-        CAN: Canada
-        CPV: Cape Verde
-        CYM: Cayman Islands
-        CAF: Central African Republic
-        TCD: Chad
-        CHL: Chile
-        CHN: China
-        CXR: Christmas Island
-        CCK: Cocos (Keeling) Islands
-        COL: Colombia
-        COM: Comoros
-        COG: Congo (Brazzaville)
-        COK: Cook Islands
-        CRI: Costa Rica
-        CIV: C�te d'Ivoire
-        HRV: Croatia
-        CUB: Cuba
-        CYP: Cyprus
-        CZE: Czech Republic
-        COD: Democratic Republic of the Congo
-        DNK: Denmark
-        DJI: Djibouti
-        DMA: Dominica
-        DOM: Dominican Republic
-        ECU: Ecuador
-        EGY: Egypt
-        SLV: El Salvador
-        GNQ: Equatorial Guinea
-        ERI: Eritrea
-        EST: Estonia
-        SWZ: Eswatini
-        ETH: Ethiopia
-        EUE: Europe diplomat
-        FLK: Falkland Islands (Malvinas)
-        FRO: Faroe Islands
-        FSM: Federated States of Micronesia
-        FJI: Fiji
-        FIN: Finland
-        FRA: France
-        GUF: French Guiana
-        PYF: French Polynesia
-        ATF: French Southern Territories
-        GAB: Gabon
-        GMB: Gambia
-        GEO: Georgia
-        DEU: Germany
-        GHA: Ghana
-        GIB: Gibraltar
-        GRC: Greece
-        GRL: Greenland
-        GRD: Grenada
-        GLP: Guadeloupe
-        GUM: Guam
-        GTM: Guatemala
-        GGY: Guernsey
-        GIN: Guinea
-        GNB: Guinea-Bissau
-        GUY: Guyana
-        HTI: Haiti
-        HMD: Heard Island and Mcdonald Islands
-        VAT: Holy See (Vatican City State)
-        HND: Honduras
-        HKG: Hong Kong (CN)
-        HUN: Hungary
-        ISL: Iceland
-        IND: India
-        IDN: Indonesia
-        IRN: Iran
-        IRQ: Iraq
-        IRL: Ireland
-        IMN: Isle of Man
-        ISR: Israel
-        ITA: Italy
-        JAM: Jamaica
-        JPN: Japan
-        JEY: Jersey
-        JOR: Jordan
-        KAZ: Kazakhstan
-        KEN: Kenya
-        KIR: Kiribati
-        XKX: Kosovo
-        KWT: Kuwait
-        KGZ: Kyrgyzstan
-        LAO: Lao PDR
-        LVA: Latvia
-        LBN: Lebanon
-        LSO: Lesotho
-        LBR: Liberia
-        LBY: Libya
-        LIE: Liechtenstein
-        LTU: Lithuania
-        LUX: Luxembourg
-        MAC: Macao (CN)
-        MKD: Macedonia
-        MDG: Madagascar
-        MWI: Malawi
-        MYS: Malaysia
-        MDV: Maldives
-        MLI: Mali
-        MLT: Malta
-        MHL: Marshall Islands
-        MTQ: Martinique
-        MRT: Mauritania
-        MUS: Mauritius
-        MYT: Mayotte
-        MEX: Mexico
-        MDA: Moldova
-        MCO: Monaco
-        MNG: Mongolia
-        MNE: Montenegro
-        MSR: Montserrat
-        MAR: Morocco
-        MOZ: Mozambique
-        MMR: Myanmar
-        NAM: Namibia
-        NRU: Nauru
-        NPL: Nepal
-        NLD: Netherlands
-        ANT: Netherlands Antilles
-        NCL: New Caledonia
-        NZL: New Zealand
-        NIC: Nicaragua
-        NER: Niger
-        NGA: Nigeria
-        NIU: Niue
-        NFK: Norfolk Island
-        PRK: North Korea
-        MNP: Northern Mariana Islands
-        NOR: Norway
-        OMN: Oman
-        PAK: Pakistan
-        PLW: Palau
-        PSE: "Palestinian Territory, Occupied"
-        PAN: Panama
-        PNG: Papua New Guinea
-        PRY: Paraguay
-        PER: Peru
-        PHL: Philippines
-        PCN: Pitcairn Island
-        POL: Poland
-        PRT: Portugal
-        PRI: Puerto Rico
-        QAT: Qatar
-        REU: R�union
-        ROU: Romania
-        RUS: Russian Federation
-        RWA: Rwanda
-        SHN: Saint Helena
-        KNA: Saint Kitts and Nevis
-        LCA: Saint Lucia
-        SPM: Saint Pierre and Miquelon
-        VCT: Saint Vincent and Grenadines
-        BLM: Saint-Barth�lemy
-        MAF: Saint-Martin (French part)
-        WSM: Samoa
-        SMR: San Marino
-        STP: Sao Tome and Principe
-        SAU: Saudi Arabia
-        SEN: Senegal
-        SRB: Serbia
-        SYC: Seychelles
-        SLE: Sierra Leone
-        SGP: Singapore
-        SVK: Slovakia
-        SVN: Slovenia
-        SLB: Solomon Islands
-        SOM: Somalia
-        SOL: Somaliland
-        ZAF: South Africa
-        SGS: South Georgia and the South Sandwich Islands
-        KOR: South Korea
-        SSD: South Sudan
-        ESP: Spain
-        LKA: Sri Lanka
-        SDN: Sudan
-        SUR: Suriname
-        SJM: Svalbard and Jan Mayen Islands
-        SWE: Sweden
-        CHE: Switzerland
-        SYR: Syrian Arab Republic (Syria)
-        TWN: Taiwan (CN)
-        TJK: Tajikistan
-        TZA: Tanzania
-        THA: Thailand
-        TLS: Timor-Leste
-        TGO: Togo
-        TKL: Tokelau
-        TON: Tonga
-        TTO: Trinidad and Tobago
-        TUN: Tunisia
-        TUR: Turkey
-        TKM: Turkmenistan
-        TCA: Turks and Caicos Islands
-        TUV: Tuvalu
-        UGA: Uganda
-        UKR: Ukraine
-        ARE: United Arab Emirates
-        GBR: United Kingdom
-        UMI: United States Minor Outlying Islands
-        USA: United States of America
-        URY: Uruguay
-        UZB: Uzbekistan
-        VUT: Vanuatu
-        VEN: Venezuela
-        VNM: Vietnam
-        VIR: "Virgin Islands, US"
-        WLF: Wallis and Futuna Islands
-        ESH: Western Sahara
-        YEM: Yemen
-        ZMB: Zambia
-        ZWE: Zimbabwe
+      x-enums:
+      - value: AFG
+        name: Afghanistan
+        description: Afghanistan
+        isString: true
+      - value: ALA
+        name: AlandIslands
+        description: Aland Islands
+        isString: true
+      - value: ALB
+        name: Albania
+        description: Albania
+        isString: true
+      - value: DZA
+        name: Algeria
+        description: Algeria
+        isString: true
+      - value: ASM
+        name: AmericanSamoa
+        description: American Samoa
+        isString: true
+      - value: AND
+        name: Andorra
+        description: Andorra
+        isString: true
+      - value: AGO
+        name: Angola
+        description: Angola
+        isString: true
+      - value: AIA
+        name: Anguilla
+        description: Anguilla
+        isString: true
+      - value: ATA
+        name: Antarctica
+        description: Antarctica
+        isString: true
+      - value: ATG
+        name: AntiguaAndBarbuda
+        description: Antigua and Barbuda
+        isString: true
+      - value: ARG
+        name: Argentina
+        description: Argentina
+        isString: true
+      - value: ARM
+        name: Armenia
+        description: Armenia
+        isString: true
+      - value: ABW
+        name: Aruba
+        description: Aruba
+        isString: true
+      - value: AUS
+        name: Australia
+        description: Australia
+        isString: true
+      - value: AUT
+        name: Austria
+        description: Austria
+        isString: true
+      - value: AZE
+        name: Azerbaijan
+        description: Azerbaijan
+        isString: true
+      - value: AZO
+        name: Azores
+        description: Azores
+        isString: true
+      - value: BHS
+        name: Bahamas
+        description: Bahamas
+        isString: true
+      - value: BHR
+        name: Bahrain
+        description: Bahrain
+        isString: true
+      - value: BGD
+        name: Bangladesh
+        description: Bangladesh
+        isString: true
+      - value: BRB
+        name: Barbados
+        description: Barbados
+        isString: true
+      - value: BLR
+        name: Belarus
+        description: Belarus
+        isString: true
+      - value: BEL
+        name: Belgium
+        description: Belgium
+        isString: true
+      - value: BLZ
+        name: Belize
+        description: Belize
+        isString: true
+      - value: BEN
+        name: Benin
+        description: Benin
+        isString: true
+      - value: BMU
+        name: Bermuda
+        description: Bermuda
+        isString: true
+      - value: BTN
+        name: Bhutan
+        description: Bhutan
+        isString: true
+      - value: BOL
+        name: Bolivia
+        description: Bolivia
+        isString: true
+      - value: BIH
+        name: BosniaAndHerzegovina
+        description: Bosnia and Herzegovina
+        isString: true
+      - value: BWA
+        name: Botswana
+        description: Botswana
+        isString: true
+      - value: BVT
+        name: BouvetIsland
+        description: Bouvet Island
+        isString: true
+      - value: BRA
+        name: Brazil
+        description: Brazil
+        isString: true
+      - value: IOT
+        name: BritishIndianOceanTerritory
+        description: British Indian Ocean Territory
+        isString: true
+      - value: VGB
+        name: BritishVirginIslands
+        description: British Virgin Islands
+        isString: true
+      - value: BRN
+        name: BruneiDarussalam
+        description: Brunei Darussalam
+        isString: true
+      - value: BGR
+        name: Bulgaria
+        description: Bulgaria
+        isString: true
+      - value: BFA
+        name: BurkinaFaso
+        description: Burkina Faso
+        isString: true
+      - value: BDI
+        name: Burundi
+        description: Burundi
+        isString: true
+      - value: KHM
+        name: Cambodia
+        description: Cambodia
+        isString: true
+      - value: CMR
+        name: Cameroon
+        description: Cameroon
+        isString: true
+      - value: CAN
+        name: Canada
+        description: Canada
+        isString: true
+      - value: CPV
+        name: CapeVerde
+        description: Cape Verde
+        isString: true
+      - value: CYM
+        name: CaymanIslands
+        description: Cayman Islands
+        isString: true
+      - value: CAF
+        name: CentralAfricanRepublic
+        description: Central African Republic
+        isString: true
+      - value: TCD
+        name: Chad
+        description: Chad
+        isString: true
+      - value: CHL
+        name: Chile
+        description: Chile
+        isString: true
+      - value: CHN
+        name: China
+        description: China
+        isString: true
+      - value: CXR
+        name: ChristmasIsland
+        description: Christmas Island
+        isString: true
+      - value: CCK
+        name: CocosKeelingIslands
+        description: Cocos (Keeling) Islands
+        isString: true
+      - value: COL
+        name: Colombia
+        description: Colombia
+        isString: true
+      - value: COM
+        name: Comoros
+        description: Comoros
+        isString: true
+      - value: COG
+        name: CongoBrazzaville
+        description: Congo (Brazzaville)
+        isString: true
+      - value: COK
+        name: CookIslands
+        description: Cook Islands
+        isString: true
+      - value: CRI
+        name: CostaRica
+        description: Costa Rica
+        isString: true
+      - value: CIV
+        name: CTeDIvoire
+        description: C�te d'Ivoire
+        isString: true
+      - value: HRV
+        name: Croatia
+        description: Croatia
+        isString: true
+      - value: CUB
+        name: Cuba
+        description: Cuba
+        isString: true
+      - value: CYP
+        name: Cyprus
+        description: Cyprus
+        isString: true
+      - value: CZE
+        name: CzechRepublic
+        description: Czech Republic
+        isString: true
+      - value: COD
+        name: DemocraticRepublicOfTheCongo
+        description: Democratic Republic of the Congo
+        isString: true
+      - value: DNK
+        name: Denmark
+        description: Denmark
+        isString: true
+      - value: DJI
+        name: Djibouti
+        description: Djibouti
+        isString: true
+      - value: DMA
+        name: Dominica
+        description: Dominica
+        isString: true
+      - value: DOM
+        name: DominicanRepublic
+        description: Dominican Republic
+        isString: true
+      - value: ECU
+        name: Ecuador
+        description: Ecuador
+        isString: true
+      - value: EGY
+        name: Egypt
+        description: Egypt
+        isString: true
+      - value: SLV
+        name: ElSalvador
+        description: El Salvador
+        isString: true
+      - value: GNQ
+        name: EquatorialGuinea
+        description: Equatorial Guinea
+        isString: true
+      - value: ERI
+        name: Eritrea
+        description: Eritrea
+        isString: true
+      - value: EST
+        name: Estonia
+        description: Estonia
+        isString: true
+      - value: SWZ
+        name: Eswatini
+        description: Eswatini
+        isString: true
+      - value: ETH
+        name: Ethiopia
+        description: Ethiopia
+        isString: true
+      - value: EUE
+        name: EuropeDiplomat
+        description: Europe diplomat
+        isString: true
+      - value: FLK
+        name: FalklandIslandsMalvinas
+        description: Falkland Islands (Malvinas)
+        isString: true
+      - value: FRO
+        name: FaroeIslands
+        description: Faroe Islands
+        isString: true
+      - value: FSM
+        name: FederatedStatesOfMicronesia
+        description: Federated States of Micronesia
+        isString: true
+      - value: FJI
+        name: Fiji
+        description: Fiji
+        isString: true
+      - value: FIN
+        name: Finland
+        description: Finland
+        isString: true
+      - value: FRA
+        name: France
+        description: France
+        isString: true
+      - value: GUF
+        name: FrenchGuiana
+        description: French Guiana
+        isString: true
+      - value: PYF
+        name: FrenchPolynesia
+        description: French Polynesia
+        isString: true
+      - value: ATF
+        name: FrenchSouthernTerritories
+        description: French Southern Territories
+        isString: true
+      - value: GAB
+        name: Gabon
+        description: Gabon
+        isString: true
+      - value: GMB
+        name: Gambia
+        description: Gambia
+        isString: true
+      - value: GEO
+        name: Georgia
+        description: Georgia
+        isString: true
+      - value: DEU
+        name: Germany
+        description: Germany
+        isString: true
+      - value: GHA
+        name: Ghana
+        description: Ghana
+        isString: true
+      - value: GIB
+        name: Gibraltar
+        description: Gibraltar
+        isString: true
+      - value: GRC
+        name: Greece
+        description: Greece
+        isString: true
+      - value: GRL
+        name: Greenland
+        description: Greenland
+        isString: true
+      - value: GRD
+        name: Grenada
+        description: Grenada
+        isString: true
+      - value: GLP
+        name: Guadeloupe
+        description: Guadeloupe
+        isString: true
+      - value: GUM
+        name: Guam
+        description: Guam
+        isString: true
+      - value: GTM
+        name: Guatemala
+        description: Guatemala
+        isString: true
+      - value: GGY
+        name: Guernsey
+        description: Guernsey
+        isString: true
+      - value: GIN
+        name: Guinea
+        description: Guinea
+        isString: true
+      - value: GNB
+        name: GuineaBissau
+        description: Guinea-Bissau
+        isString: true
+      - value: GUY
+        name: Guyana
+        description: Guyana
+        isString: true
+      - value: HTI
+        name: Haiti
+        description: Haiti
+        isString: true
+      - value: HMD
+        name: HeardIslandAndMcdonaldIslands
+        description: Heard Island and Mcdonald Islands
+        isString: true
+      - value: VAT
+        name: HolySeeVaticanCityState
+        description: Holy See (Vatican City State)
+        isString: true
+      - value: HND
+        name: Honduras
+        description: Honduras
+        isString: true
+      - value: HKG
+        name: HongKongCn
+        description: Hong Kong (CN)
+        isString: true
+      - value: HUN
+        name: Hungary
+        description: Hungary
+        isString: true
+      - value: ISL
+        name: Iceland
+        description: Iceland
+        isString: true
+      - value: IND
+        name: India
+        description: India
+        isString: true
+      - value: IDN
+        name: Indonesia
+        description: Indonesia
+        isString: true
+      - value: IRN
+        name: Iran
+        description: Iran
+        isString: true
+      - value: IRQ
+        name: Iraq
+        description: Iraq
+        isString: true
+      - value: IRL
+        name: Ireland
+        description: Ireland
+        isString: true
+      - value: IMN
+        name: IsleOfMan
+        description: Isle of Man
+        isString: true
+      - value: ISR
+        name: Israel
+        description: Israel
+        isString: true
+      - value: ITA
+        name: Italy
+        description: Italy
+        isString: true
+      - value: JAM
+        name: Jamaica
+        description: Jamaica
+        isString: true
+      - value: JPN
+        name: Japan
+        description: Japan
+        isString: true
+      - value: JEY
+        name: Jersey
+        description: Jersey
+        isString: true
+      - value: JOR
+        name: Jordan
+        description: Jordan
+        isString: true
+      - value: KAZ
+        name: Kazakhstan
+        description: Kazakhstan
+        isString: true
+      - value: KEN
+        name: Kenya
+        description: Kenya
+        isString: true
+      - value: KIR
+        name: Kiribati
+        description: Kiribati
+        isString: true
+      - value: XKX
+        name: Kosovo
+        description: Kosovo
+        isString: true
+      - value: KWT
+        name: Kuwait
+        description: Kuwait
+        isString: true
+      - value: KGZ
+        name: Kyrgyzstan
+        description: Kyrgyzstan
+        isString: true
+      - value: LAO
+        name: LaoPdr
+        description: Lao PDR
+        isString: true
+      - value: LVA
+        name: Latvia
+        description: Latvia
+        isString: true
+      - value: LBN
+        name: Lebanon
+        description: Lebanon
+        isString: true
+      - value: LSO
+        name: Lesotho
+        description: Lesotho
+        isString: true
+      - value: LBR
+        name: Liberia
+        description: Liberia
+        isString: true
+      - value: LBY
+        name: Libya
+        description: Libya
+        isString: true
+      - value: LIE
+        name: Liechtenstein
+        description: Liechtenstein
+        isString: true
+      - value: LTU
+        name: Lithuania
+        description: Lithuania
+        isString: true
+      - value: LUX
+        name: Luxembourg
+        description: Luxembourg
+        isString: true
+      - value: MAC
+        name: MacaoCn
+        description: Macao (CN)
+        isString: true
+      - value: MKD
+        name: Macedonia
+        description: Macedonia
+        isString: true
+      - value: MDG
+        name: Madagascar
+        description: Madagascar
+        isString: true
+      - value: MWI
+        name: Malawi
+        description: Malawi
+        isString: true
+      - value: MYS
+        name: Malaysia
+        description: Malaysia
+        isString: true
+      - value: MDV
+        name: Maldives
+        description: Maldives
+        isString: true
+      - value: MLI
+        name: Mali
+        description: Mali
+        isString: true
+      - value: MLT
+        name: Malta
+        description: Malta
+        isString: true
+      - value: MHL
+        name: MarshallIslands
+        description: Marshall Islands
+        isString: true
+      - value: MTQ
+        name: Martinique
+        description: Martinique
+        isString: true
+      - value: MRT
+        name: Mauritania
+        description: Mauritania
+        isString: true
+      - value: MUS
+        name: Mauritius
+        description: Mauritius
+        isString: true
+      - value: MYT
+        name: Mayotte
+        description: Mayotte
+        isString: true
+      - value: MEX
+        name: Mexico
+        description: Mexico
+        isString: true
+      - value: MDA
+        name: Moldova
+        description: Moldova
+        isString: true
+      - value: MCO
+        name: Monaco
+        description: Monaco
+        isString: true
+      - value: MNG
+        name: Mongolia
+        description: Mongolia
+        isString: true
+      - value: MNE
+        name: Montenegro
+        description: Montenegro
+        isString: true
+      - value: MSR
+        name: Montserrat
+        description: Montserrat
+        isString: true
+      - value: MAR
+        name: Morocco
+        description: Morocco
+        isString: true
+      - value: MOZ
+        name: Mozambique
+        description: Mozambique
+        isString: true
+      - value: MMR
+        name: Myanmar
+        description: Myanmar
+        isString: true
+      - value: NAM
+        name: Namibia
+        description: Namibia
+        isString: true
+      - value: NRU
+        name: Nauru
+        description: Nauru
+        isString: true
+      - value: NPL
+        name: Nepal
+        description: Nepal
+        isString: true
+      - value: NLD
+        name: Netherlands
+        description: Netherlands
+        isString: true
+      - value: ANT
+        name: NetherlandsAntilles
+        description: Netherlands Antilles
+        isString: true
+      - value: NCL
+        name: NewCaledonia
+        description: New Caledonia
+        isString: true
+      - value: NZL
+        name: NewZealand
+        description: New Zealand
+        isString: true
+      - value: NIC
+        name: Nicaragua
+        description: Nicaragua
+        isString: true
+      - value: NER
+        name: Niger
+        description: Niger
+        isString: true
+      - value: NGA
+        name: Nigeria
+        description: Nigeria
+        isString: true
+      - value: NIU
+        name: Niue
+        description: Niue
+        isString: true
+      - value: NFK
+        name: NorfolkIsland
+        description: Norfolk Island
+        isString: true
+      - value: PRK
+        name: NorthKorea
+        description: North Korea
+        isString: true
+      - value: MNP
+        name: NorthernMarianaIslands
+        description: Northern Mariana Islands
+        isString: true
+      - value: NOR
+        name: Norway
+        description: Norway
+        isString: true
+      - value: OMN
+        name: Oman
+        description: Oman
+        isString: true
+      - value: PAK
+        name: Pakistan
+        description: Pakistan
+        isString: true
+      - value: PLW
+        name: Palau
+        description: Palau
+        isString: true
+      - value: PSE
+        name: PalestinianTerritoryOccupied
+        description: "Palestinian Territory, Occupied"
+        isString: true
+      - value: PAN
+        name: Panama
+        description: Panama
+        isString: true
+      - value: PNG
+        name: PapuaNewGuinea
+        description: Papua New Guinea
+        isString: true
+      - value: PRY
+        name: Paraguay
+        description: Paraguay
+        isString: true
+      - value: PER
+        name: Peru
+        description: Peru
+        isString: true
+      - value: PHL
+        name: Philippines
+        description: Philippines
+        isString: true
+      - value: PCN
+        name: PitcairnIsland
+        description: Pitcairn Island
+        isString: true
+      - value: POL
+        name: Poland
+        description: Poland
+        isString: true
+      - value: PRT
+        name: Portugal
+        description: Portugal
+        isString: true
+      - value: PRI
+        name: PuertoRico
+        description: Puerto Rico
+        isString: true
+      - value: QAT
+        name: Qatar
+        description: Qatar
+        isString: true
+      - value: REU
+        name: RUnion
+        description: R�union
+        isString: true
+      - value: ROU
+        name: Romania
+        description: Romania
+        isString: true
+      - value: RUS
+        name: RussianFederation
+        description: Russian Federation
+        isString: true
+      - value: RWA
+        name: Rwanda
+        description: Rwanda
+        isString: true
+      - value: SHN
+        name: SaintHelena
+        description: Saint Helena
+        isString: true
+      - value: KNA
+        name: SaintKittsAndNevis
+        description: Saint Kitts and Nevis
+        isString: true
+      - value: LCA
+        name: SaintLucia
+        description: Saint Lucia
+        isString: true
+      - value: SPM
+        name: SaintPierreAndMiquelon
+        description: Saint Pierre and Miquelon
+        isString: true
+      - value: VCT
+        name: SaintVincentAndGrenadines
+        description: Saint Vincent and Grenadines
+        isString: true
+      - value: BLM
+        name: SaintBarthLemy
+        description: Saint-Barth�lemy
+        isString: true
+      - value: MAF
+        name: SaintMartinFrenchPart
+        description: Saint-Martin (French part)
+        isString: true
+      - value: WSM
+        name: Samoa
+        description: Samoa
+        isString: true
+      - value: SMR
+        name: SanMarino
+        description: San Marino
+        isString: true
+      - value: STP
+        name: SaoTomeAndPrincipe
+        description: Sao Tome and Principe
+        isString: true
+      - value: SAU
+        name: SaudiArabia
+        description: Saudi Arabia
+        isString: true
+      - value: SEN
+        name: Senegal
+        description: Senegal
+        isString: true
+      - value: SRB
+        name: Serbia
+        description: Serbia
+        isString: true
+      - value: SYC
+        name: Seychelles
+        description: Seychelles
+        isString: true
+      - value: SLE
+        name: SierraLeone
+        description: Sierra Leone
+        isString: true
+      - value: SGP
+        name: Singapore
+        description: Singapore
+        isString: true
+      - value: SVK
+        name: Slovakia
+        description: Slovakia
+        isString: true
+      - value: SVN
+        name: Slovenia
+        description: Slovenia
+        isString: true
+      - value: SLB
+        name: SolomonIslands
+        description: Solomon Islands
+        isString: true
+      - value: SOM
+        name: Somalia
+        description: Somalia
+        isString: true
+      - value: SOL
+        name: Somaliland
+        description: Somaliland
+        isString: true
+      - value: ZAF
+        name: SouthAfrica
+        description: South Africa
+        isString: true
+      - value: SGS
+        name: SouthGeorgiaAndTheSouthSandwichIslands
+        description: South Georgia and the South Sandwich Islands
+        isString: true
+      - value: KOR
+        name: SouthKorea
+        description: South Korea
+        isString: true
+      - value: SSD
+        name: SouthSudan
+        description: South Sudan
+        isString: true
+      - value: ESP
+        name: Spain
+        description: Spain
+        isString: true
+      - value: LKA
+        name: SriLanka
+        description: Sri Lanka
+        isString: true
+      - value: SDN
+        name: Sudan
+        description: Sudan
+        isString: true
+      - value: SUR
+        name: Suriname
+        description: Suriname
+        isString: true
+      - value: SJM
+        name: SvalbardAndJanMayenIslands
+        description: Svalbard and Jan Mayen Islands
+        isString: true
+      - value: SWE
+        name: Sweden
+        description: Sweden
+        isString: true
+      - value: CHE
+        name: Switzerland
+        description: Switzerland
+        isString: true
+      - value: SYR
+        name: SyrianArabRepublicSyria
+        description: Syrian Arab Republic (Syria)
+        isString: true
+      - value: TWN
+        name: TaiwanCn
+        description: Taiwan (CN)
+        isString: true
+      - value: TJK
+        name: Tajikistan
+        description: Tajikistan
+        isString: true
+      - value: TZA
+        name: Tanzania
+        description: Tanzania
+        isString: true
+      - value: THA
+        name: Thailand
+        description: Thailand
+        isString: true
+      - value: TLS
+        name: TimorLeste
+        description: Timor-Leste
+        isString: true
+      - value: TGO
+        name: Togo
+        description: Togo
+        isString: true
+      - value: TKL
+        name: Tokelau
+        description: Tokelau
+        isString: true
+      - value: TON
+        name: Tonga
+        description: Tonga
+        isString: true
+      - value: TTO
+        name: TrinidadAndTobago
+        description: Trinidad and Tobago
+        isString: true
+      - value: TUN
+        name: Tunisia
+        description: Tunisia
+        isString: true
+      - value: TUR
+        name: Turkey
+        description: Turkey
+        isString: true
+      - value: TKM
+        name: Turkmenistan
+        description: Turkmenistan
+        isString: true
+      - value: TCA
+        name: TurksAndCaicosIslands
+        description: Turks and Caicos Islands
+        isString: true
+      - value: TUV
+        name: Tuvalu
+        description: Tuvalu
+        isString: true
+      - value: UGA
+        name: Uganda
+        description: Uganda
+        isString: true
+      - value: UKR
+        name: Ukraine
+        description: Ukraine
+        isString: true
+      - value: ARE
+        name: UnitedArabEmirates
+        description: United Arab Emirates
+        isString: true
+      - value: GBR
+        name: UnitedKingdom
+        description: United Kingdom
+        isString: true
+      - value: UMI
+        name: UnitedStatesMinorOutlyingIslands
+        description: United States Minor Outlying Islands
+        isString: true
+      - value: USA
+        name: UnitedStatesOfAmerica
+        description: United States of America
+        isString: true
+      - value: URY
+        name: Uruguay
+        description: Uruguay
+        isString: true
+      - value: UZB
+        name: Uzbekistan
+        description: Uzbekistan
+        isString: true
+      - value: VUT
+        name: Vanuatu
+        description: Vanuatu
+        isString: true
+      - value: VEN
+        name: Venezuela
+        description: Venezuela
+        isString: true
+      - value: VNM
+        name: Vietnam
+        description: Vietnam
+        isString: true
+      - value: VIR
+        name: VirginIslandsUs
+        description: "Virgin Islands, US"
+        isString: true
+      - value: WLF
+        name: WallisAndFutunaIslands
+        description: Wallis and Futuna Islands
+        isString: true
+      - value: ESH
+        name: WesternSahara
+        description: Western Sahara
+        isString: true
+      - value: YEM
+        name: Yemen
+        description: Yemen
+        isString: true
+      - value: ZMB
+        name: Zambia
+        description: Zambia
+        isString: true
+      - value: ZWE
+        name: Zimbabwe
+        description: Zimbabwe
+        isString: true
     DepartmentData:
       description: The record of Department information.
       example:
@@ -8809,99 +9568,363 @@ components:
       - West Pacific Standard Time
       - Yakutsk Standard Time
       type: string
-      x-enumDescriptions:
-        Afghanistan Standard Time: (GMT+04:30) Kabul
-        Alaskan Standard Time: (GMT-09:00) Alaska
-        Arab Standard Time: "(GMT+03:00) Kuwait, Riyadh"
-        Arabian Standard Time: "(GMT+04:00) Abu Dhabi, Muscat"
-        Arabic Standard Time: (GMT+03:00) Baghdad
-        Argentina Standard Time: (GMT-03:00) Buenos Aires
-        Atlantic Standard Time: (GMT-04:00) Atlantic Time (Canada)
-        AUS Central Standard Time: (GMT+09:30) Darwin
-        AUS Eastern Standard Time: "(GMT+10:00) Canberra, Melbourne, Sydney"
-        Azerbaijan Standard Time: (GMT+04:00) Baku
-        Azores Standard Time: (GMT-01:00) Azores
-        Canada Central Standard Time: (GMT-06:00) Saskatchewan
-        Cape Verde Standard Time: (GMT-01:00) Cape Verde Is.
-        Caucasus Standard Time: (GMT+04:00) Yerevan
-        Cen. Australia Standard Time: (GMT+09:30) Adelaide
-        Central America Standard Time: (GMT-06:00) Central America
-        Central Asia Standard Time: "(GMT+06:00) Astana, Dhaka"
-        Central Brazilian Standard Time: (GMT-04:00) Manaus
-        Central Europe Standard Time: "(GMT+01:00) Belgrade, Bratislava, Budapest,\
-          \ Ljubljana, Prague"
-        Central European Standard Time: "(GMT+01:00) Sarajevo, Skopje, Warsaw, Zagreb"
-        Central Pacific Standard Time: "(GMT+11:00) Magadan, Solomon Is., New Caledonia"
-        Central Standard Time: (GMT-06:00) Central Time (US & Canada)
-        Central Standard Time (Mexico): "(GMT-06:00) Guadalajara, Mexico City, Monterrey"
-        China Standard Time: "(GMT+08:00) Beijing, Chongqing, Hong Kong, Urumqi"
-        Dateline Standard Time: (GMT-12:00) International Date Line West
-        E. Africa Standard Time: (GMT+03:00) Nairobi
-        E. Australia Standard Time: (GMT+10:00) Brisbane
-        E. Europe Standard Time: (GMT+02:00) Minsk
-        E. South America Standard Time: (GMT-03:00) Brasilia
-        Eastern Standard Time: (GMT-05:00) Eastern Time (US & Canada)
-        Egypt Standard Time: (GMT+02:00) Cairo
-        Ekaterinburg Standard Time: (GMT+05:00) Ekaterinburg
-        Fiji Standard Time: "(GMT+12:00) Fiji, Kamchatka, Marshall Is."
-        FLE Standard Time: "(GMT+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius"
-        Georgian Standard Time: (GMT+03:00) Tbilisi
-        GMT Standard Time: "(GMT) Greenwich Mean Time : Dublin, Edinburgh, Lisbon,\
-          \ London"
-        Greenland Standard Time: (GMT-03:00) Greenland
-        Greenwich Standard Time: "(GMT) Monrovia, Reykjavik"
-        GTB Standard Time: "(GMT+02:00) Athens, Bucharest, Istanbul"
-        Hawaiian Standard Time: (GMT-10:00) Hawaii
-        India Standard Time: "(GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi"
-        Iran Standard Time: (GMT+03:30) Tehran
-        Israel Standard Time: (GMT+02:00) Jerusalem
-        Jordan Standard Time: (GMT+02:00) Amman
-        Korea Standard Time: (GMT+09:00) Seoul
-        Mauritius Standard Time: (GMT+04:00) Port Louis
-        Mid-Atlantic Standard Time: (GMT-02:00) Mid-Atlantic
-        Middle East Standard Time: (GMT+02:00) Beirut
-        Montevideo Standard Time: (GMT-03:00) Montevideo
-        Morocco Standard Time: (GMT) Casablanca
-        Mountain Standard Time: (GMT-07:00) Mountain Time (US & Canada)
-        Mountain Standard Time (Mexico): "(GMT-07:00) Chihuahua, La Paz, Mazatlan"
-        Myanmar Standard Time: (GMT+06:30) Yangon (Rangoon)
-        N. Central Asia Standard Time: "(GMT+06:00) Almaty, Novosibirsk"
-        Namibia Standard Time: (GMT+02:00) Windhoek
-        Nepal Standard Time: (GMT+05:45) Kathmandu
-        New Zealand Standard Time: "(GMT+12:00) Auckland, Wellington"
-        Newfoundland Standard Time: (GMT-03:30) Newfoundland
-        North Asia East Standard Time: "(GMT+08:00) Irkutsk, Ulaan Bataar"
-        North Asia Standard Time: (GMT+07:00) Krasnoyarsk
-        Pacific SA Standard Time: (GMT-04:00) Santiago
-        Pacific Standard Time: (GMT-08:00) Pacific Time (US & Canada)
-        Pacific Standard Time (Mexico): "(GMT-08:00) Tijuana, Baja California"
-        Pakistan Standard Time: "(GMT+05:00) Islamabad, Karachi"
-        Romance Standard Time: "(GMT+01:00) Brussels, Copenhagen, Madrid, Paris"
-        Russian Standard Time: "(GMT+03:00) Moscow, St. Petersburg, Volgograd"
-        SA Eastern Standard Time: (GMT-03:00) Georgetown
-        SA Pacific Standard Time: "(GMT-05:00) Bogota, Lima, Quito, Rio Branco"
-        SA Western Standard Time: (GMT-04:00) La Paz
-        Samoa Standard Time: "(GMT-11:00) Midway Island, Samoa"
-        SE Asia Standard Time: "(GMT+07:00) Bangkok, Hanoi, Jakarta"
-        Singapore Standard Time: "(GMT+08:00) Kuala Lumpur, Singapore"
-        South Africa Standard Time: "(GMT+02:00) Harare, Pretoria"
-        Sri Lanka Standard Time: (GMT+05:30) Sri Jayawardenepura
-        Taipei Standard Time: (GMT+08:00) Taipei
-        Tasmania Standard Time: (GMT+10:00) Hobart
-        Tokyo Standard Time: "(GMT+09:00) Osaka, Sapporo, Tokyo"
-        Tonga Standard Time: (GMT+13:00) Nuku'alofa
-        US Eastern Standard Time: (GMT-05:00) Indiana (East)
-        US Mountain Standard Time: (GMT-07:00) Arizona
-        UTC: UTC
-        Venezuela Standard Time: (GMT-04:30) Caracas
-        Vladivostok Standard Time: (GMT+10:00) Vladivostok
-        W. Australia Standard Time: (GMT+08:00) Perth
-        W. Central Africa Standard Time: (GMT+01:00) West Central Africa
-        W. Europe Standard Time: "(GMT+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm,\
-          \ Vienna"
-        West Asia Standard Time: (GMT+05:00) Tashkent
-        West Pacific Standard Time: "(GMT+10:00) Guam, Port Moresby"
-        Yakutsk Standard Time: (GMT+09:00) Yakutsk
+      x-enums:
+      - value: Afghanistan Standard Time
+        name: Gmt0430Kabul
+        description: (GMT+04:30) Kabul
+        isString: true
+      - value: Alaskan Standard Time
+        name: Gmt0900Alaska
+        description: (GMT-09:00) Alaska
+        isString: true
+      - value: Arab Standard Time
+        name: Gmt0300KuwaitRiyadh
+        description: "(GMT+03:00) Kuwait, Riyadh"
+        isString: true
+      - value: Arabian Standard Time
+        name: Gmt0400AbuDhabiMuscat
+        description: "(GMT+04:00) Abu Dhabi, Muscat"
+        isString: true
+      - value: Arabic Standard Time
+        name: Gmt0300Baghdad
+        description: (GMT+03:00) Baghdad
+        isString: true
+      - value: Argentina Standard Time
+        name: Gmt0300BuenosAires
+        description: (GMT-03:00) Buenos Aires
+        isString: true
+      - value: Atlantic Standard Time
+        name: Gmt0400AtlanticTimeCanada
+        description: (GMT-04:00) Atlantic Time (Canada)
+        isString: true
+      - value: AUS Central Standard Time
+        name: Gmt0930Darwin
+        description: (GMT+09:30) Darwin
+        isString: true
+      - value: AUS Eastern Standard Time
+        name: Gmt1000CanberraMelbourneSydney
+        description: "(GMT+10:00) Canberra, Melbourne, Sydney"
+        isString: true
+      - value: Azerbaijan Standard Time
+        name: Gmt0400Baku
+        description: (GMT+04:00) Baku
+        isString: true
+      - value: Azores Standard Time
+        name: Gmt0100Azores
+        description: (GMT-01:00) Azores
+        isString: true
+      - value: Canada Central Standard Time
+        name: Gmt0600Saskatchewan
+        description: (GMT-06:00) Saskatchewan
+        isString: true
+      - value: Cape Verde Standard Time
+        name: Gmt0100CapeVerdeIs
+        description: (GMT-01:00) Cape Verde Is.
+        isString: true
+      - value: Caucasus Standard Time
+        name: Gmt0400Yerevan
+        description: (GMT+04:00) Yerevan
+        isString: true
+      - value: Cen. Australia Standard Time
+        name: Gmt0930Adelaide
+        description: (GMT+09:30) Adelaide
+        isString: true
+      - value: Central America Standard Time
+        name: Gmt0600CentralAmerica
+        description: (GMT-06:00) Central America
+        isString: true
+      - value: Central Asia Standard Time
+        name: Gmt0600AstanaDhaka
+        description: "(GMT+06:00) Astana, Dhaka"
+        isString: true
+      - value: Central Brazilian Standard Time
+        name: Gmt0400Manaus
+        description: (GMT-04:00) Manaus
+        isString: true
+      - value: Central Europe Standard Time
+        name: Gmt0100BelgradeBratislavaBudapestLjubljanaPrague
+        description: "(GMT+01:00) Belgrade, Bratislava, Budapest, Ljubljana, Prague"
+        isString: true
+      - value: Central European Standard Time
+        name: Gmt0100SarajevoSkopjeWarsawZagreb
+        description: "(GMT+01:00) Sarajevo, Skopje, Warsaw, Zagreb"
+        isString: true
+      - value: Central Pacific Standard Time
+        name: Gmt1100MagadanSolomonIsNewCaledonia
+        description: "(GMT+11:00) Magadan, Solomon Is., New Caledonia"
+        isString: true
+      - value: Central Standard Time
+        name: Gmt0600CentralTimeUsCanada
+        description: (GMT-06:00) Central Time (US & Canada)
+        isString: true
+      - value: Central Standard Time (Mexico)
+        name: Gmt0600GuadalajaraMexicoCityMonterrey
+        description: "(GMT-06:00) Guadalajara, Mexico City, Monterrey"
+        isString: true
+      - value: China Standard Time
+        name: Gmt0800BeijingChongqingHongKongUrumqi
+        description: "(GMT+08:00) Beijing, Chongqing, Hong Kong, Urumqi"
+        isString: true
+      - value: Dateline Standard Time
+        name: Gmt1200InternationalDateLineWest
+        description: (GMT-12:00) International Date Line West
+        isString: true
+      - value: E. Africa Standard Time
+        name: Gmt0300Nairobi
+        description: (GMT+03:00) Nairobi
+        isString: true
+      - value: E. Australia Standard Time
+        name: Gmt1000Brisbane
+        description: (GMT+10:00) Brisbane
+        isString: true
+      - value: E. Europe Standard Time
+        name: Gmt0200Minsk
+        description: (GMT+02:00) Minsk
+        isString: true
+      - value: E. South America Standard Time
+        name: Gmt0300Brasilia
+        description: (GMT-03:00) Brasilia
+        isString: true
+      - value: Eastern Standard Time
+        name: Gmt0500EasternTimeUsCanada
+        description: (GMT-05:00) Eastern Time (US & Canada)
+        isString: true
+      - value: Egypt Standard Time
+        name: Gmt0200Cairo
+        description: (GMT+02:00) Cairo
+        isString: true
+      - value: Ekaterinburg Standard Time
+        name: Gmt0500Ekaterinburg
+        description: (GMT+05:00) Ekaterinburg
+        isString: true
+      - value: Fiji Standard Time
+        name: Gmt1200FijiKamchatkaMarshallIs
+        description: "(GMT+12:00) Fiji, Kamchatka, Marshall Is."
+        isString: true
+      - value: FLE Standard Time
+        name: Gmt0200HelsinkiKyivRigaSofiaTallinnVilnius
+        description: "(GMT+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius"
+        isString: true
+      - value: Georgian Standard Time
+        name: Gmt0300Tbilisi
+        description: (GMT+03:00) Tbilisi
+        isString: true
+      - value: GMT Standard Time
+        name: GmtGreenwichMeanTimeDublinEdinburghLisbonLondon
+        description: "(GMT) Greenwich Mean Time : Dublin, Edinburgh, Lisbon, London"
+        isString: true
+      - value: Greenland Standard Time
+        name: Gmt0300Greenland
+        description: (GMT-03:00) Greenland
+        isString: true
+      - value: Greenwich Standard Time
+        name: GmtMonroviaReykjavik
+        description: "(GMT) Monrovia, Reykjavik"
+        isString: true
+      - value: GTB Standard Time
+        name: Gmt0200AthensBucharestIstanbul
+        description: "(GMT+02:00) Athens, Bucharest, Istanbul"
+        isString: true
+      - value: Hawaiian Standard Time
+        name: Gmt1000Hawaii
+        description: (GMT-10:00) Hawaii
+        isString: true
+      - value: India Standard Time
+        name: Gmt0530ChennaiKolkataMumbaiNewDelhi
+        description: "(GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi"
+        isString: true
+      - value: Iran Standard Time
+        name: Gmt0330Tehran
+        description: (GMT+03:30) Tehran
+        isString: true
+      - value: Israel Standard Time
+        name: Gmt0200Jerusalem
+        description: (GMT+02:00) Jerusalem
+        isString: true
+      - value: Jordan Standard Time
+        name: Gmt0200Amman
+        description: (GMT+02:00) Amman
+        isString: true
+      - value: Korea Standard Time
+        name: Gmt0900Seoul
+        description: (GMT+09:00) Seoul
+        isString: true
+      - value: Mauritius Standard Time
+        name: Gmt0400PortLouis
+        description: (GMT+04:00) Port Louis
+        isString: true
+      - value: Mid-Atlantic Standard Time
+        name: Gmt0200MidAtlantic
+        description: (GMT-02:00) Mid-Atlantic
+        isString: true
+      - value: Middle East Standard Time
+        name: Gmt0200Beirut
+        description: (GMT+02:00) Beirut
+        isString: true
+      - value: Montevideo Standard Time
+        name: Gmt0300Montevideo
+        description: (GMT-03:00) Montevideo
+        isString: true
+      - value: Morocco Standard Time
+        name: GmtCasablanca
+        description: (GMT) Casablanca
+        isString: true
+      - value: Mountain Standard Time
+        name: Gmt0700MountainTimeUsCanada
+        description: (GMT-07:00) Mountain Time (US & Canada)
+        isString: true
+      - value: Mountain Standard Time (Mexico)
+        name: Gmt0700ChihuahuaLaPazMazatlan
+        description: "(GMT-07:00) Chihuahua, La Paz, Mazatlan"
+        isString: true
+      - value: Myanmar Standard Time
+        name: Gmt0630YangonRangoon
+        description: (GMT+06:30) Yangon (Rangoon)
+        isString: true
+      - value: N. Central Asia Standard Time
+        name: Gmt0600AlmatyNovosibirsk
+        description: "(GMT+06:00) Almaty, Novosibirsk"
+        isString: true
+      - value: Namibia Standard Time
+        name: Gmt0200Windhoek
+        description: (GMT+02:00) Windhoek
+        isString: true
+      - value: Nepal Standard Time
+        name: Gmt0545Kathmandu
+        description: (GMT+05:45) Kathmandu
+        isString: true
+      - value: New Zealand Standard Time
+        name: Gmt1200AucklandWellington
+        description: "(GMT+12:00) Auckland, Wellington"
+        isString: true
+      - value: Newfoundland Standard Time
+        name: Gmt0330Newfoundland
+        description: (GMT-03:30) Newfoundland
+        isString: true
+      - value: North Asia East Standard Time
+        name: Gmt0800IrkutskUlaanBataar
+        description: "(GMT+08:00) Irkutsk, Ulaan Bataar"
+        isString: true
+      - value: North Asia Standard Time
+        name: Gmt0700Krasnoyarsk
+        description: (GMT+07:00) Krasnoyarsk
+        isString: true
+      - value: Pacific SA Standard Time
+        name: Gmt0400Santiago
+        description: (GMT-04:00) Santiago
+        isString: true
+      - value: Pacific Standard Time
+        name: Gmt0800PacificTimeUsCanada
+        description: (GMT-08:00) Pacific Time (US & Canada)
+        isString: true
+      - value: Pacific Standard Time (Mexico)
+        name: Gmt0800TijuanaBajaCalifornia
+        description: "(GMT-08:00) Tijuana, Baja California"
+        isString: true
+      - value: Pakistan Standard Time
+        name: Gmt0500IslamabadKarachi
+        description: "(GMT+05:00) Islamabad, Karachi"
+        isString: true
+      - value: Romance Standard Time
+        name: Gmt0100BrusselsCopenhagenMadridParis
+        description: "(GMT+01:00) Brussels, Copenhagen, Madrid, Paris"
+        isString: true
+      - value: Russian Standard Time
+        name: Gmt0300MoscowStPetersburgVolgograd
+        description: "(GMT+03:00) Moscow, St. Petersburg, Volgograd"
+        isString: true
+      - value: SA Eastern Standard Time
+        name: Gmt0300Georgetown
+        description: (GMT-03:00) Georgetown
+        isString: true
+      - value: SA Pacific Standard Time
+        name: Gmt0500BogotaLimaQuitoRioBranco
+        description: "(GMT-05:00) Bogota, Lima, Quito, Rio Branco"
+        isString: true
+      - value: SA Western Standard Time
+        name: Gmt0400LaPaz
+        description: (GMT-04:00) La Paz
+        isString: true
+      - value: Samoa Standard Time
+        name: Gmt1100MidwayIslandSamoa
+        description: "(GMT-11:00) Midway Island, Samoa"
+        isString: true
+      - value: SE Asia Standard Time
+        name: Gmt0700BangkokHanoiJakarta
+        description: "(GMT+07:00) Bangkok, Hanoi, Jakarta"
+        isString: true
+      - value: Singapore Standard Time
+        name: Gmt0800KualaLumpurSingapore
+        description: "(GMT+08:00) Kuala Lumpur, Singapore"
+        isString: true
+      - value: South Africa Standard Time
+        name: Gmt0200HararePretoria
+        description: "(GMT+02:00) Harare, Pretoria"
+        isString: true
+      - value: Sri Lanka Standard Time
+        name: Gmt0530SriJayawardenepura
+        description: (GMT+05:30) Sri Jayawardenepura
+        isString: true
+      - value: Taipei Standard Time
+        name: Gmt0800Taipei
+        description: (GMT+08:00) Taipei
+        isString: true
+      - value: Tasmania Standard Time
+        name: Gmt1000Hobart
+        description: (GMT+10:00) Hobart
+        isString: true
+      - value: Tokyo Standard Time
+        name: Gmt0900OsakaSapporoTokyo
+        description: "(GMT+09:00) Osaka, Sapporo, Tokyo"
+        isString: true
+      - value: Tonga Standard Time
+        name: Gmt1300NukuAlofa
+        description: (GMT+13:00) Nuku'alofa
+        isString: true
+      - value: US Eastern Standard Time
+        name: Gmt0500IndianaEast
+        description: (GMT-05:00) Indiana (East)
+        isString: true
+      - value: US Mountain Standard Time
+        name: Gmt0700Arizona
+        description: (GMT-07:00) Arizona
+        isString: true
+      - value: UTC
+        name: Utc
+        description: UTC
+        isString: true
+      - value: Venezuela Standard Time
+        name: Gmt0430Caracas
+        description: (GMT-04:30) Caracas
+        isString: true
+      - value: Vladivostok Standard Time
+        name: Gmt1000Vladivostok
+        description: (GMT+10:00) Vladivostok
+        isString: true
+      - value: W. Australia Standard Time
+        name: Gmt0800Perth
+        description: (GMT+08:00) Perth
+        isString: true
+      - value: W. Central Africa Standard Time
+        name: Gmt0100WestCentralAfrica
+        description: (GMT+01:00) West Central Africa
+        isString: true
+      - value: W. Europe Standard Time
+        name: Gmt0100AmsterdamBerlinBernRomeStockholmVienna
+        description: "(GMT+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna"
+        isString: true
+      - value: West Asia Standard Time
+        name: Gmt0500Tashkent
+        description: (GMT+05:00) Tashkent
+        isString: true
+      - value: West Pacific Standard Time
+        name: Gmt1000GuamPortMoresby
+        description: "(GMT+10:00) Guam, Port Moresby"
+        isString: true
+      - value: Yakutsk Standard Time
+        name: Gmt0900Yakutsk
+        description: (GMT+09:00) Yakutsk
+        isString: true
     EnumCurrency:
       description: The enum of Currency.
       enum:
@@ -8931,32 +9954,107 @@ components:
       - UAH
       - USD
       type: string
-      x-enumDescriptions:
-        AUD: Australian Dollar
-        BHD: Bahraini Dinar
-        BGN: Bulgarian Lev
-        CAD: Canadian Dollar
-        CNY: Chinese Yuan Renminbi
-        HRK: Croatian Kuna
-        CZK: Czech Koruna
-        DKK: Danish Krone
-        AED: Emirati Dirham
-        EUR: Euro
-        GBP: Great British Pound
-        HKD: Hong Kong Dollar
-        HUF: Hungarian Forint
-        ISK: Icelandic krona
-        JPY: Japanese Yen
-        NOK: Norwegian Krone
-        PLN: Polish Zloty
-        RUB: Russian Ruble
-        SGD: Singapore Dollar
-        SEK: Swedish Kroner
-        CHF: Swiss Franc
-        THB: Thailand Baht
-        TRY: Turkish Lira
-        UAH: Ukrainian hryvnia
-        USD: United States Dollar
+      x-enums:
+      - value: AUD
+        name: AustralianDollar
+        description: Australian Dollar
+        isString: true
+      - value: BHD
+        name: BahrainiDinar
+        description: Bahraini Dinar
+        isString: true
+      - value: BGN
+        name: BulgarianLev
+        description: Bulgarian Lev
+        isString: true
+      - value: CAD
+        name: CanadianDollar
+        description: Canadian Dollar
+        isString: true
+      - value: CNY
+        name: ChineseYuanRenminbi
+        description: Chinese Yuan Renminbi
+        isString: true
+      - value: HRK
+        name: CroatianKuna
+        description: Croatian Kuna
+        isString: true
+      - value: CZK
+        name: CzechKoruna
+        description: Czech Koruna
+        isString: true
+      - value: DKK
+        name: DanishKrone
+        description: Danish Krone
+        isString: true
+      - value: AED
+        name: EmiratiDirham
+        description: Emirati Dirham
+        isString: true
+      - value: EUR
+        name: Euro
+        description: Euro
+        isString: true
+      - value: GBP
+        name: GreatBritishPound
+        description: Great British Pound
+        isString: true
+      - value: HKD
+        name: HongKongDollar
+        description: Hong Kong Dollar
+        isString: true
+      - value: HUF
+        name: HungarianForint
+        description: Hungarian Forint
+        isString: true
+      - value: ISK
+        name: IcelandicKrona
+        description: Icelandic krona
+        isString: true
+      - value: JPY
+        name: JapaneseYen
+        description: Japanese Yen
+        isString: true
+      - value: NOK
+        name: NorwegianKrone
+        description: Norwegian Krone
+        isString: true
+      - value: PLN
+        name: PolishZloty
+        description: Polish Zloty
+        isString: true
+      - value: RUB
+        name: RussianRuble
+        description: Russian Ruble
+        isString: true
+      - value: SGD
+        name: SingaporeDollar
+        description: Singapore Dollar
+        isString: true
+      - value: SEK
+        name: SwedishKroner
+        description: Swedish Kroner
+        isString: true
+      - value: CHF
+        name: SwissFranc
+        description: Swiss Franc
+        isString: true
+      - value: THB
+        name: ThailandBaht
+        description: Thailand Baht
+        isString: true
+      - value: TRY
+        name: TurkishLira
+        description: Turkish Lira
+        isString: true
+      - value: UAH
+        name: UkrainianHryvnia
+        description: Ukrainian hryvnia
+        isString: true
+      - value: USD
+        name: UnitedStatesDollar
+        description: United States Dollar
+        isString: true
     LocationData:
       description: The record of Location information.
       example:

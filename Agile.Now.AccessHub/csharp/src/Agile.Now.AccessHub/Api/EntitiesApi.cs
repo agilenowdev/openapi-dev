@@ -36,6 +36,7 @@
  */
 
 using System;
+using System.Collections.Generic;
 using Agile.Now.AccessHub.Client;
 using Agile.Now.AccessHub.Model;
 

@@ -54,1510 +54,1510 @@ namespace Agile.Now.AccessHub.Model
     public enum EnumCountry
     {
         /// <summary>
-        /// Enum AFG for value: AFG
+        /// Enum Afghanistan for value: AFG
         /// </summary>
         [EnumMember(Value = "AFG")]
-        AFG = 1,
+        Afghanistan = 1,
 
         /// <summary>
-        /// Enum ALA for value: ALA
+        /// Enum Aland Islands for value: ALA
         /// </summary>
         [EnumMember(Value = "ALA")]
-        ALA = 2,
+        AlandIslands = 2,
 
         /// <summary>
-        /// Enum ALB for value: ALB
+        /// Enum Albania for value: ALB
         /// </summary>
         [EnumMember(Value = "ALB")]
-        ALB = 3,
+        Albania = 3,
 
         /// <summary>
-        /// Enum DZA for value: DZA
+        /// Enum Algeria for value: DZA
         /// </summary>
         [EnumMember(Value = "DZA")]
-        DZA = 4,
+        Algeria = 4,
 
         /// <summary>
-        /// Enum ASM for value: ASM
+        /// Enum American Samoa for value: ASM
         /// </summary>
         [EnumMember(Value = "ASM")]
-        ASM = 5,
+        AmericanSamoa = 5,
 
         /// <summary>
-        /// Enum AND for value: AND
+        /// Enum Andorra for value: AND
         /// </summary>
         [EnumMember(Value = "AND")]
-        AND = 6,
+        Andorra = 6,
 
         /// <summary>
-        /// Enum AGO for value: AGO
+        /// Enum Angola for value: AGO
         /// </summary>
         [EnumMember(Value = "AGO")]
-        AGO = 7,
+        Angola = 7,
 
         /// <summary>
-        /// Enum AIA for value: AIA
+        /// Enum Anguilla for value: AIA
         /// </summary>
         [EnumMember(Value = "AIA")]
-        AIA = 8,
+        Anguilla = 8,
 
         /// <summary>
-        /// Enum ATA for value: ATA
+        /// Enum Antarctica for value: ATA
         /// </summary>
         [EnumMember(Value = "ATA")]
-        ATA = 9,
+        Antarctica = 9,
 
         /// <summary>
-        /// Enum ATG for value: ATG
+        /// Enum Antigua and Barbuda for value: ATG
         /// </summary>
         [EnumMember(Value = "ATG")]
-        ATG = 10,
+        AntiguaAndBarbuda = 10,
 
         /// <summary>
-        /// Enum ARG for value: ARG
+        /// Enum Argentina for value: ARG
         /// </summary>
         [EnumMember(Value = "ARG")]
-        ARG = 11,
+        Argentina = 11,
 
         /// <summary>
-        /// Enum ARM for value: ARM
+        /// Enum Armenia for value: ARM
         /// </summary>
         [EnumMember(Value = "ARM")]
-        ARM = 12,
+        Armenia = 12,
 
         /// <summary>
-        /// Enum ABW for value: ABW
+        /// Enum Aruba for value: ABW
         /// </summary>
         [EnumMember(Value = "ABW")]
-        ABW = 13,
+        Aruba = 13,
 
         /// <summary>
-        /// Enum AUS for value: AUS
+        /// Enum Australia for value: AUS
         /// </summary>
         [EnumMember(Value = "AUS")]
-        AUS = 14,
+        Australia = 14,
 
         /// <summary>
-        /// Enum AUT for value: AUT
+        /// Enum Austria for value: AUT
         /// </summary>
         [EnumMember(Value = "AUT")]
-        AUT = 15,
+        Austria = 15,
 
         /// <summary>
-        /// Enum AZE for value: AZE
+        /// Enum Azerbaijan for value: AZE
         /// </summary>
         [EnumMember(Value = "AZE")]
-        AZE = 16,
+        Azerbaijan = 16,
 
         /// <summary>
-        /// Enum AZO for value: AZO
+        /// Enum Azores for value: AZO
         /// </summary>
         [EnumMember(Value = "AZO")]
-        AZO = 17,
+        Azores = 17,
 
         /// <summary>
-        /// Enum BHS for value: BHS
+        /// Enum Bahamas for value: BHS
         /// </summary>
         [EnumMember(Value = "BHS")]
-        BHS = 18,
+        Bahamas = 18,
 
         /// <summary>
-        /// Enum BHR for value: BHR
+        /// Enum Bahrain for value: BHR
         /// </summary>
         [EnumMember(Value = "BHR")]
-        BHR = 19,
+        Bahrain = 19,
 
         /// <summary>
-        /// Enum BGD for value: BGD
+        /// Enum Bangladesh for value: BGD
         /// </summary>
         [EnumMember(Value = "BGD")]
-        BGD = 20,
+        Bangladesh = 20,
 
         /// <summary>
-        /// Enum BRB for value: BRB
+        /// Enum Barbados for value: BRB
         /// </summary>
         [EnumMember(Value = "BRB")]
-        BRB = 21,
+        Barbados = 21,
 
         /// <summary>
-        /// Enum BLR for value: BLR
+        /// Enum Belarus for value: BLR
         /// </summary>
         [EnumMember(Value = "BLR")]
-        BLR = 22,
+        Belarus = 22,
 
         /// <summary>
-        /// Enum BEL for value: BEL
+        /// Enum Belgium for value: BEL
         /// </summary>
         [EnumMember(Value = "BEL")]
-        BEL = 23,
+        Belgium = 23,
 
         /// <summary>
-        /// Enum BLZ for value: BLZ
+        /// Enum Belize for value: BLZ
         /// </summary>
         [EnumMember(Value = "BLZ")]
-        BLZ = 24,
+        Belize = 24,
 
         /// <summary>
-        /// Enum BEN for value: BEN
+        /// Enum Benin for value: BEN
         /// </summary>
         [EnumMember(Value = "BEN")]
-        BEN = 25,
+        Benin = 25,
 
         /// <summary>
-        /// Enum BMU for value: BMU
+        /// Enum Bermuda for value: BMU
         /// </summary>
         [EnumMember(Value = "BMU")]
-        BMU = 26,
+        Bermuda = 26,
 
         /// <summary>
-        /// Enum BTN for value: BTN
+        /// Enum Bhutan for value: BTN
         /// </summary>
         [EnumMember(Value = "BTN")]
-        BTN = 27,
+        Bhutan = 27,
 
         /// <summary>
-        /// Enum BOL for value: BOL
+        /// Enum Bolivia for value: BOL
         /// </summary>
         [EnumMember(Value = "BOL")]
-        BOL = 28,
+        Bolivia = 28,
 
         /// <summary>
-        /// Enum BIH for value: BIH
+        /// Enum Bosnia and Herzegovina for value: BIH
         /// </summary>
         [EnumMember(Value = "BIH")]
-        BIH = 29,
+        BosniaAndHerzegovina = 29,
 
         /// <summary>
-        /// Enum BWA for value: BWA
+        /// Enum Botswana for value: BWA
         /// </summary>
         [EnumMember(Value = "BWA")]
-        BWA = 30,
+        Botswana = 30,
 
         /// <summary>
-        /// Enum BVT for value: BVT
+        /// Enum Bouvet Island for value: BVT
         /// </summary>
         [EnumMember(Value = "BVT")]
-        BVT = 31,
+        BouvetIsland = 31,
 
         /// <summary>
-        /// Enum BRA for value: BRA
+        /// Enum Brazil for value: BRA
         /// </summary>
         [EnumMember(Value = "BRA")]
-        BRA = 32,
+        Brazil = 32,
 
         /// <summary>
-        /// Enum IOT for value: IOT
+        /// Enum British Indian Ocean Territory for value: IOT
         /// </summary>
         [EnumMember(Value = "IOT")]
-        IOT = 33,
+        BritishIndianOceanTerritory = 33,
 
         /// <summary>
-        /// Enum VGB for value: VGB
+        /// Enum British Virgin Islands for value: VGB
         /// </summary>
         [EnumMember(Value = "VGB")]
-        VGB = 34,
+        BritishVirginIslands = 34,
 
         /// <summary>
-        /// Enum BRN for value: BRN
+        /// Enum Brunei Darussalam for value: BRN
         /// </summary>
         [EnumMember(Value = "BRN")]
-        BRN = 35,
+        BruneiDarussalam = 35,
 
         /// <summary>
-        /// Enum BGR for value: BGR
+        /// Enum Bulgaria for value: BGR
         /// </summary>
         [EnumMember(Value = "BGR")]
-        BGR = 36,
+        Bulgaria = 36,
 
         /// <summary>
-        /// Enum BFA for value: BFA
+        /// Enum Burkina Faso for value: BFA
         /// </summary>
         [EnumMember(Value = "BFA")]
-        BFA = 37,
+        BurkinaFaso = 37,
 
         /// <summary>
-        /// Enum BDI for value: BDI
+        /// Enum Burundi for value: BDI
         /// </summary>
         [EnumMember(Value = "BDI")]
-        BDI = 38,
+        Burundi = 38,
 
         /// <summary>
-        /// Enum KHM for value: KHM
+        /// Enum Cambodia for value: KHM
         /// </summary>
         [EnumMember(Value = "KHM")]
-        KHM = 39,
+        Cambodia = 39,
 
         /// <summary>
-        /// Enum CMR for value: CMR
+        /// Enum Cameroon for value: CMR
         /// </summary>
         [EnumMember(Value = "CMR")]
-        CMR = 40,
+        Cameroon = 40,
 
         /// <summary>
-        /// Enum CAN for value: CAN
+        /// Enum Canada for value: CAN
         /// </summary>
         [EnumMember(Value = "CAN")]
-        CAN = 41,
+        Canada = 41,
 
         /// <summary>
-        /// Enum CPV for value: CPV
+        /// Enum Cape Verde for value: CPV
         /// </summary>
         [EnumMember(Value = "CPV")]
-        CPV = 42,
+        CapeVerde = 42,
 
         /// <summary>
-        /// Enum CYM for value: CYM
+        /// Enum Cayman Islands for value: CYM
         /// </summary>
         [EnumMember(Value = "CYM")]
-        CYM = 43,
+        CaymanIslands = 43,
 
         /// <summary>
-        /// Enum CAF for value: CAF
+        /// Enum Central African Republic for value: CAF
         /// </summary>
         [EnumMember(Value = "CAF")]
-        CAF = 44,
+        CentralAfricanRepublic = 44,
 
         /// <summary>
-        /// Enum TCD for value: TCD
+        /// Enum Chad for value: TCD
         /// </summary>
         [EnumMember(Value = "TCD")]
-        TCD = 45,
+        Chad = 45,
 
         /// <summary>
-        /// Enum CHL for value: CHL
+        /// Enum Chile for value: CHL
         /// </summary>
         [EnumMember(Value = "CHL")]
-        CHL = 46,
+        Chile = 46,
 
         /// <summary>
-        /// Enum CHN for value: CHN
+        /// Enum China for value: CHN
         /// </summary>
         [EnumMember(Value = "CHN")]
-        CHN = 47,
+        China = 47,
 
         /// <summary>
-        /// Enum CXR for value: CXR
+        /// Enum Christmas Island for value: CXR
         /// </summary>
         [EnumMember(Value = "CXR")]
-        CXR = 48,
+        ChristmasIsland = 48,
 
         /// <summary>
-        /// Enum CCK for value: CCK
+        /// Enum Cocos (Keeling) Islands for value: CCK
         /// </summary>
         [EnumMember(Value = "CCK")]
-        CCK = 49,
+        CocosKeelingIslands = 49,
 
         /// <summary>
-        /// Enum COL for value: COL
+        /// Enum Colombia for value: COL
         /// </summary>
         [EnumMember(Value = "COL")]
-        COL = 50,
+        Colombia = 50,
 
         /// <summary>
-        /// Enum COM for value: COM
+        /// Enum Comoros for value: COM
         /// </summary>
         [EnumMember(Value = "COM")]
-        COM = 51,
+        Comoros = 51,
 
         /// <summary>
-        /// Enum COG for value: COG
+        /// Enum Congo (Brazzaville) for value: COG
         /// </summary>
         [EnumMember(Value = "COG")]
-        COG = 52,
+        CongoBrazzaville = 52,
 
         /// <summary>
-        /// Enum COK for value: COK
+        /// Enum Cook Islands for value: COK
         /// </summary>
         [EnumMember(Value = "COK")]
-        COK = 53,
+        CookIslands = 53,
 
         /// <summary>
-        /// Enum CRI for value: CRI
+        /// Enum Costa Rica for value: CRI
         /// </summary>
         [EnumMember(Value = "CRI")]
-        CRI = 54,
+        CostaRica = 54,
 
         /// <summary>
-        /// Enum CIV for value: CIV
+        /// Enum C�te d&#39;Ivoire for value: CIV
         /// </summary>
         [EnumMember(Value = "CIV")]
-        CIV = 55,
+        CTeDIvoire = 55,
 
         /// <summary>
-        /// Enum HRV for value: HRV
+        /// Enum Croatia for value: HRV
         /// </summary>
         [EnumMember(Value = "HRV")]
-        HRV = 56,
+        Croatia = 56,
 
         /// <summary>
-        /// Enum CUB for value: CUB
+        /// Enum Cuba for value: CUB
         /// </summary>
         [EnumMember(Value = "CUB")]
-        CUB = 57,
+        Cuba = 57,
 
         /// <summary>
-        /// Enum CYP for value: CYP
+        /// Enum Cyprus for value: CYP
         /// </summary>
         [EnumMember(Value = "CYP")]
-        CYP = 58,
+        Cyprus = 58,
 
         /// <summary>
-        /// Enum CZE for value: CZE
+        /// Enum Czech Republic for value: CZE
         /// </summary>
         [EnumMember(Value = "CZE")]
-        CZE = 59,
+        CzechRepublic = 59,
 
         /// <summary>
-        /// Enum COD for value: COD
+        /// Enum Democratic Republic of the Congo for value: COD
         /// </summary>
         [EnumMember(Value = "COD")]
-        COD = 60,
+        DemocraticRepublicOfTheCongo = 60,
 
         /// <summary>
-        /// Enum DNK for value: DNK
+        /// Enum Denmark for value: DNK
         /// </summary>
         [EnumMember(Value = "DNK")]
-        DNK = 61,
+        Denmark = 61,
 
         /// <summary>
-        /// Enum DJI for value: DJI
+        /// Enum Djibouti for value: DJI
         /// </summary>
         [EnumMember(Value = "DJI")]
-        DJI = 62,
+        Djibouti = 62,
 
         /// <summary>
-        /// Enum DMA for value: DMA
+        /// Enum Dominica for value: DMA
         /// </summary>
         [EnumMember(Value = "DMA")]
-        DMA = 63,
+        Dominica = 63,
 
         /// <summary>
-        /// Enum DOM for value: DOM
+        /// Enum Dominican Republic for value: DOM
         /// </summary>
         [EnumMember(Value = "DOM")]
-        DOM = 64,
+        DominicanRepublic = 64,
 
         /// <summary>
-        /// Enum ECU for value: ECU
+        /// Enum Ecuador for value: ECU
         /// </summary>
         [EnumMember(Value = "ECU")]
-        ECU = 65,
+        Ecuador = 65,
 
         /// <summary>
-        /// Enum EGY for value: EGY
+        /// Enum Egypt for value: EGY
         /// </summary>
         [EnumMember(Value = "EGY")]
-        EGY = 66,
+        Egypt = 66,
 
         /// <summary>
-        /// Enum SLV for value: SLV
+        /// Enum El Salvador for value: SLV
         /// </summary>
         [EnumMember(Value = "SLV")]
-        SLV = 67,
+        ElSalvador = 67,
 
         /// <summary>
-        /// Enum GNQ for value: GNQ
+        /// Enum Equatorial Guinea for value: GNQ
         /// </summary>
         [EnumMember(Value = "GNQ")]
-        GNQ = 68,
+        EquatorialGuinea = 68,
 
         /// <summary>
-        /// Enum ERI for value: ERI
+        /// Enum Eritrea for value: ERI
         /// </summary>
         [EnumMember(Value = "ERI")]
-        ERI = 69,
+        Eritrea = 69,
 
         /// <summary>
-        /// Enum EST for value: EST
+        /// Enum Estonia for value: EST
         /// </summary>
         [EnumMember(Value = "EST")]
-        EST = 70,
+        Estonia = 70,
 
         /// <summary>
-        /// Enum SWZ for value: SWZ
+        /// Enum Eswatini for value: SWZ
         /// </summary>
         [EnumMember(Value = "SWZ")]
-        SWZ = 71,
+        Eswatini = 71,
 
         /// <summary>
-        /// Enum ETH for value: ETH
+        /// Enum Ethiopia for value: ETH
         /// </summary>
         [EnumMember(Value = "ETH")]
-        ETH = 72,
+        Ethiopia = 72,
 
         /// <summary>
-        /// Enum EUE for value: EUE
+        /// Enum Europe diplomat for value: EUE
         /// </summary>
         [EnumMember(Value = "EUE")]
-        EUE = 73,
+        EuropeDiplomat = 73,
 
         /// <summary>
-        /// Enum FLK for value: FLK
+        /// Enum Falkland Islands (Malvinas) for value: FLK
         /// </summary>
         [EnumMember(Value = "FLK")]
-        FLK = 74,
+        FalklandIslandsMalvinas = 74,
 
         /// <summary>
-        /// Enum FRO for value: FRO
+        /// Enum Faroe Islands for value: FRO
         /// </summary>
         [EnumMember(Value = "FRO")]
-        FRO = 75,
+        FaroeIslands = 75,
 
         /// <summary>
-        /// Enum FSM for value: FSM
+        /// Enum Federated States of Micronesia for value: FSM
         /// </summary>
         [EnumMember(Value = "FSM")]
-        FSM = 76,
+        FederatedStatesOfMicronesia = 76,
 
         /// <summary>
-        /// Enum FJI for value: FJI
+        /// Enum Fiji for value: FJI
         /// </summary>
         [EnumMember(Value = "FJI")]
-        FJI = 77,
+        Fiji = 77,
 
         /// <summary>
-        /// Enum FIN for value: FIN
+        /// Enum Finland for value: FIN
         /// </summary>
         [EnumMember(Value = "FIN")]
-        FIN = 78,
+        Finland = 78,
 
         /// <summary>
-        /// Enum FRA for value: FRA
+        /// Enum France for value: FRA
         /// </summary>
         [EnumMember(Value = "FRA")]
-        FRA = 79,
+        France = 79,
 
         /// <summary>
-        /// Enum GUF for value: GUF
+        /// Enum French Guiana for value: GUF
         /// </summary>
         [EnumMember(Value = "GUF")]
-        GUF = 80,
+        FrenchGuiana = 80,
 
         /// <summary>
-        /// Enum PYF for value: PYF
+        /// Enum French Polynesia for value: PYF
         /// </summary>
         [EnumMember(Value = "PYF")]
-        PYF = 81,
+        FrenchPolynesia = 81,
 
         /// <summary>
-        /// Enum ATF for value: ATF
+        /// Enum French Southern Territories for value: ATF
         /// </summary>
         [EnumMember(Value = "ATF")]
-        ATF = 82,
+        FrenchSouthernTerritories = 82,
 
         /// <summary>
-        /// Enum GAB for value: GAB
+        /// Enum Gabon for value: GAB
         /// </summary>
         [EnumMember(Value = "GAB")]
-        GAB = 83,
+        Gabon = 83,
 
         /// <summary>
-        /// Enum GMB for value: GMB
+        /// Enum Gambia for value: GMB
         /// </summary>
         [EnumMember(Value = "GMB")]
-        GMB = 84,
+        Gambia = 84,
 
         /// <summary>
-        /// Enum GEO for value: GEO
+        /// Enum Georgia for value: GEO
         /// </summary>
         [EnumMember(Value = "GEO")]
-        GEO = 85,
+        Georgia = 85,
 
         /// <summary>
-        /// Enum DEU for value: DEU
+        /// Enum Germany for value: DEU
         /// </summary>
         [EnumMember(Value = "DEU")]
-        DEU = 86,
+        Germany = 86,
 
         /// <summary>
-        /// Enum GHA for value: GHA
+        /// Enum Ghana for value: GHA
         /// </summary>
         [EnumMember(Value = "GHA")]
-        GHA = 87,
+        Ghana = 87,
 
         /// <summary>
-        /// Enum GIB for value: GIB
+        /// Enum Gibraltar for value: GIB
         /// </summary>
         [EnumMember(Value = "GIB")]
-        GIB = 88,
+        Gibraltar = 88,
 
         /// <summary>
-        /// Enum GRC for value: GRC
+        /// Enum Greece for value: GRC
         /// </summary>
         [EnumMember(Value = "GRC")]
-        GRC = 89,
+        Greece = 89,
 
         /// <summary>
-        /// Enum GRL for value: GRL
+        /// Enum Greenland for value: GRL
         /// </summary>
         [EnumMember(Value = "GRL")]
-        GRL = 90,
+        Greenland = 90,
 
         /// <summary>
-        /// Enum GRD for value: GRD
+        /// Enum Grenada for value: GRD
         /// </summary>
         [EnumMember(Value = "GRD")]
-        GRD = 91,
+        Grenada = 91,
 
         /// <summary>
-        /// Enum GLP for value: GLP
+        /// Enum Guadeloupe for value: GLP
         /// </summary>
         [EnumMember(Value = "GLP")]
-        GLP = 92,
+        Guadeloupe = 92,
 
         /// <summary>
-        /// Enum GUM for value: GUM
+        /// Enum Guam for value: GUM
         /// </summary>
         [EnumMember(Value = "GUM")]
-        GUM = 93,
+        Guam = 93,
 
         /// <summary>
-        /// Enum GTM for value: GTM
+        /// Enum Guatemala for value: GTM
         /// </summary>
         [EnumMember(Value = "GTM")]
-        GTM = 94,
+        Guatemala = 94,
 
         /// <summary>
-        /// Enum GGY for value: GGY
+        /// Enum Guernsey for value: GGY
         /// </summary>
         [EnumMember(Value = "GGY")]
-        GGY = 95,
+        Guernsey = 95,
 
         /// <summary>
-        /// Enum GIN for value: GIN
+        /// Enum Guinea for value: GIN
         /// </summary>
         [EnumMember(Value = "GIN")]
-        GIN = 96,
+        Guinea = 96,
 
         /// <summary>
-        /// Enum GNB for value: GNB
+        /// Enum Guinea-Bissau for value: GNB
         /// </summary>
         [EnumMember(Value = "GNB")]
-        GNB = 97,
+        GuineaBissau = 97,
 
         /// <summary>
-        /// Enum GUY for value: GUY
+        /// Enum Guyana for value: GUY
         /// </summary>
         [EnumMember(Value = "GUY")]
-        GUY = 98,
+        Guyana = 98,
 
         /// <summary>
-        /// Enum HTI for value: HTI
+        /// Enum Haiti for value: HTI
         /// </summary>
         [EnumMember(Value = "HTI")]
-        HTI = 99,
+        Haiti = 99,
 
         /// <summary>
-        /// Enum HMD for value: HMD
+        /// Enum Heard Island and Mcdonald Islands for value: HMD
         /// </summary>
         [EnumMember(Value = "HMD")]
-        HMD = 100,
+        HeardIslandAndMcdonaldIslands = 100,
 
         /// <summary>
-        /// Enum VAT for value: VAT
+        /// Enum Holy See (Vatican City State) for value: VAT
         /// </summary>
         [EnumMember(Value = "VAT")]
-        VAT = 101,
+        HolySeeVaticanCityState = 101,
 
         /// <summary>
-        /// Enum HND for value: HND
+        /// Enum Honduras for value: HND
         /// </summary>
         [EnumMember(Value = "HND")]
-        HND = 102,
+        Honduras = 102,
 
         /// <summary>
-        /// Enum HKG for value: HKG
+        /// Enum Hong Kong (CN) for value: HKG
         /// </summary>
         [EnumMember(Value = "HKG")]
-        HKG = 103,
+        HongKongCn = 103,
 
         /// <summary>
-        /// Enum HUN for value: HUN
+        /// Enum Hungary for value: HUN
         /// </summary>
         [EnumMember(Value = "HUN")]
-        HUN = 104,
+        Hungary = 104,
 
         /// <summary>
-        /// Enum ISL for value: ISL
+        /// Enum Iceland for value: ISL
         /// </summary>
         [EnumMember(Value = "ISL")]
-        ISL = 105,
+        Iceland = 105,
 
         /// <summary>
-        /// Enum IND for value: IND
+        /// Enum India for value: IND
         /// </summary>
         [EnumMember(Value = "IND")]
-        IND = 106,
+        India = 106,
 
         /// <summary>
-        /// Enum IDN for value: IDN
+        /// Enum Indonesia for value: IDN
         /// </summary>
         [EnumMember(Value = "IDN")]
-        IDN = 107,
+        Indonesia = 107,
 
         /// <summary>
-        /// Enum IRN for value: IRN
+        /// Enum Iran for value: IRN
         /// </summary>
         [EnumMember(Value = "IRN")]
-        IRN = 108,
+        Iran = 108,
 
         /// <summary>
-        /// Enum IRQ for value: IRQ
+        /// Enum Iraq for value: IRQ
         /// </summary>
         [EnumMember(Value = "IRQ")]
-        IRQ = 109,
+        Iraq = 109,
 
         /// <summary>
-        /// Enum IRL for value: IRL
+        /// Enum Ireland for value: IRL
         /// </summary>
         [EnumMember(Value = "IRL")]
-        IRL = 110,
+        Ireland = 110,
 
         /// <summary>
-        /// Enum IMN for value: IMN
+        /// Enum Isle of Man for value: IMN
         /// </summary>
         [EnumMember(Value = "IMN")]
-        IMN = 111,
+        IsleOfMan = 111,
 
         /// <summary>
-        /// Enum ISR for value: ISR
+        /// Enum Israel for value: ISR
         /// </summary>
         [EnumMember(Value = "ISR")]
-        ISR = 112,
+        Israel = 112,
 
         /// <summary>
-        /// Enum ITA for value: ITA
+        /// Enum Italy for value: ITA
         /// </summary>
         [EnumMember(Value = "ITA")]
-        ITA = 113,
+        Italy = 113,
 
         /// <summary>
-        /// Enum JAM for value: JAM
+        /// Enum Jamaica for value: JAM
         /// </summary>
         [EnumMember(Value = "JAM")]
-        JAM = 114,
+        Jamaica = 114,
 
         /// <summary>
-        /// Enum JPN for value: JPN
+        /// Enum Japan for value: JPN
         /// </summary>
         [EnumMember(Value = "JPN")]
-        JPN = 115,
+        Japan = 115,
 
         /// <summary>
-        /// Enum JEY for value: JEY
+        /// Enum Jersey for value: JEY
         /// </summary>
         [EnumMember(Value = "JEY")]
-        JEY = 116,
+        Jersey = 116,
 
         /// <summary>
-        /// Enum JOR for value: JOR
+        /// Enum Jordan for value: JOR
         /// </summary>
         [EnumMember(Value = "JOR")]
-        JOR = 117,
+        Jordan = 117,
 
         /// <summary>
-        /// Enum KAZ for value: KAZ
+        /// Enum Kazakhstan for value: KAZ
         /// </summary>
         [EnumMember(Value = "KAZ")]
-        KAZ = 118,
+        Kazakhstan = 118,
 
         /// <summary>
-        /// Enum KEN for value: KEN
+        /// Enum Kenya for value: KEN
         /// </summary>
         [EnumMember(Value = "KEN")]
-        KEN = 119,
+        Kenya = 119,
 
         /// <summary>
-        /// Enum KIR for value: KIR
+        /// Enum Kiribati for value: KIR
         /// </summary>
         [EnumMember(Value = "KIR")]
-        KIR = 120,
+        Kiribati = 120,
 
         /// <summary>
-        /// Enum XKX for value: XKX
+        /// Enum Kosovo for value: XKX
         /// </summary>
         [EnumMember(Value = "XKX")]
-        XKX = 121,
+        Kosovo = 121,
 
         /// <summary>
-        /// Enum KWT for value: KWT
+        /// Enum Kuwait for value: KWT
         /// </summary>
         [EnumMember(Value = "KWT")]
-        KWT = 122,
+        Kuwait = 122,
 
         /// <summary>
-        /// Enum KGZ for value: KGZ
+        /// Enum Kyrgyzstan for value: KGZ
         /// </summary>
         [EnumMember(Value = "KGZ")]
-        KGZ = 123,
+        Kyrgyzstan = 123,
 
         /// <summary>
-        /// Enum LAO for value: LAO
+        /// Enum Lao PDR for value: LAO
         /// </summary>
         [EnumMember(Value = "LAO")]
-        LAO = 124,
+        LaoPdr = 124,
 
         /// <summary>
-        /// Enum LVA for value: LVA
+        /// Enum Latvia for value: LVA
         /// </summary>
         [EnumMember(Value = "LVA")]
-        LVA = 125,
+        Latvia = 125,
 
         /// <summary>
-        /// Enum LBN for value: LBN
+        /// Enum Lebanon for value: LBN
         /// </summary>
         [EnumMember(Value = "LBN")]
-        LBN = 126,
+        Lebanon = 126,
 
         /// <summary>
-        /// Enum LSO for value: LSO
+        /// Enum Lesotho for value: LSO
         /// </summary>
         [EnumMember(Value = "LSO")]
-        LSO = 127,
+        Lesotho = 127,
 
         /// <summary>
-        /// Enum LBR for value: LBR
+        /// Enum Liberia for value: LBR
         /// </summary>
         [EnumMember(Value = "LBR")]
-        LBR = 128,
+        Liberia = 128,
 
         /// <summary>
-        /// Enum LBY for value: LBY
+        /// Enum Libya for value: LBY
         /// </summary>
         [EnumMember(Value = "LBY")]
-        LBY = 129,
+        Libya = 129,
 
         /// <summary>
-        /// Enum LIE for value: LIE
+        /// Enum Liechtenstein for value: LIE
         /// </summary>
         [EnumMember(Value = "LIE")]
-        LIE = 130,
+        Liechtenstein = 130,
 
         /// <summary>
-        /// Enum LTU for value: LTU
+        /// Enum Lithuania for value: LTU
         /// </summary>
         [EnumMember(Value = "LTU")]
-        LTU = 131,
+        Lithuania = 131,
 
         /// <summary>
-        /// Enum LUX for value: LUX
+        /// Enum Luxembourg for value: LUX
         /// </summary>
         [EnumMember(Value = "LUX")]
-        LUX = 132,
+        Luxembourg = 132,
 
         /// <summary>
-        /// Enum MAC for value: MAC
+        /// Enum Macao (CN) for value: MAC
         /// </summary>
         [EnumMember(Value = "MAC")]
-        MAC = 133,
+        MacaoCn = 133,
 
         /// <summary>
-        /// Enum MKD for value: MKD
+        /// Enum Macedonia for value: MKD
         /// </summary>
         [EnumMember(Value = "MKD")]
-        MKD = 134,
+        Macedonia = 134,
 
         /// <summary>
-        /// Enum MDG for value: MDG
+        /// Enum Madagascar for value: MDG
         /// </summary>
         [EnumMember(Value = "MDG")]
-        MDG = 135,
+        Madagascar = 135,
 
         /// <summary>
-        /// Enum MWI for value: MWI
+        /// Enum Malawi for value: MWI
         /// </summary>
         [EnumMember(Value = "MWI")]
-        MWI = 136,
+        Malawi = 136,
 
         /// <summary>
-        /// Enum MYS for value: MYS
+        /// Enum Malaysia for value: MYS
         /// </summary>
         [EnumMember(Value = "MYS")]
-        MYS = 137,
+        Malaysia = 137,
 
         /// <summary>
-        /// Enum MDV for value: MDV
+        /// Enum Maldives for value: MDV
         /// </summary>
         [EnumMember(Value = "MDV")]
-        MDV = 138,
+        Maldives = 138,
 
         /// <summary>
-        /// Enum MLI for value: MLI
+        /// Enum Mali for value: MLI
         /// </summary>
         [EnumMember(Value = "MLI")]
-        MLI = 139,
+        Mali = 139,
 
         /// <summary>
-        /// Enum MLT for value: MLT
+        /// Enum Malta for value: MLT
         /// </summary>
         [EnumMember(Value = "MLT")]
-        MLT = 140,
+        Malta = 140,
 
         /// <summary>
-        /// Enum MHL for value: MHL
+        /// Enum Marshall Islands for value: MHL
         /// </summary>
         [EnumMember(Value = "MHL")]
-        MHL = 141,
+        MarshallIslands = 141,
 
         /// <summary>
-        /// Enum MTQ for value: MTQ
+        /// Enum Martinique for value: MTQ
         /// </summary>
         [EnumMember(Value = "MTQ")]
-        MTQ = 142,
+        Martinique = 142,
 
         /// <summary>
-        /// Enum MRT for value: MRT
+        /// Enum Mauritania for value: MRT
         /// </summary>
         [EnumMember(Value = "MRT")]
-        MRT = 143,
+        Mauritania = 143,
 
         /// <summary>
-        /// Enum MUS for value: MUS
+        /// Enum Mauritius for value: MUS
         /// </summary>
         [EnumMember(Value = "MUS")]
-        MUS = 144,
+        Mauritius = 144,
 
         /// <summary>
-        /// Enum MYT for value: MYT
+        /// Enum Mayotte for value: MYT
         /// </summary>
         [EnumMember(Value = "MYT")]
-        MYT = 145,
+        Mayotte = 145,
 
         /// <summary>
-        /// Enum MEX for value: MEX
+        /// Enum Mexico for value: MEX
         /// </summary>
         [EnumMember(Value = "MEX")]
-        MEX = 146,
+        Mexico = 146,
 
         /// <summary>
-        /// Enum MDA for value: MDA
+        /// Enum Moldova for value: MDA
         /// </summary>
         [EnumMember(Value = "MDA")]
-        MDA = 147,
+        Moldova = 147,
 
         /// <summary>
-        /// Enum MCO for value: MCO
+        /// Enum Monaco for value: MCO
         /// </summary>
         [EnumMember(Value = "MCO")]
-        MCO = 148,
+        Monaco = 148,
 
         /// <summary>
-        /// Enum MNG for value: MNG
+        /// Enum Mongolia for value: MNG
         /// </summary>
         [EnumMember(Value = "MNG")]
-        MNG = 149,
+        Mongolia = 149,
 
         /// <summary>
-        /// Enum MNE for value: MNE
+        /// Enum Montenegro for value: MNE
         /// </summary>
         [EnumMember(Value = "MNE")]
-        MNE = 150,
+        Montenegro = 150,
 
         /// <summary>
-        /// Enum MSR for value: MSR
+        /// Enum Montserrat for value: MSR
         /// </summary>
         [EnumMember(Value = "MSR")]
-        MSR = 151,
+        Montserrat = 151,
 
         /// <summary>
-        /// Enum MAR for value: MAR
+        /// Enum Morocco for value: MAR
         /// </summary>
         [EnumMember(Value = "MAR")]
-        MAR = 152,
+        Morocco = 152,
 
         /// <summary>
-        /// Enum MOZ for value: MOZ
+        /// Enum Mozambique for value: MOZ
         /// </summary>
         [EnumMember(Value = "MOZ")]
-        MOZ = 153,
+        Mozambique = 153,
 
         /// <summary>
-        /// Enum MMR for value: MMR
+        /// Enum Myanmar for value: MMR
         /// </summary>
         [EnumMember(Value = "MMR")]
-        MMR = 154,
+        Myanmar = 154,
 
         /// <summary>
-        /// Enum NAM for value: NAM
+        /// Enum Namibia for value: NAM
         /// </summary>
         [EnumMember(Value = "NAM")]
-        NAM = 155,
+        Namibia = 155,
 
         /// <summary>
-        /// Enum NRU for value: NRU
+        /// Enum Nauru for value: NRU
         /// </summary>
         [EnumMember(Value = "NRU")]
-        NRU = 156,
+        Nauru = 156,
 
         /// <summary>
-        /// Enum NPL for value: NPL
+        /// Enum Nepal for value: NPL
         /// </summary>
         [EnumMember(Value = "NPL")]
-        NPL = 157,
+        Nepal = 157,
 
         /// <summary>
-        /// Enum NLD for value: NLD
+        /// Enum Netherlands for value: NLD
         /// </summary>
         [EnumMember(Value = "NLD")]
-        NLD = 158,
+        Netherlands = 158,
 
         /// <summary>
-        /// Enum ANT for value: ANT
+        /// Enum Netherlands Antilles for value: ANT
         /// </summary>
         [EnumMember(Value = "ANT")]
-        ANT = 159,
+        NetherlandsAntilles = 159,
 
         /// <summary>
-        /// Enum NCL for value: NCL
+        /// Enum New Caledonia for value: NCL
         /// </summary>
         [EnumMember(Value = "NCL")]
-        NCL = 160,
+        NewCaledonia = 160,
 
         /// <summary>
-        /// Enum NZL for value: NZL
+        /// Enum New Zealand for value: NZL
         /// </summary>
         [EnumMember(Value = "NZL")]
-        NZL = 161,
+        NewZealand = 161,
 
         /// <summary>
-        /// Enum NIC for value: NIC
+        /// Enum Nicaragua for value: NIC
         /// </summary>
         [EnumMember(Value = "NIC")]
-        NIC = 162,
+        Nicaragua = 162,
 
         /// <summary>
-        /// Enum NER for value: NER
+        /// Enum Niger for value: NER
         /// </summary>
         [EnumMember(Value = "NER")]
-        NER = 163,
+        Niger = 163,
 
         /// <summary>
-        /// Enum NGA for value: NGA
+        /// Enum Nigeria for value: NGA
         /// </summary>
         [EnumMember(Value = "NGA")]
-        NGA = 164,
+        Nigeria = 164,
 
         /// <summary>
-        /// Enum NIU for value: NIU
+        /// Enum Niue for value: NIU
         /// </summary>
         [EnumMember(Value = "NIU")]
-        NIU = 165,
+        Niue = 165,
 
         /// <summary>
-        /// Enum NFK for value: NFK
+        /// Enum Norfolk Island for value: NFK
         /// </summary>
         [EnumMember(Value = "NFK")]
-        NFK = 166,
+        NorfolkIsland = 166,
 
         /// <summary>
-        /// Enum PRK for value: PRK
+        /// Enum North Korea for value: PRK
         /// </summary>
         [EnumMember(Value = "PRK")]
-        PRK = 167,
+        NorthKorea = 167,
 
         /// <summary>
-        /// Enum MNP for value: MNP
+        /// Enum Northern Mariana Islands for value: MNP
         /// </summary>
         [EnumMember(Value = "MNP")]
-        MNP = 168,
+        NorthernMarianaIslands = 168,
 
         /// <summary>
-        /// Enum NOR for value: NOR
+        /// Enum Norway for value: NOR
         /// </summary>
         [EnumMember(Value = "NOR")]
-        NOR = 169,
+        Norway = 169,
 
         /// <summary>
-        /// Enum OMN for value: OMN
+        /// Enum Oman for value: OMN
         /// </summary>
         [EnumMember(Value = "OMN")]
-        OMN = 170,
+        Oman = 170,
 
         /// <summary>
-        /// Enum PAK for value: PAK
+        /// Enum Pakistan for value: PAK
         /// </summary>
         [EnumMember(Value = "PAK")]
-        PAK = 171,
+        Pakistan = 171,
 
         /// <summary>
-        /// Enum PLW for value: PLW
+        /// Enum Palau for value: PLW
         /// </summary>
         [EnumMember(Value = "PLW")]
-        PLW = 172,
+        Palau = 172,
 
         /// <summary>
-        /// Enum PSE for value: PSE
+        /// Enum Palestinian Territory, Occupied for value: PSE
         /// </summary>
         [EnumMember(Value = "PSE")]
-        PSE = 173,
+        PalestinianTerritoryOccupied = 173,
 
         /// <summary>
-        /// Enum PAN for value: PAN
+        /// Enum Panama for value: PAN
         /// </summary>
         [EnumMember(Value = "PAN")]
-        PAN = 174,
+        Panama = 174,
 
         /// <summary>
-        /// Enum PNG for value: PNG
+        /// Enum Papua New Guinea for value: PNG
         /// </summary>
         [EnumMember(Value = "PNG")]
-        PNG = 175,
+        PapuaNewGuinea = 175,
 
         /// <summary>
-        /// Enum PRY for value: PRY
+        /// Enum Paraguay for value: PRY
         /// </summary>
         [EnumMember(Value = "PRY")]
-        PRY = 176,
+        Paraguay = 176,
 
         /// <summary>
-        /// Enum PER for value: PER
+        /// Enum Peru for value: PER
         /// </summary>
         [EnumMember(Value = "PER")]
-        PER = 177,
+        Peru = 177,
 
         /// <summary>
-        /// Enum PHL for value: PHL
+        /// Enum Philippines for value: PHL
         /// </summary>
         [EnumMember(Value = "PHL")]
-        PHL = 178,
+        Philippines = 178,
 
         /// <summary>
-        /// Enum PCN for value: PCN
+        /// Enum Pitcairn Island for value: PCN
         /// </summary>
         [EnumMember(Value = "PCN")]
-        PCN = 179,
+        PitcairnIsland = 179,
 
         /// <summary>
-        /// Enum POL for value: POL
+        /// Enum Poland for value: POL
         /// </summary>
         [EnumMember(Value = "POL")]
-        POL = 180,
+        Poland = 180,
 
         /// <summary>
-        /// Enum PRT for value: PRT
+        /// Enum Portugal for value: PRT
         /// </summary>
         [EnumMember(Value = "PRT")]
-        PRT = 181,
+        Portugal = 181,
 
         /// <summary>
-        /// Enum PRI for value: PRI
+        /// Enum Puerto Rico for value: PRI
         /// </summary>
         [EnumMember(Value = "PRI")]
-        PRI = 182,
+        PuertoRico = 182,
 
         /// <summary>
-        /// Enum QAT for value: QAT
+        /// Enum Qatar for value: QAT
         /// </summary>
         [EnumMember(Value = "QAT")]
-        QAT = 183,
+        Qatar = 183,
 
         /// <summary>
-        /// Enum REU for value: REU
+        /// Enum R�union for value: REU
         /// </summary>
         [EnumMember(Value = "REU")]
-        REU = 184,
+        RUnion = 184,
 
         /// <summary>
-        /// Enum ROU for value: ROU
+        /// Enum Romania for value: ROU
         /// </summary>
         [EnumMember(Value = "ROU")]
-        ROU = 185,
+        Romania = 185,
 
         /// <summary>
-        /// Enum RUS for value: RUS
+        /// Enum Russian Federation for value: RUS
         /// </summary>
         [EnumMember(Value = "RUS")]
-        RUS = 186,
+        RussianFederation = 186,
 
         /// <summary>
-        /// Enum RWA for value: RWA
+        /// Enum Rwanda for value: RWA
         /// </summary>
         [EnumMember(Value = "RWA")]
-        RWA = 187,
+        Rwanda = 187,
 
         /// <summary>
-        /// Enum SHN for value: SHN
+        /// Enum Saint Helena for value: SHN
         /// </summary>
         [EnumMember(Value = "SHN")]
-        SHN = 188,
+        SaintHelena = 188,
 
         /// <summary>
-        /// Enum KNA for value: KNA
+        /// Enum Saint Kitts and Nevis for value: KNA
         /// </summary>
         [EnumMember(Value = "KNA")]
-        KNA = 189,
+        SaintKittsAndNevis = 189,
 
         /// <summary>
-        /// Enum LCA for value: LCA
+        /// Enum Saint Lucia for value: LCA
         /// </summary>
         [EnumMember(Value = "LCA")]
-        LCA = 190,
+        SaintLucia = 190,
 
         /// <summary>
-        /// Enum SPM for value: SPM
+        /// Enum Saint Pierre and Miquelon for value: SPM
         /// </summary>
         [EnumMember(Value = "SPM")]
-        SPM = 191,
+        SaintPierreAndMiquelon = 191,
 
         /// <summary>
-        /// Enum VCT for value: VCT
+        /// Enum Saint Vincent and Grenadines for value: VCT
         /// </summary>
         [EnumMember(Value = "VCT")]
-        VCT = 192,
+        SaintVincentAndGrenadines = 192,
 
         /// <summary>
-        /// Enum BLM for value: BLM
+        /// Enum Saint-Barth�lemy for value: BLM
         /// </summary>
         [EnumMember(Value = "BLM")]
-        BLM = 193,
+        SaintBarthLemy = 193,
 
         /// <summary>
-        /// Enum MAF for value: MAF
+        /// Enum Saint-Martin (French part) for value: MAF
         /// </summary>
         [EnumMember(Value = "MAF")]
-        MAF = 194,
+        SaintMartinFrenchPart = 194,
 
         /// <summary>
-        /// Enum WSM for value: WSM
+        /// Enum Samoa for value: WSM
         /// </summary>
         [EnumMember(Value = "WSM")]
-        WSM = 195,
+        Samoa = 195,
 
         /// <summary>
-        /// Enum SMR for value: SMR
+        /// Enum San Marino for value: SMR
         /// </summary>
         [EnumMember(Value = "SMR")]
-        SMR = 196,
+        SanMarino = 196,
 
         /// <summary>
-        /// Enum STP for value: STP
+        /// Enum Sao Tome and Principe for value: STP
         /// </summary>
         [EnumMember(Value = "STP")]
-        STP = 197,
+        SaoTomeAndPrincipe = 197,
 
         /// <summary>
-        /// Enum SAU for value: SAU
+        /// Enum Saudi Arabia for value: SAU
         /// </summary>
         [EnumMember(Value = "SAU")]
-        SAU = 198,
+        SaudiArabia = 198,
 
         /// <summary>
-        /// Enum SEN for value: SEN
+        /// Enum Senegal for value: SEN
         /// </summary>
         [EnumMember(Value = "SEN")]
-        SEN = 199,
+        Senegal = 199,
 
         /// <summary>
-        /// Enum SRB for value: SRB
+        /// Enum Serbia for value: SRB
         /// </summary>
         [EnumMember(Value = "SRB")]
-        SRB = 200,
+        Serbia = 200,
 
         /// <summary>
-        /// Enum SYC for value: SYC
+        /// Enum Seychelles for value: SYC
         /// </summary>
         [EnumMember(Value = "SYC")]
-        SYC = 201,
+        Seychelles = 201,
 
         /// <summary>
-        /// Enum SLE for value: SLE
+        /// Enum Sierra Leone for value: SLE
         /// </summary>
         [EnumMember(Value = "SLE")]
-        SLE = 202,
+        SierraLeone = 202,
 
         /// <summary>
-        /// Enum SGP for value: SGP
+        /// Enum Singapore for value: SGP
         /// </summary>
         [EnumMember(Value = "SGP")]
-        SGP = 203,
+        Singapore = 203,
 
         /// <summary>
-        /// Enum SVK for value: SVK
+        /// Enum Slovakia for value: SVK
         /// </summary>
         [EnumMember(Value = "SVK")]
-        SVK = 204,
+        Slovakia = 204,
 
         /// <summary>
-        /// Enum SVN for value: SVN
+        /// Enum Slovenia for value: SVN
         /// </summary>
         [EnumMember(Value = "SVN")]
-        SVN = 205,
+        Slovenia = 205,
 
         /// <summary>
-        /// Enum SLB for value: SLB
+        /// Enum Solomon Islands for value: SLB
         /// </summary>
         [EnumMember(Value = "SLB")]
-        SLB = 206,
+        SolomonIslands = 206,
 
         /// <summary>
-        /// Enum SOM for value: SOM
+        /// Enum Somalia for value: SOM
         /// </summary>
         [EnumMember(Value = "SOM")]
-        SOM = 207,
+        Somalia = 207,
 
         /// <summary>
-        /// Enum SOL for value: SOL
+        /// Enum Somaliland for value: SOL
         /// </summary>
         [EnumMember(Value = "SOL")]
-        SOL = 208,
+        Somaliland = 208,
 
         /// <summary>
-        /// Enum ZAF for value: ZAF
+        /// Enum South Africa for value: ZAF
         /// </summary>
         [EnumMember(Value = "ZAF")]
-        ZAF = 209,
+        SouthAfrica = 209,
 
         /// <summary>
-        /// Enum SGS for value: SGS
+        /// Enum South Georgia and the South Sandwich Islands for value: SGS
         /// </summary>
         [EnumMember(Value = "SGS")]
-        SGS = 210,
+        SouthGeorgiaAndTheSouthSandwichIslands = 210,
 
         /// <summary>
-        /// Enum KOR for value: KOR
+        /// Enum South Korea for value: KOR
         /// </summary>
         [EnumMember(Value = "KOR")]
-        KOR = 211,
+        SouthKorea = 211,
 
         /// <summary>
-        /// Enum SSD for value: SSD
+        /// Enum South Sudan for value: SSD
         /// </summary>
         [EnumMember(Value = "SSD")]
-        SSD = 212,
+        SouthSudan = 212,
 
         /// <summary>
-        /// Enum ESP for value: ESP
+        /// Enum Spain for value: ESP
         /// </summary>
         [EnumMember(Value = "ESP")]
-        ESP = 213,
+        Spain = 213,
 
         /// <summary>
-        /// Enum LKA for value: LKA
+        /// Enum Sri Lanka for value: LKA
         /// </summary>
         [EnumMember(Value = "LKA")]
-        LKA = 214,
+        SriLanka = 214,
 
         /// <summary>
-        /// Enum SDN for value: SDN
+        /// Enum Sudan for value: SDN
         /// </summary>
         [EnumMember(Value = "SDN")]
-        SDN = 215,
+        Sudan = 215,
 
         /// <summary>
-        /// Enum SUR for value: SUR
+        /// Enum Suriname for value: SUR
         /// </summary>
         [EnumMember(Value = "SUR")]
-        SUR = 216,
+        Suriname = 216,
 
         /// <summary>
-        /// Enum SJM for value: SJM
+        /// Enum Svalbard and Jan Mayen Islands for value: SJM
         /// </summary>
         [EnumMember(Value = "SJM")]
-        SJM = 217,
+        SvalbardAndJanMayenIslands = 217,
 
         /// <summary>
-        /// Enum SWE for value: SWE
+        /// Enum Sweden for value: SWE
         /// </summary>
         [EnumMember(Value = "SWE")]
-        SWE = 218,
+        Sweden = 218,
 
         /// <summary>
-        /// Enum CHE for value: CHE
+        /// Enum Switzerland for value: CHE
         /// </summary>
         [EnumMember(Value = "CHE")]
-        CHE = 219,
+        Switzerland = 219,
 
         /// <summary>
-        /// Enum SYR for value: SYR
+        /// Enum Syrian Arab Republic (Syria) for value: SYR
         /// </summary>
         [EnumMember(Value = "SYR")]
-        SYR = 220,
+        SyrianArabRepublicSyria = 220,
 
         /// <summary>
-        /// Enum TWN for value: TWN
+        /// Enum Taiwan (CN) for value: TWN
         /// </summary>
         [EnumMember(Value = "TWN")]
-        TWN = 221,
+        TaiwanCn = 221,
 
         /// <summary>
-        /// Enum TJK for value: TJK
+        /// Enum Tajikistan for value: TJK
         /// </summary>
         [EnumMember(Value = "TJK")]
-        TJK = 222,
+        Tajikistan = 222,
 
         /// <summary>
-        /// Enum TZA for value: TZA
+        /// Enum Tanzania for value: TZA
         /// </summary>
         [EnumMember(Value = "TZA")]
-        TZA = 223,
+        Tanzania = 223,
 
         /// <summary>
-        /// Enum THA for value: THA
+        /// Enum Thailand for value: THA
         /// </summary>
         [EnumMember(Value = "THA")]
-        THA = 224,
+        Thailand = 224,
 
         /// <summary>
-        /// Enum TLS for value: TLS
+        /// Enum Timor-Leste for value: TLS
         /// </summary>
         [EnumMember(Value = "TLS")]
-        TLS = 225,
+        TimorLeste = 225,
 
         /// <summary>
-        /// Enum TGO for value: TGO
+        /// Enum Togo for value: TGO
         /// </summary>
         [EnumMember(Value = "TGO")]
-        TGO = 226,
+        Togo = 226,
 
         /// <summary>
-        /// Enum TKL for value: TKL
+        /// Enum Tokelau for value: TKL
         /// </summary>
         [EnumMember(Value = "TKL")]
-        TKL = 227,
+        Tokelau = 227,
 
         /// <summary>
-        /// Enum TON for value: TON
+        /// Enum Tonga for value: TON
         /// </summary>
         [EnumMember(Value = "TON")]
-        TON = 228,
+        Tonga = 228,
 
         /// <summary>
-        /// Enum TTO for value: TTO
+        /// Enum Trinidad and Tobago for value: TTO
         /// </summary>
         [EnumMember(Value = "TTO")]
-        TTO = 229,
+        TrinidadAndTobago = 229,
 
         /// <summary>
-        /// Enum TUN for value: TUN
+        /// Enum Tunisia for value: TUN
         /// </summary>
         [EnumMember(Value = "TUN")]
-        TUN = 230,
+        Tunisia = 230,
 
         /// <summary>
-        /// Enum TUR for value: TUR
+        /// Enum Turkey for value: TUR
         /// </summary>
         [EnumMember(Value = "TUR")]
-        TUR = 231,
+        Turkey = 231,
 
         /// <summary>
-        /// Enum TKM for value: TKM
+        /// Enum Turkmenistan for value: TKM
         /// </summary>
         [EnumMember(Value = "TKM")]
-        TKM = 232,
+        Turkmenistan = 232,
 
         /// <summary>
-        /// Enum TCA for value: TCA
+        /// Enum Turks and Caicos Islands for value: TCA
         /// </summary>
         [EnumMember(Value = "TCA")]
-        TCA = 233,
+        TurksAndCaicosIslands = 233,
 
         /// <summary>
-        /// Enum TUV for value: TUV
+        /// Enum Tuvalu for value: TUV
         /// </summary>
         [EnumMember(Value = "TUV")]
-        TUV = 234,
+        Tuvalu = 234,
 
         /// <summary>
-        /// Enum UGA for value: UGA
+        /// Enum Uganda for value: UGA
         /// </summary>
         [EnumMember(Value = "UGA")]
-        UGA = 235,
+        Uganda = 235,
 
         /// <summary>
-        /// Enum UKR for value: UKR
+        /// Enum Ukraine for value: UKR
         /// </summary>
         [EnumMember(Value = "UKR")]
-        UKR = 236,
+        Ukraine = 236,
 
         /// <summary>
-        /// Enum ARE for value: ARE
+        /// Enum United Arab Emirates for value: ARE
         /// </summary>
         [EnumMember(Value = "ARE")]
-        ARE = 237,
+        UnitedArabEmirates = 237,
 
         /// <summary>
-        /// Enum GBR for value: GBR
+        /// Enum United Kingdom for value: GBR
         /// </summary>
         [EnumMember(Value = "GBR")]
-        GBR = 238,
+        UnitedKingdom = 238,
 
         /// <summary>
-        /// Enum UMI for value: UMI
+        /// Enum United States Minor Outlying Islands for value: UMI
         /// </summary>
         [EnumMember(Value = "UMI")]
-        UMI = 239,
+        UnitedStatesMinorOutlyingIslands = 239,
 
         /// <summary>
-        /// Enum USA for value: USA
+        /// Enum United States of America for value: USA
         /// </summary>
         [EnumMember(Value = "USA")]
-        USA = 240,
+        UnitedStatesOfAmerica = 240,
 
         /// <summary>
-        /// Enum URY for value: URY
+        /// Enum Uruguay for value: URY
         /// </summary>
         [EnumMember(Value = "URY")]
-        URY = 241,
+        Uruguay = 241,
 
         /// <summary>
-        /// Enum UZB for value: UZB
+        /// Enum Uzbekistan for value: UZB
         /// </summary>
         [EnumMember(Value = "UZB")]
-        UZB = 242,
+        Uzbekistan = 242,
 
         /// <summary>
-        /// Enum VUT for value: VUT
+        /// Enum Vanuatu for value: VUT
         /// </summary>
         [EnumMember(Value = "VUT")]
-        VUT = 243,
+        Vanuatu = 243,
 
         /// <summary>
-        /// Enum VEN for value: VEN
+        /// Enum Venezuela for value: VEN
         /// </summary>
         [EnumMember(Value = "VEN")]
-        VEN = 244,
+        Venezuela = 244,
 
         /// <summary>
-        /// Enum VNM for value: VNM
+        /// Enum Vietnam for value: VNM
         /// </summary>
         [EnumMember(Value = "VNM")]
-        VNM = 245,
+        Vietnam = 245,
 
         /// <summary>
-        /// Enum VIR for value: VIR
+        /// Enum Virgin Islands, US for value: VIR
         /// </summary>
         [EnumMember(Value = "VIR")]
-        VIR = 246,
+        VirginIslandsUs = 246,
 
         /// <summary>
-        /// Enum WLF for value: WLF
+        /// Enum Wallis and Futuna Islands for value: WLF
         /// </summary>
         [EnumMember(Value = "WLF")]
-        WLF = 247,
+        WallisAndFutunaIslands = 247,
 
         /// <summary>
-        /// Enum ESH for value: ESH
+        /// Enum Western Sahara for value: ESH
         /// </summary>
         [EnumMember(Value = "ESH")]
-        ESH = 248,
+        WesternSahara = 248,
 
         /// <summary>
-        /// Enum YEM for value: YEM
+        /// Enum Yemen for value: YEM
         /// </summary>
         [EnumMember(Value = "YEM")]
-        YEM = 249,
+        Yemen = 249,
 
         /// <summary>
-        /// Enum ZMB for value: ZMB
+        /// Enum Zambia for value: ZMB
         /// </summary>
         [EnumMember(Value = "ZMB")]
-        ZMB = 250,
+        Zambia = 250,
 
         /// <summary>
-        /// Enum ZWE for value: ZWE
+        /// Enum Zimbabwe for value: ZWE
         /// </summary>
         [EnumMember(Value = "ZWE")]
-        ZWE = 251
+        Zimbabwe = 251
     }
 
     /// <summary>
@@ -1583,757 +1583,757 @@ namespace Agile.Now.AccessHub.Model
         public static EnumCountry? FromStringOrDefault(string value)
         {
             if (value.Equals("AFG"))
-                return EnumCountry.AFG;
+                return EnumCountry.Afghanistan;
 
             if (value.Equals("ALA"))
-                return EnumCountry.ALA;
+                return EnumCountry.AlandIslands;
 
             if (value.Equals("ALB"))
-                return EnumCountry.ALB;
+                return EnumCountry.Albania;
 
             if (value.Equals("DZA"))
-                return EnumCountry.DZA;
+                return EnumCountry.Algeria;
 
             if (value.Equals("ASM"))
-                return EnumCountry.ASM;
+                return EnumCountry.AmericanSamoa;
 
             if (value.Equals("AND"))
-                return EnumCountry.AND;
+                return EnumCountry.Andorra;
 
             if (value.Equals("AGO"))
-                return EnumCountry.AGO;
+                return EnumCountry.Angola;
 
             if (value.Equals("AIA"))
-                return EnumCountry.AIA;
+                return EnumCountry.Anguilla;
 
             if (value.Equals("ATA"))
-                return EnumCountry.ATA;
+                return EnumCountry.Antarctica;
 
             if (value.Equals("ATG"))
-                return EnumCountry.ATG;
+                return EnumCountry.AntiguaAndBarbuda;
 
             if (value.Equals("ARG"))
-                return EnumCountry.ARG;
+                return EnumCountry.Argentina;
 
             if (value.Equals("ARM"))
-                return EnumCountry.ARM;
+                return EnumCountry.Armenia;
 
             if (value.Equals("ABW"))
-                return EnumCountry.ABW;
+                return EnumCountry.Aruba;
 
             if (value.Equals("AUS"))
-                return EnumCountry.AUS;
+                return EnumCountry.Australia;
 
             if (value.Equals("AUT"))
-                return EnumCountry.AUT;
+                return EnumCountry.Austria;
 
             if (value.Equals("AZE"))
-                return EnumCountry.AZE;
+                return EnumCountry.Azerbaijan;
 
             if (value.Equals("AZO"))
-                return EnumCountry.AZO;
+                return EnumCountry.Azores;
 
             if (value.Equals("BHS"))
-                return EnumCountry.BHS;
+                return EnumCountry.Bahamas;
 
             if (value.Equals("BHR"))
-                return EnumCountry.BHR;
+                return EnumCountry.Bahrain;
 
             if (value.Equals("BGD"))
-                return EnumCountry.BGD;
+                return EnumCountry.Bangladesh;
 
             if (value.Equals("BRB"))
-                return EnumCountry.BRB;
+                return EnumCountry.Barbados;
 
             if (value.Equals("BLR"))
-                return EnumCountry.BLR;
+                return EnumCountry.Belarus;
 
             if (value.Equals("BEL"))
-                return EnumCountry.BEL;
+                return EnumCountry.Belgium;
 
             if (value.Equals("BLZ"))
-                return EnumCountry.BLZ;
+                return EnumCountry.Belize;
 
             if (value.Equals("BEN"))
-                return EnumCountry.BEN;
+                return EnumCountry.Benin;
 
             if (value.Equals("BMU"))
-                return EnumCountry.BMU;
+                return EnumCountry.Bermuda;
 
             if (value.Equals("BTN"))
-                return EnumCountry.BTN;
+                return EnumCountry.Bhutan;
 
             if (value.Equals("BOL"))
-                return EnumCountry.BOL;
+                return EnumCountry.Bolivia;
 
             if (value.Equals("BIH"))
-                return EnumCountry.BIH;
+                return EnumCountry.BosniaAndHerzegovina;
 
             if (value.Equals("BWA"))
-                return EnumCountry.BWA;
+                return EnumCountry.Botswana;
 
             if (value.Equals("BVT"))
-                return EnumCountry.BVT;
+                return EnumCountry.BouvetIsland;
 
             if (value.Equals("BRA"))
-                return EnumCountry.BRA;
+                return EnumCountry.Brazil;
 
             if (value.Equals("IOT"))
-                return EnumCountry.IOT;
+                return EnumCountry.BritishIndianOceanTerritory;
 
             if (value.Equals("VGB"))
-                return EnumCountry.VGB;
+                return EnumCountry.BritishVirginIslands;
 
             if (value.Equals("BRN"))
-                return EnumCountry.BRN;
+                return EnumCountry.BruneiDarussalam;
 
             if (value.Equals("BGR"))
-                return EnumCountry.BGR;
+                return EnumCountry.Bulgaria;
 
             if (value.Equals("BFA"))
-                return EnumCountry.BFA;
+                return EnumCountry.BurkinaFaso;
 
             if (value.Equals("BDI"))
-                return EnumCountry.BDI;
+                return EnumCountry.Burundi;
 
             if (value.Equals("KHM"))
-                return EnumCountry.KHM;
+                return EnumCountry.Cambodia;
 
             if (value.Equals("CMR"))
-                return EnumCountry.CMR;
+                return EnumCountry.Cameroon;
 
             if (value.Equals("CAN"))
-                return EnumCountry.CAN;
+                return EnumCountry.Canada;
 
             if (value.Equals("CPV"))
-                return EnumCountry.CPV;
+                return EnumCountry.CapeVerde;
 
             if (value.Equals("CYM"))
-                return EnumCountry.CYM;
+                return EnumCountry.CaymanIslands;
 
             if (value.Equals("CAF"))
-                return EnumCountry.CAF;
+                return EnumCountry.CentralAfricanRepublic;
 
             if (value.Equals("TCD"))
-                return EnumCountry.TCD;
+                return EnumCountry.Chad;
 
             if (value.Equals("CHL"))
-                return EnumCountry.CHL;
+                return EnumCountry.Chile;
 
             if (value.Equals("CHN"))
-                return EnumCountry.CHN;
+                return EnumCountry.China;
 
             if (value.Equals("CXR"))
-                return EnumCountry.CXR;
+                return EnumCountry.ChristmasIsland;
 
             if (value.Equals("CCK"))
-                return EnumCountry.CCK;
+                return EnumCountry.CocosKeelingIslands;
 
             if (value.Equals("COL"))
-                return EnumCountry.COL;
+                return EnumCountry.Colombia;
 
             if (value.Equals("COM"))
-                return EnumCountry.COM;
+                return EnumCountry.Comoros;
 
             if (value.Equals("COG"))
-                return EnumCountry.COG;
+                return EnumCountry.CongoBrazzaville;
 
             if (value.Equals("COK"))
-                return EnumCountry.COK;
+                return EnumCountry.CookIslands;
 
             if (value.Equals("CRI"))
-                return EnumCountry.CRI;
+                return EnumCountry.CostaRica;
 
             if (value.Equals("CIV"))
-                return EnumCountry.CIV;
+                return EnumCountry.CTeDIvoire;
 
             if (value.Equals("HRV"))
-                return EnumCountry.HRV;
+                return EnumCountry.Croatia;
 
             if (value.Equals("CUB"))
-                return EnumCountry.CUB;
+                return EnumCountry.Cuba;
 
             if (value.Equals("CYP"))
-                return EnumCountry.CYP;
+                return EnumCountry.Cyprus;
 
             if (value.Equals("CZE"))
-                return EnumCountry.CZE;
+                return EnumCountry.CzechRepublic;
 
             if (value.Equals("COD"))
-                return EnumCountry.COD;
+                return EnumCountry.DemocraticRepublicOfTheCongo;
 
             if (value.Equals("DNK"))
-                return EnumCountry.DNK;
+                return EnumCountry.Denmark;
 
             if (value.Equals("DJI"))
-                return EnumCountry.DJI;
+                return EnumCountry.Djibouti;
 
             if (value.Equals("DMA"))
-                return EnumCountry.DMA;
+                return EnumCountry.Dominica;
 
             if (value.Equals("DOM"))
-                return EnumCountry.DOM;
+                return EnumCountry.DominicanRepublic;
 
             if (value.Equals("ECU"))
-                return EnumCountry.ECU;
+                return EnumCountry.Ecuador;
 
             if (value.Equals("EGY"))
-                return EnumCountry.EGY;
+                return EnumCountry.Egypt;
 
             if (value.Equals("SLV"))
-                return EnumCountry.SLV;
+                return EnumCountry.ElSalvador;
 
             if (value.Equals("GNQ"))
-                return EnumCountry.GNQ;
+                return EnumCountry.EquatorialGuinea;
 
             if (value.Equals("ERI"))
-                return EnumCountry.ERI;
+                return EnumCountry.Eritrea;
 
             if (value.Equals("EST"))
-                return EnumCountry.EST;
+                return EnumCountry.Estonia;
 
             if (value.Equals("SWZ"))
-                return EnumCountry.SWZ;
+                return EnumCountry.Eswatini;
 
             if (value.Equals("ETH"))
-                return EnumCountry.ETH;
+                return EnumCountry.Ethiopia;
 
             if (value.Equals("EUE"))
-                return EnumCountry.EUE;
+                return EnumCountry.EuropeDiplomat;
 
             if (value.Equals("FLK"))
-                return EnumCountry.FLK;
+                return EnumCountry.FalklandIslandsMalvinas;
 
             if (value.Equals("FRO"))
-                return EnumCountry.FRO;
+                return EnumCountry.FaroeIslands;
 
             if (value.Equals("FSM"))
-                return EnumCountry.FSM;
+                return EnumCountry.FederatedStatesOfMicronesia;
 
             if (value.Equals("FJI"))
-                return EnumCountry.FJI;
+                return EnumCountry.Fiji;
 
             if (value.Equals("FIN"))
-                return EnumCountry.FIN;
+                return EnumCountry.Finland;
 
             if (value.Equals("FRA"))
-                return EnumCountry.FRA;
+                return EnumCountry.France;
 
             if (value.Equals("GUF"))
-                return EnumCountry.GUF;
+                return EnumCountry.FrenchGuiana;
 
             if (value.Equals("PYF"))
-                return EnumCountry.PYF;
+                return EnumCountry.FrenchPolynesia;
 
             if (value.Equals("ATF"))
-                return EnumCountry.ATF;
+                return EnumCountry.FrenchSouthernTerritories;
 
             if (value.Equals("GAB"))
-                return EnumCountry.GAB;
+                return EnumCountry.Gabon;
 
             if (value.Equals("GMB"))
-                return EnumCountry.GMB;
+                return EnumCountry.Gambia;
 
             if (value.Equals("GEO"))
-                return EnumCountry.GEO;
+                return EnumCountry.Georgia;
 
             if (value.Equals("DEU"))
-                return EnumCountry.DEU;
+                return EnumCountry.Germany;
 
             if (value.Equals("GHA"))
-                return EnumCountry.GHA;
+                return EnumCountry.Ghana;
 
             if (value.Equals("GIB"))
-                return EnumCountry.GIB;
+                return EnumCountry.Gibraltar;
 
             if (value.Equals("GRC"))
-                return EnumCountry.GRC;
+                return EnumCountry.Greece;
 
             if (value.Equals("GRL"))
-                return EnumCountry.GRL;
+                return EnumCountry.Greenland;
 
             if (value.Equals("GRD"))
-                return EnumCountry.GRD;
+                return EnumCountry.Grenada;
 
             if (value.Equals("GLP"))
-                return EnumCountry.GLP;
+                return EnumCountry.Guadeloupe;
 
             if (value.Equals("GUM"))
-                return EnumCountry.GUM;
+                return EnumCountry.Guam;
 
             if (value.Equals("GTM"))
-                return EnumCountry.GTM;
+                return EnumCountry.Guatemala;
 
             if (value.Equals("GGY"))
-                return EnumCountry.GGY;
+                return EnumCountry.Guernsey;
 
             if (value.Equals("GIN"))
-                return EnumCountry.GIN;
+                return EnumCountry.Guinea;
 
             if (value.Equals("GNB"))
-                return EnumCountry.GNB;
+                return EnumCountry.GuineaBissau;
 
             if (value.Equals("GUY"))
-                return EnumCountry.GUY;
+                return EnumCountry.Guyana;
 
             if (value.Equals("HTI"))
-                return EnumCountry.HTI;
+                return EnumCountry.Haiti;
 
             if (value.Equals("HMD"))
-                return EnumCountry.HMD;
+                return EnumCountry.HeardIslandAndMcdonaldIslands;
 
             if (value.Equals("VAT"))
-                return EnumCountry.VAT;
+                return EnumCountry.HolySeeVaticanCityState;
 
             if (value.Equals("HND"))
-                return EnumCountry.HND;
+                return EnumCountry.Honduras;
 
             if (value.Equals("HKG"))
-                return EnumCountry.HKG;
+                return EnumCountry.HongKongCn;
 
             if (value.Equals("HUN"))
-                return EnumCountry.HUN;
+                return EnumCountry.Hungary;
 
             if (value.Equals("ISL"))
-                return EnumCountry.ISL;
+                return EnumCountry.Iceland;
 
             if (value.Equals("IND"))
-                return EnumCountry.IND;
+                return EnumCountry.India;
 
             if (value.Equals("IDN"))
-                return EnumCountry.IDN;
+                return EnumCountry.Indonesia;
 
             if (value.Equals("IRN"))
-                return EnumCountry.IRN;
+                return EnumCountry.Iran;
 
             if (value.Equals("IRQ"))
-                return EnumCountry.IRQ;
+                return EnumCountry.Iraq;
 
             if (value.Equals("IRL"))
-                return EnumCountry.IRL;
+                return EnumCountry.Ireland;
 
             if (value.Equals("IMN"))
-                return EnumCountry.IMN;
+                return EnumCountry.IsleOfMan;
 
             if (value.Equals("ISR"))
-                return EnumCountry.ISR;
+                return EnumCountry.Israel;
 
             if (value.Equals("ITA"))
-                return EnumCountry.ITA;
+                return EnumCountry.Italy;
 
             if (value.Equals("JAM"))
-                return EnumCountry.JAM;
+                return EnumCountry.Jamaica;
 
             if (value.Equals("JPN"))
-                return EnumCountry.JPN;
+                return EnumCountry.Japan;
 
             if (value.Equals("JEY"))
-                return EnumCountry.JEY;
+                return EnumCountry.Jersey;
 
             if (value.Equals("JOR"))
-                return EnumCountry.JOR;
+                return EnumCountry.Jordan;
 
             if (value.Equals("KAZ"))
-                return EnumCountry.KAZ;
+                return EnumCountry.Kazakhstan;
 
             if (value.Equals("KEN"))
-                return EnumCountry.KEN;
+                return EnumCountry.Kenya;
 
             if (value.Equals("KIR"))
-                return EnumCountry.KIR;
+                return EnumCountry.Kiribati;
 
             if (value.Equals("XKX"))
-                return EnumCountry.XKX;
+                return EnumCountry.Kosovo;
 
             if (value.Equals("KWT"))
-                return EnumCountry.KWT;
+                return EnumCountry.Kuwait;
 
             if (value.Equals("KGZ"))
-                return EnumCountry.KGZ;
+                return EnumCountry.Kyrgyzstan;
 
             if (value.Equals("LAO"))
-                return EnumCountry.LAO;
+                return EnumCountry.LaoPdr;
 
             if (value.Equals("LVA"))
-                return EnumCountry.LVA;
+                return EnumCountry.Latvia;
 
             if (value.Equals("LBN"))
-                return EnumCountry.LBN;
+                return EnumCountry.Lebanon;
 
             if (value.Equals("LSO"))
-                return EnumCountry.LSO;
+                return EnumCountry.Lesotho;
 
             if (value.Equals("LBR"))
-                return EnumCountry.LBR;
+                return EnumCountry.Liberia;
 
             if (value.Equals("LBY"))
-                return EnumCountry.LBY;
+                return EnumCountry.Libya;
 
             if (value.Equals("LIE"))
-                return EnumCountry.LIE;
+                return EnumCountry.Liechtenstein;
 
             if (value.Equals("LTU"))
-                return EnumCountry.LTU;
+                return EnumCountry.Lithuania;
 
             if (value.Equals("LUX"))
-                return EnumCountry.LUX;
+                return EnumCountry.Luxembourg;
 
             if (value.Equals("MAC"))
-                return EnumCountry.MAC;
+                return EnumCountry.MacaoCn;
 
             if (value.Equals("MKD"))
-                return EnumCountry.MKD;
+                return EnumCountry.Macedonia;
 
             if (value.Equals("MDG"))
-                return EnumCountry.MDG;
+                return EnumCountry.Madagascar;
 
             if (value.Equals("MWI"))
-                return EnumCountry.MWI;
+                return EnumCountry.Malawi;
 
             if (value.Equals("MYS"))
-                return EnumCountry.MYS;
+                return EnumCountry.Malaysia;
 
             if (value.Equals("MDV"))
-                return EnumCountry.MDV;
+                return EnumCountry.Maldives;
 
             if (value.Equals("MLI"))
-                return EnumCountry.MLI;
+                return EnumCountry.Mali;
 
             if (value.Equals("MLT"))
-                return EnumCountry.MLT;
+                return EnumCountry.Malta;
 
             if (value.Equals("MHL"))
-                return EnumCountry.MHL;
+                return EnumCountry.MarshallIslands;
 
             if (value.Equals("MTQ"))
-                return EnumCountry.MTQ;
+                return EnumCountry.Martinique;
 
             if (value.Equals("MRT"))
-                return EnumCountry.MRT;
+                return EnumCountry.Mauritania;
 
             if (value.Equals("MUS"))
-                return EnumCountry.MUS;
+                return EnumCountry.Mauritius;
 
             if (value.Equals("MYT"))
-                return EnumCountry.MYT;
+                return EnumCountry.Mayotte;
 
             if (value.Equals("MEX"))
-                return EnumCountry.MEX;
+                return EnumCountry.Mexico;
 
             if (value.Equals("MDA"))
-                return EnumCountry.MDA;
+                return EnumCountry.Moldova;
 
             if (value.Equals("MCO"))
-                return EnumCountry.MCO;
+                return EnumCountry.Monaco;
 
             if (value.Equals("MNG"))
-                return EnumCountry.MNG;
+                return EnumCountry.Mongolia;
 
             if (value.Equals("MNE"))
-                return EnumCountry.MNE;
+                return EnumCountry.Montenegro;
 
             if (value.Equals("MSR"))
-                return EnumCountry.MSR;
+                return EnumCountry.Montserrat;
 
             if (value.Equals("MAR"))
-                return EnumCountry.MAR;
+                return EnumCountry.Morocco;
 
             if (value.Equals("MOZ"))
-                return EnumCountry.MOZ;
+                return EnumCountry.Mozambique;
 
             if (value.Equals("MMR"))
-                return EnumCountry.MMR;
+                return EnumCountry.Myanmar;
 
             if (value.Equals("NAM"))
-                return EnumCountry.NAM;
+                return EnumCountry.Namibia;
 
             if (value.Equals("NRU"))
-                return EnumCountry.NRU;
+                return EnumCountry.Nauru;
 
             if (value.Equals("NPL"))
-                return EnumCountry.NPL;
+                return EnumCountry.Nepal;
 
             if (value.Equals("NLD"))
-                return EnumCountry.NLD;
+                return EnumCountry.Netherlands;
 
             if (value.Equals("ANT"))
-                return EnumCountry.ANT;
+                return EnumCountry.NetherlandsAntilles;
 
             if (value.Equals("NCL"))
-                return EnumCountry.NCL;
+                return EnumCountry.NewCaledonia;
 
             if (value.Equals("NZL"))
-                return EnumCountry.NZL;
+                return EnumCountry.NewZealand;
 
             if (value.Equals("NIC"))
-                return EnumCountry.NIC;
+                return EnumCountry.Nicaragua;
 
             if (value.Equals("NER"))
-                return EnumCountry.NER;
+                return EnumCountry.Niger;
 
             if (value.Equals("NGA"))
-                return EnumCountry.NGA;
+                return EnumCountry.Nigeria;
 
             if (value.Equals("NIU"))
-                return EnumCountry.NIU;
+                return EnumCountry.Niue;
 
             if (value.Equals("NFK"))
-                return EnumCountry.NFK;
+                return EnumCountry.NorfolkIsland;
 
             if (value.Equals("PRK"))
-                return EnumCountry.PRK;
+                return EnumCountry.NorthKorea;
 
             if (value.Equals("MNP"))
-                return EnumCountry.MNP;
+                return EnumCountry.NorthernMarianaIslands;
 
             if (value.Equals("NOR"))
-                return EnumCountry.NOR;
+                return EnumCountry.Norway;
 
             if (value.Equals("OMN"))
-                return EnumCountry.OMN;
+                return EnumCountry.Oman;
 
             if (value.Equals("PAK"))
-                return EnumCountry.PAK;
+                return EnumCountry.Pakistan;
 
             if (value.Equals("PLW"))
-                return EnumCountry.PLW;
+                return EnumCountry.Palau;
 
             if (value.Equals("PSE"))
-                return EnumCountry.PSE;
+                return EnumCountry.PalestinianTerritoryOccupied;
 
             if (value.Equals("PAN"))
-                return EnumCountry.PAN;
+                return EnumCountry.Panama;
 
             if (value.Equals("PNG"))
-                return EnumCountry.PNG;
+                return EnumCountry.PapuaNewGuinea;
 
             if (value.Equals("PRY"))
-                return EnumCountry.PRY;
+                return EnumCountry.Paraguay;
 
             if (value.Equals("PER"))
-                return EnumCountry.PER;
+                return EnumCountry.Peru;
 
             if (value.Equals("PHL"))
-                return EnumCountry.PHL;
+                return EnumCountry.Philippines;
 
             if (value.Equals("PCN"))
-                return EnumCountry.PCN;
+                return EnumCountry.PitcairnIsland;
 
             if (value.Equals("POL"))
-                return EnumCountry.POL;
+                return EnumCountry.Poland;
 
             if (value.Equals("PRT"))
-                return EnumCountry.PRT;
+                return EnumCountry.Portugal;
 
             if (value.Equals("PRI"))
-                return EnumCountry.PRI;
+                return EnumCountry.PuertoRico;
 
             if (value.Equals("QAT"))
-                return EnumCountry.QAT;
+                return EnumCountry.Qatar;
 
             if (value.Equals("REU"))
-                return EnumCountry.REU;
+                return EnumCountry.RUnion;
 
             if (value.Equals("ROU"))
-                return EnumCountry.ROU;
+                return EnumCountry.Romania;
 
             if (value.Equals("RUS"))
-                return EnumCountry.RUS;
+                return EnumCountry.RussianFederation;
 
             if (value.Equals("RWA"))
-                return EnumCountry.RWA;
+                return EnumCountry.Rwanda;
 
             if (value.Equals("SHN"))
-                return EnumCountry.SHN;
+                return EnumCountry.SaintHelena;
 
             if (value.Equals("KNA"))
-                return EnumCountry.KNA;
+                return EnumCountry.SaintKittsAndNevis;
 
             if (value.Equals("LCA"))
-                return EnumCountry.LCA;
+                return EnumCountry.SaintLucia;
 
             if (value.Equals("SPM"))
-                return EnumCountry.SPM;
+                return EnumCountry.SaintPierreAndMiquelon;
 
             if (value.Equals("VCT"))
-                return EnumCountry.VCT;
+                return EnumCountry.SaintVincentAndGrenadines;
 
             if (value.Equals("BLM"))
-                return EnumCountry.BLM;
+                return EnumCountry.SaintBarthLemy;
 
             if (value.Equals("MAF"))
-                return EnumCountry.MAF;
+                return EnumCountry.SaintMartinFrenchPart;
 
             if (value.Equals("WSM"))
-                return EnumCountry.WSM;
+                return EnumCountry.Samoa;
 
             if (value.Equals("SMR"))
-                return EnumCountry.SMR;
+                return EnumCountry.SanMarino;
 
             if (value.Equals("STP"))
-                return EnumCountry.STP;
+                return EnumCountry.SaoTomeAndPrincipe;
 
             if (value.Equals("SAU"))
-                return EnumCountry.SAU;
+                return EnumCountry.SaudiArabia;
 
             if (value.Equals("SEN"))
-                return EnumCountry.SEN;
+                return EnumCountry.Senegal;
 
             if (value.Equals("SRB"))
-                return EnumCountry.SRB;
+                return EnumCountry.Serbia;
 
             if (value.Equals("SYC"))
-                return EnumCountry.SYC;
+                return EnumCountry.Seychelles;
 
             if (value.Equals("SLE"))
-                return EnumCountry.SLE;
+                return EnumCountry.SierraLeone;
 
             if (value.Equals("SGP"))
-                return EnumCountry.SGP;
+                return EnumCountry.Singapore;
 
             if (value.Equals("SVK"))
-                return EnumCountry.SVK;
+                return EnumCountry.Slovakia;
 
             if (value.Equals("SVN"))
-                return EnumCountry.SVN;
+                return EnumCountry.Slovenia;
 
             if (value.Equals("SLB"))
-                return EnumCountry.SLB;
+                return EnumCountry.SolomonIslands;
 
             if (value.Equals("SOM"))
-                return EnumCountry.SOM;
+                return EnumCountry.Somalia;
 
             if (value.Equals("SOL"))
-                return EnumCountry.SOL;
+                return EnumCountry.Somaliland;
 
             if (value.Equals("ZAF"))
-                return EnumCountry.ZAF;
+                return EnumCountry.SouthAfrica;
 
             if (value.Equals("SGS"))
-                return EnumCountry.SGS;
+                return EnumCountry.SouthGeorgiaAndTheSouthSandwichIslands;
 
             if (value.Equals("KOR"))
-                return EnumCountry.KOR;
+                return EnumCountry.SouthKorea;
 
             if (value.Equals("SSD"))
-                return EnumCountry.SSD;
+                return EnumCountry.SouthSudan;
 
             if (value.Equals("ESP"))
-                return EnumCountry.ESP;
+                return EnumCountry.Spain;
 
             if (value.Equals("LKA"))
-                return EnumCountry.LKA;
+                return EnumCountry.SriLanka;
 
             if (value.Equals("SDN"))
-                return EnumCountry.SDN;
+                return EnumCountry.Sudan;
 
             if (value.Equals("SUR"))
-                return EnumCountry.SUR;
+                return EnumCountry.Suriname;
 
             if (value.Equals("SJM"))
-                return EnumCountry.SJM;
+                return EnumCountry.SvalbardAndJanMayenIslands;
 
             if (value.Equals("SWE"))
-                return EnumCountry.SWE;
+                return EnumCountry.Sweden;
 
             if (value.Equals("CHE"))
-                return EnumCountry.CHE;
+                return EnumCountry.Switzerland;
 
             if (value.Equals("SYR"))
-                return EnumCountry.SYR;
+                return EnumCountry.SyrianArabRepublicSyria;
 
             if (value.Equals("TWN"))
-                return EnumCountry.TWN;
+                return EnumCountry.TaiwanCn;
 
             if (value.Equals("TJK"))
-                return EnumCountry.TJK;
+                return EnumCountry.Tajikistan;
 
             if (value.Equals("TZA"))
-                return EnumCountry.TZA;
+                return EnumCountry.Tanzania;
 
             if (value.Equals("THA"))
-                return EnumCountry.THA;
+                return EnumCountry.Thailand;
 
             if (value.Equals("TLS"))
-                return EnumCountry.TLS;
+                return EnumCountry.TimorLeste;
 
             if (value.Equals("TGO"))
-                return EnumCountry.TGO;
+                return EnumCountry.Togo;
 
             if (value.Equals("TKL"))
-                return EnumCountry.TKL;
+                return EnumCountry.Tokelau;
 
             if (value.Equals("TON"))
-                return EnumCountry.TON;
+                return EnumCountry.Tonga;
 
             if (value.Equals("TTO"))
-                return EnumCountry.TTO;
+                return EnumCountry.TrinidadAndTobago;
 
             if (value.Equals("TUN"))
-                return EnumCountry.TUN;
+                return EnumCountry.Tunisia;
 
             if (value.Equals("TUR"))
-                return EnumCountry.TUR;
+                return EnumCountry.Turkey;
 
             if (value.Equals("TKM"))
-                return EnumCountry.TKM;
+                return EnumCountry.Turkmenistan;
 
             if (value.Equals("TCA"))
-                return EnumCountry.TCA;
+                return EnumCountry.TurksAndCaicosIslands;
 
             if (value.Equals("TUV"))
-                return EnumCountry.TUV;
+                return EnumCountry.Tuvalu;
 
             if (value.Equals("UGA"))
-                return EnumCountry.UGA;
+                return EnumCountry.Uganda;
 
             if (value.Equals("UKR"))
-                return EnumCountry.UKR;
+                return EnumCountry.Ukraine;
 
             if (value.Equals("ARE"))
-                return EnumCountry.ARE;
+                return EnumCountry.UnitedArabEmirates;
 
             if (value.Equals("GBR"))
-                return EnumCountry.GBR;
+                return EnumCountry.UnitedKingdom;
 
             if (value.Equals("UMI"))
-                return EnumCountry.UMI;
+                return EnumCountry.UnitedStatesMinorOutlyingIslands;
 
             if (value.Equals("USA"))
-                return EnumCountry.USA;
+                return EnumCountry.UnitedStatesOfAmerica;
 
             if (value.Equals("URY"))
-                return EnumCountry.URY;
+                return EnumCountry.Uruguay;
 
             if (value.Equals("UZB"))
-                return EnumCountry.UZB;
+                return EnumCountry.Uzbekistan;
 
             if (value.Equals("VUT"))
-                return EnumCountry.VUT;
+                return EnumCountry.Vanuatu;
 
             if (value.Equals("VEN"))
-                return EnumCountry.VEN;
+                return EnumCountry.Venezuela;
 
             if (value.Equals("VNM"))
-                return EnumCountry.VNM;
+                return EnumCountry.Vietnam;
 
             if (value.Equals("VIR"))
-                return EnumCountry.VIR;
+                return EnumCountry.VirginIslandsUs;
 
             if (value.Equals("WLF"))
-                return EnumCountry.WLF;
+                return EnumCountry.WallisAndFutunaIslands;
 
             if (value.Equals("ESH"))
-                return EnumCountry.ESH;
+                return EnumCountry.WesternSahara;
 
             if (value.Equals("YEM"))
-                return EnumCountry.YEM;
+                return EnumCountry.Yemen;
 
             if (value.Equals("ZMB"))
-                return EnumCountry.ZMB;
+                return EnumCountry.Zambia;
 
             if (value.Equals("ZWE"))
-                return EnumCountry.ZWE;
+                return EnumCountry.Zimbabwe;
 
             return null;
         }
