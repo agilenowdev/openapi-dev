@@ -1116,7 +1116,6 @@
         ],
         "type": "string",
         "description": "The enum of CustomerType.",
-        "example": "[{\"value\":\"Internal\",\"description\":\"Internal\"},{\"value\":\"External\",\"description\":\"External\"}]",
         "x-enumDescriptions": {
           "Internal": "Internal",
           "External": "External"
@@ -1124,6 +1123,7 @@
       },
       "EnumCustomerNumber": {
         "enum": [
+          0,
           1,
           2,
           4
@@ -1134,6 +1134,7 @@
         "default": 0,
         "example": 0,
         "x-enumDescriptions": {
+          "0": "Null",
           "1": "Internal",
           "2": "External",
           "4": "Private"
