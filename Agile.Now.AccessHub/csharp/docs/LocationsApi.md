@@ -97,11 +97,11 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **locationInsertData** | [**LocationInsertData**](LocationInsertData.md) | &#x60;Location&#x60; information to insert.  The input parameter must be used in the &#x60;LocationInsertData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
+| **locationInsertData** | [**LocationInsertData**](models/LocationInsertData.md) | &#x60;Location&#x60; information to insert.  The input parameter must be used in the &#x60;LocationInsertData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
 
 ### Return type
 
-[**Location**](Location.md)
+[**Location**](models/Location.md)
 
 ### Authorization
 
@@ -208,7 +208,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**Location**](Location.md)
+[**Location**](models/Location.md)
 
 ### Authorization
 
@@ -319,7 +319,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**User**](User.md)
+[**User**](models/User.md)
 
 ### Authorization
 
@@ -424,7 +424,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**Location**](Location.md)
+[**Location**](models/Location.md)
 
 ### Authorization
 
@@ -543,7 +543,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**Users**](Users.md)
+[**Users**](models/Users.md)
 
 ### Authorization
 
@@ -658,7 +658,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**Locations**](Locations.md)
+[**Locations**](models/Locations.md)
 
 ### Authorization
 
@@ -768,13 +768,13 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **id** | **string** | The identifier of the Location record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
-| **usersData** | [**UsersData**](UsersData.md) | The list of User information to insert or update.  The input parameter must be used in the &#x60;Extra&#x60; record array structure inside the &#x60;Name&#x60; and &#x60;FieldName&#x60; parameters in the foreign key fields. |  |
+| **usersData** | [**UsersData**](models/UsersData.md) | The list of User information to insert or update.  The input parameter must be used in the &#x60;Extra&#x60; record array structure inside the &#x60;Name&#x60; and &#x60;FieldName&#x60; parameters in the foreign key fields. |  |
 | **name** | **string** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Id &#x60;&#x60;&#x60; | [optional]  |
 | **deleteNotExists** | **string** | The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. | [optional] [default to &quot;false&quot;] |
 
 ### Return type
 
-[**User**](User.md)
+[**User**](models/User.md)
 
 ### Authorization
 
@@ -880,12 +880,12 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **id** | **string** | The identifier of the Location record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
-| **locationUpdateData** | [**LocationUpdateData**](LocationUpdateData.md) | Location information to update.  The input parameter must be used in the &#x60;LocationUpdateData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
+| **locationUpdateData** | [**LocationUpdateData**](models/LocationUpdateData.md) | Location information to update.  The input parameter must be used in the &#x60;LocationUpdateData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
 | **name** | **string** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Name,ExternalId &#x60;&#x60;&#x60; | [optional]  |
 
 ### Return type
 
-[**Location**](Location.md)
+[**Location**](models/Location.md)
 
 ### Authorization
 
@@ -990,11 +990,11 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **locationData** | [**LocationData**](LocationData.md) | &#x60;Location&#x60; information to insert or update.  The input parameter must be used in the &#x60;LocationData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
+| **locationData** | [**LocationData**](models/LocationData.md) | &#x60;Location&#x60; information to insert or update.  The input parameter must be used in the &#x60;LocationData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
 
 ### Return type
 
-[**Location**](Location.md)
+[**Location**](models/Location.md)
 
 ### Authorization
 
@@ -1102,12 +1102,12 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **id** | **string** | The identifier of the Location record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
-| **userData** | [**UserData**](UserData.md) | &#x60;User&#x60; information to insert or update.  The input parameter must be used in the &#x60;UserData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
+| **userData** | [**UserData**](models/UserData.md) | &#x60;User&#x60; information to insert or update.  The input parameter must be used in the &#x60;UserData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
 | **name** | **string** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Id &#x60;&#x60;&#x60; | [optional]  |
 
 ### Return type
 
-[**User**](User.md)
+[**User**](models/User.md)
 
 ### Authorization
 

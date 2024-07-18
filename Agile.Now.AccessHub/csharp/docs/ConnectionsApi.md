@@ -97,11 +97,11 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **connectionData** | [**ConnectionData**](ConnectionData.md) | &#x60;Connection&#x60; information to insert.  The input parameter must be used in the &#x60;ConnectionData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
+| **connectionData** | [**ConnectionData**](models/ConnectionData.md) | &#x60;Connection&#x60; information to insert.  The input parameter must be used in the &#x60;ConnectionData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
 
 ### Return type
 
-[**Connection**](Connection.md)
+[**Connection**](models/Connection.md)
 
 ### Authorization
 
@@ -208,7 +208,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**Connection**](Connection.md)
+[**Connection**](models/Connection.md)
 
 ### Authorization
 
@@ -319,7 +319,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**Config**](Config.md)
+[**Config**](models/Config.md)
 
 ### Authorization
 
@@ -424,7 +424,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**Connection**](Connection.md)
+[**Connection**](models/Connection.md)
 
 ### Authorization
 
@@ -543,7 +543,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**Configs**](Configs.md)
+[**Configs**](models/Configs.md)
 
 ### Authorization
 
@@ -658,7 +658,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**Connections**](Connections.md)
+[**Connections**](models/Connections.md)
 
 ### Authorization
 
@@ -768,13 +768,13 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **id** | **string** | The identifier of the Connection record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
-| **configsData** | [**ConfigsData**](ConfigsData.md) | The list of Config information to insert or update.  The input parameter must be used in the &#x60;Extra&#x60; record array structure inside the &#x60;Name&#x60; and &#x60;FieldName&#x60; parameters in the foreign key fields. |  |
+| **configsData** | [**ConfigsData**](models/ConfigsData.md) | The list of Config information to insert or update.  The input parameter must be used in the &#x60;Extra&#x60; record array structure inside the &#x60;Name&#x60; and &#x60;FieldName&#x60; parameters in the foreign key fields. |  |
 | **name** | **string** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Id &#x60;&#x60;&#x60; | [optional]  |
 | **deleteNotExists** | **string** | The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. | [optional] [default to &quot;false&quot;] |
 
 ### Return type
 
-[**Config**](Config.md)
+[**Config**](models/Config.md)
 
 ### Authorization
 
@@ -880,12 +880,12 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **id** | **string** | The identifier of the Connection record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
-| **connectionData** | [**ConnectionData**](ConnectionData.md) | Connection information to update.  The input parameter must be used in the &#x60;ConnectionData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
+| **connectionData** | [**ConnectionData**](models/ConnectionData.md) | Connection information to update.  The input parameter must be used in the &#x60;ConnectionData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
 | **name** | **string** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Name &#x60;&#x60;&#x60; | [optional]  |
 
 ### Return type
 
-[**Connection**](Connection.md)
+[**Connection**](models/Connection.md)
 
 ### Authorization
 
@@ -990,11 +990,11 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **connectionData** | [**ConnectionData**](ConnectionData.md) | &#x60;Connection&#x60; information to insert or update.  The input parameter must be used in the &#x60;ConnectionData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
+| **connectionData** | [**ConnectionData**](models/ConnectionData.md) | &#x60;Connection&#x60; information to insert or update.  The input parameter must be used in the &#x60;ConnectionData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
 
 ### Return type
 
-[**Connection**](Connection.md)
+[**Connection**](models/Connection.md)
 
 ### Authorization
 
@@ -1102,12 +1102,12 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **id** | **string** | The identifier of the Connection record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
-| **configData** | [**ConfigData**](ConfigData.md) | &#x60;Config&#x60; information to insert or update.  The input parameter must be used in the &#x60;ConfigData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
+| **configData** | [**ConfigData**](models/ConfigData.md) | &#x60;Config&#x60; information to insert or update.  The input parameter must be used in the &#x60;ConfigData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
 | **name** | **string** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Id &#x60;&#x60;&#x60; | [optional]  |
 
 ### Return type
 
-[**Config**](Config.md)
+[**Config**](models/Config.md)
 
 ### Authorization
 

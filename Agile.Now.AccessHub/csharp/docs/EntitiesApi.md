@@ -89,7 +89,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**Entity**](Entity.md)
+[**Entity**](models/Entity.md)
 
 ### Authorization
 
@@ -204,7 +204,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**Entities**](Entities.md)
+[**Entities**](models/Entities.md)
 
 ### Authorization
 

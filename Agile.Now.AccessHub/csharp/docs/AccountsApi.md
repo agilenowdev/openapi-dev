@@ -99,11 +99,11 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **accountData** | [**AccountData**](AccountData.md) | &#x60;Account&#x60; information to insert.  The input parameter must be used in the &#x60;AccountData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
+| **accountData** | [**AccountData**](models/AccountData.md) | &#x60;Account&#x60; information to insert.  The input parameter must be used in the &#x60;AccountData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
 
 ### Return type
 
-[**Account**](Account.md)
+[**Account**](models/Account.md)
 
 ### Authorization
 
@@ -210,7 +210,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**Account**](Account.md)
+[**Account**](models/Account.md)
 
 ### Authorization
 
@@ -321,7 +321,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**Picture**](Picture.md)
+[**Picture**](models/Picture.md)
 
 ### Authorization
 
@@ -432,7 +432,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**Tenant**](Tenant.md)
+[**Tenant**](models/Tenant.md)
 
 ### Authorization
 
@@ -537,7 +537,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**Account**](Account.md)
+[**Account**](models/Account.md)
 
 ### Authorization
 
@@ -656,7 +656,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**Pictures**](Pictures.md)
+[**Pictures**](models/Pictures.md)
 
 ### Authorization
 
@@ -775,7 +775,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**Tenants**](Tenants.md)
+[**Tenants**](models/Tenants.md)
 
 ### Authorization
 
@@ -890,7 +890,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**Accounts**](Accounts.md)
+[**Accounts**](models/Accounts.md)
 
 ### Authorization
 
@@ -996,12 +996,12 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **id** | **string** | The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
-| **accountData** | [**AccountData**](AccountData.md) | Account information to update.  The input parameter must be used in the &#x60;AccountData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
+| **accountData** | [**AccountData**](models/AccountData.md) | Account information to update.  The input parameter must be used in the &#x60;AccountData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
 | **name** | **string** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Username, ExternalId &#x60;&#x60;&#x60; | [optional]  |
 
 ### Return type
 
-[**Account**](Account.md)
+[**Account**](models/Account.md)
 
 ### Authorization
 
@@ -1106,11 +1106,11 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **accountData** | [**AccountData**](AccountData.md) | &#x60;Account&#x60; information to insert or update.  The input parameter must be used in the &#x60;AccountData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
+| **accountData** | [**AccountData**](models/AccountData.md) | &#x60;Account&#x60; information to insert or update.  The input parameter must be used in the &#x60;AccountData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
 
 ### Return type
 
-[**Account**](Account.md)
+[**Account**](models/Account.md)
 
 ### Authorization
 
@@ -1218,12 +1218,12 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **id** | **string** | The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
-| **pictureData** | [**PictureData**](PictureData.md) | &#x60;Picture&#x60; information to insert or update.  The input parameter must be used in the &#x60;PictureData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
+| **pictureData** | [**PictureData**](models/PictureData.md) | &#x60;Picture&#x60; information to insert or update.  The input parameter must be used in the &#x60;PictureData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
 | **name** | **string** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Id &#x60;&#x60;&#x60; | [optional]  |
 
 ### Return type
 
-[**Picture**](Picture.md)
+[**Picture**](models/Picture.md)
 
 ### Authorization
 
@@ -1331,12 +1331,12 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **id** | **string** | The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
-| **tenantData** | [**TenantData**](TenantData.md) | &#x60;Tenant&#x60; information to insert or update.  The input parameter must be used in the &#x60;TenantData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
+| **tenantData** | [**TenantData**](models/TenantData.md) | &#x60;Tenant&#x60; information to insert or update.  The input parameter must be used in the &#x60;TenantData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
 | **name** | **string** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Id &#x60;&#x60;&#x60; | [optional]  |
 
 ### Return type
 
-[**Tenant**](Tenant.md)
+[**Tenant**](models/Tenant.md)
 
 ### Authorization
 
