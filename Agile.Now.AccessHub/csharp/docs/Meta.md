@@ -9,6 +9,5 @@ Name | Type | Description | Notes
 **CurrentPage** | **int** | This field specifies the current page of results being returned. It&#39;s often used in conjunction with &#x60;PageSize&#x60; to manage pagination by indicating which subset of the total data is currently being retrieved. | [default to 1]
 **PageSize** | **int** | The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed. | [default to 50]
 **Type** | **string** | The type of the record | 
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

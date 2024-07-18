@@ -13,6 +13,5 @@ Name | Type | Description | Notes
 **OwnerId** | [**FieldType**](FieldType.md) |  | [optional] 
 **CountryId** | **EnumCountry** |  | [optional] 
 **IsActive** | **bool** | Defines if the department is active and can be used | [default to false]
-
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
