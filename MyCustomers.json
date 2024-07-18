@@ -1116,10 +1116,20 @@
         ],
         "type": "string",
         "description": "The enum of CustomerType.",
-        "x-enumDescriptions": {
-          "Internal": "Internal",
-          "External": "External"
-        }
+        "x-enums": [
+          {
+            "value": "Internal",
+            "name": "Internal",
+            "description": "Internal",
+            "isString": true
+          },
+          {
+            "value": "External",
+            "name": "External",
+            "description": "External",
+            "isString": true
+          }
+        ]
       },
       "EnumCustomerNumber": {
         "enum": [
@@ -1133,12 +1143,32 @@
         "format": "int64",
         "default": 0,
         "example": 0,
-        "x-enumDescriptions": {
-          "0": "Null",
-          "1": "Internal",
-          "2": "External",
-          "4": "Private"
-        }
+        "x-enums": [
+          {
+            "value": 0,
+            "name": "Null",
+            "description": "Null",
+            "isString": false
+          },
+          {
+            "value": 1,
+            "name": "Internal",
+            "description": "Internal",
+            "isString": false
+          },
+          {
+            "value": 2,
+            "name": "External",
+            "description": "External",
+            "isString": false
+          },
+          {
+            "value": 4,
+            "name": "Private",
+            "description": "Private",
+            "isString": false
+          }
+        ]
       },
       "MyCustomerData": {
         "required": [
