@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.192"
+    "version": "3.0.193"
   },
   "servers": [
     {
@@ -1124,7 +1124,8 @@
       "EnumCustomerNumber": {
         "enum": [
           1,
-          2
+          2,
+          4
         ],
         "type": "integer",
         "description": "The enum of CustomerNumber.",
@@ -1133,7 +1134,8 @@
         "example": 0,
         "x-enumDescriptions": {
           "1": "Internal",
-          "2": "External"
+          "2": "External",
+          "4": "Private"
         }
       },
       "MyCustomerData": {
