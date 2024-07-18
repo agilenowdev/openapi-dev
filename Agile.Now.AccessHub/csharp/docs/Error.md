@@ -11,5 +11,6 @@ Name | Type | Description | Notes
 **StatusCode** | **int** | The HTTP response code | 
 **Instance** | **string** | URI that identifies the specific occurrence of the error | [optional] [default to ""]
 **RequestKey** | **string** | Provides a request key that identifies the current request. | [optional] [default to ""]
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

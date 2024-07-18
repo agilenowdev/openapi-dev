@@ -30,5 +30,6 @@ Name | Value | Description | Notes
 **TurkishLira** | **TRY** | Turkish Lira |
 **UkrainianHryvnia** | **UAH** | Ukrainian hryvnia |
 **UnitedStatesDollar** | **USD** | United States Dollar |
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
