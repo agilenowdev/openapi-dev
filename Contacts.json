@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.50"
+    "version": "3.0.51"
   },
   "servers": [
     {
@@ -1003,7 +1003,6 @@
       },
       "ContactData": {
         "required": [
-          "Id",
           "Name",
           "Is_Active"
         ],
@@ -1011,18 +1010,18 @@
         "properties": {
           "Id": {
             "type": "integer",
-            "description": "The guid to identify the contact",
+            "description": "The guid to identify the contact.",
             "format": "int64",
             "default": 0,
             "example": 0
           },
           "ExternalId": {
             "type": "string",
-            "description": "The external identifier of the contact"
+            "description": "The external identifier of the contact. The value must be unique in the system and you cannot add multiple values."
           },
           "Name": {
             "type": "string",
-            "description": "The name of the contact"
+            "description": "The name of the contact. The value must be unique in the system and you cannot add multiple values."
           },
           "ParentContactId": {
             "$ref": "#/components/schemas/FieldType"
@@ -1032,19 +1031,19 @@
           },
           "Is_Active": {
             "type": "boolean",
-            "description": "Defines if the contact is active and can be used",
+            "description": "Defines if the contact is active and can be used.",
             "default": false,
             "example": false
           },
           "Is_Deleted": {
             "type": "boolean",
-            "description": "Defines if the contact is deleted and cannot be used",
+            "description": "Defines if the contact is deleted and cannot be used.",
             "default": false,
             "example": false
           },
           "ModifiedOn": {
             "type": "string",
-            "description": "The date the record was updated",
+            "description": "The date the record was updated.",
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
@@ -1057,7 +1056,7 @@
           },
           "CreatedOn": {
             "type": "string",
-            "description": "The date the record was created",
+            "description": "The date the record was created.",
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
@@ -1085,7 +1084,6 @@
       },
       "ContactText": {
         "required": [
-          "Id",
           "Name",
           "Is_Active"
         ],
@@ -1093,57 +1091,57 @@
         "properties": {
           "Id": {
             "type": "integer",
-            "description": "The guid to identify the contact",
+            "description": "The guid to identify the contact.",
             "format": "int64",
             "default": 0,
             "example": 0
           },
           "ExternalId": {
             "type": "string",
-            "description": "The external identifier of the contact"
+            "description": "The external identifier of the contact. The value must be unique in the system and you cannot add multiple values."
           },
           "Name": {
             "type": "string",
-            "description": "The name of the contact"
+            "description": "The name of the contact. The value must be unique in the system and you cannot add multiple values."
           },
           "ParentContactId": {
             "type": "string",
-            "description": "The identifier of the parent contact"
+            "description": "The identifier of the parent contact."
           },
           "OwnerId": {
             "type": "string",
-            "description": "The identifier of the user who own the contact"
+            "description": "The identifier of the user who own the contact."
           },
           "Is_Active": {
             "type": "boolean",
-            "description": "Defines if the contact is active and can be used",
+            "description": "Defines if the contact is active and can be used.",
             "default": false,
             "example": false
           },
           "Is_Deleted": {
             "type": "boolean",
-            "description": "Defines if the contact is deleted and cannot be used",
+            "description": "Defines if the contact is deleted and cannot be used.",
             "default": false,
             "example": false
           },
           "ModifiedOn": {
             "type": "string",
-            "description": "The date the record was updated",
+            "description": "The date the record was updated.",
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
           },
           "ModifiedBy": {
             "type": "string",
-            "description": "The Identifier of the user who updated the record"
+            "description": "The Identifier of the user who updated the record."
           },
           "CreatedBy": {
             "type": "string",
-            "description": "The Identifier of the user who created the record"
+            "description": "The Identifier of the user who created the record."
           },
           "CreatedOn": {
             "type": "string",
-            "description": "The date the record was created",
+            "description": "The date the record was created.",
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
@@ -1271,14 +1269,11 @@
         "description": "The list of `User` records"
       },
       "UserData": {
-        "required": [
-          "Id"
-        ],
         "type": "object",
         "properties": {
           "Id": {
             "type": "integer",
-            "description": "The guid to identify the contact user",
+            "description": "The guid to identify the contact user.",
             "format": "int64",
             "default": 0,
             "example": 0
@@ -1294,7 +1289,7 @@
           },
           "CreatedOn": {
             "type": "string",
-            "description": "The date the record was created",
+            "description": "The date the record was created.",
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
@@ -1303,14 +1298,11 @@
         "description": "The record of User information."
       },
       "UserText": {
-        "required": [
-          "Id"
-        ],
         "type": "object",
         "properties": {
           "Id": {
             "type": "integer",
-            "description": "The guid to identify the contact user",
+            "description": "The guid to identify the contact user.",
             "format": "int64",
             "default": 0,
             "example": 0
@@ -1320,15 +1312,15 @@
           },
           "UserId": {
             "type": "string",
-            "description": "The identifier of the user who has link the contact"
+            "description": "The identifier of the user who has link the contact."
           },
           "CreatedBy": {
             "type": "string",
-            "description": "The Identifier of the user who created the record"
+            "description": "The Identifier of the user who created the record."
           },
           "CreatedOn": {
             "type": "string",
-            "description": "The date the record was created",
+            "description": "The date the record was created.",
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
