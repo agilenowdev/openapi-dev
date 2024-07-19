@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.194"
+    "version": "3.0.196"
   },
   "servers": [
     {
@@ -1190,11 +1190,11 @@
           },
           "SapId": {
             "type": "string",
-            "description": "This field is the SAP Id and you can use this between the two systems."
+            "description": "This field is the SAP Id and you can use this between the two systems. SapId is guid and if you set then should be unique. The value must be unique in the system and you cannot add multiple values. The pattern of the value (^([0-9A-Fa-f][-]?[0-9A-Fa-f][-]?[0-9A-Fa-f][-]?[0-9A-Fa-f][-]?[0-9A-Fa-f]{12})$). The value must be between '0 - 36'. The default of the value (Generate guid)."
           },
           "Name": {
             "type": "string",
-            "description": "The name of the customer. This is my extra description. The value must be unique in the system and you cannot add multiple values."
+            "description": "The name of the customer. This is my extra description. The value must be unique in the system and you cannot add multiple values. The value must be between '0 - 100'."
           },
           "ParentCustomerId": {
             "$ref": "#/components/schemas/FieldType"
@@ -1293,11 +1293,11 @@
           },
           "SapId": {
             "type": "string",
-            "description": "This field is the SAP Id and you can use this between the two systems."
+            "description": "This field is the SAP Id and you can use this between the two systems. SapId is guid and if you set then should be unique. The value must be unique in the system and you cannot add multiple values. The pattern of the value (^([0-9A-Fa-f][-]?[0-9A-Fa-f][-]?[0-9A-Fa-f][-]?[0-9A-Fa-f][-]?[0-9A-Fa-f]{12})$). The value must be between '0 - 36'. The default of the value (Generate guid)."
           },
           "Name": {
             "type": "string",
-            "description": "The name of the customer. This is my extra description. The value must be unique in the system and you cannot add multiple values."
+            "description": "The name of the customer. This is my extra description. The value must be unique in the system and you cannot add multiple values. The value must be between '0 - 100'."
           },
           "ParentCustomerId": {
             "type": "string",
