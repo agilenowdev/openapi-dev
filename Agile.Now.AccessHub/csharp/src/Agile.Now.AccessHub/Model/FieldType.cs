@@ -47,7 +47,7 @@ using OpenAPIDateConverter = Agile.Now.AccessHub.Client.OpenAPIDateConverter;
 namespace Agile.Now.AccessHub.Model
 {
     /// <summary>
-    /// The field object structure.
+    /// The field object structure. This structure allows users to specify any related entity field and its corresponding value. When saving data, the system automatically retrieves and assigns the primary key value from the system database table based on the provided field name and value.
     /// </summary>
     [DataContract(Name = "FieldType")]
     public partial class FieldType : IValidatableObject
@@ -60,8 +60,8 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="FieldType" /> class.
         /// </summary>
-        /// <param name="field">The name of the data field..</param>
-        /// <param name="value">The value of the data row. (required).</param>
+        /// <param name="field">The name of the data field. This can be any field name from the related database table, such as 'Email' from the User table or 'Name' from the Department table..</param>
+        /// <param name="value">The value corresponding to the specified data field. This value is used to identify the record in the related database table. For example, it could be an email address, a department name, or an external system's identifier. (required).</param>
         public FieldType(string field = default, string value = default)
         {
             // to ensure "value" is required (not null)
@@ -71,16 +71,16 @@ namespace Agile.Now.AccessHub.Model
         }
 
         /// <summary>
-        /// The name of the data field.
+        /// The name of the data field. This can be any field name from the related database table, such as 'Email' from the User table or 'Name' from the Department table.
         /// </summary>
-        /// <value>The name of the data field.</value>
+        /// <value>The name of the data field. This can be any field name from the related database table, such as &#39;Email&#39; from the User table or &#39;Name&#39; from the Department table.</value>
         [DataMember(Name = "Field", EmitDefaultValue = false)]
         public string Field { get; set; }
 
         /// <summary>
-        /// The value of the data row.
+        /// The value corresponding to the specified data field. This value is used to identify the record in the related database table. For example, it could be an email address, a department name, or an external system's identifier.
         /// </summary>
-        /// <value>The value of the data row.</value>
+        /// <value>The value corresponding to the specified data field. This value is used to identify the record in the related database table. For example, it could be an email address, a department name, or an external system&#39;s identifier.</value>
         [DataMember(Name = "Value", IsRequired = true, EmitDefaultValue = true)]
         public string Value { get; set; }
 

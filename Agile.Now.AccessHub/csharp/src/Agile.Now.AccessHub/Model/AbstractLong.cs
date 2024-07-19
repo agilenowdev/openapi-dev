@@ -47,7 +47,7 @@ using OpenAPIDateConverter = Agile.Now.AccessHub.Client.OpenAPIDateConverter;
 namespace Agile.Now.AccessHub.Model
 {
     /// <summary>
-    /// The abstract object structure
+    /// This structure represents an abstract object with a primary key of type Long. It is used to encapsulate detailed information about related entities.
     /// </summary>
     [DataContract(Name = "AbstractLong")]
     public partial class AbstractLong : IValidatableObject
@@ -60,10 +60,10 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AbstractLong" /> class.
         /// </summary>
-        /// <param name="id">The primary key of the record row. If the Id attribute is used, then it must be unique. (required) (default to 0).</param>
-        /// <param name="externalId">The external identier of the record row. If the External Id attribute is used, then it must be unique..</param>
-        /// <param name="name">The name of the record row.</param>
-        /// <param name="type">The type of the record object.</param>
+        /// <param name="id">The primary key of the record. It uniquely identifies each record within the dataset. This attribute is required and must be unique across all records. (required) (default to 0).</param>
+        /// <param name="externalId">An external identifier for the record, which can be used to link the record to external systems or datasets. This attribute is optional but should be unique if provided..</param>
+        /// <param name="name">The name of the record. This attribute provides a human-readable identifier for the record, making it easier to recognize and differentiate records in lists or other displays. This attribute is optional..</param>
+        /// <param name="type">The type of the record object. This attribute is used to classify the record into specific categories or types, helping to organize and manage different kinds of records. This attribute is optional..</param>
         public AbstractLong(long id = 0, string externalId = default, string name = default, string type = default)
         {
             Id = id;
@@ -73,33 +73,33 @@ namespace Agile.Now.AccessHub.Model
         }
 
         /// <summary>
-        /// The primary key of the record row. If the Id attribute is used, then it must be unique.
+        /// The primary key of the record. It uniquely identifies each record within the dataset. This attribute is required and must be unique across all records.
         /// </summary>
-        /// <value>The primary key of the record row. If the Id attribute is used, then it must be unique.</value>
+        /// <value>The primary key of the record. It uniquely identifies each record within the dataset. This attribute is required and must be unique across all records.</value>
         /// <example>1234567891234567</example>
         [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
         public long Id { get; set; }
 
         /// <summary>
-        /// The external identier of the record row. If the External Id attribute is used, then it must be unique.
+        /// An external identifier for the record, which can be used to link the record to external systems or datasets. This attribute is optional but should be unique if provided.
         /// </summary>
-        /// <value>The external identier of the record row. If the External Id attribute is used, then it must be unique.</value>
+        /// <value>An external identifier for the record, which can be used to link the record to external systems or datasets. This attribute is optional but should be unique if provided.</value>
         /// <example>3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5</example>
         [DataMember(Name = "ExternalId", EmitDefaultValue = false)]
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// The name of the record row
+        /// The name of the record. This attribute provides a human-readable identifier for the record, making it easier to recognize and differentiate records in lists or other displays. This attribute is optional.
         /// </summary>
-        /// <value>The name of the record row</value>
+        /// <value>The name of the record. This attribute provides a human-readable identifier for the record, making it easier to recognize and differentiate records in lists or other displays. This attribute is optional.</value>
         /// <example>Bob Normal</example>
         [DataMember(Name = "Name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
-        /// The type of the record object
+        /// The type of the record object. This attribute is used to classify the record into specific categories or types, helping to organize and manage different kinds of records. This attribute is optional.
         /// </summary>
-        /// <value>The type of the record object</value>
+        /// <value>The type of the record object. This attribute is used to classify the record into specific categories or types, helping to organize and manage different kinds of records. This attribute is optional.</value>
         /// <example>User</example>
         [DataMember(Name = "Type", EmitDefaultValue = false)]
         public string Type { get; set; }
