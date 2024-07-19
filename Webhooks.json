@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "2.0.22"
+    "version": "2.0.23"
   },
   "servers": [
     {
@@ -1101,7 +1101,6 @@
       },
       "ConnectionData": {
         "required": [
-          "Id",
           "Name",
           "URL"
         ],
@@ -1109,37 +1108,37 @@
         "properties": {
           "Id": {
             "type": "string",
-            "description": "The identifier of the module that owns the entity that is being processed"
+            "description": "The identifier of the module that owns the entity that is being processed."
           },
           "Name": {
             "type": "string",
-            "description": "Name of connection"
+            "description": "Name of connection. The value must be unique in the system and you cannot add multiple values."
           },
           "Description": {
             "type": "string",
-            "description": "Description of connection"
+            "description": "Description of connection."
           },
           "ApiKey": {
             "type": "string",
-            "description": "An API key is a unique identifier used to authenticate a user, developer, or calling program to an API"
+            "description": "An API key is a unique identifier used to authenticate a user, developer, or calling program to an API. The pattern of the value (Secure). The default of the value (Generate password)."
           },
           "SecretKey": {
             "type": "string",
-            "description": "A secret key for signing payloads, enhancing security."
+            "description": "A secret key for signing payloads, enhancing security. The pattern of the value (Secure). The default of the value (Generate password)."
           },
           "URL": {
             "type": "string",
-            "description": "Webhook external service URL-address"
+            "description": "Webhook external service URL-address. The value must be unique in the system and you cannot add multiple values. The pattern of the value (^(http(s):\\/\\/.)[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&\\/\\/=]*)$)."
           },
           "Is_Active": {
             "type": "boolean",
-            "description": "If true, the configuration is active",
+            "description": "If true, the configuration is active.",
             "default": false,
             "example": false
           },
           "Is_System": {
             "type": "boolean",
-            "description": "If true, the configuration is internal to the system and not visible in the user interface",
+            "description": "If true, the configuration is internal to the system and not visible in the user interface.",
             "default": false,
             "example": false
           },
@@ -1295,39 +1294,38 @@
       },
       "ConfigData": {
         "required": [
-          "Id",
           "WebhookEntityId"
         ],
         "type": "object",
         "properties": {
           "Id": {
             "type": "string",
-            "description": "The identifier of the config"
+            "description": "The identifier of the config."
           },
           "WebhookEntityId": {
             "$ref": "#/components/schemas/FieldType"
           },
           "HasCreateAccess": {
             "type": "boolean",
-            "description": "Service has create access to data",
+            "description": "Service has create access to data.",
             "default": false,
             "example": false
           },
           "HasUpdateAccess": {
             "type": "boolean",
-            "description": "Service has update access to data",
+            "description": "Service has update access to data.",
             "default": false,
             "example": false
           },
           "HasDeleteAccess": {
             "type": "boolean",
-            "description": "Service has delete access to data",
+            "description": "Service has delete access to data.",
             "default": false,
             "example": false
           },
           "Is_Active": {
             "type": "boolean",
-            "description": "If true, the configuration is active",
+            "description": "If true, the configuration is active.",
             "default": false,
             "example": false
           },
@@ -1356,14 +1354,13 @@
       },
       "ConfigText": {
         "required": [
-          "Id",
           "WebhookEntityId"
         ],
         "type": "object",
         "properties": {
           "Id": {
             "type": "string",
-            "description": "The identifier of the config"
+            "description": "The identifier of the config."
           },
           "WebhookEntityId": {
             "type": "string",
@@ -1371,31 +1368,31 @@
           },
           "HasCreateAccess": {
             "type": "boolean",
-            "description": "Service has create access to data",
+            "description": "Service has create access to data.",
             "default": false,
             "example": false
           },
           "HasUpdateAccess": {
             "type": "boolean",
-            "description": "Service has update access to data",
+            "description": "Service has update access to data.",
             "default": false,
             "example": false
           },
           "HasDeleteAccess": {
             "type": "boolean",
-            "description": "Service has delete access to data",
+            "description": "Service has delete access to data.",
             "default": false,
             "example": false
           },
           "Is_Active": {
             "type": "boolean",
-            "description": "If true, the configuration is active",
+            "description": "If true, the configuration is active.",
             "default": false,
             "example": false
           },
           "ModifiedBy": {
             "type": "string",
-            "description": "The Identifier of the user who updated the record"
+            "description": "The Identifier of the user who updated the record."
           },
           "ModifiedOn": {
             "type": "string",
@@ -1406,7 +1403,7 @@
           },
           "CreatedBy": {
             "type": "string",
-            "description": "The Identifier of the user who created the record"
+            "description": "The Identifier of the user who created the record."
           },
           "CreatedOn": {
             "type": "string",
