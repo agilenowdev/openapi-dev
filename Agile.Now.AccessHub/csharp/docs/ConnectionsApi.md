@@ -28,9 +28,9 @@ The input parameter must be used in the `ConnectionData` record structure inside
 Foreign key fields are: `ModifiedBy, CreatedBy`
 
 ### Create a new record of Connection
-* If the value in the `Id,Name` fields are empty then action insert a new record according input parameter entity record structure (`ConnectionData`).
+* If the value in the `Id, Name` fields are empty then action insert a new record according input parameter entity record structure (`ConnectionData`).
 * If the value in the `Name` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`ConnectionData`).
-* If the `Id,Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+* If the `Id, Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
 The response body will contain the object of the created record if the call is successful. Method returns an extended `Connection` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
@@ -128,7 +128,7 @@ catch (ApiException e)
 # **DeleteConnection**
 > Connection DeleteConnection (string id, string name = null)
 
-Use the query string resource to delete `Connection` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id,Name` field(s) value and use the `DELETE` method of the resource to delete a record.
+Use the query string resource to delete `Connection` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id, Name` field(s) value and use the `DELETE` method of the resource to delete a record.
 
 Method returns an extended `Connection` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
@@ -137,7 +137,7 @@ Foreign key fields are: `ModifiedBy, CreatedBy`
 ### Delete a record of Connection
 * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
 * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
-* If the `Id,Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+* If the `Id, Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
 The response body will contain the object of the deleted record if the call is successful.
 
@@ -355,7 +355,7 @@ Foreign key fields are: `ModifiedBy, CreatedBy`
 ### Get a record of Connection
 * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
 * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
-* If the `Id,Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+* If the `Id, Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
 ### Example
 ```csharp
@@ -801,7 +801,7 @@ catch (ApiException e)
 # **UpdateConnection**
 > Connection UpdateConnection (string id, ConnectionData connectionData, string name = null)
 
-Use the `ConnectionData` object resource to update `Connection` using `Id,Name` field(s) value.
+Use the `ConnectionData` object resource to update `Connection` using `Id, Name` field(s) value.
 
 Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record. 
 
@@ -812,7 +812,7 @@ Foreign key fields are: `ModifiedBy, CreatedBy`
 ### Update a record of Connection
 * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).
 * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
-* If the `Id,Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+* If the `Id, Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
 The response body will contain the object of the updated record if the call is successful. Method returns an extended `Connection` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
@@ -912,7 +912,7 @@ catch (ApiException e)
 # **UpsertConnection**
 > Connection UpsertConnection (ConnectionData connectionData)
 
-Use the `ConnectionData` object resource to insert or update (Upsert) `Connection` using `Id,Name` field(s) value.
+Use the `ConnectionData` object resource to insert or update (Upsert) `Connection` using `Id, Name` field(s) value.
 
 You can supply the required field values in the request data, and then use the `POST` method of the resource.
 

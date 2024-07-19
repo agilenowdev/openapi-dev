@@ -30,9 +30,9 @@ The input parameter must be used in the `AccountData` record structure inside th
 Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`
 
 ### Create a new record of Account
-* If the value in the `Id,Username, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`).
+* If the value in the `Id, Username, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`).
 * If the value in the `Username, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`).
-* If the `Id,Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+* If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
 The response body will contain the object of the created record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
@@ -130,7 +130,7 @@ catch (ApiException e)
 # **DeleteAccount**
 > Account DeleteAccount (string id, string name = null)
 
-Use the query string resource to delete `Account` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id,Username, ExternalId` field(s) value and use the `DELETE` method of the resource to delete a record.
+Use the query string resource to delete `Account` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id, Username, ExternalId` field(s) value and use the `DELETE` method of the resource to delete a record.
 
 Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
@@ -139,7 +139,7 @@ Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`
 ### Delete a record of Account
 * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
 * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
-* If the `Id,Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+* If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
 The response body will contain the object of the deleted record if the call is successful.
 
@@ -348,7 +348,7 @@ catch (ApiException e)
 # **DeleteAccountTenant**
 > Tenant DeleteAccountTenant (string id, string subId, string name = null, string subName = null)
 
-Use the query string resource to delete `Tenant` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `UserId,TenantId.Name` field(s) value and use the `DELETE` method of the resource to delete a record.
+Use the query string resource to delete `Tenant` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `UserId, TenantId.Name` field(s) value and use the `DELETE` method of the resource to delete a record.
 
 Method returns an extended `Tenant` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
@@ -357,7 +357,7 @@ Foreign key fields are: `UserId, TenantId, AccountId`
 ### Delete a record of Tenant
 * If the `UserId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
 * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
-* If the `UserId,TenantId.Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+* If the `UserId, TenantId.Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
 The response body will contain the object of the deleted record if the call is successful.
 
@@ -468,7 +468,7 @@ Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`
 ### Get a record of Account
 * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
 * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
-* If the `Id,Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+* If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
 ### Example
 ```csharp
@@ -917,7 +917,7 @@ catch (ApiException e)
 # **UpdateAccount**
 > Account UpdateAccount (string id, AccountData accountData, string name = null)
 
-Use the `AccountData` object resource to update `Account` using `Id,Username, ExternalId` field(s) value.
+Use the `AccountData` object resource to update `Account` using `Id, Username, ExternalId` field(s) value.
 
 Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record. 
 
@@ -928,7 +928,7 @@ Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`
 ### Update a record of Account
 * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).
 * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
-* If the `Id,Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+* If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
 The response body will contain the object of the updated record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
@@ -1028,7 +1028,7 @@ catch (ApiException e)
 # **UpsertAccount**
 > Account UpsertAccount (AccountData accountData)
 
-Use the `AccountData` object resource to insert or update (Upsert) `Account` using `Id,Username, ExternalId` field(s) value.
+Use the `AccountData` object resource to insert or update (Upsert) `Account` using `Id, Username, ExternalId` field(s) value.
 
 You can supply the required field values in the request data, and then use the `POST` method of the resource.
 
@@ -1250,7 +1250,7 @@ catch (ApiException e)
 # **UpsertAccountTenant**
 > Tenant UpsertAccountTenant (string id, TenantData tenantData, string name = null)
 
-Use the `TenantPost` object resource to insert or update (Upsert) `Tenant` using `UserId,TenantId.Name` field(s) value.
+Use the `TenantPost` object resource to insert or update (Upsert) `Tenant` using `UserId, TenantId.Name` field(s) value.
 
 You can supply the required field values in the request data, and then use the `POST` method of the resource.
 

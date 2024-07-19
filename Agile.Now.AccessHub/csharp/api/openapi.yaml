@@ -31,7 +31,7 @@ paths:
   /Endpoint/rest/api/v1/Account/{Id}:
     delete:
       description: |-
-        Use the query string resource to delete `Account` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id,Username, ExternalId` field(s) value and use the `DELETE` method of the resource to delete a record.
+        Use the query string resource to delete `Account` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id, Username, ExternalId` field(s) value and use the `DELETE` method of the resource to delete a record.
 
         Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
@@ -40,7 +40,7 @@ paths:
         ### Delete a record of Account
         * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
         * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
-        * If the `Id,Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+        * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
         The response body will contain the object of the deleted record if the call is successful.
       operationId: Delete Account
@@ -161,7 +161,7 @@ paths:
         ### Get a record of Account
         * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
         * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
-        * If the `Id,Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+        * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
       operationId: Get Account
       parameters:
       - description: |-
@@ -271,7 +271,7 @@ paths:
       - Accounts
     put:
       description: "Use the `AccountData` object resource to update `Account` using\
-        \ `Id,Username, ExternalId` field(s) value.\n\nProvide the updated record\
+        \ `Id, Username, ExternalId` field(s) value.\n\nProvide the updated record\
         \ information in your request data and use the `PUT` method of the resource\
         \ with a specific record ID to update that record. \n\nThe input parameter\
         \ must be used in the `AccountData` record structure inside the `FieldType`\
@@ -281,7 +281,7 @@ paths:
         \ Found`), and the error record is returned.. You cannot change `Id` field\
         \ value (primary key).\n* If the `Id` field value is matched multiple times,\
         \ then a `400` error is reported (`Errors/Multible Rows`), and the error record\
-        \ is returned.\n* If the `Id,Username, ExternalId` field value is matched\
+        \ is returned.\n* If the `Id, Username, ExternalId` field value is matched\
         \ multiple times, then a `400` error is reported (`Errors/Multible Rows`),\
         \ and the error record is returned.\n\nThe response body will contain the\
         \ object of the updated record if the call is successful. Method returns an\
@@ -635,7 +635,7 @@ paths:
   /Endpoint/rest/api/v1/Account:
     patch:
       description: |-
-        Use the `AccountData` object resource to insert or update (Upsert) `Account` using `Id,Username, ExternalId` field(s) value.
+        Use the `AccountData` object resource to insert or update (Upsert) `Account` using `Id, Username, ExternalId` field(s) value.
 
         You can supply the required field values in the request data, and then use the `POST` method of the resource.
 
@@ -751,9 +751,9 @@ paths:
         Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`
 
         ### Create a new record of Account
-        * If the value in the `Id,Username, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`).
+        * If the value in the `Id, Username, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`).
         * If the value in the `Username, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`).
-        * If the `Id,Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+        * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
         The response body will contain the object of the created record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
@@ -1100,7 +1100,7 @@ paths:
   /Endpoint/rest/api/v1/Account/{Id}/Tenant:
     post:
       description: |-
-        Use the `TenantPost` object resource to insert or update (Upsert) `Tenant` using `UserId,TenantId.Name` field(s) value.
+        Use the `TenantPost` object resource to insert or update (Upsert) `Tenant` using `UserId, TenantId.Name` field(s) value.
 
         You can supply the required field values in the request data, and then use the `POST` method of the resource.
 
@@ -1237,7 +1237,7 @@ paths:
   /Endpoint/rest/api/v1/Account/{Id}/Tenant/{SubId}:
     delete:
       description: |-
-        Use the query string resource to delete `Tenant` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `UserId,TenantId.Name` field(s) value and use the `DELETE` method of the resource to delete a record.
+        Use the query string resource to delete `Tenant` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `UserId, TenantId.Name` field(s) value and use the `DELETE` method of the resource to delete a record.
 
         Method returns an extended `Tenant` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
@@ -1246,7 +1246,7 @@ paths:
         ### Delete a record of Tenant
         * If the `UserId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
         * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
-        * If the `UserId,TenantId.Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+        * If the `UserId, TenantId.Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
         The response body will contain the object of the deleted record if the call is successful.
       operationId: Delete Account Tenant
@@ -4923,7 +4923,7 @@ paths:
   /Endpoint/rest/api/v1/Connection/{Id}:
     delete:
       description: |-
-        Use the query string resource to delete `Connection` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id,Name` field(s) value and use the `DELETE` method of the resource to delete a record.
+        Use the query string resource to delete `Connection` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id, Name` field(s) value and use the `DELETE` method of the resource to delete a record.
 
         Method returns an extended `Connection` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
@@ -4932,7 +4932,7 @@ paths:
         ### Delete a record of Connection
         * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
         * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
-        * If the `Id,Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+        * If the `Id, Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
         The response body will contain the object of the deleted record if the call is successful.
       operationId: Delete Connection
@@ -5052,7 +5052,7 @@ paths:
         ### Get a record of Connection
         * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
         * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
-        * If the `Id,Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+        * If the `Id, Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
       operationId: Get Connection
       parameters:
       - description: |-
@@ -5161,7 +5161,7 @@ paths:
       - Connections
     put:
       description: "Use the `ConnectionData` object resource to update `Connection`\
-        \ using `Id,Name` field(s) value.\n\nProvide the updated record information\
+        \ using `Id, Name` field(s) value.\n\nProvide the updated record information\
         \ in your request data and use the `PUT` method of the resource with a specific\
         \ record ID to update that record. \n\nThe input parameter must be used in\
         \ the `ConnectionData` record structure inside the `FieldType` parameter in\
@@ -5170,13 +5170,13 @@ paths:
         \ then a `404` error is reported (`Errors/Not Found`), and the error record\
         \ is returned.. You cannot change `Id` field value (primary key).\n* If the\
         \ `Id` field value is matched multiple times, then a `400` error is reported\
-        \ (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id,Name`\
-        \ field value is matched multiple times, then a `400` error is reported (`Errors/Multible\
-        \ Rows`), and the error record is returned.\n\nThe response body will contain\
-        \ the object of the updated record if the call is successful. Method returns\
-        \ an extended `Connection` structure. Here, all foreign key fields are abstract\
-        \ object structures, utilizing `AbstractText` or `AbstractLong` data types,\
-        \ offering a detailed view of the data and related entities."
+        \ (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id,\
+        \ Name` field value is matched multiple times, then a `400` error is reported\
+        \ (`Errors/Multible Rows`), and the error record is returned.\n\nThe response\
+        \ body will contain the object of the updated record if the call is successful.\
+        \ Method returns an extended `Connection` structure. Here, all foreign key\
+        \ fields are abstract object structures, utilizing `AbstractText` or `AbstractLong`\
+        \ data types, offering a detailed view of the data and related entities."
       operationId: Update Connection
       parameters:
       - description: |-
@@ -5521,7 +5521,7 @@ paths:
   /Endpoint/rest/api/v1/Connection:
     patch:
       description: |-
-        Use the `ConnectionData` object resource to insert or update (Upsert) `Connection` using `Id,Name` field(s) value.
+        Use the `ConnectionData` object resource to insert or update (Upsert) `Connection` using `Id, Name` field(s) value.
 
         You can supply the required field values in the request data, and then use the `POST` method of the resource.
 
@@ -5636,9 +5636,9 @@ paths:
         Foreign key fields are: `ModifiedBy, CreatedBy`
 
         ### Create a new record of Connection
-        * If the value in the `Id,Name` fields are empty then action insert a new record according input parameter entity record structure (`ConnectionData`).
+        * If the value in the `Id, Name` fields are empty then action insert a new record according input parameter entity record structure (`ConnectionData`).
         * If the value in the `Name` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`ConnectionData`).
-        * If the `Id,Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+        * If the `Id, Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
         The response body will contain the object of the created record if the call is successful. Method returns an extended `Connection` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
@@ -7046,13 +7046,13 @@ components:
         Id:
           default: 0
           description: "The primary key of the record row. If the Id attribute is\
-            \ used, then it must be unique"
+            \ used, then it must be unique."
           example: 1234567891234567
           format: int64
           type: integer
         ExternalId:
           description: "The external identier of the record row. If the External Id\
-            \ attribute is used, then it must be unique"
+            \ attribute is used, then it must be unique."
           example: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
           type: string
         Name:
@@ -7064,10 +7064,7 @@ components:
           example: User
           type: string
       required:
-      - ExternalId
       - Id
-      - Name
-      - Type
       type: object
     AbstractText:
       description: The abstract object structure
@@ -7079,12 +7076,12 @@ components:
       properties:
         Id:
           description: "The primary key of the record row. If the Id attribute is\
-            \ used, then it must be unique"
+            \ used, then it must be unique."
           example: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
           type: string
         ExternalId:
           description: "The external identier of the record row. If the External Id\
-            \ attribute is used, then it must be unique"
+            \ attribute is used, then it must be unique."
           example: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
           type: string
         Name:
@@ -7096,10 +7093,7 @@ components:
           example: User
           type: string
       required:
-      - ExternalId
       - Id
-      - Name
-      - Type
       type: object
     Accounts:
       description: The list of `Account` records
@@ -7185,6 +7179,596 @@ components:
             $ref: '#/components/schemas/Account'
           type: array
       type: object
+    EnumLanguage:
+      description: The enum of Language.
+      enum:
+      - ar-ae
+      - bn-IN
+      - zh-CN
+      - da-dk
+      - en-US
+      - fo-fo
+      - fi-FI
+      - fr-FR
+      - de-DE
+      - hi-IN
+      - ja-JP
+      - ko-KR
+      - ms-MY
+      - pt-PT
+      - ru-RU
+      - es-ES
+      - sv-se
+      - tr-TR
+      - ur-IN
+      type: string
+      x-enums:
+      - value: ar-ae
+        name: Arabic
+        description: Arabic
+        isString: true
+      - value: bn-IN
+        name: Bengali
+        description: Bengali
+        isString: true
+      - value: zh-CN
+        name: Chinese
+        description: Chinese
+        isString: true
+      - value: da-dk
+        name: Danish
+        description: Danish
+        isString: true
+      - value: en-US
+        name: English
+        description: English
+        isString: true
+      - value: fo-fo
+        name: Faroese
+        description: Faroese
+        isString: true
+      - value: fi-FI
+        name: Finnish
+        description: Finnish
+        isString: true
+      - value: fr-FR
+        name: French
+        description: French
+        isString: true
+      - value: de-DE
+        name: German
+        description: German
+        isString: true
+      - value: hi-IN
+        name: Hindi
+        description: Hindi
+        isString: true
+      - value: ja-JP
+        name: Japanese
+        description: Japanese
+        isString: true
+      - value: ko-KR
+        name: Korean
+        description: Korean
+        isString: true
+      - value: ms-MY
+        name: Malay
+        description: Malay
+        isString: true
+      - value: pt-PT
+        name: Portuguese
+        description: Portuguese
+        isString: true
+      - value: ru-RU
+        name: Russian
+        description: Russian
+        isString: true
+      - value: es-ES
+        name: Spanish
+        description: Spanish
+        isString: true
+      - value: sv-se
+        name: Swedish
+        description: Swedish
+        isString: true
+      - value: tr-TR
+        name: Turkish
+        description: Turkish
+        isString: true
+      - value: ur-IN
+        name: Urdu
+        description: Urdu
+        isString: true
+    EnumTimezone:
+      description: The enum of Timezone.
+      enum:
+      - Afghanistan Standard Time
+      - Alaskan Standard Time
+      - Arab Standard Time
+      - Arabian Standard Time
+      - Arabic Standard Time
+      - Argentina Standard Time
+      - Atlantic Standard Time
+      - AUS Central Standard Time
+      - AUS Eastern Standard Time
+      - Azerbaijan Standard Time
+      - Azores Standard Time
+      - Canada Central Standard Time
+      - Cape Verde Standard Time
+      - Caucasus Standard Time
+      - Cen. Australia Standard Time
+      - Central America Standard Time
+      - Central Asia Standard Time
+      - Central Brazilian Standard Time
+      - Central Europe Standard Time
+      - Central European Standard Time
+      - Central Pacific Standard Time
+      - Central Standard Time
+      - Central Standard Time (Mexico)
+      - China Standard Time
+      - Dateline Standard Time
+      - E. Africa Standard Time
+      - E. Australia Standard Time
+      - E. Europe Standard Time
+      - E. South America Standard Time
+      - Eastern Standard Time
+      - Egypt Standard Time
+      - Ekaterinburg Standard Time
+      - Fiji Standard Time
+      - FLE Standard Time
+      - Georgian Standard Time
+      - GMT Standard Time
+      - Greenland Standard Time
+      - Greenwich Standard Time
+      - GTB Standard Time
+      - Hawaiian Standard Time
+      - India Standard Time
+      - Iran Standard Time
+      - Israel Standard Time
+      - Jordan Standard Time
+      - Korea Standard Time
+      - Mauritius Standard Time
+      - Mid-Atlantic Standard Time
+      - Middle East Standard Time
+      - Montevideo Standard Time
+      - Morocco Standard Time
+      - Mountain Standard Time
+      - Mountain Standard Time (Mexico)
+      - Myanmar Standard Time
+      - N. Central Asia Standard Time
+      - Namibia Standard Time
+      - Nepal Standard Time
+      - New Zealand Standard Time
+      - Newfoundland Standard Time
+      - North Asia East Standard Time
+      - North Asia Standard Time
+      - Pacific SA Standard Time
+      - Pacific Standard Time
+      - Pacific Standard Time (Mexico)
+      - Pakistan Standard Time
+      - Romance Standard Time
+      - Russian Standard Time
+      - SA Eastern Standard Time
+      - SA Pacific Standard Time
+      - SA Western Standard Time
+      - Samoa Standard Time
+      - SE Asia Standard Time
+      - Singapore Standard Time
+      - South Africa Standard Time
+      - Sri Lanka Standard Time
+      - Taipei Standard Time
+      - Tasmania Standard Time
+      - Tokyo Standard Time
+      - Tonga Standard Time
+      - US Eastern Standard Time
+      - US Mountain Standard Time
+      - UTC
+      - Venezuela Standard Time
+      - Vladivostok Standard Time
+      - W. Australia Standard Time
+      - W. Central Africa Standard Time
+      - W. Europe Standard Time
+      - West Asia Standard Time
+      - West Pacific Standard Time
+      - Yakutsk Standard Time
+      type: string
+      x-enums:
+      - value: Afghanistan Standard Time
+        name: Gmt0430Kabul
+        description: (GMT+04:30) Kabul
+        isString: true
+      - value: Alaskan Standard Time
+        name: Gmt0900Alaska
+        description: (GMT-09:00) Alaska
+        isString: true
+      - value: Arab Standard Time
+        name: Gmt0300KuwaitRiyadh
+        description: "(GMT+03:00) Kuwait, Riyadh"
+        isString: true
+      - value: Arabian Standard Time
+        name: Gmt0400AbuDhabiMuscat
+        description: "(GMT+04:00) Abu Dhabi, Muscat"
+        isString: true
+      - value: Arabic Standard Time
+        name: Gmt0300Baghdad
+        description: (GMT+03:00) Baghdad
+        isString: true
+      - value: Argentina Standard Time
+        name: Gmt0300BuenosAires
+        description: (GMT-03:00) Buenos Aires
+        isString: true
+      - value: Atlantic Standard Time
+        name: Gmt0400AtlanticTimeCanada
+        description: (GMT-04:00) Atlantic Time (Canada)
+        isString: true
+      - value: AUS Central Standard Time
+        name: Gmt0930Darwin
+        description: (GMT+09:30) Darwin
+        isString: true
+      - value: AUS Eastern Standard Time
+        name: Gmt1000CanberraMelbourneSydney
+        description: "(GMT+10:00) Canberra, Melbourne, Sydney"
+        isString: true
+      - value: Azerbaijan Standard Time
+        name: Gmt0400Baku
+        description: (GMT+04:00) Baku
+        isString: true
+      - value: Azores Standard Time
+        name: Gmt0100Azores
+        description: (GMT-01:00) Azores
+        isString: true
+      - value: Canada Central Standard Time
+        name: Gmt0600Saskatchewan
+        description: (GMT-06:00) Saskatchewan
+        isString: true
+      - value: Cape Verde Standard Time
+        name: Gmt0100CapeVerdeIs
+        description: (GMT-01:00) Cape Verde Is.
+        isString: true
+      - value: Caucasus Standard Time
+        name: Gmt0400Yerevan
+        description: (GMT+04:00) Yerevan
+        isString: true
+      - value: Cen. Australia Standard Time
+        name: Gmt0930Adelaide
+        description: (GMT+09:30) Adelaide
+        isString: true
+      - value: Central America Standard Time
+        name: Gmt0600CentralAmerica
+        description: (GMT-06:00) Central America
+        isString: true
+      - value: Central Asia Standard Time
+        name: Gmt0600AstanaDhaka
+        description: "(GMT+06:00) Astana, Dhaka"
+        isString: true
+      - value: Central Brazilian Standard Time
+        name: Gmt0400Manaus
+        description: (GMT-04:00) Manaus
+        isString: true
+      - value: Central Europe Standard Time
+        name: Gmt0100BelgradeBratislavaBudapestLjubljanaPrague
+        description: "(GMT+01:00) Belgrade, Bratislava, Budapest, Ljubljana, Prague"
+        isString: true
+      - value: Central European Standard Time
+        name: Gmt0100SarajevoSkopjeWarsawZagreb
+        description: "(GMT+01:00) Sarajevo, Skopje, Warsaw, Zagreb"
+        isString: true
+      - value: Central Pacific Standard Time
+        name: Gmt1100MagadanSolomonIsNewCaledonia
+        description: "(GMT+11:00) Magadan, Solomon Is., New Caledonia"
+        isString: true
+      - value: Central Standard Time
+        name: Gmt0600CentralTimeUsCanada
+        description: (GMT-06:00) Central Time (US & Canada)
+        isString: true
+      - value: Central Standard Time (Mexico)
+        name: Gmt0600GuadalajaraMexicoCityMonterrey
+        description: "(GMT-06:00) Guadalajara, Mexico City, Monterrey"
+        isString: true
+      - value: China Standard Time
+        name: Gmt0800BeijingChongqingHongKongUrumqi
+        description: "(GMT+08:00) Beijing, Chongqing, Hong Kong, Urumqi"
+        isString: true
+      - value: Dateline Standard Time
+        name: Gmt1200InternationalDateLineWest
+        description: (GMT-12:00) International Date Line West
+        isString: true
+      - value: E. Africa Standard Time
+        name: Gmt0300Nairobi
+        description: (GMT+03:00) Nairobi
+        isString: true
+      - value: E. Australia Standard Time
+        name: Gmt1000Brisbane
+        description: (GMT+10:00) Brisbane
+        isString: true
+      - value: E. Europe Standard Time
+        name: Gmt0200Minsk
+        description: (GMT+02:00) Minsk
+        isString: true
+      - value: E. South America Standard Time
+        name: Gmt0300Brasilia
+        description: (GMT-03:00) Brasilia
+        isString: true
+      - value: Eastern Standard Time
+        name: Gmt0500EasternTimeUsCanada
+        description: (GMT-05:00) Eastern Time (US & Canada)
+        isString: true
+      - value: Egypt Standard Time
+        name: Gmt0200Cairo
+        description: (GMT+02:00) Cairo
+        isString: true
+      - value: Ekaterinburg Standard Time
+        name: Gmt0500Ekaterinburg
+        description: (GMT+05:00) Ekaterinburg
+        isString: true
+      - value: Fiji Standard Time
+        name: Gmt1200FijiKamchatkaMarshallIs
+        description: "(GMT+12:00) Fiji, Kamchatka, Marshall Is."
+        isString: true
+      - value: FLE Standard Time
+        name: Gmt0200HelsinkiKyivRigaSofiaTallinnVilnius
+        description: "(GMT+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius"
+        isString: true
+      - value: Georgian Standard Time
+        name: Gmt0300Tbilisi
+        description: (GMT+03:00) Tbilisi
+        isString: true
+      - value: GMT Standard Time
+        name: GmtGreenwichMeanTimeDublinEdinburghLisbonLondon
+        description: "(GMT) Greenwich Mean Time : Dublin, Edinburgh, Lisbon, London"
+        isString: true
+      - value: Greenland Standard Time
+        name: Gmt0300Greenland
+        description: (GMT-03:00) Greenland
+        isString: true
+      - value: Greenwich Standard Time
+        name: GmtMonroviaReykjavik
+        description: "(GMT) Monrovia, Reykjavik"
+        isString: true
+      - value: GTB Standard Time
+        name: Gmt0200AthensBucharestIstanbul
+        description: "(GMT+02:00) Athens, Bucharest, Istanbul"
+        isString: true
+      - value: Hawaiian Standard Time
+        name: Gmt1000Hawaii
+        description: (GMT-10:00) Hawaii
+        isString: true
+      - value: India Standard Time
+        name: Gmt0530ChennaiKolkataMumbaiNewDelhi
+        description: "(GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi"
+        isString: true
+      - value: Iran Standard Time
+        name: Gmt0330Tehran
+        description: (GMT+03:30) Tehran
+        isString: true
+      - value: Israel Standard Time
+        name: Gmt0200Jerusalem
+        description: (GMT+02:00) Jerusalem
+        isString: true
+      - value: Jordan Standard Time
+        name: Gmt0200Amman
+        description: (GMT+02:00) Amman
+        isString: true
+      - value: Korea Standard Time
+        name: Gmt0900Seoul
+        description: (GMT+09:00) Seoul
+        isString: true
+      - value: Mauritius Standard Time
+        name: Gmt0400PortLouis
+        description: (GMT+04:00) Port Louis
+        isString: true
+      - value: Mid-Atlantic Standard Time
+        name: Gmt0200MidAtlantic
+        description: (GMT-02:00) Mid-Atlantic
+        isString: true
+      - value: Middle East Standard Time
+        name: Gmt0200Beirut
+        description: (GMT+02:00) Beirut
+        isString: true
+      - value: Montevideo Standard Time
+        name: Gmt0300Montevideo
+        description: (GMT-03:00) Montevideo
+        isString: true
+      - value: Morocco Standard Time
+        name: GmtCasablanca
+        description: (GMT) Casablanca
+        isString: true
+      - value: Mountain Standard Time
+        name: Gmt0700MountainTimeUsCanada
+        description: (GMT-07:00) Mountain Time (US & Canada)
+        isString: true
+      - value: Mountain Standard Time (Mexico)
+        name: Gmt0700ChihuahuaLaPazMazatlan
+        description: "(GMT-07:00) Chihuahua, La Paz, Mazatlan"
+        isString: true
+      - value: Myanmar Standard Time
+        name: Gmt0630YangonRangoon
+        description: (GMT+06:30) Yangon (Rangoon)
+        isString: true
+      - value: N. Central Asia Standard Time
+        name: Gmt0600AlmatyNovosibirsk
+        description: "(GMT+06:00) Almaty, Novosibirsk"
+        isString: true
+      - value: Namibia Standard Time
+        name: Gmt0200Windhoek
+        description: (GMT+02:00) Windhoek
+        isString: true
+      - value: Nepal Standard Time
+        name: Gmt0545Kathmandu
+        description: (GMT+05:45) Kathmandu
+        isString: true
+      - value: New Zealand Standard Time
+        name: Gmt1200AucklandWellington
+        description: "(GMT+12:00) Auckland, Wellington"
+        isString: true
+      - value: Newfoundland Standard Time
+        name: Gmt0330Newfoundland
+        description: (GMT-03:30) Newfoundland
+        isString: true
+      - value: North Asia East Standard Time
+        name: Gmt0800IrkutskUlaanBataar
+        description: "(GMT+08:00) Irkutsk, Ulaan Bataar"
+        isString: true
+      - value: North Asia Standard Time
+        name: Gmt0700Krasnoyarsk
+        description: (GMT+07:00) Krasnoyarsk
+        isString: true
+      - value: Pacific SA Standard Time
+        name: Gmt0400Santiago
+        description: (GMT-04:00) Santiago
+        isString: true
+      - value: Pacific Standard Time
+        name: Gmt0800PacificTimeUsCanada
+        description: (GMT-08:00) Pacific Time (US & Canada)
+        isString: true
+      - value: Pacific Standard Time (Mexico)
+        name: Gmt0800TijuanaBajaCalifornia
+        description: "(GMT-08:00) Tijuana, Baja California"
+        isString: true
+      - value: Pakistan Standard Time
+        name: Gmt0500IslamabadKarachi
+        description: "(GMT+05:00) Islamabad, Karachi"
+        isString: true
+      - value: Romance Standard Time
+        name: Gmt0100BrusselsCopenhagenMadridParis
+        description: "(GMT+01:00) Brussels, Copenhagen, Madrid, Paris"
+        isString: true
+      - value: Russian Standard Time
+        name: Gmt0300MoscowStPetersburgVolgograd
+        description: "(GMT+03:00) Moscow, St. Petersburg, Volgograd"
+        isString: true
+      - value: SA Eastern Standard Time
+        name: Gmt0300Georgetown
+        description: (GMT-03:00) Georgetown
+        isString: true
+      - value: SA Pacific Standard Time
+        name: Gmt0500BogotaLimaQuitoRioBranco
+        description: "(GMT-05:00) Bogota, Lima, Quito, Rio Branco"
+        isString: true
+      - value: SA Western Standard Time
+        name: Gmt0400LaPaz
+        description: (GMT-04:00) La Paz
+        isString: true
+      - value: Samoa Standard Time
+        name: Gmt1100MidwayIslandSamoa
+        description: "(GMT-11:00) Midway Island, Samoa"
+        isString: true
+      - value: SE Asia Standard Time
+        name: Gmt0700BangkokHanoiJakarta
+        description: "(GMT+07:00) Bangkok, Hanoi, Jakarta"
+        isString: true
+      - value: Singapore Standard Time
+        name: Gmt0800KualaLumpurSingapore
+        description: "(GMT+08:00) Kuala Lumpur, Singapore"
+        isString: true
+      - value: South Africa Standard Time
+        name: Gmt0200HararePretoria
+        description: "(GMT+02:00) Harare, Pretoria"
+        isString: true
+      - value: Sri Lanka Standard Time
+        name: Gmt0530SriJayawardenepura
+        description: (GMT+05:30) Sri Jayawardenepura
+        isString: true
+      - value: Taipei Standard Time
+        name: Gmt0800Taipei
+        description: (GMT+08:00) Taipei
+        isString: true
+      - value: Tasmania Standard Time
+        name: Gmt1000Hobart
+        description: (GMT+10:00) Hobart
+        isString: true
+      - value: Tokyo Standard Time
+        name: Gmt0900OsakaSapporoTokyo
+        description: "(GMT+09:00) Osaka, Sapporo, Tokyo"
+        isString: true
+      - value: Tonga Standard Time
+        name: Gmt1300NukuAlofa
+        description: (GMT+13:00) Nuku'alofa
+        isString: true
+      - value: US Eastern Standard Time
+        name: Gmt0500IndianaEast
+        description: (GMT-05:00) Indiana (East)
+        isString: true
+      - value: US Mountain Standard Time
+        name: Gmt0700Arizona
+        description: (GMT-07:00) Arizona
+        isString: true
+      - value: UTC
+        name: Utc
+        description: UTC
+        isString: true
+      - value: Venezuela Standard Time
+        name: Gmt0430Caracas
+        description: (GMT-04:30) Caracas
+        isString: true
+      - value: Vladivostok Standard Time
+        name: Gmt1000Vladivostok
+        description: (GMT+10:00) Vladivostok
+        isString: true
+      - value: W. Australia Standard Time
+        name: Gmt0800Perth
+        description: (GMT+08:00) Perth
+        isString: true
+      - value: W. Central Africa Standard Time
+        name: Gmt0100WestCentralAfrica
+        description: (GMT+01:00) West Central Africa
+        isString: true
+      - value: W. Europe Standard Time
+        name: Gmt0100AmsterdamBerlinBernRomeStockholmVienna
+        description: "(GMT+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna"
+        isString: true
+      - value: West Asia Standard Time
+        name: Gmt0500Tashkent
+        description: (GMT+05:00) Tashkent
+        isString: true
+      - value: West Pacific Standard Time
+        name: Gmt1000GuamPortMoresby
+        description: "(GMT+10:00) Guam, Port Moresby"
+        isString: true
+      - value: Yakutsk Standard Time
+        name: Gmt0900Yakutsk
+        description: (GMT+09:00) Yakutsk
+        isString: true
+    EnumDateFormat:
+      description: The enum of DateFormat.
+      enum:
+      - DD-MM-YYYY
+      - DD/MM/YYYY
+      - DD.MM.YYYY
+      - MM-DD-YYYY
+      - MM/DD/YYYY
+      - YYYY-MM-DD
+      - YYYY/MM/DD
+      type: string
+      x-enums:
+      - value: DD-MM-YYYY
+        name: DdMmYyyy
+        description: DD-MM-YYYY
+        isString: true
+      - value: DD/MM/YYYY
+        name: DdMmYyyy_1
+        description: DD/MM/YYYY
+        isString: true
+      - value: DD.MM.YYYY
+        name: DdMmYyyy_2
+        description: DD.MM.YYYY
+        isString: true
+      - value: MM-DD-YYYY
+        name: MmDdYyyy
+        description: MM-DD-YYYY
+        isString: true
+      - value: MM/DD/YYYY
+        name: MmDdYyyy_1
+        description: MM/DD/YYYY
+        isString: true
+      - value: YYYY-MM-DD
+        name: YyyyMmDd
+        description: YYYY-MM-DD
+        isString: true
+      - value: YYYY/MM/DD
+        name: YyyyMmDd_1
+        description: YYYY/MM/DD
+        isString: true
     AccountData:
       description: The record of Account information.
       example:
@@ -7193,9 +7777,7 @@ components:
         FirstName: FirstName
         NotifyByEmail: false
         ExternalId: ExternalId
-        TimezoneId:
-          Field: Field
-          Value: Value
+        TimezoneId: Afghanistan Standard Time
         NotifyBySMS: false
         Name: Name
         TenantId:
@@ -7204,98 +7786,94 @@ components:
         Is_Active: false
         Username: Username
         Phone: Phone
-        DateFormatId:
-          Field: Field
-          Value: Value
+        DateFormatId: DD-MM-YYYY
         Id: Id
         LastName: LastName
         CreatedOn: 1900-01-01T00:00:00Z
-        LanguageId:
-          Field: Field
-          Value: Value
+        LanguageId: ar-ae
       properties:
         Id:
-          description: The identifier of account
+          description: The identifier of account.
           type: string
         TenantId:
           $ref: '#/components/schemas/FieldType'
         Name:
-          description: The name of the account
+          description: The name of the account.
           type: string
         FirstName:
-          description: Person's first name
+          description: Person's first name.
           type: string
         LastName:
-          description: Person's last name
+          description: Person's last name.
           type: string
         Phone:
           description: The phone number of account. The phone number is unique in
-            the system
+            the system.
           type: string
         Email:
-          description: The e-mail of account. The email is unique in the system
+          description: The e-mail of account. The email is unique in the system.
           type: string
         LanguageId:
-          $ref: '#/components/schemas/FieldType'
+          $ref: '#/components/schemas/EnumLanguage'
         TimezoneId:
-          $ref: '#/components/schemas/FieldType'
+          $ref: '#/components/schemas/EnumTimezone'
         DateFormatId:
-          $ref: '#/components/schemas/FieldType'
+          $ref: '#/components/schemas/EnumDateFormat'
         Username:
           description: Username used to log in into the system. The username is unique
-            in the system
+            in the system. The value must be unique in the system and you cannot add
+            multiple values.
           type: string
         ExternalId:
-          description: External Authentication identifier. Example Azure AD guid
+          description: External Authentication identifier. Example Azure AD guid.
+            The value must be unique in the system and you cannot add multiple values.
           type: string
         NotifyByEmail:
           default: false
-          description: Defines if a person should get notifications via e-mail
+          description: Defines if a person should get notifications via e-mail.
           example: false
           type: boolean
         NotifyBySMS:
           default: false
-          description: Defines if a contact should get notifications via SMS
+          description: Defines if a contact should get notifications via SMS.
           example: false
           type: boolean
         Is_Active:
           default: false
-          description: Defines if the account is active and can be used
+          description: Defines if the account is active and can be used.
           example: false
           type: boolean
         ModifiedOn:
           default: 1900-01-01T00:00:00Z
-          description: The date the record was updated
+          description: The date the record was updated.
           example: 1900-01-01T00:00:00Z
           format: date-time
           type: string
         CreatedOn:
           default: 1900-01-01T00:00:00Z
-          description: The date the record was created
+          description: The date the record was created.
           example: 1900-01-01T00:00:00Z
           format: date-time
           type: string
       required:
       - Email
       - FirstName
-      - Id
       - LastName
       - Username
       type: object
     FieldType:
-      description: The field object structure
+      description: The field object structure.
       example:
         Field: Field
         Value: Value
       properties:
         Field:
-          description: The name of the data field
+          description: The name of the data field.
           type: string
         Value:
-          description: The value of the data row
+          description: The value of the data row.
           type: string
       required:
-      - Field
       - Value
       type: object
     Tenant:
@@ -7385,14 +7963,13 @@ components:
           $ref: '#/components/schemas/FieldType'
         CreatedOn:
           default: 1900-01-01T00:00:00Z
-          description: The date the record was created
+          description: The date the record was created.
           example: 1900-01-01T00:00:00Z
           format: date-time
           type: string
       required:
       - CreatedOn
       - TenantId
-      - UserId
       type: object
     Picture:
       description: The record of Picture information.
@@ -7447,15 +8024,15 @@ components:
         CreatedOn: 1900-01-01T00:00:00Z
       properties:
         Filename:
-          description: Filename of account picture
+          description: Filename of account picture.
           type: string
         Picture:
-          description: Picture of account
+          description: Picture of account.
           format: binary
           type: string
         CreatedOn:
           default: 1900-01-01T00:00:00Z
-          description: Date the record was created
+          description: Date the record was created.
           example: 1900-01-01T00:00:00Z
           format: date-time
           type: string
@@ -8961,23 +9538,23 @@ components:
         Name: Name
       properties:
         Id:
-          description: The guid to identify the department
+          description: The guid to identify the department.
           type: string
         ExternalId:
-          description: The external identifier of the department
+          description: The external identifier of the department.
           type: string
         Name:
-          description: The name of the department
+          description: The name of the department.
           type: string
         DepartmentTypeId:
           $ref: '#/components/schemas/EnumDepartmentType'
         ParentDepartmentId:
           $ref: '#/components/schemas/FieldType'
         ContactName:
-          description: The contact name of company or department
+          description: The contact name of company or department.
           type: string
         ContactEmail:
-          description: The contact email of external company or department
+          description: The contact email of external company or department.
           type: string
         ContactPhone:
           type: string
@@ -8987,12 +9564,11 @@ components:
           $ref: '#/components/schemas/EnumCountry'
         Is_Active:
           default: false
-          description: Defines if the department is active and can be used
+          description: Defines if the department is active and can be used.
           example: false
           type: boolean
       required:
       - DepartmentTypeId
-      - Id
       - Is_Active
       - Name
       type: object
@@ -9016,23 +9592,23 @@ components:
         Name: Name
       properties:
         Id:
-          description: The guid to identify the department
+          description: The guid to identify the department.
           type: string
         ExternalId:
-          description: The external identifier of the department
+          description: The external identifier of the department.
           type: string
         Name:
-          description: The name of the department
+          description: The name of the department.
           type: string
         DepartmentTypeId:
           $ref: '#/components/schemas/EnumDepartmentType'
         ParentDepartmentId:
           $ref: '#/components/schemas/FieldType'
         ContactName:
-          description: The contact name of company or department
+          description: The contact name of company or department.
           type: string
         ContactEmail:
-          description: The contact email of external company or department
+          description: The contact email of external company or department.
           type: string
         ContactPhone:
           type: string
@@ -9042,7 +9618,7 @@ components:
           $ref: '#/components/schemas/EnumCountry'
         Is_Active:
           default: false
-          description: Defines if the department is active and can be used
+          description: Defines if the department is active and can be used.
           example: false
           type: boolean
       required:
@@ -9066,16 +9642,16 @@ components:
         Name: Name
       properties:
         ExternalId:
-          description: The external identifier of the department
+          description: The external identifier of the department.
           type: string
         Name:
-          description: The name of the department
+          description: The name of the department.
           type: string
         ContactName:
-          description: The contact name of company or department
+          description: The contact name of company or department.
           type: string
         ContactEmail:
-          description: The contact email of external company or department
+          description: The contact email of external company or department.
           type: string
         ContactPhone:
           type: string
@@ -9085,7 +9661,7 @@ components:
           $ref: '#/components/schemas/EnumCountry'
         Is_Active:
           default: false
-          description: Defines if the department is active and can be used
+          description: Defines if the department is active and can be used.
           example: false
           type: boolean
       required:
@@ -9201,12 +9777,10 @@ components:
         Id: Id
       properties:
         Id:
-          description: The identifier of user department
+          description: The identifier of user department.
           type: string
         UserId:
           $ref: '#/components/schemas/FieldType'
-      required:
-      - Id
       type: object
     UserText:
       description: The record of User information.
@@ -9215,13 +9789,11 @@ components:
         Id: Id
       properties:
         Id:
-          description: The identifier of user department
+          description: The identifier of user department.
           type: string
         UserId:
-          description: The identifier of the user who has link the department
+          description: The identifier of the user who has link the department.
           type: string
-      required:
-      - Id
       type: object
     UsersData:
       description: The data loading record of User importing
@@ -9475,456 +10047,6 @@ components:
             $ref: '#/components/schemas/Location'
           type: array
       type: object
-    EnumTimezone:
-      description: The enum of Timezone.
-      enum:
-      - Afghanistan Standard Time
-      - Alaskan Standard Time
-      - Arab Standard Time
-      - Arabian Standard Time
-      - Arabic Standard Time
-      - Argentina Standard Time
-      - Atlantic Standard Time
-      - AUS Central Standard Time
-      - AUS Eastern Standard Time
-      - Azerbaijan Standard Time
-      - Azores Standard Time
-      - Canada Central Standard Time
-      - Cape Verde Standard Time
-      - Caucasus Standard Time
-      - Cen. Australia Standard Time
-      - Central America Standard Time
-      - Central Asia Standard Time
-      - Central Brazilian Standard Time
-      - Central Europe Standard Time
-      - Central European Standard Time
-      - Central Pacific Standard Time
-      - Central Standard Time
-      - Central Standard Time (Mexico)
-      - China Standard Time
-      - Dateline Standard Time
-      - E. Africa Standard Time
-      - E. Australia Standard Time
-      - E. Europe Standard Time
-      - E. South America Standard Time
-      - Eastern Standard Time
-      - Egypt Standard Time
-      - Ekaterinburg Standard Time
-      - Fiji Standard Time
-      - FLE Standard Time
-      - Georgian Standard Time
-      - GMT Standard Time
-      - Greenland Standard Time
-      - Greenwich Standard Time
-      - GTB Standard Time
-      - Hawaiian Standard Time
-      - India Standard Time
-      - Iran Standard Time
-      - Israel Standard Time
-      - Jordan Standard Time
-      - Korea Standard Time
-      - Mauritius Standard Time
-      - Mid-Atlantic Standard Time
-      - Middle East Standard Time
-      - Montevideo Standard Time
-      - Morocco Standard Time
-      - Mountain Standard Time
-      - Mountain Standard Time (Mexico)
-      - Myanmar Standard Time
-      - N. Central Asia Standard Time
-      - Namibia Standard Time
-      - Nepal Standard Time
-      - New Zealand Standard Time
-      - Newfoundland Standard Time
-      - North Asia East Standard Time
-      - North Asia Standard Time
-      - Pacific SA Standard Time
-      - Pacific Standard Time
-      - Pacific Standard Time (Mexico)
-      - Pakistan Standard Time
-      - Romance Standard Time
-      - Russian Standard Time
-      - SA Eastern Standard Time
-      - SA Pacific Standard Time
-      - SA Western Standard Time
-      - Samoa Standard Time
-      - SE Asia Standard Time
-      - Singapore Standard Time
-      - South Africa Standard Time
-      - Sri Lanka Standard Time
-      - Taipei Standard Time
-      - Tasmania Standard Time
-      - Tokyo Standard Time
-      - Tonga Standard Time
-      - US Eastern Standard Time
-      - US Mountain Standard Time
-      - UTC
-      - Venezuela Standard Time
-      - Vladivostok Standard Time
-      - W. Australia Standard Time
-      - W. Central Africa Standard Time
-      - W. Europe Standard Time
-      - West Asia Standard Time
-      - West Pacific Standard Time
-      - Yakutsk Standard Time
-      type: string
-      x-enums:
-      - value: Afghanistan Standard Time
-        name: Gmt0430Kabul
-        description: (GMT+04:30) Kabul
-        isString: true
-      - value: Alaskan Standard Time
-        name: Gmt0900Alaska
-        description: (GMT-09:00) Alaska
-        isString: true
-      - value: Arab Standard Time
-        name: Gmt0300KuwaitRiyadh
-        description: "(GMT+03:00) Kuwait, Riyadh"
-        isString: true
-      - value: Arabian Standard Time
-        name: Gmt0400AbuDhabiMuscat
-        description: "(GMT+04:00) Abu Dhabi, Muscat"
-        isString: true
-      - value: Arabic Standard Time
-        name: Gmt0300Baghdad
-        description: (GMT+03:00) Baghdad
-        isString: true
-      - value: Argentina Standard Time
-        name: Gmt0300BuenosAires
-        description: (GMT-03:00) Buenos Aires
-        isString: true
-      - value: Atlantic Standard Time
-        name: Gmt0400AtlanticTimeCanada
-        description: (GMT-04:00) Atlantic Time (Canada)
-        isString: true
-      - value: AUS Central Standard Time
-        name: Gmt0930Darwin
-        description: (GMT+09:30) Darwin
-        isString: true
-      - value: AUS Eastern Standard Time
-        name: Gmt1000CanberraMelbourneSydney
-        description: "(GMT+10:00) Canberra, Melbourne, Sydney"
-        isString: true
-      - value: Azerbaijan Standard Time
-        name: Gmt0400Baku
-        description: (GMT+04:00) Baku
-        isString: true
-      - value: Azores Standard Time
-        name: Gmt0100Azores
-        description: (GMT-01:00) Azores
-        isString: true
-      - value: Canada Central Standard Time
-        name: Gmt0600Saskatchewan
-        description: (GMT-06:00) Saskatchewan
-        isString: true
-      - value: Cape Verde Standard Time
-        name: Gmt0100CapeVerdeIs
-        description: (GMT-01:00) Cape Verde Is.
-        isString: true
-      - value: Caucasus Standard Time
-        name: Gmt0400Yerevan
-        description: (GMT+04:00) Yerevan
-        isString: true
-      - value: Cen. Australia Standard Time
-        name: Gmt0930Adelaide
-        description: (GMT+09:30) Adelaide
-        isString: true
-      - value: Central America Standard Time
-        name: Gmt0600CentralAmerica
-        description: (GMT-06:00) Central America
-        isString: true
-      - value: Central Asia Standard Time
-        name: Gmt0600AstanaDhaka
-        description: "(GMT+06:00) Astana, Dhaka"
-        isString: true
-      - value: Central Brazilian Standard Time
-        name: Gmt0400Manaus
-        description: (GMT-04:00) Manaus
-        isString: true
-      - value: Central Europe Standard Time
-        name: Gmt0100BelgradeBratislavaBudapestLjubljanaPrague
-        description: "(GMT+01:00) Belgrade, Bratislava, Budapest, Ljubljana, Prague"
-        isString: true
-      - value: Central European Standard Time
-        name: Gmt0100SarajevoSkopjeWarsawZagreb
-        description: "(GMT+01:00) Sarajevo, Skopje, Warsaw, Zagreb"
-        isString: true
-      - value: Central Pacific Standard Time
-        name: Gmt1100MagadanSolomonIsNewCaledonia
-        description: "(GMT+11:00) Magadan, Solomon Is., New Caledonia"
-        isString: true
-      - value: Central Standard Time
-        name: Gmt0600CentralTimeUsCanada
-        description: (GMT-06:00) Central Time (US & Canada)
-        isString: true
-      - value: Central Standard Time (Mexico)
-        name: Gmt0600GuadalajaraMexicoCityMonterrey
-        description: "(GMT-06:00) Guadalajara, Mexico City, Monterrey"
-        isString: true
-      - value: China Standard Time
-        name: Gmt0800BeijingChongqingHongKongUrumqi
-        description: "(GMT+08:00) Beijing, Chongqing, Hong Kong, Urumqi"
-        isString: true
-      - value: Dateline Standard Time
-        name: Gmt1200InternationalDateLineWest
-        description: (GMT-12:00) International Date Line West
-        isString: true
-      - value: E. Africa Standard Time
-        name: Gmt0300Nairobi
-        description: (GMT+03:00) Nairobi
-        isString: true
-      - value: E. Australia Standard Time
-        name: Gmt1000Brisbane
-        description: (GMT+10:00) Brisbane
-        isString: true
-      - value: E. Europe Standard Time
-        name: Gmt0200Minsk
-        description: (GMT+02:00) Minsk
-        isString: true
-      - value: E. South America Standard Time
-        name: Gmt0300Brasilia
-        description: (GMT-03:00) Brasilia
-        isString: true
-      - value: Eastern Standard Time
-        name: Gmt0500EasternTimeUsCanada
-        description: (GMT-05:00) Eastern Time (US & Canada)
-        isString: true
-      - value: Egypt Standard Time
-        name: Gmt0200Cairo
-        description: (GMT+02:00) Cairo
-        isString: true
-      - value: Ekaterinburg Standard Time
-        name: Gmt0500Ekaterinburg
-        description: (GMT+05:00) Ekaterinburg
-        isString: true
-      - value: Fiji Standard Time
-        name: Gmt1200FijiKamchatkaMarshallIs
-        description: "(GMT+12:00) Fiji, Kamchatka, Marshall Is."
-        isString: true
-      - value: FLE Standard Time
-        name: Gmt0200HelsinkiKyivRigaSofiaTallinnVilnius
-        description: "(GMT+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius"
-        isString: true
-      - value: Georgian Standard Time
-        name: Gmt0300Tbilisi
-        description: (GMT+03:00) Tbilisi
-        isString: true
-      - value: GMT Standard Time
-        name: GmtGreenwichMeanTimeDublinEdinburghLisbonLondon
-        description: "(GMT) Greenwich Mean Time : Dublin, Edinburgh, Lisbon, London"
-        isString: true
-      - value: Greenland Standard Time
-        name: Gmt0300Greenland
-        description: (GMT-03:00) Greenland
-        isString: true
-      - value: Greenwich Standard Time
-        name: GmtMonroviaReykjavik
-        description: "(GMT) Monrovia, Reykjavik"
-        isString: true
-      - value: GTB Standard Time
-        name: Gmt0200AthensBucharestIstanbul
-        description: "(GMT+02:00) Athens, Bucharest, Istanbul"
-        isString: true
-      - value: Hawaiian Standard Time
-        name: Gmt1000Hawaii
-        description: (GMT-10:00) Hawaii
-        isString: true
-      - value: India Standard Time
-        name: Gmt0530ChennaiKolkataMumbaiNewDelhi
-        description: "(GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi"
-        isString: true
-      - value: Iran Standard Time
-        name: Gmt0330Tehran
-        description: (GMT+03:30) Tehran
-        isString: true
-      - value: Israel Standard Time
-        name: Gmt0200Jerusalem
-        description: (GMT+02:00) Jerusalem
-        isString: true
-      - value: Jordan Standard Time
-        name: Gmt0200Amman
-        description: (GMT+02:00) Amman
-        isString: true
-      - value: Korea Standard Time
-        name: Gmt0900Seoul
-        description: (GMT+09:00) Seoul
-        isString: true
-      - value: Mauritius Standard Time
-        name: Gmt0400PortLouis
-        description: (GMT+04:00) Port Louis
-        isString: true
-      - value: Mid-Atlantic Standard Time
-        name: Gmt0200MidAtlantic
-        description: (GMT-02:00) Mid-Atlantic
-        isString: true
-      - value: Middle East Standard Time
-        name: Gmt0200Beirut
-        description: (GMT+02:00) Beirut
-        isString: true
-      - value: Montevideo Standard Time
-        name: Gmt0300Montevideo
-        description: (GMT-03:00) Montevideo
-        isString: true
-      - value: Morocco Standard Time
-        name: GmtCasablanca
-        description: (GMT) Casablanca
-        isString: true
-      - value: Mountain Standard Time
-        name: Gmt0700MountainTimeUsCanada
-        description: (GMT-07:00) Mountain Time (US & Canada)
-        isString: true
-      - value: Mountain Standard Time (Mexico)
-        name: Gmt0700ChihuahuaLaPazMazatlan
-        description: "(GMT-07:00) Chihuahua, La Paz, Mazatlan"
-        isString: true
-      - value: Myanmar Standard Time
-        name: Gmt0630YangonRangoon
-        description: (GMT+06:30) Yangon (Rangoon)
-        isString: true
-      - value: N. Central Asia Standard Time
-        name: Gmt0600AlmatyNovosibirsk
-        description: "(GMT+06:00) Almaty, Novosibirsk"
-        isString: true
-      - value: Namibia Standard Time
-        name: Gmt0200Windhoek
-        description: (GMT+02:00) Windhoek
-        isString: true
-      - value: Nepal Standard Time
-        name: Gmt0545Kathmandu
-        description: (GMT+05:45) Kathmandu
-        isString: true
-      - value: New Zealand Standard Time
-        name: Gmt1200AucklandWellington
-        description: "(GMT+12:00) Auckland, Wellington"
-        isString: true
-      - value: Newfoundland Standard Time
-        name: Gmt0330Newfoundland
-        description: (GMT-03:30) Newfoundland
-        isString: true
-      - value: North Asia East Standard Time
-        name: Gmt0800IrkutskUlaanBataar
-        description: "(GMT+08:00) Irkutsk, Ulaan Bataar"
-        isString: true
-      - value: North Asia Standard Time
-        name: Gmt0700Krasnoyarsk
-        description: (GMT+07:00) Krasnoyarsk
-        isString: true
-      - value: Pacific SA Standard Time
-        name: Gmt0400Santiago
-        description: (GMT-04:00) Santiago
-        isString: true
-      - value: Pacific Standard Time
-        name: Gmt0800PacificTimeUsCanada
-        description: (GMT-08:00) Pacific Time (US & Canada)
-        isString: true
-      - value: Pacific Standard Time (Mexico)
-        name: Gmt0800TijuanaBajaCalifornia
-        description: "(GMT-08:00) Tijuana, Baja California"
-        isString: true
-      - value: Pakistan Standard Time
-        name: Gmt0500IslamabadKarachi
-        description: "(GMT+05:00) Islamabad, Karachi"
-        isString: true
-      - value: Romance Standard Time
-        name: Gmt0100BrusselsCopenhagenMadridParis
-        description: "(GMT+01:00) Brussels, Copenhagen, Madrid, Paris"
-        isString: true
-      - value: Russian Standard Time
-        name: Gmt0300MoscowStPetersburgVolgograd
-        description: "(GMT+03:00) Moscow, St. Petersburg, Volgograd"
-        isString: true
-      - value: SA Eastern Standard Time
-        name: Gmt0300Georgetown
-        description: (GMT-03:00) Georgetown
-        isString: true
-      - value: SA Pacific Standard Time
-        name: Gmt0500BogotaLimaQuitoRioBranco
-        description: "(GMT-05:00) Bogota, Lima, Quito, Rio Branco"
-        isString: true
-      - value: SA Western Standard Time
-        name: Gmt0400LaPaz
-        description: (GMT-04:00) La Paz
-        isString: true
-      - value: Samoa Standard Time
-        name: Gmt1100MidwayIslandSamoa
-        description: "(GMT-11:00) Midway Island, Samoa"
-        isString: true
-      - value: SE Asia Standard Time
-        name: Gmt0700BangkokHanoiJakarta
-        description: "(GMT+07:00) Bangkok, Hanoi, Jakarta"
-        isString: true
-      - value: Singapore Standard Time
-        name: Gmt0800KualaLumpurSingapore
-        description: "(GMT+08:00) Kuala Lumpur, Singapore"
-        isString: true
-      - value: South Africa Standard Time
-        name: Gmt0200HararePretoria
-        description: "(GMT+02:00) Harare, Pretoria"
-        isString: true
-      - value: Sri Lanka Standard Time
-        name: Gmt0530SriJayawardenepura
-        description: (GMT+05:30) Sri Jayawardenepura
-        isString: true
-      - value: Taipei Standard Time
-        name: Gmt0800Taipei
-        description: (GMT+08:00) Taipei
-        isString: true
-      - value: Tasmania Standard Time
-        name: Gmt1000Hobart
-        description: (GMT+10:00) Hobart
-        isString: true
-      - value: Tokyo Standard Time
-        name: Gmt0900OsakaSapporoTokyo
-        description: "(GMT+09:00) Osaka, Sapporo, Tokyo"
-        isString: true
-      - value: Tonga Standard Time
-        name: Gmt1300NukuAlofa
-        description: (GMT+13:00) Nuku'alofa
-        isString: true
-      - value: US Eastern Standard Time
-        name: Gmt0500IndianaEast
-        description: (GMT-05:00) Indiana (East)
-        isString: true
-      - value: US Mountain Standard Time
-        name: Gmt0700Arizona
-        description: (GMT-07:00) Arizona
-        isString: true
-      - value: UTC
-        name: Utc
-        description: UTC
-        isString: true
-      - value: Venezuela Standard Time
-        name: Gmt0430Caracas
-        description: (GMT-04:30) Caracas
-        isString: true
-      - value: Vladivostok Standard Time
-        name: Gmt1000Vladivostok
-        description: (GMT+10:00) Vladivostok
-        isString: true
-      - value: W. Australia Standard Time
-        name: Gmt0800Perth
-        description: (GMT+08:00) Perth
-        isString: true
-      - value: W. Central Africa Standard Time
-        name: Gmt0100WestCentralAfrica
-        description: (GMT+01:00) West Central Africa
-        isString: true
-      - value: W. Europe Standard Time
-        name: Gmt0100AmsterdamBerlinBernRomeStockholmVienna
-        description: "(GMT+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna"
-        isString: true
-      - value: West Asia Standard Time
-        name: Gmt0500Tashkent
-        description: (GMT+05:00) Tashkent
-        isString: true
-      - value: West Pacific Standard Time
-        name: Gmt1000GuamPortMoresby
-        description: "(GMT+10:00) Guam, Port Moresby"
-        isString: true
-      - value: Yakutsk Standard Time
-        name: Gmt0900Yakutsk
-        description: (GMT+09:00) Yakutsk
-        isString: true
     EnumCurrency:
       description: The enum of Currency.
       enum:
@@ -10067,13 +10189,14 @@ components:
         Name: Name
       properties:
         Id:
-          description: The guid to identify the location
+          description: The guid to identify the location.
           type: string
         ExternalId:
-          description: The external identifier of the location
+          description: The external identifier of the location.
           type: string
         Name:
-          description: The name of the location
+          description: The name of the location. The value must be unique in the system
+            and you cannot add multiple values.
           type: string
         CountryId:
           $ref: '#/components/schemas/EnumCountry'
@@ -10083,11 +10206,10 @@ components:
           $ref: '#/components/schemas/EnumCurrency'
         Is_Active:
           default: false
-          description: Defines if the location is active and can be used
+          description: Defines if the location is active and can be used.
           example: false
           type: boolean
       required:
-      - Id
       - Is_Active
       - Name
       type: object
@@ -10103,13 +10225,14 @@ components:
         Name: Name
       properties:
         Id:
-          description: The guid to identify the location
+          description: The guid to identify the location.
           type: string
         ExternalId:
-          description: The external identifier of the location
+          description: The external identifier of the location.
           type: string
         Name:
-          description: The name of the location
+          description: The name of the location. The value must be unique in the system
+            and you cannot add multiple values.
           type: string
         CountryId:
           $ref: '#/components/schemas/EnumCountry'
@@ -10119,7 +10242,7 @@ components:
           $ref: '#/components/schemas/EnumCurrency'
         Is_Active:
           default: false
-          description: Defines if the location is active and can be used
+          description: Defines if the location is active and can be used.
           example: false
           type: boolean
       required:
@@ -10138,10 +10261,11 @@ components:
         Name: Name
       properties:
         ExternalId:
-          description: The external identifier of the location
+          description: The external identifier of the location.
           type: string
         Name:
-          description: The name of the location
+          description: The name of the location. The value must be unique in the system
+            and you cannot add multiple values.
           type: string
         CountryId:
           $ref: '#/components/schemas/EnumCountry'
@@ -10151,7 +10275,7 @@ components:
           $ref: '#/components/schemas/EnumCurrency'
         Is_Active:
           default: false
-          description: Defines if the location is active and can be used
+          description: Defines if the location is active and can be used.
           example: false
           type: boolean
       required:
@@ -10314,33 +10438,39 @@ components:
       properties:
         Id:
           description: The identifier of the module that owns the entity that is being
-            processed
+            processed.
           type: string
         Name:
-          description: Name of connection
+          description: Name of connection. The value must be unique in the system
+            and you cannot add multiple values.
           type: string
         Description:
-          description: Description of connection
+          description: Description of connection.
           type: string
         ApiKey:
           description: "An API key is a unique identifier used to authenticate a user,\
-            \ developer, or calling program to an API"
+            \ developer, or calling program to an API. The pattern of the value (Secure).\
+            \ The default of the value (Generate password)."
           type: string
         SecretKey:
-          description: "A secret key for signing payloads, enhancing security."
+          description: "A secret key for signing payloads, enhancing security. The\
+            \ pattern of the value (Secure). The default of the value (Generate password)."
           type: string
         URL:
-          description: Webhook external service URL-address
+          description: "Webhook external service URL-address. The value must be unique\
+            \ in the system and you cannot add multiple values. The pattern of the\
+            \ value (^(http(s):\\/\\/.)[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\\
+            b([-a-zA-Z0-9@:%_\\+.~#?&\\/\\/=]*)$)."
           type: string
         Is_Active:
           default: false
-          description: "If true, the configuration is active"
+          description: "If true, the configuration is active."
           example: false
           type: boolean
         Is_System:
           default: false
           description: "If true, the configuration is internal to the system and not\
-            \ visible in the user interface"
+            \ visible in the user interface."
           example: false
           type: boolean
         ModifiedBy:
@@ -10360,7 +10490,6 @@ components:
           format: date-time
           type: string
       required:
-      - Id
       - Name
       - URL
       type: object
@@ -10518,28 +10647,28 @@ components:
           Value: Value
       properties:
         Id:
-          description: The identifier of the config
+          description: The identifier of the config.
           type: string
         WebhookEntityId:
           $ref: '#/components/schemas/FieldType'
         HasCreateAccess:
           default: false
-          description: Service has create access to data
+          description: Service has create access to data.
           example: false
           type: boolean
         HasUpdateAccess:
           default: false
-          description: Service has update access to data
+          description: Service has update access to data.
           example: false
           type: boolean
         HasDeleteAccess:
           default: false
-          description: Service has delete access to data
+          description: Service has delete access to data.
           example: false
           type: boolean
         Is_Active:
           default: false
-          description: "If true, the configuration is active"
+          description: "If true, the configuration is active."
           example: false
           type: boolean
         ModifiedBy:
@@ -10559,7 +10688,6 @@ components:
           format: date-time
           type: string
       required:
-      - Id
       - WebhookEntityId
       type: object
     ConfigText:
@@ -10577,33 +10705,33 @@ components:
         ModifiedBy: ModifiedBy
       properties:
         Id:
-          description: The identifier of the config
+          description: The identifier of the config.
           type: string
         WebhookEntityId:
           description: Identifier of webhook entity.
           type: string
         HasCreateAccess:
           default: false
-          description: Service has create access to data
+          description: Service has create access to data.
           example: false
           type: boolean
         HasUpdateAccess:
           default: false
-          description: Service has update access to data
+          description: Service has update access to data.
           example: false
           type: boolean
         HasDeleteAccess:
           default: false
-          description: Service has delete access to data
+          description: Service has delete access to data.
           example: false
           type: boolean
         Is_Active:
           default: false
-          description: "If true, the configuration is active"
+          description: "If true, the configuration is active."
           example: false
           type: boolean
         ModifiedBy:
-          description: The Identifier of the user who updated the record
+          description: The Identifier of the user who updated the record.
           type: string
         ModifiedOn:
           default: 1900-01-01T00:00:00Z
@@ -10612,7 +10740,7 @@ components:
           format: date-time
           type: string
         CreatedBy:
-          description: The Identifier of the user who created the record
+          description: The Identifier of the user who created the record.
           type: string
         CreatedOn:
           default: 1900-01-01T00:00:00Z
@@ -10621,7 +10749,6 @@ components:
           format: date-time
           type: string
       required:
-      - Id
       - WebhookEntityId
       type: object
     ConfigsData:

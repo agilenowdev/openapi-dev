@@ -72,27 +72,25 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DepartmentData" /> class.
         /// </summary>
-        /// <param name="id">The guid to identify the department (required).</param>
-        /// <param name="externalId">The external identifier of the department.</param>
-        /// <param name="name">The name of the department (required).</param>
+        /// <param name="id">The guid to identify the department..</param>
+        /// <param name="externalId">The external identifier of the department..</param>
+        /// <param name="name">The name of the department. (required).</param>
         /// <param name="departmentTypeId">departmentTypeId (required).</param>
         /// <param name="parentDepartmentId">parentDepartmentId.</param>
-        /// <param name="contactName">The contact name of company or department.</param>
-        /// <param name="contactEmail">The contact email of external company or department.</param>
+        /// <param name="contactName">The contact name of company or department..</param>
+        /// <param name="contactEmail">The contact email of external company or department..</param>
         /// <param name="contactPhone">contactPhone.</param>
         /// <param name="ownerId">ownerId.</param>
         /// <param name="countryId">countryId.</param>
-        /// <param name="isActive">Defines if the department is active and can be used (required) (default to false).</param>
+        /// <param name="isActive">Defines if the department is active and can be used. (required) (default to false).</param>
         public DepartmentData(string id = default, string externalId = default, string name = default, EnumDepartmentType departmentTypeId = default, FieldType parentDepartmentId = default, string contactName = default, string contactEmail = default, string contactPhone = default, FieldType ownerId = default, EnumCountry? countryId = default, bool isActive = false)
         {
-            // to ensure "id" is required (not null)
-            id = id ?? throw new ArgumentNullException("id is a required property for DepartmentData and cannot be null");
-            Id = id;
             // to ensure "name" is required (not null)
             name = name ?? throw new ArgumentNullException("name is a required property for DepartmentData and cannot be null");
             Name = name;
             DepartmentTypeId = departmentTypeId;
             IsActive = isActive;
+            Id = id;
             ExternalId = externalId;
             ParentDepartmentId = parentDepartmentId;
             ContactName = contactName;
@@ -103,23 +101,23 @@ namespace Agile.Now.AccessHub.Model
         }
 
         /// <summary>
-        /// The guid to identify the department
+        /// The guid to identify the department.
         /// </summary>
-        /// <value>The guid to identify the department</value>
-        [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
+        /// <value>The guid to identify the department.</value>
+        [DataMember(Name = "Id", EmitDefaultValue = false)]
         public string Id { get; set; }
 
         /// <summary>
-        /// The external identifier of the department
+        /// The external identifier of the department.
         /// </summary>
-        /// <value>The external identifier of the department</value>
+        /// <value>The external identifier of the department.</value>
         [DataMember(Name = "ExternalId", EmitDefaultValue = false)]
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// The name of the department
+        /// The name of the department.
         /// </summary>
-        /// <value>The name of the department</value>
+        /// <value>The name of the department.</value>
         [DataMember(Name = "Name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
@@ -130,16 +128,16 @@ namespace Agile.Now.AccessHub.Model
         public FieldType ParentDepartmentId { get; set; }
 
         /// <summary>
-        /// The contact name of company or department
+        /// The contact name of company or department.
         /// </summary>
-        /// <value>The contact name of company or department</value>
+        /// <value>The contact name of company or department.</value>
         [DataMember(Name = "ContactName", EmitDefaultValue = false)]
         public string ContactName { get; set; }
 
         /// <summary>
-        /// The contact email of external company or department
+        /// The contact email of external company or department.
         /// </summary>
-        /// <value>The contact email of external company or department</value>
+        /// <value>The contact email of external company or department.</value>
         [DataMember(Name = "ContactEmail", EmitDefaultValue = false)]
         public string ContactEmail { get; set; }
 
@@ -156,9 +154,9 @@ namespace Agile.Now.AccessHub.Model
         public FieldType OwnerId { get; set; }
 
         /// <summary>
-        /// Defines if the department is active and can be used
+        /// Defines if the department is active and can be used.
         /// </summary>
-        /// <value>Defines if the department is active and can be used</value>
+        /// <value>Defines if the department is active and can be used.</value>
         /// <example>false</example>
         [DataMember(Name = "Is_Active", IsRequired = true, EmitDefaultValue = true)]
         public bool IsActive { get; set; }

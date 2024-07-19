@@ -60,29 +60,27 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ConnectionData" /> class.
         /// </summary>
-        /// <param name="id">The identifier of the module that owns the entity that is being processed (required).</param>
-        /// <param name="name">Name of connection (required).</param>
-        /// <param name="description">Description of connection.</param>
-        /// <param name="apiKey">An API key is a unique identifier used to authenticate a user, developer, or calling program to an API.</param>
-        /// <param name="secretKey">A secret key for signing payloads, enhancing security..</param>
-        /// <param name="uRL">Webhook external service URL-address (required).</param>
-        /// <param name="isActive">If true, the configuration is active (default to false).</param>
-        /// <param name="isSystem">If true, the configuration is internal to the system and not visible in the user interface (default to false).</param>
+        /// <param name="id">The identifier of the module that owns the entity that is being processed..</param>
+        /// <param name="name">Name of connection. The value must be unique in the system and you cannot add multiple values. (required).</param>
+        /// <param name="description">Description of connection..</param>
+        /// <param name="apiKey">An API key is a unique identifier used to authenticate a user, developer, or calling program to an API. The pattern of the value (Secure). The default of the value (Generate password)..</param>
+        /// <param name="secretKey">A secret key for signing payloads, enhancing security. The pattern of the value (Secure). The default of the value (Generate password)..</param>
+        /// <param name="uRL">Webhook external service URL-address. The value must be unique in the system and you cannot add multiple values. The pattern of the value (^(http(s)://.)[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)$). (required).</param>
+        /// <param name="isActive">If true, the configuration is active. (default to false).</param>
+        /// <param name="isSystem">If true, the configuration is internal to the system and not visible in the user interface. (default to false).</param>
         /// <param name="modifiedBy">modifiedBy.</param>
         /// <param name="modifiedOn">The date the record was updated. (default to &quot;1900-01-01T00:00Z&quot;).</param>
         /// <param name="createdBy">createdBy.</param>
         /// <param name="createdOn">The date the record was created. (default to &quot;1900-01-01T00:00Z&quot;).</param>
         public ConnectionData(string id = default, string name = default, string description = default, string apiKey = default, string secretKey = default, string uRL = default, bool isActive = false, bool isSystem = false, FieldType modifiedBy = default, DateTime modifiedOn = default, FieldType createdBy = default, DateTime createdOn = default)
         {
-            // to ensure "id" is required (not null)
-            id = id ?? throw new ArgumentNullException("id is a required property for ConnectionData and cannot be null");
-            Id = id;
             // to ensure "name" is required (not null)
             name = name ?? throw new ArgumentNullException("name is a required property for ConnectionData and cannot be null");
             Name = name;
             // to ensure "uRL" is required (not null)
             uRL = uRL ?? throw new ArgumentNullException("uRL is a required property for ConnectionData and cannot be null");
             URL = uRL;
+            Id = id;
             Description = description;
             ApiKey = apiKey;
             SecretKey = secretKey;
@@ -95,59 +93,59 @@ namespace Agile.Now.AccessHub.Model
         }
 
         /// <summary>
-        /// The identifier of the module that owns the entity that is being processed
+        /// The identifier of the module that owns the entity that is being processed.
         /// </summary>
-        /// <value>The identifier of the module that owns the entity that is being processed</value>
-        [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
+        /// <value>The identifier of the module that owns the entity that is being processed.</value>
+        [DataMember(Name = "Id", EmitDefaultValue = false)]
         public string Id { get; set; }
 
         /// <summary>
-        /// Name of connection
+        /// Name of connection. The value must be unique in the system and you cannot add multiple values.
         /// </summary>
-        /// <value>Name of connection</value>
+        /// <value>Name of connection. The value must be unique in the system and you cannot add multiple values.</value>
         [DataMember(Name = "Name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Description of connection
+        /// Description of connection.
         /// </summary>
-        /// <value>Description of connection</value>
+        /// <value>Description of connection.</value>
         [DataMember(Name = "Description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
         /// <summary>
-        /// An API key is a unique identifier used to authenticate a user, developer, or calling program to an API
+        /// An API key is a unique identifier used to authenticate a user, developer, or calling program to an API. The pattern of the value (Secure). The default of the value (Generate password).
         /// </summary>
-        /// <value>An API key is a unique identifier used to authenticate a user, developer, or calling program to an API</value>
+        /// <value>An API key is a unique identifier used to authenticate a user, developer, or calling program to an API. The pattern of the value (Secure). The default of the value (Generate password).</value>
         [DataMember(Name = "ApiKey", EmitDefaultValue = false)]
         public string ApiKey { get; set; }
 
         /// <summary>
-        /// A secret key for signing payloads, enhancing security.
+        /// A secret key for signing payloads, enhancing security. The pattern of the value (Secure). The default of the value (Generate password).
         /// </summary>
-        /// <value>A secret key for signing payloads, enhancing security.</value>
+        /// <value>A secret key for signing payloads, enhancing security. The pattern of the value (Secure). The default of the value (Generate password).</value>
         [DataMember(Name = "SecretKey", EmitDefaultValue = false)]
         public string SecretKey { get; set; }
 
         /// <summary>
-        /// Webhook external service URL-address
+        /// Webhook external service URL-address. The value must be unique in the system and you cannot add multiple values. The pattern of the value (^(http(s)://.)[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)$).
         /// </summary>
-        /// <value>Webhook external service URL-address</value>
+        /// <value>Webhook external service URL-address. The value must be unique in the system and you cannot add multiple values. The pattern of the value (^(http(s)://.)[-a-zA-Z0-9@:%._\\+~#&#x3D;]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&amp;//&#x3D;]*)$).</value>
         [DataMember(Name = "URL", IsRequired = true, EmitDefaultValue = true)]
         public string URL { get; set; }
 
         /// <summary>
-        /// If true, the configuration is active
+        /// If true, the configuration is active.
         /// </summary>
-        /// <value>If true, the configuration is active</value>
+        /// <value>If true, the configuration is active.</value>
         /// <example>false</example>
         [DataMember(Name = "Is_Active", EmitDefaultValue = true)]
         public bool IsActive { get; set; }
 
         /// <summary>
-        /// If true, the configuration is internal to the system and not visible in the user interface
+        /// If true, the configuration is internal to the system and not visible in the user interface.
         /// </summary>
-        /// <value>If true, the configuration is internal to the system and not visible in the user interface</value>
+        /// <value>If true, the configuration is internal to the system and not visible in the user interface.</value>
         /// <example>false</example>
         [DataMember(Name = "Is_System", EmitDefaultValue = true)]
         public bool IsSystem { get; set; }

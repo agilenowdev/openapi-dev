@@ -378,7 +378,7 @@ namespace Agile.Now.AccessHub.Model
         CostaRica = 54,
 
         /// <summary>
-        /// Enum C�te d&#39;Ivoire for value: CIV
+        /// Enum C�te d'Ivoire for value: CIV
         /// </summary>
         [EnumMember(Value = "CIV")]
         CTeDIvoire = 55,

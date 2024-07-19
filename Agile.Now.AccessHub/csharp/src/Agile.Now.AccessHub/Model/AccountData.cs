@@ -52,6 +52,24 @@ namespace Agile.Now.AccessHub.Model
     [DataContract(Name = "AccountData")]
     public partial class AccountData : IValidatableObject
     {
+
+        /// <summary>
+        /// Gets or Sets LanguageId
+        /// </summary>
+        [DataMember(Name = "LanguageId", EmitDefaultValue = false)]
+        public EnumLanguage? LanguageId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TimezoneId
+        /// </summary>
+        [DataMember(Name = "TimezoneId", EmitDefaultValue = false)]
+        public EnumTimezone? TimezoneId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DateFormatId
+        /// </summary>
+        [DataMember(Name = "DateFormatId", EmitDefaultValue = false)]
+        public EnumDateFormat? DateFormatId { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="AccountData" /> class.
         /// </summary>
@@ -60,28 +78,25 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AccountData" /> class.
         /// </summary>
-        /// <param name="id">The identifier of account (required).</param>
+        /// <param name="id">The identifier of account..</param>
         /// <param name="tenantId">tenantId.</param>
-        /// <param name="name">The name of the account.</param>
-        /// <param name="firstName">Person's first name (required).</param>
-        /// <param name="lastName">Person's last name (required).</param>
-        /// <param name="phone">The phone number of account. The phone number is unique in the system.</param>
-        /// <param name="email">The e-mail of account. The email is unique in the system (required).</param>
+        /// <param name="name">The name of the account..</param>
+        /// <param name="firstName">Person's first name. (required).</param>
+        /// <param name="lastName">Person's last name. (required).</param>
+        /// <param name="phone">The phone number of account. The phone number is unique in the system..</param>
+        /// <param name="email">The e-mail of account. The email is unique in the system. (required).</param>
         /// <param name="languageId">languageId.</param>
         /// <param name="timezoneId">timezoneId.</param>
         /// <param name="dateFormatId">dateFormatId.</param>
-        /// <param name="username">Username used to log in into the system. The username is unique in the system (required).</param>
-        /// <param name="externalId">External Authentication identifier. Example Azure AD guid.</param>
-        /// <param name="notifyByEmail">Defines if a person should get notifications via e-mail (default to false).</param>
-        /// <param name="notifyBySMS">Defines if a contact should get notifications via SMS (default to false).</param>
-        /// <param name="isActive">Defines if the account is active and can be used (default to false).</param>
-        /// <param name="modifiedOn">The date the record was updated (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        /// <param name="createdOn">The date the record was created (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public AccountData(string id = default, FieldType tenantId = default, string name = default, string firstName = default, string lastName = default, string phone = default, string email = default, FieldType languageId = default, FieldType timezoneId = default, FieldType dateFormatId = default, string username = default, string externalId = default, bool notifyByEmail = false, bool notifyBySMS = false, bool isActive = false, DateTime modifiedOn = default, DateTime createdOn = default)
+        /// <param name="username">Username used to log in into the system. The username is unique in the system. The value must be unique in the system and you cannot add multiple values. (required).</param>
+        /// <param name="externalId">External Authentication identifier. Example Azure AD guid. The value must be unique in the system and you cannot add multiple values..</param>
+        /// <param name="notifyByEmail">Defines if a person should get notifications via e-mail. (default to false).</param>
+        /// <param name="notifyBySMS">Defines if a contact should get notifications via SMS. (default to false).</param>
+        /// <param name="isActive">Defines if the account is active and can be used. (default to false).</param>
+        /// <param name="modifiedOn">The date the record was updated. (default to &quot;1900-01-01T00:00Z&quot;).</param>
+        /// <param name="createdOn">The date the record was created. (default to &quot;1900-01-01T00:00Z&quot;).</param>
+        public AccountData(string id = default, FieldType tenantId = default, string name = default, string firstName = default, string lastName = default, string phone = default, string email = default, EnumLanguage? languageId = default, EnumTimezone? timezoneId = default, EnumDateFormat? dateFormatId = default, string username = default, string externalId = default, bool notifyByEmail = false, bool notifyBySMS = false, bool isActive = false, DateTime modifiedOn = default, DateTime createdOn = default)
         {
-            // to ensure "id" is required (not null)
-            id = id ?? throw new ArgumentNullException("id is a required property for AccountData and cannot be null");
-            Id = id;
             // to ensure "firstName" is required (not null)
             firstName = firstName ?? throw new ArgumentNullException("firstName is a required property for AccountData and cannot be null");
             FirstName = firstName;
@@ -94,6 +109,7 @@ namespace Agile.Now.AccessHub.Model
             // to ensure "username" is required (not null)
             username = username ?? throw new ArgumentNullException("username is a required property for AccountData and cannot be null");
             Username = username;
+            Id = id;
             TenantId = tenantId;
             Name = name;
             Phone = phone;
@@ -109,10 +125,10 @@ namespace Agile.Now.AccessHub.Model
         }
 
         /// <summary>
-        /// The identifier of account
+        /// The identifier of account.
         /// </summary>
-        /// <value>The identifier of account</value>
-        [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
+        /// <value>The identifier of account.</value>
+        [DataMember(Name = "Id", EmitDefaultValue = false)]
         public string Id { get; set; }
 
         /// <summary>
@@ -122,108 +138,90 @@ namespace Agile.Now.AccessHub.Model
         public FieldType TenantId { get; set; }
 
         /// <summary>
-        /// The name of the account
+        /// The name of the account.
         /// </summary>
-        /// <value>The name of the account</value>
+        /// <value>The name of the account.</value>
         [DataMember(Name = "Name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Person's first name
+        /// Person's first name.
         /// </summary>
-        /// <value>Person&#39;s first name</value>
+        /// <value>Person&#39;s first name.</value>
         [DataMember(Name = "FirstName", IsRequired = true, EmitDefaultValue = true)]
         public string FirstName { get; set; }
 
         /// <summary>
-        /// Person's last name
+        /// Person's last name.
         /// </summary>
-        /// <value>Person&#39;s last name</value>
+        /// <value>Person&#39;s last name.</value>
         [DataMember(Name = "LastName", IsRequired = true, EmitDefaultValue = true)]
         public string LastName { get; set; }
 
         /// <summary>
-        /// The phone number of account. The phone number is unique in the system
+        /// The phone number of account. The phone number is unique in the system.
         /// </summary>
-        /// <value>The phone number of account. The phone number is unique in the system</value>
+        /// <value>The phone number of account. The phone number is unique in the system.</value>
         [DataMember(Name = "Phone", EmitDefaultValue = false)]
         public string Phone { get; set; }
 
         /// <summary>
-        /// The e-mail of account. The email is unique in the system
+        /// The e-mail of account. The email is unique in the system.
         /// </summary>
-        /// <value>The e-mail of account. The email is unique in the system</value>
+        /// <value>The e-mail of account. The email is unique in the system.</value>
         [DataMember(Name = "Email", IsRequired = true, EmitDefaultValue = true)]
         public string Email { get; set; }
 
         /// <summary>
-        /// Gets or Sets LanguageId
+        /// Username used to log in into the system. The username is unique in the system. The value must be unique in the system and you cannot add multiple values.
         /// </summary>
-        [DataMember(Name = "LanguageId", EmitDefaultValue = false)]
-        public FieldType LanguageId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TimezoneId
-        /// </summary>
-        [DataMember(Name = "TimezoneId", EmitDefaultValue = false)]
-        public FieldType TimezoneId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DateFormatId
-        /// </summary>
-        [DataMember(Name = "DateFormatId", EmitDefaultValue = false)]
-        public FieldType DateFormatId { get; set; }
-
-        /// <summary>
-        /// Username used to log in into the system. The username is unique in the system
-        /// </summary>
-        /// <value>Username used to log in into the system. The username is unique in the system</value>
+        /// <value>Username used to log in into the system. The username is unique in the system. The value must be unique in the system and you cannot add multiple values.</value>
         [DataMember(Name = "Username", IsRequired = true, EmitDefaultValue = true)]
         public string Username { get; set; }
 
         /// <summary>
-        /// External Authentication identifier. Example Azure AD guid
+        /// External Authentication identifier. Example Azure AD guid. The value must be unique in the system and you cannot add multiple values.
         /// </summary>
-        /// <value>External Authentication identifier. Example Azure AD guid</value>
+        /// <value>External Authentication identifier. Example Azure AD guid. The value must be unique in the system and you cannot add multiple values.</value>
         [DataMember(Name = "ExternalId", EmitDefaultValue = false)]
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// Defines if a person should get notifications via e-mail
+        /// Defines if a person should get notifications via e-mail.
         /// </summary>
-        /// <value>Defines if a person should get notifications via e-mail</value>
+        /// <value>Defines if a person should get notifications via e-mail.</value>
         /// <example>false</example>
         [DataMember(Name = "NotifyByEmail", EmitDefaultValue = true)]
         public bool NotifyByEmail { get; set; }
 
         /// <summary>
-        /// Defines if a contact should get notifications via SMS
+        /// Defines if a contact should get notifications via SMS.
         /// </summary>
-        /// <value>Defines if a contact should get notifications via SMS</value>
+        /// <value>Defines if a contact should get notifications via SMS.</value>
         /// <example>false</example>
         [DataMember(Name = "NotifyBySMS", EmitDefaultValue = true)]
         public bool NotifyBySMS { get; set; }
 
         /// <summary>
-        /// Defines if the account is active and can be used
+        /// Defines if the account is active and can be used.
         /// </summary>
-        /// <value>Defines if the account is active and can be used</value>
+        /// <value>Defines if the account is active and can be used.</value>
         /// <example>false</example>
         [DataMember(Name = "Is_Active", EmitDefaultValue = true)]
         public bool IsActive { get; set; }
 
         /// <summary>
-        /// The date the record was updated
+        /// The date the record was updated.
         /// </summary>
-        /// <value>The date the record was updated</value>
+        /// <value>The date the record was updated.</value>
         /// <example>1900-01-01T00:00Z</example>
         [DataMember(Name = "ModifiedOn", EmitDefaultValue = false)]
         public DateTime ModifiedOn { get; set; }
 
         /// <summary>
-        /// The date the record was created
+        /// The date the record was created.
         /// </summary>
-        /// <value>The date the record was created</value>
+        /// <value>The date the record was created.</value>
         /// <example>1900-01-01T00:00Z</example>
         [DataMember(Name = "CreatedOn", EmitDefaultValue = false)]
         public DateTime CreatedOn { get; set; }

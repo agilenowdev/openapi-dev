@@ -29,7 +29,9 @@ docs/EntitiesApi.md
 docs/Entity.md
 docs/EnumCountry.md
 docs/EnumCurrency.md
+docs/EnumDateFormat.md
 docs/EnumDepartmentType.md
+docs/EnumLanguage.md
 docs/EnumTimezone.md
 docs/Error.md
 docs/FieldType.md
@@ -102,7 +104,9 @@ src/Agile.Now.AccessHub/Model/Entities.cs
 src/Agile.Now.AccessHub/Model/Entity.cs
 src/Agile.Now.AccessHub/Model/EnumCountry.cs
 src/Agile.Now.AccessHub/Model/EnumCurrency.cs
+src/Agile.Now.AccessHub/Model/EnumDateFormat.cs
 src/Agile.Now.AccessHub/Model/EnumDepartmentType.cs
+src/Agile.Now.AccessHub/Model/EnumLanguage.cs
 src/Agile.Now.AccessHub/Model/EnumTimezone.cs
 src/Agile.Now.AccessHub/Model/Error.cs
 src/Agile.Now.AccessHub/Model/FieldType.cs

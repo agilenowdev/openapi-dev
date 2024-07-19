@@ -47,7 +47,7 @@ using OpenAPIDateConverter = Agile.Now.AccessHub.Client.OpenAPIDateConverter;
 namespace Agile.Now.AccessHub.Model
 {
     /// <summary>
-    /// The field object structure
+    /// The field object structure.
     /// </summary>
     [DataContract(Name = "FieldType")]
     public partial class FieldType : IValidatableObject
@@ -60,29 +60,27 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="FieldType" /> class.
         /// </summary>
-        /// <param name="field">The name of the data field (required).</param>
-        /// <param name="value">The value of the data row (required).</param>
+        /// <param name="field">The name of the data field..</param>
+        /// <param name="value">The value of the data row. (required).</param>
         public FieldType(string field = default, string value = default)
         {
-            // to ensure "field" is required (not null)
-            field = field ?? throw new ArgumentNullException("field is a required property for FieldType and cannot be null");
-            Field = field;
             // to ensure "value" is required (not null)
             value = value ?? throw new ArgumentNullException("value is a required property for FieldType and cannot be null");
             Value = value;
+            Field = field;
         }
 
         /// <summary>
-        /// The name of the data field
+        /// The name of the data field.
         /// </summary>
-        /// <value>The name of the data field</value>
-        [DataMember(Name = "Field", IsRequired = true, EmitDefaultValue = true)]
+        /// <value>The name of the data field.</value>
+        [DataMember(Name = "Field", EmitDefaultValue = false)]
         public string Field { get; set; }
 
         /// <summary>
-        /// The value of the data row
+        /// The value of the data row.
         /// </summary>
-        /// <value>The value of the data row</value>
+        /// <value>The value of the data row.</value>
         [DataMember(Name = "Value", IsRequired = true, EmitDefaultValue = true)]
         public string Value { get; set; }
 

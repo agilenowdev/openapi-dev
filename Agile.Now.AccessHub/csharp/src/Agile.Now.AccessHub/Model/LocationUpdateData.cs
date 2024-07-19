@@ -78,12 +78,12 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="LocationUpdateData" /> class.
         /// </summary>
-        /// <param name="externalId">The external identifier of the location.</param>
-        /// <param name="name">The name of the location (required).</param>
+        /// <param name="externalId">The external identifier of the location..</param>
+        /// <param name="name">The name of the location. The value must be unique in the system and you cannot add multiple values. (required).</param>
         /// <param name="countryId">countryId.</param>
         /// <param name="timezoneId">timezoneId.</param>
         /// <param name="currencyId">currencyId.</param>
-        /// <param name="isActive">Defines if the location is active and can be used (required) (default to false).</param>
+        /// <param name="isActive">Defines if the location is active and can be used. (required) (default to false).</param>
         public LocationUpdateData(string externalId = default, string name = default, EnumCountry? countryId = default, EnumTimezone? timezoneId = default, EnumCurrency? currencyId = default, bool isActive = false)
         {
             // to ensure "name" is required (not null)
@@ -97,23 +97,23 @@ namespace Agile.Now.AccessHub.Model
         }
 
         /// <summary>
-        /// The external identifier of the location
+        /// The external identifier of the location.
         /// </summary>
-        /// <value>The external identifier of the location</value>
+        /// <value>The external identifier of the location.</value>
         [DataMember(Name = "ExternalId", EmitDefaultValue = false)]
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// The name of the location
+        /// The name of the location. The value must be unique in the system and you cannot add multiple values.
         /// </summary>
-        /// <value>The name of the location</value>
+        /// <value>The name of the location. The value must be unique in the system and you cannot add multiple values.</value>
         [DataMember(Name = "Name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Defines if the location is active and can be used
+        /// Defines if the location is active and can be used.
         /// </summary>
-        /// <value>Defines if the location is active and can be used</value>
+        /// <value>Defines if the location is active and can be used.</value>
         /// <example>false</example>
         [DataMember(Name = "Is_Active", IsRequired = true, EmitDefaultValue = true)]
         public bool IsActive { get; set; }

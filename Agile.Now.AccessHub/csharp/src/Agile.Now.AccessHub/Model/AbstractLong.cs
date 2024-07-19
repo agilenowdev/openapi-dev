@@ -60,38 +60,32 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AbstractLong" /> class.
         /// </summary>
-        /// <param name="id">The primary key of the record row. If the Id attribute is used, then it must be unique (required) (default to 0).</param>
-        /// <param name="externalId">The external identier of the record row. If the External Id attribute is used, then it must be unique (required).</param>
-        /// <param name="name">The name of the record row (required).</param>
-        /// <param name="type">The type of the record object (required).</param>
+        /// <param name="id">The primary key of the record row. If the Id attribute is used, then it must be unique. (required) (default to 0).</param>
+        /// <param name="externalId">The external identier of the record row. If the External Id attribute is used, then it must be unique..</param>
+        /// <param name="name">The name of the record row.</param>
+        /// <param name="type">The type of the record object.</param>
         public AbstractLong(long id = 0, string externalId = default, string name = default, string type = default)
         {
             Id = id;
-            // to ensure "externalId" is required (not null)
-            externalId = externalId ?? throw new ArgumentNullException("externalId is a required property for AbstractLong and cannot be null");
             ExternalId = externalId;
-            // to ensure "name" is required (not null)
-            name = name ?? throw new ArgumentNullException("name is a required property for AbstractLong and cannot be null");
             Name = name;
-            // to ensure "type" is required (not null)
-            type = type ?? throw new ArgumentNullException("type is a required property for AbstractLong and cannot be null");
             Type = type;
         }
 
         /// <summary>
-        /// The primary key of the record row. If the Id attribute is used, then it must be unique
+        /// The primary key of the record row. If the Id attribute is used, then it must be unique.
         /// </summary>
-        /// <value>The primary key of the record row. If the Id attribute is used, then it must be unique</value>
+        /// <value>The primary key of the record row. If the Id attribute is used, then it must be unique.</value>
         /// <example>1234567891234567</example>
         [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
         public long Id { get; set; }
 
         /// <summary>
-        /// The external identier of the record row. If the External Id attribute is used, then it must be unique
+        /// The external identier of the record row. If the External Id attribute is used, then it must be unique.
         /// </summary>
-        /// <value>The external identier of the record row. If the External Id attribute is used, then it must be unique</value>
+        /// <value>The external identier of the record row. If the External Id attribute is used, then it must be unique.</value>
         /// <example>3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5</example>
-        [DataMember(Name = "ExternalId", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "ExternalId", EmitDefaultValue = false)]
         public string ExternalId { get; set; }
 
         /// <summary>
@@ -99,7 +93,7 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         /// <value>The name of the record row</value>
         /// <example>Bob Normal</example>
-        [DataMember(Name = "Name", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
@@ -107,7 +101,7 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         /// <value>The type of the record object</value>
         /// <example>User</example>
-        [DataMember(Name = "Type", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Type", EmitDefaultValue = false)]
         public string Type { get; set; }
 
         /// <summary>

@@ -60,24 +60,22 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ConfigData" /> class.
         /// </summary>
-        /// <param name="id">The identifier of the config (required).</param>
+        /// <param name="id">The identifier of the config..</param>
         /// <param name="webhookEntityId">webhookEntityId (required).</param>
-        /// <param name="hasCreateAccess">Service has create access to data (default to false).</param>
-        /// <param name="hasUpdateAccess">Service has update access to data (default to false).</param>
-        /// <param name="hasDeleteAccess">Service has delete access to data (default to false).</param>
-        /// <param name="isActive">If true, the configuration is active (default to false).</param>
+        /// <param name="hasCreateAccess">Service has create access to data. (default to false).</param>
+        /// <param name="hasUpdateAccess">Service has update access to data. (default to false).</param>
+        /// <param name="hasDeleteAccess">Service has delete access to data. (default to false).</param>
+        /// <param name="isActive">If true, the configuration is active. (default to false).</param>
         /// <param name="modifiedBy">modifiedBy.</param>
         /// <param name="modifiedOn">The date the record was updated. (default to &quot;1900-01-01T00:00Z&quot;).</param>
         /// <param name="createdBy">createdBy.</param>
         /// <param name="createdOn">The date the record was created. (default to &quot;1900-01-01T00:00Z&quot;).</param>
         public ConfigData(string id = default, FieldType webhookEntityId = default, bool hasCreateAccess = false, bool hasUpdateAccess = false, bool hasDeleteAccess = false, bool isActive = false, FieldType modifiedBy = default, DateTime modifiedOn = default, FieldType createdBy = default, DateTime createdOn = default)
         {
-            // to ensure "id" is required (not null)
-            id = id ?? throw new ArgumentNullException("id is a required property for ConfigData and cannot be null");
-            Id = id;
             // to ensure "webhookEntityId" is required (not null)
             webhookEntityId = webhookEntityId ?? throw new ArgumentNullException("webhookEntityId is a required property for ConfigData and cannot be null");
             WebhookEntityId = webhookEntityId;
+            Id = id;
             HasCreateAccess = hasCreateAccess;
             HasUpdateAccess = hasUpdateAccess;
             HasDeleteAccess = hasDeleteAccess;
@@ -89,10 +87,10 @@ namespace Agile.Now.AccessHub.Model
         }
 
         /// <summary>
-        /// The identifier of the config
+        /// The identifier of the config.
         /// </summary>
-        /// <value>The identifier of the config</value>
-        [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
+        /// <value>The identifier of the config.</value>
+        [DataMember(Name = "Id", EmitDefaultValue = false)]
         public string Id { get; set; }
 
         /// <summary>
@@ -102,33 +100,33 @@ namespace Agile.Now.AccessHub.Model
         public FieldType WebhookEntityId { get; set; }
 
         /// <summary>
-        /// Service has create access to data
+        /// Service has create access to data.
         /// </summary>
-        /// <value>Service has create access to data</value>
+        /// <value>Service has create access to data.</value>
         /// <example>false</example>
         [DataMember(Name = "HasCreateAccess", EmitDefaultValue = true)]
         public bool HasCreateAccess { get; set; }
 
         /// <summary>
-        /// Service has update access to data
+        /// Service has update access to data.
         /// </summary>
-        /// <value>Service has update access to data</value>
+        /// <value>Service has update access to data.</value>
         /// <example>false</example>
         [DataMember(Name = "HasUpdateAccess", EmitDefaultValue = true)]
         public bool HasUpdateAccess { get; set; }
 
         /// <summary>
-        /// Service has delete access to data
+        /// Service has delete access to data.
         /// </summary>
-        /// <value>Service has delete access to data</value>
+        /// <value>Service has delete access to data.</value>
         /// <example>false</example>
         [DataMember(Name = "HasDeleteAccess", EmitDefaultValue = true)]
         public bool HasDeleteAccess { get; set; }
 
         /// <summary>
-        /// If true, the configuration is active
+        /// If true, the configuration is active.
         /// </summary>
-        /// <value>If true, the configuration is active</value>
+        /// <value>If true, the configuration is active.</value>
         /// <example>false</example>
         [DataMember(Name = "Is_Active", EmitDefaultValue = true)]
         public bool IsActive { get; set; }

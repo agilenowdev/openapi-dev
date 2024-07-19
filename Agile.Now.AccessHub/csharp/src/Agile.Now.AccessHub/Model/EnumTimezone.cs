@@ -180,7 +180,7 @@ namespace Agile.Now.AccessHub.Model
         Gmt1100MagadanSolomonIsNewCaledonia = 21,
 
         /// <summary>
-        /// Enum (GMT-06:00) Central Time (US &amp; Canada) for value: Central Standard Time
+        /// Enum (GMT-06:00) Central Time (US & Canada) for value: Central Standard Time
         /// </summary>
         [EnumMember(Value = "Central Standard Time")]
         Gmt0600CentralTimeUsCanada = 22,
@@ -228,7 +228,7 @@ namespace Agile.Now.AccessHub.Model
         Gmt0300Brasilia = 29,
 
         /// <summary>
-        /// Enum (GMT-05:00) Eastern Time (US &amp; Canada) for value: Eastern Standard Time
+        /// Enum (GMT-05:00) Eastern Time (US & Canada) for value: Eastern Standard Time
         /// </summary>
         [EnumMember(Value = "Eastern Standard Time")]
         Gmt0500EasternTimeUsCanada = 30,
@@ -354,7 +354,7 @@ namespace Agile.Now.AccessHub.Model
         GmtCasablanca = 50,
 
         /// <summary>
-        /// Enum (GMT-07:00) Mountain Time (US &amp; Canada) for value: Mountain Standard Time
+        /// Enum (GMT-07:00) Mountain Time (US & Canada) for value: Mountain Standard Time
         /// </summary>
         [EnumMember(Value = "Mountain Standard Time")]
         Gmt0700MountainTimeUsCanada = 51,
@@ -420,7 +420,7 @@ namespace Agile.Now.AccessHub.Model
         Gmt0400Santiago = 61,
 
         /// <summary>
-        /// Enum (GMT-08:00) Pacific Time (US &amp; Canada) for value: Pacific Standard Time
+        /// Enum (GMT-08:00) Pacific Time (US & Canada) for value: Pacific Standard Time
         /// </summary>
         [EnumMember(Value = "Pacific Standard Time")]
         Gmt0800PacificTimeUsCanada = 62,
@@ -516,7 +516,7 @@ namespace Agile.Now.AccessHub.Model
         Gmt0900OsakaSapporoTokyo = 77,
 
         /// <summary>
-        /// Enum (GMT+13:00) Nuku&#39;alofa for value: Tonga Standard Time
+        /// Enum (GMT+13:00) Nuku'alofa for value: Tonga Standard Time
         /// </summary>
         [EnumMember(Value = "Tonga Standard Time")]
         Gmt1300NukuAlofa = 78,

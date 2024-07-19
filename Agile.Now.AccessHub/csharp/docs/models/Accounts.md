@@ -6,7 +6,7 @@ The list of `Account` records
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Meta** | [**Meta**](Meta.md) | The Meta object structure | [optional] 
-**Data** | [**List&lt;Account&gt;**](Account.md) | The list of `Account records` | [optional] 
+**Data** | [**List&lt;Account&gt;**](Account.md) | The list of &#x60;Account records&#x60; | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

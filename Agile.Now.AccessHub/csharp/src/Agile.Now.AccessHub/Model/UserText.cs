@@ -55,32 +55,25 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UserText" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected UserText() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UserText" /> class.
-        /// </summary>
-        /// <param name="id">The identifier of user department (required).</param>
-        /// <param name="userId">The identifier of the user who has link the department.</param>
+        /// <param name="id">The identifier of user department..</param>
+        /// <param name="userId">The identifier of the user who has link the department..</param>
         public UserText(string id = default, string userId = default)
         {
-            // to ensure "id" is required (not null)
-            id = id ?? throw new ArgumentNullException("id is a required property for UserText and cannot be null");
             Id = id;
             UserId = userId;
         }
 
         /// <summary>
-        /// The identifier of user department
+        /// The identifier of user department.
         /// </summary>
-        /// <value>The identifier of user department</value>
-        [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
+        /// <value>The identifier of user department.</value>
+        [DataMember(Name = "Id", EmitDefaultValue = false)]
         public string Id { get; set; }
 
         /// <summary>
-        /// The identifier of the user who has link the department
+        /// The identifier of the user who has link the department.
         /// </summary>
-        /// <value>The identifier of the user who has link the department</value>
+        /// <value>The identifier of the user who has link the department.</value>
         [DataMember(Name = "UserId", EmitDefaultValue = false)]
         public string UserId { get; set; }
 

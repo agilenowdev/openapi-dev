@@ -47,66 +47,99 @@ using OpenAPIDateConverter = Agile.Now.AccessHub.Client.OpenAPIDateConverter;
 namespace Agile.Now.AccessHub.Model
 {
     /// <summary>
-    /// The record of User information.
+    /// The enum of DateFormat.
     /// </summary>
-    [DataContract(Name = "UserData")]
-    public partial class UserData : IValidatableObject
+    /// <value>The enum of DateFormat.</value>
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum EnumDateFormat
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="UserData" /> class.
+        /// Enum DD-MM-YYYY for value: DD-MM-YYYY
         /// </summary>
-        /// <param name="id">The identifier of user department..</param>
-        /// <param name="userId">userId.</param>
-        public UserData(string id = default, FieldType userId = default)
+        [EnumMember(Value = "DD-MM-YYYY")]
+        DdMmYyyy = 1,
+
+        /// <summary>
+        /// Enum DD/MM/YYYY for value: DD/MM/YYYY
+        /// </summary>
+        [EnumMember(Value = "DD/MM/YYYY")]
+        DdMmYyyy_1 = 2,
+
+        /// <summary>
+        /// Enum DD.MM.YYYY for value: DD.MM.YYYY
+        /// </summary>
+        [EnumMember(Value = "DD.MM.YYYY")]
+        DdMmYyyy_2 = 3,
+
+        /// <summary>
+        /// Enum MM-DD-YYYY for value: MM-DD-YYYY
+        /// </summary>
+        [EnumMember(Value = "MM-DD-YYYY")]
+        MmDdYyyy = 4,
+
+        /// <summary>
+        /// Enum MM/DD/YYYY for value: MM/DD/YYYY
+        /// </summary>
+        [EnumMember(Value = "MM/DD/YYYY")]
+        MmDdYyyy_1 = 5,
+
+        /// <summary>
+        /// Enum YYYY-MM-DD for value: YYYY-MM-DD
+        /// </summary>
+        [EnumMember(Value = "YYYY-MM-DD")]
+        YyyyMmDd = 6,
+
+        /// <summary>
+        /// Enum YYYY/MM/DD for value: YYYY/MM/DD
+        /// </summary>
+        [EnumMember(Value = "YYYY/MM/DD")]
+        YyyyMmDd_1 = 7
+    }
+
+    /// <summary>
+    /// Converts <see cref="EnumDateFormat"/> to and from the JSON value
+    /// </summary>
+    public static class EnumDateFormatValueConverter
+    {
+        /// <summary>
+        /// Parses a given value to <see cref="EnumDateFormat"/>
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static EnumDateFormat FromString(string value)
         {
-            Id = id;
-            UserId = userId;
+            return FromStringOrDefault(value) ?? throw new NotImplementedException($"Could not convert value to type EnumDateFormat: '{value}'");
         }
 
         /// <summary>
-        /// The identifier of user department.
+        /// Parses a given value to <see cref="EnumDateFormat"/>
         /// </summary>
-        /// <value>The identifier of user department.</value>
-        [DataMember(Name = "Id", EmitDefaultValue = false)]
-        public string Id { get; set; }
-
-        /// <summary>
-        /// Gets or Sets UserId
-        /// </summary>
-        [DataMember(Name = "UserId", EmitDefaultValue = false)]
-        public FieldType UserId { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static EnumDateFormat? FromStringOrDefault(string value)
         {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class UserData {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  UserId: ").Append(UserId).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
+            if (value.Equals("DD-MM-YYYY"))
+                return EnumDateFormat.DdMmYyyy;
 
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
-        }
+            if (value.Equals("DD/MM/YYYY"))
+                return EnumDateFormat.DdMmYyyy_1;
 
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
+            if (value.Equals("DD.MM.YYYY"))
+                return EnumDateFormat.DdMmYyyy_2;
+
+            if (value.Equals("MM-DD-YYYY"))
+                return EnumDateFormat.MmDdYyyy;
+
+            if (value.Equals("MM/DD/YYYY"))
+                return EnumDateFormat.MmDdYyyy_1;
+
+            if (value.Equals("YYYY-MM-DD"))
+                return EnumDateFormat.YyyyMmDd;
+
+            if (value.Equals("YYYY/MM/DD"))
+                return EnumDateFormat.YyyyMmDd_1;
+
+            return null;
         }
     }
 

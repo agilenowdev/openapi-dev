@@ -60,24 +60,22 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TenantData" /> class.
         /// </summary>
-        /// <param name="userId">userId (required).</param>
+        /// <param name="userId">userId.</param>
         /// <param name="tenantId">tenantId (required).</param>
-        /// <param name="createdOn">The date the record was created (required) (default to &quot;1900-01-01T00:00Z&quot;).</param>
+        /// <param name="createdOn">The date the record was created. (required) (default to &quot;1900-01-01T00:00Z&quot;).</param>
         public TenantData(FieldType userId = default, FieldType tenantId = default, DateTime createdOn = default)
         {
-            // to ensure "userId" is required (not null)
-            userId = userId ?? throw new ArgumentNullException("userId is a required property for TenantData and cannot be null");
-            UserId = userId;
             // to ensure "tenantId" is required (not null)
             tenantId = tenantId ?? throw new ArgumentNullException("tenantId is a required property for TenantData and cannot be null");
             TenantId = tenantId;
             CreatedOn = createdOn;
+            UserId = userId;
         }
 
         /// <summary>
         /// Gets or Sets UserId
         /// </summary>
-        [DataMember(Name = "UserId", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "UserId", EmitDefaultValue = false)]
         public FieldType UserId { get; set; }
 
         /// <summary>
@@ -87,9 +85,9 @@ namespace Agile.Now.AccessHub.Model
         public FieldType TenantId { get; set; }
 
         /// <summary>
-        /// The date the record was created
+        /// The date the record was created.
         /// </summary>
-        /// <value>The date the record was created</value>
+        /// <value>The date the record was created.</value>
         /// <example>1900-01-01T00:00Z</example>
         [DataMember(Name = "CreatedOn", IsRequired = true, EmitDefaultValue = true)]
         public DateTime CreatedOn { get; set; }

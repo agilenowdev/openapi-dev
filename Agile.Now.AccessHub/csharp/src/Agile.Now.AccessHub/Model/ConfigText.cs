@@ -60,24 +60,22 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ConfigText" /> class.
         /// </summary>
-        /// <param name="id">The identifier of the config (required).</param>
+        /// <param name="id">The identifier of the config..</param>
         /// <param name="webhookEntityId">Identifier of webhook entity. (required).</param>
-        /// <param name="hasCreateAccess">Service has create access to data (default to false).</param>
-        /// <param name="hasUpdateAccess">Service has update access to data (default to false).</param>
-        /// <param name="hasDeleteAccess">Service has delete access to data (default to false).</param>
-        /// <param name="isActive">If true, the configuration is active (default to false).</param>
-        /// <param name="modifiedBy">The Identifier of the user who updated the record.</param>
+        /// <param name="hasCreateAccess">Service has create access to data. (default to false).</param>
+        /// <param name="hasUpdateAccess">Service has update access to data. (default to false).</param>
+        /// <param name="hasDeleteAccess">Service has delete access to data. (default to false).</param>
+        /// <param name="isActive">If true, the configuration is active. (default to false).</param>
+        /// <param name="modifiedBy">The Identifier of the user who updated the record..</param>
         /// <param name="modifiedOn">The date the record was updated. (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        /// <param name="createdBy">The Identifier of the user who created the record.</param>
+        /// <param name="createdBy">The Identifier of the user who created the record..</param>
         /// <param name="createdOn">The date the record was created. (default to &quot;1900-01-01T00:00Z&quot;).</param>
         public ConfigText(string id = default, string webhookEntityId = default, bool hasCreateAccess = false, bool hasUpdateAccess = false, bool hasDeleteAccess = false, bool isActive = false, string modifiedBy = default, DateTime modifiedOn = default, string createdBy = default, DateTime createdOn = default)
         {
-            // to ensure "id" is required (not null)
-            id = id ?? throw new ArgumentNullException("id is a required property for ConfigText and cannot be null");
-            Id = id;
             // to ensure "webhookEntityId" is required (not null)
             webhookEntityId = webhookEntityId ?? throw new ArgumentNullException("webhookEntityId is a required property for ConfigText and cannot be null");
             WebhookEntityId = webhookEntityId;
+            Id = id;
             HasCreateAccess = hasCreateAccess;
             HasUpdateAccess = hasUpdateAccess;
             HasDeleteAccess = hasDeleteAccess;
@@ -89,10 +87,10 @@ namespace Agile.Now.AccessHub.Model
         }
 
         /// <summary>
-        /// The identifier of the config
+        /// The identifier of the config.
         /// </summary>
-        /// <value>The identifier of the config</value>
-        [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
+        /// <value>The identifier of the config.</value>
+        [DataMember(Name = "Id", EmitDefaultValue = false)]
         public string Id { get; set; }
 
         /// <summary>
@@ -103,41 +101,41 @@ namespace Agile.Now.AccessHub.Model
         public string WebhookEntityId { get; set; }
 
         /// <summary>
-        /// Service has create access to data
+        /// Service has create access to data.
         /// </summary>
-        /// <value>Service has create access to data</value>
+        /// <value>Service has create access to data.</value>
         /// <example>false</example>
         [DataMember(Name = "HasCreateAccess", EmitDefaultValue = true)]
         public bool HasCreateAccess { get; set; }
 
         /// <summary>
-        /// Service has update access to data
+        /// Service has update access to data.
         /// </summary>
-        /// <value>Service has update access to data</value>
+        /// <value>Service has update access to data.</value>
         /// <example>false</example>
         [DataMember(Name = "HasUpdateAccess", EmitDefaultValue = true)]
         public bool HasUpdateAccess { get; set; }
 
         /// <summary>
-        /// Service has delete access to data
+        /// Service has delete access to data.
         /// </summary>
-        /// <value>Service has delete access to data</value>
+        /// <value>Service has delete access to data.</value>
         /// <example>false</example>
         [DataMember(Name = "HasDeleteAccess", EmitDefaultValue = true)]
         public bool HasDeleteAccess { get; set; }
 
         /// <summary>
-        /// If true, the configuration is active
+        /// If true, the configuration is active.
         /// </summary>
-        /// <value>If true, the configuration is active</value>
+        /// <value>If true, the configuration is active.</value>
         /// <example>false</example>
         [DataMember(Name = "Is_Active", EmitDefaultValue = true)]
         public bool IsActive { get; set; }
 
         /// <summary>
-        /// The Identifier of the user who updated the record
+        /// The Identifier of the user who updated the record.
         /// </summary>
-        /// <value>The Identifier of the user who updated the record</value>
+        /// <value>The Identifier of the user who updated the record.</value>
         [DataMember(Name = "ModifiedBy", EmitDefaultValue = false)]
         public string ModifiedBy { get; set; }
 
@@ -150,9 +148,9 @@ namespace Agile.Now.AccessHub.Model
         public DateTime ModifiedOn { get; set; }
 
         /// <summary>
-        /// The Identifier of the user who created the record
+        /// The Identifier of the user who created the record.
         /// </summary>
-        /// <value>The Identifier of the user who created the record</value>
+        /// <value>The Identifier of the user who created the record.</value>
         [DataMember(Name = "CreatedBy", EmitDefaultValue = false)]
         public string CreatedBy { get; set; }
 

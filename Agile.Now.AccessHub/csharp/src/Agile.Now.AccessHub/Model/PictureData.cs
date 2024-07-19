@@ -55,9 +55,9 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="PictureData" /> class.
         /// </summary>
-        /// <param name="filename">Filename of account picture.</param>
-        /// <param name="picture">Picture of account.</param>
-        /// <param name="createdOn">Date the record was created (default to &quot;1900-01-01T00:00Z&quot;).</param>
+        /// <param name="filename">Filename of account picture..</param>
+        /// <param name="picture">Picture of account..</param>
+        /// <param name="createdOn">Date the record was created. (default to &quot;1900-01-01T00:00Z&quot;).</param>
         public PictureData(string filename = default, System.IO.Stream picture = default, DateTime createdOn = default)
         {
             Filename = filename;
@@ -66,23 +66,23 @@ namespace Agile.Now.AccessHub.Model
         }
 
         /// <summary>
-        /// Filename of account picture
+        /// Filename of account picture.
         /// </summary>
-        /// <value>Filename of account picture</value>
+        /// <value>Filename of account picture.</value>
         [DataMember(Name = "Filename", EmitDefaultValue = false)]
         public string Filename { get; set; }
 
         /// <summary>
-        /// Picture of account
+        /// Picture of account.
         /// </summary>
-        /// <value>Picture of account</value>
+        /// <value>Picture of account.</value>
         [DataMember(Name = "Picture", EmitDefaultValue = false)]
         public System.IO.Stream Picture { get; set; }
 
         /// <summary>
-        /// Date the record was created
+        /// Date the record was created.
         /// </summary>
-        /// <value>Date the record was created</value>
+        /// <value>Date the record was created.</value>
         /// <example>1900-01-01T00:00Z</example>
         [DataMember(Name = "CreatedOn", EmitDefaultValue = false)]
         public DateTime CreatedOn { get; set; }
