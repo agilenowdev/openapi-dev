@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "2.0.72"
+    "version": "2.0.73"
   },
   "servers": [
     {
@@ -1982,13 +1982,13 @@
           },
           {
             "value": "DD/MM/YYYY",
-            "name": "DdMmYyyy",
+            "name": "DdMmYyyy_1",
             "description": "DD/MM/YYYY",
             "isString": true
           },
           {
             "value": "DD.MM.YYYY",
-            "name": "DdMmYyyy",
+            "name": "DdMmYyyy_2",
             "description": "DD.MM.YYYY",
             "isString": true
           },
@@ -2000,7 +2000,7 @@
           },
           {
             "value": "MM/DD/YYYY",
-            "name": "MmDdYyyy",
+            "name": "MmDdYyyy_1",
             "description": "MM/DD/YYYY",
             "isString": true
           },
@@ -2012,7 +2012,7 @@
           },
           {
             "value": "YYYY/MM/DD",
-            "name": "YyyyMmDd",
+            "name": "YyyyMmDd_1",
             "description": "YYYY/MM/DD",
             "isString": true
           }
