@@ -3525,11 +3525,11 @@
           },
           "ExternalId": {
             "type": "string",
-            "description": "The external identifier of the department"
+            "description": "The external identifier of the department."
           },
           "Name": {
             "type": "string",
-            "description": "The name of the department"
+            "description": "The name of the department."
           },
           "DepartmentTypeId": {
             "$ref": "#/components/schemas/EnumDepartmentType"
@@ -3596,11 +3596,11 @@
           },
           "ExternalId": {
             "type": "string",
-            "description": "The external identifier of the department"
+            "description": "The external identifier of the department."
           },
           "Name": {
             "type": "string",
-            "description": "The name of the department"
+            "description": "The name of the department."
           },
           "DepartmentTypeId": {
             "$ref": "#/components/schemas/EnumDepartmentType"
@@ -3643,11 +3643,11 @@
         "properties": {
           "ExternalId": {
             "type": "string",
-            "description": "The external identifier of the department"
+            "description": "The external identifier of the department."
           },
           "Name": {
             "type": "string",
-            "description": "The name of the department"
+            "description": "The name of the department."
           },
           "ContactName": {
             "type": "string",
@@ -4730,7 +4730,7 @@
           },
           "Name": {
             "type": "string",
-            "description": "The name of the location,The value must be unique in the system and you cannot add multiple values."
+            "description": "The name of the location. The value must be unique in the system and you cannot add multiple values."
           },
           "CountryId": {
             "$ref": "#/components/schemas/EnumCountry"
@@ -4768,7 +4768,7 @@
           },
           "Name": {
             "type": "string",
-            "description": "The name of the location,The value must be unique in the system and you cannot add multiple values."
+            "description": "The name of the location. The value must be unique in the system and you cannot add multiple values."
           },
           "CountryId": {
             "$ref": "#/components/schemas/EnumCountry"
@@ -4801,7 +4801,7 @@
           },
           "Name": {
             "type": "string",
-            "description": "The name of the location,The value must be unique in the system and you cannot add multiple values."
+            "description": "The name of the location. The value must be unique in the system and you cannot add multiple values."
           },
           "CountryId": {
             "$ref": "#/components/schemas/EnumCountry"
