@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "2.0.98"
+    "version": "2.0.99"
   },
   "servers": [
     {
@@ -1644,21 +1644,18 @@
       },
       "AbstractText": {
         "required": [
-          "Id",
-          "ExternalId",
-          "Name",
-          "Type"
+          "Id"
         ],
         "type": "object",
         "properties": {
           "Id": {
             "type": "string",
-            "description": "The primary key of the record row. If the Id attribute is used, then it must be unique",
+            "description": "The primary key of the record row. If the Id attribute is used, then it must be unique.",
             "example": "3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5"
           },
           "ExternalId": {
             "type": "string",
-            "description": "The external identier of the record row. If the External Id attribute is used, then it must be unique",
+            "description": "The external identier of the record row. If the External Id attribute is used, then it must be unique.",
             "example": "3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5"
           },
           "Name": {
@@ -1676,23 +1673,20 @@
       },
       "AbstractLong": {
         "required": [
-          "Id",
-          "ExternalId",
-          "Name",
-          "Type"
+          "Id"
         ],
         "type": "object",
         "properties": {
           "Id": {
             "type": "integer",
-            "description": "The primary key of the record row. If the Id attribute is used, then it must be unique",
+            "description": "The primary key of the record row. If the Id attribute is used, then it must be unique.",
             "format": "int64",
             "default": 0,
             "example": 1234567891234567
           },
           "ExternalId": {
             "type": "string",
-            "description": "The external identier of the record row. If the External Id attribute is used, then it must be unique",
+            "description": "The external identier of the record row. If the External Id attribute is used, then it must be unique.",
             "example": "3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5"
           },
           "Name": {
@@ -3565,21 +3559,20 @@
       },
       "FieldType": {
         "required": [
-          "Field",
           "Value"
         ],
         "type": "object",
         "properties": {
           "Field": {
             "type": "string",
-            "description": "The name of the data field"
+            "description": "The name of the data field."
           },
           "Value": {
             "type": "string",
-            "description": "The value of the data row"
+            "description": "The value of the data row."
           }
         },
-        "description": "The field object structure"
+        "description": "The field object structure."
       },
       "DepartmentInsertData": {
         "required": [
