@@ -48,7 +48,7 @@
         "tags": [
           "Accounts"
         ],
-        "description": "The method returns one record of the `Account`.\n\nMethod returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`\n\n### Get a record of Account\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id,Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.",
+        "description": "The method returns one record of the `Account`.\n\nMethod returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`\n\n### Get a record of Account\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.",
         "operationId": "Get Account",
         "parameters": [
           {
@@ -108,7 +108,7 @@
         "tags": [
           "Accounts"
         ],
-        "description": "Use the `AccountData` object resource to update `Account` using `Id,Username, ExternalId` field(s) value.\n\nProvide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record. \n\nThe input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`\n\n### Update a record of Account\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id,Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the updated record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "description": "Use the `AccountData` object resource to update `Account` using `Id, Username, ExternalId` field(s) value.\n\nProvide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record. \n\nThe input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`\n\n### Update a record of Account\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the updated record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
         "operationId": "Update Account",
         "parameters": [
           {
@@ -180,7 +180,7 @@
         "tags": [
           "Accounts"
         ],
-        "description": "Use the query string resource to delete `Account` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id,Username, ExternalId` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`\n\n### Delete a record of Account\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id,Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
+        "description": "Use the query string resource to delete `Account` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id, Username, ExternalId` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`\n\n### Delete a record of Account\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
         "operationId": "Delete Account",
         "parameters": [
           {
@@ -334,7 +334,7 @@
         "tags": [
           "Accounts"
         ],
-        "description": "Use the `AccountData` object resource to insert or update (Upsert) `Account` using `Id,Username, ExternalId` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`\n\n### Update a record of Account\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Username, ExternalId` field value is not empty and `Id` field value is empty, action try insert record according `Username, ExternalId` field value (if set, the value is a unique identifier).\n\n### Create a new record of Account\n* If the value in the `Username, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "description": "Use the `AccountData` object resource to insert or update (Upsert) `Account` using `Id, Username, ExternalId` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`\n\n### Update a record of Account\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Username, ExternalId` field value is not empty and `Id` field value is empty, action try insert record according `Username, ExternalId` field value (if set, the value is a unique identifier).\n\n### Create a new record of Account\n* If the value in the `Username, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
         "operationId": "Upsert Account",
         "requestBody": {
           "description": "`Account` information to insert or update.\n\nThe input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.",
@@ -385,7 +385,7 @@
         "tags": [
           "Accounts"
         ],
-        "description": "Use the `AccountData` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`\n\n### Create a new record of Account\n* If the value in the `Id,Username, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`).\n* If the value in the `Username, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`).\n* If the `Id,Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the created record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\n",
+        "description": "Use the `AccountData` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`\n\n### Create a new record of Account\n* If the value in the `Id, Username, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`).\n* If the value in the `Username, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`).\n* If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the created record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\n",
         "operationId": "Create Account",
         "requestBody": {
           "description": "`Account` information to insert.\n\nThe input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.",
@@ -549,7 +549,7 @@
         "tags": [
           "Accounts"
         ],
-        "description": "Use the `TenantPost` object resource to insert or update (Upsert) `Tenant` using `UserId,TenantId.Name` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `TenantData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `UserId, TenantId, AccountId`\n\n### Update a record of Tenant\n* If the `UserId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `UserId` field value (primary key).\n* If the `TenantId.Name` field value is not empty and `UserId` field value is empty, action try insert record according `TenantId.Name` field value (if set, the value is a unique identifier).\n\n### Create a new record of Tenant\n* If the value in the `TenantId.Name` and `UserId` fields are empty then action insert a new record according input parameter entity record structure (`TenantData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Tenant` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "description": "Use the `TenantPost` object resource to insert or update (Upsert) `Tenant` using `UserId, TenantId.Name` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `TenantData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `UserId, TenantId, AccountId`\n\n### Update a record of Tenant\n* If the `UserId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `UserId` field value (primary key).\n* If the `TenantId.Name` field value is not empty and `UserId` field value is empty, action try insert record according `TenantId.Name` field value (if set, the value is a unique identifier).\n\n### Create a new record of Tenant\n* If the value in the `TenantId.Name` and `UserId` fields are empty then action insert a new record according input parameter entity record structure (`TenantData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Tenant` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
         "operationId": "Upsert Account Tenant",
         "parameters": [
           {
@@ -623,7 +623,7 @@
         "tags": [
           "Accounts"
         ],
-        "description": "Use the query string resource to delete `Tenant` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `UserId,TenantId.Name` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `Tenant` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `UserId, TenantId, AccountId`\n\n### Delete a record of Tenant\n* If the `UserId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `UserId,TenantId.Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
+        "description": "Use the query string resource to delete `Tenant` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `UserId, TenantId.Name` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `Tenant` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `UserId, TenantId, AccountId`\n\n### Delete a record of Tenant\n* If the `UserId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `UserId, TenantId.Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
         "operationId": "Delete Account Tenant",
         "parameters": [
           {
@@ -2426,7 +2426,7 @@
         "tags": [
           "Connections"
         ],
-        "description": "The method returns one record of the `Connection`.\n\nMethod returns an extended `Connection` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `ModifiedBy, CreatedBy`\n\n### Get a record of Connection\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id,Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.",
+        "description": "The method returns one record of the `Connection`.\n\nMethod returns an extended `Connection` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `ModifiedBy, CreatedBy`\n\n### Get a record of Connection\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id, Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.",
         "operationId": "Get Connection",
         "parameters": [
           {
@@ -2485,7 +2485,7 @@
         "tags": [
           "Connections"
         ],
-        "description": "Use the `ConnectionData` object resource to update `Connection` using `Id,Name` field(s) value.\n\nProvide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record. \n\nThe input parameter must be used in the `ConnectionData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `ModifiedBy, CreatedBy`\n\n### Update a record of Connection\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id,Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the updated record if the call is successful. Method returns an extended `Connection` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "description": "Use the `ConnectionData` object resource to update `Connection` using `Id, Name` field(s) value.\n\nProvide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record. \n\nThe input parameter must be used in the `ConnectionData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `ModifiedBy, CreatedBy`\n\n### Update a record of Connection\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id, Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the updated record if the call is successful. Method returns an extended `Connection` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
         "operationId": "Update Connection",
         "parameters": [
           {
@@ -2556,7 +2556,7 @@
         "tags": [
           "Connections"
         ],
-        "description": "Use the query string resource to delete `Connection` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id,Name` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `Connection` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `ModifiedBy, CreatedBy`\n\n### Delete a record of Connection\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id,Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
+        "description": "Use the query string resource to delete `Connection` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id, Name` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `Connection` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `ModifiedBy, CreatedBy`\n\n### Delete a record of Connection\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id, Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
         "operationId": "Delete Connection",
         "parameters": [
           {
@@ -2708,7 +2708,7 @@
         "tags": [
           "Connections"
         ],
-        "description": "Use the `ConnectionData` object resource to insert or update (Upsert) `Connection` using `Id,Name` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `ConnectionData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `ModifiedBy, CreatedBy`\n\n### Update a record of Connection\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Name` field value is not empty and `Id` field value is empty, action try insert record according `Name` field value (if set, the value is a unique identifier).\n\n### Create a new record of Connection\n* If the value in the `Name` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`ConnectionData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Connection` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "description": "Use the `ConnectionData` object resource to insert or update (Upsert) `Connection` using `Id, Name` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `ConnectionData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `ModifiedBy, CreatedBy`\n\n### Update a record of Connection\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Name` field value is not empty and `Id` field value is empty, action try insert record according `Name` field value (if set, the value is a unique identifier).\n\n### Create a new record of Connection\n* If the value in the `Name` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`ConnectionData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Connection` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
         "operationId": "Upsert Connection",
         "requestBody": {
           "description": "`Connection` information to insert or update.\n\nThe input parameter must be used in the `ConnectionData` record structure inside the `FieldType` parameter in the foreign key fields.",
@@ -2758,7 +2758,7 @@
         "tags": [
           "Connections"
         ],
-        "description": "Use the `ConnectionData` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `ConnectionData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `ModifiedBy, CreatedBy`\n\n### Create a new record of Connection\n* If the value in the `Id,Name` fields are empty then action insert a new record according input parameter entity record structure (`ConnectionData`).\n* If the value in the `Name` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`ConnectionData`).\n* If the `Id,Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the created record if the call is successful. Method returns an extended `Connection` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\n",
+        "description": "Use the `ConnectionData` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `ConnectionData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `ModifiedBy, CreatedBy`\n\n### Create a new record of Connection\n* If the value in the `Id, Name` fields are empty then action insert a new record according input parameter entity record structure (`ConnectionData`).\n* If the value in the `Name` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`ConnectionData`).\n* If the `Id, Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the created record if the call is successful. Method returns an extended `Connection` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\n",
         "operationId": "Create Connection",
         "requestBody": {
           "description": "`Connection` information to insert.\n\nThe input parameter must be used in the `ConnectionData` record structure inside the `FieldType` parameter in the foreign key fields.",
@@ -3557,9 +3557,837 @@
         },
         "description": "The list of `Account` records"
       },
+      "EnumLanguage": {
+        "enum": [
+          "ar-ae",
+          "bn-IN",
+          "zh-CN",
+          "da-dk",
+          "en-US",
+          "fo-fo",
+          "fi-FI",
+          "fr-FR",
+          "de-DE",
+          "hi-IN",
+          "ja-JP",
+          "ko-KR",
+          "ms-MY",
+          "pt-PT",
+          "ru-RU",
+          "es-ES",
+          "sv-se",
+          "tr-TR",
+          "ur-IN"
+        ],
+        "type": "string",
+        "description": "The enum of Language.",
+        "x-enums": [
+          {
+            "value": "ar-ae",
+            "name": "Arabic",
+            "description": "Arabic",
+            "isString": true
+          },
+          {
+            "value": "bn-IN",
+            "name": "Bengali",
+            "description": "Bengali",
+            "isString": true
+          },
+          {
+            "value": "zh-CN",
+            "name": "Chinese",
+            "description": "Chinese",
+            "isString": true
+          },
+          {
+            "value": "da-dk",
+            "name": "Danish",
+            "description": "Danish",
+            "isString": true
+          },
+          {
+            "value": "en-US",
+            "name": "English",
+            "description": "English",
+            "isString": true
+          },
+          {
+            "value": "fo-fo",
+            "name": "Faroese",
+            "description": "Faroese",
+            "isString": true
+          },
+          {
+            "value": "fi-FI",
+            "name": "Finnish",
+            "description": "Finnish",
+            "isString": true
+          },
+          {
+            "value": "fr-FR",
+            "name": "French",
+            "description": "French",
+            "isString": true
+          },
+          {
+            "value": "de-DE",
+            "name": "German",
+            "description": "German",
+            "isString": true
+          },
+          {
+            "value": "hi-IN",
+            "name": "Hindi",
+            "description": "Hindi",
+            "isString": true
+          },
+          {
+            "value": "ja-JP",
+            "name": "Japanese",
+            "description": "Japanese",
+            "isString": true
+          },
+          {
+            "value": "ko-KR",
+            "name": "Korean",
+            "description": "Korean",
+            "isString": true
+          },
+          {
+            "value": "ms-MY",
+            "name": "Malay",
+            "description": "Malay",
+            "isString": true
+          },
+          {
+            "value": "pt-PT",
+            "name": "Portuguese",
+            "description": "Portuguese",
+            "isString": true
+          },
+          {
+            "value": "ru-RU",
+            "name": "Russian",
+            "description": "Russian",
+            "isString": true
+          },
+          {
+            "value": "es-ES",
+            "name": "Spanish",
+            "description": "Spanish",
+            "isString": true
+          },
+          {
+            "value": "sv-se",
+            "name": "Swedish",
+            "description": "Swedish",
+            "isString": true
+          },
+          {
+            "value": "tr-TR",
+            "name": "Turkish",
+            "description": "Turkish",
+            "isString": true
+          },
+          {
+            "value": "ur-IN",
+            "name": "Urdu",
+            "description": "Urdu",
+            "isString": true
+          }
+        ]
+      },
+      "EnumTimezone": {
+        "enum": [
+          "Afghanistan Standard Time",
+          "Alaskan Standard Time",
+          "Arab Standard Time",
+          "Arabian Standard Time",
+          "Arabic Standard Time",
+          "Argentina Standard Time",
+          "Atlantic Standard Time",
+          "AUS Central Standard Time",
+          "AUS Eastern Standard Time",
+          "Azerbaijan Standard Time",
+          "Azores Standard Time",
+          "Canada Central Standard Time",
+          "Cape Verde Standard Time",
+          "Caucasus Standard Time",
+          "Cen. Australia Standard Time",
+          "Central America Standard Time",
+          "Central Asia Standard Time",
+          "Central Brazilian Standard Time",
+          "Central Europe Standard Time",
+          "Central European Standard Time",
+          "Central Pacific Standard Time",
+          "Central Standard Time",
+          "Central Standard Time (Mexico)",
+          "China Standard Time",
+          "Dateline Standard Time",
+          "E. Africa Standard Time",
+          "E. Australia Standard Time",
+          "E. Europe Standard Time",
+          "E. South America Standard Time",
+          "Eastern Standard Time",
+          "Egypt Standard Time",
+          "Ekaterinburg Standard Time",
+          "Fiji Standard Time",
+          "FLE Standard Time",
+          "Georgian Standard Time",
+          "GMT Standard Time",
+          "Greenland Standard Time",
+          "Greenwich Standard Time",
+          "GTB Standard Time",
+          "Hawaiian Standard Time",
+          "India Standard Time",
+          "Iran Standard Time",
+          "Israel Standard Time",
+          "Jordan Standard Time",
+          "Korea Standard Time",
+          "Mauritius Standard Time",
+          "Mid-Atlantic Standard Time",
+          "Middle East Standard Time",
+          "Montevideo Standard Time",
+          "Morocco Standard Time",
+          "Mountain Standard Time",
+          "Mountain Standard Time (Mexico)",
+          "Myanmar Standard Time",
+          "N. Central Asia Standard Time",
+          "Namibia Standard Time",
+          "Nepal Standard Time",
+          "New Zealand Standard Time",
+          "Newfoundland Standard Time",
+          "North Asia East Standard Time",
+          "North Asia Standard Time",
+          "Pacific SA Standard Time",
+          "Pacific Standard Time",
+          "Pacific Standard Time (Mexico)",
+          "Pakistan Standard Time",
+          "Romance Standard Time",
+          "Russian Standard Time",
+          "SA Eastern Standard Time",
+          "SA Pacific Standard Time",
+          "SA Western Standard Time",
+          "Samoa Standard Time",
+          "SE Asia Standard Time",
+          "Singapore Standard Time",
+          "South Africa Standard Time",
+          "Sri Lanka Standard Time",
+          "Taipei Standard Time",
+          "Tasmania Standard Time",
+          "Tokyo Standard Time",
+          "Tonga Standard Time",
+          "US Eastern Standard Time",
+          "US Mountain Standard Time",
+          "UTC",
+          "Venezuela Standard Time",
+          "Vladivostok Standard Time",
+          "W. Australia Standard Time",
+          "W. Central Africa Standard Time",
+          "W. Europe Standard Time",
+          "West Asia Standard Time",
+          "West Pacific Standard Time",
+          "Yakutsk Standard Time"
+        ],
+        "type": "string",
+        "description": "The enum of Timezone.",
+        "x-enums": [
+          {
+            "value": "Afghanistan Standard Time",
+            "name": "Gmt0430Kabul",
+            "description": "(GMT+04:30) Kabul",
+            "isString": true
+          },
+          {
+            "value": "Alaskan Standard Time",
+            "name": "Gmt0900Alaska",
+            "description": "(GMT-09:00) Alaska",
+            "isString": true
+          },
+          {
+            "value": "Arab Standard Time",
+            "name": "Gmt0300KuwaitRiyadh",
+            "description": "(GMT+03:00) Kuwait, Riyadh",
+            "isString": true
+          },
+          {
+            "value": "Arabian Standard Time",
+            "name": "Gmt0400AbuDhabiMuscat",
+            "description": "(GMT+04:00) Abu Dhabi, Muscat",
+            "isString": true
+          },
+          {
+            "value": "Arabic Standard Time",
+            "name": "Gmt0300Baghdad",
+            "description": "(GMT+03:00) Baghdad",
+            "isString": true
+          },
+          {
+            "value": "Argentina Standard Time",
+            "name": "Gmt0300BuenosAires",
+            "description": "(GMT-03:00) Buenos Aires",
+            "isString": true
+          },
+          {
+            "value": "Atlantic Standard Time",
+            "name": "Gmt0400AtlanticTimeCanada",
+            "description": "(GMT-04:00) Atlantic Time (Canada)",
+            "isString": true
+          },
+          {
+            "value": "AUS Central Standard Time",
+            "name": "Gmt0930Darwin",
+            "description": "(GMT+09:30) Darwin",
+            "isString": true
+          },
+          {
+            "value": "AUS Eastern Standard Time",
+            "name": "Gmt1000CanberraMelbourneSydney",
+            "description": "(GMT+10:00) Canberra, Melbourne, Sydney",
+            "isString": true
+          },
+          {
+            "value": "Azerbaijan Standard Time",
+            "name": "Gmt0400Baku",
+            "description": "(GMT+04:00) Baku",
+            "isString": true
+          },
+          {
+            "value": "Azores Standard Time",
+            "name": "Gmt0100Azores",
+            "description": "(GMT-01:00) Azores",
+            "isString": true
+          },
+          {
+            "value": "Canada Central Standard Time",
+            "name": "Gmt0600Saskatchewan",
+            "description": "(GMT-06:00) Saskatchewan",
+            "isString": true
+          },
+          {
+            "value": "Cape Verde Standard Time",
+            "name": "Gmt0100CapeVerdeIs",
+            "description": "(GMT-01:00) Cape Verde Is.",
+            "isString": true
+          },
+          {
+            "value": "Caucasus Standard Time",
+            "name": "Gmt0400Yerevan",
+            "description": "(GMT+04:00) Yerevan",
+            "isString": true
+          },
+          {
+            "value": "Cen. Australia Standard Time",
+            "name": "Gmt0930Adelaide",
+            "description": "(GMT+09:30) Adelaide",
+            "isString": true
+          },
+          {
+            "value": "Central America Standard Time",
+            "name": "Gmt0600CentralAmerica",
+            "description": "(GMT-06:00) Central America",
+            "isString": true
+          },
+          {
+            "value": "Central Asia Standard Time",
+            "name": "Gmt0600AstanaDhaka",
+            "description": "(GMT+06:00) Astana, Dhaka",
+            "isString": true
+          },
+          {
+            "value": "Central Brazilian Standard Time",
+            "name": "Gmt0400Manaus",
+            "description": "(GMT-04:00) Manaus",
+            "isString": true
+          },
+          {
+            "value": "Central Europe Standard Time",
+            "name": "Gmt0100BelgradeBratislavaBudapestLjubljanaPrague",
+            "description": "(GMT+01:00) Belgrade, Bratislava, Budapest, Ljubljana, Prague",
+            "isString": true
+          },
+          {
+            "value": "Central European Standard Time",
+            "name": "Gmt0100SarajevoSkopjeWarsawZagreb",
+            "description": "(GMT+01:00) Sarajevo, Skopje, Warsaw, Zagreb",
+            "isString": true
+          },
+          {
+            "value": "Central Pacific Standard Time",
+            "name": "Gmt1100MagadanSolomonIsNewCaledonia",
+            "description": "(GMT+11:00) Magadan, Solomon Is., New Caledonia",
+            "isString": true
+          },
+          {
+            "value": "Central Standard Time",
+            "name": "Gmt0600CentralTimeUsCanada",
+            "description": "(GMT-06:00) Central Time (US & Canada)",
+            "isString": true
+          },
+          {
+            "value": "Central Standard Time (Mexico)",
+            "name": "Gmt0600GuadalajaraMexicoCityMonterrey",
+            "description": "(GMT-06:00) Guadalajara, Mexico City, Monterrey",
+            "isString": true
+          },
+          {
+            "value": "China Standard Time",
+            "name": "Gmt0800BeijingChongqingHongKongUrumqi",
+            "description": "(GMT+08:00) Beijing, Chongqing, Hong Kong, Urumqi",
+            "isString": true
+          },
+          {
+            "value": "Dateline Standard Time",
+            "name": "Gmt1200InternationalDateLineWest",
+            "description": "(GMT-12:00) International Date Line West",
+            "isString": true
+          },
+          {
+            "value": "E. Africa Standard Time",
+            "name": "Gmt0300Nairobi",
+            "description": "(GMT+03:00) Nairobi",
+            "isString": true
+          },
+          {
+            "value": "E. Australia Standard Time",
+            "name": "Gmt1000Brisbane",
+            "description": "(GMT+10:00) Brisbane",
+            "isString": true
+          },
+          {
+            "value": "E. Europe Standard Time",
+            "name": "Gmt0200Minsk",
+            "description": "(GMT+02:00) Minsk",
+            "isString": true
+          },
+          {
+            "value": "E. South America Standard Time",
+            "name": "Gmt0300Brasilia",
+            "description": "(GMT-03:00) Brasilia",
+            "isString": true
+          },
+          {
+            "value": "Eastern Standard Time",
+            "name": "Gmt0500EasternTimeUsCanada",
+            "description": "(GMT-05:00) Eastern Time (US & Canada)",
+            "isString": true
+          },
+          {
+            "value": "Egypt Standard Time",
+            "name": "Gmt0200Cairo",
+            "description": "(GMT+02:00) Cairo",
+            "isString": true
+          },
+          {
+            "value": "Ekaterinburg Standard Time",
+            "name": "Gmt0500Ekaterinburg",
+            "description": "(GMT+05:00) Ekaterinburg",
+            "isString": true
+          },
+          {
+            "value": "Fiji Standard Time",
+            "name": "Gmt1200FijiKamchatkaMarshallIs",
+            "description": "(GMT+12:00) Fiji, Kamchatka, Marshall Is.",
+            "isString": true
+          },
+          {
+            "value": "FLE Standard Time",
+            "name": "Gmt0200HelsinkiKyivRigaSofiaTallinnVilnius",
+            "description": "(GMT+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius",
+            "isString": true
+          },
+          {
+            "value": "Georgian Standard Time",
+            "name": "Gmt0300Tbilisi",
+            "description": "(GMT+03:00) Tbilisi",
+            "isString": true
+          },
+          {
+            "value": "GMT Standard Time",
+            "name": "GmtGreenwichMeanTimeDublinEdinburghLisbonLondon",
+            "description": "(GMT) Greenwich Mean Time : Dublin, Edinburgh, Lisbon, London",
+            "isString": true
+          },
+          {
+            "value": "Greenland Standard Time",
+            "name": "Gmt0300Greenland",
+            "description": "(GMT-03:00) Greenland",
+            "isString": true
+          },
+          {
+            "value": "Greenwich Standard Time",
+            "name": "GmtMonroviaReykjavik",
+            "description": "(GMT) Monrovia, Reykjavik",
+            "isString": true
+          },
+          {
+            "value": "GTB Standard Time",
+            "name": "Gmt0200AthensBucharestIstanbul",
+            "description": "(GMT+02:00) Athens, Bucharest, Istanbul",
+            "isString": true
+          },
+          {
+            "value": "Hawaiian Standard Time",
+            "name": "Gmt1000Hawaii",
+            "description": "(GMT-10:00) Hawaii",
+            "isString": true
+          },
+          {
+            "value": "India Standard Time",
+            "name": "Gmt0530ChennaiKolkataMumbaiNewDelhi",
+            "description": "(GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi",
+            "isString": true
+          },
+          {
+            "value": "Iran Standard Time",
+            "name": "Gmt0330Tehran",
+            "description": "(GMT+03:30) Tehran",
+            "isString": true
+          },
+          {
+            "value": "Israel Standard Time",
+            "name": "Gmt0200Jerusalem",
+            "description": "(GMT+02:00) Jerusalem",
+            "isString": true
+          },
+          {
+            "value": "Jordan Standard Time",
+            "name": "Gmt0200Amman",
+            "description": "(GMT+02:00) Amman",
+            "isString": true
+          },
+          {
+            "value": "Korea Standard Time",
+            "name": "Gmt0900Seoul",
+            "description": "(GMT+09:00) Seoul",
+            "isString": true
+          },
+          {
+            "value": "Mauritius Standard Time",
+            "name": "Gmt0400PortLouis",
+            "description": "(GMT+04:00) Port Louis",
+            "isString": true
+          },
+          {
+            "value": "Mid-Atlantic Standard Time",
+            "name": "Gmt0200MidAtlantic",
+            "description": "(GMT-02:00) Mid-Atlantic",
+            "isString": true
+          },
+          {
+            "value": "Middle East Standard Time",
+            "name": "Gmt0200Beirut",
+            "description": "(GMT+02:00) Beirut",
+            "isString": true
+          },
+          {
+            "value": "Montevideo Standard Time",
+            "name": "Gmt0300Montevideo",
+            "description": "(GMT-03:00) Montevideo",
+            "isString": true
+          },
+          {
+            "value": "Morocco Standard Time",
+            "name": "GmtCasablanca",
+            "description": "(GMT) Casablanca",
+            "isString": true
+          },
+          {
+            "value": "Mountain Standard Time",
+            "name": "Gmt0700MountainTimeUsCanada",
+            "description": "(GMT-07:00) Mountain Time (US & Canada)",
+            "isString": true
+          },
+          {
+            "value": "Mountain Standard Time (Mexico)",
+            "name": "Gmt0700ChihuahuaLaPazMazatlan",
+            "description": "(GMT-07:00) Chihuahua, La Paz, Mazatlan",
+            "isString": true
+          },
+          {
+            "value": "Myanmar Standard Time",
+            "name": "Gmt0630YangonRangoon",
+            "description": "(GMT+06:30) Yangon (Rangoon)",
+            "isString": true
+          },
+          {
+            "value": "N. Central Asia Standard Time",
+            "name": "Gmt0600AlmatyNovosibirsk",
+            "description": "(GMT+06:00) Almaty, Novosibirsk",
+            "isString": true
+          },
+          {
+            "value": "Namibia Standard Time",
+            "name": "Gmt0200Windhoek",
+            "description": "(GMT+02:00) Windhoek",
+            "isString": true
+          },
+          {
+            "value": "Nepal Standard Time",
+            "name": "Gmt0545Kathmandu",
+            "description": "(GMT+05:45) Kathmandu",
+            "isString": true
+          },
+          {
+            "value": "New Zealand Standard Time",
+            "name": "Gmt1200AucklandWellington",
+            "description": "(GMT+12:00) Auckland, Wellington",
+            "isString": true
+          },
+          {
+            "value": "Newfoundland Standard Time",
+            "name": "Gmt0330Newfoundland",
+            "description": "(GMT-03:30) Newfoundland",
+            "isString": true
+          },
+          {
+            "value": "North Asia East Standard Time",
+            "name": "Gmt0800IrkutskUlaanBataar",
+            "description": "(GMT+08:00) Irkutsk, Ulaan Bataar",
+            "isString": true
+          },
+          {
+            "value": "North Asia Standard Time",
+            "name": "Gmt0700Krasnoyarsk",
+            "description": "(GMT+07:00) Krasnoyarsk",
+            "isString": true
+          },
+          {
+            "value": "Pacific SA Standard Time",
+            "name": "Gmt0400Santiago",
+            "description": "(GMT-04:00) Santiago",
+            "isString": true
+          },
+          {
+            "value": "Pacific Standard Time",
+            "name": "Gmt0800PacificTimeUsCanada",
+            "description": "(GMT-08:00) Pacific Time (US & Canada)",
+            "isString": true
+          },
+          {
+            "value": "Pacific Standard Time (Mexico)",
+            "name": "Gmt0800TijuanaBajaCalifornia",
+            "description": "(GMT-08:00) Tijuana, Baja California",
+            "isString": true
+          },
+          {
+            "value": "Pakistan Standard Time",
+            "name": "Gmt0500IslamabadKarachi",
+            "description": "(GMT+05:00) Islamabad, Karachi",
+            "isString": true
+          },
+          {
+            "value": "Romance Standard Time",
+            "name": "Gmt0100BrusselsCopenhagenMadridParis",
+            "description": "(GMT+01:00) Brussels, Copenhagen, Madrid, Paris",
+            "isString": true
+          },
+          {
+            "value": "Russian Standard Time",
+            "name": "Gmt0300MoscowStPetersburgVolgograd",
+            "description": "(GMT+03:00) Moscow, St. Petersburg, Volgograd",
+            "isString": true
+          },
+          {
+            "value": "SA Eastern Standard Time",
+            "name": "Gmt0300Georgetown",
+            "description": "(GMT-03:00) Georgetown",
+            "isString": true
+          },
+          {
+            "value": "SA Pacific Standard Time",
+            "name": "Gmt0500BogotaLimaQuitoRioBranco",
+            "description": "(GMT-05:00) Bogota, Lima, Quito, Rio Branco",
+            "isString": true
+          },
+          {
+            "value": "SA Western Standard Time",
+            "name": "Gmt0400LaPaz",
+            "description": "(GMT-04:00) La Paz",
+            "isString": true
+          },
+          {
+            "value": "Samoa Standard Time",
+            "name": "Gmt1100MidwayIslandSamoa",
+            "description": "(GMT-11:00) Midway Island, Samoa",
+            "isString": true
+          },
+          {
+            "value": "SE Asia Standard Time",
+            "name": "Gmt0700BangkokHanoiJakarta",
+            "description": "(GMT+07:00) Bangkok, Hanoi, Jakarta",
+            "isString": true
+          },
+          {
+            "value": "Singapore Standard Time",
+            "name": "Gmt0800KualaLumpurSingapore",
+            "description": "(GMT+08:00) Kuala Lumpur, Singapore",
+            "isString": true
+          },
+          {
+            "value": "South Africa Standard Time",
+            "name": "Gmt0200HararePretoria",
+            "description": "(GMT+02:00) Harare, Pretoria",
+            "isString": true
+          },
+          {
+            "value": "Sri Lanka Standard Time",
+            "name": "Gmt0530SriJayawardenepura",
+            "description": "(GMT+05:30) Sri Jayawardenepura",
+            "isString": true
+          },
+          {
+            "value": "Taipei Standard Time",
+            "name": "Gmt0800Taipei",
+            "description": "(GMT+08:00) Taipei",
+            "isString": true
+          },
+          {
+            "value": "Tasmania Standard Time",
+            "name": "Gmt1000Hobart",
+            "description": "(GMT+10:00) Hobart",
+            "isString": true
+          },
+          {
+            "value": "Tokyo Standard Time",
+            "name": "Gmt0900OsakaSapporoTokyo",
+            "description": "(GMT+09:00) Osaka, Sapporo, Tokyo",
+            "isString": true
+          },
+          {
+            "value": "Tonga Standard Time",
+            "name": "Gmt1300NukuAlofa",
+            "description": "(GMT+13:00) Nuku'alofa",
+            "isString": true
+          },
+          {
+            "value": "US Eastern Standard Time",
+            "name": "Gmt0500IndianaEast",
+            "description": "(GMT-05:00) Indiana (East)",
+            "isString": true
+          },
+          {
+            "value": "US Mountain Standard Time",
+            "name": "Gmt0700Arizona",
+            "description": "(GMT-07:00) Arizona",
+            "isString": true
+          },
+          {
+            "value": "UTC",
+            "name": "Utc",
+            "description": "UTC",
+            "isString": true
+          },
+          {
+            "value": "Venezuela Standard Time",
+            "name": "Gmt0430Caracas",
+            "description": "(GMT-04:30) Caracas",
+            "isString": true
+          },
+          {
+            "value": "Vladivostok Standard Time",
+            "name": "Gmt1000Vladivostok",
+            "description": "(GMT+10:00) Vladivostok",
+            "isString": true
+          },
+          {
+            "value": "W. Australia Standard Time",
+            "name": "Gmt0800Perth",
+            "description": "(GMT+08:00) Perth",
+            "isString": true
+          },
+          {
+            "value": "W. Central Africa Standard Time",
+            "name": "Gmt0100WestCentralAfrica",
+            "description": "(GMT+01:00) West Central Africa",
+            "isString": true
+          },
+          {
+            "value": "W. Europe Standard Time",
+            "name": "Gmt0100AmsterdamBerlinBernRomeStockholmVienna",
+            "description": "(GMT+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna",
+            "isString": true
+          },
+          {
+            "value": "West Asia Standard Time",
+            "name": "Gmt0500Tashkent",
+            "description": "(GMT+05:00) Tashkent",
+            "isString": true
+          },
+          {
+            "value": "West Pacific Standard Time",
+            "name": "Gmt1000GuamPortMoresby",
+            "description": "(GMT+10:00) Guam, Port Moresby",
+            "isString": true
+          },
+          {
+            "value": "Yakutsk Standard Time",
+            "name": "Gmt0900Yakutsk",
+            "description": "(GMT+09:00) Yakutsk",
+            "isString": true
+          }
+        ]
+      },
+      "EnumDateFormat": {
+        "enum": [
+          "DD-MM-YYYY",
+          "DD/MM/YYYY",
+          "DD.MM.YYYY",
+          "MM-DD-YYYY",
+          "MM/DD/YYYY",
+          "YYYY-MM-DD",
+          "YYYY/MM/DD"
+        ],
+        "type": "string",
+        "description": "The enum of DateFormat.",
+        "x-enums": [
+          {
+            "value": "DD-MM-YYYY",
+            "name": "DdMmYyyy",
+            "description": "DD-MM-YYYY",
+            "isString": true
+          },
+          {
+            "value": "DD/MM/YYYY",
+            "name": "DdMmYyyy",
+            "description": "DD/MM/YYYY",
+            "isString": true
+          },
+          {
+            "value": "DD.MM.YYYY",
+            "name": "DdMmYyyy",
+            "description": "DD.MM.YYYY",
+            "isString": true
+          },
+          {
+            "value": "MM-DD-YYYY",
+            "name": "MmDdYyyy",
+            "description": "MM-DD-YYYY",
+            "isString": true
+          },
+          {
+            "value": "MM/DD/YYYY",
+            "name": "MmDdYyyy",
+            "description": "MM/DD/YYYY",
+            "isString": true
+          },
+          {
+            "value": "YYYY-MM-DD",
+            "name": "YyyyMmDd",
+            "description": "YYYY-MM-DD",
+            "isString": true
+          },
+          {
+            "value": "YYYY/MM/DD",
+            "name": "YyyyMmDd",
+            "description": "YYYY/MM/DD",
+            "isString": true
+          }
+        ]
+      },
       "AccountData": {
         "required": [
-          "Id",
           "FirstName",
           "LastName",
           "Email",
@@ -3569,76 +4397,76 @@
         "properties": {
           "Id": {
             "type": "string",
-            "description": "The identifier of account"
+            "description": "The identifier of account."
           },
           "TenantId": {
             "$ref": "#/components/schemas/FieldType"
           },
           "Name": {
             "type": "string",
-            "description": "The name of the account"
+            "description": "The name of the account."
           },
           "FirstName": {
             "type": "string",
-            "description": "Person's first name"
+            "description": "Person's first name."
           },
           "LastName": {
             "type": "string",
-            "description": "Person's last name"
+            "description": "Person's last name."
           },
           "Phone": {
             "type": "string",
-            "description": "The phone number of account. The phone number is unique in the system"
+            "description": "The phone number of account. The phone number is unique in the system."
           },
           "Email": {
             "type": "string",
-            "description": "The e-mail of account. The email is unique in the system"
+            "description": "The e-mail of account. The email is unique in the system."
           },
           "LanguageId": {
-            "$ref": "#/components/schemas/FieldType"
+            "$ref": "#/components/schemas/EnumLanguage"
           },
           "TimezoneId": {
-            "$ref": "#/components/schemas/FieldType"
+            "$ref": "#/components/schemas/EnumTimezone"
           },
           "DateFormatId": {
-            "$ref": "#/components/schemas/FieldType"
+            "$ref": "#/components/schemas/EnumDateFormat"
           },
           "Username": {
             "type": "string",
-            "description": "Username used to log in into the system. The username is unique in the system"
+            "description": "Username used to log in into the system. The username is unique in the system. The value must be unique in the system and you cannot add multiple values."
           },
           "ExternalId": {
             "type": "string",
-            "description": "External Authentication identifier. Example Azure AD guid"
+            "description": "External Authentication identifier. Example Azure AD guid. The value must be unique in the system and you cannot add multiple values."
           },
           "NotifyByEmail": {
             "type": "boolean",
-            "description": "Defines if a person should get notifications via e-mail",
+            "description": "Defines if a person should get notifications via e-mail.",
             "default": false,
             "example": false
           },
           "NotifyBySMS": {
             "type": "boolean",
-            "description": "Defines if a contact should get notifications via SMS",
+            "description": "Defines if a contact should get notifications via SMS.",
             "default": false,
             "example": false
           },
           "Is_Active": {
             "type": "boolean",
-            "description": "Defines if the account is active and can be used",
+            "description": "Defines if the account is active and can be used.",
             "default": false,
             "example": false
           },
           "ModifiedOn": {
             "type": "string",
-            "description": "The date the record was updated",
+            "description": "The date the record was updated.",
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
           },
           "CreatedOn": {
             "type": "string",
-            "description": "The date the record was created",
+            "description": "The date the record was created.",
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
@@ -3706,7 +4534,6 @@
       },
       "TenantData": {
         "required": [
-          "UserId",
           "TenantId",
           "CreatedOn"
         ],
@@ -3720,7 +4547,7 @@
           },
           "CreatedOn": {
             "type": "string",
-            "description": "The date the record was created",
+            "description": "The date the record was created.",
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
@@ -3771,16 +4598,16 @@
         "properties": {
           "Filename": {
             "type": "string",
-            "description": "Filename of account picture"
+            "description": "Filename of account picture."
           },
           "Picture": {
             "type": "string",
-            "description": "Picture of account",
+            "description": "Picture of account.",
             "format": "binary"
           },
           "CreatedOn": {
             "type": "string",
-            "description": "Date the record was created",
+            "description": "Date the record was created.",
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
@@ -5677,7 +6504,6 @@
       },
       "DepartmentData": {
         "required": [
-          "Id",
           "Name",
           "DepartmentTypeId",
           "Is_Active"
@@ -5686,15 +6512,15 @@
         "properties": {
           "Id": {
             "type": "string",
-            "description": "The guid to identify the department"
+            "description": "The guid to identify the department."
           },
           "ExternalId": {
             "type": "string",
-            "description": "The external identifier of the department"
+            "description": "The external identifier of the department."
           },
           "Name": {
             "type": "string",
-            "description": "The name of the department"
+            "description": "The name of the department."
           },
           "DepartmentTypeId": {
             "$ref": "#/components/schemas/EnumDepartmentType"
@@ -5704,11 +6530,11 @@
           },
           "ContactName": {
             "type": "string",
-            "description": "The contact name of company or department"
+            "description": "The contact name of company or department."
           },
           "ContactEmail": {
             "type": "string",
-            "description": "The contact email of external company or department"
+            "description": "The contact email of external company or department."
           },
           "ContactPhone": {
             "type": "string"
@@ -5721,7 +6547,7 @@
           },
           "Is_Active": {
             "type": "boolean",
-            "description": "Defines if the department is active and can be used",
+            "description": "Defines if the department is active and can be used.",
             "default": false,
             "example": false
           }
@@ -5739,15 +6565,15 @@
         "properties": {
           "Id": {
             "type": "string",
-            "description": "The guid to identify the department"
+            "description": "The guid to identify the department."
           },
           "ExternalId": {
             "type": "string",
-            "description": "The external identifier of the department"
+            "description": "The external identifier of the department."
           },
           "Name": {
             "type": "string",
-            "description": "The name of the department"
+            "description": "The name of the department."
           },
           "DepartmentTypeId": {
             "$ref": "#/components/schemas/EnumDepartmentType"
@@ -5757,11 +6583,11 @@
           },
           "ContactName": {
             "type": "string",
-            "description": "The contact name of company or department"
+            "description": "The contact name of company or department."
           },
           "ContactEmail": {
             "type": "string",
-            "description": "The contact email of external company or department"
+            "description": "The contact email of external company or department."
           },
           "ContactPhone": {
             "type": "string"
@@ -5774,7 +6600,7 @@
           },
           "Is_Active": {
             "type": "boolean",
-            "description": "Defines if the department is active and can be used",
+            "description": "Defines if the department is active and can be used.",
             "default": false,
             "example": false
           }
@@ -5790,19 +6616,19 @@
         "properties": {
           "ExternalId": {
             "type": "string",
-            "description": "The external identifier of the department"
+            "description": "The external identifier of the department."
           },
           "Name": {
             "type": "string",
-            "description": "The name of the department"
+            "description": "The name of the department."
           },
           "ContactName": {
             "type": "string",
-            "description": "The contact name of company or department"
+            "description": "The contact name of company or department."
           },
           "ContactEmail": {
             "type": "string",
-            "description": "The contact email of external company or department"
+            "description": "The contact email of external company or department."
           },
           "ContactPhone": {
             "type": "string"
@@ -5815,7 +6641,7 @@
           },
           "Is_Active": {
             "type": "boolean",
-            "description": "Defines if the department is active and can be used",
+            "description": "Defines if the department is active and can be used.",
             "default": false,
             "example": false
           }
@@ -5875,14 +6701,11 @@
         "description": "The list of `User` records"
       },
       "UserData": {
-        "required": [
-          "Id"
-        ],
         "type": "object",
         "properties": {
           "Id": {
             "type": "string",
-            "description": "The identifier of user department"
+            "description": "The identifier of user department."
           },
           "UserId": {
             "$ref": "#/components/schemas/FieldType"
@@ -5891,18 +6714,15 @@
         "description": "The record of User information."
       },
       "UserText": {
-        "required": [
-          "Id"
-        ],
         "type": "object",
         "properties": {
           "Id": {
             "type": "string",
-            "description": "The identifier of user department"
+            "description": "The identifier of user department."
           },
           "UserId": {
             "type": "string",
-            "description": "The identifier of the user who has link the department"
+            "description": "The identifier of the user who has link the department."
           }
         },
         "description": "The record of User information."
@@ -6051,637 +6871,6 @@
           }
         },
         "description": "The list of `Location` records"
-      },
-      "EnumTimezone": {
-        "enum": [
-          "Afghanistan Standard Time",
-          "Alaskan Standard Time",
-          "Arab Standard Time",
-          "Arabian Standard Time",
-          "Arabic Standard Time",
-          "Argentina Standard Time",
-          "Atlantic Standard Time",
-          "AUS Central Standard Time",
-          "AUS Eastern Standard Time",
-          "Azerbaijan Standard Time",
-          "Azores Standard Time",
-          "Canada Central Standard Time",
-          "Cape Verde Standard Time",
-          "Caucasus Standard Time",
-          "Cen. Australia Standard Time",
-          "Central America Standard Time",
-          "Central Asia Standard Time",
-          "Central Brazilian Standard Time",
-          "Central Europe Standard Time",
-          "Central European Standard Time",
-          "Central Pacific Standard Time",
-          "Central Standard Time",
-          "Central Standard Time (Mexico)",
-          "China Standard Time",
-          "Dateline Standard Time",
-          "E. Africa Standard Time",
-          "E. Australia Standard Time",
-          "E. Europe Standard Time",
-          "E. South America Standard Time",
-          "Eastern Standard Time",
-          "Egypt Standard Time",
-          "Ekaterinburg Standard Time",
-          "Fiji Standard Time",
-          "FLE Standard Time",
-          "Georgian Standard Time",
-          "GMT Standard Time",
-          "Greenland Standard Time",
-          "Greenwich Standard Time",
-          "GTB Standard Time",
-          "Hawaiian Standard Time",
-          "India Standard Time",
-          "Iran Standard Time",
-          "Israel Standard Time",
-          "Jordan Standard Time",
-          "Korea Standard Time",
-          "Mauritius Standard Time",
-          "Mid-Atlantic Standard Time",
-          "Middle East Standard Time",
-          "Montevideo Standard Time",
-          "Morocco Standard Time",
-          "Mountain Standard Time",
-          "Mountain Standard Time (Mexico)",
-          "Myanmar Standard Time",
-          "N. Central Asia Standard Time",
-          "Namibia Standard Time",
-          "Nepal Standard Time",
-          "New Zealand Standard Time",
-          "Newfoundland Standard Time",
-          "North Asia East Standard Time",
-          "North Asia Standard Time",
-          "Pacific SA Standard Time",
-          "Pacific Standard Time",
-          "Pacific Standard Time (Mexico)",
-          "Pakistan Standard Time",
-          "Romance Standard Time",
-          "Russian Standard Time",
-          "SA Eastern Standard Time",
-          "SA Pacific Standard Time",
-          "SA Western Standard Time",
-          "Samoa Standard Time",
-          "SE Asia Standard Time",
-          "Singapore Standard Time",
-          "South Africa Standard Time",
-          "Sri Lanka Standard Time",
-          "Taipei Standard Time",
-          "Tasmania Standard Time",
-          "Tokyo Standard Time",
-          "Tonga Standard Time",
-          "US Eastern Standard Time",
-          "US Mountain Standard Time",
-          "UTC",
-          "Venezuela Standard Time",
-          "Vladivostok Standard Time",
-          "W. Australia Standard Time",
-          "W. Central Africa Standard Time",
-          "W. Europe Standard Time",
-          "West Asia Standard Time",
-          "West Pacific Standard Time",
-          "Yakutsk Standard Time"
-        ],
-        "type": "string",
-        "description": "The enum of Timezone.",
-        "x-enums": [
-          {
-            "value": "Afghanistan Standard Time",
-            "name": "Gmt0430Kabul",
-            "description": "(GMT+04:30) Kabul",
-            "isString": true
-          },
-          {
-            "value": "Alaskan Standard Time",
-            "name": "Gmt0900Alaska",
-            "description": "(GMT-09:00) Alaska",
-            "isString": true
-          },
-          {
-            "value": "Arab Standard Time",
-            "name": "Gmt0300KuwaitRiyadh",
-            "description": "(GMT+03:00) Kuwait, Riyadh",
-            "isString": true
-          },
-          {
-            "value": "Arabian Standard Time",
-            "name": "Gmt0400AbuDhabiMuscat",
-            "description": "(GMT+04:00) Abu Dhabi, Muscat",
-            "isString": true
-          },
-          {
-            "value": "Arabic Standard Time",
-            "name": "Gmt0300Baghdad",
-            "description": "(GMT+03:00) Baghdad",
-            "isString": true
-          },
-          {
-            "value": "Argentina Standard Time",
-            "name": "Gmt0300BuenosAires",
-            "description": "(GMT-03:00) Buenos Aires",
-            "isString": true
-          },
-          {
-            "value": "Atlantic Standard Time",
-            "name": "Gmt0400AtlanticTimeCanada",
-            "description": "(GMT-04:00) Atlantic Time (Canada)",
-            "isString": true
-          },
-          {
-            "value": "AUS Central Standard Time",
-            "name": "Gmt0930Darwin",
-            "description": "(GMT+09:30) Darwin",
-            "isString": true
-          },
-          {
-            "value": "AUS Eastern Standard Time",
-            "name": "Gmt1000CanberraMelbourneSydney",
-            "description": "(GMT+10:00) Canberra, Melbourne, Sydney",
-            "isString": true
-          },
-          {
-            "value": "Azerbaijan Standard Time",
-            "name": "Gmt0400Baku",
-            "description": "(GMT+04:00) Baku",
-            "isString": true
-          },
-          {
-            "value": "Azores Standard Time",
-            "name": "Gmt0100Azores",
-            "description": "(GMT-01:00) Azores",
-            "isString": true
-          },
-          {
-            "value": "Canada Central Standard Time",
-            "name": "Gmt0600Saskatchewan",
-            "description": "(GMT-06:00) Saskatchewan",
-            "isString": true
-          },
-          {
-            "value": "Cape Verde Standard Time",
-            "name": "Gmt0100CapeVerdeIs",
-            "description": "(GMT-01:00) Cape Verde Is.",
-            "isString": true
-          },
-          {
-            "value": "Caucasus Standard Time",
-            "name": "Gmt0400Yerevan",
-            "description": "(GMT+04:00) Yerevan",
-            "isString": true
-          },
-          {
-            "value": "Cen. Australia Standard Time",
-            "name": "Gmt0930Adelaide",
-            "description": "(GMT+09:30) Adelaide",
-            "isString": true
-          },
-          {
-            "value": "Central America Standard Time",
-            "name": "Gmt0600CentralAmerica",
-            "description": "(GMT-06:00) Central America",
-            "isString": true
-          },
-          {
-            "value": "Central Asia Standard Time",
-            "name": "Gmt0600AstanaDhaka",
-            "description": "(GMT+06:00) Astana, Dhaka",
-            "isString": true
-          },
-          {
-            "value": "Central Brazilian Standard Time",
-            "name": "Gmt0400Manaus",
-            "description": "(GMT-04:00) Manaus",
-            "isString": true
-          },
-          {
-            "value": "Central Europe Standard Time",
-            "name": "Gmt0100BelgradeBratislavaBudapestLjubljanaPrague",
-            "description": "(GMT+01:00) Belgrade, Bratislava, Budapest, Ljubljana, Prague",
-            "isString": true
-          },
-          {
-            "value": "Central European Standard Time",
-            "name": "Gmt0100SarajevoSkopjeWarsawZagreb",
-            "description": "(GMT+01:00) Sarajevo, Skopje, Warsaw, Zagreb",
-            "isString": true
-          },
-          {
-            "value": "Central Pacific Standard Time",
-            "name": "Gmt1100MagadanSolomonIsNewCaledonia",
-            "description": "(GMT+11:00) Magadan, Solomon Is., New Caledonia",
-            "isString": true
-          },
-          {
-            "value": "Central Standard Time",
-            "name": "Gmt0600CentralTimeUsCanada",
-            "description": "(GMT-06:00) Central Time (US & Canada)",
-            "isString": true
-          },
-          {
-            "value": "Central Standard Time (Mexico)",
-            "name": "Gmt0600GuadalajaraMexicoCityMonterrey",
-            "description": "(GMT-06:00) Guadalajara, Mexico City, Monterrey",
-            "isString": true
-          },
-          {
-            "value": "China Standard Time",
-            "name": "Gmt0800BeijingChongqingHongKongUrumqi",
-            "description": "(GMT+08:00) Beijing, Chongqing, Hong Kong, Urumqi",
-            "isString": true
-          },
-          {
-            "value": "Dateline Standard Time",
-            "name": "Gmt1200InternationalDateLineWest",
-            "description": "(GMT-12:00) International Date Line West",
-            "isString": true
-          },
-          {
-            "value": "E. Africa Standard Time",
-            "name": "Gmt0300Nairobi",
-            "description": "(GMT+03:00) Nairobi",
-            "isString": true
-          },
-          {
-            "value": "E. Australia Standard Time",
-            "name": "Gmt1000Brisbane",
-            "description": "(GMT+10:00) Brisbane",
-            "isString": true
-          },
-          {
-            "value": "E. Europe Standard Time",
-            "name": "Gmt0200Minsk",
-            "description": "(GMT+02:00) Minsk",
-            "isString": true
-          },
-          {
-            "value": "E. South America Standard Time",
-            "name": "Gmt0300Brasilia",
-            "description": "(GMT-03:00) Brasilia",
-            "isString": true
-          },
-          {
-            "value": "Eastern Standard Time",
-            "name": "Gmt0500EasternTimeUsCanada",
-            "description": "(GMT-05:00) Eastern Time (US & Canada)",
-            "isString": true
-          },
-          {
-            "value": "Egypt Standard Time",
-            "name": "Gmt0200Cairo",
-            "description": "(GMT+02:00) Cairo",
-            "isString": true
-          },
-          {
-            "value": "Ekaterinburg Standard Time",
-            "name": "Gmt0500Ekaterinburg",
-            "description": "(GMT+05:00) Ekaterinburg",
-            "isString": true
-          },
-          {
-            "value": "Fiji Standard Time",
-            "name": "Gmt1200FijiKamchatkaMarshallIs",
-            "description": "(GMT+12:00) Fiji, Kamchatka, Marshall Is.",
-            "isString": true
-          },
-          {
-            "value": "FLE Standard Time",
-            "name": "Gmt0200HelsinkiKyivRigaSofiaTallinnVilnius",
-            "description": "(GMT+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius",
-            "isString": true
-          },
-          {
-            "value": "Georgian Standard Time",
-            "name": "Gmt0300Tbilisi",
-            "description": "(GMT+03:00) Tbilisi",
-            "isString": true
-          },
-          {
-            "value": "GMT Standard Time",
-            "name": "GmtGreenwichMeanTimeDublinEdinburghLisbonLondon",
-            "description": "(GMT) Greenwich Mean Time : Dublin, Edinburgh, Lisbon, London",
-            "isString": true
-          },
-          {
-            "value": "Greenland Standard Time",
-            "name": "Gmt0300Greenland",
-            "description": "(GMT-03:00) Greenland",
-            "isString": true
-          },
-          {
-            "value": "Greenwich Standard Time",
-            "name": "GmtMonroviaReykjavik",
-            "description": "(GMT) Monrovia, Reykjavik",
-            "isString": true
-          },
-          {
-            "value": "GTB Standard Time",
-            "name": "Gmt0200AthensBucharestIstanbul",
-            "description": "(GMT+02:00) Athens, Bucharest, Istanbul",
-            "isString": true
-          },
-          {
-            "value": "Hawaiian Standard Time",
-            "name": "Gmt1000Hawaii",
-            "description": "(GMT-10:00) Hawaii",
-            "isString": true
-          },
-          {
-            "value": "India Standard Time",
-            "name": "Gmt0530ChennaiKolkataMumbaiNewDelhi",
-            "description": "(GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi",
-            "isString": true
-          },
-          {
-            "value": "Iran Standard Time",
-            "name": "Gmt0330Tehran",
-            "description": "(GMT+03:30) Tehran",
-            "isString": true
-          },
-          {
-            "value": "Israel Standard Time",
-            "name": "Gmt0200Jerusalem",
-            "description": "(GMT+02:00) Jerusalem",
-            "isString": true
-          },
-          {
-            "value": "Jordan Standard Time",
-            "name": "Gmt0200Amman",
-            "description": "(GMT+02:00) Amman",
-            "isString": true
-          },
-          {
-            "value": "Korea Standard Time",
-            "name": "Gmt0900Seoul",
-            "description": "(GMT+09:00) Seoul",
-            "isString": true
-          },
-          {
-            "value": "Mauritius Standard Time",
-            "name": "Gmt0400PortLouis",
-            "description": "(GMT+04:00) Port Louis",
-            "isString": true
-          },
-          {
-            "value": "Mid-Atlantic Standard Time",
-            "name": "Gmt0200MidAtlantic",
-            "description": "(GMT-02:00) Mid-Atlantic",
-            "isString": true
-          },
-          {
-            "value": "Middle East Standard Time",
-            "name": "Gmt0200Beirut",
-            "description": "(GMT+02:00) Beirut",
-            "isString": true
-          },
-          {
-            "value": "Montevideo Standard Time",
-            "name": "Gmt0300Montevideo",
-            "description": "(GMT-03:00) Montevideo",
-            "isString": true
-          },
-          {
-            "value": "Morocco Standard Time",
-            "name": "GmtCasablanca",
-            "description": "(GMT) Casablanca",
-            "isString": true
-          },
-          {
-            "value": "Mountain Standard Time",
-            "name": "Gmt0700MountainTimeUsCanada",
-            "description": "(GMT-07:00) Mountain Time (US & Canada)",
-            "isString": true
-          },
-          {
-            "value": "Mountain Standard Time (Mexico)",
-            "name": "Gmt0700ChihuahuaLaPazMazatlan",
-            "description": "(GMT-07:00) Chihuahua, La Paz, Mazatlan",
-            "isString": true
-          },
-          {
-            "value": "Myanmar Standard Time",
-            "name": "Gmt0630YangonRangoon",
-            "description": "(GMT+06:30) Yangon (Rangoon)",
-            "isString": true
-          },
-          {
-            "value": "N. Central Asia Standard Time",
-            "name": "Gmt0600AlmatyNovosibirsk",
-            "description": "(GMT+06:00) Almaty, Novosibirsk",
-            "isString": true
-          },
-          {
-            "value": "Namibia Standard Time",
-            "name": "Gmt0200Windhoek",
-            "description": "(GMT+02:00) Windhoek",
-            "isString": true
-          },
-          {
-            "value": "Nepal Standard Time",
-            "name": "Gmt0545Kathmandu",
-            "description": "(GMT+05:45) Kathmandu",
-            "isString": true
-          },
-          {
-            "value": "New Zealand Standard Time",
-            "name": "Gmt1200AucklandWellington",
-            "description": "(GMT+12:00) Auckland, Wellington",
-            "isString": true
-          },
-          {
-            "value": "Newfoundland Standard Time",
-            "name": "Gmt0330Newfoundland",
-            "description": "(GMT-03:30) Newfoundland",
-            "isString": true
-          },
-          {
-            "value": "North Asia East Standard Time",
-            "name": "Gmt0800IrkutskUlaanBataar",
-            "description": "(GMT+08:00) Irkutsk, Ulaan Bataar",
-            "isString": true
-          },
-          {
-            "value": "North Asia Standard Time",
-            "name": "Gmt0700Krasnoyarsk",
-            "description": "(GMT+07:00) Krasnoyarsk",
-            "isString": true
-          },
-          {
-            "value": "Pacific SA Standard Time",
-            "name": "Gmt0400Santiago",
-            "description": "(GMT-04:00) Santiago",
-            "isString": true
-          },
-          {
-            "value": "Pacific Standard Time",
-            "name": "Gmt0800PacificTimeUsCanada",
-            "description": "(GMT-08:00) Pacific Time (US & Canada)",
-            "isString": true
-          },
-          {
-            "value": "Pacific Standard Time (Mexico)",
-            "name": "Gmt0800TijuanaBajaCalifornia",
-            "description": "(GMT-08:00) Tijuana, Baja California",
-            "isString": true
-          },
-          {
-            "value": "Pakistan Standard Time",
-            "name": "Gmt0500IslamabadKarachi",
-            "description": "(GMT+05:00) Islamabad, Karachi",
-            "isString": true
-          },
-          {
-            "value": "Romance Standard Time",
-            "name": "Gmt0100BrusselsCopenhagenMadridParis",
-            "description": "(GMT+01:00) Brussels, Copenhagen, Madrid, Paris",
-            "isString": true
-          },
-          {
-            "value": "Russian Standard Time",
-            "name": "Gmt0300MoscowStPetersburgVolgograd",
-            "description": "(GMT+03:00) Moscow, St. Petersburg, Volgograd",
-            "isString": true
-          },
-          {
-            "value": "SA Eastern Standard Time",
-            "name": "Gmt0300Georgetown",
-            "description": "(GMT-03:00) Georgetown",
-            "isString": true
-          },
-          {
-            "value": "SA Pacific Standard Time",
-            "name": "Gmt0500BogotaLimaQuitoRioBranco",
-            "description": "(GMT-05:00) Bogota, Lima, Quito, Rio Branco",
-            "isString": true
-          },
-          {
-            "value": "SA Western Standard Time",
-            "name": "Gmt0400LaPaz",
-            "description": "(GMT-04:00) La Paz",
-            "isString": true
-          },
-          {
-            "value": "Samoa Standard Time",
-            "name": "Gmt1100MidwayIslandSamoa",
-            "description": "(GMT-11:00) Midway Island, Samoa",
-            "isString": true
-          },
-          {
-            "value": "SE Asia Standard Time",
-            "name": "Gmt0700BangkokHanoiJakarta",
-            "description": "(GMT+07:00) Bangkok, Hanoi, Jakarta",
-            "isString": true
-          },
-          {
-            "value": "Singapore Standard Time",
-            "name": "Gmt0800KualaLumpurSingapore",
-            "description": "(GMT+08:00) Kuala Lumpur, Singapore",
-            "isString": true
-          },
-          {
-            "value": "South Africa Standard Time",
-            "name": "Gmt0200HararePretoria",
-            "description": "(GMT+02:00) Harare, Pretoria",
-            "isString": true
-          },
-          {
-            "value": "Sri Lanka Standard Time",
-            "name": "Gmt0530SriJayawardenepura",
-            "description": "(GMT+05:30) Sri Jayawardenepura",
-            "isString": true
-          },
-          {
-            "value": "Taipei Standard Time",
-            "name": "Gmt0800Taipei",
-            "description": "(GMT+08:00) Taipei",
-            "isString": true
-          },
-          {
-            "value": "Tasmania Standard Time",
-            "name": "Gmt1000Hobart",
-            "description": "(GMT+10:00) Hobart",
-            "isString": true
-          },
-          {
-            "value": "Tokyo Standard Time",
-            "name": "Gmt0900OsakaSapporoTokyo",
-            "description": "(GMT+09:00) Osaka, Sapporo, Tokyo",
-            "isString": true
-          },
-          {
-            "value": "Tonga Standard Time",
-            "name": "Gmt1300NukuAlofa",
-            "description": "(GMT+13:00) Nuku'alofa",
-            "isString": true
-          },
-          {
-            "value": "US Eastern Standard Time",
-            "name": "Gmt0500IndianaEast",
-            "description": "(GMT-05:00) Indiana (East)",
-            "isString": true
-          },
-          {
-            "value": "US Mountain Standard Time",
-            "name": "Gmt0700Arizona",
-            "description": "(GMT-07:00) Arizona",
-            "isString": true
-          },
-          {
-            "value": "UTC",
-            "name": "Utc",
-            "description": "UTC",
-            "isString": true
-          },
-          {
-            "value": "Venezuela Standard Time",
-            "name": "Gmt0430Caracas",
-            "description": "(GMT-04:30) Caracas",
-            "isString": true
-          },
-          {
-            "value": "Vladivostok Standard Time",
-            "name": "Gmt1000Vladivostok",
-            "description": "(GMT+10:00) Vladivostok",
-            "isString": true
-          },
-          {
-            "value": "W. Australia Standard Time",
-            "name": "Gmt0800Perth",
-            "description": "(GMT+08:00) Perth",
-            "isString": true
-          },
-          {
-            "value": "W. Central Africa Standard Time",
-            "name": "Gmt0100WestCentralAfrica",
-            "description": "(GMT+01:00) West Central Africa",
-            "isString": true
-          },
-          {
-            "value": "W. Europe Standard Time",
-            "name": "Gmt0100AmsterdamBerlinBernRomeStockholmVienna",
-            "description": "(GMT+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna",
-            "isString": true
-          },
-          {
-            "value": "West Asia Standard Time",
-            "name": "Gmt0500Tashkent",
-            "description": "(GMT+05:00) Tashkent",
-            "isString": true
-          },
-          {
-            "value": "West Pacific Standard Time",
-            "name": "Gmt1000GuamPortMoresby",
-            "description": "(GMT+10:00) Guam, Port Moresby",
-            "isString": true
-          },
-          {
-            "value": "Yakutsk Standard Time",
-            "name": "Gmt0900Yakutsk",
-            "description": "(GMT+09:00) Yakutsk",
-            "isString": true
-          }
-        ]
       },
       "EnumCurrency": {
         "enum": [
@@ -6868,7 +7057,6 @@
       },
       "LocationData": {
         "required": [
-          "Id",
           "Name",
           "Is_Active"
         ],
@@ -6876,15 +7064,15 @@
         "properties": {
           "Id": {
             "type": "string",
-            "description": "The guid to identify the location"
+            "description": "The guid to identify the location."
           },
           "ExternalId": {
             "type": "string",
-            "description": "The external identifier of the location"
+            "description": "The external identifier of the location."
           },
           "Name": {
             "type": "string",
-            "description": "The name of the location"
+            "description": "The name of the location. The value must be unique in the system and you cannot add multiple values."
           },
           "CountryId": {
             "$ref": "#/components/schemas/EnumCountry"
@@ -6897,7 +7085,7 @@
           },
           "Is_Active": {
             "type": "boolean",
-            "description": "Defines if the location is active and can be used",
+            "description": "Defines if the location is active and can be used.",
             "default": false,
             "example": false
           }
@@ -6914,15 +7102,15 @@
         "properties": {
           "Id": {
             "type": "string",
-            "description": "The guid to identify the location"
+            "description": "The guid to identify the location."
           },
           "ExternalId": {
             "type": "string",
-            "description": "The external identifier of the location"
+            "description": "The external identifier of the location."
           },
           "Name": {
             "type": "string",
-            "description": "The name of the location"
+            "description": "The name of the location. The value must be unique in the system and you cannot add multiple values."
           },
           "CountryId": {
             "$ref": "#/components/schemas/EnumCountry"
@@ -6935,7 +7123,7 @@
           },
           "Is_Active": {
             "type": "boolean",
-            "description": "Defines if the location is active and can be used",
+            "description": "Defines if the location is active and can be used.",
             "default": false,
             "example": false
           }
@@ -6951,11 +7139,11 @@
         "properties": {
           "ExternalId": {
             "type": "string",
-            "description": "The external identifier of the location"
+            "description": "The external identifier of the location."
           },
           "Name": {
             "type": "string",
-            "description": "The name of the location"
+            "description": "The name of the location. The value must be unique in the system and you cannot add multiple values."
           },
           "CountryId": {
             "$ref": "#/components/schemas/EnumCountry"
@@ -6968,7 +7156,7 @@
           },
           "Is_Active": {
             "type": "boolean",
-            "description": "Defines if the location is active and can be used",
+            "description": "Defines if the location is active and can be used.",
             "default": false,
             "example": false
           }
@@ -7060,7 +7248,6 @@
       },
       "ConnectionData": {
         "required": [
-          "Id",
           "Name",
           "URL"
         ],
@@ -7068,37 +7255,37 @@
         "properties": {
           "Id": {
             "type": "string",
-            "description": "The identifier of the module that owns the entity that is being processed"
+            "description": "The identifier of the module that owns the entity that is being processed."
           },
           "Name": {
             "type": "string",
-            "description": "Name of connection"
+            "description": "Name of connection. The value must be unique in the system and you cannot add multiple values."
           },
           "Description": {
             "type": "string",
-            "description": "Description of connection"
+            "description": "Description of connection."
           },
           "ApiKey": {
             "type": "string",
-            "description": "An API key is a unique identifier used to authenticate a user, developer, or calling program to an API"
+            "description": "An API key is a unique identifier used to authenticate a user, developer, or calling program to an API. The pattern of the value (Secure). The default of the value (Generate password)."
           },
           "SecretKey": {
             "type": "string",
-            "description": "A secret key for signing payloads, enhancing security."
+            "description": "A secret key for signing payloads, enhancing security. The pattern of the value (Secure). The default of the value (Generate password)."
           },
           "URL": {
             "type": "string",
-            "description": "Webhook external service URL-address"
+            "description": "Webhook external service URL-address. The value must be unique in the system and you cannot add multiple values. The pattern of the value (^(http(s):\\/\\/.)[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&\\/\\/=]*)$)."
           },
           "Is_Active": {
             "type": "boolean",
-            "description": "If true, the configuration is active",
+            "description": "If true, the configuration is active.",
             "default": false,
             "example": false
           },
           "Is_System": {
             "type": "boolean",
-            "description": "If true, the configuration is internal to the system and not visible in the user interface",
+            "description": "If true, the configuration is internal to the system and not visible in the user interface.",
             "default": false,
             "example": false
           },
@@ -7204,39 +7391,38 @@
       },
       "ConfigData": {
         "required": [
-          "Id",
           "WebhookEntityId"
         ],
         "type": "object",
         "properties": {
           "Id": {
             "type": "string",
-            "description": "The identifier of the config"
+            "description": "The identifier of the config."
           },
           "WebhookEntityId": {
             "$ref": "#/components/schemas/FieldType"
           },
           "HasCreateAccess": {
             "type": "boolean",
-            "description": "Service has create access to data",
+            "description": "Service has create access to data.",
             "default": false,
             "example": false
           },
           "HasUpdateAccess": {
             "type": "boolean",
-            "description": "Service has update access to data",
+            "description": "Service has update access to data.",
             "default": false,
             "example": false
           },
           "HasDeleteAccess": {
             "type": "boolean",
-            "description": "Service has delete access to data",
+            "description": "Service has delete access to data.",
             "default": false,
             "example": false
           },
           "Is_Active": {
             "type": "boolean",
-            "description": "If true, the configuration is active",
+            "description": "If true, the configuration is active.",
             "default": false,
             "example": false
           },
@@ -7265,14 +7451,13 @@
       },
       "ConfigText": {
         "required": [
-          "Id",
           "WebhookEntityId"
         ],
         "type": "object",
         "properties": {
           "Id": {
             "type": "string",
-            "description": "The identifier of the config"
+            "description": "The identifier of the config."
           },
           "WebhookEntityId": {
             "type": "string",
@@ -7280,31 +7465,31 @@
           },
           "HasCreateAccess": {
             "type": "boolean",
-            "description": "Service has create access to data",
+            "description": "Service has create access to data.",
             "default": false,
             "example": false
           },
           "HasUpdateAccess": {
             "type": "boolean",
-            "description": "Service has update access to data",
+            "description": "Service has update access to data.",
             "default": false,
             "example": false
           },
           "HasDeleteAccess": {
             "type": "boolean",
-            "description": "Service has delete access to data",
+            "description": "Service has delete access to data.",
             "default": false,
             "example": false
           },
           "Is_Active": {
             "type": "boolean",
-            "description": "If true, the configuration is active",
+            "description": "If true, the configuration is active.",
             "default": false,
             "example": false
           },
           "ModifiedBy": {
             "type": "string",
-            "description": "The Identifier of the user who updated the record"
+            "description": "The Identifier of the user who updated the record."
           },
           "ModifiedOn": {
             "type": "string",
@@ -7315,7 +7500,7 @@
           },
           "CreatedBy": {
             "type": "string",
-            "description": "The Identifier of the user who created the record"
+            "description": "The Identifier of the user who created the record."
           },
           "CreatedOn": {
             "type": "string",
