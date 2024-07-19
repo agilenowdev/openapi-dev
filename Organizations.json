@@ -3521,7 +3521,7 @@
         "properties": {
           "Id": {
             "type": "string",
-            "description": "The guid to identify the department"
+            "description": "The guid to identify the department."
           },
           "ExternalId": {
             "type": "string",
@@ -3539,11 +3539,11 @@
           },
           "ContactName": {
             "type": "string",
-            "description": "The contact name of company or department"
+            "description": "The contact name of company or department."
           },
           "ContactEmail": {
             "type": "string",
-            "description": "The contact email of external company or department"
+            "description": "The contact email of external company or department."
           },
           "ContactPhone": {
             "type": "string"
@@ -3556,7 +3556,7 @@
           },
           "Is_Active": {
             "type": "boolean",
-            "description": "Defines if the department is active and can be used",
+            "description": "Defines if the department is active and can be used.",
             "default": false,
             "example": false
           }
@@ -3592,7 +3592,7 @@
         "properties": {
           "Id": {
             "type": "string",
-            "description": "The guid to identify the department"
+            "description": "The guid to identify the department."
           },
           "ExternalId": {
             "type": "string",
@@ -3610,11 +3610,11 @@
           },
           "ContactName": {
             "type": "string",
-            "description": "The contact name of company or department"
+            "description": "The contact name of company or department."
           },
           "ContactEmail": {
             "type": "string",
-            "description": "The contact email of external company or department"
+            "description": "The contact email of external company or department."
           },
           "ContactPhone": {
             "type": "string"
@@ -3627,7 +3627,7 @@
           },
           "Is_Active": {
             "type": "boolean",
-            "description": "Defines if the department is active and can be used",
+            "description": "Defines if the department is active and can be used.",
             "default": false,
             "example": false
           }
@@ -3651,11 +3651,11 @@
           },
           "ContactName": {
             "type": "string",
-            "description": "The contact name of company or department"
+            "description": "The contact name of company or department."
           },
           "ContactEmail": {
             "type": "string",
-            "description": "The contact email of external company or department"
+            "description": "The contact email of external company or department."
           },
           "ContactPhone": {
             "type": "string"
@@ -3668,7 +3668,7 @@
           },
           "Is_Active": {
             "type": "boolean",
-            "description": "Defines if the department is active and can be used",
+            "description": "Defines if the department is active and can be used.",
             "default": false,
             "example": false
           }
@@ -3732,7 +3732,7 @@
         "properties": {
           "Id": {
             "type": "string",
-            "description": "The identifier of user department"
+            "description": "The identifier of user department."
           },
           "UserId": {
             "$ref": "#/components/schemas/FieldType"
@@ -3745,11 +3745,11 @@
         "properties": {
           "Id": {
             "type": "string",
-            "description": "The identifier of user department"
+            "description": "The identifier of user department."
           },
           "UserId": {
             "type": "string",
-            "description": "The identifier of the user who has link the department"
+            "description": "The identifier of the user who has link the department."
           }
         },
         "description": "The record of User information."
@@ -4722,11 +4722,11 @@
         "properties": {
           "Id": {
             "type": "string",
-            "description": "The guid to identify the location"
+            "description": "The guid to identify the location."
           },
           "ExternalId": {
             "type": "string",
-            "description": "The external identifier of the location"
+            "description": "The external identifier of the location."
           },
           "Name": {
             "type": "string",
@@ -4743,7 +4743,7 @@
           },
           "Is_Active": {
             "type": "boolean",
-            "description": "Defines if the location is active and can be used",
+            "description": "Defines if the location is active and can be used.",
             "default": false,
             "example": false
           }
@@ -4760,11 +4760,11 @@
         "properties": {
           "Id": {
             "type": "string",
-            "description": "The guid to identify the location"
+            "description": "The guid to identify the location."
           },
           "ExternalId": {
             "type": "string",
-            "description": "The external identifier of the location"
+            "description": "The external identifier of the location."
           },
           "Name": {
             "type": "string",
@@ -4781,7 +4781,7 @@
           },
           "Is_Active": {
             "type": "boolean",
-            "description": "Defines if the location is active and can be used",
+            "description": "Defines if the location is active and can be used.",
             "default": false,
             "example": false
           }
@@ -4797,7 +4797,7 @@
         "properties": {
           "ExternalId": {
             "type": "string",
-            "description": "The external identifier of the location"
+            "description": "The external identifier of the location."
           },
           "Name": {
             "type": "string",
@@ -4814,7 +4814,7 @@
           },
           "Is_Active": {
             "type": "boolean",
-            "description": "Defines if the location is active and can be used",
+            "description": "Defines if the location is active and can be used.",
             "default": false,
             "example": false
           }
