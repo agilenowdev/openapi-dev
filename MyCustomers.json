@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.193"
+    "version": "3.0.194"
   },
   "servers": [
     {
@@ -1172,7 +1172,6 @@
       },
       "MyCustomerData": {
         "required": [
-          "Id",
           "Name",
           "Is_Active"
         ],
@@ -1180,22 +1179,22 @@
         "properties": {
           "Id": {
             "type": "integer",
-            "description": "The guid to identify the customer",
+            "description": "The guid to identify the customer.",
             "format": "int64",
             "default": 0,
             "example": 0
           },
           "ExternalId": {
             "type": "string",
-            "description": "The external identifier of the customer"
+            "description": "The external identifier of the customer."
           },
           "SapId": {
             "type": "string",
-            "description": "This field is the SAP Id and you can use this between the two systems"
+            "description": "This field is the SAP Id and you can use this between the two systems."
           },
           "Name": {
             "type": "string",
-            "description": "The name of the customer"
+            "description": "The name of the customer. This is my extra description. The value must be unique in the system and you cannot add multiple values."
           },
           "ParentCustomerId": {
             "$ref": "#/components/schemas/FieldType"
@@ -1205,19 +1204,19 @@
           },
           "Is_Active": {
             "type": "boolean",
-            "description": "Defines if the customer is active and can be used",
+            "description": "Defines if the customer is active and can be used.",
             "default": false,
             "example": false
           },
           "Is_Deleted": {
             "type": "boolean",
-            "description": "Defines if the customer is deleted and cannot be used",
+            "description": "Defines if the customer is deleted and cannot be used.",
             "default": false,
             "example": false
           },
           "ModifiedOn": {
             "type": "string",
-            "description": "The date the record was updated",
+            "description": "The date the record was updated.",
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
@@ -1230,22 +1229,22 @@
           },
           "CreatedOn": {
             "type": "string",
-            "description": "The date the record was created",
+            "description": "The date the record was created.",
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
           },
           "Attribute2": {
             "type": "string",
-            "description": "Attribute2 text"
+            "description": "Attribute2 text."
           },
           "Attribute3": {
             "type": "string",
-            "description": "Attribute3 text"
+            "description": "Attribute3 text."
           },
           "Attribute4": {
             "type": "string",
-            "description": "Attribute4 text"
+            "description": "Attribute4 text."
           },
           "CustomerType": {
             "$ref": "#/components/schemas/EnumCustomerType"
@@ -1276,7 +1275,6 @@
       },
       "MyCustomerText": {
         "required": [
-          "Id",
           "Name",
           "Is_Active"
         ],
@@ -1284,84 +1282,84 @@
         "properties": {
           "Id": {
             "type": "integer",
-            "description": "The guid to identify the customer",
+            "description": "The guid to identify the customer.",
             "format": "int64",
             "default": 0,
             "example": 0
           },
           "ExternalId": {
             "type": "string",
-            "description": "The external identifier of the customer"
+            "description": "The external identifier of the customer."
           },
           "SapId": {
             "type": "string",
-            "description": "This field is the SAP Id and you can use this between the two systems"
+            "description": "This field is the SAP Id and you can use this between the two systems."
           },
           "Name": {
             "type": "string",
-            "description": "The name of the customer"
+            "description": "The name of the customer. This is my extra description. The value must be unique in the system and you cannot add multiple values."
           },
           "ParentCustomerId": {
             "type": "string",
-            "description": "The identifier of the parent customer"
+            "description": "The identifier of the parent customer."
           },
           "OwnerId": {
             "type": "string",
-            "description": "The identifier of the user who own the customer"
+            "description": "The identifier of the user who own the customer."
           },
           "Is_Active": {
             "type": "boolean",
-            "description": "Defines if the customer is active and can be used",
+            "description": "Defines if the customer is active and can be used.",
             "default": false,
             "example": false
           },
           "Is_Deleted": {
             "type": "boolean",
-            "description": "Defines if the customer is deleted and cannot be used",
+            "description": "Defines if the customer is deleted and cannot be used.",
             "default": false,
             "example": false
           },
           "ModifiedOn": {
             "type": "string",
-            "description": "The date the record was updated",
+            "description": "The date the record was updated.",
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
           },
           "ModifiedBy": {
             "type": "string",
-            "description": "The Identifier of the user who updated the record"
+            "description": "The Identifier of the user who updated the record."
           },
           "CreatedBy": {
             "type": "string",
-            "description": "The Identifier of the user who created the record"
+            "description": "The Identifier of the user who created the record."
           },
           "CreatedOn": {
             "type": "string",
-            "description": "The date the record was created",
+            "description": "The date the record was created.",
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
           },
           "Attribute2": {
             "type": "string",
-            "description": "Attribute2 text"
+            "description": "Attribute2 text."
           },
           "Attribute3": {
             "type": "string",
-            "description": "Attribute3 text"
+            "description": "Attribute3 text."
           },
           "Attribute4": {
             "type": "string",
-            "description": "Attribute4 text"
+            "description": "Attribute4 text."
           },
           "CustomerType": {
             "type": "string",
-            "description": "The identifier of the customer"
+            "description": "The identifier of the customer."
           },
           "CustomerNumber": {
             "type": "string",
-            "description": "The identifier of the customer"
+            "description": "The identifier of the customer."
           }
         },
         "description": "The record of MyCustomer information."
@@ -1556,7 +1554,6 @@
       },
       "MyCustomerRecordData": {
         "required": [
-          "Id",
           "Name",
           "Is_Active"
         ],
@@ -1564,96 +1561,96 @@
         "properties": {
           "Id": {
             "type": "integer",
-            "description": "The guid to identify the customer",
+            "description": "The guid to identify the customer.",
             "format": "int64",
             "default": 0,
             "example": 0
           },
           "ExternalId": {
             "type": "string",
-            "description": "The external identifier of the customer"
+            "description": "The external identifier of the customer."
           },
           "SapId": {
             "type": "string",
-            "description": "This field is the SAP Id and you can use this between the two systems"
+            "description": "This field is the SAP Id and you can use this between the two systems."
           },
           "Name": {
             "type": "string",
-            "description": "The name of the customer"
+            "description": "The name of the customer. The value must be unique in the system and you cannot add multiple values."
           },
           "ParentCustomerId": {
             "type": "integer",
-            "description": "The identifier of the parent customer",
+            "description": "The identifier of the parent customer.",
             "format": "int64",
             "default": 0,
             "example": 0
           },
           "OwnerId": {
             "type": "integer",
-            "description": "The identifier of the user who own the customer",
+            "description": "The identifier of the user who own the customer.",
             "format": "int64",
             "default": 0,
             "example": 0
           },
           "Is_Active": {
             "type": "boolean",
-            "description": "Defines if the customer is active and can be used",
+            "description": "Defines if the customer is active and can be used.",
             "default": false,
             "example": false
           },
           "Is_Deleted": {
             "type": "boolean",
-            "description": "Defines if the customer is deleted and cannot be used",
+            "description": "Defines if the customer is deleted and cannot be used.",
             "default": false,
             "example": false
           },
           "ModifiedOn": {
             "type": "string",
-            "description": "The date the record was updated",
+            "description": "The date the record was updated.",
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
           },
           "ModifiedBy": {
             "type": "integer",
-            "description": "The Identifier of the user who updated the record",
+            "description": "The Identifier of the user who updated the record.",
             "format": "int64",
             "default": 0,
             "example": 0
           },
           "CreatedBy": {
             "type": "integer",
-            "description": "The Identifier of the user who created the record",
+            "description": "The Identifier of the user who created the record.",
             "format": "int64",
             "default": 0,
             "example": 0
           },
           "CreatedOn": {
             "type": "string",
-            "description": "The date the record was created",
+            "description": "The date the record was created.",
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
           },
           "Attribute2": {
             "type": "string",
-            "description": "Attribute2 text"
+            "description": "Attribute2 text."
           },
           "Attribute3": {
             "type": "string",
-            "description": "Attribute3 text"
+            "description": "Attribute3 text."
           },
           "Attribute4": {
             "type": "string",
-            "description": "Attribute4 text"
+            "description": "Attribute4 text."
           },
           "CustomerType": {
             "type": "string",
-            "description": "The identifier of the customer"
+            "description": "The identifier of the customer."
           },
           "CustomerNumber": {
             "type": "integer",
-            "description": "The identifier of the customer",
+            "description": "The identifier of the customer.",
             "format": "int64",
             "default": 0,
             "example": 0
