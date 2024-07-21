@@ -66,7 +66,13 @@ namespace Example
             catch (ApiException  e)
             {
                 Debug.Print("Exception when calling LocationsApi.CreateLocation: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+                Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+                Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+                Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+                Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+                // Human-readable explanation of the errors
+                Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
                 Debug.Print(e.StackTrace);
             }
         }
@@ -87,8 +93,14 @@ try
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling LocationsApi.CreateLocationWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print("Exception when calling LocationsApi.CreateLocation: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+    Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+    Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+    Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+    Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+    // Human-readable explanation of the errors
+    Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
     Debug.Print(e.StackTrace);
 }
 ```
@@ -172,7 +184,13 @@ namespace Example
             catch (ApiException  e)
             {
                 Debug.Print("Exception when calling LocationsApi.DeleteLocation: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+                Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+                Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+                Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+                Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+                // Human-readable explanation of the errors
+                Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
                 Debug.Print(e.StackTrace);
             }
         }
@@ -193,8 +211,14 @@ try
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling LocationsApi.DeleteLocationWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print("Exception when calling LocationsApi.DeleteLocation: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+    Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+    Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+    Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+    Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+    // Human-readable explanation of the errors
+    Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
     Debug.Print(e.StackTrace);
 }
 ```
@@ -281,7 +305,13 @@ namespace Example
             catch (ApiException  e)
             {
                 Debug.Print("Exception when calling LocationsApi.DeleteLocationUser: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+                Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+                Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+                Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+                Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+                // Human-readable explanation of the errors
+                Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
                 Debug.Print(e.StackTrace);
             }
         }
@@ -302,8 +332,14 @@ try
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling LocationsApi.DeleteLocationUserWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print("Exception when calling LocationsApi.DeleteLocationUser: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+    Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+    Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+    Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+    Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+    // Human-readable explanation of the errors
+    Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
     Debug.Print(e.StackTrace);
 }
 ```
@@ -388,7 +424,13 @@ namespace Example
             catch (ApiException  e)
             {
                 Debug.Print("Exception when calling LocationsApi.GetLocation: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+                Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+                Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+                Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+                Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+                // Human-readable explanation of the errors
+                Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
                 Debug.Print(e.StackTrace);
             }
         }
@@ -409,8 +451,14 @@ try
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling LocationsApi.GetLocationWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print("Exception when calling LocationsApi.GetLocation: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+    Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+    Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+    Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+    Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+    // Human-readable explanation of the errors
+    Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
     Debug.Print(e.StackTrace);
 }
 ```
@@ -502,7 +550,13 @@ namespace Example
             catch (ApiException  e)
             {
                 Debug.Print("Exception when calling LocationsApi.ListLocationUsers: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+                Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+                Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+                Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+                Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+                // Human-readable explanation of the errors
+                Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
                 Debug.Print(e.StackTrace);
             }
         }
@@ -523,8 +577,14 @@ try
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling LocationsApi.ListLocationUsersWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print("Exception when calling LocationsApi.ListLocationUsers: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+    Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+    Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+    Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+    Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+    // Human-readable explanation of the errors
+    Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
     Debug.Print(e.StackTrace);
 }
 ```
@@ -619,7 +679,13 @@ namespace Example
             catch (ApiException  e)
             {
                 Debug.Print("Exception when calling LocationsApi.ListLocations: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+                Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+                Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+                Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+                Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+                // Human-readable explanation of the errors
+                Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
                 Debug.Print(e.StackTrace);
             }
         }
@@ -640,8 +706,14 @@ try
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling LocationsApi.ListLocationsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print("Exception when calling LocationsApi.ListLocations: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+    Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+    Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+    Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+    Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+    // Human-readable explanation of the errors
+    Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
     Debug.Print(e.StackTrace);
 }
 ```
@@ -736,7 +808,13 @@ namespace Example
             catch (ApiException  e)
             {
                 Debug.Print("Exception when calling LocationsApi.PatchLocationUsers: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+                Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+                Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+                Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+                Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+                // Human-readable explanation of the errors
+                Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
                 Debug.Print(e.StackTrace);
             }
         }
@@ -757,8 +835,14 @@ try
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling LocationsApi.PatchLocationUsersWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print("Exception when calling LocationsApi.PatchLocationUsers: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+    Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+    Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+    Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+    Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+    // Human-readable explanation of the errors
+    Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
     Debug.Print(e.StackTrace);
 }
 ```
@@ -848,7 +932,13 @@ namespace Example
             catch (ApiException  e)
             {
                 Debug.Print("Exception when calling LocationsApi.UpdateLocation: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+                Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+                Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+                Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+                Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+                // Human-readable explanation of the errors
+                Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
                 Debug.Print(e.StackTrace);
             }
         }
@@ -869,8 +959,14 @@ try
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling LocationsApi.UpdateLocationWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print("Exception when calling LocationsApi.UpdateLocation: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+    Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+    Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+    Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+    Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+    // Human-readable explanation of the errors
+    Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
     Debug.Print(e.StackTrace);
 }
 ```
@@ -959,7 +1055,13 @@ namespace Example
             catch (ApiException  e)
             {
                 Debug.Print("Exception when calling LocationsApi.UpsertLocation: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+                Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+                Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+                Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+                Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+                // Human-readable explanation of the errors
+                Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
                 Debug.Print(e.StackTrace);
             }
         }
@@ -980,8 +1082,14 @@ try
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling LocationsApi.UpsertLocationWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print("Exception when calling LocationsApi.UpsertLocation: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+    Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+    Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+    Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+    Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+    // Human-readable explanation of the errors
+    Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
     Debug.Print(e.StackTrace);
 }
 ```
@@ -1070,7 +1178,13 @@ namespace Example
             catch (ApiException  e)
             {
                 Debug.Print("Exception when calling LocationsApi.UpsertLocationUser: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+                Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+                Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+                Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+                Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+                // Human-readable explanation of the errors
+                Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
                 Debug.Print(e.StackTrace);
             }
         }
@@ -1091,8 +1205,14 @@ try
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling LocationsApi.UpsertLocationUserWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print("Exception when calling LocationsApi.UpsertLocationUser: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+    Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+    Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+    Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+    Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+    // Human-readable explanation of the errors
+    Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
     Debug.Print(e.StackTrace);
 }
 ```

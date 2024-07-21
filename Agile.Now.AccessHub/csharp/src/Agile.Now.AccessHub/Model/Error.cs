@@ -60,16 +60,18 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Error" /> class.
         /// </summary>
-        /// <param name="varError">Human-readable explanation of the errors.</param>
+        /// <param name="errors">Human-readable explanation of the errors (required).</param>
         /// <param name="type">URI identifier that categorizes the error (default to &quot;&quot;).</param>
         /// <param name="title">Brief, human-readable message about the error (default to &quot;&quot;).</param>
         /// <param name="statusCode">The HTTP response code (required).</param>
         /// <param name="instance">URI that identifies the specific occurrence of the error (default to &quot;&quot;).</param>
         /// <param name="requestKey">Provides a request key that identifies the current request. (default to &quot;&quot;).</param>
-        public Error(List<string> varError = default, string type = @"", string title = @"", int statusCode = default, string instance = @"", string requestKey = @"")
+        public Error(List<string> errors = default, string type = @"", string title = @"", int statusCode = default, string instance = @"", string requestKey = @"")
         {
+            // to ensure "errors" is required (not null)
+            errors = errors ?? throw new ArgumentNullException("errors is a required property for Error and cannot be null");
+            Errors = errors;
             StatusCode = statusCode;
-            Errors = varError;
             // use default value if no "type" provided
             Type = type ?? @"";
             // use default value if no "title" provided
@@ -84,7 +86,7 @@ namespace Agile.Now.AccessHub.Model
         /// Human-readable explanation of the errors
         /// </summary>
         /// <value>Human-readable explanation of the errors</value>
-        [DataMember(Name = "Errors", EmitDefaultValue = false)]
+        [DataMember(Name = "Errors", IsRequired = true, EmitDefaultValue = true)]
         public List<string> Errors { get; set; }
 
         /// <summary>
@@ -131,7 +133,7 @@ namespace Agile.Now.AccessHub.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class Error {\n");
-            sb.Append("  VarError: ").Append(Errors).Append("\n");
+            sb.Append("  Errors: ").Append(Errors).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  StatusCode: ").Append(StatusCode).Append("\n");

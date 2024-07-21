@@ -35,8 +35,8 @@
  * DAMAGE.
  */
 
-using Agile.Now.AccessHub.Model;
 using System;
+using Agile.Now.AccessHub.Model;
 
 namespace Agile.Now.AccessHub.Client
 {
@@ -58,9 +58,9 @@ namespace Agile.Now.AccessHub.Client
         public object ErrorContent { get; private set; }
 
         /// <summary>
-        /// Gets or sets the error content (body json object)
+        /// Gets or sets the Agile.Now error object
         /// </summary>
-        /// <value>The error content (Http response body).</value>
+        /// <value>The Agile.Now error object.</value>
         public Error Error { get; private set; }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Agile.Now.AccessHub.Client
         /// <param name="message">Error message.</param>
         public ApiException(int errorCode, string message) : base(message)
         {
-            this.ErrorCode = errorCode;
+            ErrorCode = errorCode;
         }
 
         /// <summary>
@@ -93,14 +93,18 @@ namespace Agile.Now.AccessHub.Client
         /// <param name="headers">HTTP Headers.</param>
         public ApiException(int errorCode, string message, object errorContent = null, Multimap<string, string> headers = null) : base(message)
         {
-            this.ErrorCode = errorCode;
-            this.ErrorContent = errorContent;
-            this.Headers = headers;
+            ErrorCode = errorCode;
+            ErrorContent = errorContent;
+            Headers = headers;
             try
             {
                 Error = Newtonsoft.Json.JsonConvert.DeserializeObject<Error>(errorContent.ToString());
             }
-            catch { }
+            catch (Exception)
+            {
+                // Ignore deserialization error
+                Error = new Error(new System.Collections.Generic.List<string>(), "", "", errorCode, "", "");
+            }
         }
     }
 

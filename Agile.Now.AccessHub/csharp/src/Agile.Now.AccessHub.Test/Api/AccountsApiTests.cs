@@ -42,6 +42,7 @@ using Agile.Now.AccessHub.Client;
 using Agile.Now.AccessHub.Api;
 // uncomment below to import models
 using Agile.Now.AccessHub.Model;
+using System.Diagnostics;
 
 namespace Agile.Now.AccessHub.Test.Api
 {
@@ -89,9 +90,19 @@ namespace Agile.Now.AccessHub.Test.Api
                 var response = instance.CreateAccount(accountData);
                 Assert.IsType<Account>(response);
             }
-            catch (ApiException ex)
+            catch (ApiException e)
             {
-                Assert.Equal("", ex.Error.Title);
+                Debug.Print("Exception when calling AccountsApi.CreateAccount: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+                Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+                Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+                Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+                Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+                // Human-readable explanation of the errors
+                Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
+                Debug.Print(e.StackTrace);
+
+                Assert.Equal("", e.Error.Title);
             }
             finally {
                 

@@ -66,7 +66,13 @@ namespace Example
             catch (ApiException  e)
             {
                 Debug.Print("Exception when calling DepartmentsApi.CreateDepartment: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+                Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+                Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+                Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+                Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+                // Human-readable explanation of the errors
+                Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
                 Debug.Print(e.StackTrace);
             }
         }
@@ -87,8 +93,14 @@ try
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling DepartmentsApi.CreateDepartmentWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print("Exception when calling DepartmentsApi.CreateDepartment: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+    Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+    Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+    Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+    Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+    // Human-readable explanation of the errors
+    Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
     Debug.Print(e.StackTrace);
 }
 ```
@@ -172,7 +184,13 @@ namespace Example
             catch (ApiException  e)
             {
                 Debug.Print("Exception when calling DepartmentsApi.DeleteDepartment: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+                Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+                Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+                Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+                Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+                // Human-readable explanation of the errors
+                Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
                 Debug.Print(e.StackTrace);
             }
         }
@@ -193,8 +211,14 @@ try
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling DepartmentsApi.DeleteDepartmentWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print("Exception when calling DepartmentsApi.DeleteDepartment: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+    Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+    Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+    Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+    Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+    // Human-readable explanation of the errors
+    Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
     Debug.Print(e.StackTrace);
 }
 ```
@@ -281,7 +305,13 @@ namespace Example
             catch (ApiException  e)
             {
                 Debug.Print("Exception when calling DepartmentsApi.DeleteDepartmentUser: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+                Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+                Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+                Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+                Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+                // Human-readable explanation of the errors
+                Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
                 Debug.Print(e.StackTrace);
             }
         }
@@ -302,8 +332,14 @@ try
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling DepartmentsApi.DeleteDepartmentUserWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print("Exception when calling DepartmentsApi.DeleteDepartmentUser: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+    Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+    Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+    Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+    Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+    // Human-readable explanation of the errors
+    Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
     Debug.Print(e.StackTrace);
 }
 ```
@@ -388,7 +424,13 @@ namespace Example
             catch (ApiException  e)
             {
                 Debug.Print("Exception when calling DepartmentsApi.GetDepartment: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+                Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+                Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+                Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+                Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+                // Human-readable explanation of the errors
+                Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
                 Debug.Print(e.StackTrace);
             }
         }
@@ -409,8 +451,14 @@ try
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling DepartmentsApi.GetDepartmentWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print("Exception when calling DepartmentsApi.GetDepartment: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+    Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+    Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+    Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+    Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+    // Human-readable explanation of the errors
+    Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
     Debug.Print(e.StackTrace);
 }
 ```
@@ -502,7 +550,13 @@ namespace Example
             catch (ApiException  e)
             {
                 Debug.Print("Exception when calling DepartmentsApi.ListDepartmentUsers: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+                Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+                Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+                Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+                Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+                // Human-readable explanation of the errors
+                Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
                 Debug.Print(e.StackTrace);
             }
         }
@@ -523,8 +577,14 @@ try
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling DepartmentsApi.ListDepartmentUsersWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print("Exception when calling DepartmentsApi.ListDepartmentUsers: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+    Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+    Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+    Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+    Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+    // Human-readable explanation of the errors
+    Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
     Debug.Print(e.StackTrace);
 }
 ```
@@ -619,7 +679,13 @@ namespace Example
             catch (ApiException  e)
             {
                 Debug.Print("Exception when calling DepartmentsApi.ListDepartments: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+                Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+                Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+                Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+                Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+                // Human-readable explanation of the errors
+                Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
                 Debug.Print(e.StackTrace);
             }
         }
@@ -640,8 +706,14 @@ try
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling DepartmentsApi.ListDepartmentsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print("Exception when calling DepartmentsApi.ListDepartments: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+    Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+    Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+    Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+    Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+    // Human-readable explanation of the errors
+    Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
     Debug.Print(e.StackTrace);
 }
 ```
@@ -736,7 +808,13 @@ namespace Example
             catch (ApiException  e)
             {
                 Debug.Print("Exception when calling DepartmentsApi.PatchDepartmentUsers: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+                Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+                Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+                Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+                Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+                // Human-readable explanation of the errors
+                Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
                 Debug.Print(e.StackTrace);
             }
         }
@@ -757,8 +835,14 @@ try
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling DepartmentsApi.PatchDepartmentUsersWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print("Exception when calling DepartmentsApi.PatchDepartmentUsers: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+    Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+    Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+    Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+    Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+    // Human-readable explanation of the errors
+    Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
     Debug.Print(e.StackTrace);
 }
 ```
@@ -848,7 +932,13 @@ namespace Example
             catch (ApiException  e)
             {
                 Debug.Print("Exception when calling DepartmentsApi.UpdateDepartment: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+                Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+                Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+                Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+                Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+                // Human-readable explanation of the errors
+                Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
                 Debug.Print(e.StackTrace);
             }
         }
@@ -869,8 +959,14 @@ try
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling DepartmentsApi.UpdateDepartmentWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print("Exception when calling DepartmentsApi.UpdateDepartment: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+    Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+    Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+    Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+    Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+    // Human-readable explanation of the errors
+    Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
     Debug.Print(e.StackTrace);
 }
 ```
@@ -959,7 +1055,13 @@ namespace Example
             catch (ApiException  e)
             {
                 Debug.Print("Exception when calling DepartmentsApi.UpsertDepartment: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+                Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+                Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+                Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+                Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+                // Human-readable explanation of the errors
+                Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
                 Debug.Print(e.StackTrace);
             }
         }
@@ -980,8 +1082,14 @@ try
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling DepartmentsApi.UpsertDepartmentWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print("Exception when calling DepartmentsApi.UpsertDepartment: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+    Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+    Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+    Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+    Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+    // Human-readable explanation of the errors
+    Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
     Debug.Print(e.StackTrace);
 }
 ```
@@ -1070,7 +1178,13 @@ namespace Example
             catch (ApiException  e)
             {
                 Debug.Print("Exception when calling DepartmentsApi.UpsertDepartmentUser: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+                Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+                Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+                Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+                Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+                // Human-readable explanation of the errors
+                Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
                 Debug.Print(e.StackTrace);
             }
         }
@@ -1091,8 +1205,14 @@ try
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling DepartmentsApi.UpsertDepartmentUserWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print("Exception when calling DepartmentsApi.UpsertDepartmentUser: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+    Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+    Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+    Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+    Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+    // Human-readable explanation of the errors
+    Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
     Debug.Print(e.StackTrace);
 }
 ```

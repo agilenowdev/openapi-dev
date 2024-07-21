@@ -3349,7 +3349,7 @@
         ],
         "type": "object",
         "properties": {
-          "Error": {
+          "Errors": {
             "type": "array",
             "items": {
               "type": "string",

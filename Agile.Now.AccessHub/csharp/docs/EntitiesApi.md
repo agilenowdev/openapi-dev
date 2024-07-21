@@ -53,7 +53,13 @@ namespace Example
             catch (ApiException  e)
             {
                 Debug.Print("Exception when calling EntitiesApi.GetEntity: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+                Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+                Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+                Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+                Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+                // Human-readable explanation of the errors
+                Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
                 Debug.Print(e.StackTrace);
             }
         }
@@ -74,8 +80,14 @@ try
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling EntitiesApi.GetEntityWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print("Exception when calling EntitiesApi.GetEntity: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+    Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+    Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+    Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+    Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+    // Human-readable explanation of the errors
+    Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
     Debug.Print(e.StackTrace);
 }
 ```
@@ -165,7 +177,13 @@ namespace Example
             catch (ApiException  e)
             {
                 Debug.Print("Exception when calling EntitiesApi.ListEntities: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+                Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+                Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+                Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+                Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+                // Human-readable explanation of the errors
+                Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
                 Debug.Print(e.StackTrace);
             }
         }
@@ -186,8 +204,14 @@ try
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling EntitiesApi.ListEntitiesWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print("Exception when calling EntitiesApi.ListEntities: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+    Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+    Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+    Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+    Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+    // Human-readable explanation of the errors
+    Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
     Debug.Print(e.StackTrace);
 }
 ```

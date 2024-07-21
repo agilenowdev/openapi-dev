@@ -5,7 +5,7 @@ The list of errors. Throw specific exceptions based on the received error.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**VarError** | **List&lt;string&gt;** | Human-readable explanation of the errors | [optional] 
+**Errors** | **List&lt;string&gt;** | Human-readable explanation of the errors | 
 **Type** | **string** | URI identifier that categorizes the error | [optional] [default to ""]
 **Title** | **string** | Brief, human-readable message about the error | [optional] [default to ""]
 **StatusCode** | **int** | The HTTP response code | 

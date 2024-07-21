@@ -6890,16 +6890,16 @@ components:
       description: The list of errors. Throw specific exceptions based on the received
         error.
       example:
+        Errors:
+        - ""
+        - ""
         Type: ""
         Instance: ""
         RequestKey: ""
-        Error:
-        - ""
-        - ""
         Title: ""
         StatusCode: 400
       properties:
-        Error:
+        Errors:
           description: Human-readable explanation of the errors
           items:
             default: ""
