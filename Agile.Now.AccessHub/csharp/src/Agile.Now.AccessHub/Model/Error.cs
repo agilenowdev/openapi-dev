@@ -69,7 +69,7 @@ namespace Agile.Now.AccessHub.Model
         public Error(List<string> varError = default, string type = @"", string title = @"", int statusCode = default, string instance = @"", string requestKey = @"")
         {
             StatusCode = statusCode;
-            VarError = varError;
+            Errors = varError;
             // use default value if no "type" provided
             Type = type ?? @"";
             // use default value if no "title" provided
@@ -84,8 +84,8 @@ namespace Agile.Now.AccessHub.Model
         /// Human-readable explanation of the errors
         /// </summary>
         /// <value>Human-readable explanation of the errors</value>
-        [DataMember(Name = "Error", EmitDefaultValue = false)]
-        public List<string> VarError { get; set; }
+        [DataMember(Name = "Errors", EmitDefaultValue = false)]
+        public List<string> Errors { get; set; }
 
         /// <summary>
         /// URI identifier that categorizes the error
@@ -131,7 +131,7 @@ namespace Agile.Now.AccessHub.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class Error {\n");
-            sb.Append("  VarError: ").Append(VarError).Append("\n");
+            sb.Append("  VarError: ").Append(Errors).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  StatusCode: ").Append(StatusCode).Append("\n");

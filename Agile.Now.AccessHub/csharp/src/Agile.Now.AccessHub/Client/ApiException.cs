@@ -35,6 +35,7 @@
  * DAMAGE.
  */
 
+using Agile.Now.AccessHub.Model;
 using System;
 
 namespace Agile.Now.AccessHub.Client
@@ -55,6 +56,12 @@ namespace Agile.Now.AccessHub.Client
         /// </summary>
         /// <value>The error content (Http response body).</value>
         public object ErrorContent { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the error content (body json object)
+        /// </summary>
+        /// <value>The error content (Http response body).</value>
+        public Error Error { get; private set; }
 
         /// <summary>
         /// Gets or sets the HTTP headers
@@ -89,6 +96,11 @@ namespace Agile.Now.AccessHub.Client
             this.ErrorCode = errorCode;
             this.ErrorContent = errorContent;
             this.Headers = headers;
+            try
+            {
+                Error = Newtonsoft.Json.JsonConvert.DeserializeObject<Error>(errorContent.ToString());
+            }
+            catch { }
         }
     }
 
