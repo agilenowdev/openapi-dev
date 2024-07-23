@@ -32,7 +32,7 @@ namespace Agile.Now.ApiOrganizations.Model
     public partial class DepartmentInsertData : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DepartmentInsertData" /> class.
+        /// Initializes adeleted new instance of the <see cref="DepartmentInsertData" /> class.
         /// </summary>
         [JsonConstructorAttribute]
         protected DepartmentInsertData() { }
