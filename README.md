@@ -21,19 +21,6 @@ The Agile.Now platform offers a wide range of APIs and libraries to support diff
 - Android
 - Swift5
 
-### Libraries
-
-**Agile.Now.Runtime**
-Agile.Now.Runtime is a dynamic and secure REST API that simplifies the management of users, access groups, user groups, organizations, locations, applications, and roles within a single-tenant environment. This API provides a robust and scalable platform for businesses to effectively manage user access and organizational structures. It supports both Role-Based Access Control (RBAC) and Attribute-Based Access Control (ABAC) for fine-grained security and flexibility.
-
-**Agile.Now.AccessHub**
-Agile.Now.AccessHub is a comprehensive REST API designed to streamline the management of accounts, access groups, user groups, organizations, locations, applications, roles, and webhooks. This API offers a robust, scalable, and secure platform for businesses to efficiently manage and control user access and organizational structures. It utilizes attribute-based access control (ABAC) within a single-tenant environment.
-
-**Agile.Now.WorkspaceHub**
-Agile.Now.WorkspaceHub is a secure REST API that facilitates the management of companies, addresses, workspaces (tenants), domains (DNS records), and workspace subscriptions (addons, user prices, currencies). This API serves as the core of your SaaS ecosystems, providing robust and scalable solutions for efficiently managing multi-tenant environments.
-
-For more details and documentation, please refer to the respective API and library documentation.
-
 ## Agile.Now.Runtime library and API
 Agile.Now.Runtime is a secure REST API designed to manage users, access groups, user groups, organizations, locations, applications, roles, and permissions. This API provides a robust and scalable solution for managing user access and organizational structures in a single-tenant environment.
 
