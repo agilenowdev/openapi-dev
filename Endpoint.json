@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.353"
+    "version": "3.0.380"
   },
   "servers": [
     {
@@ -191,7 +191,7 @@
         "tags": [
           "api"
         ],
-        "description": "Use the `{EntityNameUpsertData}` object resource to insert or update (Upsert) `{EntityName}` using `{UniqueFields}` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\n{Request_Upsert_Record}\n\nForeign key fields are: `{EntityForeignKeys}`\n\n### Update a record of {EntityName}\n{Errors_NotFound}. {Info_PrimaryKeyCannotChange}\n{Info_Update}\n\n### Create a new record of {EntityName}\n{Info_Insert}\n\nThe response body will contain the object of the updated or created record if the call is successful. {Response_Record}",
+        "description": "Use the `{ShemaName}` object resource to insert or update (Upsert) `{EntityName}` using `{UniqueFields}` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\n{Request_Record}\n\nForeign key fields are: `{EntityForeignKeys}`\n\n### Update a record of {EntityName}\n{Errors_NotFound}. {Info_PrimaryKeyCannotChange}\n{Info_Update}\n\n### Create a new record of {EntityName}\n{Info_Insert}\n\nThe response body will contain the object of the updated or created record if the call is successful. {Response_Record}",
         "operationId": "UpsertEntity",
         "parameters": [
           {
@@ -219,12 +219,12 @@
           }
         ],
         "requestBody": {
-          "description": "`{EntityName}` information to insert or update.\n\nThe input parameter must be used in the `{EntityNameUpsertData}` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "description": "`{EntityName}` information to insert or update.\n\nThe input parameter must be used in the `{ShemaName}` record structure inside the `FieldType` parameter in the foreign key fields.",
           "content": {
             "text/plain": {
               "schema": {
                 "type": "string",
-                "description": "`{EntityName}` information to insert or update.\n\nThe input parameter must be used in the `{EntityNameUpsertData}` record structure inside the `FieldType` parameter in the foreign key fields.",
+                "description": "`{EntityName}` information to insert or update.\n\nThe input parameter must be used in the `{ShemaName}` record structure inside the `FieldType` parameter in the foreign key fields.",
                 "default": ""
               }
             }
@@ -249,7 +249,7 @@
         "tags": [
           "api"
         ],
-        "description": "Use the `{EntityNameInsertData}` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\n{Request_Insert_Record}\n\nForeign key fields are: `{EntityForeignKeys}`\n\n### Create a new record of {EntityName}\n{Info_PrimaryKey}\n{Info_Insert}\n{Errors_MultibleRows}\n\nThe response body will contain the object of the created record if the call is successful. {Response_Record}\n\n",
+        "description": "Use the `{ShemaName}` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\n{Request_Record}\n\nForeign key fields are: `{EntityForeignKeys}`\n\n### Create a new record of {EntityName}\n{Info_PrimaryKey}\n{Info_Insert}\n{Errors_MultibleRows}\n\nThe response body will contain the object of the created record if the call is successful. {Response_Record}\n\n",
         "operationId": "CreateEntity",
         "parameters": [
           {
@@ -277,12 +277,12 @@
           }
         ],
         "requestBody": {
-          "description": "`{EntityName}` information to insert.\n\nThe input parameter must be used in the `{EntityNameInsertData}` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "description": "`{EntityName}` information to insert.\n\nThe input parameter must be used in the `{ShemaName}` record structure inside the `FieldType` parameter in the foreign key fields.",
           "content": {
             "text/plain": {
               "schema": {
                 "type": "string",
-                "description": "`{EntityName}` information to insert.\n\nThe input parameter must be used in the `{EntityNameInsertData}` record structure inside the `FieldType` parameter in the foreign key fields.",
+                "description": "`{EntityName}` information to insert.\n\nThe input parameter must be used in the `{ShemaName}` record structure inside the `FieldType` parameter in the foreign key fields.",
                 "default": ""
               }
             }
@@ -309,7 +309,7 @@
         "tags": [
           "api"
         ],
-        "description": "Use the `{EntityNameUpdateData}` object resource to update `{EntityName}` using `{UniqueFields}` field(s) value.\n\nProvide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record. \n\n{Request_Update_Record}\n\nForeign key fields are: `{EntityForeignKeys}`\n\n### Update a record of {EntityName}\n{Errors_NotFound}. {Info_PrimaryKeyCannotChange}\n{Errors_InvalidField}\n{Errors_MultibleRows}\n\nThe response body will contain the object of the updated record if the call is successful. {Response_Record}",
+        "description": "Use the `{ShemaName}` object resource to update `{EntityName}` using `{UniqueFields}` field(s) value.\n\nProvide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record. \n\n{Request_Record}\n\nForeign key fields are: `{EntityForeignKeys}`\n\n### Update a record of {EntityName}\n{Errors_NotFound}. {Info_PrimaryKeyCannotChange}\n{Errors_InvalidField}\n{Errors_MultibleRows}\n\nThe response body will contain the object of the updated record if the call is successful. {Response_Record}",
         "operationId": "UpdateEntity",
         "parameters": [
           {
@@ -358,12 +358,12 @@
           }
         ],
         "requestBody": {
-          "description": "{EntityName} information to update.\n\nThe input parameter must be used in the `{EntityNameUpdateData}` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "description": "{EntityName} information to update.\n\nThe input parameter must be used in the `{ShemaName}` record structure inside the `FieldType` parameter in the foreign key fields.",
           "content": {
             "text/plain": {
               "schema": {
                 "type": "string",
-                "description": "{EntityName} information to update.\n\nThe input parameter must be used in the `{EntityNameUpdateData}` record structure inside the `FieldType` parameter in the foreign key fields.",
+                "description": "{EntityName} information to update.\n\nThe input parameter must be used in the `{ShemaName}` record structure inside the `FieldType` parameter in the foreign key fields.",
                 "default": ""
               }
             }
@@ -1076,7 +1076,7 @@
         ],
         "type": "object",
         "properties": {
-          "Error": {
+          "Errors": {
             "type": "array",
             "items": {
               "type": "string",
@@ -1269,6 +1269,25 @@
         },
         "description": "This is the root document object of the OpenAPI document."
       },
+      "ParameterEnum": {
+        "required": [
+          "Value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "description": "The value of the parameter enum.",
+            "default": ""
+          },
+          "description": {
+            "type": "string",
+            "description": "A brief description of the parameter enum. This could contain examples of use.",
+            "default": ""
+          }
+        },
+        "description": "Describes a single operation parameter enum."
+      },
       "ParameterItem": {
         "required": [
           "Name",
@@ -1316,6 +1335,13 @@
             "type": "string",
             "description": "A free-form property to include an example of an instance for this schema. To represent examples that cannot be naturally represented in JSON or YAML, a string value can be used to contain the example with escaping where necessary.",
             "default": ""
+          },
+          "enum": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ParameterEnum"
+            },
+            "description": "A list of enum values for the parameter."
           }
         },
         "description": "Describes a single operation parameter.\n\nA unique parameter is defined by a combination of a name and location."
@@ -1356,7 +1382,7 @@
             "items": {
               "$ref": "#/components/schemas/ParameterItem"
             },
-            "description": "A list of parameters that are applicable for this operation."
+            "description": "A list of input parameters that are applicable for this operation."
           },
           "responses": {
             "type": "array",
@@ -1452,7 +1478,7 @@
             "items": {
               "$ref": "#/components/schemas/ParameterItem"
             },
-            "description": "A list of parameters that are applicable for this operation."
+            "description": "A list of parameters that are applicable for this schema."
           }
         },
         "description": "The Schema Object allows the definition of input and output data types. These types can be objects, but also primitives and arrays. This object is an extended subset of the JSON Schema Specification Wright Draft 00."

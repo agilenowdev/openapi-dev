@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "2.0.22"
+    "version": "2.0.25"
   },
   "servers": [
     {
@@ -22,7 +22,7 @@
         "tags": [
           "Connections"
         ],
-        "description": "The method returns one record of the `Connection`.\n\nMethod returns an extended `Connection` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `ModifiedBy, CreatedBy`\n\n### Get a record of Connection\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id,Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.",
+        "description": "The method returns one record of the `Connection`.\n\nMethod returns an extended `Connection` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `ModifiedBy, CreatedBy`\n\n### Get a record of Connection\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id, Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.",
         "operationId": "Get Connection",
         "parameters": [
           {
@@ -81,7 +81,7 @@
         "tags": [
           "Connections"
         ],
-        "description": "Use the `ConnectionData` object resource to update `Connection` using `Id,Name` field(s) value.\n\nProvide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record. \n\nThe input parameter must be used in the `ConnectionData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `ModifiedBy, CreatedBy`\n\n### Update a record of Connection\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id,Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the updated record if the call is successful. Method returns an extended `Connection` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "description": "Use the `ConnectionData` object resource to update `Connection` using `Id, Name` field(s) value.\n\nProvide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record. \n\nThe input parameter must be used in the `ConnectionData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `ModifiedBy, CreatedBy`\n\n### Update a record of Connection\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id, Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the updated record if the call is successful. Method returns an extended `Connection` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
         "operationId": "Update Connection",
         "parameters": [
           {
@@ -152,7 +152,7 @@
         "tags": [
           "Connections"
         ],
-        "description": "Use the query string resource to delete `Connection` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id,Name` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `Connection` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `ModifiedBy, CreatedBy`\n\n### Delete a record of Connection\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id,Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
+        "description": "Use the query string resource to delete `Connection` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id, Name` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `Connection` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `ModifiedBy, CreatedBy`\n\n### Delete a record of Connection\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id, Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
         "operationId": "Delete Connection",
         "parameters": [
           {
@@ -304,7 +304,7 @@
         "tags": [
           "Connections"
         ],
-        "description": "Use the `ConnectionData` object resource to insert or update (Upsert) `Connection` using `Id,Name` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `ConnectionData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `ModifiedBy, CreatedBy`\n\n### Update a record of Connection\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Name` field value is not empty and `Id` field value is empty, action try insert record according `Name` field value (if set, the value is a unique identifier).\n\n### Create a new record of Connection\n* If the value in the `Name` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`ConnectionData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Connection` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "description": "Use the `ConnectionData` object resource to insert or update (Upsert) `Connection` using `Id, Name` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `ConnectionData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `ModifiedBy, CreatedBy`\n\n### Update a record of Connection\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Name` field value is not empty and `Id` field value is empty, action try insert record according `Name` field value (if set, the value is a unique identifier).\n\n### Create a new record of Connection\n* If the value in the `Name` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`ConnectionData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Connection` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
         "operationId": "Upsert Connection",
         "requestBody": {
           "description": "`Connection` information to insert or update.\n\nThe input parameter must be used in the `ConnectionData` record structure inside the `FieldType` parameter in the foreign key fields.",
@@ -354,7 +354,7 @@
         "tags": [
           "Connections"
         ],
-        "description": "Use the `ConnectionData` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `ConnectionData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `ModifiedBy, CreatedBy`\n\n### Create a new record of Connection\n* If the value in the `Id,Name` fields are empty then action insert a new record according input parameter entity record structure (`ConnectionData`).\n* If the value in the `Name` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`ConnectionData`).\n* If the `Id,Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the created record if the call is successful. Method returns an extended `Connection` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\n",
+        "description": "Use the `ConnectionData` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `ConnectionData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `ModifiedBy, CreatedBy`\n\n### Create a new record of Connection\n* If the value in the `Id, Name` fields are empty then action insert a new record according input parameter entity record structure (`ConnectionData`).\n* If the value in the `Name` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`ConnectionData`).\n* If the `Id, Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the created record if the call is successful. Method returns an extended `Connection` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\n",
         "operationId": "Create Connection",
         "requestBody": {
           "description": "`Connection` information to insert.\n\nThe input parameter must be used in the `ConnectionData` record structure inside the `FieldType` parameter in the foreign key fields.",
@@ -945,7 +945,7 @@
         ],
         "type": "object",
         "properties": {
-          "Error": {
+          "Errors": {
             "type": "array",
             "items": {
               "type": "string",
@@ -1051,37 +1051,34 @@
       },
       "AbstractLong": {
         "required": [
-          "Id",
-          "ExternalId",
-          "Name",
-          "Type"
+          "Id"
         ],
         "type": "object",
         "properties": {
           "Id": {
             "type": "integer",
-            "description": "The primary key of the record row. If the Id attribute is used, then it must be unique",
+            "description": "The primary key of the record. It uniquely identifies each record within the dataset. This attribute is required and must be unique across all records.",
             "format": "int64",
             "default": 0,
             "example": 1234567891234567
           },
           "ExternalId": {
             "type": "string",
-            "description": "The external identier of the record row. If the External Id attribute is used, then it must be unique",
+            "description": "An external identifier for the record, which can be used to link the record to external systems or datasets. This attribute is optional but should be unique if provided.",
             "example": "3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5"
           },
           "Name": {
             "type": "string",
-            "description": "The name of the record row",
+            "description": "The name of the record. This attribute provides a human-readable identifier for the record, making it easier to recognize and differentiate records in lists or other displays. This attribute is optional.",
             "example": "Bob Normal"
           },
           "Type": {
             "type": "string",
-            "description": "The type of the record object",
+            "description": "The type of the record object. This attribute is used to classify the record into specific categories or types, helping to organize and manage different kinds of records. This attribute is optional.",
             "example": "User"
           }
         },
-        "description": "The abstract object structure"
+        "description": "This structure represents an abstract object with a primary key of type Long. It is used to encapsulate detailed information about related entities."
       },
       "Connections": {
         "type": "object",
@@ -1101,7 +1098,6 @@
       },
       "ConnectionData": {
         "required": [
-          "Id",
           "Name",
           "URL"
         ],
@@ -1109,37 +1105,37 @@
         "properties": {
           "Id": {
             "type": "string",
-            "description": "The identifier of the module that owns the entity that is being processed"
+            "description": "The identifier of the module that owns the entity that is being processed."
           },
           "Name": {
             "type": "string",
-            "description": "Name of connection"
+            "description": "Name of connection. The value must be unique in the system and you cannot add multiple values."
           },
           "Description": {
             "type": "string",
-            "description": "Description of connection"
+            "description": "Description of connection."
           },
           "ApiKey": {
             "type": "string",
-            "description": "An API key is a unique identifier used to authenticate a user, developer, or calling program to an API"
+            "description": "An API key is a unique identifier used to authenticate a user, developer, or calling program to an API. The pattern of the value (Secure). The default of the value (Generate password)."
           },
           "SecretKey": {
             "type": "string",
-            "description": "A secret key for signing payloads, enhancing security."
+            "description": "A secret key for signing payloads, enhancing security. The pattern of the value (Secure). The default of the value (Generate password)."
           },
           "URL": {
             "type": "string",
-            "description": "Webhook external service URL-address"
+            "description": "Webhook external service URL-address. The value must be unique in the system and you cannot add multiple values. The pattern of the value (^(http(s):\\/\\/.)[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&\\/\\/=]*)$)."
           },
           "Is_Active": {
             "type": "boolean",
-            "description": "If true, the configuration is active",
+            "description": "If true, the configuration is active.",
             "default": false,
             "example": false
           },
           "Is_System": {
             "type": "boolean",
-            "description": "If true, the configuration is internal to the system and not visible in the user interface",
+            "description": "If true, the configuration is internal to the system and not visible in the user interface.",
             "default": false,
             "example": false
           },
@@ -1168,21 +1164,20 @@
       },
       "FieldType": {
         "required": [
-          "Field",
           "Value"
         ],
         "type": "object",
         "properties": {
           "Field": {
             "type": "string",
-            "description": "The name of the data field"
+            "description": "The name of the data field. This can be any field name from the related database table, such as 'Email' from the User table or 'Name' from the Department table."
           },
           "Value": {
             "type": "string",
-            "description": "The value of the data row"
+            "description": "The value corresponding to the specified data field. This value is used to identify the record in the related database table. For example, it could be an email address, a department name, or an external system's identifier."
           }
         },
-        "description": "The field object structure"
+        "description": "The field object structure. This structure allows users to specify any related entity field and its corresponding value. When saving data, the system automatically retrieves and assigns the primary key value from the system database table based on the provided field name and value."
       },
       "Config": {
         "required": [
@@ -1263,71 +1258,67 @@
       },
       "AbstractText": {
         "required": [
-          "Id",
-          "ExternalId",
-          "Name",
-          "Type"
+          "Id"
         ],
         "type": "object",
         "properties": {
           "Id": {
             "type": "string",
-            "description": "The primary key of the record row. If the Id attribute is used, then it must be unique",
+            "description": "The primary key of the record. It uniquely identifies each record within the dataset. This attribute is required and must be unique across all records.",
             "example": "3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5"
           },
           "ExternalId": {
             "type": "string",
-            "description": "The external identier of the record row. If the External Id attribute is used, then it must be unique",
+            "description": "An external identifier for the record, which can be used to link the record to external systems or datasets. This attribute is optional but should be unique if provided.",
             "example": "3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5"
           },
           "Name": {
             "type": "string",
-            "description": "The name of the record row",
+            "description": "The name of the record. This attribute provides a human-readable identifier for the record, making it easier to recognize and differentiate records in lists or other displays. This attribute is optional.",
             "example": "Bob Normal"
           },
           "Type": {
             "type": "string",
-            "description": "The type of the record object",
+            "description": "The type of the record object. This attribute is used to classify the record into specific categories or types, helping to organize and manage different kinds of records. This attribute is optional.",
             "example": "User"
           }
         },
-        "description": "The abstract object structure"
+        "description": "This structure represents an abstract object with a primary key of type Text. It is used to encapsulate detailed information about related entities."
       },
       "ConfigData": {
         "required": [
-          "Id",
           "WebhookEntityId"
         ],
         "type": "object",
         "properties": {
           "Id": {
             "type": "string",
-            "description": "The identifier of the config"
+            "description": "The identifier of the config."
           },
           "WebhookEntityId": {
             "$ref": "#/components/schemas/FieldType"
           },
           "HasCreateAccess": {
             "type": "boolean",
-            "description": "Service has create access to data",
+            "description": "Service has create access to data.",
             "default": false,
             "example": false
           },
           "HasUpdateAccess": {
             "type": "boolean",
-            "description": "Service has update access to data",
+            "description": "Service has update access to data.",
             "default": false,
             "example": false
           },
           "HasDeleteAccess": {
             "type": "boolean",
-            "description": "Service has delete access to data",
+            "description": "Service has delete access to data.",
             "default": false,
             "example": false
           },
           "Is_Active": {
             "type": "boolean",
-            "description": "If true, the configuration is active",
+            "description": "If true, the configuration is active.",
             "default": false,
             "example": false
           },
@@ -1356,14 +1347,13 @@
       },
       "ConfigText": {
         "required": [
-          "Id",
           "WebhookEntityId"
         ],
         "type": "object",
         "properties": {
           "Id": {
             "type": "string",
-            "description": "The identifier of the config"
+            "description": "The identifier of the config."
           },
           "WebhookEntityId": {
             "type": "string",
@@ -1371,31 +1361,31 @@
           },
           "HasCreateAccess": {
             "type": "boolean",
-            "description": "Service has create access to data",
+            "description": "Service has create access to data.",
             "default": false,
             "example": false
           },
           "HasUpdateAccess": {
             "type": "boolean",
-            "description": "Service has update access to data",
+            "description": "Service has update access to data.",
             "default": false,
             "example": false
           },
           "HasDeleteAccess": {
             "type": "boolean",
-            "description": "Service has delete access to data",
+            "description": "Service has delete access to data.",
             "default": false,
             "example": false
           },
           "Is_Active": {
             "type": "boolean",
-            "description": "If true, the configuration is active",
+            "description": "If true, the configuration is active.",
             "default": false,
             "example": false
           },
           "ModifiedBy": {
             "type": "string",
-            "description": "The Identifier of the user who updated the record"
+            "description": "The Identifier of the user who updated the record."
           },
           "ModifiedOn": {
             "type": "string",
@@ -1406,7 +1396,7 @@
           },
           "CreatedBy": {
             "type": "string",
-            "description": "The Identifier of the user who created the record"
+            "description": "The Identifier of the user who created the record."
           },
           "CreatedOn": {
             "type": "string",
@@ -1456,7 +1446,7 @@
           },
           "FieldName": {
             "type": "string",
-            "description": "The field name of relation database table.\n\nExample; \nThe field name is &quot;TenantId&quot; and is associated with the &quot;Tenant&quot; table. You want to use in the &quot;Tenant&quot; table &quot;Name&quot; field fetching data. Once &quot;Name&quot; is specified, the validation service retrieves the tenant identifier from the &quot;Tenant&quot; table based on the &quot;Name&quot; field."
+            "description": "The field name of relation database table.\n\nExample; \nThe field name is 'TenantId' and is associated with the 'Tenant' table. You want to use in the 'Tenant' table 'Name' field fetching data. Once 'Name' is specified, the validation service retrieves the tenant identifier from the 'Tenant' table based on the 'Name' field."
           },
           "Required": {
             "type": "boolean",

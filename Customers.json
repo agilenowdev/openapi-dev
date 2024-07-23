@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.23"
+    "version": "3.0.24"
   },
   "servers": [
     {
@@ -22,7 +22,7 @@
         "tags": [
           "Customers"
         ],
-        "description": "The method returns one record of the `Customer`.\n\nMethod returns an extended `Customer` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `ParentCustomerId, OwnerId, ModifiedBy, CreatedBy`\n\n### Get a record of Customer\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id,ExternalId, SapId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.",
+        "description": "The method returns one record of the `Customer`.\n\nMethod returns an extended `Customer` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `ParentCustomerId, OwnerId, ModifiedBy, CreatedBy`\n\n### Get a record of Customer\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id, ExternalId, SapId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.",
         "operationId": "Get Customer",
         "parameters": [
           {
@@ -82,7 +82,7 @@
         "tags": [
           "Customers"
         ],
-        "description": "Use the `CustomerData` object resource to update `Customer` using `Id,ExternalId, SapId` field(s) value.\n\nProvide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record. \n\nThe input parameter must be used in the `CustomerData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `ParentCustomerId, OwnerId, ModifiedBy, CreatedBy`\n\n### Update a record of Customer\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id,ExternalId, SapId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the updated record if the call is successful. Method returns an extended `Customer` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "description": "Use the `CustomerData` object resource to update `Customer` using `Id, ExternalId, SapId` field(s) value.\n\nProvide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record. \n\nThe input parameter must be used in the `CustomerData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `ParentCustomerId, OwnerId, ModifiedBy, CreatedBy`\n\n### Update a record of Customer\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id, ExternalId, SapId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the updated record if the call is successful. Method returns an extended `Customer` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
         "operationId": "Update Customer",
         "parameters": [
           {
@@ -154,7 +154,7 @@
         "tags": [
           "Customers"
         ],
-        "description": "Use the query string resource to delete `Customer` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id,ExternalId, SapId` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `Customer` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `ParentCustomerId, OwnerId, ModifiedBy, CreatedBy`\n\n### Delete a record of Customer\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id,ExternalId, SapId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
+        "description": "Use the query string resource to delete `Customer` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id, ExternalId, SapId` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `Customer` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `ParentCustomerId, OwnerId, ModifiedBy, CreatedBy`\n\n### Delete a record of Customer\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id, ExternalId, SapId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
         "operationId": "Delete Customer",
         "parameters": [
           {
@@ -308,7 +308,7 @@
         "tags": [
           "Customers"
         ],
-        "description": "Use the `CustomerData` object resource to insert or update (Upsert) `Customer` using `Id,ExternalId, SapId` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `CustomerData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `ParentCustomerId, OwnerId, ModifiedBy, CreatedBy`\n\n### Update a record of Customer\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `ExternalId, SapId` field value is not empty and `Id` field value is empty, action try insert record according `ExternalId, SapId` field value (if set, the value is a unique identifier).\n\n### Create a new record of Customer\n* If the value in the `ExternalId, SapId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`CustomerData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Customer` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "description": "Use the `CustomerData` object resource to insert or update (Upsert) `Customer` using `Id, ExternalId, SapId` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `CustomerData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `ParentCustomerId, OwnerId, ModifiedBy, CreatedBy`\n\n### Update a record of Customer\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `ExternalId, SapId` field value is not empty and `Id` field value is empty, action try insert record according `ExternalId, SapId` field value (if set, the value is a unique identifier).\n\n### Create a new record of Customer\n* If the value in the `ExternalId, SapId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`CustomerData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Customer` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
         "operationId": "Upsert Customer",
         "requestBody": {
           "description": "`Customer` information to insert or update.\n\nThe input parameter must be used in the `CustomerData` record structure inside the `FieldType` parameter in the foreign key fields.",
@@ -359,7 +359,7 @@
         "tags": [
           "Customers"
         ],
-        "description": "Use the `CustomerData` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `CustomerData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `ParentCustomerId, OwnerId, ModifiedBy, CreatedBy`\n\n### Create a new record of Customer\n* If the value in the `Id,ExternalId, SapId` fields are empty then action insert a new record according input parameter entity record structure (`CustomerData`).\n* If the value in the `ExternalId, SapId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`CustomerData`).\n* If the `Id,ExternalId, SapId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the created record if the call is successful. Method returns an extended `Customer` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\n",
+        "description": "Use the `CustomerData` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `CustomerData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `ParentCustomerId, OwnerId, ModifiedBy, CreatedBy`\n\n### Create a new record of Customer\n* If the value in the `Id, ExternalId, SapId` fields are empty then action insert a new record according input parameter entity record structure (`CustomerData`).\n* If the value in the `ExternalId, SapId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`CustomerData`).\n* If the `Id, ExternalId, SapId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the created record if the call is successful. Method returns an extended `Customer` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\n",
         "operationId": "Create Customer",
         "requestBody": {
           "description": "`Customer` information to insert.\n\nThe input parameter must be used in the `CustomerData` record structure inside the `FieldType` parameter in the foreign key fields.",
@@ -412,7 +412,7 @@
         "tags": [
           "Customers"
         ],
-        "description": "Use the `CustomersText` object resource to insert or update (Upsert) a list of `CustomerList` using `Id,ExternalId, SapId` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `PATCH` method of the resource.\n\nThe input parameter must be used in the `CustomerList` record structure as text fields in the foreign key fields.\n\nForeign key fields are: `ParentCustomerId, OwnerId, ModifiedBy, CreatedBy`\n\n### Update a record of Customer\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned. You cannot change `Id` field value (primary key).\n* If the `ExternalId, SapId` field value is not empty and `Id` field value is empty, action try insert record according `ExternalId, SapId` field value (if set, the value is a unique identifier).\n\n**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.\n\n### Create a new record of Customer\n* If the value in the `ExternalId, SapId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`CustomerData`).\n\nThe response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `Customer` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.",
+        "description": "Use the `CustomersText` object resource to insert or update (Upsert) a list of `CustomerList` using `Id, ExternalId, SapId` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `PATCH` method of the resource.\n\nThe input parameter must be used in the `CustomerList` record structure as text fields in the foreign key fields.\n\nForeign key fields are: `ParentCustomerId, OwnerId, ModifiedBy, CreatedBy`\n\n### Update a record of Customer\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned. You cannot change `Id` field value (primary key).\n* If the `ExternalId, SapId` field value is not empty and `Id` field value is empty, action try insert record according `ExternalId, SapId` field value (if set, the value is a unique identifier).\n\n**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.\n\n### Create a new record of Customer\n* If the value in the `ExternalId, SapId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`CustomerData`).\n\nThe response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `Customer` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.",
         "operationId": "Patch Customers",
         "requestBody": {
           "description": "The list of Customer information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.",
@@ -574,7 +574,7 @@
         "tags": [
           "Customers"
         ],
-        "description": "Use the `UsersData` object resource to insert or update (Upsert) a list of `UserData` using `Id,Username, Email` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `UserList` record structure as text fields in the foreign key fields.\n\nForeign key fields are: `CustomerId, UserId, CreatedBy`\n\n### Update a record of User\n* If the `Username, Email` field value is not empty and `Id` field value is empty, action try insert record according `Username, Email` field value (if set, the value is a unique identifier).\n\n**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.\n\n### Create a new record of User\n* If the value in the `Username, Email` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`UserData`).\n\nThe response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `User` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.",
+        "description": "Use the `UsersData` object resource to insert or update (Upsert) a list of `UserData` using `Id, Username, Email` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `UserList` record structure as text fields in the foreign key fields.\n\nForeign key fields are: `CustomerId, UserId, CreatedBy`\n\n### Update a record of User\n* If the `Username, Email` field value is not empty and `Id` field value is empty, action try insert record according `Username, Email` field value (if set, the value is a unique identifier).\n\n**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.\n\n### Create a new record of User\n* If the value in the `Username, Email` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`UserData`).\n\nThe response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `User` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.",
         "operationId": "Patch Customer Users",
         "parameters": [
           {
@@ -658,7 +658,7 @@
         "tags": [
           "Customers"
         ],
-        "description": "Use the `UserPost` object resource to insert or update (Upsert) `User` using `Id,Username, Email` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `CustomerId, UserId, CreatedBy`\n\n### Update a record of User\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Username, Email` field value is not empty and `Id` field value is empty, action try insert record according `Username, Email` field value (if set, the value is a unique identifier).\n\n### Create a new record of User\n* If the value in the `Username, Email` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`UserData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `User` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "description": "Use the `UserPost` object resource to insert or update (Upsert) `User` using `Id, Username, Email` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `CustomerId, UserId, CreatedBy`\n\n### Update a record of User\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Username, Email` field value is not empty and `Id` field value is empty, action try insert record according `Username, Email` field value (if set, the value is a unique identifier).\n\n### Create a new record of User\n* If the value in the `Username, Email` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`UserData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `User` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
         "operationId": "Upsert Customer User",
         "parameters": [
           {
@@ -732,7 +732,7 @@
         "tags": [
           "Customers"
         ],
-        "description": "Use the query string resource to delete `User` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `Id,Username, Email` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `User` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `CustomerId, UserId, CreatedBy`\n\n### Delete a record of User\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id,Username, Email` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
+        "description": "Use the query string resource to delete `User` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `Id, Username, Email` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `User` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `CustomerId, UserId, CreatedBy`\n\n### Delete a record of User\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id, Username, Email` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
         "operationId": "Delete Customer User",
         "parameters": [
           {
@@ -922,7 +922,7 @@
         "tags": [
           "Customers"
         ],
-        "description": "Use the `ContactsData` object resource to insert or update (Upsert) a list of `ContactData` using `Id,Name, ExternalId` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `ContactList` record structure as text fields in the foreign key fields.\n\nForeign key fields are: `UserId, CustomerId, ModifiedBy, CreatedBy`\n\n### Update a record of Contact\n* If the `Name, ExternalId` field value is not empty and `Id` field value is empty, action try insert record according `Name, ExternalId` field value (if set, the value is a unique identifier).\n\n**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.\n\n### Create a new record of Contact\n* If the value in the `Name, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`ContactData`).\n\nThe response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `Contact` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.",
+        "description": "Use the `ContactsData` object resource to insert or update (Upsert) a list of `ContactData` using `Id, Name, ExternalId` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `ContactList` record structure as text fields in the foreign key fields.\n\nForeign key fields are: `UserId, CustomerId, ModifiedBy, CreatedBy`\n\n### Update a record of Contact\n* If the `Name, ExternalId` field value is not empty and `Id` field value is empty, action try insert record according `Name, ExternalId` field value (if set, the value is a unique identifier).\n\n**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.\n\n### Create a new record of Contact\n* If the value in the `Name, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`ContactData`).\n\nThe response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `Contact` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.",
         "operationId": "Patch Customer Contacts",
         "parameters": [
           {
@@ -1006,7 +1006,7 @@
         "tags": [
           "Customers"
         ],
-        "description": "Use the `ContactPost` object resource to insert or update (Upsert) `Contact` using `Id,Name, ExternalId` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `ContactData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `UserId, CustomerId, ModifiedBy, CreatedBy`\n\n### Update a record of Contact\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Name, ExternalId` field value is not empty and `Id` field value is empty, action try insert record according `Name, ExternalId` field value (if set, the value is a unique identifier).\n\n### Create a new record of Contact\n* If the value in the `Name, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`ContactData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Contact` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "description": "Use the `ContactPost` object resource to insert or update (Upsert) `Contact` using `Id, Name, ExternalId` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `ContactData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `UserId, CustomerId, ModifiedBy, CreatedBy`\n\n### Update a record of Contact\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Name, ExternalId` field value is not empty and `Id` field value is empty, action try insert record according `Name, ExternalId` field value (if set, the value is a unique identifier).\n\n### Create a new record of Contact\n* If the value in the `Name, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`ContactData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Contact` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
         "operationId": "Upsert Customer Contact",
         "parameters": [
           {
@@ -1080,7 +1080,7 @@
         "tags": [
           "Customers"
         ],
-        "description": "Use the query string resource to delete `Contact` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `Id,Name, ExternalId` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `Contact` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `UserId, CustomerId, ModifiedBy, CreatedBy`\n\n### Delete a record of Contact\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id,Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
+        "description": "Use the query string resource to delete `Contact` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `Id, Name, ExternalId` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `Contact` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `UserId, CustomerId, ModifiedBy, CreatedBy`\n\n### Delete a record of Contact\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id, Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
         "operationId": "Delete Customer Contact",
         "parameters": [
           {
@@ -1355,7 +1355,6 @@
       },
       "CustomerData": {
         "required": [
-          "Id",
           "Name",
           "Is_Active"
         ],
@@ -1363,22 +1362,22 @@
         "properties": {
           "Id": {
             "type": "integer",
-            "description": "The guid to identify the customer",
+            "description": "The guid to identify the customer.",
             "format": "int64",
             "default": 0,
             "example": 0
           },
           "ExternalId": {
             "type": "string",
-            "description": "The external identifier of the customer"
+            "description": "The external identifier of the customer."
           },
           "SapId": {
             "type": "string",
-            "description": "This field is the SAP Id and you can use this between the two systems"
+            "description": "This field is the SAP Id and you can use this between the two systems."
           },
           "Name": {
             "type": "string",
-            "description": "The name of the customer"
+            "description": "The name of the customer. The value must be unique in the system and you cannot add multiple values."
           },
           "ParentCustomerId": {
             "$ref": "#/components/schemas/FieldType"
@@ -1388,13 +1387,19 @@
           },
           "Is_Active": {
             "type": "boolean",
-            "description": "Defines if the customer is active and can be used",
+            "description": "Defines if the customer is active and can be used.",
+            "default": false,
+            "example": false
+          },
+          "Is_Deleted": {
+            "type": "boolean",
+            "description": "Defines if the customer is deleted and cannot be used.",
             "default": false,
             "example": false
           },
           "ModifiedOn": {
             "type": "string",
-            "description": "The date the record was updated",
+            "description": "The date the record was updated.",
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
@@ -1407,7 +1412,7 @@
           },
           "CreatedOn": {
             "type": "string",
-            "description": "The date the record was created",
+            "description": "The date the record was created.",
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
@@ -1435,7 +1440,6 @@
       },
       "CustomerText": {
         "required": [
-          "Id",
           "Name",
           "Is_Active"
         ],
@@ -1443,55 +1447,61 @@
         "properties": {
           "Id": {
             "type": "integer",
-            "description": "The guid to identify the customer",
+            "description": "The guid to identify the customer.",
             "format": "int64",
             "default": 0,
             "example": 0
           },
           "ExternalId": {
             "type": "string",
-            "description": "The external identifier of the customer"
+            "description": "The external identifier of the customer."
           },
           "SapId": {
             "type": "string",
-            "description": "This field is the SAP Id and you can use this between the two systems"
+            "description": "This field is the SAP Id and you can use this between the two systems."
           },
           "Name": {
             "type": "string",
-            "description": "The name of the customer"
+            "description": "The name of the customer. The value must be unique in the system and you cannot add multiple values."
           },
           "ParentCustomerId": {
             "type": "string",
-            "description": "The identifier of the parent customer"
+            "description": "The identifier of the parent customer."
           },
           "OwnerId": {
             "type": "string",
-            "description": "The identifier of the user who own the customer"
+            "description": "The identifier of the user who own the customer."
           },
           "Is_Active": {
             "type": "boolean",
-            "description": "Defines if the customer is active and can be used",
+            "description": "Defines if the customer is active and can be used.",
+            "default": false,
+            "example": false
+          },
+          "Is_Deleted": {
+            "type": "boolean",
+            "description": "Defines if the customer is deleted and cannot be used.",
             "default": false,
             "example": false
           },
           "ModifiedOn": {
             "type": "string",
-            "description": "The date the record was updated",
+            "description": "The date the record was updated.",
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
           },
           "ModifiedBy": {
             "type": "string",
-            "description": "The Identifier of the user who updated the record"
+            "description": "The Identifier of the user who updated the record."
           },
           "CreatedBy": {
             "type": "string",
-            "description": "The Identifier of the user who created the record"
+            "description": "The Identifier of the user who created the record."
           },
           "CreatedOn": {
             "type": "string",
-            "description": "The date the record was created",
+            "description": "The date the record was created.",
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
@@ -1619,14 +1629,11 @@
         "description": "The list of `User` records"
       },
       "UserData": {
-        "required": [
-          "Id"
-        ],
         "type": "object",
         "properties": {
           "Id": {
             "type": "integer",
-            "description": "The guid to identify the customer user",
+            "description": "The guid to identify the customer user.",
             "format": "int64",
             "default": 0,
             "example": 0
@@ -1642,7 +1649,7 @@
           },
           "CreatedOn": {
             "type": "string",
-            "description": "The date the record was created",
+            "description": "The date the record was created.",
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
@@ -1651,14 +1658,11 @@
         "description": "The record of User information."
       },
       "UserText": {
-        "required": [
-          "Id"
-        ],
         "type": "object",
         "properties": {
           "Id": {
             "type": "integer",
-            "description": "The guid to identify the customer user",
+            "description": "The guid to identify the customer user.",
             "format": "int64",
             "default": 0,
             "example": 0
@@ -1668,15 +1672,15 @@
           },
           "UserId": {
             "type": "string",
-            "description": "The identifier of the user who has link the customer"
+            "description": "The identifier of the user who has link the customer."
           },
           "CreatedBy": {
             "type": "string",
-            "description": "The Identifier of the user who created the record"
+            "description": "The Identifier of the user who created the record."
           },
           "CreatedOn": {
             "type": "string",
-            "description": "The date the record was created",
+            "description": "The date the record was created.",
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
@@ -1801,7 +1805,6 @@
       },
       "ContactData": {
         "required": [
-          "Id",
           "Name",
           "FirstName",
           "LastName"
@@ -1810,48 +1813,48 @@
         "properties": {
           "Id": {
             "type": "string",
-            "description": "Record identifier"
+            "description": "Record identifier."
           },
           "ExternalId": {
             "type": "string",
-            "description": "The external system code of the contact."
+            "description": "The external system code of the contact. The value must be unique in the system and you cannot add multiple values."
           },
           "UserId": {
             "$ref": "#/components/schemas/FieldType"
           },
           "Name": {
             "type": "string",
-            "description": "The name of the contact"
+            "description": "The name of the contact."
           },
           "FirstName": {
             "type": "string",
-            "description": "Person's first name"
+            "description": "Person's first name."
           },
           "LastName": {
             "type": "string",
-            "description": "Person's last name"
+            "description": "Person's last name."
           },
           "JobTitle": {
             "type": "string",
-            "description": "The title of the job the person occupies"
+            "description": "The title of the job the person occupies."
           },
           "Phone": {
             "type": "string",
-            "description": "The phone number of contact"
+            "description": "The phone number of contact."
           },
           "Email": {
             "type": "string",
-            "description": "The e-mail of contact"
+            "description": "The e-mail of contact."
           },
           "Is_Active": {
             "type": "boolean",
-            "description": "Defines if the contact is active and can be used",
+            "description": "Defines if the contact is active and can be used.",
             "default": false,
             "example": false
           },
           "ModifiedOn": {
             "type": "string",
-            "description": "The date the record was updated",
+            "description": "The date the record was updated.",
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
@@ -1864,7 +1867,7 @@
           },
           "CreatedOn": {
             "type": "string",
-            "description": "The date the record was created",
+            "description": "The date the record was created.",
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
@@ -1874,7 +1877,6 @@
       },
       "ContactText": {
         "required": [
-          "Id",
           "Name",
           "FirstName",
           "LastName"
@@ -1883,64 +1885,64 @@
         "properties": {
           "Id": {
             "type": "string",
-            "description": "Record identifier"
+            "description": "Record identifier."
           },
           "ExternalId": {
             "type": "string",
-            "description": "The external system code of the contact."
+            "description": "The external system code of the contact. The value must be unique in the system and you cannot add multiple values."
           },
           "UserId": {
             "type": "string",
-            "description": "The identifier of the system user this information is for"
+            "description": "The identifier of the system user this information is for."
           },
           "Name": {
             "type": "string",
-            "description": "The name of the contact"
+            "description": "The name of the contact."
           },
           "FirstName": {
             "type": "string",
-            "description": "Person's first name"
+            "description": "Person's first name."
           },
           "LastName": {
             "type": "string",
-            "description": "Person's last name"
+            "description": "Person's last name."
           },
           "JobTitle": {
             "type": "string",
-            "description": "The title of the job the person occupies"
+            "description": "The title of the job the person occupies."
           },
           "Phone": {
             "type": "string",
-            "description": "The phone number of contact"
+            "description": "The phone number of contact."
           },
           "Email": {
             "type": "string",
-            "description": "The e-mail of contact"
+            "description": "The e-mail of contact."
           },
           "Is_Active": {
             "type": "boolean",
-            "description": "Defines if the contact is active and can be used",
+            "description": "Defines if the contact is active and can be used.",
             "default": false,
             "example": false
           },
           "ModifiedOn": {
             "type": "string",
-            "description": "The date the record was updated",
+            "description": "The date the record was updated.",
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
           },
           "ModifiedBy": {
             "type": "string",
-            "description": "The Identifier of the user who updated the record"
+            "description": "The Identifier of the user who updated the record."
           },
           "CreatedBy": {
             "type": "string",
-            "description": "The Identifier of the user who created the record"
+            "description": "The Identifier of the user who created the record."
           },
           "CreatedOn": {
             "type": "string",
-            "description": "The date the record was created",
+            "description": "The date the record was created.",
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"

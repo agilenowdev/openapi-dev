@@ -1,7 +1,2 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
-
-/Organizations/csharp/src/Agile.Now.ApiOrganizations/obj
-/Organizations/csharp/src/Agile.Now.ApiOrganizations.Test/obj
-/Organizations/csharp/.vs
+﻿/Agile.Now.ApiMyCustomers
+Agile.Now.ApiMyCustomers.json
