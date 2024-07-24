@@ -1,2 +1,9 @@
-﻿/Agile.Now.ApiMyCustomers
+﻿# Ignore the open api Agile.Now.ApiMyCustomers and directories
+/Agile.Now.ApiMyCustomers
 Agile.Now.ApiMyCustomers.json
+Agile.Now.ApiMyCustomers.yaml
+
+# Ignore the open api Agile.Now.ApiAccounts and directories
+/Agile.Now.ApiAccounts
+Agile.Now.ApiAccounts.json
+Agile.Now.ApiAccounts.yaml
