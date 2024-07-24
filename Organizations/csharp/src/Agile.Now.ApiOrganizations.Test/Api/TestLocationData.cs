@@ -21,31 +21,31 @@ internal static class TestLocationData
     public static LocationInsertData[] CreateLocationDataList(int count) =>
         Enumerable.Range(0, count).Select(i => CreateLocationData(i.ToString())).ToArray();
 
-    public static void UpdateLocationData(LocationInsertData LocationInsertData, string id = null)
+    public static void UpdateLocationData(LocationInsertData locationInsertData, string id = null)
     {
         if (id != null)
-            LocationInsertData.Id = id;
+            locationInsertData.Id = id;
         const string updated = "updated";
-        LocationInsertData.Name += updated;
-        LocationInsertData.CountryId = LocationInsertData.CountryId == EnumCountry.FIN ?
+        locationInsertData.Name += updated;
+        locationInsertData.CountryId = locationInsertData.CountryId == EnumCountry.FIN ?
             EnumCountry.USA : EnumCountry.FIN;
-        LocationInsertData.CurrencyId = LocationInsertData.CurrencyId == EnumCurrency.USD ?
+        locationInsertData.CurrencyId = locationInsertData.CurrencyId == EnumCurrency.USD ?
             EnumCurrency.EUR : EnumCurrency.USD;
     }
 
-    public static LocationUpdateData ToLocationUpdateData(this LocationInsertData LocationInsertData) =>
+    public static LocationUpdateData ToLocationUpdateData(this LocationInsertData locationInsertData) =>
         new
         (
-            name: LocationInsertData.Name,
-            countryId: LocationInsertData.CountryId,
-            currencyId: LocationInsertData.CurrencyId
+            name: locationInsertData.Name,
+            countryId: locationInsertData.CountryId,
+            currencyId: locationInsertData.CurrencyId
         );
 
-    public static LocationData ToLocationData(this LocationInsertData LocationInsertData) =>
+    public static LocationData ToLocationData(this LocationInsertData locationInsertData) =>
         new
         (
-            name: LocationInsertData.Name,
-            countryId: LocationInsertData.CountryId,
-            currencyId: LocationInsertData.CurrencyId
+            name: locationInsertData.Name,
+            countryId: locationInsertData.CountryId,
+            currencyId: locationInsertData.CurrencyId
         );
 }

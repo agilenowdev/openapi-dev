@@ -47,11 +47,11 @@ namespace Agile.Now.ApiOrganizations.Test.Api
         {
         }
 
-        void AssertLocationDataEqual(LocationInsertData LocationInsertData, Location Location)
+        void AssertLocationDataEqual(LocationInsertData locationInsertData, Location location)
         {
-            Assert.Equal(LocationInsertData.Name, Location.Name);
-            Assert.Equal(LocationInsertData.CountryId.ToString(), Location.CountryId.Id);
-            Assert.Equal(LocationInsertData.CurrencyId.ToString(), Location.CurrencyId.Id);
+            Assert.Equal(locationInsertData.Name, location.Name);
+            Assert.Equal(locationInsertData.CountryId.ToString(), location.CountryId.Id);
+            Assert.Equal(locationInsertData.CurrencyId.ToString(), location.CurrencyId.Id);
         }
 
         /// <summary>
@@ -79,7 +79,6 @@ namespace Agile.Now.ApiOrganizations.Test.Api
                 api.DeleteLocation(createdLocation.Id);
             }
         }
-
 
         /// <summary>
         /// Test DeleteLocation by Id

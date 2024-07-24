@@ -8,16 +8,12 @@
  */
 
 using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Reflection;
-using RestSharp;
-using Xunit;
-
-using Agile.Now.ApiAccessGroups.Client;
 using Agile.Now.ApiAccessGroups.Api;
+using Agile.Now.ApiAccessGroups.Client;
+using Agile.Now.ApiAccessGroups.Model;
+using Xunit;
+using Xunit.Abstractions;
 // uncomment below to import models
 //using Agile.Now.ApiAccessGroups.Model;
 
@@ -32,16 +28,30 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
     /// </remarks>
     public class AccessGroupApiTests : IDisposable
     {
-        private AccessGroupApi instance;
+        private readonly AccessGroupApi api;
 
-        public AccessGroupApiTests()
+        public AccessGroupApiTests(ITestOutputHelper testOutputHelper)
         {
-            instance = new AccessGroupApi();
+            Configuration configuration = new Configuration
+            {
+                BasePath = "https://dev.esystems.fi",
+                OAuthTokenUrl = "https://dev.esystems.fi/oAuth/rest/v2/Token",
+                OAuthFlow = Client.Auth.OAuthFlow.APPLICATION,
+                OAuthClientId = "c8907421-0886-4fb0-b859-d29966762e16",
+                OAuthClientSecret = "1da54fa9-ae11-4db3-9740-1bb47b85cd8e"
+            };
+            api = new AccessGroupApi(configuration);
         }
 
         public void Dispose()
         {
-            // Cleanup when everything is done.
+        }
+
+        void AssertAccessGroupDataEqual(AccessGroupData accessGroupData, AccessGroup accessGroup)
+        {
+            Assert.Equal(accessGroupData.Name, accessGroup.Name);
+            Assert.Equal(accessGroupData.Description, accessGroup.Description);
+            Assert.Equal(accessGroupData.AccessGroupTypeId.ToString(), accessGroup.AccessGroupTypeId.Id);
         }
 
         /// <summary>
@@ -50,33 +60,130 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
         [Fact]
         public void InstanceTest()
         {
-            // TODO uncomment below to test 'IsType' AccessGroupApi
-            //Assert.IsType<AccessGroupApi>(instance);
         }
 
         /// <summary>
         /// Test CreateAccessGroup
         /// </summary>
         [Fact]
-        public void CreateAccessGroupTest()
+        public void Test_AccessGroup_Create()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //AccessGroupData accessGroupData = null;
-            //var response = instance.CreateAccessGroup(accessGroupData);
-            //Assert.IsType<AccessGroup>(response);
+            var accessGroupData = TestAccessGroupData.CreateAccessGroupData();
+            var createdAccessGroup = api.CreateAccessGroup(accessGroupData);
+            try
+            {
+                AssertAccessGroupDataEqual(accessGroupData, createdAccessGroup);
+            }
+            finally
+            {
+                api.DeleteAccessGroup(createdAccessGroup.Id);
+            }
         }
 
         /// <summary>
-        /// Test DeleteAccessGroup
+        /// Test DeleteAccessGroup by Id
         /// </summary>
         [Fact]
-        public void DeleteAccessGroupTest()
+        public void Test_AccessGroup_Delete_ById()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string? name = null;
-            //var response = instance.DeleteAccessGroup(id, name);
-            //Assert.IsType<AccessGroup>(response);
+            var createdAccessGroup = api.CreateAccessGroup(TestAccessGroupData.CreateAccessGroupData());
+            api.DeleteAccessGroup(createdAccessGroup.Id);
+            Assert.Throws<ApiException>(() => api.GetAccessGroup(createdAccessGroup.Id));
+        }
+
+        /// <summary>
+        /// Test DeleteAccessGroup by Name
+        /// </summary>
+        [Fact]
+        public void Test_AccessGroup_Delete_ByUserName()
+        {
+            var createdAccessGroup = api.CreateAccessGroup(TestAccessGroupData.CreateAccessGroupData());
+            api.DeleteAccessGroup(createdAccessGroup.Name, "Name");
+            Assert.Throws<ApiException>(() => api.GetAccessGroup(createdAccessGroup.Id));
+        }
+
+        /// <summary>
+        /// Test GetAccessGroup by Id
+        /// </summary>
+        [Fact]
+        public void Test_AccessGroup_Get_ById()
+        {
+            var createdAccessGroup = api.CreateAccessGroup(TestAccessGroupData.CreateAccessGroupData());
+            try
+            {
+                Assert.Null(Record.Exception(() =>
+                {
+                    var existingAccessGroup = api.GetAccessGroup(createdAccessGroup.Id);
+                    Assert.Equal(createdAccessGroup.Id, existingAccessGroup.Id);
+                    return existingAccessGroup;
+                }));
+            }
+            finally
+            {
+                api.DeleteAccessGroup(createdAccessGroup.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test GetAccessGroup by Name
+        /// </summary>
+        [Fact]
+        public void Test_AccessGroup_Get_ByName()
+        {
+            var createdAccessGroup = api.CreateAccessGroup(TestAccessGroupData.CreateAccessGroupData());
+            try
+            {
+                Assert.Null(Record.Exception(() =>
+                {
+                    var existingAccessGroup = api.GetAccessGroup(createdAccessGroup.Name, "Name");
+                    Assert.Equal(createdAccessGroup.Name, existingAccessGroup.Name);
+                    return existingAccessGroup;
+                }));
+            }
+            finally
+            {
+                api.DeleteAccessGroup(createdAccessGroup.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test ListAccessGroups by Id
+        /// </summary>
+        [Fact]
+        public void Test_AccessGroup_List_ById()
+        {
+            var accessGroupData = TestAccessGroupData.CreateAccessGroupDataList(2);
+            var createdAccessGroups = accessGroupData.Select(i => api.CreateAccessGroup(i)).ToArray();
+            try
+            {
+                var foundAccessGroups = api.ListAccessGroup(
+                    filters: $"Id In {string.Join("; ", createdAccessGroups.Select(i => i.Id))}");
+            }
+            finally
+            {
+                foreach (var i in createdAccessGroups)
+                    api.DeleteAccessGroup(i.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test ListAccessGroups by Name
+        /// </summary>
+        [Fact]
+        public void Test_AccessGroup_List_ByName()
+        {
+            var accessGroupData = TestAccessGroupData.CreateAccessGroupDataList(2);
+            var createdAccessGroups = accessGroupData.Select(i => api.CreateAccessGroup(i)).ToArray();
+            try
+            {
+                var foundAccessGroups = api.ListAccessGroup(
+                    filters: $"Name In {string.Join("; ", createdAccessGroups.Select(i => i.Name))}");
+            }
+            finally
+            {
+                foreach (var i in createdAccessGroups)
+                    api.DeleteAccessGroup(i.Id);
+            }
         }
 
         /// <summary>
