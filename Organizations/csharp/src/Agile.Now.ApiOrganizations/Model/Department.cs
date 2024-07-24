@@ -28,98 +28,129 @@ namespace Agile.Now.ApiOrganizations.Model
     /// <summary>
     /// The record of Department information.
     /// </summary>
-    [DataContract(Name = "DepartmentInsertData")]
-    public partial class DepartmentInsertData : IValidatableObject
+    [DataContract(Name = "Department")]
+    public partial class Department : IValidatableObject
     {
-
         /// <summary>
-        /// Gets or Sets DepartmentTypeId
-        /// </summary>
-        [DataMember(Name = "DepartmentTypeId", IsRequired = true, EmitDefaultValue = true)]
-        public EnumDepartmentType DepartmentTypeId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CountryId
-        /// </summary>
-        [DataMember(Name = "CountryId", EmitDefaultValue = false)]
-        public EnumCountry? CountryId { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DepartmentInsertData" /> class.
+        /// Initializes a new instance of the <see cref="Department" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected DepartmentInsertData() { }
+        protected Department() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="DepartmentInsertData" /> class.
+        /// Initializes a new instance of the <see cref="Department" /> class.
         /// </summary>
-        /// <param name="id">The guid to identify the department. (required).</param>
-        /// <param name="externalId">The external identifier of the department..</param>
-        /// <param name="name">The name of the department. (required).</param>
+        /// <param name="id">The guid to identify the department (required).</param>
+        /// <param name="externalId">The external identifier of the department.</param>
+        /// <param name="name">The name of the department (required).</param>
         /// <param name="departmentTypeId">departmentTypeId (required).</param>
         /// <param name="parentDepartmentId">parentDepartmentId.</param>
-        /// <param name="contactName">The contact name of company or department..</param>
-        /// <param name="contactEmail">The contact email of external company or department..</param>
+        /// <param name="hierarchicalName">The hierarchical name of the department.</param>
+        /// <param name="level">The department level at the hierarchy (default to 0).</param>
+        /// <param name="contactName">The contact name of company or department.</param>
+        /// <param name="contactEmail">The contact email of external company or department.</param>
         /// <param name="contactPhone">contactPhone.</param>
         /// <param name="ownerId">ownerId.</param>
         /// <param name="countryId">countryId.</param>
-        /// <param name="isActive">Defines if the department is active and can be used. (required) (default to false).</param>
-        public DepartmentInsertData(string id = default(string), string externalId = default(string), string name = default(string), EnumDepartmentType departmentTypeId = default(EnumDepartmentType), FieldType parentDepartmentId = default(FieldType), string contactName = default(string), string contactEmail = default(string), string contactPhone = default(string), FieldType ownerId = default(FieldType), EnumCountry? countryId = default(EnumCountry?), bool isActive = false)
+        /// <param name="isActive">Defines if the department is active and can be used (required) (default to false).</param>
+        /// <param name="modifiedOn">The date the record was updated (default to &quot;1900-01-01T00:00Z&quot;).</param>
+        /// <param name="modifiedBy">modifiedBy.</param>
+        /// <param name="createdBy">createdBy.</param>
+        /// <param name="createdOn">The date the record was created (default to &quot;1900-01-01T00:00Z&quot;).</param>
+        public Department(string id = default(string), string externalId = default(string), string name = default(string), AbstractText departmentTypeId = default(AbstractText), AbstractText parentDepartmentId = default(AbstractText), string hierarchicalName = default(string), int level = 0, string contactName = default(string), string contactEmail = default(string), string contactPhone = default(string), AbstractLong ownerId = default(AbstractLong), AbstractText countryId = default(AbstractText), bool isActive = false, DateTime modifiedOn = default(DateTime), AbstractLong modifiedBy = default(AbstractLong), AbstractLong createdBy = default(AbstractLong), DateTime createdOn = default(DateTime))
         {
+            // to ensure "id" is required (not null)
+            if (id == null)
+            {
+                throw new ArgumentNullException("id is a required property for Department and cannot be null");
+            }
             this.Id = id;
             // to ensure "name" is required (not null)
             if (name == null)
             {
-                throw new ArgumentNullException("name is a required property for DepartmentInsertData and cannot be null");
+                throw new ArgumentNullException("name is a required property for Department and cannot be null");
             }
             this.Name = name;
+            // to ensure "departmentTypeId" is required (not null)
+            if (departmentTypeId == null)
+            {
+                throw new ArgumentNullException("departmentTypeId is a required property for Department and cannot be null");
+            }
             this.DepartmentTypeId = departmentTypeId;
             this.IsActive = isActive;
             this.ExternalId = externalId;
             this.ParentDepartmentId = parentDepartmentId;
+            this.HierarchicalName = hierarchicalName;
+            this.Level = level;
             this.ContactName = contactName;
             this.ContactEmail = contactEmail;
             this.ContactPhone = contactPhone;
             this.OwnerId = ownerId;
             this.CountryId = countryId;
+            this.ModifiedOn = modifiedOn;
+            this.ModifiedBy = modifiedBy;
+            this.CreatedBy = createdBy;
+            this.CreatedOn = createdOn;
         }
 
         /// <summary>
-        /// The guid to identify the department.
+        /// The guid to identify the department
         /// </summary>
-        /// <value>The guid to identify the department.</value>
-        [DataMember(Name = "Id", EmitDefaultValue = true)]
+        /// <value>The guid to identify the department</value>
+        [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>
-        /// The external identifier of the department.
+        /// The external identifier of the department
         /// </summary>
-        /// <value>The external identifier of the department.</value>
+        /// <value>The external identifier of the department</value>
         [DataMember(Name = "ExternalId", EmitDefaultValue = false)]
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// The name of the department.
+        /// The name of the department
         /// </summary>
-        /// <value>The name of the department.</value>
+        /// <value>The name of the department</value>
         [DataMember(Name = "Name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DepartmentTypeId
+        /// </summary>
+        [DataMember(Name = "DepartmentTypeId", IsRequired = true, EmitDefaultValue = true)]
+        public AbstractText DepartmentTypeId { get; set; }
 
         /// <summary>
         /// Gets or Sets ParentDepartmentId
         /// </summary>
         [DataMember(Name = "ParentDepartmentId", EmitDefaultValue = false)]
-        public FieldType ParentDepartmentId { get; set; }
+        public AbstractText ParentDepartmentId { get; set; }
 
         /// <summary>
-        /// The contact name of company or department.
+        /// The hierarchical name of the department
         /// </summary>
-        /// <value>The contact name of company or department.</value>
+        /// <value>The hierarchical name of the department</value>
+        [DataMember(Name = "HierarchicalName", EmitDefaultValue = false)]
+        public string HierarchicalName { get; set; }
+
+        /// <summary>
+        /// The department level at the hierarchy
+        /// </summary>
+        /// <value>The department level at the hierarchy</value>
+        /// <example>0</example>
+        [DataMember(Name = "Level", EmitDefaultValue = false)]
+        public int Level { get; set; }
+
+        /// <summary>
+        /// The contact name of company or department
+        /// </summary>
+        /// <value>The contact name of company or department</value>
         [DataMember(Name = "ContactName", EmitDefaultValue = false)]
         public string ContactName { get; set; }
 
         /// <summary>
-        /// The contact email of external company or department.
+        /// The contact email of external company or department
         /// </summary>
-        /// <value>The contact email of external company or department.</value>
+        /// <value>The contact email of external company or department</value>
         [DataMember(Name = "ContactEmail", EmitDefaultValue = false)]
         public string ContactEmail { get; set; }
 
@@ -133,15 +164,49 @@ namespace Agile.Now.ApiOrganizations.Model
         /// Gets or Sets OwnerId
         /// </summary>
         [DataMember(Name = "OwnerId", EmitDefaultValue = false)]
-        public FieldType OwnerId { get; set; }
+        public AbstractLong OwnerId { get; set; }
 
         /// <summary>
-        /// Defines if the department is active and can be used.
+        /// Gets or Sets CountryId
         /// </summary>
-        /// <value>Defines if the department is active and can be used.</value>
+        [DataMember(Name = "CountryId", EmitDefaultValue = false)]
+        public AbstractText CountryId { get; set; }
+
+        /// <summary>
+        /// Defines if the department is active and can be used
+        /// </summary>
+        /// <value>Defines if the department is active and can be used</value>
         /// <example>false</example>
         [DataMember(Name = "Is_Active", IsRequired = true, EmitDefaultValue = true)]
         public bool IsActive { get; set; }
+
+        /// <summary>
+        /// The date the record was updated
+        /// </summary>
+        /// <value>The date the record was updated</value>
+        /// <example>1900-01-01T00:00Z</example>
+        [DataMember(Name = "ModifiedOn", EmitDefaultValue = false)]
+        public DateTime ModifiedOn { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ModifiedBy
+        /// </summary>
+        [DataMember(Name = "ModifiedBy", EmitDefaultValue = false)]
+        public AbstractLong ModifiedBy { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CreatedBy
+        /// </summary>
+        [DataMember(Name = "CreatedBy", EmitDefaultValue = false)]
+        public AbstractLong CreatedBy { get; set; }
+
+        /// <summary>
+        /// The date the record was created
+        /// </summary>
+        /// <value>The date the record was created</value>
+        /// <example>1900-01-01T00:00Z</example>
+        [DataMember(Name = "CreatedOn", EmitDefaultValue = false)]
+        public DateTime CreatedOn { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -150,18 +215,24 @@ namespace Agile.Now.ApiOrganizations.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class DepartmentInsertData {\n");
+            sb.Append("class Department {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  DepartmentTypeId: ").Append(DepartmentTypeId).Append("\n");
             sb.Append("  ParentDepartmentId: ").Append(ParentDepartmentId).Append("\n");
+            sb.Append("  HierarchicalName: ").Append(HierarchicalName).Append("\n");
+            sb.Append("  Level: ").Append(Level).Append("\n");
             sb.Append("  ContactName: ").Append(ContactName).Append("\n");
             sb.Append("  ContactEmail: ").Append(ContactEmail).Append("\n");
             sb.Append("  ContactPhone: ").Append(ContactPhone).Append("\n");
             sb.Append("  OwnerId: ").Append(OwnerId).Append("\n");
             sb.Append("  CountryId: ").Append(CountryId).Append("\n");
             sb.Append("  IsActive: ").Append(IsActive).Append("\n");
+            sb.Append("  ModifiedOn: ").Append(ModifiedOn).Append("\n");
+            sb.Append("  ModifiedBy: ").Append(ModifiedBy).Append("\n");
+            sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
+            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

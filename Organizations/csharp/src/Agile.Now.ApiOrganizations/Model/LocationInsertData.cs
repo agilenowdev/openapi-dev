@@ -26,119 +26,90 @@ using OpenAPIDateConverter = Agile.Now.ApiOrganizations.Client.OpenAPIDateConver
 namespace Agile.Now.ApiOrganizations.Model
 {
     /// <summary>
-    /// The record of Department information.
+    /// The record of Location information.
     /// </summary>
-    [DataContract(Name = "DepartmentInsertData")]
-    public partial class DepartmentInsertData : IValidatableObject
+    [DataContract(Name = "LocationInsertData")]
+    public partial class LocationInsertData : IValidatableObject
     {
-
-        /// <summary>
-        /// Gets or Sets DepartmentTypeId
-        /// </summary>
-        [DataMember(Name = "DepartmentTypeId", IsRequired = true, EmitDefaultValue = true)]
-        public EnumDepartmentType DepartmentTypeId { get; set; }
 
         /// <summary>
         /// Gets or Sets CountryId
         /// </summary>
         [DataMember(Name = "CountryId", EmitDefaultValue = false)]
         public EnumCountry? CountryId { get; set; }
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="DepartmentInsertData" /> class.
+        /// Gets or Sets TimezoneId
+        /// </summary>
+        [DataMember(Name = "TimezoneId", EmitDefaultValue = false)]
+        public EnumTimezone? TimezoneId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CurrencyId
+        /// </summary>
+        [DataMember(Name = "CurrencyId", EmitDefaultValue = false)]
+        public EnumCurrency? CurrencyId { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LocationInsertData" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected DepartmentInsertData() { }
+        protected LocationInsertData() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="DepartmentInsertData" /> class.
+        /// Initializes a new instance of the <see cref="LocationInsertData" /> class.
         /// </summary>
-        /// <param name="id">The guid to identify the department. (required).</param>
-        /// <param name="externalId">The external identifier of the department..</param>
-        /// <param name="name">The name of the department. (required).</param>
-        /// <param name="departmentTypeId">departmentTypeId (required).</param>
-        /// <param name="parentDepartmentId">parentDepartmentId.</param>
-        /// <param name="contactName">The contact name of company or department..</param>
-        /// <param name="contactEmail">The contact email of external company or department..</param>
-        /// <param name="contactPhone">contactPhone.</param>
-        /// <param name="ownerId">ownerId.</param>
+        /// <param name="id">The guid to identify the location. (required).</param>
+        /// <param name="externalId">The external identifier of the location..</param>
+        /// <param name="name">The name of the location. The value must be unique in the system and you cannot add multiple values. (required).</param>
         /// <param name="countryId">countryId.</param>
-        /// <param name="isActive">Defines if the department is active and can be used. (required) (default to false).</param>
-        public DepartmentInsertData(string id = default(string), string externalId = default(string), string name = default(string), EnumDepartmentType departmentTypeId = default(EnumDepartmentType), FieldType parentDepartmentId = default(FieldType), string contactName = default(string), string contactEmail = default(string), string contactPhone = default(string), FieldType ownerId = default(FieldType), EnumCountry? countryId = default(EnumCountry?), bool isActive = false)
+        /// <param name="timezoneId">timezoneId.</param>
+        /// <param name="currencyId">currencyId.</param>
+        /// <param name="isActive">Defines if the location is active and can be used. (required) (default to false).</param>
+        public LocationInsertData(string id = default(string), string externalId = default(string), string name = default(string), EnumCountry? countryId = default(EnumCountry?), EnumTimezone? timezoneId = default(EnumTimezone?), EnumCurrency? currencyId = default(EnumCurrency?), bool isActive = false)
         {
+            // to ensure "id" is required (not null)
+            if (id == null)
+            {
+                throw new ArgumentNullException("id is a required property for LocationInsertData and cannot be null");
+            }
             this.Id = id;
             // to ensure "name" is required (not null)
             if (name == null)
             {
-                throw new ArgumentNullException("name is a required property for DepartmentInsertData and cannot be null");
+                throw new ArgumentNullException("name is a required property for LocationInsertData and cannot be null");
             }
             this.Name = name;
-            this.DepartmentTypeId = departmentTypeId;
             this.IsActive = isActive;
             this.ExternalId = externalId;
-            this.ParentDepartmentId = parentDepartmentId;
-            this.ContactName = contactName;
-            this.ContactEmail = contactEmail;
-            this.ContactPhone = contactPhone;
-            this.OwnerId = ownerId;
             this.CountryId = countryId;
+            this.TimezoneId = timezoneId;
+            this.CurrencyId = currencyId;
         }
 
         /// <summary>
-        /// The guid to identify the department.
+        /// The guid to identify the location.
         /// </summary>
-        /// <value>The guid to identify the department.</value>
-        [DataMember(Name = "Id", EmitDefaultValue = true)]
+        /// <value>The guid to identify the location.</value>
+        [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>
-        /// The external identifier of the department.
+        /// The external identifier of the location.
         /// </summary>
-        /// <value>The external identifier of the department.</value>
+        /// <value>The external identifier of the location.</value>
         [DataMember(Name = "ExternalId", EmitDefaultValue = false)]
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// The name of the department.
+        /// The name of the location. The value must be unique in the system and you cannot add multiple values.
         /// </summary>
-        /// <value>The name of the department.</value>
+        /// <value>The name of the location. The value must be unique in the system and you cannot add multiple values.</value>
         [DataMember(Name = "Name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or Sets ParentDepartmentId
+        /// Defines if the location is active and can be used.
         /// </summary>
-        [DataMember(Name = "ParentDepartmentId", EmitDefaultValue = false)]
-        public FieldType ParentDepartmentId { get; set; }
-
-        /// <summary>
-        /// The contact name of company or department.
-        /// </summary>
-        /// <value>The contact name of company or department.</value>
-        [DataMember(Name = "ContactName", EmitDefaultValue = false)]
-        public string ContactName { get; set; }
-
-        /// <summary>
-        /// The contact email of external company or department.
-        /// </summary>
-        /// <value>The contact email of external company or department.</value>
-        [DataMember(Name = "ContactEmail", EmitDefaultValue = false)]
-        public string ContactEmail { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ContactPhone
-        /// </summary>
-        [DataMember(Name = "ContactPhone", EmitDefaultValue = false)]
-        public string ContactPhone { get; set; }
-
-        /// <summary>
-        /// Gets or Sets OwnerId
-        /// </summary>
-        [DataMember(Name = "OwnerId", EmitDefaultValue = false)]
-        public FieldType OwnerId { get; set; }
-
-        /// <summary>
-        /// Defines if the department is active and can be used.
-        /// </summary>
-        /// <value>Defines if the department is active and can be used.</value>
+        /// <value>Defines if the location is active and can be used.</value>
         /// <example>false</example>
         [DataMember(Name = "Is_Active", IsRequired = true, EmitDefaultValue = true)]
         public bool IsActive { get; set; }
@@ -150,17 +121,13 @@ namespace Agile.Now.ApiOrganizations.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class DepartmentInsertData {\n");
+            sb.Append("class LocationInsertData {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  DepartmentTypeId: ").Append(DepartmentTypeId).Append("\n");
-            sb.Append("  ParentDepartmentId: ").Append(ParentDepartmentId).Append("\n");
-            sb.Append("  ContactName: ").Append(ContactName).Append("\n");
-            sb.Append("  ContactEmail: ").Append(ContactEmail).Append("\n");
-            sb.Append("  ContactPhone: ").Append(ContactPhone).Append("\n");
-            sb.Append("  OwnerId: ").Append(OwnerId).Append("\n");
             sb.Append("  CountryId: ").Append(CountryId).Append("\n");
+            sb.Append("  TimezoneId: ").Append(TimezoneId).Append("\n");
+            sb.Append("  CurrencyId: ").Append(CurrencyId).Append("\n");
             sb.Append("  IsActive: ").Append(IsActive).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

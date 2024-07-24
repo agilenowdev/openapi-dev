@@ -28,8 +28,8 @@ namespace Agile.Now.ApiOrganizations.Model
     /// <summary>
     /// The record of Department information.
     /// </summary>
-    [DataContract(Name = "DepartmentInsertData")]
-    public partial class DepartmentInsertData : IValidatableObject
+    [DataContract(Name = "DepartmentData")]
+    public partial class DepartmentData : IValidatableObject
     {
 
         /// <summary>
@@ -44,14 +44,14 @@ namespace Agile.Now.ApiOrganizations.Model
         [DataMember(Name = "CountryId", EmitDefaultValue = false)]
         public EnumCountry? CountryId { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="DepartmentInsertData" /> class.
+        /// Initializes a new instance of the <see cref="DepartmentData" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected DepartmentInsertData() { }
+        protected DepartmentData() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="DepartmentInsertData" /> class.
+        /// Initializes a new instance of the <see cref="DepartmentData" /> class.
         /// </summary>
-        /// <param name="id">The guid to identify the department. (required).</param>
+        /// <param name="id">The guid to identify the department..</param>
         /// <param name="externalId">The external identifier of the department..</param>
         /// <param name="name">The name of the department. (required).</param>
         /// <param name="departmentTypeId">departmentTypeId (required).</param>
@@ -62,17 +62,17 @@ namespace Agile.Now.ApiOrganizations.Model
         /// <param name="ownerId">ownerId.</param>
         /// <param name="countryId">countryId.</param>
         /// <param name="isActive">Defines if the department is active and can be used. (required) (default to false).</param>
-        public DepartmentInsertData(string id = default(string), string externalId = default(string), string name = default(string), EnumDepartmentType departmentTypeId = default(EnumDepartmentType), FieldType parentDepartmentId = default(FieldType), string contactName = default(string), string contactEmail = default(string), string contactPhone = default(string), FieldType ownerId = default(FieldType), EnumCountry? countryId = default(EnumCountry?), bool isActive = false)
+        public DepartmentData(string id = default(string), string externalId = default(string), string name = default(string), EnumDepartmentType departmentTypeId = default(EnumDepartmentType), FieldType parentDepartmentId = default(FieldType), string contactName = default(string), string contactEmail = default(string), string contactPhone = default(string), FieldType ownerId = default(FieldType), EnumCountry? countryId = default(EnumCountry?), bool isActive = false)
         {
-            this.Id = id;
             // to ensure "name" is required (not null)
             if (name == null)
             {
-                throw new ArgumentNullException("name is a required property for DepartmentInsertData and cannot be null");
+                throw new ArgumentNullException("name is a required property for DepartmentData and cannot be null");
             }
             this.Name = name;
             this.DepartmentTypeId = departmentTypeId;
             this.IsActive = isActive;
+            this.Id = id;
             this.ExternalId = externalId;
             this.ParentDepartmentId = parentDepartmentId;
             this.ContactName = contactName;
@@ -86,7 +86,7 @@ namespace Agile.Now.ApiOrganizations.Model
         /// The guid to identify the department.
         /// </summary>
         /// <value>The guid to identify the department.</value>
-        [DataMember(Name = "Id", EmitDefaultValue = true)]
+        [DataMember(Name = "Id", EmitDefaultValue = false)]
         public string Id { get; set; }
 
         /// <summary>
@@ -150,7 +150,7 @@ namespace Agile.Now.ApiOrganizations.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class DepartmentInsertData {\n");
+            sb.Append("class DepartmentData {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");

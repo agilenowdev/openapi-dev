@@ -28,15 +28,9 @@ namespace Agile.Now.ApiOrganizations.Model
     /// <summary>
     /// The record of Department information.
     /// </summary>
-    [DataContract(Name = "DepartmentInsertData")]
-    public partial class DepartmentInsertData : IValidatableObject
+    [DataContract(Name = "DepartmentUpdateData")]
+    public partial class DepartmentUpdateData : IValidatableObject
     {
-
-        /// <summary>
-        /// Gets or Sets DepartmentTypeId
-        /// </summary>
-        [DataMember(Name = "DepartmentTypeId", IsRequired = true, EmitDefaultValue = true)]
-        public EnumDepartmentType DepartmentTypeId { get; set; }
 
         /// <summary>
         /// Gets or Sets CountryId
@@ -44,50 +38,37 @@ namespace Agile.Now.ApiOrganizations.Model
         [DataMember(Name = "CountryId", EmitDefaultValue = false)]
         public EnumCountry? CountryId { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="DepartmentInsertData" /> class.
+        /// Initializes a new instance of the <see cref="DepartmentUpdateData" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected DepartmentInsertData() { }
+        protected DepartmentUpdateData() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="DepartmentInsertData" /> class.
+        /// Initializes a new instance of the <see cref="DepartmentUpdateData" /> class.
         /// </summary>
-        /// <param name="id">The guid to identify the department. (required).</param>
         /// <param name="externalId">The external identifier of the department..</param>
         /// <param name="name">The name of the department. (required).</param>
-        /// <param name="departmentTypeId">departmentTypeId (required).</param>
-        /// <param name="parentDepartmentId">parentDepartmentId.</param>
         /// <param name="contactName">The contact name of company or department..</param>
         /// <param name="contactEmail">The contact email of external company or department..</param>
         /// <param name="contactPhone">contactPhone.</param>
         /// <param name="ownerId">ownerId.</param>
         /// <param name="countryId">countryId.</param>
         /// <param name="isActive">Defines if the department is active and can be used. (required) (default to false).</param>
-        public DepartmentInsertData(string id = default(string), string externalId = default(string), string name = default(string), EnumDepartmentType departmentTypeId = default(EnumDepartmentType), FieldType parentDepartmentId = default(FieldType), string contactName = default(string), string contactEmail = default(string), string contactPhone = default(string), FieldType ownerId = default(FieldType), EnumCountry? countryId = default(EnumCountry?), bool isActive = false)
+        public DepartmentUpdateData(string externalId = default(string), string name = default(string), string contactName = default(string), string contactEmail = default(string), string contactPhone = default(string), FieldType ownerId = default(FieldType), EnumCountry? countryId = default(EnumCountry?), bool isActive = false)
         {
-            this.Id = id;
             // to ensure "name" is required (not null)
             if (name == null)
             {
-                throw new ArgumentNullException("name is a required property for DepartmentInsertData and cannot be null");
+                throw new ArgumentNullException("name is a required property for DepartmentUpdateData and cannot be null");
             }
             this.Name = name;
-            this.DepartmentTypeId = departmentTypeId;
             this.IsActive = isActive;
             this.ExternalId = externalId;
-            this.ParentDepartmentId = parentDepartmentId;
             this.ContactName = contactName;
             this.ContactEmail = contactEmail;
             this.ContactPhone = contactPhone;
             this.OwnerId = ownerId;
             this.CountryId = countryId;
         }
-
-        /// <summary>
-        /// The guid to identify the department.
-        /// </summary>
-        /// <value>The guid to identify the department.</value>
-        [DataMember(Name = "Id", EmitDefaultValue = true)]
-        public string Id { get; set; }
 
         /// <summary>
         /// The external identifier of the department.
@@ -102,12 +83,6 @@ namespace Agile.Now.ApiOrganizations.Model
         /// <value>The name of the department.</value>
         [DataMember(Name = "Name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ParentDepartmentId
-        /// </summary>
-        [DataMember(Name = "ParentDepartmentId", EmitDefaultValue = false)]
-        public FieldType ParentDepartmentId { get; set; }
 
         /// <summary>
         /// The contact name of company or department.
@@ -150,12 +125,9 @@ namespace Agile.Now.ApiOrganizations.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class DepartmentInsertData {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("class DepartmentUpdateData {\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  DepartmentTypeId: ").Append(DepartmentTypeId).Append("\n");
-            sb.Append("  ParentDepartmentId: ").Append(ParentDepartmentId).Append("\n");
             sb.Append("  ContactName: ").Append(ContactName).Append("\n");
             sb.Append("  ContactEmail: ").Append(ContactEmail).Append("\n");
             sb.Append("  ContactPhone: ").Append(ContactPhone).Append("\n");

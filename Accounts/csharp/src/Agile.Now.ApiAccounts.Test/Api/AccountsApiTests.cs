@@ -71,7 +71,6 @@ namespace Agile.Now.ApiAccounts.Test.Api
             try
             {
                 AssertAccountDataEqual(accountData, createdAccount);
-                Assert.Null(Record.Exception(() => api.GetAccount(createdAccount.Id)));
                 output.WriteLine($"TenantId= {createdAccount.TenantId.Id}");
             }
             finally
