@@ -161,8 +161,8 @@ namespace Agile.Now.ApiOrganizations.Test.Api
         [Fact]
         public void Test_Department_List_ById()
         {
-            var DepartmentData = TestDepartmentData.CreateDepartmentDataList(2);
-            var createdDepartments = DepartmentData.Select(i => api.CreateDepartment(i)).ToArray();
+            var departmentData = TestDepartmentData.CreateDepartmentDataList(2);
+            var createdDepartments = departmentData.Select(i => api.CreateDepartment(i)).ToArray();
             try
             {
                 var foundDepartments = api.ListDepartments(
@@ -182,8 +182,8 @@ namespace Agile.Now.ApiOrganizations.Test.Api
         [Fact]
         public void Test_Department_List_ByName()
         {
-            var DepartmentData = TestDepartmentData.CreateDepartmentDataList(2);
-            var createdDepartments = DepartmentData.Select(i => api.CreateDepartment(i)).ToArray();
+            var departmentData = TestDepartmentData.CreateDepartmentDataList(2);
+            var createdDepartments = departmentData.Select(i => api.CreateDepartment(i)).ToArray();
             try
             {
                 var foundDepartments = api.ListDepartments(
@@ -197,7 +197,46 @@ namespace Agile.Now.ApiOrganizations.Test.Api
             }
         }
 
-        
+        /// <summary>
+        /// Test UpdateDepartment
+        /// </summary>
+        [Fact]
+        public void Test_Department_Update()
+        {
+            var departmentData = TestDepartmentData.CreateDepartmentData();
+            var createdDepartment = api.CreateDepartment(departmentData);
+            try
+            {
+                TestDepartmentData.UpdateDepartmentData(departmentData);
+                var updatedDepartment = api.UpdateDepartment(createdDepartment.Id, departmentData.ToDepartmentUpdateData());
+                AssertDepartmentDataEqual(departmentData, updatedDepartment);
+            }
+            finally
+            {
+                api.DeleteDepartment(createdDepartment.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test UpsertDepartment
+        /// </summary>
+        [Fact]
+        public void Test_Department_Upsert()
+        {
+            var departmentData = TestDepartmentData.CreateDepartmentData();
+            var createdDepartment = api.UpsertDepartment(departmentData.ToDepartmentData());
+            try
+            {
+                AssertDepartmentDataEqual(departmentData, createdDepartment);
+                TestDepartmentData.UpdateDepartmentData(departmentData, createdDepartment.Id);
+                var updatedDepartment = api.UpsertDepartment(departmentData.ToDepartmentData());
+                AssertDepartmentDataEqual(departmentData, updatedDepartment);
+            }
+            finally
+            {
+                api.DeleteDepartment(createdDepartment.Id);
+            }
+        }
 
         /// <summary>
         /// Test DeleteDepartmentUser

@@ -1,10 +1,10 @@
-﻿using Agile.Now.ApiOrganizations.Model;
-using System;
+﻿using System;
 using System.Linq;
+using Agile.Now.ApiOrganizations.Model;
 
 namespace Agile.Now.ApiOrganizations.Test.Api;
 
-internal class TestDepartmentData
+internal static class TestDepartmentData
 {
     public static DepartmentInsertData CreateDepartmentData(string suffix = null)
     {
@@ -25,4 +25,36 @@ internal class TestDepartmentData
 
     public static DepartmentInsertData[] CreateDepartmentDataList(int count) =>
         Enumerable.Range(0, count).Select(i => CreateDepartmentData(i.ToString())).ToArray();
+
+    public static void UpdateDepartmentData(DepartmentInsertData departmentInsertData, string id = null)
+    {
+        if (id != null)
+            departmentInsertData.Id = id;
+        const string updated = "updated";
+        departmentInsertData.Name += updated;
+        departmentInsertData.DepartmentTypeId =
+            departmentInsertData.DepartmentTypeId == EnumDepartmentType.Internal ?
+                EnumDepartmentType.External : EnumDepartmentType.Internal;
+        departmentInsertData.CountryId = departmentInsertData.CountryId == EnumCountry.FIN ?
+            EnumCountry.USA : EnumCountry.FIN;
+    }
+
+    public static DepartmentUpdateData ToDepartmentUpdateData(this DepartmentInsertData departmentInsertData) =>
+        new
+        (
+            name: departmentInsertData.Name,
+            contactName: departmentInsertData.ContactName,
+            contactEmail: departmentInsertData.ContactEmail,
+            countryId: departmentInsertData.CountryId
+        );
+
+    public static DepartmentData ToDepartmentData(this DepartmentInsertData departmentInsertData) =>
+        new
+        (
+            name: departmentInsertData.Name,
+            departmentTypeId: departmentInsertData.DepartmentTypeId,
+            contactName: departmentInsertData.ContactName,
+            contactEmail: departmentInsertData.ContactEmail,
+            countryId: departmentInsertData.CountryId
+        );
 }

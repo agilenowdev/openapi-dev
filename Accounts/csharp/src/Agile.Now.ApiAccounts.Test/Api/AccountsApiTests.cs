@@ -222,7 +222,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
             var createdAccount = api.CreateAccount(accountData);
             try
             {
-                //TestAccountData.UpdateAccountData(accountData);
+                TestAccountData.UpdateAccountData(accountData);
                 var updatedAccount = api.UpdateAccount(createdAccount.Id, accountData);
                 AssertAccountDataEqual(accountData, updatedAccount);
             }
@@ -264,7 +264,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
             var createdAccount = api.UpsertAccount(accountData);
             try
             {
-                Assert.Null(Record.Exception(() => api.GetAccount(createdAccount.Id)));
+                AssertAccountDataEqual(accountData, createdAccount);
                 TestAccountData.UpdateAccountData(accountData, createdAccount.Id);
                 var updatedAccount = api.UpsertAccount(accountData);
                 AssertAccountDataEqual(accountData, updatedAccount);

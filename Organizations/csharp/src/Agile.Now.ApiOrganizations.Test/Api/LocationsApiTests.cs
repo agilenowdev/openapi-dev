@@ -8,16 +8,12 @@
  */
 
 using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Reflection;
-using RestSharp;
-using Xunit;
-
-using Agile.Now.ApiOrganizations.Client;
 using Agile.Now.ApiOrganizations.Api;
+using Agile.Now.ApiOrganizations.Client;
+using Agile.Now.ApiOrganizations.Model;
+using Xunit;
+using Xunit.Abstractions;
 // uncomment below to import models
 //using Agile.Now.ApiOrganizations.Model;
 
@@ -32,16 +28,30 @@ namespace Agile.Now.ApiOrganizations.Test.Api
     /// </remarks>
     public class LocationsApiTests : IDisposable
     {
-        private LocationsApi instance;
+        private readonly LocationsApi api;
 
-        public LocationsApiTests()
+        public LocationsApiTests(ITestOutputHelper testOutputHelper)
         {
-            instance = new LocationsApi();
+            Configuration configuration = new Configuration
+            {
+                BasePath = "https://dev.esystems.fi",
+                OAuthTokenUrl = "https://dev.esystems.fi/oAuth/rest/v2/Token",
+                OAuthFlow = Client.Auth.OAuthFlow.APPLICATION,
+                OAuthClientId = "c8907421-0886-4fb0-b859-d29966762e16",
+                OAuthClientSecret = "1da54fa9-ae11-4db3-9740-1bb47b85cd8e"
+            };
+            api = new LocationsApi(configuration);
         }
 
         public void Dispose()
         {
-            // Cleanup when everything is done.
+        }
+
+        void AssertLocationDataEqual(LocationInsertData LocationInsertData, Location Location)
+        {
+            Assert.Equal(LocationInsertData.Name, Location.Name);
+            Assert.Equal(LocationInsertData.CountryId.ToString(), Location.CountryId.Id);
+            Assert.Equal(LocationInsertData.CurrencyId.ToString(), Location.CurrencyId.Id);
         }
 
         /// <summary>
@@ -50,33 +60,174 @@ namespace Agile.Now.ApiOrganizations.Test.Api
         [Fact]
         public void InstanceTest()
         {
-            // TODO uncomment below to test 'IsType' LocationsApi
-            //Assert.IsType<LocationsApi>(instance);
         }
 
         /// <summary>
         /// Test CreateLocation
         /// </summary>
         [Fact]
-        public void CreateLocationTest()
+        public void Test_Location_Create()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //LocationInsertData locationInsertData = null;
-            //var response = instance.CreateLocation(locationInsertData);
-            //Assert.IsType<Location>(response);
+            var LocationData = TestLocationData.CreateLocationData();
+            var createdLocation = api.CreateLocation(LocationData);
+            try
+            {
+                AssertLocationDataEqual(LocationData, createdLocation);
+            }
+            finally
+            {
+                api.DeleteLocation(createdLocation.Id);
+            }
+        }
+
+
+        /// <summary>
+        /// Test DeleteLocation by Id
+        /// </summary>
+        [Fact]
+        public void Test_Location_Delete_ById()
+        {
+            var createdLocation = api.CreateLocation(TestLocationData.CreateLocationData());
+            api.DeleteLocation(createdLocation.Id);
+            Assert.Throws<ApiException>(() => api.GetLocation(createdLocation.Id));
         }
 
         /// <summary>
-        /// Test DeleteLocation
+        /// Test DeleteLocation by Name
         /// </summary>
         [Fact]
-        public void DeleteLocationTest()
+        public void Test_Location_Delete_ByUserName()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string? name = null;
-            //var response = instance.DeleteLocation(id, name);
-            //Assert.IsType<Location>(response);
+            var createdLocation = api.CreateLocation(TestLocationData.CreateLocationData());
+            api.DeleteLocation(createdLocation.Name, "Name");
+            Assert.Throws<ApiException>(() => api.GetLocation(createdLocation.Id));
+        }
+
+        /// <summary>
+        /// Test GetLocation by Id
+        /// </summary>
+        [Fact]
+        public void Test_Location_Get_ById()
+        {
+            var createdLocation = api.CreateLocation(TestLocationData.CreateLocationData());
+            try
+            {
+                Assert.Null(Record.Exception(() =>
+                {
+                    var existingLocation = api.GetLocation(createdLocation.Id);
+                    Assert.Equal(createdLocation.Id, existingLocation.Id);
+                    return existingLocation;
+                }));
+            }
+            finally
+            {
+                api.DeleteLocation(createdLocation.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test GetLocation by Name
+        /// </summary>
+        [Fact]
+        public void Test_Location_Get_ByName()
+        {
+            var createdLocation = api.CreateLocation(TestLocationData.CreateLocationData());
+            try
+            {
+                Assert.Null(Record.Exception(() =>
+                {
+                    var existingLocation = api.GetLocation(createdLocation.Name, "Name");
+                    Assert.Equal(createdLocation.Name, existingLocation.Name);
+                    return existingLocation;
+                }));
+            }
+            finally
+            {
+                api.DeleteLocation(createdLocation.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test ListLocations by Id
+        /// </summary>
+        [Fact]
+        public void Test_Location_List_ById()
+        {
+            var locationData = TestLocationData.CreateLocationDataList(2);
+            var createdLocations = locationData.Select(i => api.CreateLocation(i)).ToArray();
+            try
+            {
+                var foundLocations = api.ListLocations(
+                    filters: $"Id In {string.Join("; ", createdLocations.Select(i => i.Id))}").Data;
+                Assert.Equal(foundLocations.Count, createdLocations.Length);
+            }
+            finally
+            {
+                foreach (var i in createdLocations)
+                    api.DeleteLocation(i.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test ListLocations by Name
+        /// </summary>
+        [Fact]
+        public void Test_Location_List_ByName()
+        {
+            var locationData = TestLocationData.CreateLocationDataList(2);
+            var createdLocations = locationData.Select(i => api.CreateLocation(i)).ToArray();
+            try
+            {
+                var foundLocations = api.ListLocations(
+                    filters: $"Name In {string.Join("; ", createdLocations.Select(i => i.Name))}");
+                Assert.Equal(foundLocations.Data.Count, createdLocations.Length);
+            }
+            finally
+            {
+                foreach (var i in createdLocations)
+                    api.DeleteLocation(i.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test UpdateLocation
+        /// </summary>
+        [Fact]
+        public void Test_Location_Update()
+        {
+            var locationData = TestLocationData.CreateLocationData();
+            var createdLocation = api.CreateLocation(locationData);
+            try
+            {
+                TestLocationData.UpdateLocationData(locationData);
+                var updatedLocation = api.UpdateLocation(createdLocation.Id, locationData.ToLocationUpdateData());
+                AssertLocationDataEqual(locationData, updatedLocation);
+            }
+            finally
+            {
+                api.DeleteLocation(createdLocation.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test UpsertLocation
+        /// </summary>
+        [Fact]
+        public void Test_Location_Upsert()
+        {
+            var locationData = TestLocationData.CreateLocationData();
+            var createdLocation = api.UpsertLocation(locationData.ToLocationData());
+            try
+            {
+                AssertLocationDataEqual(locationData, createdLocation);
+                TestLocationData.UpdateLocationData(locationData, createdLocation.Id);
+                var updatedLocation = api.UpsertLocation(locationData.ToLocationData());
+                AssertLocationDataEqual(locationData, updatedLocation);
+            }
+            finally
+            {
+                api.DeleteLocation(createdLocation.Id);
+            }
         }
 
         /// <summary>
@@ -92,19 +243,6 @@ namespace Agile.Now.ApiOrganizations.Test.Api
             //string? subName = null;
             //var response = instance.DeleteLocationUser(id, subId, name, subName);
             //Assert.IsType<User>(response);
-        }
-
-        /// <summary>
-        /// Test GetLocation
-        /// </summary>
-        [Fact]
-        public void GetLocationTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string? name = null;
-            //var response = instance.GetLocation(id, name);
-            //Assert.IsType<Location>(response);
         }
 
         /// <summary>
@@ -126,22 +264,6 @@ namespace Agile.Now.ApiOrganizations.Test.Api
         }
 
         /// <summary>
-        /// Test ListLocations
-        /// </summary>
-        [Fact]
-        public void ListLocationsTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string? fields = null;
-            //string? filters = null;
-            //string? orders = null;
-            //int? currentPage = null;
-            //int? pageSize = null;
-            //var response = instance.ListLocations(fields, filters, orders, currentPage, pageSize);
-            //Assert.IsType<Locations>(response);
-        }
-
-        /// <summary>
         /// Test PatchLocationUsers
         /// </summary>
         [Fact]
@@ -154,32 +276,6 @@ namespace Agile.Now.ApiOrganizations.Test.Api
             //string? deleteNotExists = null;
             //var response = instance.PatchLocationUsers(id, usersData, name, deleteNotExists);
             //Assert.IsType<User>(response);
-        }
-
-        /// <summary>
-        /// Test UpdateLocation
-        /// </summary>
-        [Fact]
-        public void UpdateLocationTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //LocationUpdateData locationUpdateData = null;
-            //string? name = null;
-            //var response = instance.UpdateLocation(id, locationUpdateData, name);
-            //Assert.IsType<Location>(response);
-        }
-
-        /// <summary>
-        /// Test UpsertLocation
-        /// </summary>
-        [Fact]
-        public void UpsertLocationTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //LocationData locationData = null;
-            //var response = instance.UpsertLocation(locationData);
-            //Assert.IsType<Location>(response);
         }
 
         /// <summary>

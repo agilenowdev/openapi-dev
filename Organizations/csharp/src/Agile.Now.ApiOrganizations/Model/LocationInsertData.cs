@@ -66,11 +66,6 @@ namespace Agile.Now.ApiOrganizations.Model
         /// <param name="isActive">Defines if the location is active and can be used. (required) (default to false).</param>
         public LocationInsertData(string id = default(string), string externalId = default(string), string name = default(string), EnumCountry? countryId = default(EnumCountry?), EnumTimezone? timezoneId = default(EnumTimezone?), EnumCurrency? currencyId = default(EnumCurrency?), bool isActive = false)
         {
-            // to ensure "id" is required (not null)
-            if (id == null)
-            {
-                throw new ArgumentNullException("id is a required property for LocationInsertData and cannot be null");
-            }
             this.Id = id;
             // to ensure "name" is required (not null)
             if (name == null)
@@ -89,7 +84,7 @@ namespace Agile.Now.ApiOrganizations.Model
         /// The guid to identify the location.
         /// </summary>
         /// <value>The guid to identify the location.</value>
-        [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Id", EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>
