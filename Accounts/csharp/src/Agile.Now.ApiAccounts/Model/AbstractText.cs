@@ -45,11 +45,6 @@ namespace Agile.Now.ApiAccounts.Model
         /// <param name="type">The type of the record object (required).</param>
         public AbstractText(string id = default(string), string externalId = default(string), string name = default(string), string type = default(string))
         {
-            // to ensure "id" is required (not null)
-            if (id == null)
-            {
-                throw new ArgumentNullException("id is a required property for AbstractText and cannot be null");
-            }
             this.Id = id;
             // to ensure "externalId" is required (not null)
             if (externalId == null)
@@ -76,7 +71,7 @@ namespace Agile.Now.ApiAccounts.Model
         /// </summary>
         /// <value>The primary key of the record row. If the Id attribute is used, then it must be unique</value>
         /// <example>3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5</example>
-        [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Id", EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>
