@@ -46,23 +46,8 @@ namespace Agile.Now.ApiAccessGroups.Model
         /// <param name="createdOn">The date the record was created (default to &quot;1900-01-01T00:00Z&quot;).</param>
         public AccessApplication(string id = default(string), AbstractText parentApplicationId = default(AbstractText), AbstractText accessApplicationId = default(AbstractText), bool isActive = false, DateTime createdOn = default(DateTime))
         {
-            // to ensure "id" is required (not null)
-            if (id == null)
-            {
-                throw new ArgumentNullException("id is a required property for AccessApplication and cannot be null");
-            }
             this.Id = id;
-            // to ensure "parentApplicationId" is required (not null)
-            if (parentApplicationId == null)
-            {
-                throw new ArgumentNullException("parentApplicationId is a required property for AccessApplication and cannot be null");
-            }
             this.ParentApplicationId = parentApplicationId;
-            // to ensure "accessApplicationId" is required (not null)
-            if (accessApplicationId == null)
-            {
-                throw new ArgumentNullException("accessApplicationId is a required property for AccessApplication and cannot be null");
-            }
             this.AccessApplicationId = accessApplicationId;
             this.IsActive = isActive;
             this.CreatedOn = createdOn;
@@ -72,19 +57,19 @@ namespace Agile.Now.ApiAccessGroups.Model
         /// The identifier of  access group application
         /// </summary>
         /// <value>The identifier of  access group application</value>
-        [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Id", EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>
         /// Gets or Sets ParentApplicationId
         /// </summary>
-        [DataMember(Name = "ParentApplicationId", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "ParentApplicationId", EmitDefaultValue = true)]
         public AbstractText ParentApplicationId { get; set; }
 
         /// <summary>
         /// Gets or Sets AccessApplicationId
         /// </summary>
-        [DataMember(Name = "AccessApplicationId", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "AccessApplicationId", EmitDefaultValue = true)]
         public AbstractText AccessApplicationId { get; set; }
 
         /// <summary>

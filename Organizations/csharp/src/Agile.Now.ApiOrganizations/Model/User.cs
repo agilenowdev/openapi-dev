@@ -47,11 +47,6 @@ namespace Agile.Now.ApiOrganizations.Model
         /// <param name="createdOn">The date the record was created (default to &quot;1900-01-01T00:00Z&quot;).</param>
         public User(string id = default(string), AbstractLong userId = default(AbstractLong), DateTime modifiedOn = default(DateTime), AbstractLong modifiedBy = default(AbstractLong), AbstractLong createdBy = default(AbstractLong), DateTime createdOn = default(DateTime))
         {
-            // to ensure "id" is required (not null)
-            if (id == null)
-            {
-                throw new ArgumentNullException("id is a required property for User and cannot be null");
-            }
             this.Id = id;
             this.UserId = userId;
             this.ModifiedOn = modifiedOn;
@@ -64,7 +59,7 @@ namespace Agile.Now.ApiOrganizations.Model
         /// The identifier of user department
         /// </summary>
         /// <value>The identifier of user department</value>
-        [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Id", EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>

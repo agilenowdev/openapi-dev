@@ -242,33 +242,50 @@ namespace Agile.Now.ApiOrganizations.Test.Api
         /// Test DeleteDepartmentUser
         /// </summary>
         [Fact]
-        public void DeleteDepartmentUserTest()
+        public void Test_DepartmentUser_Delete()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string subId = null;
-            //string? name = null;
-            //string? subName = null;
-            //var response = instance.DeleteDepartmentUser(id, subId, name, subName);
-            //Assert.IsType<User>(response);
+            var departmentData = TestDepartmentData.CreateDepartmentData();
+            var createdDepartment = api.CreateDepartment(departmentData);
+            try
+            {
+                var user = api.UpsertDepartmentUser(createdDepartment.Id, new());
+                api.DeleteDepartmentUser(createdDepartment.Id, user.Id);
+            }
+            finally
+            {
+                api.DeleteDepartment(createdDepartment.Id);
+            }
         }
 
         /// <summary>
         /// Test ListDepartmentUsers
         /// </summary>
         [Fact]
-        public void ListDepartmentUsersTest()
+        public void Test_DepartmentUser_List()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string? name = null;
-            //string? fields = null;
-            //string? filters = null;
-            //string? orders = null;
-            //int? currentPage = null;
-            //int? pageSize = null;
-            //var response = instance.ListDepartmentUsers(id, name, fields, filters, orders, currentPage, pageSize);
-            //Assert.IsType<Users>(response);
+            var departmentData = TestDepartmentData.CreateDepartmentData();
+            var createdDepartment = api.CreateDepartment(departmentData);
+            try
+            {
+                var createdDepartmentUsers = new[] {
+                    api.UpsertDepartmentUser(createdDepartment.Id, new()),
+                    api.UpsertDepartmentUser(createdDepartment.Id, new())
+                };
+                try
+                {
+                    var existingDepartmentUsers = api.ListDepartmentUsers(createdDepartment.Id).Data;
+                    Assert.Equal(createdDepartmentUsers.Length, existingDepartmentUsers.Count);
+                }
+                finally
+                {
+                    foreach (var i in createdDepartmentUsers)
+                        api.DeleteDepartmentUser(createdDepartment.Id, i.Id);
+                }
+            }
+            finally
+            {
+                api.DeleteDepartment(createdDepartment.Id);
+            }
         }
 
         /// <summary>
@@ -290,14 +307,28 @@ namespace Agile.Now.ApiOrganizations.Test.Api
         /// Test UpsertDepartmentUser
         /// </summary>
         [Fact]
-        public void UpsertDepartmentUserTest()
+        public void Test_DepartmentUser_Upsert()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //UserData userData = null;
-            //string? name = null;
-            //var response = instance.UpsertDepartmentUser(id, userData, name);
-            //Assert.IsType<User>(response);
+            var departmentData = TestDepartmentData.CreateDepartmentData();
+            var createdDepartment = api.CreateDepartment(departmentData);
+            try
+            {
+                var createdDepartmentUser = api.UpsertDepartmentUser(createdDepartment.Id, new());
+                api.UpsertDepartment(departmentData.ToDepartmentData());
+                try
+                {
+                    var existingDepartmentUsers = api.ListDepartmentUsers(createdDepartment.Id).Data;
+                    Assert.Contains(existingDepartmentUsers, i => i.Id == createdDepartmentUser.Id);
+                }
+                finally
+                {
+                    api.DeleteDepartmentUser(createdDepartment.Id, createdDepartmentUser.Id);
+                }
+            }
+            finally
+            {
+                api.DeleteDepartment(createdDepartment.Id);
+            }
         }
     }
 }

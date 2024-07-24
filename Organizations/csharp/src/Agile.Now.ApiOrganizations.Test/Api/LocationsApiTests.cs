@@ -55,14 +55,6 @@ namespace Agile.Now.ApiOrganizations.Test.Api
         }
 
         /// <summary>
-        /// Test an instance of LocationsApi
-        /// </summary>
-        [Fact]
-        public void InstanceTest()
-        {
-        }
-
-        /// <summary>
         /// Test CreateLocation
         /// </summary>
         [Fact]
@@ -233,33 +225,50 @@ namespace Agile.Now.ApiOrganizations.Test.Api
         /// Test DeleteLocationUser
         /// </summary>
         [Fact]
-        public void DeleteLocationUserTest()
+        public void Test_LocationUser_Delete()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string subId = null;
-            //string? name = null;
-            //string? subName = null;
-            //var response = instance.DeleteLocationUser(id, subId, name, subName);
-            //Assert.IsType<User>(response);
+            var locationData = TestLocationData.CreateLocationData();
+            var createdLocation = api.CreateLocation(locationData);
+            try
+            {
+                var locationUser = api.UpsertLocationUser(createdLocation.Id, new());
+                api.DeleteLocationUser(createdLocation.Id, locationUser.Id);
+            }
+            finally
+            {
+                api.DeleteLocation(createdLocation.Id);
+            }
         }
 
         /// <summary>
         /// Test ListLocationUsers
         /// </summary>
         [Fact]
-        public void ListLocationUsersTest()
+        public void Test_LocationUser_List()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string? name = null;
-            //string? fields = null;
-            //string? filters = null;
-            //string? orders = null;
-            //int? currentPage = null;
-            //int? pageSize = null;
-            //var response = instance.ListLocationUsers(id, name, fields, filters, orders, currentPage, pageSize);
-            //Assert.IsType<Users>(response);
+            var locationData = TestLocationData.CreateLocationData();
+            var createdLocation = api.CreateLocation(locationData);
+            try
+            {
+                var createdLocationUsers = new[] {
+                    api.UpsertLocationUser(createdLocation.Id, new()),
+                    api.UpsertLocationUser(createdLocation.Id, new())
+                };
+                try
+                {
+                    var existingLocationUsers = api.ListLocationUsers(createdLocation.Id).Data;
+                    Assert.Equal(createdLocationUsers.Length, existingLocationUsers.Count);
+                }
+                finally
+                {
+                    foreach (var i in createdLocationUsers)
+                        api.DeleteLocationUser(createdLocation.Id, i.Id);
+                }
+            }
+            finally
+            {
+                api.DeleteLocation(createdLocation.Id);
+            }
         }
 
         /// <summary>
@@ -281,14 +290,28 @@ namespace Agile.Now.ApiOrganizations.Test.Api
         /// Test UpsertLocationUser
         /// </summary>
         [Fact]
-        public void UpsertLocationUserTest()
+        public void Test_LocationUser_Upsert()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //UserData userData = null;
-            //string? name = null;
-            //var response = instance.UpsertLocationUser(id, userData, name);
-            //Assert.IsType<User>(response);
+            var locationData = TestLocationData.CreateLocationData();
+            var createdLocation = api.CreateLocation(locationData);
+            try
+            {
+                var createdLocationUser = api.UpsertLocationUser(createdLocation.Id, new());
+                api.UpsertLocation(locationData.ToLocationData());
+                try
+                {
+                    var existingLocationUsers = api.ListLocationUsers(createdLocation.Id).Data;
+                    Assert.Contains(existingLocationUsers, i => i.Id == createdLocationUser.Id);
+                }
+                finally
+                {
+                    api.DeleteLocationUser(createdLocation.Id, createdLocationUser.Id);
+                }
+            }
+            finally
+            {
+                api.DeleteLocation(createdLocation.Id);
+            }
         }
     }
 }

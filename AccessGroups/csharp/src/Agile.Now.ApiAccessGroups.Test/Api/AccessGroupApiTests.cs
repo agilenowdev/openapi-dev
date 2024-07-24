@@ -225,95 +225,107 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
         /// Test DeleteAccessGroupAccessApplication
         /// </summary>
         [Fact]
-        public void DeleteAccessGroupAccessApplicationTest()
+        public void Test_AccessGroupAccessApplication_Delete()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string subId = null;
-            //string? name = null;
-            //string? subName = null;
-            //var response = instance.DeleteAccessGroupAccessApplication(id, subId, name, subName);
-            //Assert.IsType<AccessApplication>(response);
+            var accessGroupData = TestAccessGroupData.CreateAccessGroupData();
+            var createdAccessGroup = api.CreateAccessGroup(accessGroupData);
+            try
+            {
+                var accessApplication = api.UpsertAccessGroupAccessApplication(createdAccessGroup.Id, 
+                    new(parentApplicationId: new("Id", ""), accessApplicationId: new("Id", "")));
+                api.DeleteAccessGroupAccessApplication(createdAccessGroup.Id, accessApplication.Id);
+            }
+            finally
+            {
+                api.DeleteAccessGroup(createdAccessGroup.Id);
+            }
         }
 
         /// <summary>
         /// Test DeleteAccessGroupPermission
         /// </summary>
         [Fact]
-        public void DeleteAccessGroupPermissionTest()
+        public void Test_AccessGroupPermission_Delete()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string subId = null;
-            //string? name = null;
-            //string? subName = null;
-            //var response = instance.DeleteAccessGroupPermission(id, subId, name, subName);
-            //Assert.IsType<Permission>(response);
-        }
-
-        /// <summary>
-        /// Test GetAccessGroup
-        /// </summary>
-        [Fact]
-        public void GetAccessGroupTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string? name = null;
-            //var response = instance.GetAccessGroup(id, name);
-            //Assert.IsType<AccessGroup>(response);
-        }
-
-        /// <summary>
-        /// Test ListAccessGroup
-        /// </summary>
-        [Fact]
-        public void ListAccessGroupTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string? fields = null;
-            //string? filters = null;
-            //string? orders = null;
-            //int? currentPage = null;
-            //int? pageSize = null;
-            //var response = instance.ListAccessGroup(fields, filters, orders, currentPage, pageSize);
-            //Assert.IsType<AccessGroup>(response);
+            var accessGroupData = TestAccessGroupData.CreateAccessGroupData();
+            var createdAccessGroup = api.CreateAccessGroup(accessGroupData);
+            try
+            {
+                var permission = api.UpsertAccessGroupPermission(createdAccessGroup.Id,
+                    new(permissionId: EnumPermissionType.Generic));
+                api.DeleteAccessGroupPermission(createdAccessGroup.Id, permission.Id.ToString());
+            }
+            finally
+            {
+                api.DeleteAccessGroup(createdAccessGroup.Id);
+            }
         }
 
         /// <summary>
         /// Test ListAccessGroupAccessApplications
         /// </summary>
         [Fact]
-        public void ListAccessGroupAccessApplicationsTest()
+        public void Test_AccessGroupAccessApplication_List()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string? name = null;
-            //string? fields = null;
-            //string? filters = null;
-            //string? orders = null;
-            //int? currentPage = null;
-            //int? pageSize = null;
-            //var response = instance.ListAccessGroupAccessApplications(id, name, fields, filters, orders, currentPage, pageSize);
-            //Assert.IsType<AccessApplications>(response);
+            var accessGroupData = TestAccessGroupData.CreateAccessGroupData();
+            var createdAccessGroup = api.CreateAccessGroup(accessGroupData);
+            try
+            {
+                var createdAccessGroupAccessApplications = new[] {
+                    api.UpsertAccessGroupAccessApplication(createdAccessGroup.Id, 
+                        new(parentApplicationId: new("Id", ""), accessApplicationId: new("Id", ""))),
+                    api.UpsertAccessGroupAccessApplication(createdAccessGroup.Id, 
+                        new(parentApplicationId: new("Id", ""), accessApplicationId: new("Id", "")))
+                };
+                try
+                {
+                    var existingAccessGroupAccessApplications = 
+                        api.ListAccessGroupAccessApplications(createdAccessGroup.Id).Data;
+                    Assert.Equal(createdAccessGroupAccessApplications.Length, existingAccessGroupAccessApplications.Count);
+                }
+                finally
+                {
+                    foreach (var i in createdAccessGroupAccessApplications)
+                        api.DeleteAccessGroupAccessApplication(createdAccessGroup.Id, i.Id);
+                }
+            }
+            finally
+            {
+                api.DeleteAccessGroup(createdAccessGroup.Id);
+            }
         }
 
         /// <summary>
         /// Test ListAccessGroupPermissions
         /// </summary>
         [Fact]
-        public void ListAccessGroupPermissionsTest()
+        public void Test_AccessGroupPermission_List()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string? name = null;
-            //string? fields = null;
-            //string? filters = null;
-            //string? orders = null;
-            //int? currentPage = null;
-            //int? pageSize = null;
-            //var response = instance.ListAccessGroupPermissions(id, name, fields, filters, orders, currentPage, pageSize);
-            //Assert.IsType<Permissions>(response);
+            var accessGroupData = TestAccessGroupData.CreateAccessGroupData();
+            var createdAccessGroup = api.CreateAccessGroup(accessGroupData);
+            try
+            {
+                var createdAccessGroupPermissions = new[] {
+                    api.UpsertAccessGroupPermission(createdAccessGroup.Id,
+                        new(permissionId: EnumPermissionType.Generic)),
+                    api.UpsertAccessGroupPermission(createdAccessGroup.Id,
+                        new(permissionId: EnumPermissionType.Generic))
+                };
+                try
+                {
+                    var existingAccessGroupPermissions = api.ListAccessGroupPermissions(createdAccessGroup.Id).Data;
+                    Assert.Equal(createdAccessGroupPermissions.Length, existingAccessGroupPermissions.Count);
+                }
+                finally
+                {
+                    foreach (var i in createdAccessGroupPermissions)
+                        api.DeleteAccessGroupPermission(createdAccessGroup.Id, i.Id.ToString());
+                }
+            }
+            finally
+            {
+                api.DeleteAccessGroup(createdAccessGroup.Id);
+            }
         }
 
         /// <summary>
@@ -350,28 +362,62 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
         /// Test UpsertAccessGroupAccessApplication
         /// </summary>
         [Fact]
-        public void UpsertAccessGroupAccessApplicationTest()
+        public void Test_AccessGroupAccessApplication_Upsert()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //AccessApplicationData accessApplicationData = null;
-            //string? name = null;
-            //var response = instance.UpsertAccessGroupAccessApplication(id, accessApplicationData, name);
-            //Assert.IsType<AccessApplication>(response);
+            var accessGroupData = TestAccessGroupData.CreateAccessGroupData();
+            var createdAccessGroup = api.CreateAccessGroup(accessGroupData);
+            try
+            {
+                var createdAccessGroupAccessApplication = api.UpsertAccessGroupAccessApplication(createdAccessGroup.Id, 
+                    new(parentApplicationId: new("Id", ""), accessApplicationId: new("Id", "")));
+                api.UpsertAccessGroup(accessGroupData);
+                try
+                {
+                    var existingAccessGroupAccessApplications = 
+                        api.ListAccessGroupAccessApplications(createdAccessGroup.Id).Data;
+                    Assert.Contains(existingAccessGroupAccessApplications, 
+                        i => i.Id == createdAccessGroupAccessApplication.Id);
+                }
+                finally
+                {
+                    api.DeleteAccessGroupAccessApplication(createdAccessGroup.Id, createdAccessGroupAccessApplication.Id);
+                }
+            }
+            finally
+            {
+                api.DeleteAccessGroup(createdAccessGroup.Id);
+            }
         }
 
         /// <summary>
         /// Test UpsertAccessGroupPermission
         /// </summary>
         [Fact]
-        public void UpsertAccessGroupPermissionTest()
+        public void Test_AccessGroupPermission_Upsert()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //PermissionData permissionData = null;
-            //string? name = null;
-            //var response = instance.UpsertAccessGroupPermission(id, permissionData, name);
-            //Assert.IsType<Permission>(response);
+            var accessGroupData = TestAccessGroupData.CreateAccessGroupData();
+            var createdAccessGroup = api.CreateAccessGroup(accessGroupData);
+            try
+            {
+                var createdAccessGroupPermission = api.UpsertAccessGroupPermission(createdAccessGroup.Id,
+                    new(permissionId: EnumPermissionType.Generic));
+                api.UpsertAccessGroup(accessGroupData);
+                try
+                {
+                    var existingAccessGroupPermissions =
+                        api.ListAccessGroupPermissions(createdAccessGroup.Id).Data;
+                    Assert.Contains(existingAccessGroupPermissions,
+                        i => i.Id == createdAccessGroupPermission.Id);
+                }
+                finally
+                {
+                    api.DeleteAccessGroupPermission(createdAccessGroup.Id, createdAccessGroupPermission.Id.ToString());
+                }
+            }
+            finally
+            {
+                api.DeleteAccessGroup(createdAccessGroup.Id);
+            }
         }
     }
 }

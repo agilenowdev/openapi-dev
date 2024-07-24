@@ -48,11 +48,6 @@ namespace Agile.Now.ApiAccessGroups.Model
         public Permission(long id = 0, AbstractText accessRoleId = default(AbstractText), AbstractLong roleId = default(AbstractLong), AbstractText permissionId = default(AbstractText), bool isActive = false, DateTime createdOn = default(DateTime))
         {
             this.Id = id;
-            // to ensure "permissionId" is required (not null)
-            if (permissionId == null)
-            {
-                throw new ArgumentNullException("permissionId is a required property for Permission and cannot be null");
-            }
             this.PermissionId = permissionId;
             this.CreatedOn = createdOn;
             this.AccessRoleId = accessRoleId;
@@ -65,7 +60,7 @@ namespace Agile.Now.ApiAccessGroups.Model
         /// </summary>
         /// <value>The identifier of entity</value>
         /// <example>0</example>
-        [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Id", EmitDefaultValue = true)]
         public long Id { get; set; }
 
         /// <summary>
@@ -83,7 +78,7 @@ namespace Agile.Now.ApiAccessGroups.Model
         /// <summary>
         /// Gets or Sets PermissionId
         /// </summary>
-        [DataMember(Name = "PermissionId", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "PermissionId", EmitDefaultValue = true)]
         public AbstractText PermissionId { get; set; }
 
         /// <summary>
@@ -99,7 +94,7 @@ namespace Agile.Now.ApiAccessGroups.Model
         /// </summary>
         /// <value>The date when the record was created.</value>
         /// <example>1900-01-01T00:00Z</example>
-        [DataMember(Name = "CreatedOn", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "CreatedOn", EmitDefaultValue = true)]
         public DateTime CreatedOn { get; set; }
 
         /// <summary>
