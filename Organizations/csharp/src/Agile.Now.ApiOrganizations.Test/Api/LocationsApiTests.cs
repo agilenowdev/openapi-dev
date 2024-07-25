@@ -213,6 +213,7 @@ namespace Agile.Now.ApiOrganizations.Test.Api
                 AssertLocationDataEqual(locationData, createdLocation);
                 TestLocationData.UpdateLocationData(locationData, createdLocation.Id);
                 var updatedLocation = api.UpsertLocation(locationData.ToLocationData());
+                Assert.Equal(createdLocation.Id, updatedLocation.Id);
                 AssertLocationDataEqual(locationData, updatedLocation);
             }
             finally
@@ -297,7 +298,6 @@ namespace Agile.Now.ApiOrganizations.Test.Api
             try
             {
                 var createdLocationUser = api.UpsertLocationUser(createdLocation.Id, new());
-                api.UpsertLocation(locationData.ToLocationData());
                 try
                 {
                     var existingLocationUsers = api.ListLocationUsers(createdLocation.Id).Data;

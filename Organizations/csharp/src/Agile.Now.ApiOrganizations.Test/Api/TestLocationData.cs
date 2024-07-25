@@ -44,6 +44,7 @@ internal static class TestLocationData
     public static LocationData ToLocationData(this LocationInsertData locationInsertData) =>
         new
         (
+            id: locationInsertData.Id,
             name: locationInsertData.Name,
             countryId: locationInsertData.CountryId,
             currencyId: locationInsertData.CurrencyId

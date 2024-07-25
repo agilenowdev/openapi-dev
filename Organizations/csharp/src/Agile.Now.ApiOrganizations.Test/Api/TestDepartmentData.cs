@@ -51,6 +51,7 @@ internal static class TestDepartmentData
     public static DepartmentData ToDepartmentData(this DepartmentInsertData departmentInsertData) =>
         new
         (
+            id: departmentInsertData.Id,
             name: departmentInsertData.Name,
             departmentTypeId: departmentInsertData.DepartmentTypeId,
             contactName: departmentInsertData.ContactName,

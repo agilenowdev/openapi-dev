@@ -213,6 +213,7 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
                 AssertAccessGroupDataEqual(accessGroupData, createdAccessGroup);
                 TestAccessGroupData.UpdateAccessGroupData(accessGroupData, createdAccessGroup.Id);
                 var updatedAccessGroup = api.UpsertAccessGroup(accessGroupData);
+                Assert.Equal(createdAccessGroup.Id, updatedAccessGroup.Id);
                 AssertAccessGroupDataEqual(accessGroupData, updatedAccessGroup);
             }
             finally
@@ -370,7 +371,6 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
             {
                 var createdAccessGroupAccessApplication = api.UpsertAccessGroupAccessApplication(createdAccessGroup.Id, 
                     new(parentApplicationId: new("Id", ""), accessApplicationId: new("Id", "")));
-                api.UpsertAccessGroup(accessGroupData);
                 try
                 {
                     var existingAccessGroupAccessApplications = 
@@ -401,7 +401,6 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
             {
                 var createdAccessGroupPermission = api.UpsertAccessGroupPermission(createdAccessGroup.Id,
                     new(permissionId: EnumPermissionType.Generic));
-                api.UpsertAccessGroup(accessGroupData);
                 try
                 {
                     var existingAccessGroupPermissions =

@@ -26,7 +26,6 @@ internal static class TestAccessGroupData
         if (id != null)
             accessGroupInsertData.Id = id;
         const string updated = "updated";
-        accessGroupInsertData.Name += updated;
         accessGroupInsertData.Description += updated;
         accessGroupInsertData.AccessGroupTypeId = 
             accessGroupInsertData.AccessGroupTypeId == EnumAccessGroupType.Departments ?

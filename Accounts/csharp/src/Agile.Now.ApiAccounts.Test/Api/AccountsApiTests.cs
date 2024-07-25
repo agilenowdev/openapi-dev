@@ -267,6 +267,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
                 AssertAccountDataEqual(accountData, createdAccount);
                 TestAccountData.UpdateAccountData(accountData, createdAccount.Id);
                 var updatedAccount = api.UpsertAccount(accountData);
+                Assert.Equal(createdAccount.Id, updatedAccount.Id);
                 AssertAccountDataEqual(accountData, updatedAccount);
             }
             finally

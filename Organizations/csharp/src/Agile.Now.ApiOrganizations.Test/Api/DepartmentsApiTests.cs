@@ -230,6 +230,7 @@ namespace Agile.Now.ApiOrganizations.Test.Api
                 AssertDepartmentDataEqual(departmentData, createdDepartment);
                 TestDepartmentData.UpdateDepartmentData(departmentData, createdDepartment.Id);
                 var updatedDepartment = api.UpsertDepartment(departmentData.ToDepartmentData());
+                Assert.Equal(createdDepartment.Id, updatedDepartment.Id);
                 AssertDepartmentDataEqual(departmentData, updatedDepartment);
             }
             finally
@@ -294,13 +295,6 @@ namespace Agile.Now.ApiOrganizations.Test.Api
         [Fact]
         public void PatchDepartmentUsersTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //UsersData usersData = null;
-            //string? name = null;
-            //string? deleteNotExists = null;
-            //var response = instance.PatchDepartmentUsers(id, usersData, name, deleteNotExists);
-            //Assert.IsType<User>(response);
         }
 
         /// <summary>
@@ -314,7 +308,6 @@ namespace Agile.Now.ApiOrganizations.Test.Api
             try
             {
                 var createdDepartmentUser = api.UpsertDepartmentUser(createdDepartment.Id, new());
-                api.UpsertDepartment(departmentData.ToDepartmentData());
                 try
                 {
                     var existingDepartmentUsers = api.ListDepartmentUsers(createdDepartment.Id).Data;

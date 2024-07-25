@@ -46,11 +46,6 @@ namespace Agile.Now.ApiAccessGroups.Model
         /// <param name="createdOn">The date the record was created. (default to &quot;1900-01-01T00:00Z&quot;).</param>
         public AccessApplicationData(string id = default(string), FieldType parentApplicationId = default(FieldType), FieldType accessApplicationId = default(FieldType), bool isActive = false, DateTime createdOn = default(DateTime))
         {
-            // to ensure "parentApplicationId" is required (not null)
-            if (parentApplicationId == null)
-            {
-                throw new ArgumentNullException("parentApplicationId is a required property for AccessApplicationData and cannot be null");
-            }
             this.ParentApplicationId = parentApplicationId;
             // to ensure "accessApplicationId" is required (not null)
             if (accessApplicationId == null)
@@ -73,7 +68,7 @@ namespace Agile.Now.ApiAccessGroups.Model
         /// <summary>
         /// Gets or Sets ParentApplicationId
         /// </summary>
-        [DataMember(Name = "ParentApplicationId", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "ParentApplicationId", EmitDefaultValue = true)]
         public FieldType ParentApplicationId { get; set; }
 
         /// <summary>
