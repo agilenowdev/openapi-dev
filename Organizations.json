@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "2.0.100"
+    "version": "2.0.104"
   },
   "servers": [
     {
@@ -3578,8 +3578,7 @@
         "required": [
           "Id",
           "Name",
-          "DepartmentTypeId",
-          "Is_Active"
+          "DepartmentTypeId"
         ],
         "type": "object",
         "properties": {
@@ -3617,12 +3616,6 @@
           },
           "CountryId": {
             "$ref": "#/components/schemas/EnumCountry"
-          },
-          "Is_Active": {
-            "type": "boolean",
-            "description": "Defines if the department is active and can be used.",
-            "default": false,
-            "example": false
           }
         },
         "description": "The record of Department information."
@@ -4746,8 +4739,7 @@
       "LocationInsertData": {
         "required": [
           "Id",
-          "Name",
-          "Is_Active"
+          "Name"
         ],
         "type": "object",
         "properties": {
@@ -4771,12 +4763,6 @@
           },
           "CurrencyId": {
             "$ref": "#/components/schemas/EnumCurrency"
-          },
-          "Is_Active": {
-            "type": "boolean",
-            "description": "Defines if the location is active and can be used.",
-            "default": false,
-            "example": false
           }
         },
         "description": "The record of Location information."
