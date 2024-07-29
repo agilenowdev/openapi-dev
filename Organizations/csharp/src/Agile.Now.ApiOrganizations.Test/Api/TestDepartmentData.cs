@@ -6,6 +6,8 @@ namespace Agile.Now.ApiOrganizations.Test.Api;
 
 internal static class TestDepartmentData
 {
+    public static int[] TestUsers = new[] { 35012, 34967 };
+
     public static DepartmentInsertData CreateDepartmentData(string suffix = null)
     {
         var name = "unit-test-department" + suffix;

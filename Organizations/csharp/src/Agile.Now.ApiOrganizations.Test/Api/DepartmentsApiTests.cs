@@ -249,8 +249,11 @@ namespace Agile.Now.ApiOrganizations.Test.Api
             var createdDepartment = api.CreateDepartment(departmentData);
             try
             {
-                var user = api.UpsertDepartmentUser(createdDepartment.Id, new());
-                api.DeleteDepartmentUser(createdDepartment.Id, user.Id);
+                var createdDepartmentUser = api.UpsertDepartmentUser(createdDepartment.Id,
+                    new(userId: new("Id", TestDepartmentData.TestUsers[0].ToString())));
+                api.DeleteDepartmentUser(createdDepartment.Id, createdDepartmentUser.Id);
+                var existingDepartmentUsers = api.ListDepartmentUsers(createdDepartment.Id).Data;
+                Assert.DoesNotContain(existingDepartmentUsers, i => i.Id == createdDepartmentUser.Id);
             }
             finally
             {
@@ -268,10 +271,8 @@ namespace Agile.Now.ApiOrganizations.Test.Api
             var createdDepartment = api.CreateDepartment(departmentData);
             try
             {
-                var createdDepartmentUsers = new[] {
-                    api.UpsertDepartmentUser(createdDepartment.Id, new()),
-                    api.UpsertDepartmentUser(createdDepartment.Id, new())
-                };
+                var createdDepartmentUsers = TestLocationData.TestUsers.Select(i =>
+                    api.UpsertDepartmentUser(createdDepartment.Id, new(userId: new("Id", i.ToString())))).ToArray();
                 try
                 {
                     var existingDepartmentUsers = api.ListDepartmentUsers(createdDepartment.Id).Data;
@@ -307,7 +308,8 @@ namespace Agile.Now.ApiOrganizations.Test.Api
             var createdDepartment = api.CreateDepartment(departmentData);
             try
             {
-                var createdDepartmentUser = api.UpsertDepartmentUser(createdDepartment.Id, new());
+                var createdDepartmentUser = api.UpsertDepartmentUser(createdDepartment.Id,
+                    new(userId: new("Id", TestDepartmentData.TestUsers[0].ToString())));
                 try
                 {
                     var existingDepartmentUsers = api.ListDepartmentUsers(createdDepartment.Id).Data;

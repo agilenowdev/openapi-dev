@@ -8,6 +8,7 @@
  */
 
 using System;
+using System.Globalization;
 using System.Linq;
 using Agile.Now.ApiOrganizations.Api;
 using Agile.Now.ApiOrganizations.Client;
@@ -232,8 +233,11 @@ namespace Agile.Now.ApiOrganizations.Test.Api
             var createdLocation = api.CreateLocation(locationData);
             try
             {
-                var locationUser = api.UpsertLocationUser(createdLocation.Id, new());
-                api.DeleteLocationUser(createdLocation.Id, locationUser.Id);
+                var createdLocationUser = api.UpsertLocationUser(createdLocation.Id,
+                    new(userId: new("Id", TestLocationData.TestUsers[0].ToString())));
+                api.DeleteLocationUser(createdLocation.Id, createdLocationUser.Id);
+                var existingLocationUsers = api.ListLocationUsers(createdLocation.Id).Data;
+                Assert.DoesNotContain(existingLocationUsers, i => i.Id == createdLocationUser.Id);
             }
             finally
             {
@@ -251,10 +255,8 @@ namespace Agile.Now.ApiOrganizations.Test.Api
             var createdLocation = api.CreateLocation(locationData);
             try
             {
-                var createdLocationUsers = new[] {
-                    api.UpsertLocationUser(createdLocation.Id, new()),
-                    api.UpsertLocationUser(createdLocation.Id, new())
-                };
+                var createdLocationUsers = TestLocationData.TestUsers.Select(i =>
+                    api.UpsertLocationUser(createdLocation.Id, new(userId: new("Id", i.ToString())))).ToArray();
                 try
                 {
                     var existingLocationUsers = api.ListLocationUsers(createdLocation.Id).Data;
@@ -264,6 +266,7 @@ namespace Agile.Now.ApiOrganizations.Test.Api
                 {
                     foreach (var i in createdLocationUsers)
                         api.DeleteLocationUser(createdLocation.Id, i.Id);
+
                 }
             }
             finally
@@ -278,13 +281,6 @@ namespace Agile.Now.ApiOrganizations.Test.Api
         [Fact]
         public void PatchLocationUsersTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //UsersData usersData = null;
-            //string? name = null;
-            //string? deleteNotExists = null;
-            //var response = instance.PatchLocationUsers(id, usersData, name, deleteNotExists);
-            //Assert.IsType<User>(response);
         }
 
         /// <summary>
@@ -297,7 +293,8 @@ namespace Agile.Now.ApiOrganizations.Test.Api
             var createdLocation = api.CreateLocation(locationData);
             try
             {
-                var createdLocationUser = api.UpsertLocationUser(createdLocation.Id, new());
+                var createdLocationUser = api.UpsertLocationUser(createdLocation.Id,
+                    new(userId: new ("Id", TestLocationData.TestUsers[0].ToString())));
                 try
                 {
                     var existingLocationUsers = api.ListLocationUsers(createdLocation.Id).Data;

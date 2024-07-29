@@ -6,6 +6,9 @@ namespace Agile.Now.ApiOrganizations.Test.Api;
 
 internal static class TestLocationData
 {
+
+    public static int[] TestUsers = new[] { 35012, 34967 };
+
     public static LocationInsertData CreateLocationData(string suffix = null)
     {
         var name = "unit-test-location" + suffix;
