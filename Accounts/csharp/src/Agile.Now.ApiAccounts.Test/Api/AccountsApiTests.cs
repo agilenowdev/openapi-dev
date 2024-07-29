@@ -287,9 +287,11 @@ namespace Agile.Now.ApiAccounts.Test.Api
             try
             {
                 var anotherTenant = api.UpsertAccountTenant(createdAccount.Id, new(
-                    new("Name", createdAccount.Name + "_another_tenant"),
+                    new("Id", ""),
                     new("Id", TestAccountData.AnotherTenant.ToString())));
                 api.DeleteAccountTenant(createdAccount.Id, anotherTenant.UserId.ToString(), subName: "UserId");
+                var existingAccountTenants = api.ListAccountTenants(createdAccount.Id).Data;
+                Assert.DoesNotContain(existingAccountTenants, i => i.TenantId.Id == anotherTenant.TenantId.Id);
             }
             finally
             {
@@ -308,7 +310,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
             try
             {
                 var anotherTenant = api.UpsertAccountTenant(createdAccount.Id, new(
-                    new("Name", createdAccount.Name + "_another_tenant"),
+                    new("Id", ""),
                     new("Id", TestAccountData.AnotherTenant.ToString())));
                 try
                 {
@@ -317,7 +319,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
                 }
                 finally
                 {
-                    api.DeleteAccountTenant(createdAccount.Id, anotherTenant.TenantId.Id.ToString());
+                    api.DeleteAccountTenant(createdAccount.Id, anotherTenant.UserId.ToString(), subName: "UserId");
                 }
             }
             finally
@@ -337,9 +339,9 @@ namespace Agile.Now.ApiAccounts.Test.Api
             try
             {
                 var anotherTenant = api.UpsertAccountTenant(
-                    createdAccount.Id,
-                    new(new("Name", createdAccount.Name + "_another_tenant"),
-                    new("Id", TestAccountData.AnotherTenant.ToString())));
+                    createdAccount.Id, new(
+                        new("Id", ""),
+                        new("Id", TestAccountData.AnotherTenant.ToString())));
                 try
                 {
                     var existingAccountTenants = api.ListAccountTenants(createdAccount.Id).Data;
