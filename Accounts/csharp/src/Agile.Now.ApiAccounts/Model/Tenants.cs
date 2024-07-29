@@ -36,7 +36,7 @@ namespace Agile.Now.ApiAccounts.Model
         /// </summary>
         /// <param name="meta">meta.</param>
         /// <param name="data">The list of &#x60;Tenant records&#x60;.</param>
-        public Tenants(Meta meta = default(Meta), List<Tenant> data = default(List<Tenant>))
+        public Tenants(Meta meta = default(Meta), List<Tenant2> data = default(List<Tenant2>))
         {
             this.Meta = meta;
             this.Data = data;
@@ -53,7 +53,7 @@ namespace Agile.Now.ApiAccounts.Model
         /// </summary>
         /// <value>The list of &#x60;Tenant records&#x60;</value>
         [DataMember(Name = "Data", EmitDefaultValue = false)]
-        public List<Tenant> Data { get; set; }
+        public List<Tenant2> Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

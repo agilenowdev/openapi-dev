@@ -46,11 +46,6 @@ namespace Agile.Now.ApiAccounts.Model
         public AbstractText(string id = default(string), string externalId = default(string), string name = default(string), string type = default(string))
         {
             this.Id = id;
-            // to ensure "externalId" is required (not null)
-            if (externalId == null)
-            {
-                throw new ArgumentNullException("externalId is a required property for AbstractText and cannot be null");
-            }
             this.ExternalId = externalId;
             // to ensure "name" is required (not null)
             if (name == null)
@@ -79,7 +74,7 @@ namespace Agile.Now.ApiAccounts.Model
         /// </summary>
         /// <value>The external identier of the record row. If the External Id attribute is used, then it must be unique</value>
         /// <example>3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5</example>
-        [DataMember(Name = "ExternalId", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "ExternalId", EmitDefaultValue = true)]
         public string ExternalId { get; set; }
 
         /// <summary>

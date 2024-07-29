@@ -112,8 +112,8 @@ namespace Agile.Now.ApiAccounts.Test.Api
             try
             {
                 var anotherTenant = api.UpsertAccountTenant(createdAccount.Id, new(
-                    new("Name", createdAccount.Name + "_another_tenant"),
-                    new FieldType("Id", TestAccountData.AnotherTenant.ToString())));
+                    new("Id", ""),
+                    new("Id", TestAccountData.AnotherTenant.ToString())));
                 api.DeleteAccount(createdAccount.Id);
                 Assert.Null(Record.Exception(() => api.GetAccount(createdAccount.Id)));
                 api.DeleteAccountTenant(createdAccount.Id, anotherTenant.UserId.ToString(), subName: "UserId");
@@ -286,12 +286,12 @@ namespace Agile.Now.ApiAccounts.Test.Api
             var createdAccount = api.CreateAccount(accountData);
             try
             {
-                var anotherTenant = api.UpsertAccountTenant(createdAccount.Id, new(
+                var createdTenant = api.UpsertAccountTenant(createdAccount.Id, new(
                     new("Id", ""),
                     new("Id", TestAccountData.AnotherTenant.ToString())));
-                api.DeleteAccountTenant(createdAccount.Id, anotherTenant.UserId.ToString(), subName: "UserId");
+                api.DeleteAccountTenant(createdAccount.Id, createdTenant.UserId.ToString(), subName: "UserId");
                 var existingAccountTenants = api.ListAccountTenants(createdAccount.Id).Data;
-                Assert.DoesNotContain(existingAccountTenants, i => i.TenantId.Id == anotherTenant.TenantId.Id);
+                Assert.DoesNotContain(existingAccountTenants, i => i.TenantId.Id == createdTenant.TenantId.Id);
             }
             finally
             {
@@ -309,9 +309,11 @@ namespace Agile.Now.ApiAccounts.Test.Api
             var createdAccount = api.CreateAccount(accountData);
             try
             {
-                var anotherTenant = api.UpsertAccountTenant(createdAccount.Id, new(
+                var anotherTenant = api.UpsertAccountTenant(createdAccount.Id, new
+                (
                     new("Id", ""),
-                    new("Id", TestAccountData.AnotherTenant.ToString())));
+                    new("Id", TestAccountData.AnotherTenant.ToString()))
+                );
                 try
                 {
                     var existingAccountTenants = api.ListAccountTenants(createdAccount.Id).Data;
@@ -338,18 +340,17 @@ namespace Agile.Now.ApiAccounts.Test.Api
             var createdAccount = api.CreateAccount(accountData);
             try
             {
-                var anotherTenant = api.UpsertAccountTenant(
-                    createdAccount.Id, new(
-                        new("Id", ""),
-                        new("Id", TestAccountData.AnotherTenant.ToString())));
+                var createdTenant = api.UpsertAccountTenant(createdAccount.Id, new(
+                    new("Id", ""),
+                    new("Id", TestAccountData.AnotherTenant.ToString())));
                 try
                 {
                     var existingAccountTenants = api.ListAccountTenants(createdAccount.Id).Data;
-                    Assert.Contains(existingAccountTenants, i => i.TenantId.Id == anotherTenant.TenantId.Id);
+                    Assert.Contains(existingAccountTenants, i => i.TenantId.Id == createdTenant.TenantId.Id);
                 }
                 finally
                 {
-                    api.DeleteAccountTenant(createdAccount.Id, anotherTenant.TenantId.Id.ToString(), subName: "UserId");
+                    api.DeleteAccountTenant(createdAccount.Id, createdTenant.TenantId.Id.ToString(), subName: "UserId");
                 }
             }
             finally
