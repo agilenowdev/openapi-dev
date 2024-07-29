@@ -6,6 +6,10 @@ namespace Agile.Now.ApiAccessGroups.Test.Api;
 
 internal static class TestAccessGroupData
 {
+    public static string[] TestApplications = new[] {
+        "15478BAE-C17D-4966-8288-F2F743A4B0EA", 
+        "5BEE1686-32A5-4469-958C-EFF31CB9EC07" };
+
     public static AccessGroupData CreateAccessGroupData(string suffix = null)
     {
         var name = "unit-test-access-group" + suffix;

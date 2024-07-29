@@ -370,7 +370,9 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
             try
             {
                 var createdAccessGroupAccessApplication = api.UpsertAccessGroupAccessApplication(createdAccessGroup.Id, 
-                    new(parentApplicationId: new("Id", ""), accessApplicationId: new("Id", "")));
+                    new(
+                        parentApplicationId: new("Id", "3B594DDA-3F5D-431A-A532-A3EDFFA9BD98"), 
+                        accessApplicationId: new("Id", TestAccessGroupData.TestApplications[0])));
                 try
                 {
                     var existingAccessGroupAccessApplications = 
