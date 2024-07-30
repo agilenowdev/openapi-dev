@@ -88,7 +88,7 @@ namespace Agile.Now.ApiOrganizations.Test.Api
         /// Test DeleteLocation by Name
         /// </summary>
         [Fact]
-        public void Test_Location_Delete_ByUserName()
+        public void Test_Location_Delete_ByName()
         {
             var createdLocation = api.CreateLocation(TestLocationData.CreateLocationData());
             api.DeleteLocation(createdLocation.Name, "Name");

@@ -10,7 +10,10 @@ internal static class TestGroupData
     {
         var name = "unit-test-group" + suffix;
         var uniqueName = $"{name}-{DateTime.Now:yyyy-MM-dd-HH-mm-ss-fff}";
-        return new GroupData();
+        return new GroupData
+        (
+            name: uniqueName
+        );
     }
 
     public static GroupData[] CreateGroupDataList(int count) =>

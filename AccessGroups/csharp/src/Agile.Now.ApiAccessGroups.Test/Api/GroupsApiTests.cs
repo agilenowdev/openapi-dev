@@ -55,8 +55,7 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
 
         void AssertGroupDataEqual(GroupData GroupInsertData, Group Group)
         {
-            /*Assert.Equal(GroupInsertData.Name, Group.Name);
-            Assert.Equal(GroupInsertData.Description, Group.Description);*/
+            Assert.Equal(GroupInsertData.Name, Group.Name);
         }
 
         /// <summary>
@@ -92,7 +91,7 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
         /// Test DeleteGroup by Name
         /// </summary>
         [Fact]
-        public void Test_Group_Delete_ByUserName()
+        public void Test_Group_Delete_ByName()
         {
             var createdGroup = api.CreateGroup(TestGroupData.CreateGroupData());
             //api.DeleteGroup(createdGroup.Name, "Name");

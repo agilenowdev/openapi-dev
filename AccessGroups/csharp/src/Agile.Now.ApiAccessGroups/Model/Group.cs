@@ -42,15 +42,10 @@ namespace Agile.Now.ApiAccessGroups.Model
         /// <param name="id">The identifier of group access group (required) (default to 0).</param>
         /// <param name="groupId">groupId (required).</param>
         /// <param name="createdOn">The date when the record was created. (required) (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public Group(long id = 0, AbstractLong groupId = default(AbstractLong), DateTime createdOn = default(DateTime))
+        public Group(long id = 0, string name = default, DateTime createdOn = default(DateTime))
         {
             this.Id = id;
-            // to ensure "groupId" is required (not null)
-            if (groupId == null)
-            {
-                throw new ArgumentNullException("groupId is a required property for Group and cannot be null");
-            }
-            this.GroupId = groupId;
+            this.Name = name;
             this.CreatedOn = createdOn;
         }
 
@@ -62,11 +57,8 @@ namespace Agile.Now.ApiAccessGroups.Model
         [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
         public long Id { get; set; }
 
-        /// <summary>
-        /// Gets or Sets GroupId
-        /// </summary>
-        [DataMember(Name = "GroupId", IsRequired = true, EmitDefaultValue = true)]
-        public AbstractLong GroupId { get; set; }
+        [DataMember(Name = "Name", IsRequired = true, EmitDefaultValue = true)]
+        public string Name { get; set; }
 
         /// <summary>
         /// The date when the record was created.
@@ -85,7 +77,6 @@ namespace Agile.Now.ApiAccessGroups.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class Group {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  GroupId: ").Append(GroupId).Append("\n");
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

@@ -7,10 +7,13 @@ namespace Agile.Now.ApiAccessGroups.Test.Api;
 internal static class TestAccessGroupData
 {
     public static string[] Applications = new[] {
-        "15478BAE-C17D-4966-8288-F2F743A4B0EA", 
+        "15478BAE-C17D-4966-8288-F2F743A4B0EA",
         "5BEE1686-32A5-4469-958C-EFF31CB9EC07" };
 
     public static string ParentApplication = "3B594DDA-3F5D-431A-A532-A3EDFFA9BD98";
+
+    public static int[] Groups = new[] { 6626, 6625 };
+    public static int[] Users = new[] { 35012, 34967 };
 
     public static AccessGroupData CreateAccessGroupData(string suffix = null)
     {
@@ -33,7 +36,7 @@ internal static class TestAccessGroupData
             accessGroupInsertData.Id = id;
         const string updated = "updated";
         accessGroupInsertData.Description += updated;
-        accessGroupInsertData.AccessGroupTypeId = 
+        accessGroupInsertData.AccessGroupTypeId =
             accessGroupInsertData.AccessGroupTypeId == EnumAccessGroupType.Departments ?
                 EnumAccessGroupType.Locations : EnumAccessGroupType.Departments;
     }
