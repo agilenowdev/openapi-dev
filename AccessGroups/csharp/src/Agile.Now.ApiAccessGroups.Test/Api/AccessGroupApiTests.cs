@@ -232,8 +232,10 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
             var createdAccessGroup = api.CreateAccessGroup(accessGroupData);
             try
             {
-                var accessApplication = api.UpsertAccessGroupAccessApplication(createdAccessGroup.Id, 
-                    new(parentApplicationId: new("Id", ""), accessApplicationId: new("Id", "")));
+                var accessApplication = api.UpsertAccessGroupAccessApplication(createdAccessGroup.Id,
+                    new(
+                        parentApplicationId: new("Id", TestAccessGroupData.ParentApplication),
+                        accessApplicationId: new("Id", TestAccessGroupData.Applications[0])));
                 api.DeleteAccessGroupAccessApplication(createdAccessGroup.Id, accessApplication.Id);
             }
             finally
@@ -272,12 +274,11 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
             var createdAccessGroup = api.CreateAccessGroup(accessGroupData);
             try
             {
-                var createdAccessGroupAccessApplications = new[] {
-                    api.UpsertAccessGroupAccessApplication(createdAccessGroup.Id, 
-                        new(parentApplicationId: new("Id", ""), accessApplicationId: new("Id", ""))),
-                    api.UpsertAccessGroupAccessApplication(createdAccessGroup.Id, 
-                        new(parentApplicationId: new("Id", ""), accessApplicationId: new("Id", "")))
-                };
+                var createdAccessGroupAccessApplications = TestAccessGroupData.Applications.Select(i =>
+                    api.UpsertAccessGroupAccessApplication(createdAccessGroup.Id,
+                        new(
+                            parentApplicationId: new("Id", TestAccessGroupData.ParentApplication),
+                            accessApplicationId: new("Id", i)))).ToArray();
                 try
                 {
                     var existingAccessGroupAccessApplications = 
@@ -335,13 +336,6 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
         [Fact]
         public void PatchAccessGroupAccessApplicationsTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //AccessApplicationsData accessApplicationsData = null;
-            //string? name = null;
-            //string? deleteNotExists = null;
-            //var response = instance.PatchAccessGroupAccessApplications(id, accessApplicationsData, name, deleteNotExists);
-            //Assert.IsType<AccessApplication>(response);
         }
 
         /// <summary>
@@ -350,13 +344,6 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
         [Fact]
         public void PatchAccessGroupPermissionsTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //PermissionsData permissionsData = null;
-            //string? name = null;
-            //string? deleteNotExists = null;
-            //var response = instance.PatchAccessGroupPermissions(id, permissionsData, name, deleteNotExists);
-            //Assert.IsType<Permission>(response);
         }
 
         /// <summary>
@@ -371,8 +358,8 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
             {
                 var createdAccessGroupAccessApplication = api.UpsertAccessGroupAccessApplication(createdAccessGroup.Id, 
                     new(
-                        parentApplicationId: new("Id", "3B594DDA-3F5D-431A-A532-A3EDFFA9BD98"), 
-                        accessApplicationId: new("Id", TestAccessGroupData.TestApplications[0])));
+                        parentApplicationId: new("Id", TestAccessGroupData.ParentApplication), 
+                        accessApplicationId: new("Id", TestAccessGroupData.Applications[0])));
                 try
                 {
                     var existingAccessGroupAccessApplications = 
@@ -402,7 +389,7 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
             try
             {
                 var createdAccessGroupPermission = api.UpsertAccessGroupPermission(createdAccessGroup.Id,
-                    new(permissionId: EnumPermissionType.Generic));
+                    new(permissionId: EnumPermissionType.Import));
                 try
                 {
                     var existingAccessGroupPermissions =
