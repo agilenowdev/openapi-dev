@@ -32,6 +32,11 @@ docs/PermissionData.md
 docs/PermissionText.md
 docs/Permissions.md
 docs/PermissionsData.md
+docs/User.md
+docs/UserData.md
+docs/UserText.md
+docs/Users.md
+docs/UsersData.md
 git_push.sh
 src/Agile.Now.ApiAccessGroups.Test/Agile.Now.ApiAccessGroups.Test.csproj
 src/Agile.Now.ApiAccessGroups.Test/Api/AccessGroupsApiTests.cs
@@ -62,6 +67,11 @@ src/Agile.Now.ApiAccessGroups.Test/Model/PermissionTests.cs
 src/Agile.Now.ApiAccessGroups.Test/Model/PermissionTextTests.cs
 src/Agile.Now.ApiAccessGroups.Test/Model/PermissionsDataTests.cs
 src/Agile.Now.ApiAccessGroups.Test/Model/PermissionsTests.cs
+src/Agile.Now.ApiAccessGroups.Test/Model/UserDataTests.cs
+src/Agile.Now.ApiAccessGroups.Test/Model/UserTests.cs
+src/Agile.Now.ApiAccessGroups.Test/Model/UserTextTests.cs
+src/Agile.Now.ApiAccessGroups.Test/Model/UsersDataTests.cs
+src/Agile.Now.ApiAccessGroups.Test/Model/UsersTests.cs
 src/Agile.Now.ApiAccessGroups/Agile.Now.ApiAccessGroups.csproj
 src/Agile.Now.ApiAccessGroups/Api/AccessGroupsApi.cs
 src/Agile.Now.ApiAccessGroups/Api/GroupsApi.cs
@@ -111,3 +121,8 @@ src/Agile.Now.ApiAccessGroups/Model/PermissionData.cs
 src/Agile.Now.ApiAccessGroups/Model/PermissionText.cs
 src/Agile.Now.ApiAccessGroups/Model/Permissions.cs
 src/Agile.Now.ApiAccessGroups/Model/PermissionsData.cs
+src/Agile.Now.ApiAccessGroups/Model/User.cs
+src/Agile.Now.ApiAccessGroups/Model/UserData.cs
+src/Agile.Now.ApiAccessGroups/Model/UserText.cs
+src/Agile.Now.ApiAccessGroups/Model/Users.cs
+src/Agile.Now.ApiAccessGroups/Model/UsersData.cs

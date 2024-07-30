@@ -5,12 +5,9 @@ The record of Group information.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int** |  | [optional] [default to 0]
-**Name** | **string** |  | [optional] 
-**Description** | **string** |  | [optional] 
-**CreatedBy** | **string** |  | [optional] 
-**Created** | **DateTime** |  | [optional] [default to "1900-01-01T00:00Z"]
-**HasCustomManagement** | **bool** |  | [optional] [default to false]
+**Id** | **long** | The identifier of group access group. | [optional] [default to 0]
+**GroupId** | **string** | The identifier of group. | 
+**CreatedOn** | **DateTime** | The date when the record was created. | [default to "1900-01-01T00:00Z"]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

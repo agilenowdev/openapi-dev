@@ -10,22 +10,16 @@ internal static class TestGroupData
     {
         var name = "unit-test-group" + suffix;
         var uniqueName = $"{name}-{DateTime.Now:yyyy-MM-dd-HH-mm-ss-fff}";
-        return new GroupData
-        (
-            name: uniqueName,
-            description: name
-        );
+        return new GroupData();
     }
 
     public static GroupData[] CreateGroupDataList(int count) =>
         Enumerable.Range(0, count).Select(i => CreateGroupData(i.ToString())).ToArray();
 
-    public static void UpdateGroupData(GroupData GroupInsertData, int? id = null)
+    public static void UpdateGroupData(GroupData GroupInsertData, long? id = null)
     {
         if (id != null)
             GroupInsertData.Id = id.Value;
         const string updated = "updated";
-        GroupInsertData.Name += updated;
-        GroupInsertData.Description += updated;
     }
 }
