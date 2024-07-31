@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.26"
+    "version": "3.0.28"
   },
   "servers": [
     {
@@ -776,7 +776,7 @@
         ],
         "type": "object",
         "properties": {
-          "Error": {
+          "Errors": {
             "type": "array",
             "items": {
               "type": "string",
@@ -898,7 +898,6 @@
       },
       "ObjectData": {
         "required": [
-          "Id",
           "Is_Active"
         ],
         "type": "object",
@@ -917,45 +916,51 @@
           },
           "ExternalId": {
             "type": "string",
-            "description": "The external identifier of the object"
+            "description": "The external identifier of the object."
           },
           "ExtraData": {
             "type": "string",
-            "description": "Extra Data for testing Extra fields"
+            "description": "Extra Data for testing Extra fields. The value must be unique in the system and you cannot add multiple values."
           },
           "LanguageId": {
             "type": "string"
           },
           "Is_Active": {
             "type": "boolean",
-            "description": "Defines if the contact is active and can be used",
+            "description": "Defines if the contact is active and can be used.",
+            "default": false,
+            "example": false
+          },
+          "Is_Deleted": {
+            "type": "boolean",
+            "description": "Defines if the contact is deleted and cannot be used.",
             "default": false,
             "example": false
           },
           "ModifiedOn": {
             "type": "string",
-            "description": "The date the record was updated",
+            "description": "The date the record was updated.",
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
           },
           "ModifiedBy": {
             "type": "integer",
-            "description": "The Identifier of the user who updated the record",
+            "description": "The Identifier of the user who updated the record.",
             "format": "int64",
             "default": 0,
             "example": 0
           },
           "CreatedOn": {
             "type": "string",
-            "description": "The date the record was created",
+            "description": "The date the record was created.",
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
           },
           "CreatedBy": {
             "type": "integer",
-            "description": "The Identifier of the user who created the record",
+            "description": "The Identifier of the user who created the record.",
             "format": "int64",
             "default": 0,
             "example": 0
@@ -1001,9 +1006,6 @@
         "description": "The list of `ObjectPart` records"
       },
       "ObjectPartData": {
-        "required": [
-          "Id"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -1136,12 +1138,12 @@
             "tokenUrl": "https://dev.esystems.fi/oAuth/rest/v2/Token",
             "refreshUrl": "https://dev.esystems.fi/oAuth/rest/v2/Token",
             "scopes": {
-              "TestRole:Read": "(RBAC) permissions required to perform a function.",
-              "TestRole:Create, Update": "(RBAC) permissions required to perform a function.",
-              "TestRole:Create": "(RBAC) permissions required to perform a function.",
-              "TestRole:Update": "(RBAC) permissions required to perform a function.",
-              "TestRole:Delete": "(RBAC) permissions required to perform a function.",
-              "TestRole:Import": "(RBAC) permissions required to perform a function."
+              "TestApiRole:Read": "Test role to access API. (RBAC) permissions required to perform a function.",
+              "TestApiRole:Create, Update": "Test role to access API. (RBAC) permissions required to perform a function.",
+              "TestApiRole:Create": "Test role to access API. (RBAC) permissions required to perform a function.",
+              "TestApiRole:Update": "Test role to access API. (RBAC) permissions required to perform a function.",
+              "TestApiRole:Delete": "Test role to access API. (RBAC) permissions required to perform a function.",
+              "TestApiRole:Import": "Test role to access API. (RBAC) permissions required to perform a function."
             }
           }
         }
