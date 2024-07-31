@@ -23,7 +23,7 @@ info:
     name: BSD-3 license
     url: https://opensource.org/licenses/BSD-3-Clause
   title: Organization API
-  version: 2.0.100
+  version: 2.0.104
 servers:
 - description: Default entry point of service
   url: https://dev.esystems.fi
@@ -4844,7 +4844,6 @@ components:
         OwnerId:
           Field: Field
           Value: Value
-        Is_Active: false
         ExternalId: ExternalId
         ContactEmail: ContactEmail
         Id: Id
@@ -4879,15 +4878,9 @@ components:
           $ref: '#/components/schemas/FieldType'
         CountryId:
           $ref: '#/components/schemas/EnumCountry'
-        Is_Active:
-          default: false
-          description: Defines if the department is active and can be used.
-          example: false
-          type: boolean
       required:
       - DepartmentTypeId
       - Id
-      - Is_Active
       - Name
       type: object
     DepartmentUpdateData:
@@ -5929,7 +5922,6 @@ components:
       description: The record of Location information.
       example:
         CountryId: AFG
-        Is_Active: false
         ExternalId: ExternalId
         Id: Id
         TimezoneId: Afghanistan Standard Time
@@ -5952,14 +5944,8 @@ components:
           $ref: '#/components/schemas/EnumTimezone'
         CurrencyId:
           $ref: '#/components/schemas/EnumCurrency'
-        Is_Active:
-          default: false
-          description: Defines if the location is active and can be used.
-          example: false
-          type: boolean
       required:
       - Id
-      - Is_Active
       - Name
       type: object
     LocationUpdateData:

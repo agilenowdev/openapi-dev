@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Net.Security;
 using Agile.Now.ApiOrganizations.Model;
 
 namespace Agile.Now.ApiOrganizations.Test.Api;
@@ -21,7 +22,9 @@ internal static class TestDepartmentData
             contactEmail: name + "@agilenow.io"
         )
         {
-            CountryId = EnumCountry.FIN
+            CountryId = EnumCountry.FIN,
+            Level = 1,
+            IsActive = true
         };
     }
 

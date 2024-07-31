@@ -286,12 +286,11 @@ namespace Agile.Now.ApiAccounts.Test.Api
             var createdAccount = api.CreateAccount(accountData);
             try
             {
-                var createdTenant = api.UpsertAccountTenant(createdAccount.Id, new(
-                    new("Id", ""),
-                    new("Id", TestAccountData.AnotherTenant.ToString())));
-                api.DeleteAccountTenant(createdAccount.Id, createdTenant.UserId.ToString(), subName: "UserId");
                 var existingAccountTenants = api.ListAccountTenants(createdAccount.Id).Data;
-                Assert.DoesNotContain(existingAccountTenants, i => i.TenantId.Id == createdTenant.TenantId.Id);
+                var deletedTenant = api.DeleteAccountTenant(
+                    createdAccount.Id, existingAccountTenants[0].UserId.ToString(), subName: "UserId");
+                existingAccountTenants = api.ListAccountTenants(createdAccount.Id).Data;
+                Assert.DoesNotContain(existingAccountTenants, i => i.TenantId.Id == deletedTenant.TenantId.Id);
             }
             finally
             {

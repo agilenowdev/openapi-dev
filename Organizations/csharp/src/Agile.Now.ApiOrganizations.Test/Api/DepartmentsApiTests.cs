@@ -104,7 +104,7 @@ namespace Agile.Now.ApiOrganizations.Test.Api
         /// Test DeleteDepartment by Name
         /// </summary>
         [Fact]
-        public void Test_Department_Delete_ByUserName()
+        public void Test_Department_Delete_ByName()
         {
             var createdDepartment = api.CreateDepartment(TestDepartmentData.CreateDepartmentData());
             api.DeleteDepartment(createdDepartment.Name, "Name");
