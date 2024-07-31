@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.28"
+    "version": "3.0.29"
   },
   "servers": [
     {
@@ -1138,12 +1138,12 @@
             "tokenUrl": "https://dev.esystems.fi/oAuth/rest/v2/Token",
             "refreshUrl": "https://dev.esystems.fi/oAuth/rest/v2/Token",
             "scopes": {
-              "TestApiRole:Read": "Test role to access API. (RBAC) permissions required to perform a function.",
-              "TestApiRole:Create, Update": "Test role to access API. (RBAC) permissions required to perform a function.",
-              "TestApiRole:Create": "Test role to access API. (RBAC) permissions required to perform a function.",
-              "TestApiRole:Update": "Test role to access API. (RBAC) permissions required to perform a function.",
-              "TestApiRole:Delete": "Test role to access API. (RBAC) permissions required to perform a function.",
-              "TestApiRole:Import": "Test role to access API. (RBAC) permissions required to perform a function."
+              "TestRole:Read": "(RBAC) permissions required to perform a function.",
+              "TestRole:Create, Update": "(RBAC) permissions required to perform a function.",
+              "TestRole:Create": "(RBAC) permissions required to perform a function.",
+              "TestRole:Update": "(RBAC) permissions required to perform a function.",
+              "TestRole:Delete": "(RBAC) permissions required to perform a function.",
+              "TestRole:Import": "(RBAC) permissions required to perform a function."
             }
           }
         }
