@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "2.0.104"
+    "version": "2.0.105"
   },
   "servers": [
     {
@@ -3578,7 +3578,8 @@
         "required": [
           "Id",
           "Name",
-          "DepartmentTypeId"
+          "DepartmentTypeId",
+          "Is_Active"
         ],
         "type": "object",
         "properties": {
@@ -3616,6 +3617,12 @@
           },
           "CountryId": {
             "$ref": "#/components/schemas/EnumCountry"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the department is active and can be used.",
+            "default": false,
+            "example": false
           }
         },
         "description": "The record of Department information."
