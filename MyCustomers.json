@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.199"
+    "version": "3.0.200"
   },
   "servers": [
     {
@@ -461,7 +461,7 @@
             "OAuth2": [
               "MyCustomerAdmin:Read",
               "MyCustomerUser:Read",
-              "TestApiRole:Read"
+              "TestRole:Read"
             ]
           }
         ]
@@ -534,7 +534,7 @@
             "OAuth2": [
               "MyCustomerAdmin:Update",
               "MyCustomerUser:Update",
-              "TestApiRole:Update"
+              "TestRole:Update"
             ]
           }
         ]
@@ -595,7 +595,7 @@
             "OAuth2": [
               "MyCustomerAdmin:Delete",
               "MyCustomerUser:Delete",
-              "TestApiRole:Delete"
+              "TestRole:Delete"
             ]
           }
         ]
@@ -688,7 +688,7 @@
             "OAuth2": [
               "MyCustomerAdmin:Read",
               "MyCustomerUser:Read",
-              "TestApiRole:Read"
+              "TestRole:Read"
             ]
           }
         ]
@@ -742,7 +742,7 @@
             "OAuth2": [
               "MyCustomerAdmin:Create, Update",
               "MyCustomerUser:Create, Update",
-              "TestApiRole:Create, Update"
+              "TestRole:Create, Update"
             ]
           }
         ]
@@ -794,7 +794,7 @@
             "OAuth2": [
               "MyCustomerAdmin:Create",
               "MyCustomerUser:Create",
-              "TestApiRole:Create"
+              "TestRole:Create"
             ]
           }
         ]
@@ -852,7 +852,7 @@
             "OAuth2": [
               "MyCustomerAdmin:Import",
               "MyCustomerUser:Import",
-              "TestApiRole:Import"
+              "TestRole:Import"
             ]
           }
         ]
@@ -1861,22 +1861,22 @@
             "scopes": {
               "MyCustomerAdmin:Read": "Customer administrator role to manage all customer data... (ABAC) permissions required to perform a function.",
               "MyCustomerUser:Read": "Customer role for managing own customer data... (ABAC) permissions required to perform a function.",
-              "TestApiRole:Read": "Test role to access API. (RBAC) permissions required to perform a function.",
+              "TestRole:Read": "(RBAC) permissions required to perform a function.",
               "MyCustomerAdmin:Create, Update": "Customer administrator role to manage all customer data... (ABAC) permissions required to perform a function.",
               "MyCustomerUser:Create, Update": "Customer role for managing own customer data... (ABAC) permissions required to perform a function.",
-              "TestApiRole:Create, Update": "Test role to access API. (RBAC) permissions required to perform a function.",
+              "TestRole:Create, Update": "(RBAC) permissions required to perform a function.",
               "MyCustomerAdmin:Create": "Customer administrator role to manage all customer data... (ABAC) permissions required to perform a function.",
               "MyCustomerUser:Create": "Customer role for managing own customer data... (ABAC) permissions required to perform a function.",
-              "TestApiRole:Create": "Test role to access API. (RBAC) permissions required to perform a function.",
+              "TestRole:Create": "(RBAC) permissions required to perform a function.",
               "MyCustomerAdmin:Update": "Customer administrator role to manage all customer data... (ABAC) permissions required to perform a function.",
               "MyCustomerUser:Update": "Customer role for managing own customer data... (ABAC) permissions required to perform a function.",
-              "TestApiRole:Update": "Test role to access API. (RBAC) permissions required to perform a function.",
+              "TestRole:Update": "(RBAC) permissions required to perform a function.",
               "MyCustomerAdmin:Delete": "Customer administrator role to manage all customer data... (ABAC) permissions required to perform a function.",
               "MyCustomerUser:Delete": "Customer role for managing own customer data... (ABAC) permissions required to perform a function.",
-              "TestApiRole:Delete": "Test role to access API. (RBAC) permissions required to perform a function.",
+              "TestRole:Delete": "(RBAC) permissions required to perform a function.",
               "MyCustomerAdmin:Import": "Customer administrator role to manage all customer data... (ABAC) permissions required to perform a function.",
               "MyCustomerUser:Import": "Customer role for managing own customer data... (ABAC) permissions required to perform a function.",
-              "TestApiRole:Import": "Test role to access API. (RBAC) permissions required to perform a function."
+              "TestRole:Import": "(RBAC) permissions required to perform a function."
             }
           }
         }
