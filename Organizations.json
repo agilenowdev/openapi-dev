@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "2.0.106"
+    "version": "2.0.107"
   },
   "servers": [
     {
@@ -1718,35 +1718,27 @@
         },
         "description": "The list of `Department` records"
       },
-      "DepartmentData": {
-        "required": [
-          "Is_Active"
+      "EnumDepartmentType": {
+        "enum": [
+          "External",
+          "Internal"
         ],
-        "type": "object",
-        "properties": {
-          "Is_Active": {
-            "type": "boolean",
-            "description": "Defines if the department is active and can be used.",
-            "default": false,
-            "example": false
+        "type": "string",
+        "description": "The enum of DepartmentType.",
+        "x-enums": [
+          {
+            "value": "External",
+            "name": "External",
+            "description": "External",
+            "isString": true
+          },
+          {
+            "value": "Internal",
+            "name": "Internal",
+            "description": "Internal",
+            "isString": true
           }
-        },
-        "description": "The record of Department information."
-      },
-      "DepartmentInsertData": {
-        "required": [
-          "Is_Active"
-        ],
-        "type": "object",
-        "properties": {
-          "Is_Active": {
-            "type": "boolean",
-            "description": "Defines if the department is active and can be used.",
-            "default": false,
-            "example": false
-          }
-        },
-        "description": "The record of Department information."
+        ]
       },
       "EnumCountry": {
         "enum": [
@@ -3513,13 +3505,18 @@
           }
         ]
       },
-      "DepartmentUpdateData": {
+      "DepartmentData": {
         "required": [
           "Name",
+          "DepartmentTypeId",
           "Is_Active"
         ],
         "type": "object",
         "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The guid to identify the department."
+          },
           "ExternalId": {
             "type": "string",
             "description": "The external identifier of the department."
@@ -3527,6 +3524,12 @@
           "Name": {
             "type": "string",
             "description": "The name of the department."
+          },
+          "DepartmentTypeId": {
+            "$ref": "#/components/schemas/EnumDepartmentType"
+          },
+          "ParentDepartmentId": {
+            "$ref": "#/components/schemas/FieldType"
           },
           "Level": {
             "type": "integer",
@@ -3577,6 +3580,114 @@
           }
         },
         "description": "The field object structure. This structure allows users to specify any related entity field and its corresponding value. When saving data, the system automatically retrieves and assigns the primary key value from the system database table based on the provided field name and value."
+      },
+      "DepartmentInsertData": {
+        "required": [
+          "Id",
+          "Name",
+          "DepartmentTypeId",
+          "Is_Active"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The guid to identify the department."
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the department."
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the department."
+          },
+          "DepartmentTypeId": {
+            "$ref": "#/components/schemas/EnumDepartmentType"
+          },
+          "ParentDepartmentId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "Level": {
+            "type": "integer",
+            "description": "The department level at the hierarchy.",
+            "format": "int32",
+            "default": 0,
+            "example": 0
+          },
+          "ContactName": {
+            "type": "string",
+            "description": "The contact name of company or department."
+          },
+          "ContactEmail": {
+            "type": "string",
+            "description": "The contact email of external company or department."
+          },
+          "ContactPhone": {
+            "type": "string"
+          },
+          "OwnerId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "CountryId": {
+            "$ref": "#/components/schemas/EnumCountry"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the department is active and can be used.",
+            "default": false,
+            "example": false
+          }
+        },
+        "description": "The record of Department information."
+      },
+      "DepartmentUpdateData": {
+        "required": [
+          "Name",
+          "Is_Active"
+        ],
+        "type": "object",
+        "properties": {
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the department."
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the department."
+          },
+          "Level": {
+            "type": "integer",
+            "description": "The department level at the hierarchy.",
+            "format": "int32",
+            "default": 0,
+            "example": 0
+          },
+          "ContactName": {
+            "type": "string",
+            "description": "The contact name of company or department."
+          },
+          "ContactEmail": {
+            "type": "string",
+            "description": "The contact email of external company or department."
+          },
+          "ContactPhone": {
+            "type": "string"
+          },
+          "OwnerId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "CountryId": {
+            "$ref": "#/components/schemas/EnumCountry"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the department is active and can be used.",
+            "default": false,
+            "example": false
+          }
+        },
+        "description": "The record of Department information."
       },
       "User": {
         "required": [
