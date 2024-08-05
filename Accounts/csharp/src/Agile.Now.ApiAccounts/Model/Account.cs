@@ -64,11 +64,6 @@ namespace Agile.Now.ApiAccounts.Model
                 throw new ArgumentNullException("id is a required property for Account and cannot be null");
             }
             this.Id = id;
-            // to ensure "firstName" is required (not null)
-            if (firstName == null)
-            {
-                throw new ArgumentNullException("firstName is a required property for Account and cannot be null");
-            }
             this.FirstName = firstName;
             // to ensure "lastName" is required (not null)
             if (lastName == null)
@@ -126,7 +121,7 @@ namespace Agile.Now.ApiAccounts.Model
         /// Person&#39;s first name
         /// </summary>
         /// <value>Person&#39;s first name</value>
-        [DataMember(Name = "FirstName", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "FirstName", EmitDefaultValue = true)]
         public string FirstName { get; set; }
 
         /// <summary>

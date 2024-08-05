@@ -149,9 +149,11 @@ namespace Agile.Now.ApiOrganizations.Test.Api
             var createdLocations = locationData.Select(i => api.CreateLocation(i)).ToArray();
             try
             {
-                var foundLocations = api.ListLocations(
+                var existingLocations = api.ListLocations(
                     filters: $"Id In {string.Join("; ", createdLocations.Select(i => i.Id))}").Data;
-                Assert.Equal(foundLocations.Count, createdLocations.Length);
+                Assert.Equal(createdLocations.Length, existingLocations.Count);
+                Assert.Contains(existingLocations, i => i.Id == createdLocations[0].Id);
+                Assert.Contains(existingLocations, i => i.Id == createdLocations[1].Id);
             }
             finally
             {
@@ -170,9 +172,11 @@ namespace Agile.Now.ApiOrganizations.Test.Api
             var createdLocations = locationData.Select(i => api.CreateLocation(i)).ToArray();
             try
             {
-                var foundLocations = api.ListLocations(
-                    filters: $"Name In {string.Join("; ", createdLocations.Select(i => i.Name))}");
-                Assert.Equal(foundLocations.Data.Count, createdLocations.Length);
+                var existingLocations = api.ListLocations(
+                    filters: $"Name In {string.Join("; ", createdLocations.Select(i => i.Name))}").Data;
+                Assert.Equal(createdLocations.Length, existingLocations.Count);
+                Assert.Contains(existingLocations, i => i.Id == createdLocations[0].Id);
+                Assert.Contains(existingLocations, i => i.Id == createdLocations[1].Id);
             }
             finally
             {
@@ -261,6 +265,8 @@ namespace Agile.Now.ApiOrganizations.Test.Api
                 {
                     var existingLocationUsers = api.ListLocationUsers(createdLocation.Id).Data;
                     Assert.Equal(createdLocationUsers.Length, existingLocationUsers.Count);
+                    Assert.Contains(existingLocationUsers, i => i.Id == createdLocationUsers[0].Id);
+                    Assert.Contains(existingLocationUsers, i => i.Id == createdLocationUsers[1].Id);
                 }
                 finally
                 {

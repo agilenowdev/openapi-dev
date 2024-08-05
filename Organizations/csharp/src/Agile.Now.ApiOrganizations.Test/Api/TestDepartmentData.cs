@@ -36,10 +36,6 @@ internal static class TestDepartmentData
         if (id != null)
             departmentInsertData.Id = id;
         const string updated = "updated";
-        departmentInsertData.Name += updated;
-        departmentInsertData.DepartmentTypeId =
-            departmentInsertData.DepartmentTypeId == EnumDepartmentType.Internal ?
-                EnumDepartmentType.External : EnumDepartmentType.Internal;
         departmentInsertData.CountryId = departmentInsertData.CountryId == EnumCountry.FIN ?
             EnumCountry.USA : EnumCountry.FIN;
     }

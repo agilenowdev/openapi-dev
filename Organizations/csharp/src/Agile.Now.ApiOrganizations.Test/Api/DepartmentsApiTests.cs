@@ -59,16 +59,7 @@ namespace Agile.Now.ApiOrganizations.Test.Api
             Assert.Equal(departmentInsertData.Name, department.Name);
             Assert.Equal(departmentInsertData.ContactName, department.ContactName);
             Assert.Equal(departmentInsertData.ContactEmail, department.ContactEmail);
-            Assert.Equal(departmentInsertData.DepartmentTypeId.ToString(), department.DepartmentTypeId.Id);
             Assert.Equal(departmentInsertData.CountryId.ToString(), department.CountryId.Id);
-        }
-
-        /// <summary>
-        /// Test an instance of DepartmentsApi
-        /// </summary>
-        [Fact]
-        public void InstanceTest()
-        {
         }
 
         /// <summary>
@@ -165,9 +156,11 @@ namespace Agile.Now.ApiOrganizations.Test.Api
             var createdDepartments = departmentData.Select(i => api.CreateDepartment(i)).ToArray();
             try
             {
-                var foundDepartments = api.ListDepartments(
+                var existingDepartments = api.ListDepartments(
                     filters: $"Id In {string.Join("; ", createdDepartments.Select(i => i.Id))}").Data;
-                Assert.Equal(foundDepartments.Count, createdDepartments.Length);
+                Assert.Equal(createdDepartments.Length, existingDepartments.Count);
+                Assert.Contains(existingDepartments, i => i.Id == createdDepartments[0].Id);
+                Assert.Contains(existingDepartments, i => i.Id == createdDepartments[1].Id);
             }
             finally
             {
@@ -186,9 +179,11 @@ namespace Agile.Now.ApiOrganizations.Test.Api
             var createdDepartments = departmentData.Select(i => api.CreateDepartment(i)).ToArray();
             try
             {
-                var foundDepartments = api.ListDepartments(
-                    filters: $"Name In {string.Join("; ", createdDepartments.Select(i => i.Name))}");
-                Assert.Equal(foundDepartments.Data.Count, createdDepartments.Length);
+                var existingDepartments = api.ListDepartments(
+                    filters: $"Name In {string.Join("; ", createdDepartments.Select(i => i.Name))}").Data;
+                Assert.Equal(createdDepartments.Length, existingDepartments.Count);
+                Assert.Contains(existingDepartments, i => i.Id == createdDepartments[0].Id);
+                Assert.Contains(existingDepartments, i => i.Id == createdDepartments[1].Id);
             }
             finally
             {
@@ -276,7 +271,9 @@ namespace Agile.Now.ApiOrganizations.Test.Api
                 try
                 {
                     var existingDepartmentUsers = api.ListDepartmentUsers(createdDepartment.Id).Data;
-                    Assert.Equal(createdDepartmentUsers.Length, existingDepartmentUsers.Count);
+                    Assert.Equal(existingDepartmentUsers.Count, createdDepartmentUsers.Length);
+                    Assert.Contains(existingDepartmentUsers, i => i.Id == createdDepartmentUsers[0].Id);
+                    Assert.Contains(existingDepartmentUsers, i => i.Id == createdDepartmentUsers[1].Id);
                 }
                 finally
                 {

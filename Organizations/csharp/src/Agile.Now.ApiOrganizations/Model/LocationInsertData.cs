@@ -65,17 +65,7 @@ namespace Agile.Now.ApiOrganizations.Model
         /// <param name="currencyId">currencyId.</param>
         public LocationInsertData(string id = default(string), string externalId = default(string), string name = default(string), EnumCountry? countryId = default(EnumCountry?), EnumTimezone? timezoneId = default(EnumTimezone?), EnumCurrency? currencyId = default(EnumCurrency?))
         {
-            // to ensure "id" is required (not null)
-            if (id == null)
-            {
-                throw new ArgumentNullException("id is a required property for LocationInsertData and cannot be null");
-            }
             this.Id = id;
-            // to ensure "name" is required (not null)
-            if (name == null)
-            {
-                throw new ArgumentNullException("name is a required property for LocationInsertData and cannot be null");
-            }
             this.Name = name;
             this.ExternalId = externalId;
             this.CountryId = countryId;
@@ -87,7 +77,7 @@ namespace Agile.Now.ApiOrganizations.Model
         /// The guid to identify the location.
         /// </summary>
         /// <value>The guid to identify the location.</value>
-        [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Id", EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>
@@ -101,7 +91,7 @@ namespace Agile.Now.ApiOrganizations.Model
         /// The name of the location. The value must be unique in the system and you cannot add multiple values.
         /// </summary>
         /// <value>The name of the location. The value must be unique in the system and you cannot add multiple values.</value>
-        [DataMember(Name = "Name", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Name", EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>

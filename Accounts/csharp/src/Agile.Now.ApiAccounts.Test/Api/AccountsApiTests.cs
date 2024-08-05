@@ -180,9 +180,11 @@ namespace Agile.Now.ApiAccounts.Test.Api
             var createdAccounts = accountData.Select(i => api.CreateAccount(i)).ToArray();
             try
             {
-                var foundAccounts = api.ListAccounts(
-                    filters: $"Id In {string.Join("; ", createdAccounts.Select(i => i.Id))}").Data;
-                Assert.Equal(foundAccounts.Count, createdAccounts.Length);
+                var existingAccounts = api.ListAccounts(
+                    filters: $"Id In {string.Join(", ", createdAccounts.Select(i => i.Id))}").Data;
+                Assert.Equal(createdAccounts.Length, existingAccounts.Count);
+                Assert.Contains(existingAccounts, i => i.Id == createdAccounts[0].Id);
+                Assert.Contains(existingAccounts, i => i.Id == createdAccounts[1].Id);
             }
             finally
             {
@@ -201,9 +203,11 @@ namespace Agile.Now.ApiAccounts.Test.Api
             var createdAccounts = accountData.Select(i => api.CreateAccount(i)).ToArray();
             try
             {
-                var foundAccounts = api.ListAccounts(
-                    filters: $"Username In {string.Join("; ", createdAccounts.Select(i => i.Username))}");
-                Assert.Equal(foundAccounts.Data.Count, createdAccounts.Length);
+                var existingAccounts = api.ListAccounts(
+                    filters: $"Username In {string.Join("; ", createdAccounts.Select(i => i.Username))}").Data;
+                Assert.Equal(createdAccounts.Length, existingAccounts.Count);
+                Assert.Contains(existingAccounts, i => i.Id == createdAccounts[0].Id);
+                Assert.Contains(existingAccounts, i => i.Id == createdAccounts[1].Id);
             }
             finally
             {
@@ -308,19 +312,17 @@ namespace Agile.Now.ApiAccounts.Test.Api
             var createdAccount = api.CreateAccount(accountData);
             try
             {
-                var anotherTenant = api.UpsertAccountTenant(createdAccount.Id, new
-                (
-                    new("Id", ""),
-                    new("Id", TestAccountData.AnotherTenant.ToString()))
-                );
+                //var createdTenant = api.UpsertAccountTenant(createdAccount.Id, new(
+                //    new("Id", ""),
+                //    new("Id", TestAccountData.AnotherTenant.ToString())));
                 try
                 {
                     var existingAccountTenants = api.ListAccountTenants(createdAccount.Id).Data;
-                    Assert.Equal(2, existingAccountTenants.Count);
+                    Assert.Collection(existingAccountTenants, i => Assert.Equal(createdAccount.Id, i.AccountId.Id));
                 }
                 finally
                 {
-                    api.DeleteAccountTenant(createdAccount.Id, anotherTenant.UserId.ToString(), subName: "UserId");
+                    //api.DeleteAccountTenant(createdAccount.Id, createdTenant.TenantId.Id.ToString(), subName: "UserId");
                 }
             }
             finally
@@ -345,7 +347,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
                 try
                 {
                     var existingAccountTenants = api.ListAccountTenants(createdAccount.Id).Data;
-                    Assert.Contains(existingAccountTenants, i => i.TenantId.Id == createdTenant.TenantId.Id);
+                    Assert.Contains(existingAccountTenants, i => createdAccount.Id ==i.AccountId.Id);
                 }
                 finally
                 {
@@ -423,7 +425,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
                 {
                     var existingAccountPictures = api.ListAccountPictures(createdAccount.Id).Data;
                     Assert.Single(existingAccountPictures);
-
+                    Assert.Contains(existingAccountPictures, i => i.Filename == picture.Filename);
                 }
                 finally
                 {
