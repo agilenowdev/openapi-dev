@@ -13,11 +13,12 @@ internal static class TestLocationData
     {
         var name = "unit-test-location" + suffix;
         var uniqueName = $"{name}-{DateTime.Now:yyyy-MM-dd-HH-mm-ss-fff}";
-        return new
+        return new LocationInsertData
         (
             name: uniqueName,
             countryId: EnumCountry.FIN,
-            currencyId: EnumCurrency.USD
+            currencyId: EnumCurrency.USD,
+            timezoneId: EnumTimezone.AfghanistanStandardTime
         );
     }
 
@@ -29,7 +30,6 @@ internal static class TestLocationData
         if (id != null)
             locationInsertData.Id = id;
         const string updated = "updated";
-        locationInsertData.Name += updated;
         locationInsertData.CountryId = locationInsertData.CountryId == EnumCountry.FIN ?
             EnumCountry.USA : EnumCountry.FIN;
         locationInsertData.CurrencyId = locationInsertData.CurrencyId == EnumCurrency.USD ?
@@ -50,6 +50,7 @@ internal static class TestLocationData
             id: locationInsertData.Id,
             name: locationInsertData.Name,
             countryId: locationInsertData.CountryId,
-            currencyId: locationInsertData.CurrencyId
+            currencyId: locationInsertData.CurrencyId,
+            timezoneId: locationInsertData.TimezoneId
         );
 }
