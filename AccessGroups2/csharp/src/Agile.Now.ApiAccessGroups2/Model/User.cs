@@ -45,11 +45,6 @@ namespace Agile.Now.ApiAccessGroups2.Model
         public User(long id = 0, AbstractLong userId = default(AbstractLong), DateTime createdOn = default(DateTime))
         {
             this.Id = id;
-            // to ensure "userId" is required (not null)
-            if (userId == null)
-            {
-                throw new ArgumentNullException("userId is a required property for User and cannot be null");
-            }
             this.UserId = userId;
             this.CreatedOn = createdOn;
         }
@@ -59,13 +54,13 @@ namespace Agile.Now.ApiAccessGroups2.Model
         /// </summary>
         /// <value>The identifier of user access group</value>
         /// <example>0</example>
-        [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Id", EmitDefaultValue = true)]
         public long Id { get; set; }
 
         /// <summary>
         /// Gets or Sets UserId
         /// </summary>
-        [DataMember(Name = "UserId", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "UserId", EmitDefaultValue = true)]
         public AbstractLong UserId { get; set; }
 
         /// <summary>
@@ -73,7 +68,7 @@ namespace Agile.Now.ApiAccessGroups2.Model
         /// </summary>
         /// <value>The date when the record was created.</value>
         /// <example>1900-01-01T00:00Z</example>
-        [DataMember(Name = "CreatedOn", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "CreatedOn", EmitDefaultValue = true)]
         public DateTime CreatedOn { get; set; }
 
         /// <summary>

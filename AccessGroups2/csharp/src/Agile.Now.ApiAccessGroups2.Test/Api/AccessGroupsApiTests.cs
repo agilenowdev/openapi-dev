@@ -276,9 +276,13 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
             var createdAccessGroup = api.CreateAccessGroup(accessGroupData);
             try
             {
-                var createdAccessGroupGroup = api.UpsertAccessGroupGroup(createdAccessGroup.Id,
-                    new(TestAccessGroupData.Groups[0]));
+                var createdAccessGroupGroup = api.UpsertAccessGroupGroup(createdAccessGroup.Id, new(
+                    groupId: new("Id", TestAccessGroupData.Groups[0].ToString()),
+                    createdOn: DateTime.Now
+                ));
                 api.DeleteAccessGroupGroup(createdAccessGroup.Id, createdAccessGroupGroup.Id.ToString());
+                var existingAccessGroupGroups = api.ListAccessGroupGroups(createdAccessGroup.Id).Data;
+                Assert.Empty(existingAccessGroupGroups);
             }
             finally
             {
@@ -296,9 +300,12 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
             var createdAccessGroup = api.CreateAccessGroup(AccessGroupData);
             try
             {
-                var createdAccessGroupUser = api.UpsertAccessGroupUser(createdAccessGroup.Id,
-                    new(userId: new("Id", TestAccessGroupData.Users[0].ToString())));
+                var createdAccessGroupUser = api.UpsertAccessGroupUser(createdAccessGroup.Id, new(
+                    userId: new("Id", TestAccessGroupData.Users[0].ToString()),
+                    createdOn: DateTime.Now));
                 api.DeleteAccessGroupUser(createdAccessGroup.Id, createdAccessGroupUser.Id.ToString());
+                var existingdAccessGroupUsers = api.ListAccessGroupUsers(createdAccessGroup.Id).Data;
+                Assert.Empty(existingdAccessGroupUsers);
             }
             finally
             {
@@ -378,16 +385,19 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
         [Fact]
         public void Test_AccessGroupGroup_List()
         {
-            var AccessGroupData = TestAccessGroupData.CreateAccessGroupData();
-            var createdAccessGroup = api.CreateAccessGroup(AccessGroupData);
+            var accessGroupData = TestAccessGroupData.CreateAccessGroupData();
+            var createdAccessGroup = api.CreateAccessGroup(accessGroupData);
             try
             {
                 var createdAccessGroupGroups = TestAccessGroupData.Groups.Select(i =>
-                    api.UpsertAccessGroupGroup(createdAccessGroup.Id, new(i))).ToArray();
+                    api.UpsertAccessGroupGroup(createdAccessGroup.Id, 
+                        new( groupId: new("Id", i.ToString()), createdOn: DateTime.Now ))).ToArray();
                 try
                 {
                     var existingAccessGroupGroups = api.ListAccessGroupGroups(createdAccessGroup.Id).Data;
                     Assert.Equal(createdAccessGroupGroups.Length, existingAccessGroupGroups.Count);
+                    Assert.Contains(existingAccessGroupGroups, i => i.Id == createdAccessGroupGroups[0].Id);
+                    Assert.Contains(existingAccessGroupGroups, i => i.Id == createdAccessGroupGroups[1].Id);
                 }
                 finally
                 {
@@ -407,12 +417,13 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
         [Fact]
         public void Test_AccessGroupUser_List()
         {
-            var AccessGroupData = TestAccessGroupData.CreateAccessGroupData();
-            var createdAccessGroup = api.CreateAccessGroup(AccessGroupData);
+            var accessGroupData = TestAccessGroupData.CreateAccessGroupData();
+            var createdAccessGroup = api.CreateAccessGroup(accessGroupData);
             try
             {
                 var createdAccessGroupUsers = TestAccessGroupData.Users.Select(i =>
-                    api.UpsertAccessGroupUser(createdAccessGroup.Id, new(userId: new("Id", i.ToString())))).ToArray();
+                    api.UpsertAccessGroupUser(createdAccessGroup.Id, 
+                        new( userId: new("Id", i.ToString()), createdOn: DateTime.Now))).ToArray();
                 try
                 {
                     var existingAccessGroupUsers = api.ListAccessGroupUsers(createdAccessGroup.Id).Data;
@@ -516,12 +527,14 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
         [Fact]
         public void Test_AccessGroupGroup_Upsert()
         {
-            var AccessGroupData = TestAccessGroupData.CreateAccessGroupData();
-            var createdAccessGroup = api.CreateAccessGroup(AccessGroupData);
+            var accessGroupData = TestAccessGroupData.CreateAccessGroupData();
+            var createdAccessGroup = api.CreateAccessGroup(accessGroupData);
             try
             {
-                var createdAccessGroupGroup = api.UpsertAccessGroupGroup(createdAccessGroup.Id,
-                    new(TestAccessGroupData.Groups[0]));
+                var createdAccessGroupGroup = api.UpsertAccessGroupGroup(createdAccessGroup.Id, new (
+                    groupId: new("Id", TestAccessGroupData.Groups[0].ToString()),
+                    createdOn: DateTime.Now
+                ));
                 try
                 {
                     var existingAccessGroupGroups = api.ListAccessGroupGroups(createdAccessGroup.Id).Data;
@@ -544,12 +557,13 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
         [Fact]
         public void Test_AccessGroupUser_Upsert()
         {
-            var AccessGroupData = TestAccessGroupData.CreateAccessGroupData();
-            var createdAccessGroup = api.CreateAccessGroup(AccessGroupData);
+            var accessGroupData = TestAccessGroupData.CreateAccessGroupData();
+            var createdAccessGroup = api.CreateAccessGroup(accessGroupData);
             try
             {
-                var createdAccessGroupUser = api.UpsertAccessGroupUser(createdAccessGroup.Id,
-                    new(userId: new("Id", TestAccessGroupData.Users[0].ToString())));
+                var createdAccessGroupUser = api.UpsertAccessGroupUser(createdAccessGroup.Id, new(
+                    userId: new("Id", TestAccessGroupData.Users[0].ToString()),
+                    createdOn: DateTime.Now));
                 try
                 {
                     var existingAccessGroupUsers = api.ListAccessGroupUsers(createdAccessGroup.Id).Data;
