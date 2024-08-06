@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.6"
+    "version": "3.0.9"
   },
   "servers": [
     {
@@ -407,13 +407,13 @@
         ]
       }
     },
-    "/Endpoint/rest/api/v1/AccessGroup/{Id}/Groups": {
+    "/Endpoint/rest/api/v1/AccessGroup/{Id}/Applications": {
       "get": {
         "tags": [
           "AccessGroups"
         ],
-        "description": "Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.\n\nLeverage the search service to extract the requisite information from the system effectively.\n\nThe method returns a list structured with an extended `Group` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.\n\nThe foreign key fields involved are: `AccessGroupId, GroupId`\n\n### Example\nIt searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.\n\n```http\nfields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000\n```",
-        "operationId": "List AccessGroup Groups",
+        "description": "Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.\n\nLeverage the search service to extract the requisite information from the system effectively.\n\nThe method returns a list structured with an extended `Application` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.\n\nThe foreign key fields involved are: `AccessGroupId, ParentApplicationId, AccessApplicationId`\n\n### Example\nIt searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.\n\n```http\nfields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000\n```",
+        "operationId": "List AccessGroup Applications",
         "parameters": [
           {
             "name": "Id",
@@ -437,10 +437,10 @@
           {
             "name": "Fields",
             "in": "query",
-            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, AccessGroupId, GroupId, CreatedOn\n```",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, AccessGroupId, ParentApplicationId, AccessApplicationId, Is_Active, CreatedOn\n```",
             "schema": {
               "type": "string",
-              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, AccessGroupId, GroupId, CreatedOn\n```"
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, AccessGroupId, ParentApplicationId, AccessApplicationId, Is_Active, CreatedOn\n```"
             }
           },
           {
@@ -486,11 +486,11 @@
         ],
         "responses": {
           "200": {
-            "description": "The list of Groups",
+            "description": "The list of Applications",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Groups"
+                  "$ref": "#/components/schemas/Applications"
                 }
               }
             }
@@ -521,8 +521,8 @@
         "tags": [
           "AccessGroups"
         ],
-        "description": "Use the `GroupsData` object resource to insert or update (Upsert) a list of `GroupData` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `GroupList` record structure as text fields in the foreign key fields.\n\nForeign key fields are: `AccessGroupId, GroupId`\n\n### Update a record of Group\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.\n\n### Create a new record of Group\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`GroupData`).\n\nThe response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `Group` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.",
-        "operationId": "Patch AccessGroup Groups",
+        "description": "Use the `ApplicationsData` object resource to insert or update (Upsert) a list of `ApplicationData` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `ApplicationList` record structure as text fields in the foreign key fields.\n\nForeign key fields are: `AccessGroupId, ParentApplicationId, AccessApplicationId`\n\n### Update a record of Application\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.\n\n### Create a new record of Application\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`ApplicationData`).\n\nThe response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `Application` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.",
+        "operationId": "Patch AccessGroup Applications",
         "parameters": [
           {
             "name": "Id",
@@ -555,11 +555,11 @@
           }
         ],
         "requestBody": {
-          "description": "The list of Group information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.",
+          "description": "The list of Application information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/GroupsData"
+                "$ref": "#/components/schemas/ApplicationsData"
               }
             }
           },
@@ -568,11 +568,11 @@
         },
         "responses": {
           "200": {
-            "description": "Inserted or updated list of Group information. \n",
+            "description": "Inserted or updated list of Application information. \n",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Group"
+                  "$ref": "#/components/schemas/Application"
                 }
               }
             }
@@ -600,13 +600,13 @@
         ]
       }
     },
-    "/Endpoint/rest/api/v1/AccessGroup/{Id}/Group": {
+    "/Endpoint/rest/api/v1/AccessGroup/{Id}/Application": {
       "post": {
         "tags": [
           "AccessGroups"
         ],
-        "description": "Use the `GroupPost` object resource to insert or update (Upsert) `Group` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `GroupData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `AccessGroupId, GroupId`\n\n### Update a record of Group\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n### Create a new record of Group\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`GroupData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Group` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
-        "operationId": "Upsert AccessGroup Group",
+        "description": "Use the `ApplicationPost` object resource to insert or update (Upsert) `Application` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `ApplicationData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `AccessGroupId, ParentApplicationId, AccessApplicationId`\n\n### Update a record of Application\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n### Create a new record of Application\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`ApplicationData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Application` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "operationId": "Upsert AccessGroup Application",
         "parameters": [
           {
             "name": "Id",
@@ -629,11 +629,11 @@
           }
         ],
         "requestBody": {
-          "description": "`Group` information to insert or update.\n\nThe input parameter must be used in the `GroupData` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "description": "`Application` information to insert or update.\n\nThe input parameter must be used in the `ApplicationData` record structure inside the `FieldType` parameter in the foreign key fields.",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/GroupData"
+                "$ref": "#/components/schemas/ApplicationData"
               }
             }
           },
@@ -642,11 +642,11 @@
         },
         "responses": {
           "200": {
-            "description": "Inserted or updated `Group` information.",
+            "description": "Inserted or updated `Application` information.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Group"
+                  "$ref": "#/components/schemas/Application"
                 }
               }
             }
@@ -674,13 +674,13 @@
         ]
       }
     },
-    "/Endpoint/rest/api/v1/AccessGroup/{Id}/Group/{SubId}": {
+    "/Endpoint/rest/api/v1/AccessGroup/{Id}/Application/{SubId}": {
       "delete": {
         "tags": [
           "AccessGroups"
         ],
-        "description": "Use the query string resource to delete `Group` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `Id` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `Group` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `AccessGroupId, GroupId`\n\n### Delete a record of Group\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
-        "operationId": "Delete AccessGroup Group",
+        "description": "Use the query string resource to delete `Application` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `Id` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `Application` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `AccessGroupId, ParentApplicationId, AccessApplicationId`\n\n### Delete a record of Application\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
+        "operationId": "Delete AccessGroup Application",
         "parameters": [
           {
             "name": "Id",
@@ -704,11 +704,11 @@
           {
             "name": "SubId",
             "in": "path",
-            "description": "The identifier of the Group record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the Group record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -723,11 +723,11 @@
         ],
         "responses": {
           "200": {
-            "description": "Deleted `Group` information.",
+            "description": "Deleted `Application` information.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Group"
+                  "$ref": "#/components/schemas/Application"
                 }
               }
             }
@@ -755,13 +755,13 @@
         ]
       }
     },
-    "/Endpoint/rest/api/v1/AccessGroup/{Id}/Users": {
+    "/Endpoint/rest/api/v1/AccessGroup/{Id}/Permissions": {
       "get": {
         "tags": [
           "AccessGroups"
         ],
-        "description": "Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.\n\nLeverage the search service to extract the requisite information from the system effectively.\n\nThe method returns a list structured with an extended `User` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.\n\nThe foreign key fields involved are: `AccessGroupId, UserId`\n\n### Example\nIt searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.\n\n```http\nfields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000\n```",
-        "operationId": "List AccessGroup Users",
+        "description": "Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.\n\nLeverage the search service to extract the requisite information from the system effectively.\n\nThe method returns a list structured with an extended `Permission` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.\n\nThe foreign key fields involved are: `AccessGroupId, AccessRoleId, RoleId, PermissionId`\n\n### Example\nIt searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.\n\n```http\nfields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000\n```",
+        "operationId": "List AccessGroup Permissions",
         "parameters": [
           {
             "name": "Id",
@@ -785,10 +785,10 @@
           {
             "name": "Fields",
             "in": "query",
-            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, AccessGroupId, UserId, CreatedOn\n```",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, AccessGroupId, AccessRoleId, RoleId, PermissionId, Is_Active, CreatedOn\n```",
             "schema": {
               "type": "string",
-              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, AccessGroupId, UserId, CreatedOn\n```"
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, AccessGroupId, AccessRoleId, RoleId, PermissionId, Is_Active, CreatedOn\n```"
             }
           },
           {
@@ -834,11 +834,11 @@
         ],
         "responses": {
           "200": {
-            "description": "The list of Users",
+            "description": "The list of Permissions",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Users"
+                  "$ref": "#/components/schemas/Permissions"
                 }
               }
             }
@@ -869,8 +869,8 @@
         "tags": [
           "AccessGroups"
         ],
-        "description": "Use the `UsersData` object resource to insert or update (Upsert) a list of `UserData` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `UserList` record structure as text fields in the foreign key fields.\n\nForeign key fields are: `AccessGroupId, UserId`\n\n### Update a record of User\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.\n\n### Create a new record of User\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`UserData`).\n\nThe response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `User` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.",
-        "operationId": "Patch AccessGroup Users",
+        "description": "Use the `PermissionsData` object resource to insert or update (Upsert) a list of `PermissionData` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `PermissionList` record structure as text fields in the foreign key fields.\n\nForeign key fields are: `AccessGroupId, AccessRoleId, RoleId, PermissionId`\n\n### Update a record of Permission\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.\n\n### Create a new record of Permission\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`PermissionData`).\n\nThe response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `Permission` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.",
+        "operationId": "Patch AccessGroup Permissions",
         "parameters": [
           {
             "name": "Id",
@@ -903,11 +903,11 @@
           }
         ],
         "requestBody": {
-          "description": "The list of User information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.",
+          "description": "The list of Permission information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UsersData"
+                "$ref": "#/components/schemas/PermissionsData"
               }
             }
           },
@@ -916,11 +916,11 @@
         },
         "responses": {
           "200": {
-            "description": "Inserted or updated list of User information. \n",
+            "description": "Inserted or updated list of Permission information. \n",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User"
+                  "$ref": "#/components/schemas/Permission"
                 }
               }
             }
@@ -948,13 +948,13 @@
         ]
       }
     },
-    "/Endpoint/rest/api/v1/AccessGroup/{Id}/User": {
+    "/Endpoint/rest/api/v1/AccessGroup/{Id}/Permission": {
       "post": {
         "tags": [
           "AccessGroups"
         ],
-        "description": "Use the `UserPost` object resource to insert or update (Upsert) `User` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `AccessGroupId, UserId`\n\n### Update a record of User\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n### Create a new record of User\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`UserData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `User` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
-        "operationId": "Upsert AccessGroup User",
+        "description": "Use the `PermissionPost` object resource to insert or update (Upsert) `Permission` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `PermissionData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `AccessGroupId, AccessRoleId, RoleId, PermissionId`\n\n### Update a record of Permission\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n### Create a new record of Permission\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`PermissionData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Permission` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "operationId": "Upsert AccessGroup Permission",
         "parameters": [
           {
             "name": "Id",
@@ -977,11 +977,11 @@
           }
         ],
         "requestBody": {
-          "description": "`User` information to insert or update.\n\nThe input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "description": "`Permission` information to insert or update.\n\nThe input parameter must be used in the `PermissionData` record structure inside the `FieldType` parameter in the foreign key fields.",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UserData"
+                "$ref": "#/components/schemas/PermissionData"
               }
             }
           },
@@ -990,11 +990,11 @@
         },
         "responses": {
           "200": {
-            "description": "Inserted or updated `User` information.",
+            "description": "Inserted or updated `Permission` information.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User"
+                  "$ref": "#/components/schemas/Permission"
                 }
               }
             }
@@ -1022,13 +1022,13 @@
         ]
       }
     },
-    "/Endpoint/rest/api/v1/AccessGroup/{Id}/User/{SubId}": {
+    "/Endpoint/rest/api/v1/AccessGroup/{Id}/Permission/{SubId}": {
       "delete": {
         "tags": [
           "AccessGroups"
         ],
-        "description": "Use the query string resource to delete `User` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `Id` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `User` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `AccessGroupId, UserId`\n\n### Delete a record of User\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
-        "operationId": "Delete AccessGroup User",
+        "description": "Use the query string resource to delete `Permission` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `Id` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `Permission` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `AccessGroupId, AccessRoleId, RoleId, PermissionId`\n\n### Delete a record of Permission\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
+        "operationId": "Delete AccessGroup Permission",
         "parameters": [
           {
             "name": "Id",
@@ -1052,11 +1052,11 @@
           {
             "name": "SubId",
             "in": "path",
-            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the Permission record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the Permission record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -1071,11 +1071,11 @@
         ],
         "responses": {
           "200": {
-            "description": "Deleted `User` information.",
+            "description": "Deleted `Permission` information.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User"
+                  "$ref": "#/components/schemas/Permission"
                 }
               }
             }
@@ -1394,35 +1394,41 @@
         },
         "description": "The record of AccessGroup information."
       },
-      "Group": {
+      "Application": {
         "required": [
           "Id",
-          "GroupId",
-          "CreatedOn"
+          "ParentApplicationId",
+          "AccessApplicationId"
         ],
         "type": "object",
         "properties": {
           "Id": {
-            "type": "integer",
-            "description": "The identifier of group access group",
-            "format": "int64",
-            "default": 0,
-            "example": 0
+            "type": "string",
+            "description": "The identifier of  access group application"
           },
-          "GroupId": {
-            "$ref": "#/components/schemas/AbstractLong"
+          "ParentApplicationId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "AccessApplicationId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if record is active",
+            "default": false,
+            "example": false
           },
           "CreatedOn": {
             "type": "string",
-            "description": "The date when the record was created.",
+            "description": "The date the record was created",
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
           }
         },
-        "description": "The record of Group information."
+        "description": "The record of Application information."
       },
-      "Groups": {
+      "Applications": {
         "type": "object",
         "properties": {
           "Meta": {
@@ -1431,39 +1437,45 @@
           "Data": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Group"
+              "$ref": "#/components/schemas/Application"
             },
-            "description": "The list of `Group records`"
+            "description": "The list of `Application records`"
           }
         },
-        "description": "The list of `Group` records"
+        "description": "The list of `Application` records"
       },
-      "GroupData": {
+      "ApplicationData": {
         "required": [
-          "GroupId",
-          "CreatedOn"
+          "ParentApplicationId",
+          "AccessApplicationId"
         ],
         "type": "object",
         "properties": {
           "Id": {
-            "type": "integer",
-            "description": "The identifier of group access group.",
-            "format": "int64",
-            "default": 0,
-            "example": 0
+            "type": "string",
+            "description": "The identifier of  access group application."
           },
-          "GroupId": {
+          "ParentApplicationId": {
             "$ref": "#/components/schemas/FieldType"
+          },
+          "AccessApplicationId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if record is active.",
+            "default": false,
+            "example": false
           },
           "CreatedOn": {
             "type": "string",
-            "description": "The date when the record was created.",
+            "description": "The date the record was created.",
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
           }
         },
-        "description": "The record of Group information."
+        "description": "The record of Application information."
       },
       "FieldType": {
         "required": [
@@ -1482,35 +1494,42 @@
         },
         "description": "The field object structure. This structure allows users to specify any related entity field and its corresponding value. When saving data, the system automatically retrieves and assigns the primary key value from the system database table based on the provided field name and value."
       },
-      "GroupText": {
+      "ApplicationText": {
         "required": [
-          "GroupId",
-          "CreatedOn"
+          "ParentApplicationId",
+          "AccessApplicationId"
         ],
         "type": "object",
         "properties": {
           "Id": {
-            "type": "integer",
-            "description": "The identifier of group access group.",
-            "format": "int64",
-            "default": 0,
-            "example": 0
-          },
-          "GroupId": {
             "type": "string",
-            "description": "The identifier of group."
+            "description": "The identifier of  access group application."
+          },
+          "ParentApplicationId": {
+            "type": "string",
+            "description": "The identifier of the parent access application.  You can assign a role to a different access application and this allows for a user-friendly application/role structure."
+          },
+          "AccessApplicationId": {
+            "type": "string",
+            "description": "The identifier of the access application.  You can assign a role to a different access application and this allows for a user-friendly application/role structure."
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if record is active.",
+            "default": false,
+            "example": false
           },
           "CreatedOn": {
             "type": "string",
-            "description": "The date when the record was created.",
+            "description": "The date the record was created.",
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
           }
         },
-        "description": "The record of Group information."
+        "description": "The record of Application information."
       },
-      "GroupsData": {
+      "ApplicationsData": {
         "type": "object",
         "properties": {
           "Extra": {
@@ -1526,15 +1545,15 @@
             "default": false,
             "example": false
           },
-          "Groups": {
+          "Applications": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/GroupText"
+              "$ref": "#/components/schemas/ApplicationText"
             },
-            "description": "The list of `Group` data record for import"
+            "description": "The list of `Application` data record for import"
           }
         },
-        "description": "The data loading record of Group importing"
+        "description": "The data loading record of Application importing"
       },
       "ListValidation": {
         "required": [
@@ -1581,23 +1600,35 @@
         },
         "description": "List validation for entity attribute"
       },
-      "User": {
+      "Permission": {
         "required": [
           "Id",
-          "UserId",
+          "PermissionId",
           "CreatedOn"
         ],
         "type": "object",
         "properties": {
           "Id": {
             "type": "integer",
-            "description": "The identifier of user access group",
+            "description": "The identifier of entity",
             "format": "int64",
             "default": 0,
             "example": 0
           },
-          "UserId": {
+          "AccessRoleId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "RoleId": {
             "$ref": "#/components/schemas/AbstractLong"
+          },
+          "PermissionId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if record is active",
+            "default": false,
+            "example": false
           },
           "CreatedOn": {
             "type": "string",
@@ -1607,9 +1638,9 @@
             "example": "1900-01-01T00:00:00Z"
           }
         },
-        "description": "The record of User information."
+        "description": "The record of Permission information."
       },
-      "Users": {
+      "Permissions": {
         "type": "object",
         "properties": {
           "Meta": {
@@ -1618,30 +1649,106 @@
           "Data": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/User"
+              "$ref": "#/components/schemas/Permission"
             },
-            "description": "The list of `User records`"
+            "description": "The list of `Permission records`"
           }
         },
-        "description": "The list of `User` records"
+        "description": "The list of `Permission` records"
       },
-      "UserData": {
+      "EnumPermissionType": {
+        "enum": [
+          "Create",
+          "Read",
+          "Update",
+          "Delete",
+          "Details",
+          "Export",
+          "Import",
+          "Generic"
+        ],
+        "type": "string",
+        "description": "The enum of PermissionType.",
+        "x-enums": [
+          {
+            "value": "Create",
+            "name": "Create",
+            "description": "Create",
+            "isString": true
+          },
+          {
+            "value": "Read",
+            "name": "Read",
+            "description": "Read",
+            "isString": true
+          },
+          {
+            "value": "Update",
+            "name": "Update",
+            "description": "Update",
+            "isString": true
+          },
+          {
+            "value": "Delete",
+            "name": "Delete",
+            "description": "Delete",
+            "isString": true
+          },
+          {
+            "value": "Details",
+            "name": "Details",
+            "description": "Details",
+            "isString": true
+          },
+          {
+            "value": "Export",
+            "name": "Export",
+            "description": "Export",
+            "isString": true
+          },
+          {
+            "value": "Import",
+            "name": "Import",
+            "description": "Import",
+            "isString": true
+          },
+          {
+            "value": "Generic",
+            "name": "Generic",
+            "description": "Generic",
+            "isString": true
+          }
+        ]
+      },
+      "PermissionData": {
         "required": [
-          "UserId",
+          "PermissionId",
           "CreatedOn"
         ],
         "type": "object",
         "properties": {
           "Id": {
             "type": "integer",
-            "description": "The identifier of user access group.",
+            "description": "The identifier of entity.",
             "format": "int64",
             "default": 0,
             "example": 0
           },
-          "UserId": {
+          "AccessRoleId": {
             "$ref": "#/components/schemas/FieldType"
           },
+          "RoleId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "PermissionId": {
+            "$ref": "#/components/schemas/EnumPermissionType"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if record is active.",
+            "default": false,
+            "example": false
+          },
           "CreatedOn": {
             "type": "string",
             "description": "The date when the record was created.",
@@ -1650,25 +1757,39 @@
             "example": "1900-01-01T00:00:00Z"
           }
         },
-        "description": "The record of User information."
+        "description": "The record of Permission information."
       },
-      "UserText": {
+      "PermissionText": {
         "required": [
-          "UserId",
+          "PermissionId",
           "CreatedOn"
         ],
         "type": "object",
         "properties": {
           "Id": {
             "type": "integer",
-            "description": "The identifier of user access group.",
+            "description": "The identifier of entity.",
             "format": "int64",
             "default": 0,
             "example": 0
           },
-          "UserId": {
+          "AccessRoleId": {
             "type": "string",
-            "description": "The identifier of user."
+            "description": "The identifier of access role."
+          },
+          "RoleId": {
+            "type": "string",
+            "description": "The identifier of role."
+          },
+          "PermissionId": {
+            "type": "string",
+            "description": "The identifier of permission."
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if record is active.",
+            "default": false,
+            "example": false
           },
           "CreatedOn": {
             "type": "string",
@@ -1678,9 +1799,9 @@
             "example": "1900-01-01T00:00:00Z"
           }
         },
-        "description": "The record of User information."
+        "description": "The record of Permission information."
       },
-      "UsersData": {
+      "PermissionsData": {
         "type": "object",
         "properties": {
           "Extra": {
@@ -1696,15 +1817,15 @@
             "default": false,
             "example": false
           },
-          "Users": {
+          "Permissions": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/UserText"
+              "$ref": "#/components/schemas/PermissionText"
             },
-            "description": "The list of `User` data record for import"
+            "description": "The list of `Permission` data record for import"
           }
         },
-        "description": "The data loading record of User importing"
+        "description": "The data loading record of Permission importing"
       }
     },
     "responses": {
