@@ -34,7 +34,7 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
     /// </remarks>
     public class GroupsApiTests : IDisposable
     {
-        private readonly GroupsApi api;
+        private readonly GroupExternalsApi api;
 
         public GroupsApiTests(ITestOutputHelper testOutputHelper)
         {
@@ -46,55 +46,56 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
                 OAuthClientId = "c8907421-0886-4fb0-b859-d29966762e16",
                 OAuthClientSecret = "1da54fa9-ae11-4db3-9740-1bb47b85cd8e"
             };
-            api = new GroupsApi(configuration);
+            api = new GroupExternalsApi(configuration);
         }
 
         public void Dispose()
         {
         }
 
-        void AssertGroupDataEqual(GroupData GroupInsertData, Group Group)
+        void AssertGroupDataEqual(GroupExternalData groupData, GroupExternal group)
         {
-            //Assert.Equal(GroupInsertData.Name, Group.Name);
+            Assert.Equal(groupData.Name, group.Name);
+            Assert.Equal(groupData.Description, group.Description);
         }
 
         /// <summary>
-        /// Test CreateGroup
+        /// Test CreateGroupExternal
         /// </summary>
         [Fact]
         public void Test_Group_Create()
         {
             var groupData = TestGroupData.CreateGroupData();
-            var createdGroup = api.CreateGroup(groupData);
+            var createdGroup = api.CreateGroupExternal(groupData);
             try
             {
                 AssertGroupDataEqual(groupData, createdGroup);
             }
             finally
             {
-                api.DeleteGroup(createdGroup.Id.ToString());
+                api.DeleteGroupExternal(createdGroup.Id.ToString());
             }
         }
 
         /// <summary>
-        /// Test DeleteGroup by Id
+        /// Test DeleteGroupExternal by Id
         /// </summary>
         [Fact]
         public void Test_Group_Delete_ById()
         {
-            var createdGroup = api.CreateGroup(TestGroupData.CreateGroupData());
-            api.DeleteGroup(createdGroup.Id.ToString());
-            Assert.Throws<ApiException>(() => api.GetGroup(createdGroup.Id.ToString()));
+            var createdGroup = api.CreateGroupExternal(TestGroupData.CreateGroupData());
+            api.DeleteGroupExternal(createdGroup.Id.ToString());
+            Assert.Throws<ApiException>(() => api.GetGroupExternal(createdGroup.Id.ToString()));
         }
 
         /// <summary>
-        /// Test DeleteGroup by Name
+        /// Test DeleteGroupExternal by Name
         /// </summary>
         [Fact]
         public void Test_Group_Delete_ByName()
         {
-            var createdGroup = api.CreateGroup(TestGroupData.CreateGroupData());
-            //api.DeleteGroup(createdGroup.Name, "Name");
+            var createdGroup = api.CreateGroupExternal(TestGroupData.CreateGroupData());
+            //api.DeleteGroupExternal(createdGroup.Name, "Name");
             //Assert.Throws<ApiException>(() => api.GetGroup(createdGroup.Id.ToString()));
         }
 
@@ -104,19 +105,19 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
         [Fact]
         public void Test_Group_Get_ById()
         {
-            var createdGroup = api.CreateGroup(TestGroupData.CreateGroupData());
+            var createdGroup = api.CreateGroupExternal(TestGroupData.CreateGroupData());
             try
             {
                 Assert.Null(Record.Exception(() =>
                 {
-                    var existingGroup = api.GetGroup(createdGroup.Id.ToString());
+                    var existingGroup = api.GetGroupExternal(createdGroup.Id.ToString());
                     Assert.Equal(createdGroup.Id, existingGroup.Id);
                     return existingGroup;
                 }));
             }
             finally
             {
-                api.DeleteGroup(createdGroup.Id.ToString());
+                api.DeleteGroupExternal(createdGroup.Id.ToString());
             }
         }
 
@@ -126,7 +127,7 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
         [Fact]
         public void Test_Group_Get_ByName()
         {
-            var createdGroup = api.CreateGroup(TestGroupData.CreateGroupData());
+            var createdGroup = api.CreateGroupExternal(TestGroupData.CreateGroupData());
             try
             {
                 //Assert.Null(Record.Exception(() =>
@@ -138,7 +139,7 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
             }
             finally
             {
-                api.DeleteGroup(createdGroup.Id.ToString());
+                api.DeleteGroupExternal(createdGroup.Id.ToString());
             }
         }
 
@@ -149,17 +150,17 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
         public void Test_Group_List_ById()
         {
             var groupData = TestGroupData.CreateGroupDataList(2);
-            var createdGroups = groupData.Select(i => api.CreateGroup(i)).ToArray();
+            var createdGroups = groupData.Select(i => api.CreateGroupExternal(i)).ToArray();
             try
             {
-                var foundGroups = api.ListGroups(
-                    filters: $"Id In {string.Join("; ", createdGroups.Select(i => i.Id))}").Data;
+                var foundGroups = api.ListGroupExternals(
+                    filters: $"Id In {string.Join(", ", createdGroups.Select(i => i.Id))}").Data;
                 Assert.Equal(foundGroups.Count, createdGroups.Length);
             }
             finally
             {
                 foreach (var i in createdGroups)
-                    api.DeleteGroup(i.Id.ToString());
+                    api.DeleteGroupExternal(i.Id.ToString());
             }
         }
 
@@ -170,7 +171,7 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
         public void Test_Group_List_ByName()
         {
             var groupData = TestGroupData.CreateGroupDataList(2);
-            var createdGroups = groupData.Select(i => api.CreateGroup(i)).ToArray();
+            var createdGroups = groupData.Select(i => api.CreateGroupExternal(i)).ToArray();
             try
             {
                 //var foundGroups = api.ListGroups(
@@ -180,7 +181,7 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
             finally
             {
                 foreach (var i in createdGroups)
-                    api.DeleteGroup(i.Id.ToString());
+                    api.DeleteGroupExternal(i.Id.ToString());
             }
         }
 
@@ -191,16 +192,16 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
         public void Test_Group_Update()
         {
             var groupData = TestGroupData.CreateGroupData();
-            var createdGroup = api.CreateGroup(groupData);
+            var createdGroup = api.CreateGroupExternal(groupData);
             try
             {
                 TestGroupData.UpdateGroupData(groupData);
-                var updatedGroup = api.UpdateGroup(createdGroup.Id.ToString(), groupData);
+                var updatedGroup = api.UpdateGroupExternal(createdGroup.Id.ToString(), groupData);
                 AssertGroupDataEqual(groupData, updatedGroup);
             }
             finally
             {
-                api.DeleteGroup(createdGroup.Id.ToString());
+                api.DeleteGroupExternal(createdGroup.Id.ToString());
             }
         }
 
@@ -211,17 +212,17 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
         public void Test_Group_Upsert()
         {
             var groupData = TestGroupData.CreateGroupData();
-            var createdGroup = api.UpsertGroup(groupData);
+            var createdGroup = api.UpsertGroupExternal(groupData);
             try
             {
                 AssertGroupDataEqual(groupData, createdGroup);
                 TestGroupData.UpdateGroupData(groupData, createdGroup.Id);
-                var updatedGroup = api.UpsertGroup(groupData);
+                var updatedGroup = api.UpsertGroupExternal(groupData);
                 AssertGroupDataEqual(groupData, updatedGroup);
             }
             finally
             {
-                api.DeleteGroup(createdGroup.Id.ToString());
+                api.DeleteGroupExternal(createdGroup.Id.ToString());
             }
         }
 

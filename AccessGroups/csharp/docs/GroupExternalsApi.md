@@ -1,28 +1,28 @@
-# Agile.Now.ApiAccessGroups.Api.GroupsApi
+# Agile.Now.ApiAccessGroups.Api.GroupExternalsApi
 
 All URIs are relative to *https://dev.esystems.fi*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreateGroup**](GroupsApi.md#creategroup) | **POST** /Endpoint/rest/api/v1/Group |  |
-| [**DeleteGroup**](GroupsApi.md#deletegroup) | **DELETE** /Endpoint/rest/api/v1/Group/{Id} |  |
-| [**DeleteGroupUser**](GroupsApi.md#deletegroupuser) | **DELETE** /Endpoint/rest/api/v1/Group/{Id}/User/{SubId} |  |
-| [**GetGroup**](GroupsApi.md#getgroup) | **GET** /Endpoint/rest/api/v1/Group/{Id} |  |
-| [**ListGroupUsers**](GroupsApi.md#listgroupusers) | **GET** /Endpoint/rest/api/v1/Group/{Id}/Users |  |
-| [**ListGroups**](GroupsApi.md#listgroups) | **GET** /Endpoint/rest/api/v1/Groups |  |
-| [**PatchGroupUsers**](GroupsApi.md#patchgroupusers) | **PATCH** /Endpoint/rest/api/v1/Group/{Id}/Users |  |
-| [**PatchGroups**](GroupsApi.md#patchgroups) | **PATCH** /Endpoint/rest/api/v1/Groups/Json |  |
-| [**UpdateGroup**](GroupsApi.md#updategroup) | **PUT** /Endpoint/rest/api/v1/Group/{Id} |  |
-| [**UpsertGroup**](GroupsApi.md#upsertgroup) | **PATCH** /Endpoint/rest/api/v1/Group |  |
-| [**UpsertGroupUser**](GroupsApi.md#upsertgroupuser) | **POST** /Endpoint/rest/api/v1/Group/{Id}/User |  |
+| [**CreateGroupExternal**](GroupExternalsApi.md#creategroupexternal) | **POST** /Endpoint/rest/api/v1/GroupExternal |  |
+| [**DeleteGroupExternal**](GroupExternalsApi.md#deletegroupexternal) | **DELETE** /Endpoint/rest/api/v1/GroupExternal/{Id} |  |
+| [**DeleteGroupExternalUser**](GroupExternalsApi.md#deletegroupexternaluser) | **DELETE** /Endpoint/rest/api/v1/GroupExternal/{Id}/User/{SubId} |  |
+| [**GetGroupExternal**](GroupExternalsApi.md#getgroupexternal) | **GET** /Endpoint/rest/api/v1/GroupExternal/{Id} |  |
+| [**ListGroupExternalUsers**](GroupExternalsApi.md#listgroupexternalusers) | **GET** /Endpoint/rest/api/v1/GroupExternal/{Id}/Users |  |
+| [**ListGroupExternals**](GroupExternalsApi.md#listgroupexternals) | **GET** /Endpoint/rest/api/v1/GroupExternals |  |
+| [**PatchGroupExternalUsers**](GroupExternalsApi.md#patchgroupexternalusers) | **PATCH** /Endpoint/rest/api/v1/GroupExternal/{Id}/Users |  |
+| [**PatchGroupExternals**](GroupExternalsApi.md#patchgroupexternals) | **PATCH** /Endpoint/rest/api/v1/GroupExternals/Json |  |
+| [**UpdateGroupExternal**](GroupExternalsApi.md#updategroupexternal) | **PUT** /Endpoint/rest/api/v1/GroupExternal/{Id} |  |
+| [**UpsertGroupExternal**](GroupExternalsApi.md#upsertgroupexternal) | **PATCH** /Endpoint/rest/api/v1/GroupExternal |  |
+| [**UpsertGroupExternalUser**](GroupExternalsApi.md#upsertgroupexternaluser) | **POST** /Endpoint/rest/api/v1/GroupExternal/{Id}/User |  |
 
-<a id="creategroup"></a>
-# **CreateGroup**
-> Group CreateGroup (GroupData groupData)
+<a id="creategroupexternal"></a>
+# **CreateGroupExternal**
+> GroupExternal CreateGroupExternal (GroupExternalData groupExternalData)
 
 
 
-Use the `GroupData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `GroupData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `Created_By`  ### Create a new record of Group * If the value in the `Id` fields are empty then action insert a new record according input parameter entity record structure (`GroupData`). * If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`GroupData`). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `Group` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
+Use the `GroupExternalData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `GroupExternalData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `Created_By`  ### Create a new record of GroupExternal * If the value in the `Id` fields are empty then action insert a new record according input parameter entity record structure (`GroupExternalData`). * If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`GroupExternalData`). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `GroupExternal` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
 
 ### Example
 ```csharp
@@ -34,7 +34,7 @@ using Agile.Now.ApiAccessGroups.Model;
 
 namespace Example
 {
-    public class CreateGroupExample
+    public class CreateGroupExternalExample
     {
         public static void Main()
         {
@@ -43,17 +43,17 @@ namespace Example
             // Configure OAuth2 access token for authorization: OAuth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
-            var apiInstance = new GroupsApi(config);
-            var groupData = new GroupData(); // GroupData | `Group` information to insert.  The input parameter must be used in the `GroupData` record structure inside the `FieldType` parameter in the foreign key fields.
+            var apiInstance = new GroupExternalsApi(config);
+            var groupExternalData = new GroupExternalData(); // GroupExternalData | `GroupExternal` information to insert.  The input parameter must be used in the `GroupExternalData` record structure inside the `FieldType` parameter in the foreign key fields.
 
             try
             {
-                Group result = apiInstance.CreateGroup(groupData);
+                GroupExternal result = apiInstance.CreateGroupExternal(groupExternalData);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling GroupsApi.CreateGroup: " + e.Message);
+                Debug.Print("Exception when calling GroupExternalsApi.CreateGroupExternal: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -62,20 +62,20 @@ namespace Example
 }
 ```
 
-#### Using the CreateGroupWithHttpInfo variant
+#### Using the CreateGroupExternalWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<Group> response = apiInstance.CreateGroupWithHttpInfo(groupData);
+    ApiResponse<GroupExternal> response = apiInstance.CreateGroupExternalWithHttpInfo(groupExternalData);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling GroupsApi.CreateGroupWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling GroupExternalsApi.CreateGroupExternalWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -85,11 +85,11 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **groupData** | [**GroupData**](GroupData.md) | &#x60;Group&#x60; information to insert.  The input parameter must be used in the &#x60;GroupData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
+| **groupExternalData** | [**GroupExternalData**](GroupExternalData.md) | &#x60;GroupExternal&#x60; information to insert.  The input parameter must be used in the &#x60;GroupExternalData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
 
 ### Return type
 
-[**Group**](Group.md)
+[**GroupExternal**](GroupExternal.md)
 
 ### Authorization
 
@@ -104,7 +104,7 @@ catch (ApiException e)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Inserted &#x60;Group&#x60; information. |  -  |
+| **200** | Inserted &#x60;GroupExternal&#x60; information. |  -  |
 | **400** | Bad Request - The user has provided input that the browser is unable to convert. |  -  |
 | **401** | Unauthorized - The response status code indicates that the client request has not been completed because it lacks valid authentication credentials for the requested resource. |  -  |
 | **403** | Forbidden - The user does not have access to execute operation |  -  |
@@ -112,13 +112,13 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="deletegroup"></a>
-# **DeleteGroup**
-> Group DeleteGroup (string id, string? name = null)
+<a id="deletegroupexternal"></a>
+# **DeleteGroupExternal**
+> GroupExternal DeleteGroupExternal (string id, string? name = null)
 
 
 
-Use the query string resource to delete `Group` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id` field(s) value and use the `DELETE` method of the resource to delete a record.  Method returns an extended `Group` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  Foreign key fields are: `Created_By`  ### Delete a record of Group * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned. * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the deleted record if the call is successful.
+Use the query string resource to delete `GroupExternal` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id` field(s) value and use the `DELETE` method of the resource to delete a record.  Method returns an extended `GroupExternal` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  Foreign key fields are: `Created_By`  ### Delete a record of GroupExternal * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned. * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the deleted record if the call is successful.
 
 ### Example
 ```csharp
@@ -130,7 +130,7 @@ using Agile.Now.ApiAccessGroups.Model;
 
 namespace Example
 {
-    public class DeleteGroupExample
+    public class DeleteGroupExternalExample
     {
         public static void Main()
         {
@@ -139,18 +139,18 @@ namespace Example
             // Configure OAuth2 access token for authorization: OAuth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
-            var apiInstance = new GroupsApi(config);
-            var id = "id_example";  // string | The identifier of the Group record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+            var apiInstance = new GroupExternalsApi(config);
+            var id = "id_example";  // string | The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
             var name = "name_example";  // string? | The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional) 
 
             try
             {
-                Group result = apiInstance.DeleteGroup(id, name);
+                GroupExternal result = apiInstance.DeleteGroupExternal(id, name);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling GroupsApi.DeleteGroup: " + e.Message);
+                Debug.Print("Exception when calling GroupExternalsApi.DeleteGroupExternal: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -159,20 +159,20 @@ namespace Example
 }
 ```
 
-#### Using the DeleteGroupWithHttpInfo variant
+#### Using the DeleteGroupExternalWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<Group> response = apiInstance.DeleteGroupWithHttpInfo(id, name);
+    ApiResponse<GroupExternal> response = apiInstance.DeleteGroupExternalWithHttpInfo(id, name);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling GroupsApi.DeleteGroupWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling GroupExternalsApi.DeleteGroupExternalWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -182,12 +182,12 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **id** | **string** | The identifier of the Group record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
+| **id** | **string** | The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
 | **name** | **string?** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60;  &#x60;&#x60;&#x60; | [optional]  |
 
 ### Return type
 
-[**Group**](Group.md)
+[**GroupExternal**](GroupExternal.md)
 
 ### Authorization
 
@@ -202,7 +202,7 @@ catch (ApiException e)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Deleted &#x60;Group&#x60; information. |  -  |
+| **200** | Deleted &#x60;GroupExternal&#x60; information. |  -  |
 | **400** | Bad Request - The user has provided input that the browser is unable to convert. |  -  |
 | **401** | Unauthorized - The response status code indicates that the client request has not been completed because it lacks valid authentication credentials for the requested resource. |  -  |
 | **403** | Forbidden - The user does not have access to execute operation |  -  |
@@ -210,9 +210,9 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="deletegroupuser"></a>
-# **DeleteGroupUser**
-> User DeleteGroupUser (string id, string subId, string? name = null, string? subName = null)
+<a id="deletegroupexternaluser"></a>
+# **DeleteGroupExternalUser**
+> User DeleteGroupExternalUser (string id, string subId, string? name = null, string? subName = null)
 
 
 
@@ -228,7 +228,7 @@ using Agile.Now.ApiAccessGroups.Model;
 
 namespace Example
 {
-    public class DeleteGroupUserExample
+    public class DeleteGroupExternalUserExample
     {
         public static void Main()
         {
@@ -237,20 +237,20 @@ namespace Example
             // Configure OAuth2 access token for authorization: OAuth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
-            var apiInstance = new GroupsApi(config);
-            var id = "id_example";  // string | The identifier of the Group record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+            var apiInstance = new GroupExternalsApi(config);
+            var id = "id_example";  // string | The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
             var subId = "subId_example";  // string | The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
             var name = "name_example";  // string? | The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional) 
             var subName = "subName_example";  // string? | The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional) 
 
             try
             {
-                User result = apiInstance.DeleteGroupUser(id, subId, name, subName);
+                User result = apiInstance.DeleteGroupExternalUser(id, subId, name, subName);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling GroupsApi.DeleteGroupUser: " + e.Message);
+                Debug.Print("Exception when calling GroupExternalsApi.DeleteGroupExternalUser: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -259,20 +259,20 @@ namespace Example
 }
 ```
 
-#### Using the DeleteGroupUserWithHttpInfo variant
+#### Using the DeleteGroupExternalUserWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<User> response = apiInstance.DeleteGroupUserWithHttpInfo(id, subId, name, subName);
+    ApiResponse<User> response = apiInstance.DeleteGroupExternalUserWithHttpInfo(id, subId, name, subName);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling GroupsApi.DeleteGroupUserWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling GroupExternalsApi.DeleteGroupExternalUserWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -282,7 +282,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **id** | **string** | The identifier of the Group record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
+| **id** | **string** | The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
 | **subId** | **string** | The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
 | **name** | **string?** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Id &#x60;&#x60;&#x60; | [optional]  |
 | **subName** | **string?** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60;  &#x60;&#x60;&#x60; | [optional]  |
@@ -312,13 +312,13 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="getgroup"></a>
-# **GetGroup**
-> Group GetGroup (string id, string? name = null)
+<a id="getgroupexternal"></a>
+# **GetGroupExternal**
+> GroupExternal GetGroupExternal (string id, string? name = null)
 
 
 
-The method returns one record of the `Group`.  Method returns an extended `Group` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  Foreign key fields are: `Created_By`  ### Get a record of Group * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned. * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+The method returns one record of the `GroupExternal`.  Method returns an extended `GroupExternal` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  Foreign key fields are: `Created_By`  ### Get a record of GroupExternal * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned. * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
 ### Example
 ```csharp
@@ -330,7 +330,7 @@ using Agile.Now.ApiAccessGroups.Model;
 
 namespace Example
 {
-    public class GetGroupExample
+    public class GetGroupExternalExample
     {
         public static void Main()
         {
@@ -339,18 +339,18 @@ namespace Example
             // Configure OAuth2 access token for authorization: OAuth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
-            var apiInstance = new GroupsApi(config);
-            var id = "id_example";  // string | The identifier of the Group record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+            var apiInstance = new GroupExternalsApi(config);
+            var id = "id_example";  // string | The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
             var name = "name_example";  // string? | The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional) 
 
             try
             {
-                Group result = apiInstance.GetGroup(id, name);
+                GroupExternal result = apiInstance.GetGroupExternal(id, name);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling GroupsApi.GetGroup: " + e.Message);
+                Debug.Print("Exception when calling GroupExternalsApi.GetGroupExternal: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -359,20 +359,20 @@ namespace Example
 }
 ```
 
-#### Using the GetGroupWithHttpInfo variant
+#### Using the GetGroupExternalWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<Group> response = apiInstance.GetGroupWithHttpInfo(id, name);
+    ApiResponse<GroupExternal> response = apiInstance.GetGroupExternalWithHttpInfo(id, name);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling GroupsApi.GetGroupWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling GroupExternalsApi.GetGroupExternalWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -382,12 +382,12 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **id** | **string** | The identifier of the Group record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
+| **id** | **string** | The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
 | **name** | **string?** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60;  &#x60;&#x60;&#x60; | [optional]  |
 
 ### Return type
 
-[**Group**](Group.md)
+[**GroupExternal**](GroupExternal.md)
 
 ### Authorization
 
@@ -402,7 +402,7 @@ catch (ApiException e)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The record of &#x60;Group&#x60; information |  -  |
+| **200** | The record of &#x60;GroupExternal&#x60; information |  -  |
 | **400** | Bad Request - The user has provided input that the browser is unable to convert. |  -  |
 | **401** | Unauthorized - The response status code indicates that the client request has not been completed because it lacks valid authentication credentials for the requested resource. |  -  |
 | **403** | Forbidden - The user does not have access to execute operation |  -  |
@@ -410,9 +410,9 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="listgroupusers"></a>
-# **ListGroupUsers**
-> Users ListGroupUsers (string id, string? name = null, string? fields = null, string? filters = null, string? orders = null, int? currentPage = null, int? pageSize = null)
+<a id="listgroupexternalusers"></a>
+# **ListGroupExternalUsers**
+> Users ListGroupExternalUsers (string id, string? name = null, string? fields = null, string? filters = null, string? orders = null, int? currentPage = null, int? pageSize = null)
 
 
 
@@ -428,7 +428,7 @@ using Agile.Now.ApiAccessGroups.Model;
 
 namespace Example
 {
-    public class ListGroupUsersExample
+    public class ListGroupExternalUsersExample
     {
         public static void Main()
         {
@@ -437,8 +437,8 @@ namespace Example
             // Configure OAuth2 access token for authorization: OAuth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
-            var apiInstance = new GroupsApi(config);
-            var id = "id_example";  // string | The identifier of the Group record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+            var apiInstance = new GroupExternalsApi(config);
+            var id = "id_example";  // string | The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
             var name = "name_example";  // string? | The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional) 
             var fields = "fields_example";  // string? | Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, User_Id, Group_Id ``` (optional) 
             var filters = "filters_example";  // string? | In the List methods, filtering of resources can be performed using filter parameters.  You can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.  The name of the entity field. Example: `Name` or relation field `OwnerId.Name`  Please refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.  The operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn  You can add multiple values separated by comma when using the `In`, `NotIn` operators. Example of text field; `USA; FIN; ARE` Example of numeric field; `1, 2, 3`  Example of filters: ```sql Filters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)  Filters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)  Filters=ExternalId In S100;S101;S120;100  Filters=Id = 100  ```  (optional) 
@@ -448,12 +448,12 @@ namespace Example
 
             try
             {
-                Users result = apiInstance.ListGroupUsers(id, name, fields, filters, orders, currentPage, pageSize);
+                Users result = apiInstance.ListGroupExternalUsers(id, name, fields, filters, orders, currentPage, pageSize);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling GroupsApi.ListGroupUsers: " + e.Message);
+                Debug.Print("Exception when calling GroupExternalsApi.ListGroupExternalUsers: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -462,20 +462,20 @@ namespace Example
 }
 ```
 
-#### Using the ListGroupUsersWithHttpInfo variant
+#### Using the ListGroupExternalUsersWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<Users> response = apiInstance.ListGroupUsersWithHttpInfo(id, name, fields, filters, orders, currentPage, pageSize);
+    ApiResponse<Users> response = apiInstance.ListGroupExternalUsersWithHttpInfo(id, name, fields, filters, orders, currentPage, pageSize);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling GroupsApi.ListGroupUsersWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling GroupExternalsApi.ListGroupExternalUsersWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -485,7 +485,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **id** | **string** | The identifier of the Group record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
+| **id** | **string** | The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
 | **name** | **string?** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Id &#x60;&#x60;&#x60; | [optional]  |
 | **fields** | **string?** | Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &amp;quot;*&amp;quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  &#x60;&#x60;&#x60; Id, User_Id, Group_Id &#x60;&#x60;&#x60; | [optional]  |
 | **filters** | **string?** | In the List methods, filtering of resources can be performed using filter parameters.  You can also use parent tables as a search filter. For example, the &#x60;Employee&#x60; table has a &#x60;DepartmentId&#x60; field, so you can search for a department name using the &#x60;DepartmentId.Name&#x60; field name. All fields in the parent table are available.  The name of the entity field. Example: &#x60;Name&#x60; or relation field &#x60;OwnerId.Name&#x60;  Please refer to the corresponding method&amp;#39;s documentation for the complete list of supported filter parameters by record.  The operator must be a standard comparison operator &#x3D;, &amp;lt;&amp;gt;, &amp;gt;, &amp;gt;&#x3D;, &amp;lt;, &amp;lt;&#x3D;, In, Like, NotIn  You can add multiple values separated by comma when using the &#x60;In&#x60;, &#x60;NotIn&#x60; operators. Example of text field; &#x60;USA; FIN; ARE&#x60; Example of numeric field; &#x60;1, 2, 3&#x60;  Example of filters: &#x60;&#x60;&#x60;sql Filters&#x3D;(DepartmentId.Name &#x3D; My Department) AND (DepartmentId.CreatedOn &#x3D; 2021-01-01)  Filters&#x3D;(DepartmentId.Name &#x3D; My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)  Filters&#x3D;ExternalId In S100;S101;S120;100  Filters&#x3D;Id &#x3D; 100  &#x60;&#x60;&#x60;  | [optional]  |
@@ -518,13 +518,13 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="listgroups"></a>
-# **ListGroups**
-> Groups ListGroups (string? fields = null, string? filters = null, string? orders = null, int? currentPage = null, int? pageSize = null)
+<a id="listgroupexternals"></a>
+# **ListGroupExternals**
+> GroupExternals ListGroupExternals (string? fields = null, string? filters = null, string? orders = null, int? currentPage = null, int? pageSize = null)
 
 
 
-Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.  Leverage the search service to extract the requisite information from the system effectively.  The method returns a list structured with an extended `Group` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.  The foreign key fields involved are: `Created_By`  ### Example It searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.  ```http fields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000 ```
+Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.  Leverage the search service to extract the requisite information from the system effectively.  The method returns a list structured with an extended `GroupExternal` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.  The foreign key fields involved are: `Created_By`  ### Example It searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.  ```http fields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000 ```
 
 ### Example
 ```csharp
@@ -536,7 +536,7 @@ using Agile.Now.ApiAccessGroups.Model;
 
 namespace Example
 {
-    public class ListGroupsExample
+    public class ListGroupExternalsExample
     {
         public static void Main()
         {
@@ -545,7 +545,7 @@ namespace Example
             // Configure OAuth2 access token for authorization: OAuth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
-            var apiInstance = new GroupsApi(config);
+            var apiInstance = new GroupExternalsApi(config);
             var fields = "fields_example";  // string? | Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, Name, Description, Created_By, Created, Has_Custom_Management ``` (optional) 
             var filters = "filters_example";  // string? | In the List methods, filtering of resources can be performed using filter parameters.  You can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.  The name of the entity field. Example: `Name` or relation field `OwnerId.Name`  Please refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.  The operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn  You can add multiple values separated by comma when using the `In`, `NotIn` operators. Example of text field; `USA; FIN; ARE` Example of numeric field; `1, 2, 3`  Example of filters: ```sql Filters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)  Filters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)  Filters=ExternalId In S100;S101;S120;100  Filters=Id = 100  ```  (optional) 
             var orders = "orders_example";  // string? | The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  ``` Name DESC, CreatedOn ASC ``` (optional) 
@@ -554,12 +554,12 @@ namespace Example
 
             try
             {
-                Groups result = apiInstance.ListGroups(fields, filters, orders, currentPage, pageSize);
+                GroupExternals result = apiInstance.ListGroupExternals(fields, filters, orders, currentPage, pageSize);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling GroupsApi.ListGroups: " + e.Message);
+                Debug.Print("Exception when calling GroupExternalsApi.ListGroupExternals: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -568,20 +568,20 @@ namespace Example
 }
 ```
 
-#### Using the ListGroupsWithHttpInfo variant
+#### Using the ListGroupExternalsWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<Groups> response = apiInstance.ListGroupsWithHttpInfo(fields, filters, orders, currentPage, pageSize);
+    ApiResponse<GroupExternals> response = apiInstance.ListGroupExternalsWithHttpInfo(fields, filters, orders, currentPage, pageSize);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling GroupsApi.ListGroupsWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling GroupExternalsApi.ListGroupExternalsWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -599,7 +599,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**Groups**](Groups.md)
+[**GroupExternals**](GroupExternals.md)
 
 ### Authorization
 
@@ -614,7 +614,7 @@ catch (ApiException e)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The list of Groups |  -  |
+| **200** | The list of GroupExternals |  -  |
 | **400** | Bad Request - The user has provided input that the browser is unable to convert. |  -  |
 | **401** | Unauthorized - The response status code indicates that the client request has not been completed because it lacks valid authentication credentials for the requested resource. |  -  |
 | **403** | Forbidden - The user does not have access to execute operation |  -  |
@@ -622,9 +622,9 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="patchgroupusers"></a>
-# **PatchGroupUsers**
-> User PatchGroupUsers (string id, UsersData usersData, string? name = null, string? deleteNotExists = null)
+<a id="patchgroupexternalusers"></a>
+# **PatchGroupExternalUsers**
+> User PatchGroupExternalUsers (string id, UsersData usersData, string? name = null, string? deleteNotExists = null)
 
 
 
@@ -640,7 +640,7 @@ using Agile.Now.ApiAccessGroups.Model;
 
 namespace Example
 {
-    public class PatchGroupUsersExample
+    public class PatchGroupExternalUsersExample
     {
         public static void Main()
         {
@@ -649,20 +649,20 @@ namespace Example
             // Configure OAuth2 access token for authorization: OAuth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
-            var apiInstance = new GroupsApi(config);
-            var id = "id_example";  // string | The identifier of the Group record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+            var apiInstance = new GroupExternalsApi(config);
+            var id = "id_example";  // string | The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
             var usersData = new UsersData(); // UsersData | The list of User information to insert or update.  The input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.
             var name = "name_example";  // string? | The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional) 
             var deleteNotExists = "\"false\"";  // string? | The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional)  (default to "false")
 
             try
             {
-                User result = apiInstance.PatchGroupUsers(id, usersData, name, deleteNotExists);
+                User result = apiInstance.PatchGroupExternalUsers(id, usersData, name, deleteNotExists);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling GroupsApi.PatchGroupUsers: " + e.Message);
+                Debug.Print("Exception when calling GroupExternalsApi.PatchGroupExternalUsers: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -671,20 +671,20 @@ namespace Example
 }
 ```
 
-#### Using the PatchGroupUsersWithHttpInfo variant
+#### Using the PatchGroupExternalUsersWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<User> response = apiInstance.PatchGroupUsersWithHttpInfo(id, usersData, name, deleteNotExists);
+    ApiResponse<User> response = apiInstance.PatchGroupExternalUsersWithHttpInfo(id, usersData, name, deleteNotExists);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling GroupsApi.PatchGroupUsersWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling GroupExternalsApi.PatchGroupExternalUsersWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -694,7 +694,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **id** | **string** | The identifier of the Group record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
+| **id** | **string** | The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
 | **usersData** | [**UsersData**](UsersData.md) | The list of User information to insert or update.  The input parameter must be used in the &#x60;Extra&#x60; record array structure inside the &#x60;Name&#x60; and &#x60;FieldName&#x60; parameters in the foreign key fields. |  |
 | **name** | **string?** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Id &#x60;&#x60;&#x60; | [optional]  |
 | **deleteNotExists** | **string?** | The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. | [optional] [default to &quot;false&quot;] |
@@ -724,13 +724,13 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="patchgroups"></a>
-# **PatchGroups**
-> Groups PatchGroups (GroupsData groupsData)
+<a id="patchgroupexternals"></a>
+# **PatchGroupExternals**
+> GroupExternals PatchGroupExternals (GroupExternalsData groupExternalsData)
 
 
 
-Use the `GroupsText` object resource to insert or update (Upsert) a list of `GroupList` using `Id` field(s) value.  You can supply the required field values in the request data, and then use the `PATCH` method of the resource.  The input parameter must be used in the `GroupList` record structure as text fields in the foreign key fields.  Foreign key fields are: `Created_By`  ### Update a record of Group * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned. You cannot change `Id` field value (primary key). * When the Id field value is not provided, the system will automatically initiate the insertion of a new record.  **Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.  ### Create a new record of Group * If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`GroupData`).  The response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `Group` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.
+Use the `GroupExternalsText` object resource to insert or update (Upsert) a list of `GroupExternalList` using `Id` field(s) value.  You can supply the required field values in the request data, and then use the `PATCH` method of the resource.  The input parameter must be used in the `GroupExternalList` record structure as text fields in the foreign key fields.  Foreign key fields are: `Created_By`  ### Update a record of GroupExternal * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned. You cannot change `Id` field value (primary key). * When the Id field value is not provided, the system will automatically initiate the insertion of a new record.  **Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.  ### Create a new record of GroupExternal * If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`GroupExternalData`).  The response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `GroupExternal` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.
 
 ### Example
 ```csharp
@@ -742,7 +742,7 @@ using Agile.Now.ApiAccessGroups.Model;
 
 namespace Example
 {
-    public class PatchGroupsExample
+    public class PatchGroupExternalsExample
     {
         public static void Main()
         {
@@ -751,17 +751,17 @@ namespace Example
             // Configure OAuth2 access token for authorization: OAuth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
-            var apiInstance = new GroupsApi(config);
-            var groupsData = new GroupsData(); // GroupsData | The list of Group information to insert or update.  The input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.
+            var apiInstance = new GroupExternalsApi(config);
+            var groupExternalsData = new GroupExternalsData(); // GroupExternalsData | The list of GroupExternal information to insert or update.  The input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.
 
             try
             {
-                Groups result = apiInstance.PatchGroups(groupsData);
+                GroupExternals result = apiInstance.PatchGroupExternals(groupExternalsData);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling GroupsApi.PatchGroups: " + e.Message);
+                Debug.Print("Exception when calling GroupExternalsApi.PatchGroupExternals: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -770,20 +770,20 @@ namespace Example
 }
 ```
 
-#### Using the PatchGroupsWithHttpInfo variant
+#### Using the PatchGroupExternalsWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<Groups> response = apiInstance.PatchGroupsWithHttpInfo(groupsData);
+    ApiResponse<GroupExternals> response = apiInstance.PatchGroupExternalsWithHttpInfo(groupExternalsData);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling GroupsApi.PatchGroupsWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling GroupExternalsApi.PatchGroupExternalsWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -793,11 +793,11 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **groupsData** | [**GroupsData**](GroupsData.md) | The list of Group information to insert or update.  The input parameter must be used in the &#x60;Extra&#x60; record array structure inside the &#x60;Name&#x60; and &#x60;FieldName&#x60; parameters in the foreign key fields. |  |
+| **groupExternalsData** | [**GroupExternalsData**](GroupExternalsData.md) | The list of GroupExternal information to insert or update.  The input parameter must be used in the &#x60;Extra&#x60; record array structure inside the &#x60;Name&#x60; and &#x60;FieldName&#x60; parameters in the foreign key fields. |  |
 
 ### Return type
 
-[**Groups**](Groups.md)
+[**GroupExternals**](GroupExternals.md)
 
 ### Authorization
 
@@ -812,7 +812,7 @@ catch (ApiException e)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Inserted or updated list of Group information.   |  -  |
+| **200** | Inserted or updated list of GroupExternal information.   |  -  |
 | **400** | Bad Request - The user has provided input that the browser is unable to convert. |  -  |
 | **401** | Unauthorized - The response status code indicates that the client request has not been completed because it lacks valid authentication credentials for the requested resource. |  -  |
 | **403** | Forbidden - The user does not have access to execute operation |  -  |
@@ -820,13 +820,13 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="updategroup"></a>
-# **UpdateGroup**
-> Group UpdateGroup (string id, GroupData groupData, string? name = null)
+<a id="updategroupexternal"></a>
+# **UpdateGroupExternal**
+> GroupExternal UpdateGroupExternal (string id, GroupExternalData groupExternalData, string? name = null)
 
 
 
-Use the `GroupData` object resource to update `Group` using `Id` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `GroupData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `Created_By`  ### Update a record of Group * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `Group` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+Use the `GroupExternalData` object resource to update `GroupExternal` using `Id` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `GroupExternalData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `Created_By`  ### Update a record of GroupExternal * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `GroupExternal` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
 ### Example
 ```csharp
@@ -838,7 +838,7 @@ using Agile.Now.ApiAccessGroups.Model;
 
 namespace Example
 {
-    public class UpdateGroupExample
+    public class UpdateGroupExternalExample
     {
         public static void Main()
         {
@@ -847,19 +847,19 @@ namespace Example
             // Configure OAuth2 access token for authorization: OAuth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
-            var apiInstance = new GroupsApi(config);
-            var id = "id_example";  // string | The identifier of the Group record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
-            var groupData = new GroupData(); // GroupData | Group information to update.  The input parameter must be used in the `GroupData` record structure inside the `FieldType` parameter in the foreign key fields.
+            var apiInstance = new GroupExternalsApi(config);
+            var id = "id_example";  // string | The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+            var groupExternalData = new GroupExternalData(); // GroupExternalData | GroupExternal information to update.  The input parameter must be used in the `GroupExternalData` record structure inside the `FieldType` parameter in the foreign key fields.
             var name = "name_example";  // string? | The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional) 
 
             try
             {
-                Group result = apiInstance.UpdateGroup(id, groupData, name);
+                GroupExternal result = apiInstance.UpdateGroupExternal(id, groupExternalData, name);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling GroupsApi.UpdateGroup: " + e.Message);
+                Debug.Print("Exception when calling GroupExternalsApi.UpdateGroupExternal: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -868,20 +868,20 @@ namespace Example
 }
 ```
 
-#### Using the UpdateGroupWithHttpInfo variant
+#### Using the UpdateGroupExternalWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<Group> response = apiInstance.UpdateGroupWithHttpInfo(id, groupData, name);
+    ApiResponse<GroupExternal> response = apiInstance.UpdateGroupExternalWithHttpInfo(id, groupExternalData, name);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling GroupsApi.UpdateGroupWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling GroupExternalsApi.UpdateGroupExternalWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -891,13 +891,13 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **id** | **string** | The identifier of the Group record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
-| **groupData** | [**GroupData**](GroupData.md) | Group information to update.  The input parameter must be used in the &#x60;GroupData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
+| **id** | **string** | The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
+| **groupExternalData** | [**GroupExternalData**](GroupExternalData.md) | GroupExternal information to update.  The input parameter must be used in the &#x60;GroupExternalData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
 | **name** | **string?** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60;  &#x60;&#x60;&#x60; | [optional]  |
 
 ### Return type
 
-[**Group**](Group.md)
+[**GroupExternal**](GroupExternal.md)
 
 ### Authorization
 
@@ -912,7 +912,7 @@ catch (ApiException e)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Updated &#x60;Group&#x60; information. |  -  |
+| **200** | Updated &#x60;GroupExternal&#x60; information. |  -  |
 | **400** | Bad Request - The user has provided input that the browser is unable to convert. |  -  |
 | **401** | Unauthorized - The response status code indicates that the client request has not been completed because it lacks valid authentication credentials for the requested resource. |  -  |
 | **403** | Forbidden - The user does not have access to execute operation |  -  |
@@ -920,13 +920,13 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="upsertgroup"></a>
-# **UpsertGroup**
-> Group UpsertGroup (GroupData groupData)
+<a id="upsertgroupexternal"></a>
+# **UpsertGroupExternal**
+> GroupExternal UpsertGroupExternal (GroupExternalData groupExternalData)
 
 
 
-Use the `GroupData` object resource to insert or update (Upsert) `Group` using `Id` field(s) value.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `GroupData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `Created_By`  ### Update a record of Group * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * When the Id field value is not provided, the system will automatically initiate the insertion of a new record.  ### Create a new record of Group * If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`GroupData`).  The response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Group` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+Use the `GroupExternalData` object resource to insert or update (Upsert) `GroupExternal` using `Id` field(s) value.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `GroupExternalData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `Created_By`  ### Update a record of GroupExternal * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * When the Id field value is not provided, the system will automatically initiate the insertion of a new record.  ### Create a new record of GroupExternal * If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`GroupExternalData`).  The response body will contain the object of the updated or created record if the call is successful. Method returns an extended `GroupExternal` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
 ### Example
 ```csharp
@@ -938,7 +938,7 @@ using Agile.Now.ApiAccessGroups.Model;
 
 namespace Example
 {
-    public class UpsertGroupExample
+    public class UpsertGroupExternalExample
     {
         public static void Main()
         {
@@ -947,17 +947,17 @@ namespace Example
             // Configure OAuth2 access token for authorization: OAuth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
-            var apiInstance = new GroupsApi(config);
-            var groupData = new GroupData(); // GroupData | `Group` information to insert or update.  The input parameter must be used in the `GroupData` record structure inside the `FieldType` parameter in the foreign key fields.
+            var apiInstance = new GroupExternalsApi(config);
+            var groupExternalData = new GroupExternalData(); // GroupExternalData | `GroupExternal` information to insert or update.  The input parameter must be used in the `GroupExternalData` record structure inside the `FieldType` parameter in the foreign key fields.
 
             try
             {
-                Group result = apiInstance.UpsertGroup(groupData);
+                GroupExternal result = apiInstance.UpsertGroupExternal(groupExternalData);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling GroupsApi.UpsertGroup: " + e.Message);
+                Debug.Print("Exception when calling GroupExternalsApi.UpsertGroupExternal: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -966,20 +966,20 @@ namespace Example
 }
 ```
 
-#### Using the UpsertGroupWithHttpInfo variant
+#### Using the UpsertGroupExternalWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<Group> response = apiInstance.UpsertGroupWithHttpInfo(groupData);
+    ApiResponse<GroupExternal> response = apiInstance.UpsertGroupExternalWithHttpInfo(groupExternalData);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling GroupsApi.UpsertGroupWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling GroupExternalsApi.UpsertGroupExternalWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -989,11 +989,11 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **groupData** | [**GroupData**](GroupData.md) | &#x60;Group&#x60; information to insert or update.  The input parameter must be used in the &#x60;GroupData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
+| **groupExternalData** | [**GroupExternalData**](GroupExternalData.md) | &#x60;GroupExternal&#x60; information to insert or update.  The input parameter must be used in the &#x60;GroupExternalData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
 
 ### Return type
 
-[**Group**](Group.md)
+[**GroupExternal**](GroupExternal.md)
 
 ### Authorization
 
@@ -1008,7 +1008,7 @@ catch (ApiException e)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Inserted or updated &#x60;Group&#x60; information. |  -  |
+| **200** | Inserted or updated &#x60;GroupExternal&#x60; information. |  -  |
 | **400** | Bad Request - The user has provided input that the browser is unable to convert. |  -  |
 | **401** | Unauthorized - The response status code indicates that the client request has not been completed because it lacks valid authentication credentials for the requested resource. |  -  |
 | **403** | Forbidden - The user does not have access to execute operation |  -  |
@@ -1016,9 +1016,9 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="upsertgroupuser"></a>
-# **UpsertGroupUser**
-> User UpsertGroupUser (string id, UserData userData, string? name = null)
+<a id="upsertgroupexternaluser"></a>
+# **UpsertGroupExternalUser**
+> User UpsertGroupExternalUser (string id, UserData userData, string? name = null)
 
 
 
@@ -1034,7 +1034,7 @@ using Agile.Now.ApiAccessGroups.Model;
 
 namespace Example
 {
-    public class UpsertGroupUserExample
+    public class UpsertGroupExternalUserExample
     {
         public static void Main()
         {
@@ -1043,19 +1043,19 @@ namespace Example
             // Configure OAuth2 access token for authorization: OAuth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
-            var apiInstance = new GroupsApi(config);
-            var id = "id_example";  // string | The identifier of the Group record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+            var apiInstance = new GroupExternalsApi(config);
+            var id = "id_example";  // string | The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
             var userData = new UserData(); // UserData | `User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.
             var name = "name_example";  // string? | The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional) 
 
             try
             {
-                User result = apiInstance.UpsertGroupUser(id, userData, name);
+                User result = apiInstance.UpsertGroupExternalUser(id, userData, name);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling GroupsApi.UpsertGroupUser: " + e.Message);
+                Debug.Print("Exception when calling GroupExternalsApi.UpsertGroupExternalUser: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -1064,20 +1064,20 @@ namespace Example
 }
 ```
 
-#### Using the UpsertGroupUserWithHttpInfo variant
+#### Using the UpsertGroupExternalUserWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<User> response = apiInstance.UpsertGroupUserWithHttpInfo(id, userData, name);
+    ApiResponse<User> response = apiInstance.UpsertGroupExternalUserWithHttpInfo(id, userData, name);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling GroupsApi.UpsertGroupUserWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling GroupExternalsApi.UpsertGroupExternalUserWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -1087,7 +1087,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **id** | **string** | The identifier of the Group record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
+| **id** | **string** | The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
 | **userData** | [**UserData**](UserData.md) | &#x60;User&#x60; information to insert or update.  The input parameter must be used in the &#x60;UserData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
 | **name** | **string?** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Id &#x60;&#x60;&#x60; | [optional]  |
 

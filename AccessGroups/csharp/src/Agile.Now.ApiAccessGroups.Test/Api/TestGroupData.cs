@@ -6,23 +6,26 @@ namespace Agile.Now.ApiAccessGroups.Test.Api;
 
 internal static class TestGroupData
 {
-    public static GroupData CreateGroupData(string suffix = null)
+    public static GroupExternalData CreateGroupData(string suffix = null)
     {
         var name = "unit-test-group" + suffix;
         var uniqueName = $"{name}-{DateTime.Now:yyyy-MM-dd-HH-mm-ss-fff}";
-        return new GroupData
+        return new GroupExternalData
         (
-            //name: uniqueName
+            name: uniqueName,
+            description: name
         );
     }
 
-    public static GroupData[] CreateGroupDataList(int count) =>
+    public static GroupExternalData[] CreateGroupDataList(int count) =>
         Enumerable.Range(0, count).Select(i => CreateGroupData(i.ToString())).ToArray();
 
-    public static void UpdateGroupData(GroupData GroupInsertData, long? id = null)
+    public static void UpdateGroupData(GroupExternalData groupData, int? id = null)
     {
         if (id != null)
-            GroupInsertData.Id = id.Value;
+            groupData.Id = id.Value;
         const string updated = "updated";
+        groupData.Description += updated;
+
     }
 }

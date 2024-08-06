@@ -20,9 +20,14 @@ docs/Error.md
 docs/FieldType.md
 docs/Group.md
 docs/GroupData.md
+docs/GroupExternal.md
+docs/GroupExternalData.md
+docs/GroupExternalText.md
+docs/GroupExternals.md
+docs/GroupExternalsApi.md
+docs/GroupExternalsData.md
 docs/GroupText.md
 docs/Groups.md
-docs/GroupsApi.md
 docs/GroupsData.md
 docs/ListValidation.md
 docs/Meta.md
@@ -34,7 +39,7 @@ docs/UsersData.md
 git_push.sh
 src/Agile.Now.ApiAccessGroups.Test/Agile.Now.ApiAccessGroups.Test.csproj
 src/Agile.Now.ApiAccessGroups.Test/Api/AccessGroupsApiTests.cs
-src/Agile.Now.ApiAccessGroups.Test/Api/GroupsApiTests.cs
+src/Agile.Now.ApiAccessGroups.Test/Api/GroupExternalsApiTests.cs
 src/Agile.Now.ApiAccessGroups.Test/Model/AbstractLongTests.cs
 src/Agile.Now.ApiAccessGroups.Test/Model/AbstractTextTests.cs
 src/Agile.Now.ApiAccessGroups.Test/Model/AccessGroupDataTests.cs
@@ -49,6 +54,11 @@ src/Agile.Now.ApiAccessGroups.Test/Model/EnumAccessGroupTypeTests.cs
 src/Agile.Now.ApiAccessGroups.Test/Model/ErrorTests.cs
 src/Agile.Now.ApiAccessGroups.Test/Model/FieldTypeTests.cs
 src/Agile.Now.ApiAccessGroups.Test/Model/GroupDataTests.cs
+src/Agile.Now.ApiAccessGroups.Test/Model/GroupExternalDataTests.cs
+src/Agile.Now.ApiAccessGroups.Test/Model/GroupExternalTests.cs
+src/Agile.Now.ApiAccessGroups.Test/Model/GroupExternalTextTests.cs
+src/Agile.Now.ApiAccessGroups.Test/Model/GroupExternalsDataTests.cs
+src/Agile.Now.ApiAccessGroups.Test/Model/GroupExternalsTests.cs
 src/Agile.Now.ApiAccessGroups.Test/Model/GroupTests.cs
 src/Agile.Now.ApiAccessGroups.Test/Model/GroupTextTests.cs
 src/Agile.Now.ApiAccessGroups.Test/Model/GroupsDataTests.cs
@@ -62,7 +72,7 @@ src/Agile.Now.ApiAccessGroups.Test/Model/UsersDataTests.cs
 src/Agile.Now.ApiAccessGroups.Test/Model/UsersTests.cs
 src/Agile.Now.ApiAccessGroups/Agile.Now.ApiAccessGroups.csproj
 src/Agile.Now.ApiAccessGroups/Api/AccessGroupsApi.cs
-src/Agile.Now.ApiAccessGroups/Api/GroupsApi.cs
+src/Agile.Now.ApiAccessGroups/Api/GroupExternalsApi.cs
 src/Agile.Now.ApiAccessGroups/Client/ApiClient.cs
 src/Agile.Now.ApiAccessGroups/Client/ApiException.cs
 src/Agile.Now.ApiAccessGroups/Client/ApiResponse.cs
@@ -98,6 +108,11 @@ src/Agile.Now.ApiAccessGroups/Model/Error.cs
 src/Agile.Now.ApiAccessGroups/Model/FieldType.cs
 src/Agile.Now.ApiAccessGroups/Model/Group.cs
 src/Agile.Now.ApiAccessGroups/Model/GroupData.cs
+src/Agile.Now.ApiAccessGroups/Model/GroupExternal.cs
+src/Agile.Now.ApiAccessGroups/Model/GroupExternalData.cs
+src/Agile.Now.ApiAccessGroups/Model/GroupExternalText.cs
+src/Agile.Now.ApiAccessGroups/Model/GroupExternals.cs
+src/Agile.Now.ApiAccessGroups/Model/GroupExternalsData.cs
 src/Agile.Now.ApiAccessGroups/Model/GroupText.cs
 src/Agile.Now.ApiAccessGroups/Model/Groups.cs
 src/Agile.Now.ApiAccessGroups/Model/GroupsData.cs
