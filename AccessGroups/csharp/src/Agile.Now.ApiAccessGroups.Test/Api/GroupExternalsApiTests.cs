@@ -232,10 +232,90 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
         [Fact]
         public void PatchGroupsTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //GroupsData groupsData = null;
-            //var response = instance.PatchGroups(groupsData);
-            //Assert.IsType<Groups>(response);
+        }
+
+        /// <summary>
+        /// Test DeleteGroupExternalUserExternal
+        /// </summary>
+        [Fact]
+        public void Test_GroupExternalUserExternal_Delete()
+        {
+            var groupExternalData = TestGroupData.CreateGroupData();
+            var createdGroupExternal = api.CreateGroupExternal(groupExternalData);
+            try
+            {
+                var createdGroupExternalUserExternal = api.UpsertGroupExternalUserExternal(
+                    createdGroupExternal.Id.ToString(), 
+                    new( userId: new("Id", TestAccessGroupData.Users[0].ToString())));
+                api.DeleteGroupExternalUserExternal(createdGroupExternal.Id.ToString(),
+                    createdGroupExternalUserExternal.Id.ToString());
+                var existingdGroupExternalUserExternals = 
+                    api.ListGroupExternalUserExternals(createdGroupExternal.Id.ToString()).Data;
+                Assert.Empty(existingdGroupExternalUserExternals);
+            }
+            finally
+            {
+                api.DeleteGroupExternal(createdGroupExternal.Id.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Test ListGroupExternalUserExternals
+        /// </summary>
+        [Fact]
+        public void Test_GroupExternalUserExternal_List()
+        {
+            var GroupExternalData = TestGroupData.CreateGroupData();
+            var createdGroupExternal = api.CreateGroupExternal(GroupExternalData);
+            try
+            {
+                var createdGroupExternalUserExternals = TestAccessGroupData.Users.Select(i =>
+                    api.UpsertGroupExternalUserExternal(createdGroupExternal.Id.ToString(),
+                        new(userId: new("Id", i.ToString())))).ToArray();
+                try
+                {
+                    var existingGroupExternalUserExternals = 
+                        api.ListGroupExternalUserExternals(createdGroupExternal.Id.ToString()).Data;
+                    Assert.Equal(createdGroupExternalUserExternals.Length, existingGroupExternalUserExternals.Count);
+                }
+                finally
+                {
+                    foreach (var i in createdGroupExternalUserExternals)
+                        api.DeleteGroupExternalUserExternal(createdGroupExternal.Id.ToString(), i.Id.ToString());
+                }
+            }
+            finally
+            {
+                api.DeleteGroupExternal(createdGroupExternal.Id.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Test UpsertAccessGroupUser
+        /// </summary>
+        [Fact]
+        public void Test_GroupUser_Upsert()
+        {
+            var groupData = TestGroupData.CreateGroupData();
+            var createdGroup = api.CreateGroupExternal(groupData);
+            try
+            {
+                var createdGroupUser = api.UpsertGroupExternalUserExternal(createdGroup.Id.ToString(), new(
+                    userId: new("Id", TestAccessGroupData.Users[0].ToString())));
+                try
+                {
+                    var existingAccessGroupUsers = api.ListGroupExternalUserExternals(createdGroup.Id.ToString()).Data;
+                    Assert.Contains(existingAccessGroupUsers, i => i.Id == createdGroupUser.Id);
+                }
+                finally
+                {
+                    api.DeleteGroupExternalUserExternal(createdGroup.Id.ToString(), createdGroupUser.Id.ToString());
+                }
+            }
+            finally
+            {
+                api.DeleteGroupExternal(createdGroup.Id.ToString());
+            }
         }
     }
 }

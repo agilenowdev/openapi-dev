@@ -33,6 +33,11 @@ docs/ListValidation.md
 docs/Meta.md
 docs/User.md
 docs/UserData.md
+docs/UserExternal.md
+docs/UserExternalData.md
+docs/UserExternalText.md
+docs/UserExternals.md
+docs/UserExternalsData.md
 docs/UserText.md
 docs/Users.md
 docs/UsersData.md
@@ -66,6 +71,11 @@ src/Agile.Now.ApiAccessGroups.Test/Model/GroupsTests.cs
 src/Agile.Now.ApiAccessGroups.Test/Model/ListValidationTests.cs
 src/Agile.Now.ApiAccessGroups.Test/Model/MetaTests.cs
 src/Agile.Now.ApiAccessGroups.Test/Model/UserDataTests.cs
+src/Agile.Now.ApiAccessGroups.Test/Model/UserExternalDataTests.cs
+src/Agile.Now.ApiAccessGroups.Test/Model/UserExternalTests.cs
+src/Agile.Now.ApiAccessGroups.Test/Model/UserExternalTextTests.cs
+src/Agile.Now.ApiAccessGroups.Test/Model/UserExternalsDataTests.cs
+src/Agile.Now.ApiAccessGroups.Test/Model/UserExternalsTests.cs
 src/Agile.Now.ApiAccessGroups.Test/Model/UserTests.cs
 src/Agile.Now.ApiAccessGroups.Test/Model/UserTextTests.cs
 src/Agile.Now.ApiAccessGroups.Test/Model/UsersDataTests.cs
@@ -120,6 +130,11 @@ src/Agile.Now.ApiAccessGroups/Model/ListValidation.cs
 src/Agile.Now.ApiAccessGroups/Model/Meta.cs
 src/Agile.Now.ApiAccessGroups/Model/User.cs
 src/Agile.Now.ApiAccessGroups/Model/UserData.cs
+src/Agile.Now.ApiAccessGroups/Model/UserExternal.cs
+src/Agile.Now.ApiAccessGroups/Model/UserExternalData.cs
+src/Agile.Now.ApiAccessGroups/Model/UserExternalText.cs
+src/Agile.Now.ApiAccessGroups/Model/UserExternals.cs
+src/Agile.Now.ApiAccessGroups/Model/UserExternalsData.cs
 src/Agile.Now.ApiAccessGroups/Model/UserText.cs
 src/Agile.Now.ApiAccessGroups/Model/Users.cs
 src/Agile.Now.ApiAccessGroups/Model/UsersData.cs
