@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.31"
+    "version": "3.0.32"
   },
   "servers": [
     {
@@ -407,13 +407,13 @@
         ]
       }
     },
-    "/Endpoint/rest/api/v1/AccessGroup/{Id}/AccessApplications": {
+    "/Endpoint/rest/api/v1/AccessGroup/{Id}/Applications": {
       "get": {
         "tags": [
           "AccessGroups"
         ],
-        "description": "Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.\n\nLeverage the search service to extract the requisite information from the system effectively.\n\nThe method returns a list structured with an extended `AccessApplication` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.\n\nThe foreign key fields involved are: `AccessGroupId, ParentApplicationId, AccessApplicationId`\n\n### Example\nIt searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.\n\n```http\nfields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000\n```",
-        "operationId": "List AccessGroup AccessApplications",
+        "description": "Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.\n\nLeverage the search service to extract the requisite information from the system effectively.\n\nThe method returns a list structured with an extended `Application` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.\n\nThe foreign key fields involved are: `AccessGroupId, ParentApplicationId, AccessApplicationId`\n\n### Example\nIt searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.\n\n```http\nfields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000\n```",
+        "operationId": "List AccessGroup Applications",
         "parameters": [
           {
             "name": "Id",
@@ -486,11 +486,11 @@
         ],
         "responses": {
           "200": {
-            "description": "The list of AccessApplications",
+            "description": "The list of Applications",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AccessApplications"
+                  "$ref": "#/components/schemas/Applications"
                 }
               }
             }
@@ -521,8 +521,8 @@
         "tags": [
           "AccessGroups"
         ],
-        "description": "Use the `AccessApplicationsData` object resource to insert or update (Upsert) a list of `AccessApplicationData` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `AccessApplicationList` record structure as text fields in the foreign key fields.\n\nForeign key fields are: `AccessGroupId, ParentApplicationId, AccessApplicationId`\n\n### Update a record of AccessApplication\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.\n\n### Create a new record of AccessApplication\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`AccessApplicationData`).\n\nThe response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `AccessApplication` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.",
-        "operationId": "Patch AccessGroup AccessApplications",
+        "description": "Use the `ApplicationsData` object resource to insert or update (Upsert) a list of `ApplicationData` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `ApplicationList` record structure as text fields in the foreign key fields.\n\nForeign key fields are: `AccessGroupId, ParentApplicationId, AccessApplicationId`\n\n### Update a record of Application\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.\n\n### Create a new record of Application\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`ApplicationData`).\n\nThe response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `Application` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.",
+        "operationId": "Patch AccessGroup Applications",
         "parameters": [
           {
             "name": "Id",
@@ -555,11 +555,11 @@
           }
         ],
         "requestBody": {
-          "description": "The list of AccessApplication information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.",
+          "description": "The list of Application information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AccessApplicationsData"
+                "$ref": "#/components/schemas/ApplicationsData"
               }
             }
           },
@@ -568,11 +568,11 @@
         },
         "responses": {
           "200": {
-            "description": "Inserted or updated list of AccessApplication information. \n",
+            "description": "Inserted or updated list of Application information. \n",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AccessApplication"
+                  "$ref": "#/components/schemas/Application"
                 }
               }
             }
@@ -600,13 +600,13 @@
         ]
       }
     },
-    "/Endpoint/rest/api/v1/AccessGroup/{Id}/AccessApplication": {
+    "/Endpoint/rest/api/v1/AccessGroup/{Id}/Application": {
       "post": {
         "tags": [
           "AccessGroups"
         ],
-        "description": "Use the `AccessApplicationPost` object resource to insert or update (Upsert) `AccessApplication` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `AccessApplicationData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `AccessGroupId, ParentApplicationId, AccessApplicationId`\n\n### Update a record of AccessApplication\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n### Create a new record of AccessApplication\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`AccessApplicationData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `AccessApplication` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
-        "operationId": "Upsert AccessGroup AccessApplication",
+        "description": "Use the `ApplicationPost` object resource to insert or update (Upsert) `Application` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `ApplicationData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `AccessGroupId, ParentApplicationId, AccessApplicationId`\n\n### Update a record of Application\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n### Create a new record of Application\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`ApplicationData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Application` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "operationId": "Upsert AccessGroup Application",
         "parameters": [
           {
             "name": "Id",
@@ -629,11 +629,11 @@
           }
         ],
         "requestBody": {
-          "description": "`AccessApplication` information to insert or update.\n\nThe input parameter must be used in the `AccessApplicationData` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "description": "`Application` information to insert or update.\n\nThe input parameter must be used in the `ApplicationData` record structure inside the `FieldType` parameter in the foreign key fields.",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AccessApplicationData"
+                "$ref": "#/components/schemas/ApplicationData"
               }
             }
           },
@@ -642,11 +642,11 @@
         },
         "responses": {
           "200": {
-            "description": "Inserted or updated `AccessApplication` information.",
+            "description": "Inserted or updated `Application` information.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AccessApplication"
+                  "$ref": "#/components/schemas/Application"
                 }
               }
             }
@@ -674,13 +674,13 @@
         ]
       }
     },
-    "/Endpoint/rest/api/v1/AccessGroup/{Id}/AccessApplication/{SubId}": {
+    "/Endpoint/rest/api/v1/AccessGroup/{Id}/Application/{SubId}": {
       "delete": {
         "tags": [
           "AccessGroups"
         ],
-        "description": "Use the query string resource to delete `AccessApplication` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `Id` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `AccessApplication` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `AccessGroupId, ParentApplicationId, AccessApplicationId`\n\n### Delete a record of AccessApplication\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
-        "operationId": "Delete AccessGroup AccessApplication",
+        "description": "Use the query string resource to delete `Application` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `Id` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `Application` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `AccessGroupId, ParentApplicationId, AccessApplicationId`\n\n### Delete a record of Application\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
+        "operationId": "Delete AccessGroup Application",
         "parameters": [
           {
             "name": "Id",
@@ -704,11 +704,11 @@
           {
             "name": "SubId",
             "in": "path",
-            "description": "The identifier of the AccessApplication record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the AccessApplication record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -723,11 +723,11 @@
         ],
         "responses": {
           "200": {
-            "description": "Deleted `AccessApplication` information.",
+            "description": "Deleted `Application` information.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AccessApplication"
+                  "$ref": "#/components/schemas/Application"
                 }
               }
             }
@@ -2533,7 +2533,7 @@
         },
         "description": "The record of AccessGroup information."
       },
-      "AccessApplication": {
+      "Application": {
         "required": [
           "Id",
           "ParentApplicationId",
@@ -2565,9 +2565,9 @@
             "example": "1900-01-01T00:00:00Z"
           }
         },
-        "description": "The record of AccessApplication information."
+        "description": "The record of Application information."
       },
-      "AccessApplications": {
+      "Applications": {
         "type": "object",
         "properties": {
           "Meta": {
@@ -2576,14 +2576,14 @@
           "Data": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/AccessApplication"
+              "$ref": "#/components/schemas/Application"
             },
-            "description": "The list of `AccessApplication records`"
+            "description": "The list of `Application records`"
           }
         },
-        "description": "The list of `AccessApplication` records"
+        "description": "The list of `Application` records"
       },
-      "AccessApplicationData": {
+      "ApplicationData": {
         "required": [
           "ParentApplicationId",
           "AccessApplicationId"
@@ -2614,7 +2614,7 @@
             "example": "1900-01-01T00:00:00Z"
           }
         },
-        "description": "The record of AccessApplication information."
+        "description": "The record of Application information."
       },
       "FieldType": {
         "required": [
@@ -2633,7 +2633,7 @@
         },
         "description": "The field object structure. This structure allows users to specify any related entity field and its corresponding value. When saving data, the system automatically retrieves and assigns the primary key value from the system database table based on the provided field name and value."
       },
-      "AccessApplicationText": {
+      "ApplicationText": {
         "required": [
           "ParentApplicationId",
           "AccessApplicationId"
@@ -2666,9 +2666,9 @@
             "example": "1900-01-01T00:00:00Z"
           }
         },
-        "description": "The record of AccessApplication information."
+        "description": "The record of Application information."
       },
-      "AccessApplicationsData": {
+      "ApplicationsData": {
         "type": "object",
         "properties": {
           "Extra": {
@@ -2684,15 +2684,15 @@
             "default": false,
             "example": false
           },
-          "AccessApplications": {
+          "Applications": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/AccessApplicationText"
+              "$ref": "#/components/schemas/ApplicationText"
             },
-            "description": "The list of `AccessApplication` data record for import"
+            "description": "The list of `Application` data record for import"
           }
         },
-        "description": "The data loading record of AccessApplication importing"
+        "description": "The data loading record of Application importing"
       },
       "ListValidation": {
         "required": [
