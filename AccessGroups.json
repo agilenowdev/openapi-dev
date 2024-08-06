@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.37"
+    "version": "3.0.38"
   },
   "servers": [
     {
@@ -1894,13 +1894,13 @@
         ]
       }
     },
-    "/Endpoint/rest/api/v1/GroupExternal/{Id}/Users": {
+    "/Endpoint/rest/api/v1/GroupExternal/{Id}/UserExternals": {
       "get": {
         "tags": [
           "GroupExternals"
         ],
-        "description": "Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.\n\nLeverage the search service to extract the requisite information from the system effectively.\n\nThe method returns a list structured with an extended `User` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.\n\nThe foreign key fields involved are: `User_Id, Group_Id`\n\n### Example\nIt searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.\n\n```http\nfields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000\n```",
-        "operationId": "List GroupExternal Users",
+        "description": "Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.\n\nLeverage the search service to extract the requisite information from the system effectively.\n\nThe method returns a list structured with an extended `UserExternal` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.\n\nThe foreign key fields involved are: `User_Id, Group_Id`\n\n### Example\nIt searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.\n\n```http\nfields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000\n```",
+        "operationId": "List GroupExternal UserExternals",
         "parameters": [
           {
             "name": "Id",
@@ -1973,11 +1973,11 @@
         ],
         "responses": {
           "200": {
-            "description": "The list of Users",
+            "description": "The list of UserExternals",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Users"
+                  "$ref": "#/components/schemas/UserExternals"
                 }
               }
             }
@@ -2008,8 +2008,8 @@
         "tags": [
           "GroupExternals"
         ],
-        "description": "Use the `UsersData` object resource to insert or update (Upsert) a list of `UserData` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `UserList` record structure as text fields in the foreign key fields.\n\nForeign key fields are: `User_Id, Group_Id`\n\n### Update a record of User\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.\n\n### Create a new record of User\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`UserData`).\n\nThe response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `User` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.",
-        "operationId": "Patch GroupExternal Users",
+        "description": "Use the `UserExternalsData` object resource to insert or update (Upsert) a list of `UserExternalData` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `UserExternalList` record structure as text fields in the foreign key fields.\n\nForeign key fields are: `User_Id, Group_Id`\n\n### Update a record of UserExternal\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.\n\n### Create a new record of UserExternal\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`UserExternalData`).\n\nThe response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `UserExternal` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.",
+        "operationId": "Patch GroupExternal UserExternals",
         "parameters": [
           {
             "name": "Id",
@@ -2042,11 +2042,11 @@
           }
         ],
         "requestBody": {
-          "description": "The list of User information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.",
+          "description": "The list of UserExternal information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UsersData"
+                "$ref": "#/components/schemas/UserExternalsData"
               }
             }
           },
@@ -2055,11 +2055,11 @@
         },
         "responses": {
           "200": {
-            "description": "Inserted or updated list of User information. \n",
+            "description": "Inserted or updated list of UserExternal information. \n",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User"
+                  "$ref": "#/components/schemas/UserExternal"
                 }
               }
             }
@@ -2087,13 +2087,13 @@
         ]
       }
     },
-    "/Endpoint/rest/api/v1/GroupExternal/{Id}/User": {
+    "/Endpoint/rest/api/v1/GroupExternal/{Id}/UserExternal": {
       "post": {
         "tags": [
           "GroupExternals"
         ],
-        "description": "Use the `UserPost` object resource to insert or update (Upsert) `User` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `User_Id, Group_Id`\n\n### Update a record of User\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n### Create a new record of User\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`UserData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `User` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
-        "operationId": "Upsert GroupExternal User",
+        "description": "Use the `UserExternalPost` object resource to insert or update (Upsert) `UserExternal` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `UserExternalData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `User_Id, Group_Id`\n\n### Update a record of UserExternal\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n### Create a new record of UserExternal\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`UserExternalData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `UserExternal` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "operationId": "Upsert GroupExternal UserExternal",
         "parameters": [
           {
             "name": "Id",
@@ -2116,11 +2116,11 @@
           }
         ],
         "requestBody": {
-          "description": "`User` information to insert or update.\n\nThe input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "description": "`UserExternal` information to insert or update.\n\nThe input parameter must be used in the `UserExternalData` record structure inside the `FieldType` parameter in the foreign key fields.",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UserData"
+                "$ref": "#/components/schemas/UserExternalData"
               }
             }
           },
@@ -2129,11 +2129,11 @@
         },
         "responses": {
           "200": {
-            "description": "Inserted or updated `User` information.",
+            "description": "Inserted or updated `UserExternal` information.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User"
+                  "$ref": "#/components/schemas/UserExternal"
                 }
               }
             }
@@ -2161,13 +2161,13 @@
         ]
       }
     },
-    "/Endpoint/rest/api/v1/GroupExternal/{Id}/User/{SubId}": {
+    "/Endpoint/rest/api/v1/GroupExternal/{Id}/UserExternal/{SubId}": {
       "delete": {
         "tags": [
           "GroupExternals"
         ],
-        "description": "Use the query string resource to delete `User` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `Id` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `User` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `User_Id, Group_Id`\n\n### Delete a record of User\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
-        "operationId": "Delete GroupExternal User",
+        "description": "Use the query string resource to delete `UserExternal` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `Id` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `UserExternal` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `User_Id, Group_Id`\n\n### Delete a record of UserExternal\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
+        "operationId": "Delete GroupExternal UserExternal",
         "parameters": [
           {
             "name": "Id",
@@ -2191,11 +2191,11 @@
           {
             "name": "SubId",
             "in": "path",
-            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the UserExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the UserExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -2210,11 +2210,11 @@
         ],
         "responses": {
           "200": {
-            "description": "Deleted `User` information.",
+            "description": "Deleted `UserExternal` information.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User"
+                  "$ref": "#/components/schemas/UserExternal"
                 }
               }
             }
@@ -3129,6 +3129,103 @@
           }
         },
         "description": "The data loading record of GroupExternal importing"
+      },
+      "UserExternal": {
+        "required": [
+          "Id",
+          "User_Id"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "format": "int32",
+            "default": 0,
+            "example": 0
+          },
+          "User_Id": {
+            "$ref": "#/components/schemas/AbstractLong"
+          }
+        },
+        "description": "The record of UserExternal information."
+      },
+      "UserExternals": {
+        "type": "object",
+        "properties": {
+          "Meta": {
+            "$ref": "#/components/schemas/Meta"
+          },
+          "Data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserExternal"
+            },
+            "description": "The list of `UserExternal records`"
+          }
+        },
+        "description": "The list of `UserExternal` records"
+      },
+      "UserExternalData": {
+        "required": [
+          "User_Id"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "format": "int32",
+            "default": 0,
+            "example": 0
+          },
+          "User_Id": {
+            "$ref": "#/components/schemas/FieldType"
+          }
+        },
+        "description": "The record of UserExternal information."
+      },
+      "UserExternalText": {
+        "required": [
+          "User_Id"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "format": "int32",
+            "default": 0,
+            "example": 0
+          },
+          "User_Id": {
+            "type": "string"
+          }
+        },
+        "description": "The record of UserExternal information."
+      },
+      "UserExternalsData": {
+        "type": "object",
+        "properties": {
+          "Extra": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ListValidation"
+            },
+            "description": "List validation for entity attribute"
+          },
+          "IsFullValidation": {
+            "type": "boolean",
+            "description": "If the value is true, the data quality of all fields are checked. This has an effect on performance.",
+            "default": false,
+            "example": false
+          },
+          "UserExternals": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserExternalText"
+            },
+            "description": "The list of `UserExternal` data record for import"
+          }
+        },
+        "description": "The data loading record of UserExternal importing"
       }
     },
     "responses": {
