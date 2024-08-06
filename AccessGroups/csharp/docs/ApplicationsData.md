@@ -1,5 +1,5 @@
-# Agile.Now.ApiAccessGroups.Model.PermissionsData
-The data loading record of Permission importing
+# Agile.Now.ApiAccessGroups.Model.ApplicationsData
+The data loading record of Application importing
 
 ## Properties
 
@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Extra** | [**List&lt;ListValidation&gt;**](ListValidation.md) | List validation for entity attribute | [optional] 
 **IsFullValidation** | **bool** | If the value is true, the data quality of all fields are checked. This has an effect on performance. | [optional] [default to false]
-**Permissions** | [**List&lt;PermissionText&gt;**](PermissionText.md) | The list of &#x60;Permission&#x60; data record for import | [optional] 
+**Applications** | [**List&lt;ApplicationText&gt;**](ApplicationText.md) | The list of &#x60;Application&#x60; data record for import | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -1,5 +1,5 @@
-# Agile.Now.ApiAccessGroups.Model.AccessApplication
-The record of AccessApplication information.
+# Agile.Now.ApiAccessGroups.Model.Application
+The record of Application information.
 
 ## Properties
 

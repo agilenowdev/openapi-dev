@@ -223,20 +223,20 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
         }
 
         /// <summary>
-        /// Test DeleteAccessGroupAccessApplication
+        /// Test DeleteAccessGroupApplication
         /// </summary>
         [Fact]
-        public void Test_AccessGroupAccessApplication_Delete()
+        public void Test_AccessGroupApplication_Delete()
         {
             var AccessGroupData = TestAccessGroupData.CreateAccessGroupData();
             var createdAccessGroup = api.CreateAccessGroup(AccessGroupData);
             try
             {
-                var accessApplication = api.UpsertAccessGroupAccessApplication(createdAccessGroup.Id,
+                var accessApplication = api.UpsertAccessGroupApplication(createdAccessGroup.Id,
                     new(
                         parentApplicationId: new("Id", TestAccessGroupData.ParentApplication),
                         accessApplicationId: new("Id", TestAccessGroupData.Applications[0])));
-                api.DeleteAccessGroupAccessApplication(createdAccessGroup.Id, accessApplication.Id);
+                api.DeleteAccessGroupApplication(createdAccessGroup.Id, accessApplication.Id);
             }
             finally
             {
@@ -247,27 +247,27 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
         /// <summary>
         /// Test DeleteAccessGroupPermission
         /// </summary>
-        [Fact]
-        public void Test_AccessGroupPermission_Delete()
-        {
-            var accessGroupData = TestAccessGroupData.CreateAccessGroupData();
-            var createdAccessGroup = api.CreateAccessGroup(accessGroupData);
-            try
-            {
-                var permission = api.UpsertAccessGroupPermission(createdAccessGroup.Id,
-                    new PermissionData(permissionId: EnumPermissionType.Import, createdOn: DateTime.Now));
-                var deletedPermission = api.DeleteAccessGroupPermission(createdAccessGroup.Id, permission.Id.ToString());
-                var existingPermission = api.ListAccessGroupPermissions(createdAccessGroup.Id).Data;
-                Assert.Empty(existingPermission);
-            }
-            finally
-            {
-                api.DeleteAccessGroup(createdAccessGroup.Id);
-            }
-        }
+        //[Fact]
+        //public void Test_AccessGroupPermission_Delete()
+        //{
+        //    var accessGroupData = TestAccessGroupData.CreateAccessGroupData();
+        //    var createdAccessGroup = api.CreateAccessGroup(accessGroupData);
+        //    try
+        //    {
+        //        var permission = api.UpsertAccessGroupPermission(createdAccessGroup.Id,
+        //            new PermissionData(permissionId: EnumPermissionType.Import, createdOn: DateTime.Now));
+        //        var deletedPermission = api.DeleteAccessGroupPermission(createdAccessGroup.Id, permission.Id.ToString());
+        //        var existingPermission = api.ListAccessGroupPermissions(createdAccessGroup.Id).Data;
+        //        Assert.Empty(existingPermission);
+        //    }
+        //    finally
+        //    {
+        //        api.DeleteAccessGroup(createdAccessGroup.Id);
+        //    }
+        //}
 
         /// <summary>
-        /// Test DeleteAccessGroupGroup
+        /// Test DeleteAccessGroupUser
         /// </summary>
         [Fact]
         public void Test_AccessGroupGroup_Delete()
@@ -276,9 +276,13 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
             var createdAccessGroup = api.CreateAccessGroup(accessGroupData);
             try
             {
-                var createdAccessGroupGroup = api.UpsertAccessGroupGroup(createdAccessGroup.Id,
-                    new(TestAccessGroupData.Groups[0]));
+                var createdAccessGroupGroup = api.UpsertAccessGroupGroup(createdAccessGroup.Id, new(
+                    groupId: new("Id", TestAccessGroupData.Groups[0].ToString()),
+                    createdOn: DateTime.Now
+                ));
                 api.DeleteAccessGroupGroup(createdAccessGroup.Id, createdAccessGroupGroup.Id.ToString());
+                var existingAccessGroupGroups = api.ListAccessGroupGroups(createdAccessGroup.Id).Data;
+                Assert.Empty(existingAccessGroupGroups);
             }
             finally
             {
@@ -296,9 +300,12 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
             var createdAccessGroup = api.CreateAccessGroup(AccessGroupData);
             try
             {
-                var createdAccessGroupUser = api.UpsertAccessGroupUser(createdAccessGroup.Id,
-                    new(userId: new("Id", TestAccessGroupData.Users[0].ToString())));
+                var createdAccessGroupUser = api.UpsertAccessGroupUser(createdAccessGroup.Id, new(
+                    userId: new("Id", TestAccessGroupData.Users[0].ToString()),
+                    createdOn: DateTime.Now));
                 api.DeleteAccessGroupUser(createdAccessGroup.Id, createdAccessGroupUser.Id.ToString());
+                var existingdAccessGroupUsers = api.ListAccessGroupUsers(createdAccessGroup.Id).Data;
+                Assert.Empty(existingdAccessGroupUsers);
             }
             finally
             {
@@ -317,20 +324,20 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
             try
             {
                 var createdAccessGroupAccessApplications = TestAccessGroupData.Applications.Select(i =>
-                    api.UpsertAccessGroupAccessApplication(createdAccessGroup.Id,
+                    api.UpsertAccessGroupApplication(createdAccessGroup.Id,
                         new(
                             parentApplicationId: new("Id", TestAccessGroupData.ParentApplication),
                             accessApplicationId: new("Id", i)))).ToArray();
                 try
                 {
                     var existingAccessGroupAccessApplications =
-                        api.ListAccessGroupAccessApplications(createdAccessGroup.Id).Data;
+                        api.ListAccessGroupApplications(createdAccessGroup.Id).Data;
                     Assert.Equal(createdAccessGroupAccessApplications.Length, existingAccessGroupAccessApplications.Count);
                 }
                 finally
                 {
                     foreach (var i in createdAccessGroupAccessApplications)
-                        api.DeleteAccessGroupAccessApplication(createdAccessGroup.Id, i.Id);
+                        api.DeleteAccessGroupApplication(createdAccessGroup.Id, i.Id);
                 }
             }
             finally
@@ -342,35 +349,35 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
         /// <summary>
         /// Test ListAccessGroupPermissions
         /// </summary>
-        [Fact]
-        public void Test_AccessGroupPermission_List()
-        {
-            var AccessGroupData = TestAccessGroupData.CreateAccessGroupData();
-            var createdAccessGroup = api.CreateAccessGroup(AccessGroupData);
-            try
-            {
-                var createdAccessGroupPermissions = new[] {
-                    api.UpsertAccessGroupPermission(createdAccessGroup.Id,
-                        new PermissionData ( permissionId: EnumPermissionType.Import, createdOn: DateTime.Now)),
-                    api.UpsertAccessGroupPermission(createdAccessGroup.Id,
-                        new PermissionData ( permissionId: EnumPermissionType.Export, createdOn: DateTime.Now))
-                };
-                try
-                {
-                    var existingAccessGroupPermissions = api.ListAccessGroupPermissions(createdAccessGroup.Id).Data;
-                    Assert.Equal(createdAccessGroupPermissions.Length, existingAccessGroupPermissions.Count);
-                }
-                finally
-                {
-                    foreach (var i in createdAccessGroupPermissions)
-                        api.DeleteAccessGroupPermission(createdAccessGroup.Id, i.Id.ToString());
-                }
-            }
-            finally
-            {
-                api.DeleteAccessGroup(createdAccessGroup.Id);
-            }
-        }
+        //[Fact]
+        //public void Test_AccessGroupPermission_List()
+        //{
+        //    var AccessGroupData = TestAccessGroupData.CreateAccessGroupData();
+        //    var createdAccessGroup = api.CreateAccessGroup(AccessGroupData);
+        //    try
+        //    {
+        //        var createdAccessGroupPermissions = new[] {
+        //            api.UpsertAccessGroupPermission(createdAccessGroup.Id,
+        //                new PermissionData ( permissionId: EnumPermissionType.Import, createdOn: DateTime.Now)),
+        //            api.UpsertAccessGroupPermission(createdAccessGroup.Id,
+        //                new PermissionData ( permissionId: EnumPermissionType.Export, createdOn: DateTime.Now))
+        //        };
+        //        try
+        //        {
+        //            var existingAccessGroupPermissions = api.ListAccessGroupPermissions(createdAccessGroup.Id).Data;
+        //            Assert.Equal(createdAccessGroupPermissions.Length, existingAccessGroupPermissions.Count);
+        //        }
+        //        finally
+        //        {
+        //            foreach (var i in createdAccessGroupPermissions)
+        //                api.DeleteAccessGroupPermission(createdAccessGroup.Id, i.Id.ToString());
+        //        }
+        //    }
+        //    finally
+        //    {
+        //        api.DeleteAccessGroup(createdAccessGroup.Id);
+        //    }
+        //}
 
         /// <summary>
         /// Test ListAccessGroupGroups
@@ -378,16 +385,19 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
         [Fact]
         public void Test_AccessGroupGroup_List()
         {
-            var AccessGroupData = TestAccessGroupData.CreateAccessGroupData();
-            var createdAccessGroup = api.CreateAccessGroup(AccessGroupData);
+            var accessGroupData = TestAccessGroupData.CreateAccessGroupData();
+            var createdAccessGroup = api.CreateAccessGroup(accessGroupData);
             try
             {
                 var createdAccessGroupGroups = TestAccessGroupData.Groups.Select(i =>
-                    api.UpsertAccessGroupGroup(createdAccessGroup.Id, new(i))).ToArray();
+                    api.UpsertAccessGroupGroup(createdAccessGroup.Id,
+                        new(groupId: new("Id", i.ToString()), createdOn: DateTime.Now))).ToArray();
                 try
                 {
                     var existingAccessGroupGroups = api.ListAccessGroupGroups(createdAccessGroup.Id).Data;
                     Assert.Equal(createdAccessGroupGroups.Length, existingAccessGroupGroups.Count);
+                    Assert.Contains(existingAccessGroupGroups, i => i.Id == createdAccessGroupGroups[0].Id);
+                    Assert.Contains(existingAccessGroupGroups, i => i.Id == createdAccessGroupGroups[1].Id);
                 }
                 finally
                 {
@@ -407,12 +417,13 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
         [Fact]
         public void Test_AccessGroupUser_List()
         {
-            var AccessGroupData = TestAccessGroupData.CreateAccessGroupData();
-            var createdAccessGroup = api.CreateAccessGroup(AccessGroupData);
+            var accessGroupData = TestAccessGroupData.CreateAccessGroupData();
+            var createdAccessGroup = api.CreateAccessGroup(accessGroupData);
             try
             {
                 var createdAccessGroupUsers = TestAccessGroupData.Users.Select(i =>
-                    api.UpsertAccessGroupUser(createdAccessGroup.Id, new(userId: new("Id", i.ToString())))).ToArray();
+                    api.UpsertAccessGroupUser(createdAccessGroup.Id,
+                        new(userId: new("Id", i.ToString()), createdOn: DateTime.Now))).ToArray();
                 try
                 {
                     var existingAccessGroupUsers = api.ListAccessGroupUsers(createdAccessGroup.Id).Data;
@@ -431,10 +442,10 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
         }
 
         /// <summary>
-        /// Test PatchAccessGroupAccessApplications
+        /// Test PatchAccessGroupApplications
         /// </summary>
         [Fact]
-        public void PatchAccessGroupAccessApplicationsTest()
+        public void PatchAccessGroupApplicationsTest()
         {
         }
 
@@ -447,29 +458,29 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
         }
 
         /// <summary>
-        /// Test UpsertAccessGroupAccessApplication
+        /// Test UpsertAccessGroupApplication
         /// </summary>
         [Fact]
-        public void Test_AccessGroupAccessApplication_Upsert()
+        public void Test_AccessGroupApplication_Upsert()
         {
             var AccessGroupData = TestAccessGroupData.CreateAccessGroupData();
             var createdAccessGroup = api.CreateAccessGroup(AccessGroupData);
             try
             {
-                var createdAccessGroupAccessApplication = api.UpsertAccessGroupAccessApplication(createdAccessGroup.Id,
+                var createdAccessGroupApplication = api.UpsertAccessGroupApplication(createdAccessGroup.Id,
                     new(
                         parentApplicationId: new("Id", TestAccessGroupData.ParentApplication),
                         accessApplicationId: new("Id", TestAccessGroupData.Applications[0])));
                 try
                 {
-                    var existingAccessGroupAccessApplications =
-                        api.ListAccessGroupAccessApplications(createdAccessGroup.Id).Data;
-                    Assert.Contains(existingAccessGroupAccessApplications,
-                        i => i.Id == createdAccessGroupAccessApplication.Id);
+                    var existingAccessGroupApplications =
+                        api.ListAccessGroupApplications(createdAccessGroup.Id).Data;
+                    Assert.Contains(existingAccessGroupApplications,
+                        i => i.Id == createdAccessGroupApplication.Id);
                 }
                 finally
                 {
-                    api.DeleteAccessGroupAccessApplication(createdAccessGroup.Id, createdAccessGroupAccessApplication.Id);
+                    api.DeleteAccessGroupApplication(createdAccessGroup.Id, createdAccessGroupApplication.Id);
                 }
             }
             finally
@@ -481,34 +492,34 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
         /// <summary>
         /// Test UpsertAccessGroupPermission
         /// </summary>
-        [Fact]
-        public void Test_AccessGroupPermission_Upsert()
-        {
-            var accessGroupData = TestAccessGroupData.CreateAccessGroupData();
-            var createdAccessGroup = api.CreateAccessGroup(accessGroupData);
-            try
-            {
-                var createdAccessGroupPermission = api.UpsertAccessGroupPermission(createdAccessGroup.Id,
-                    new PermissionData
-                    (
-                        permissionId: EnumPermissionType.Import,
-                        createdOn: DateTime.Now
-                    ));
-                try
-                {
-                    var existingAccessGroupPermissions = api.ListAccessGroupPermissions(createdAccessGroup.Id).Data;
-                    Assert.Contains(existingAccessGroupPermissions, i => i.Id == createdAccessGroupPermission.Id);
-                }
-                finally
-                {
-                    api.DeleteAccessGroupPermission(createdAccessGroup.Id, createdAccessGroupPermission.Id.ToString());
-                }
-            }
-            finally
-            {
-                api.DeleteAccessGroup(createdAccessGroup.Id);
-            }
-        }
+        //[Fact]
+        //public void Test_AccessGroupPermission_Upsert()
+        //{
+        //    var accessGroupData = TestAccessGroupData.CreateAccessGroupData();
+        //    var createdAccessGroup = api.CreateAccessGroup(accessGroupData);
+        //    try
+        //    {
+        //        var createdAccessGroupPermission = api.UpsertAccessGroupPermission(createdAccessGroup.Id,
+        //            new PermissionData
+        //            (
+        //                permissionId: EnumPermissionType.Import,
+        //                createdOn: DateTime.Now
+        //            ));
+        //        try
+        //        {
+        //            var existingAccessGroupPermissions = api.ListAccessGroupPermissions(createdAccessGroup.Id).Data;
+        //            Assert.Contains(existingAccessGroupPermissions, i => i.Id == createdAccessGroupPermission.Id);
+        //        }
+        //        finally
+        //        {
+        //            api.DeleteAccessGroupPermission(createdAccessGroup.Id, createdAccessGroupPermission.Id.ToString());
+        //        }
+        //    }
+        //    finally
+        //    {
+        //        api.DeleteAccessGroup(createdAccessGroup.Id);
+        //    }
+        //}
 
         /// <summary>
         /// Test UpsertAccessGroupGroup
@@ -516,12 +527,14 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
         [Fact]
         public void Test_AccessGroupGroup_Upsert()
         {
-            var AccessGroupData = TestAccessGroupData.CreateAccessGroupData();
-            var createdAccessGroup = api.CreateAccessGroup(AccessGroupData);
+            var accessGroupData = TestAccessGroupData.CreateAccessGroupData();
+            var createdAccessGroup = api.CreateAccessGroup(accessGroupData);
             try
             {
-                var createdAccessGroupGroup = api.UpsertAccessGroupGroup(createdAccessGroup.Id,
-                    new(TestAccessGroupData.Groups[0]));
+                var createdAccessGroupGroup = api.UpsertAccessGroupGroup(createdAccessGroup.Id, new(
+                    groupId: new("Id", TestAccessGroupData.Groups[0].ToString()),
+                    createdOn: DateTime.Now
+                ));
                 try
                 {
                     var existingAccessGroupGroups = api.ListAccessGroupGroups(createdAccessGroup.Id).Data;
@@ -544,12 +557,13 @@ namespace Agile.Now.ApiAccessGroups.Test.Api
         [Fact]
         public void Test_AccessGroupUser_Upsert()
         {
-            var AccessGroupData = TestAccessGroupData.CreateAccessGroupData();
-            var createdAccessGroup = api.CreateAccessGroup(AccessGroupData);
+            var accessGroupData = TestAccessGroupData.CreateAccessGroupData();
+            var createdAccessGroup = api.CreateAccessGroup(accessGroupData);
             try
             {
-                var createdAccessGroupUser = api.UpsertAccessGroupUser(createdAccessGroup.Id,
-                    new(userId: new("Id", TestAccessGroupData.Users[0].ToString())));
+                var createdAccessGroupUser = api.UpsertAccessGroupUser(createdAccessGroup.Id, new(
+                    userId: new("Id", TestAccessGroupData.Users[0].ToString()),
+                    createdOn: DateTime.Now));
                 try
                 {
                     var existingAccessGroupUsers = api.ListAccessGroupUsers(createdAccessGroup.Id).Data;

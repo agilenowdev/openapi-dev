@@ -12,7 +12,7 @@ internal static class TestGroupData
         var uniqueName = $"{name}-{DateTime.Now:yyyy-MM-dd-HH-mm-ss-fff}";
         return new GroupData
         (
-            name: uniqueName
+            //name: uniqueName
         );
     }
 
