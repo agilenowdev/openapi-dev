@@ -45,6 +45,9 @@ using Xunit;
 
 using Agile.Now.AccessHub.Client;
 using Agile.Now.AccessHub.Api;
+using Xunit.Abstractions;
+using Agile.Now.AccessHub.Model;
+using Agile.Now.ApiAccessGroups.Test.Api;
 // uncomment below to import models
 //using Agile.Now.AccessHub.Model;
 
@@ -59,16 +62,23 @@ namespace Agile.Now.AccessHub.Test.Api
     /// </remarks>
     public class GroupExternalsApiTests : IDisposable
     {
-        private GroupExternalsApi instance;
+        private readonly GroupExternalsApi api;
 
-        public GroupExternalsApiTests()
+        public GroupExternalsApiTests(ITestOutputHelper testOutputHelper)
         {
-            instance = new GroupExternalsApi();
+            Configuration configuration = new Configuration
+            {
+                BasePath = "https://dev.esystems.fi",
+                OAuthTokenUrl = "https://dev.esystems.fi/oAuth/rest/v2/Token",
+                OAuthFlow = Client.Auth.OAuthFlow.APPLICATION,
+                OAuthClientId = "c8907421-0886-4fb0-b859-d29966762e16",
+                OAuthClientSecret = "1da54fa9-ae11-4db3-9740-1bb47b85cd8e"
+            };
+            api = new GroupExternalsApi(configuration);
         }
 
         public void Dispose()
         {
-            // Cleanup when everything is done.
         }
 
         /// <summary>
@@ -77,95 +87,258 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void InstanceTest()
         {
-            // TODO uncomment below to test 'IsType' GroupExternalsApi
-            //Assert.IsType<GroupExternalsApi>(instance);
+        }
+
+        void AssertGroupDataEqual(GroupExternalData entityData, GroupExternal group)
+        {
+            Assert.Equal(entityData.Name, group.Name);
+            Assert.Equal(entityData.Description, group.Description);
         }
 
         /// <summary>
         /// Test CreateGroupExternal
         /// </summary>
         [Fact]
-        public void CreateGroupExternalTest()
+        public void Test_Group_Create()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //GroupExternalData groupExternalData = null;
-            //var response = instance.CreateGroupExternal(groupExternalData);
-            //Assert.IsType<GroupExternal>(response);
+            var entityData = TestGroupData.CreateGroupData();
+            var createdEntity = api.CreateGroupExternal(entityData);
+            try
+            {
+                AssertGroupDataEqual(entityData, createdEntity);
+            }
+            finally
+            {
+                api.DeleteGroupExternal(createdEntity.Id.ToString());
+            }
         }
 
         /// <summary>
-        /// Test DeleteGroupExternal
+        /// Test DeleteGroupExternal by Id
         /// </summary>
         [Fact]
-        public void DeleteGroupExternalTest()
+        public void Test_Group_Delete_ById()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string name = null;
-            //var response = instance.DeleteGroupExternal(id, name);
-            //Assert.IsType<GroupExternal>(response);
+            var createdEntity = api.CreateGroupExternal(TestGroupData.CreateGroupData());
+            api.DeleteGroupExternal(createdEntity.Id.ToString());
+            Assert.Throws<ApiException>(() => api.GetGroupExternal(createdEntity.Id.ToString()));
+        }
+
+        /// <summary>
+        /// Test DeleteGroupExternal by Name
+        /// </summary>
+        [Fact]
+        public void Test_Group_Delete_ByName()
+        {
+            var createdEntity = api.CreateGroupExternal(TestGroupData.CreateGroupData());
+            api.DeleteGroupExternal(createdEntity.Name, "Name");
+            Assert.Throws<ApiException>(() => api.GetGroupExternal(createdEntity.Id.ToString()));
+        }
+
+        /// <summary>
+        /// Test GetGroup by Id
+        /// </summary>
+        [Fact]
+        public void Test_Group_Get_ById()
+        {
+            var createdEntity = api.CreateGroupExternal(TestGroupData.CreateGroupData());
+            try
+            {
+                Assert.Null(Record.Exception(() =>
+                {
+                    var existingGroup = api.GetGroupExternal(createdEntity.Id.ToString());
+                    Assert.Equal(createdEntity.Id, existingGroup.Id);
+                    return existingGroup;
+                }));
+            }
+            finally
+            {
+                api.DeleteGroupExternal(createdEntity.Id.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Test GetGroup by Name
+        /// </summary>
+        [Fact]
+        public void Test_Group_Get_ByName()
+        {
+            var createdEntity = api.CreateGroupExternal(TestGroupData.CreateGroupData());
+            try
+            {
+                Assert.Null(Record.Exception(() =>
+                {
+                    var existingGroup = api.GetGroupExternal(createdEntity.Name, "Name");
+                    Assert.Equal(createdEntity.Name, existingGroup.Name);
+                    return existingGroup;
+                }));
+            }
+            finally
+            {
+                api.DeleteGroupExternal(createdEntity.Id.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Test ListGroups by Id
+        /// </summary>
+        [Fact]
+        public void Test_Group_List_ById()
+        {
+            var createdEntities = TestGroupData.CreateGroupDataList(2).Select(i => api.CreateGroupExternal(i)).ToArray();
+            try
+            {
+                var existingEntities = api.ListGroupExternals(
+                    filters: $"Id In {string.Join(", ", createdEntities.Select(i => i.Id))}").Data;
+                Assert.Equal(existingEntities.Count, createdEntities.Length);
+            }
+            finally
+            {
+                foreach (var i in createdEntities)
+                    api.DeleteGroupExternal(i.Id.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Test ListGroups by Name
+        /// </summary>
+        [Fact]
+        public void Test_Group_List_ByName()
+        {
+            var entityData = TestGroupData.CreateGroupDataList(2);
+            var createdEntities = entityData.Select(i => api.CreateGroupExternal(i)).ToArray();
+            try
+            {
+                var existingEntities = api.ListGroupExternals(
+                    filters: $"Name In {string.Join("; ", createdEntities.Select(i => i.Name))}");
+                Assert.Equal(existingEntities.Data.Count, createdEntities.Length);
+            }
+            finally
+            {
+                foreach (var i in createdEntities)
+                    api.DeleteGroupExternal(i.Id.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Test UpdateGroup
+        /// </summary>
+        [Fact]
+        public void Test_Group_Update()
+        {
+            var entityData = TestGroupData.CreateGroupData();
+            var createdEntity = api.CreateGroupExternal(entityData);
+            try
+            {
+                TestGroupData.UpdateGroupData(entityData);
+                var updatedGroup = api.UpdateGroupExternal(createdEntity.Id.ToString(), entityData);
+                AssertGroupDataEqual(entityData, updatedGroup);
+            }
+            finally
+            {
+                api.DeleteGroupExternal(createdEntity.Id.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Test UpsertGroup
+        /// </summary>
+        [Fact]
+        public void Test_Group_Upsert()
+        {
+            var entityData = TestGroupData.CreateGroupData();
+            var createdEntity = api.UpsertGroupExternal(entityData);
+            try
+            {
+                AssertGroupDataEqual(entityData, createdEntity);
+                TestGroupData.UpdateGroupData(entityData);
+                entityData.Id = createdEntity.Id;
+                var updatedEntity = api.UpsertGroupExternal(entityData);
+                Assert.Equal(createdEntity.Id, updatedEntity.Id);
+                AssertGroupDataEqual(entityData, updatedEntity);
+            }
+            finally
+            {
+                api.DeleteGroupExternal(createdEntity.Id.ToString());
+            }
         }
 
         /// <summary>
         /// Test DeleteGroupExternalUserExternal
         /// </summary>
         [Fact]
-        public void DeleteGroupExternalUserExternalTest()
+        public void Test_GroupExternalUserExternal_Delete()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string subId = null;
-            //string name = null;
-            //string subName = null;
-            //var response = instance.DeleteGroupExternalUserExternal(id, subId, name, subName);
-            //Assert.IsType<UserExternal>(response);
-        }
-
-        /// <summary>
-        /// Test GetGroupExternal
-        /// </summary>
-        [Fact]
-        public void GetGroupExternalTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string name = null;
-            //var response = instance.GetGroupExternal(id, name);
-            //Assert.IsType<GroupExternal>(response);
+            var createdEntity = api.CreateGroupExternal(TestGroupData.CreateGroupData());
+            try
+            {
+                var createdSubEntity = api.UpsertGroupExternalUserExternal(createdEntity.Id.ToString(),
+                    new(userId: new("Id", TestAccessGroupData.Users[0].ToString())));
+                api.DeleteGroupExternalUserExternal(createdEntity.Id.ToString(), createdSubEntity.Id.ToString());
+                var existingdGroupExternalUserExternals =
+                    api.ListGroupExternalUserExternals(createdEntity.Id.ToString()).Data;
+                Assert.Empty(existingdGroupExternalUserExternals);
+            }
+            finally
+            {
+                api.DeleteGroupExternal(createdEntity.Id.ToString());
+            }
         }
 
         /// <summary>
         /// Test ListGroupExternalUserExternals
         /// </summary>
         [Fact]
-        public void ListGroupExternalUserExternalsTest()
+        public void Test_GroupExternalUserExternal_List()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string name = null;
-            //string fields = null;
-            //string filters = null;
-            //string orders = null;
-            //int? currentPage = null;
-            //int? pageSize = null;
-            //var response = instance.ListGroupExternalUserExternals(id, name, fields, filters, orders, currentPage, pageSize);
-            //Assert.IsType<UserExternals>(response);
+            var createdEntity = api.CreateGroupExternal(TestGroupData.CreateGroupData());
+            try
+            {
+                var createdSubEntities = TestAccessGroupData.Users.Select(i =>
+                    api.UpsertGroupExternalUserExternal(createdEntity.Id.ToString(),
+                        new(userId: new("Id", i.ToString())))).ToArray();
+                try
+                {
+                    var existingSubEntities = api.ListGroupExternalUserExternals(createdEntity.Id.ToString()).Data;
+                    Assert.Equal(createdSubEntities.Length, existingSubEntities.Count);
+                }
+                finally
+                {
+                    foreach (var i in createdSubEntities)
+                        api.DeleteGroupExternalUserExternal(createdEntity.Id.ToString(), i.Id.ToString());
+                }
+            }
+            finally
+            {
+                api.DeleteGroupExternal(createdEntity.Id.ToString());
+            }
         }
 
         /// <summary>
-        /// Test ListGroupExternals
+        /// Test UpsertAccessGroupUser
         /// </summary>
         [Fact]
-        public void ListGroupExternalsTest()
+        public void Test_GroupUser_Upsert()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string fields = null;
-            //string filters = null;
-            //string orders = null;
-            //int? currentPage = null;
-            //int? pageSize = null;
-            //var response = instance.ListGroupExternals(fields, filters, orders, currentPage, pageSize);
-            //Assert.IsType<GroupExternals>(response);
+            var createdGroup = api.CreateGroupExternal(TestGroupData.CreateGroupData());
+            try
+            {
+                var createdSubEntity = api.UpsertGroupExternalUserExternal(createdGroup.Id.ToString(),
+                    new(userId: new("Id", TestAccessGroupData.Users[0].ToString())));
+                try
+                {
+                    var existingSubEntities = api.ListGroupExternalUserExternals(createdGroup.Id.ToString()).Data;
+                    Assert.Contains(existingSubEntities, i => i.Id == createdSubEntity.Id);
+                }
+                finally
+                {
+                    api.DeleteGroupExternalUserExternal(createdGroup.Id.ToString(), createdSubEntity.Id.ToString());
+                }
+            }
+            finally
+            {
+                api.DeleteGroupExternal(createdGroup.Id.ToString());
+            }
         }
 
         /// <summary>
@@ -193,46 +366,6 @@ namespace Agile.Now.AccessHub.Test.Api
             //GroupExternalsData groupExternalsData = null;
             //var response = instance.PatchGroupExternals(groupExternalsData);
             //Assert.IsType<GroupExternals>(response);
-        }
-
-        /// <summary>
-        /// Test UpdateGroupExternal
-        /// </summary>
-        [Fact]
-        public void UpdateGroupExternalTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //GroupExternalData groupExternalData = null;
-            //string name = null;
-            //var response = instance.UpdateGroupExternal(id, groupExternalData, name);
-            //Assert.IsType<GroupExternal>(response);
-        }
-
-        /// <summary>
-        /// Test UpsertGroupExternal
-        /// </summary>
-        [Fact]
-        public void UpsertGroupExternalTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //GroupExternalData groupExternalData = null;
-            //var response = instance.UpsertGroupExternal(groupExternalData);
-            //Assert.IsType<GroupExternal>(response);
-        }
-
-        /// <summary>
-        /// Test UpsertGroupExternalUserExternal
-        /// </summary>
-        [Fact]
-        public void UpsertGroupExternalUserExternalTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //UserExternalData userExternalData = null;
-            //string name = null;
-            //var response = instance.UpsertGroupExternalUserExternal(id, userExternalData, name);
-            //Assert.IsType<UserExternal>(response);
         }
     }
 }
