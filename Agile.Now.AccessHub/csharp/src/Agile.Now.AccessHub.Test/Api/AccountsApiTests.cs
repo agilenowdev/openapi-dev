@@ -36,13 +36,14 @@
  */
 
 using System;
-using Xunit;
-
-using Agile.Now.AccessHub.Client;
+using System.Linq;
 using Agile.Now.AccessHub.Api;
+using Agile.Now.AccessHub.Client;
 // uncomment below to import models
 using Agile.Now.AccessHub.Model;
-using System.Diagnostics;
+using Agile.Now.ApiAccounts.Test.Api;
+using Xunit;
+using Xunit.Abstractions;
 
 namespace Agile.Now.AccessHub.Test.Api
 {
@@ -55,16 +56,25 @@ namespace Agile.Now.AccessHub.Test.Api
     /// </remarks>
     public class AccountsApiTests : IDisposable
     {
-        private AccountsApi instance;
+        private readonly AccountsApi api;
+        private readonly ITestOutputHelper output;
 
-        public AccountsApiTests()
+        public AccountsApiTests(ITestOutputHelper testOutputHelper)
         {
-            instance = new AccountsApi();
+            output = testOutputHelper;
+            Configuration configuration = new Configuration
+            {
+                BasePath = "https://dev.esystems.fi",
+                OAuthTokenUrl = "https://dev.esystems.fi/oAuth/rest/v2/Token",
+                OAuthFlow = Client.Auth.OAuthFlow.APPLICATION,
+                OAuthClientId = "c8907421-0886-4fb0-b859-d29966762e16",
+                OAuthClientSecret = "1da54fa9-ae11-4db3-9740-1bb47b85cd8e"
+            };
+            api = new AccountsApi(configuration);
         }
 
         public void Dispose()
         {
-            // Cleanup when everything is done.
         }
 
         /// <summary>
@@ -73,203 +83,372 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void InstanceTest()
         {
-            // TODO uncomment below to test 'IsType' AccountsApi
-            //Assert.IsType<AccountsApi>(instance);
+        }
+
+        void AssertAccountDataEqual(AccountData entityData, Account account)
+        {
+            Assert.Equal(entityData.LastName, account.LastName);
+            Assert.Equal(entityData.FirstName, account.FirstName);
+            Assert.Equal(entityData.Email, account.Email);
+            Assert.Equal(entityData.IsActive, account.IsActive);
+
+            Assert.Equal($"{entityData.LastName} {entityData.FirstName}", account.Name);
+
+            //Assert.Equal(entityData.DateFormatId.ToString(), account.DateFormatId.Id);
+            Assert.Equal(entityData.LanguageId.ToString(), account.LanguageId.Name);
         }
 
         /// <summary>
         /// Test CreateAccount
         /// </summary>
         [Fact]
-        public void CreateAccountTest()
+        public void Test_Account_Create()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            AccountData accountData = Data.TestAccountData.CreateAccountData();
+            var entityData = TestAccountData.CreateAccountData();
+            var createdEntity = api.CreateAccount(entityData);
             try
             {
-                var response = instance.CreateAccount(accountData);
-                Assert.IsType<Account>(response);
+                AssertAccountDataEqual(entityData, createdEntity);
+                output.WriteLine($"TenantId= {createdEntity.TenantId.Id}");
             }
-            catch (ApiException e)
+            finally
             {
-                Debug.Print("Exception when calling AccountsApi.CreateAccount: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
-                Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
-                Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
-                Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
-                Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
-                // Human-readable explanation of the errors
-                Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
-                Debug.Print(e.StackTrace);
-
-                Assert.Equal("", e.Error.Title);
+                api.DeleteAccount(createdEntity.Id);
             }
-            finally {
-                
+        }
+
+        /// <summary>
+        /// Test DeleteAccount by Id
+        /// </summary>
+        [Fact]
+        public void Test_Account_Delete_ById()
+        {
+            var createdEntity = api.CreateAccount(TestAccountData.CreateAccountData());
+            api.DeleteAccount(createdEntity.Id);
+            Assert.Throws<ApiException>(() => api.GetAccount(createdEntity.Id));
+        }
+
+        /// <summary>
+        /// Test DeleteAccount by UserName
+        /// </summary>
+        [Fact]
+        public void Test_Account_Delete_ByUserName()
+        {
+            var createdEntity = api.CreateAccount(TestAccountData.CreateAccountData());
+            api.DeleteAccount(createdEntity.Username, "Username");
+            Assert.Throws<ApiException>(() => api.GetAccount(createdEntity.Id));
+        }
+
+        /// <summary>
+        /// Test DeleteAccount with several tenants
+        /// </summary>
+        [Fact]
+        public void Test_Account_Delete_WithSeveralTenants()
+        {
+            var entityData = TestAccountData.CreateAccountData();
+            var createdEntity = api.CreateAccount(entityData);
+            try
+            {
+                var anotherTenant = api.UpsertAccountTenant(createdEntity.Id, new(
+                    new("Id", ""),
+                    new("Id", TestAccountData.AnotherTenant.ToString())));
+                api.DeleteAccount(createdEntity.Id);
+                Assert.Null(Record.Exception(() => api.GetAccount(createdEntity.Id)));
+                api.DeleteAccountTenant(createdEntity.Id, anotherTenant.UserId.ToString(), subName: "UserId");
+                api.DeleteAccount(createdEntity.Id);
+                Assert.Throws<ApiException>(() => api.GetAccount(createdEntity.Id));
             }
-            
+            finally
+            {
+                api.DeleteAccount(createdEntity.Id);
+            }
         }
 
         /// <summary>
-        /// Test DeleteAccount
+        /// Test GetAccount by Id
         /// </summary>
         [Fact]
-        public void DeleteAccountTest()
+        public void Test_Account_Get_ById()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string name = null;
-            //var response = instance.DeleteAccount(id, name);
-            //Assert.IsType<Account>(response);
+            var createdEntity = api.CreateAccount(TestAccountData.CreateAccountData());
+            try
+            {
+                Assert.Null(Record.Exception(() =>
+                {
+                    var existingEntity = api.GetAccount(createdEntity.Id);
+                    Assert.Equal(createdEntity.Id, existingEntity.Id);
+                    return existingEntity;
+                }));
+            }
+            finally
+            {
+                api.DeleteAccount(createdEntity.Id);
+            }
         }
 
         /// <summary>
-        /// Test DeleteAccountPicture
+        /// Test GetAccount by UserName
         /// </summary>
         [Fact]
-        public void DeleteAccountPictureTest()
+        public void Test_Account_Get_ByUserName()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string subId = null;
-            //string name = null;
-            //string subName = null;
-            //var response = instance.DeleteAccountPicture(id, subId, name, subName);
-            //Assert.IsType<Picture>(response);
+            var createdEntity = api.CreateAccount(TestAccountData.CreateAccountData());
+            try
+            {
+                Assert.Null(Record.Exception(() =>
+                {
+                    var existingEntity = api.GetAccount(createdEntity.Username, "Username");
+                    Assert.Equal(createdEntity.Username, existingEntity.Username);
+                    return existingEntity;
+                }));
+            }
+            finally
+            {
+                api.DeleteAccount(createdEntity.Id);
+            }
         }
 
         /// <summary>
-        /// Test DeleteAccountTenant
+        /// Test ListAccounts by Id
         /// </summary>
         [Fact]
-        public void DeleteAccountTenantTest()
+        public void Test_Account_List_ById()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string subId = null;
-            //string name = null;
-            //string subName = null;
-            //var response = instance.DeleteAccountTenant(id, subId, name, subName);
-            //Assert.IsType<Tenant>(response);
+            var entityData = TestAccountData.CreateAccountDataList(2);
+            var createdEntities = entityData.Select(i => api.CreateAccount(i)).ToArray();
+            try
+            {
+                var existingEntities = api.ListAccounts(
+                    filters: $"Id In {string.Join("; ", createdEntities.Select(i => i.Id))}").Data;
+                Assert.Equal(createdEntities.Length, existingEntities.Count);
+            }
+            finally
+            {
+                foreach (var i in createdEntities)
+                    api.DeleteAccount(i.Id);
+            }
         }
 
         /// <summary>
-        /// Test GetAccount
+        /// Test ListAccounts by UserName
         /// </summary>
         [Fact]
-        public void GetAccountTest()
+        public void Test_Account_List_ByUserName()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string name = null;
-            //var response = instance.GetAccount(id, name);
-            //Assert.IsType<Account>(response);
-        }
-
-        /// <summary>
-        /// Test ListAccountPictures
-        /// </summary>
-        [Fact]
-        public void ListAccountPicturesTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string name = null;
-            //string fields = null;
-            //string filters = null;
-            //string orders = null;
-            //int? currentPage = null;
-            //int? pageSize = null;
-            //var response = instance.ListAccountPictures(id, name, fields, filters, orders, currentPage, pageSize);
-            //Assert.IsType<Pictures>(response);
-        }
-
-        /// <summary>
-        /// Test ListAccountTenants
-        /// </summary>
-        [Fact]
-        public void ListAccountTenantsTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string name = null;
-            //string fields = null;
-            //string filters = null;
-            //string orders = null;
-            //int? currentPage = null;
-            //int? pageSize = null;
-            //var response = instance.ListAccountTenants(id, name, fields, filters, orders, currentPage, pageSize);
-            //Assert.IsType<Tenants>(response);
-        }
-
-        /// <summary>
-        /// Test ListAccounts
-        /// </summary>
-        [Fact]
-        public void ListAccountsTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string fields = null;
-            //string filters = null;
-            //string orders = null;
-            //int? currentPage = null;
-            //int? pageSize = null;
-            //var response = instance.ListAccounts(fields, filters, orders, currentPage, pageSize);
-            //Assert.IsType<Accounts>(response);
+            var entityData = TestAccountData.CreateAccountDataList(2);
+            var createdEntities = entityData.Select(i => api.CreateAccount(i)).ToArray();
+            try
+            {
+                var existingEntities = api.ListAccounts(
+                    filters: $"Username In {string.Join("; ", createdEntities.Select(i => i.Username))}").Data;
+                Assert.Equal(createdEntities.Length, existingEntities.Count);
+            }
+            finally
+            {
+                foreach (var i in createdEntities)
+                    api.DeleteAccount(i.Id);
+            }
         }
 
         /// <summary>
         /// Test UpdateAccount
         /// </summary>
         [Fact]
-        public void UpdateAccountTest()
+        public void Test_Account_Update()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //AccountData accountData = null;
-            //string name = null;
-            //var response = instance.UpdateAccount(id, accountData, name);
-            //Assert.IsType<Account>(response);
+            var entityData = TestAccountData.CreateAccountData();
+            var createdEntity = api.CreateAccount(entityData);
+            try
+            {
+                TestAccountData.UpdateAccountData(entityData);
+                var updatedAccount = api.UpdateAccount(createdEntity.Id, entityData);
+                AssertAccountDataEqual(entityData, updatedAccount);
+            }
+            finally
+            {
+                api.DeleteAccount(createdEntity.Id);
+            }
         }
 
         /// <summary>
         /// Test UpsertAccount
         /// </summary>
         [Fact]
-        public void UpsertAccountTest()
+        public void Test_Account_Upsert()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //AccountData accountData = null;
-            //var response = instance.UpsertAccount(accountData);
-            //Assert.IsType<Account>(response);
+            var entityData = TestAccountData.CreateAccountData();
+            var createdEntity = api.UpsertAccount(entityData);
+            try
+            {
+                AssertAccountDataEqual(entityData, createdEntity);
+                TestAccountData.UpdateAccountData(entityData);
+                entityData.Id = createdEntity.Id;
+                var updatedAccount = api.UpsertAccount(entityData);
+                Assert.Equal(createdEntity.Id, updatedAccount.Id);
+                AssertAccountDataEqual(entityData, updatedAccount);
+            }
+            finally
+            {
+                api.DeleteAccount(createdEntity.Id);
+            }
         }
 
         /// <summary>
-        /// Test UpsertAccountPicture
+        /// Test DeleteAccountTenant
         /// </summary>
         [Fact]
-        public void UpsertAccountPictureTest()
+        public void Test_AccountTenant_Delete()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //PictureData pictureData = null;
-            //string name = null;
-            //var response = instance.UpsertAccountPicture(id, pictureData, name);
-            //Assert.IsType<Picture>(response);
+            var entityData = TestAccountData.CreateAccountData();
+            var createdEntity = api.CreateAccount(entityData);
+            try
+            {
+                var existingSubEntities = api.ListAccountTenants(createdEntity.Id).Data;
+                var deletedSubEntity = api.DeleteAccountTenant(
+                    createdEntity.Id, existingSubEntities[0].UserId.ToString(), subName: "UserId");
+                existingSubEntities = api.ListAccountTenants(createdEntity.Id).Data;
+                Assert.DoesNotContain(existingSubEntities, i => i.TenantId.Id == deletedSubEntity.TenantId.Id);
+            }
+            finally
+            {
+                api.DeleteAccount(createdEntity.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test ListAccountTenants
+        /// </summary>
+        [Fact]
+        public void Test_AccountTenant_List()
+        {
+            var entityData = TestAccountData.CreateAccountData();
+            var createdEntity = api.CreateAccount(entityData);
+            try
+            {
+                //var createdTenant = api.UpsertAccountTenant(createdEntity.Id, new(
+                //    new("Id", ""),
+                //    new("Id", TestAccountData.AnotherTenant.ToString())));
+                try
+                {
+                    var existingEntityTenants = api.ListAccountTenants(createdEntity.Id).Data;
+                    //Assert.Collection(existingEntityTenants, i => Assert.Equal(createdEntity.Id, i.AccountId.Id));
+                }
+                finally
+                {
+                    //api.DeleteAccountTenant(createdEntity.Id, createdTenant.TenantId.Id.ToString(), subName: "UserId");
+                }
+            }
+            finally
+            {
+                api.DeleteAccount(createdEntity.Id);
+            }
         }
 
         /// <summary>
         /// Test UpsertAccountTenant
         /// </summary>
         [Fact]
-        public void UpsertAccountTenantTest()
+        public void Test_AccountTenant_Upsert()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //TenantData tenantData = null;
-            //string name = null;
-            //var response = instance.UpsertAccountTenant(id, tenantData, name);
-            //Assert.IsType<Tenant>(response);
+            var entityData = TestAccountData.CreateAccountData();
+            var createdEntity = api.CreateAccount(entityData);
+            try
+            {
+                var createdSubEntity = api.UpsertAccountTenant(createdEntity.Id, new(
+                    new("Id", ""),
+                    new("Id", TestAccountData.AnotherTenant.ToString())));
+                try
+                {
+                    var existingSubEntities = api.ListAccountTenants(createdEntity.Id).Data;
+                    //Assert.Contains(existingEntityTenants, i => createdEntity.Id == i.AccountId.Id);
+                }
+                finally
+                {
+                    api.DeleteAccountTenant(createdEntity.Id, createdSubEntity.TenantId.Id.ToString(), subName: "UserId");
+                }
+            }
+            finally
+            {
+                api.DeleteAccount(createdEntity.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test DeleteAccountPicture
+        /// </summary>
+        [Fact]
+        public void Test_AccountPicture_Delete()
+        {
+            var entityData = TestAccountData.CreateAccountData();
+            var createdEntity = api.CreateAccount(entityData);
+            try
+            {
+                var createdSubEntity = api.UpsertAccountPicture(
+                    createdEntity.Id,
+                    new(createdEntity.Username + "_picture", TestAccountData.PictureData.ToStream()));
+                api.DeleteAccountPicture(createdEntity.Id, null);
+            }
+            finally
+            {
+                api.DeleteAccount(createdEntity.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test UpsertAccountPicture
+        /// </summary>
+        [Fact]
+        public void Test_AccountPicture_Upsert()
+        {
+            var entityData = TestAccountData.CreateAccountData();
+            var createdEntity = api.CreateAccount(entityData);
+            try
+            {
+                var createdSubEntity = api.UpsertAccountPicture(createdEntity.Id,
+                    new(createdEntity.Username + "_picture", TestAccountData.PictureData.ToStream()));
+                try
+                {
+                    var existingSubEntities = api.ListAccountPictures(createdEntity.Id).Data;
+                    Assert.Contains(existingSubEntities, i => i.Filename == createdSubEntity.Filename);
+                }
+                finally
+                {
+                    api.DeleteAccountPicture(createdEntity.Id, null);
+                }
+            }
+            finally
+            {
+                api.DeleteAccount(createdEntity.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test ListAccountPicture
+        /// </summary>
+        [Fact]
+        public void Test_AccountPicture_List()
+        {
+            var entityData = TestAccountData.CreateAccountData();
+            var createdEntity = api.CreateAccount(entityData);
+            try
+            {
+                var createdSubEntity = api.UpsertAccountPicture(createdEntity.Id,
+                    new(createdEntity.Username + "_picture", TestAccountData.PictureData.ToStream()));
+                try
+                {
+                    var existingSubEntities = api.ListAccountPictures(createdEntity.Id).Data;
+                    Assert.Single(existingSubEntities);
+                    Assert.Contains(existingSubEntities, i => i.Filename == createdSubEntity.Filename);
+                }
+                finally
+                {
+                    api.DeleteAccountPicture(createdEntity.Id, null);
+                }
+            }
+            finally
+            {
+                api.DeleteAccount(createdEntity.Id);
+            }
         }
     }
 }
