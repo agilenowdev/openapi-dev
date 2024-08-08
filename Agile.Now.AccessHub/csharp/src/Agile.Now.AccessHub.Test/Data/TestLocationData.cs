@@ -25,10 +25,8 @@ internal static class TestLocationData
     public static LocationInsertData[] CreateLocationDataList(int count) =>
         Enumerable.Range(0, count).Select(i => CreateLocationData(i.ToString())).ToArray();
 
-    public static void UpdateLocationData(LocationInsertData locationInsertData, string id = null)
+    public static void UpdateLocationData(LocationInsertData locationInsertData)
     {
-        if (id != null)
-            locationInsertData.Id = id;
         const string updated = "updated";
         locationInsertData.CountryId = locationInsertData.CountryId == EnumCountry.Finland ?
             EnumCountry.UnitedStatesOfAmerica : EnumCountry.Finland;
