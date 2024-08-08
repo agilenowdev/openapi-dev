@@ -22,8 +22,16 @@ internal static class TestGroupData
 
     public static void UpdateGroupData(GroupExternalData groupData)
     {
-        const string updated = "updated";
+        const string updated = "-updated";
         groupData.Description += updated;
 
     }
+
+    public static GroupExternalText ToGroupExternalText(this GroupExternalData groupExternalData) => new(
+        name: groupExternalData.Name,
+        description: groupExternalData.Description);
+
+    public static bool Equal(this GroupExternalData groupExternalData, GroupExternal groupExternal) =>
+        groupExternalData.Name == groupExternal.Name &&
+        groupExternalData.Description == groupExternal.Description;
 }
