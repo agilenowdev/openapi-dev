@@ -35,16 +35,13 @@
  * DAMAGE.
  */
 using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Reflection;
-using RestSharp;
-using Xunit;
-
-using Agile.Now.AccessHub.Client;
 using Agile.Now.AccessHub.Api;
+using Agile.Now.AccessHub.Client;
+using Agile.Now.AccessHub.Model;
+using Agile.Now.ApiAccessGroups.Test.Api;
+using Xunit;
+using Xunit.Abstractions;
 // uncomment below to import models
 //using Agile.Now.AccessHub.Model;
 
@@ -59,179 +56,535 @@ namespace Agile.Now.AccessHub.Test.Api
     /// </remarks>
     public class AccessGroupsApiTests : IDisposable
     {
-        private AccessGroupsApi instance;
+        private readonly AccessGroupsApi api;
 
-        public AccessGroupsApiTests()
+        public AccessGroupsApiTests(ITestOutputHelper testOutputHelper)
         {
-            instance = new AccessGroupsApi();
+            Configuration configuration = new Configuration
+            {
+                BasePath = "https://dev.esystems.fi",
+                OAuthTokenUrl = "https://dev.esystems.fi/oAuth/rest/v2/Token",
+                OAuthFlow = Client.Auth.OAuthFlow.APPLICATION,
+                OAuthClientId = "c8907421-0886-4fb0-b859-d29966762e16",
+                OAuthClientSecret = "1da54fa9-ae11-4db3-9740-1bb47b85cd8e"
+            };
+            api = new AccessGroupsApi(configuration);
         }
 
-        public void Dispose()
-        {
-            // Cleanup when everything is done.
-        }
+        public void Dispose() { }
 
         /// <summary>
         /// Test an instance of AccessGroupsApi
         /// </summary>
         [Fact]
-        public void InstanceTest()
+        public void InstanceTest() { }
+
+        void AssertAccessGroupDataEqual(AccessGroupData AccessGroupData, AccessGroup AccessGroup)
         {
-            // TODO uncomment below to test 'IsType' AccessGroupsApi
-            //Assert.IsType<AccessGroupsApi>(instance);
+            Assert.Equal(AccessGroupData.Name, AccessGroup.Name);
+            Assert.Equal(AccessGroupData.Description, AccessGroup.Description);
+            Assert.Equal(AccessGroupData.AccessGroupTypeId.ToString(), AccessGroup.AccessGroupTypeId.Id);
         }
 
         /// <summary>
         /// Test CreateAccessGroup
         /// </summary>
         [Fact]
-        public void CreateAccessGroupTest()
+        public void Test_AccessGroup_Create()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //AccessGroupData accessGroupData = null;
-            //var response = instance.CreateAccessGroup(accessGroupData);
-            //Assert.IsType<AccessGroup>(response);
+            var entityData = TestAccessGroupData.CreateAccessGroupData();
+            var createdEntity = api.CreateAccessGroup(entityData);
+            try
+            {
+                AssertAccessGroupDataEqual(entityData, createdEntity);
+            }
+            finally
+            {
+                api.DeleteAccessGroup(createdEntity.Id);
+            }
         }
 
         /// <summary>
-        /// Test DeleteAccessGroup
+        /// Test DeleteAccessGroup by Id
         /// </summary>
         [Fact]
-        public void DeleteAccessGroupTest()
+        public void Test_AccessGroup_Delete_ById()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string name = null;
-            //var response = instance.DeleteAccessGroup(id, name);
-            //Assert.IsType<AccessGroup>(response);
+            var createdEntity = api.CreateAccessGroup(TestAccessGroupData.CreateAccessGroupData());
+            api.DeleteAccessGroup(createdEntity.Id);
+            Assert.Throws<ApiException>(() => api.GetAccessGroup(createdEntity.Id));
+        }
+
+        /// <summary>
+        /// Test DeleteAccessGroup by Name
+        /// </summary>
+        [Fact]
+        public void Test_AccessGroup_Delete_ByName()
+        {
+            var createdEntity = api.CreateAccessGroup(TestAccessGroupData.CreateAccessGroupData());
+            api.DeleteAccessGroup(createdEntity.Name, "Name");
+            Assert.Throws<ApiException>(() => api.GetAccessGroup(createdEntity.Id));
+        }
+
+        /// <summary>
+        /// Test GetAccessGroup by Id
+        /// </summary>
+        [Fact]
+        public void Test_AccessGroup_Get_ById()
+        {
+            var createdEntity = api.CreateAccessGroup(TestAccessGroupData.CreateAccessGroupData());
+            try
+            {
+                Assert.Null(Record.Exception(() =>
+                {
+                    var existingEntity = api.GetAccessGroup(createdEntity.Id);
+                    Assert.Equal(createdEntity.Id, existingEntity.Id);
+                    return existingEntity;
+                }));
+            }
+            finally
+            {
+                api.DeleteAccessGroup(createdEntity.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test GetAccessGroup by Name
+        /// </summary>
+        [Fact]
+        public void Test_AccessGroup_Get_ByName()
+        {
+            var createdEntity = api.CreateAccessGroup(TestAccessGroupData.CreateAccessGroupData());
+            try
+            {
+                Assert.Null(Record.Exception(() =>
+                {
+                    var existingEntity = api.GetAccessGroup(createdEntity.Name, "Name");
+                    Assert.Equal(createdEntity.Name, existingEntity.Name);
+                    return existingEntity;
+                }));
+            }
+            finally
+            {
+                api.DeleteAccessGroup(createdEntity.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test ListAccessGroups by Id
+        /// </summary>
+        [Fact]
+        public void Test_AccessGroup_List_ById()
+        {
+            var createdEntities = TestAccessGroupData.CreateAccessGroupDataList(2).Select(
+                i => api.CreateAccessGroup(i)).ToArray();
+            try
+            {
+                var existingEntities = api.ListAccessGroups(
+                    filters: $"Id In {string.Join("; ", createdEntities.Select(i => i.Id))}").Data;
+                Assert.Equal(existingEntities.Count, createdEntities.Length);
+            }
+            finally
+            {
+                foreach (var i in createdEntities)
+                    api.DeleteAccessGroup(i.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test ListAccessGroups by Name
+        /// </summary>
+        [Fact]
+        public void Test_AccessGroup_List_ByName()
+        {
+            var createdEntities = TestAccessGroupData.CreateAccessGroupDataList(2).Select(
+                i => api.CreateAccessGroup(i)).ToArray();
+            try
+            {
+                var existingEntities = api.ListAccessGroups(
+                    filters: $"Name In {string.Join("; ", createdEntities.Select(i => i.Name))}").Data;
+                Assert.Equal(existingEntities.Count, createdEntities.Length);
+            }
+            finally
+            {
+                foreach (var i in createdEntities)
+                    api.DeleteAccessGroup(i.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test UpdateAccessGroup
+        /// </summary>
+        [Fact]
+        public void Test_AccessGroup_Update()
+        {
+            var entityData = TestAccessGroupData.CreateAccessGroupData();
+            var createdEntity = api.CreateAccessGroup(entityData);
+            try
+            {
+                TestAccessGroupData.UpdateAccessGroupData(entityData);
+                var updatedEntity = api.UpdateAccessGroup(createdEntity.Id, entityData);
+                AssertAccessGroupDataEqual(entityData, updatedEntity);
+            }
+            finally
+            {
+                api.DeleteAccessGroup(createdEntity.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test UpsertAccessGroup
+        /// </summary>
+        [Fact]
+        public void Test_AccessGroup_Upsert()
+        {
+            var entityData = TestAccessGroupData.CreateAccessGroupData();
+            var createdEntity = api.UpsertAccessGroup(entityData);
+            try
+            {
+                AssertAccessGroupDataEqual(entityData, createdEntity);
+                TestAccessGroupData.UpdateAccessGroupData(entityData);
+                entityData.Id = createdEntity.Id;
+                var updatedEntity = api.UpsertAccessGroup(entityData);
+                Assert.Equal(createdEntity.Id, updatedEntity.Id);
+                AssertAccessGroupDataEqual(entityData, updatedEntity);
+            }
+            finally
+            {
+                api.DeleteAccessGroup(createdEntity.Id);
+            }
         }
 
         /// <summary>
         /// Test DeleteAccessGroupApplication
         /// </summary>
         [Fact]
-        public void DeleteAccessGroupApplicationTest()
+        public void Test_AccessGroup_Application_Delete()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string subId = null;
-            //string name = null;
-            //string subName = null;
-            //var response = instance.DeleteAccessGroupApplication(id, subId, name, subName);
-            //Assert.IsType<Application>(response);
+            var entityData = TestAccessGroupData.CreateAccessGroupData();
+            var createdEntity = api.CreateAccessGroup(entityData);
+            try
+            {
+                var createdSubEntity = api.UpsertAccessGroupApplication(createdEntity.Id,
+                    new(
+                        parentApplicationId: new("Id", TestAccessGroupData.ParentApplication),
+                        accessApplicationId: new("Id", TestAccessGroupData.Applications[0])));
+                api.DeleteAccessGroupApplication(createdEntity.Id, createdSubEntity.Id);
+                var existingSubEntities = api.ListAccessGroupApplications(createdEntity.Id).Data;
+                Assert.Empty(existingSubEntities);
+            }
+            finally
+            {
+                api.DeleteAccessGroup(createdEntity.Id);
+            }
         }
 
         /// <summary>
-        /// Test DeleteAccessGroupGroup
+        /// Test ListAccessGroupAccessApplications
         /// </summary>
         [Fact]
-        public void DeleteAccessGroupGroupTest()
+        public void Test_AccessGroup_Application_List()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string subId = null;
-            //string name = null;
-            //string subName = null;
-            //var response = instance.DeleteAccessGroupGroup(id, subId, name, subName);
-            //Assert.IsType<Group>(response);
+            var createdEntity = api.CreateAccessGroup(TestAccessGroupData.CreateAccessGroupData());
+            try
+            {
+                var createdSubEntities = TestAccessGroupData.Applications.Select(i =>
+                    api.UpsertAccessGroupApplication(createdEntity.Id,
+                        new(
+                            parentApplicationId: new("Id", TestAccessGroupData.ParentApplication),
+                            accessApplicationId: new("Id", i)))).ToArray();
+                try
+                {
+                    var existingSubEntities = api.ListAccessGroupApplications(createdEntity.Id).Data;
+                    Assert.Equal(createdSubEntities.Length, existingSubEntities.Count);
+                }
+                finally
+                {
+                    foreach (var i in createdSubEntities)
+                        api.DeleteAccessGroupApplication(createdEntity.Id, i.Id);
+                }
+            }
+            finally
+            {
+                api.DeleteAccessGroup(createdEntity.Id);
+            }
         }
+
+        /// <summary>
+        /// Test UpsertAccessGroupApplication
+        /// </summary>
+        [Fact]
+        public void Test_AccessGroup_Application_Upsert()
+        {
+            var entityData = TestAccessGroupData.CreateAccessGroupData();
+            var createdEntity = api.CreateAccessGroup(entityData);
+            try
+            {
+                var createdSubEntity = api.UpsertAccessGroupApplication(createdEntity.Id,
+                    new(
+                        parentApplicationId: new("Id", TestAccessGroupData.ParentApplication),
+                        accessApplicationId: new("Id", TestAccessGroupData.Applications[0])));
+                try
+                {
+                    var existingEntities = api.ListAccessGroupApplications(createdEntity.Id).Data;
+                    Assert.Contains(existingEntities, i => i.Id == createdSubEntity.Id);
+                }
+                finally
+                {
+                    api.DeleteAccessGroupApplication(createdEntity.Id, createdSubEntity.Id);
+                }
+            }
+            finally
+            {
+                api.DeleteAccessGroup(createdEntity.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test DeleteAccessGroupPermission
+        /// </summary>
+        //[Fact]
+        //public void Test_AccessGroup_Permission_Delete()
+        //{
+        //    var accessGroupData = TestAccessGroupData.CreateAccessGroupData();
+        //    var createdAccessGroup = api.CreateAccessGroup(accessGroupData);
+        //    try
+        //    {
+        //        var permission = api.UpsertAccessGroupPermission(createdAccessGroup.Id,
+        //            new PermissionData(permissionId: EnumPermissionType.Import, createdOn: DateTime.Now));
+        //        var deletedPermission = api.DeleteAccessGroupPermission(createdAccessGroup.Id, permission.Id.ToString());
+        //        var existingPermission = api.ListAccessGroupPermissions(createdAccessGroup.Id).Data;
+        //        Assert.Empty(existingPermission);
+        //    }
+        //    finally
+        //    {
+        //        api.DeleteAccessGroup(createdAccessGroup.Id);
+        //    }
+        //}
+
+        /// <summary>
+        /// Test ListAccessGroupPermissions
+        /// </summary>
+        //[Fact]
+        //public void Test_AccessGroup_Permission_List()
+        //{
+        //    var AccessGroupData = TestAccessGroupData.CreateAccessGroupData();
+        //    var createdAccessGroup = api.CreateAccessGroup(AccessGroupData);
+        //    try
+        //    {
+        //        var createdAccessGroupPermissions = new[] {
+        //            api.UpsertAccessGroupPermission(createdAccessGroup.Id,
+        //                new PermissionData ( permissionId: EnumPermissionType.Import, createdOn: DateTime.Now)),
+        //            api.UpsertAccessGroupPermission(createdAccessGroup.Id,
+        //                new PermissionData ( permissionId: EnumPermissionType.Export, createdOn: DateTime.Now))
+        //        };
+        //        try
+        //        {
+        //            var existingAccessGroupPermissions = api.ListAccessGroupPermissions(createdAccessGroup.Id).Data;
+        //            Assert.Equal(createdAccessGroupPermissions.Length, existingAccessGroupPermissions.Count);
+        //        }
+        //        finally
+        //        {
+        //            foreach (var i in createdAccessGroupPermissions)
+        //                api.DeleteAccessGroupPermission(createdAccessGroup.Id, i.Id.ToString());
+        //        }
+        //    }
+        //    finally
+        //    {
+        //        api.DeleteAccessGroup(createdAccessGroup.Id);
+        //    }
+        //}
+
+        /// <summary>
+        /// Test UpsertAccessGroupPermission
+        /// </summary>
+        //[Fact]
+        //public void Test_AccessGroup_Permission_Upsert()
+        //{
+        //    var accessGroupData = TestAccessGroupData.CreateAccessGroupData();
+        //    var createdAccessGroup = api.CreateAccessGroup(accessGroupData);
+        //    try
+        //    {
+        //        var createdAccessGroupPermission = api.UpsertAccessGroupPermission(createdAccessGroup.Id,
+        //            new PermissionData
+        //            (
+        //                permissionId: EnumPermissionType.Import,
+        //                createdOn: DateTime.Now
+        //            ));
+        //        try
+        //        {
+        //            var existingAccessGroupPermissions = api.ListAccessGroupPermissions(createdAccessGroup.Id).Data;
+        //            Assert.Contains(existingAccessGroupPermissions, i => i.Id == createdAccessGroupPermission.Id);
+        //        }
+        //        finally
+        //        {
+        //            api.DeleteAccessGroupPermission(createdAccessGroup.Id, createdAccessGroupPermission.Id.ToString());
+        //        }
+        //    }
+        //    finally
+        //    {
+        //        api.DeleteAccessGroup(createdAccessGroup.Id);
+        //    }
+        //}
 
         /// <summary>
         /// Test DeleteAccessGroupUser
         /// </summary>
         [Fact]
-        public void DeleteAccessGroupUserTest()
+        public void Test_AccessGroup_Group_Delete()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string subId = null;
-            //string name = null;
-            //string subName = null;
-            //var response = instance.DeleteAccessGroupUser(id, subId, name, subName);
-            //Assert.IsType<User>(response);
-        }
-
-        /// <summary>
-        /// Test GetAccessGroup
-        /// </summary>
-        [Fact]
-        public void GetAccessGroupTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string name = null;
-            //var response = instance.GetAccessGroup(id, name);
-            //Assert.IsType<AccessGroup>(response);
-        }
-
-        /// <summary>
-        /// Test ListAccessGroupApplications
-        /// </summary>
-        [Fact]
-        public void ListAccessGroupApplicationsTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string name = null;
-            //string fields = null;
-            //string filters = null;
-            //string orders = null;
-            //int? currentPage = null;
-            //int? pageSize = null;
-            //var response = instance.ListAccessGroupApplications(id, name, fields, filters, orders, currentPage, pageSize);
-            //Assert.IsType<Applications>(response);
+            var createdEntity = api.CreateAccessGroup(TestAccessGroupData.CreateAccessGroupData());
+            try
+            {
+                var createdSubEntity = api.UpsertAccessGroupGroup(createdEntity.Id, new(
+                    groupId: new("Id", TestAccessGroupData.Groups[0].ToString()),
+                    createdOn: DateTime.Now
+                ));
+                api.DeleteAccessGroupGroup(createdEntity.Id, createdSubEntity.Id.ToString());
+                var existingSubEntities = api.ListAccessGroupGroups(createdEntity.Id).Data;
+                Assert.Empty(existingSubEntities);
+            }
+            finally
+            {
+                api.DeleteAccessGroup(createdEntity.Id);
+            }
         }
 
         /// <summary>
         /// Test ListAccessGroupGroups
         /// </summary>
         [Fact]
-        public void ListAccessGroupGroupsTest()
+        public void Test_AccessGroup_Group_List()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string name = null;
-            //string fields = null;
-            //string filters = null;
-            //string orders = null;
-            //int? currentPage = null;
-            //int? pageSize = null;
-            //var response = instance.ListAccessGroupGroups(id, name, fields, filters, orders, currentPage, pageSize);
-            //Assert.IsType<Groups>(response);
+            var createdEntity = api.CreateAccessGroup(TestAccessGroupData.CreateAccessGroupData());
+            try
+            {
+                var createdSubEntities = TestAccessGroupData.Groups.Select(i =>
+                    api.UpsertAccessGroupGroup(createdEntity.Id,
+                        new(groupId: new("Id", i.ToString()), createdOn: DateTime.Now))).ToArray();
+                try
+                {
+                    var existingSubEntities = api.ListAccessGroupGroups(createdEntity.Id).Data;
+                    Assert.Equal(createdSubEntities.Length, existingSubEntities.Count);
+                }
+                finally
+                {
+                    foreach (var i in createdSubEntities)
+                        api.DeleteAccessGroupGroup(createdEntity.Id, i.Id.ToString());
+                }
+            }
+            finally
+            {
+                api.DeleteAccessGroup(createdEntity.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test UpsertAccessGroupGroup
+        /// </summary>
+        [Fact]
+        public void Test_AccessGroup_Group_Upsert()
+        {
+            var createdEntity = api.CreateAccessGroup(TestAccessGroupData.CreateAccessGroupData());
+            try
+            {
+                var createdSubEnbtity = api.UpsertAccessGroupGroup(createdEntity.Id, new(
+                    groupId: new("Id", TestAccessGroupData.Groups[0].ToString()),
+                    createdOn: DateTime.Now
+                ));
+                try
+                {
+                    var existingSubEntities = api.ListAccessGroupGroups(createdEntity.Id).Data;
+                    Assert.Contains(existingSubEntities, i => i.Id == createdSubEnbtity.Id);
+                }
+                finally
+                {
+                    api.DeleteAccessGroupGroup(createdEntity.Id, createdSubEnbtity.Id.ToString());
+                }
+            }
+            finally
+            {
+                api.DeleteAccessGroup(createdEntity.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test DeleteAccessGroupUser
+        /// </summary>
+        [Fact]
+        public void Test_AccessGroup_User_Delete()
+        {
+            var createdEntity = api.CreateAccessGroup(TestAccessGroupData.CreateAccessGroupData());
+            try
+            {
+                var createdSubEntity = api.UpsertAccessGroupUser(createdEntity.Id, new(
+                    userId: new("Id", TestAccessGroupData.Users[0].ToString()),
+                    createdOn: DateTime.Now));
+                api.DeleteAccessGroupUser(createdEntity.Id, createdSubEntity.Id.ToString());
+                var existingdSubEntities = api.ListAccessGroupUsers(createdEntity.Id).Data;
+                Assert.Empty(existingdSubEntities);
+            }
+            finally
+            {
+                api.DeleteAccessGroup(createdEntity.Id);
+            }
         }
 
         /// <summary>
         /// Test ListAccessGroupUsers
         /// </summary>
         [Fact]
-        public void ListAccessGroupUsersTest()
+        public void Test_AccessGroup_User_List()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string name = null;
-            //string fields = null;
-            //string filters = null;
-            //string orders = null;
-            //int? currentPage = null;
-            //int? pageSize = null;
-            //var response = instance.ListAccessGroupUsers(id, name, fields, filters, orders, currentPage, pageSize);
-            //Assert.IsType<Users>(response);
+            var createdEntity = api.CreateAccessGroup(TestAccessGroupData.CreateAccessGroupData());
+            try
+            {
+                var createdSubEntities = TestAccessGroupData.Users.Select(i =>
+                    api.UpsertAccessGroupUser(createdEntity.Id,
+                        new(userId: new("Id", i.ToString()), createdOn: DateTime.Now))).ToArray();
+                try
+                {
+                    var existingSubEntities = api.ListAccessGroupUsers(createdEntity.Id).Data;
+                    Assert.Equal(createdSubEntities.Length, existingSubEntities.Count);
+                }
+                finally
+                {
+                    foreach (var i in createdSubEntities)
+                        api.DeleteAccessGroupUser(createdEntity.Id, i.Id.ToString());
+                }
+            }
+            finally
+            {
+                api.DeleteAccessGroup(createdEntity.Id);
+            }
         }
 
         /// <summary>
-        /// Test ListAccessGroups
+        /// Test UpsertAccessGroupUser
         /// </summary>
         [Fact]
-        public void ListAccessGroupsTest()
+        public void Test_AccessGroup_User_Upsert()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string fields = null;
-            //string filters = null;
-            //string orders = null;
-            //int? currentPage = null;
-            //int? pageSize = null;
-            //var response = instance.ListAccessGroups(fields, filters, orders, currentPage, pageSize);
-            //Assert.IsType<AccessGroups>(response);
+            var createdEntity = api.CreateAccessGroup(TestAccessGroupData.CreateAccessGroupData());
+            try
+            {
+                var createdSubEntity = api.UpsertAccessGroupUser(createdEntity.Id, new(
+                    userId: new("Id", TestAccessGroupData.Users[0].ToString()),
+                    createdOn: DateTime.Now));
+                try
+                {
+                    var existingSubEntities = api.ListAccessGroupUsers(createdEntity.Id).Data;
+                    Assert.Contains(existingSubEntities, i => i.Id == createdSubEntity.Id);
+                }
+                finally
+                {
+                    api.DeleteAccessGroupUser(createdEntity.Id, createdSubEntity.Id.ToString());
+                }
+            }
+            finally
+            {
+                api.DeleteAccessGroup(createdEntity.Id);
+            }
         }
 
         /// <summary>
@@ -276,74 +629,6 @@ namespace Agile.Now.AccessHub.Test.Api
             //string name = null;
             //string deleteNotExists = null;
             //var response = instance.PatchAccessGroupUsers(id, usersData, name, deleteNotExists);
-            //Assert.IsType<User>(response);
-        }
-
-        /// <summary>
-        /// Test UpdateAccessGroup
-        /// </summary>
-        [Fact]
-        public void UpdateAccessGroupTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //AccessGroupData accessGroupData = null;
-            //string name = null;
-            //var response = instance.UpdateAccessGroup(id, accessGroupData, name);
-            //Assert.IsType<AccessGroup>(response);
-        }
-
-        /// <summary>
-        /// Test UpsertAccessGroup
-        /// </summary>
-        [Fact]
-        public void UpsertAccessGroupTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //AccessGroupData accessGroupData = null;
-            //var response = instance.UpsertAccessGroup(accessGroupData);
-            //Assert.IsType<AccessGroup>(response);
-        }
-
-        /// <summary>
-        /// Test UpsertAccessGroupApplication
-        /// </summary>
-        [Fact]
-        public void UpsertAccessGroupApplicationTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //ApplicationData applicationData = null;
-            //string name = null;
-            //var response = instance.UpsertAccessGroupApplication(id, applicationData, name);
-            //Assert.IsType<Application>(response);
-        }
-
-        /// <summary>
-        /// Test UpsertAccessGroupGroup
-        /// </summary>
-        [Fact]
-        public void UpsertAccessGroupGroupTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //GroupData groupData = null;
-            //string name = null;
-            //var response = instance.UpsertAccessGroupGroup(id, groupData, name);
-            //Assert.IsType<Group>(response);
-        }
-
-        /// <summary>
-        /// Test UpsertAccessGroupUser
-        /// </summary>
-        [Fact]
-        public void UpsertAccessGroupUserTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //UserData userData = null;
-            //string name = null;
-            //var response = instance.UpsertAccessGroupUser(id, userData, name);
             //Assert.IsType<User>(response);
         }
     }
