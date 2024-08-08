@@ -84,8 +84,7 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="countryId">countryId.</param>
         /// <param name="timezoneId">timezoneId.</param>
         /// <param name="currencyId">currencyId.</param>
-        /// <param name="isActive">Defines if the location is active and can be used. (required) (default to false).</param>
-        public LocationInsertData(string id = default, string externalId = default, string name = default, EnumCountry? countryId = default, EnumTimezone? timezoneId = default, EnumCurrency? currencyId = default, bool isActive = false)
+        public LocationInsertData(string id = default, string externalId = default, string name = default, EnumCountry? countryId = default, EnumTimezone? timezoneId = default, EnumCurrency? currencyId = default)
         {
             // to ensure "id" is required (not null)
             id = id ?? throw new ArgumentNullException("id is a required property for LocationInsertData and cannot be null");
@@ -93,7 +92,6 @@ namespace Agile.Now.AccessHub.Model
             // to ensure "name" is required (not null)
             name = name ?? throw new ArgumentNullException("name is a required property for LocationInsertData and cannot be null");
             Name = name;
-            IsActive = isActive;
             ExternalId = externalId;
             CountryId = countryId;
             TimezoneId = timezoneId;
@@ -122,14 +120,6 @@ namespace Agile.Now.AccessHub.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Defines if the location is active and can be used.
-        /// </summary>
-        /// <value>Defines if the location is active and can be used.</value>
-        /// <example>false</example>
-        [DataMember(Name = "Is_Active", IsRequired = true, EmitDefaultValue = true)]
-        public bool IsActive { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -143,7 +133,6 @@ namespace Agile.Now.AccessHub.Model
             sb.Append("  CountryId: ").Append(CountryId).Append("\n");
             sb.Append("  TimezoneId: ").Append(TimezoneId).Append("\n");
             sb.Append("  CurrencyId: ").Append(CurrencyId).Append("\n");
-            sb.Append("  IsActive: ").Append(IsActive).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

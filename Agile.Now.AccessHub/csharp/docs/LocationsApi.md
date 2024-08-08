@@ -257,7 +257,7 @@ catch (ApiException e)
 
 <a id="deletelocationuser"></a>
 # **DeleteLocationUser**
-> User DeleteLocationUser (string id, string subId, string name = null, string subName = null)
+> User1 DeleteLocationUser (string id, string subId, string name = null, string subName = null)
 
 Use the query string resource to delete `User` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `Id` field(s) value and use the `DELETE` method of the resource to delete a record.
 
@@ -299,7 +299,7 @@ namespace Example
 
             try
             {
-                User result = apiInstance.DeleteLocationUser(id, subId, name, subName);
+                User1 result = apiInstance.DeleteLocationUser(id, subId, name, subName);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -325,7 +325,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<User> response = apiInstance.DeleteLocationUserWithHttpInfo(id, subId, name, subName);
+    ApiResponse<User1> response = apiInstance.DeleteLocationUserWithHttpInfo(id, subId, name, subName);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -355,7 +355,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**User**](models/User.md)
+[**User1**](models/User1.md)
 
 ### Authorization
 
@@ -497,7 +497,7 @@ catch (ApiException e)
 
 <a id="listlocationusers"></a>
 # **ListLocationUsers**
-> Users ListLocationUsers (string id, string name = null, string fields = null, string filters = null, string orders = null, int? currentPage = null, int? pageSize = null)
+> Users1 ListLocationUsers (string id, string name = null, string fields = null, string filters = null, string orders = null, int? currentPage = null, int? pageSize = null)
 
 Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.
 
@@ -544,7 +544,7 @@ namespace Example
 
             try
             {
-                Users result = apiInstance.ListLocationUsers(id, name, fields, filters, orders, currentPage, pageSize);
+                Users1 result = apiInstance.ListLocationUsers(id, name, fields, filters, orders, currentPage, pageSize);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -570,7 +570,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<Users> response = apiInstance.ListLocationUsersWithHttpInfo(id, name, fields, filters, orders, currentPage, pageSize);
+    ApiResponse<Users1> response = apiInstance.ListLocationUsersWithHttpInfo(id, name, fields, filters, orders, currentPage, pageSize);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -603,7 +603,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**Users**](models/Users.md)
+[**Users1**](models/Users1.md)
 
 ### Authorization
 
@@ -755,7 +755,7 @@ catch (ApiException e)
 
 <a id="patchlocationusers"></a>
 # **PatchLocationUsers**
-> User PatchLocationUsers (string id, UsersData usersData, string name = null, string deleteNotExists = null)
+> User1 PatchLocationUsers (string id, UsersData1 usersData1, string name = null, string deleteNotExists = null)
 
 Use the `UsersData` object resource to insert or update (Upsert) a list of `UserData` using `Id` field(s) value.
 
@@ -796,13 +796,13 @@ namespace Example
 
             var apiInstance = new LocationsApi(config);
             var id = "id_example";  // string | The identifier of the Location record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
-            var usersData = new UsersData(); // UsersData | The list of User information to insert or update.  The input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.
+            var usersData1 = new UsersData1(); // UsersData1 | The list of User information to insert or update.  The input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.
             var name = "name_example";  // string | The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional) 
             var deleteNotExists = "\"false\"";  // string | The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional)  (default to "false")
 
             try
             {
-                User result = apiInstance.PatchLocationUsers(id, usersData, name, deleteNotExists);
+                User1 result = apiInstance.PatchLocationUsers(id, usersData1, name, deleteNotExists);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -828,7 +828,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<User> response = apiInstance.PatchLocationUsersWithHttpInfo(id, usersData, name, deleteNotExists);
+    ApiResponse<User1> response = apiInstance.PatchLocationUsersWithHttpInfo(id, usersData1, name, deleteNotExists);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -852,13 +852,13 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **id** | **string** | The identifier of the Location record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
-| **usersData** | [**UsersData**](models/UsersData.md) | The list of User information to insert or update.  The input parameter must be used in the &#x60;Extra&#x60; record array structure inside the &#x60;Name&#x60; and &#x60;FieldName&#x60; parameters in the foreign key fields. |  |
+| **usersData1** | [**UsersData1**](models/UsersData1.md) | The list of User information to insert or update.  The input parameter must be used in the &#x60;Extra&#x60; record array structure inside the &#x60;Name&#x60; and &#x60;FieldName&#x60; parameters in the foreign key fields. |  |
 | **name** | **string** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Id &#x60;&#x60;&#x60; | [optional]  |
 | **deleteNotExists** | **string** | The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. | [optional] [default to &quot;false&quot;] |
 
 ### Return type
 
-[**User**](models/User.md)
+[**User1**](models/User1.md)
 
 ### Authorization
 
@@ -1127,7 +1127,7 @@ catch (ApiException e)
 
 <a id="upsertlocationuser"></a>
 # **UpsertLocationUser**
-> User UpsertLocationUser (string id, UserData userData, string name = null)
+> User1 UpsertLocationUser (string id, UserData1 userData1, string name = null)
 
 Use the `UserPost` object resource to insert or update (Upsert) `User` using `Id` field(s) value.
 
@@ -1167,12 +1167,12 @@ namespace Example
 
             var apiInstance = new LocationsApi(config);
             var id = "id_example";  // string | The identifier of the Location record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
-            var userData = new UserData(); // UserData | `User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.
+            var userData1 = new UserData1(); // UserData1 | `User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.
             var name = "name_example";  // string | The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional) 
 
             try
             {
-                User result = apiInstance.UpsertLocationUser(id, userData, name);
+                User1 result = apiInstance.UpsertLocationUser(id, userData1, name);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1198,7 +1198,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<User> response = apiInstance.UpsertLocationUserWithHttpInfo(id, userData, name);
+    ApiResponse<User1> response = apiInstance.UpsertLocationUserWithHttpInfo(id, userData1, name);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -1222,12 +1222,12 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **id** | **string** | The identifier of the Location record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
-| **userData** | [**UserData**](models/UserData.md) | &#x60;User&#x60; information to insert or update.  The input parameter must be used in the &#x60;UserData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
+| **userData1** | [**UserData1**](models/UserData1.md) | &#x60;User&#x60; information to insert or update.  The input parameter must be used in the &#x60;UserData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
 | **name** | **string** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Id &#x60;&#x60;&#x60; | [optional]  |
 
 ### Return type
 
-[**User**](models/User.md)
+[**User1**](models/User1.md)
 
 ### Authorization
 

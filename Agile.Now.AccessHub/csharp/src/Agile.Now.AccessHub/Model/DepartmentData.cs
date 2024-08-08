@@ -77,13 +77,14 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="name">The name of the department. (required).</param>
         /// <param name="departmentTypeId">departmentTypeId (required).</param>
         /// <param name="parentDepartmentId">parentDepartmentId.</param>
+        /// <param name="level">The department level at the hierarchy. (default to 0).</param>
         /// <param name="contactName">The contact name of company or department..</param>
         /// <param name="contactEmail">The contact email of external company or department..</param>
         /// <param name="contactPhone">contactPhone.</param>
         /// <param name="ownerId">ownerId.</param>
         /// <param name="countryId">countryId.</param>
         /// <param name="isActive">Defines if the department is active and can be used. (required) (default to false).</param>
-        public DepartmentData(string id = default, string externalId = default, string name = default, EnumDepartmentType departmentTypeId = default, FieldType parentDepartmentId = default, string contactName = default, string contactEmail = default, string contactPhone = default, FieldType ownerId = default, EnumCountry? countryId = default, bool isActive = false)
+        public DepartmentData(string id = default, string externalId = default, string name = default, EnumDepartmentType departmentTypeId = default, FieldType parentDepartmentId = default, int level = 0, string contactName = default, string contactEmail = default, string contactPhone = default, FieldType ownerId = default, EnumCountry? countryId = default, bool isActive = false)
         {
             // to ensure "name" is required (not null)
             name = name ?? throw new ArgumentNullException("name is a required property for DepartmentData and cannot be null");
@@ -93,6 +94,7 @@ namespace Agile.Now.AccessHub.Model
             Id = id;
             ExternalId = externalId;
             ParentDepartmentId = parentDepartmentId;
+            Level = level;
             ContactName = contactName;
             ContactEmail = contactEmail;
             ContactPhone = contactPhone;
@@ -126,6 +128,14 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         [DataMember(Name = "ParentDepartmentId", EmitDefaultValue = false)]
         public FieldType ParentDepartmentId { get; set; }
+
+        /// <summary>
+        /// The department level at the hierarchy.
+        /// </summary>
+        /// <value>The department level at the hierarchy.</value>
+        /// <example>0</example>
+        [DataMember(Name = "Level", EmitDefaultValue = false)]
+        public int Level { get; set; }
 
         /// <summary>
         /// The contact name of company or department.
@@ -174,6 +184,7 @@ namespace Agile.Now.AccessHub.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  DepartmentTypeId: ").Append(DepartmentTypeId).Append("\n");
             sb.Append("  ParentDepartmentId: ").Append(ParentDepartmentId).Append("\n");
+            sb.Append("  Level: ").Append(Level).Append("\n");
             sb.Append("  ContactName: ").Append(ContactName).Append("\n");
             sb.Append("  ContactEmail: ").Append(ContactEmail).Append("\n");
             sb.Append("  ContactPhone: ").Append(ContactPhone).Append("\n");

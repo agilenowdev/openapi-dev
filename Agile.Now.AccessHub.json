@@ -26,6 +26,14 @@
       "description": "Accounts"
     },
     {
+      "name": "AccessGroups",
+      "description": "AccessGroups"
+    },
+    {
+      "name": "GroupExternals",
+      "description": "GroupExternals"
+    },
+    {
       "name": "Departments",
       "description": "Departments"
     },
@@ -549,7 +557,7 @@
         "tags": [
           "Accounts"
         ],
-        "description": "Use the `TenantPost` object resource to insert or update (Upsert) `Tenant` using `UserId, TenantId.Name` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `TenantData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `UserId, TenantId, AccountId`\n\n### Update a record of Tenant\n* If the `UserId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `UserId` field value (primary key).\n* If the `TenantId.Name` field value is not empty and `UserId` field value is empty, action try insert record according `TenantId.Name` field value (if set, the value is a unique identifier).\n\n### Create a new record of Tenant\n* If the value in the `TenantId.Name` and `UserId` fields are empty then action insert a new record according input parameter entity record structure (`TenantData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Tenant` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "description": "Use the `TenantPost` object resource to insert or update (Upsert) `Tenant` using `UserId` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `TenantData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `UserId, TenantId, AccountId`\n\n### Update a record of Tenant\n* If the `UserId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `UserId` field value (primary key).\n* When the UserId field value is not provided, the system will automatically initiate the insertion of a new record.\n\n### Create a new record of Tenant\n* If the value in the `UserId` field is empty then action insert a new record according input parameter entity record structure (`TenantData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Tenant` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
         "operationId": "Upsert Account Tenant",
         "parameters": [
           {
@@ -623,7 +631,7 @@
         "tags": [
           "Accounts"
         ],
-        "description": "Use the query string resource to delete `Tenant` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `UserId, TenantId.Name` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `Tenant` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `UserId, TenantId, AccountId`\n\n### Delete a record of Tenant\n* If the `UserId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `UserId, TenantId.Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
+        "description": "Use the query string resource to delete `Tenant` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `UserId` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `Tenant` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `UserId, TenantId, AccountId`\n\n### Delete a record of Tenant\n* If the `UserId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `UserId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
         "operationId": "Delete Account Tenant",
         "parameters": [
           {
@@ -658,10 +666,10 @@
           {
             "name": "SubName",
             "in": "query",
-            "description": "The name of the database field. If empty, the entity `UserId` field is used.\n\nExample: \n```\nTenantId.Name\n```",
+            "description": "The name of the database field. If empty, the entity `UserId` field is used.\n\nExample: \n```\n\n```",
             "schema": {
               "type": "string",
-              "description": "The name of the database field. If empty, the entity `UserId` field is used.\n\nExample: \n```\nTenantId.Name\n```"
+              "description": "The name of the database field. If empty, the entity `UserId` field is used.\n\nExample: \n```\n\n```"
             }
           }
         ],
@@ -938,6 +946,2231 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Picture"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "AccessManager:Delete",
+              "AccessUser:Delete"
+            ]
+          }
+        ]
+      }
+    },
+    "/Endpoint/rest/api/v1/AccessGroup/{Id}": {
+      "get": {
+        "tags": [
+          "AccessGroups"
+        ],
+        "description": "The method returns one record of the `AccessGroup`.\n\nMethod returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`\n\n### Get a record of AccessGroup\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.",
+        "operationId": "Get AccessGroup",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\n\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\n\n```"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The record of `AccessGroup` information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessGroup"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "AccessManager:Read",
+              "AccessUser:Read"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "AccessGroups"
+        ],
+        "description": "Use the `AccessGroupData` object resource to update `AccessGroup` using `Id` field(s) value.\n\nProvide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record. \n\nThe input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`\n\n### Update a record of AccessGroup\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the updated record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "operationId": "Update AccessGroup",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\n\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\n\n```"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "AccessGroup information to update.\n\nThe input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AccessGroupData"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Record"
+        },
+        "responses": {
+          "200": {
+            "description": "Updated `AccessGroup` information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessGroup"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "AccessManager:Update",
+              "AccessUser:Update"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "AccessGroups"
+        ],
+        "description": "Use the query string resource to delete `AccessGroup` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`\n\n### Delete a record of AccessGroup\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
+        "operationId": "Delete AccessGroup",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\n\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\n\n```"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted `AccessGroup` information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessGroup"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "AccessManager:Delete",
+              "AccessUser:Delete"
+            ]
+          }
+        ]
+      }
+    },
+    "/Endpoint/rest/api/v1/AccessGroups": {
+      "get": {
+        "tags": [
+          "AccessGroups"
+        ],
+        "description": "Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.\n\nLeverage the search service to extract the requisite information from the system effectively.\n\nThe method returns a list structured with an extended `AccessGroup` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.\n\nThe foreign key fields involved are: `AccessGroupTypeId, ModifiedBy, CreatedBy`\n\n### Example\nIt searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.\n\n```http\nfields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000\n```",
+        "operationId": "List AccessGroups",
+        "parameters": [
+          {
+            "name": "Fields",
+            "in": "query",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, ExternalId, Description, Is_Active, Is_System, AccessGroupTypeId, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```",
+            "schema": {
+              "type": "string",
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, ExternalId, Description, Is_Active, Is_System, AccessGroupTypeId, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```"
+            }
+          },
+          {
+            "name": "Filters",
+            "in": "query",
+            "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.\n\nThe name of the entity field. Example: `Name` or relation field `OwnerId.Name`\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn\n\nYou can add multiple values separated by comma when using the `In`, `NotIn` operators.\nExample of text field; `USA; FIN; ARE`\nExample of numeric field; `1, 2, 3`\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+            "schema": {
+              "type": "string",
+              "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.\n\nThe name of the entity field. Example: `Name` or relation field `OwnerId.Name`\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn\n\nYou can add multiple values separated by comma when using the `In`, `NotIn` operators.\nExample of text field; `USA; FIN; ARE`\nExample of numeric field; `1, 2, 3`\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n"
+            }
+          },
+          {
+            "name": "Orders",
+            "in": "query",
+            "description": "The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: \n```\nName DESC, CreatedOn ASC\n```",
+            "schema": {
+              "type": "string",
+              "description": "The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: \n```\nName DESC, CreatedOn ASC\n```"
+            }
+          },
+          {
+            "name": "CurrentPage",
+            "in": "query",
+            "description": "This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.",
+            "schema": {
+              "type": "integer",
+              "description": "This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.\n\nThe value ranges from `1` to `1000` and defaults to `50`.",
+            "schema": {
+              "type": "integer",
+              "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.\n\nThe value ranges from `1` to `1000` and defaults to `50`.",
+              "format": "int32",
+              "default": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of AccessGroups",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessGroups"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "AccessManager:Read",
+              "AccessUser:Read"
+            ]
+          }
+        ]
+      }
+    },
+    "/Endpoint/rest/api/v1/AccessGroup": {
+      "patch": {
+        "tags": [
+          "AccessGroups"
+        ],
+        "description": "Use the `AccessGroupData` object resource to insert or update (Upsert) `AccessGroup` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`\n\n### Update a record of AccessGroup\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n### Create a new record of AccessGroup\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`AccessGroupData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "operationId": "Upsert AccessGroup",
+        "requestBody": {
+          "description": "`AccessGroup` information to insert or update.\n\nThe input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AccessGroupData"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Record"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated `AccessGroup` information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessGroup"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "AccessManager:Create, Update",
+              "AccessUser:Create, Update"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "AccessGroups"
+        ],
+        "description": "Use the `AccessGroupData` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`\n\n### Create a new record of AccessGroup\n* If the value in the `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupData`).\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`AccessGroupData`).\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the created record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\n",
+        "operationId": "Create AccessGroup",
+        "requestBody": {
+          "description": "`AccessGroup` information to insert.\n\nThe input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AccessGroupData"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Record"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted `AccessGroup` information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessGroup"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "AccessManager:Create",
+              "AccessUser:Create"
+            ]
+          }
+        ]
+      }
+    },
+    "/Endpoint/rest/api/v1/AccessGroup/{Id}/Applications": {
+      "get": {
+        "tags": [
+          "AccessGroups"
+        ],
+        "description": "Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.\n\nLeverage the search service to extract the requisite information from the system effectively.\n\nThe method returns a list structured with an extended `Application` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.\n\nThe foreign key fields involved are: `AccessGroupId, ParentApplicationId, AccessApplicationId`\n\n### Example\nIt searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.\n\n```http\nfields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000\n```",
+        "operationId": "List AccessGroup Applications",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```"
+            }
+          },
+          {
+            "name": "Fields",
+            "in": "query",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, AccessGroupId, ParentApplicationId, AccessApplicationId, Is_Active, CreatedOn\n```",
+            "schema": {
+              "type": "string",
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, AccessGroupId, ParentApplicationId, AccessApplicationId, Is_Active, CreatedOn\n```"
+            }
+          },
+          {
+            "name": "Filters",
+            "in": "query",
+            "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.\n\nThe name of the entity field. Example: `Name` or relation field `OwnerId.Name`\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn\n\nYou can add multiple values separated by comma when using the `In`, `NotIn` operators.\nExample of text field; `USA; FIN; ARE`\nExample of numeric field; `1, 2, 3`\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+            "schema": {
+              "type": "string",
+              "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.\n\nThe name of the entity field. Example: `Name` or relation field `OwnerId.Name`\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn\n\nYou can add multiple values separated by comma when using the `In`, `NotIn` operators.\nExample of text field; `USA; FIN; ARE`\nExample of numeric field; `1, 2, 3`\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n"
+            }
+          },
+          {
+            "name": "Orders",
+            "in": "query",
+            "description": "The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: \n```\nName DESC, CreatedOn ASC\n```",
+            "schema": {
+              "type": "string",
+              "description": "The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: \n```\nName DESC, CreatedOn ASC\n```"
+            }
+          },
+          {
+            "name": "CurrentPage",
+            "in": "query",
+            "description": "This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.",
+            "schema": {
+              "type": "integer",
+              "description": "This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.\n\nThe value ranges from `1` to `1000` and defaults to `50`.",
+            "schema": {
+              "type": "integer",
+              "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.\n\nThe value ranges from `1` to `1000` and defaults to `50`.",
+              "format": "int32",
+              "default": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of Applications",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Applications"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "AccessManager:Read",
+              "AccessUser:Read"
+            ]
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "AccessGroups"
+        ],
+        "description": "Use the `ApplicationsData` object resource to insert or update (Upsert) a list of `ApplicationData` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `ApplicationList` record structure as text fields in the foreign key fields.\n\nForeign key fields are: `AccessGroupId, ParentApplicationId, AccessApplicationId`\n\n### Update a record of Application\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.\n\n### Create a new record of Application\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`ApplicationData`).\n\nThe response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `Application` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.",
+        "operationId": "Patch AccessGroup Applications",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```"
+            }
+          },
+          {
+            "name": "DeleteNotExists",
+            "in": "query",
+            "description": "The Delete not exists function delete orphan values from a table.\n\nIf you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table.",
+            "schema": {
+              "type": "string",
+              "description": "The Delete not exists function delete orphan values from a table.\n\nIf you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table.",
+              "default": "false"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The list of Application information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApplicationsData"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Data"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated list of Application information. \n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Application"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "AccessManager:Create, Update",
+              "AccessUser:Create, Update"
+            ]
+          }
+        ]
+      }
+    },
+    "/Endpoint/rest/api/v1/AccessGroup/{Id}/Application": {
+      "post": {
+        "tags": [
+          "AccessGroups"
+        ],
+        "description": "Use the `ApplicationPost` object resource to insert or update (Upsert) `Application` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `ApplicationData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `AccessGroupId, ParentApplicationId, AccessApplicationId`\n\n### Update a record of Application\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n### Create a new record of Application\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`ApplicationData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Application` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "operationId": "Upsert AccessGroup Application",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "`Application` information to insert or update.\n\nThe input parameter must be used in the `ApplicationData` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApplicationData"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Record"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated `Application` information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Application"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "AccessManager:Create, Update",
+              "AccessUser:Create, Update"
+            ]
+          }
+        ]
+      }
+    },
+    "/Endpoint/rest/api/v1/AccessGroup/{Id}/Application/{SubId}": {
+      "delete": {
+        "tags": [
+          "AccessGroups"
+        ],
+        "description": "Use the query string resource to delete `Application` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `Id` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `Application` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `AccessGroupId, ParentApplicationId, AccessApplicationId`\n\n### Delete a record of Application\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
+        "operationId": "Delete AccessGroup Application",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```"
+            }
+          },
+          {
+            "name": "SubId",
+            "in": "path",
+            "description": "The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "SubName",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\n\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\n\n```"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted `Application` information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Application"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "AccessManager:Delete",
+              "AccessUser:Delete"
+            ]
+          }
+        ]
+      }
+    },
+    "/Endpoint/rest/api/v1/AccessGroup/{Id}/Groups": {
+      "get": {
+        "tags": [
+          "AccessGroups"
+        ],
+        "description": "Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.\n\nLeverage the search service to extract the requisite information from the system effectively.\n\nThe method returns a list structured with an extended `Group` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.\n\nThe foreign key fields involved are: `AccessGroupId, GroupId`\n\n### Example\nIt searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.\n\n```http\nfields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000\n```",
+        "operationId": "List AccessGroup Groups",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```"
+            }
+          },
+          {
+            "name": "Fields",
+            "in": "query",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, AccessGroupId, GroupId, CreatedOn\n```",
+            "schema": {
+              "type": "string",
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, AccessGroupId, GroupId, CreatedOn\n```"
+            }
+          },
+          {
+            "name": "Filters",
+            "in": "query",
+            "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.\n\nThe name of the entity field. Example: `Name` or relation field `OwnerId.Name`\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn\n\nYou can add multiple values separated by comma when using the `In`, `NotIn` operators.\nExample of text field; `USA; FIN; ARE`\nExample of numeric field; `1, 2, 3`\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+            "schema": {
+              "type": "string",
+              "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.\n\nThe name of the entity field. Example: `Name` or relation field `OwnerId.Name`\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn\n\nYou can add multiple values separated by comma when using the `In`, `NotIn` operators.\nExample of text field; `USA; FIN; ARE`\nExample of numeric field; `1, 2, 3`\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n"
+            }
+          },
+          {
+            "name": "Orders",
+            "in": "query",
+            "description": "The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: \n```\nName DESC, CreatedOn ASC\n```",
+            "schema": {
+              "type": "string",
+              "description": "The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: \n```\nName DESC, CreatedOn ASC\n```"
+            }
+          },
+          {
+            "name": "CurrentPage",
+            "in": "query",
+            "description": "This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.",
+            "schema": {
+              "type": "integer",
+              "description": "This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.\n\nThe value ranges from `1` to `1000` and defaults to `50`.",
+            "schema": {
+              "type": "integer",
+              "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.\n\nThe value ranges from `1` to `1000` and defaults to `50`.",
+              "format": "int32",
+              "default": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of Groups",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Groups"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "AccessManager:Read",
+              "AccessUser:Read"
+            ]
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "AccessGroups"
+        ],
+        "description": "Use the `GroupsData` object resource to insert or update (Upsert) a list of `GroupData` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `GroupList` record structure as text fields in the foreign key fields.\n\nForeign key fields are: `AccessGroupId, GroupId`\n\n### Update a record of Group\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.\n\n### Create a new record of Group\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`GroupData`).\n\nThe response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `Group` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.",
+        "operationId": "Patch AccessGroup Groups",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```"
+            }
+          },
+          {
+            "name": "DeleteNotExists",
+            "in": "query",
+            "description": "The Delete not exists function delete orphan values from a table.\n\nIf you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table.",
+            "schema": {
+              "type": "string",
+              "description": "The Delete not exists function delete orphan values from a table.\n\nIf you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table.",
+              "default": "false"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The list of Group information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GroupsData"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Data"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated list of Group information. \n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Group"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "AccessManager:Create, Update",
+              "AccessUser:Create, Update"
+            ]
+          }
+        ]
+      }
+    },
+    "/Endpoint/rest/api/v1/AccessGroup/{Id}/Group": {
+      "post": {
+        "tags": [
+          "AccessGroups"
+        ],
+        "description": "Use the `GroupPost` object resource to insert or update (Upsert) `Group` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `GroupData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `AccessGroupId, GroupId`\n\n### Update a record of Group\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n### Create a new record of Group\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`GroupData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Group` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "operationId": "Upsert AccessGroup Group",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "`Group` information to insert or update.\n\nThe input parameter must be used in the `GroupData` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GroupData"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Record"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated `Group` information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Group"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "AccessManager:Create, Update",
+              "AccessUser:Create, Update"
+            ]
+          }
+        ]
+      }
+    },
+    "/Endpoint/rest/api/v1/AccessGroup/{Id}/Group/{SubId}": {
+      "delete": {
+        "tags": [
+          "AccessGroups"
+        ],
+        "description": "Use the query string resource to delete `Group` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `Id` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `Group` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `AccessGroupId, GroupId`\n\n### Delete a record of Group\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
+        "operationId": "Delete AccessGroup Group",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```"
+            }
+          },
+          {
+            "name": "SubId",
+            "in": "path",
+            "description": "The identifier of the Group record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the Group record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "SubName",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\n\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\n\n```"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted `Group` information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Group"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "AccessManager:Delete",
+              "AccessUser:Delete"
+            ]
+          }
+        ]
+      }
+    },
+    "/Endpoint/rest/api/v1/AccessGroup/{Id}/Users": {
+      "get": {
+        "tags": [
+          "AccessGroups"
+        ],
+        "description": "Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.\n\nLeverage the search service to extract the requisite information from the system effectively.\n\nThe method returns a list structured with an extended `User` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.\n\nThe foreign key fields involved are: `AccessGroupId, UserId`\n\n### Example\nIt searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.\n\n```http\nfields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000\n```",
+        "operationId": "List AccessGroup Users",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```"
+            }
+          },
+          {
+            "name": "Fields",
+            "in": "query",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, AccessGroupId, UserId, CreatedOn\n```",
+            "schema": {
+              "type": "string",
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, AccessGroupId, UserId, CreatedOn\n```"
+            }
+          },
+          {
+            "name": "Filters",
+            "in": "query",
+            "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.\n\nThe name of the entity field. Example: `Name` or relation field `OwnerId.Name`\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn\n\nYou can add multiple values separated by comma when using the `In`, `NotIn` operators.\nExample of text field; `USA; FIN; ARE`\nExample of numeric field; `1, 2, 3`\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+            "schema": {
+              "type": "string",
+              "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.\n\nThe name of the entity field. Example: `Name` or relation field `OwnerId.Name`\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn\n\nYou can add multiple values separated by comma when using the `In`, `NotIn` operators.\nExample of text field; `USA; FIN; ARE`\nExample of numeric field; `1, 2, 3`\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n"
+            }
+          },
+          {
+            "name": "Orders",
+            "in": "query",
+            "description": "The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: \n```\nName DESC, CreatedOn ASC\n```",
+            "schema": {
+              "type": "string",
+              "description": "The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: \n```\nName DESC, CreatedOn ASC\n```"
+            }
+          },
+          {
+            "name": "CurrentPage",
+            "in": "query",
+            "description": "This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.",
+            "schema": {
+              "type": "integer",
+              "description": "This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.\n\nThe value ranges from `1` to `1000` and defaults to `50`.",
+            "schema": {
+              "type": "integer",
+              "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.\n\nThe value ranges from `1` to `1000` and defaults to `50`.",
+              "format": "int32",
+              "default": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of Users",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Users"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "AccessManager:Read",
+              "AccessUser:Read"
+            ]
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "AccessGroups"
+        ],
+        "description": "Use the `UsersData` object resource to insert or update (Upsert) a list of `UserData` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `UserList` record structure as text fields in the foreign key fields.\n\nForeign key fields are: `AccessGroupId, UserId`\n\n### Update a record of User\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.\n\n### Create a new record of User\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`UserData`).\n\nThe response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `User` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.",
+        "operationId": "Patch AccessGroup Users",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```"
+            }
+          },
+          {
+            "name": "DeleteNotExists",
+            "in": "query",
+            "description": "The Delete not exists function delete orphan values from a table.\n\nIf you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table.",
+            "schema": {
+              "type": "string",
+              "description": "The Delete not exists function delete orphan values from a table.\n\nIf you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table.",
+              "default": "false"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The list of User information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsersData"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Data"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated list of User information. \n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "AccessManager:Create, Update",
+              "AccessUser:Create, Update"
+            ]
+          }
+        ]
+      }
+    },
+    "/Endpoint/rest/api/v1/AccessGroup/{Id}/User": {
+      "post": {
+        "tags": [
+          "AccessGroups"
+        ],
+        "description": "Use the `UserPost` object resource to insert or update (Upsert) `User` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `AccessGroupId, UserId`\n\n### Update a record of User\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n### Create a new record of User\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`UserData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `User` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "operationId": "Upsert AccessGroup User",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "`User` information to insert or update.\n\nThe input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserData"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Record"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated `User` information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "AccessManager:Create, Update",
+              "AccessUser:Create, Update"
+            ]
+          }
+        ]
+      }
+    },
+    "/Endpoint/rest/api/v1/AccessGroup/{Id}/User/{SubId}": {
+      "delete": {
+        "tags": [
+          "AccessGroups"
+        ],
+        "description": "Use the query string resource to delete `User` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `Id` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `User` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `AccessGroupId, UserId`\n\n### Delete a record of User\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
+        "operationId": "Delete AccessGroup User",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```"
+            }
+          },
+          {
+            "name": "SubId",
+            "in": "path",
+            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "SubName",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\n\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\n\n```"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted `User` information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "AccessManager:Delete",
+              "AccessUser:Delete"
+            ]
+          }
+        ]
+      }
+    },
+    "/Endpoint/rest/api/v1/GroupExternal/{Id}": {
+      "get": {
+        "tags": [
+          "GroupExternals"
+        ],
+        "description": "The method returns one record of the `GroupExternal`.\n\nMethod returns an extended `GroupExternal` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `Created_By`\n\n### Get a record of GroupExternal\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.",
+        "operationId": "Get GroupExternal",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\n\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\n\n```"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The record of `GroupExternal` information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupExternal"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "AccessManager:Read",
+              "AccessUser:Read"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "GroupExternals"
+        ],
+        "description": "Use the `GroupExternalData` object resource to update `GroupExternal` using `Id` field(s) value.\n\nProvide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record. \n\nThe input parameter must be used in the `GroupExternalData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `Created_By`\n\n### Update a record of GroupExternal\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the updated record if the call is successful. Method returns an extended `GroupExternal` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "operationId": "Update GroupExternal",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\n\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\n\n```"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "GroupExternal information to update.\n\nThe input parameter must be used in the `GroupExternalData` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GroupExternalData"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Record"
+        },
+        "responses": {
+          "200": {
+            "description": "Updated `GroupExternal` information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupExternal"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "AccessManager:Update",
+              "AccessUser:Update"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "GroupExternals"
+        ],
+        "description": "Use the query string resource to delete `GroupExternal` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `GroupExternal` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `Created_By`\n\n### Delete a record of GroupExternal\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
+        "operationId": "Delete GroupExternal",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\n\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\n\n```"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted `GroupExternal` information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupExternal"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "AccessManager:Delete",
+              "AccessUser:Delete"
+            ]
+          }
+        ]
+      }
+    },
+    "/Endpoint/rest/api/v1/GroupExternals": {
+      "get": {
+        "tags": [
+          "GroupExternals"
+        ],
+        "description": "Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.\n\nLeverage the search service to extract the requisite information from the system effectively.\n\nThe method returns a list structured with an extended `GroupExternal` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.\n\nThe foreign key fields involved are: `Created_By`\n\n### Example\nIt searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.\n\n```http\nfields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000\n```",
+        "operationId": "List GroupExternals",
+        "parameters": [
+          {
+            "name": "Fields",
+            "in": "query",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, Description, Created_By, Created, Has_Custom_Management\n```",
+            "schema": {
+              "type": "string",
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, Description, Created_By, Created, Has_Custom_Management\n```"
+            }
+          },
+          {
+            "name": "Filters",
+            "in": "query",
+            "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.\n\nThe name of the entity field. Example: `Name` or relation field `OwnerId.Name`\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn\n\nYou can add multiple values separated by comma when using the `In`, `NotIn` operators.\nExample of text field; `USA; FIN; ARE`\nExample of numeric field; `1, 2, 3`\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+            "schema": {
+              "type": "string",
+              "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.\n\nThe name of the entity field. Example: `Name` or relation field `OwnerId.Name`\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn\n\nYou can add multiple values separated by comma when using the `In`, `NotIn` operators.\nExample of text field; `USA; FIN; ARE`\nExample of numeric field; `1, 2, 3`\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n"
+            }
+          },
+          {
+            "name": "Orders",
+            "in": "query",
+            "description": "The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: \n```\nName DESC, CreatedOn ASC\n```",
+            "schema": {
+              "type": "string",
+              "description": "The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: \n```\nName DESC, CreatedOn ASC\n```"
+            }
+          },
+          {
+            "name": "CurrentPage",
+            "in": "query",
+            "description": "This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.",
+            "schema": {
+              "type": "integer",
+              "description": "This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.\n\nThe value ranges from `1` to `1000` and defaults to `50`.",
+            "schema": {
+              "type": "integer",
+              "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.\n\nThe value ranges from `1` to `1000` and defaults to `50`.",
+              "format": "int32",
+              "default": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of GroupExternals",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupExternals"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "AccessManager:Read",
+              "AccessUser:Read"
+            ]
+          }
+        ]
+      }
+    },
+    "/Endpoint/rest/api/v1/GroupExternal": {
+      "patch": {
+        "tags": [
+          "GroupExternals"
+        ],
+        "description": "Use the `GroupExternalData` object resource to insert or update (Upsert) `GroupExternal` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `GroupExternalData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `Created_By`\n\n### Update a record of GroupExternal\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n### Create a new record of GroupExternal\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`GroupExternalData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `GroupExternal` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "operationId": "Upsert GroupExternal",
+        "requestBody": {
+          "description": "`GroupExternal` information to insert or update.\n\nThe input parameter must be used in the `GroupExternalData` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GroupExternalData"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Record"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated `GroupExternal` information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupExternal"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "AccessManager:Create, Update",
+              "AccessUser:Create, Update"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "GroupExternals"
+        ],
+        "description": "Use the `GroupExternalData` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `GroupExternalData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `Created_By`\n\n### Create a new record of GroupExternal\n* If the value in the `Id` fields are empty then action insert a new record according input parameter entity record structure (`GroupExternalData`).\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`GroupExternalData`).\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the created record if the call is successful. Method returns an extended `GroupExternal` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\n",
+        "operationId": "Create GroupExternal",
+        "requestBody": {
+          "description": "`GroupExternal` information to insert.\n\nThe input parameter must be used in the `GroupExternalData` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GroupExternalData"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Record"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted `GroupExternal` information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupExternal"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "AccessManager:Create",
+              "AccessUser:Create"
+            ]
+          }
+        ]
+      }
+    },
+    "/Endpoint/rest/api/v1/GroupExternals/Json": {
+      "patch": {
+        "tags": [
+          "GroupExternals"
+        ],
+        "description": "Use the `GroupExternalsText` object resource to insert or update (Upsert) a list of `GroupExternalList` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `PATCH` method of the resource.\n\nThe input parameter must be used in the `GroupExternalList` record structure as text fields in the foreign key fields.\n\nForeign key fields are: `Created_By`\n\n### Update a record of GroupExternal\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned. You cannot change `Id` field value (primary key).\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.\n\n### Create a new record of GroupExternal\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`GroupExternalData`).\n\nThe response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `GroupExternal` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.",
+        "operationId": "Patch GroupExternals",
+        "requestBody": {
+          "description": "The list of GroupExternal information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GroupExternalsData"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Data"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated list of GroupExternal information. \n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupExternals"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "AccessManager:Import",
+              "AccessUser:Import"
+            ]
+          }
+        ]
+      }
+    },
+    "/Endpoint/rest/api/v1/GroupExternal/{Id}/UserExternals": {
+      "get": {
+        "tags": [
+          "GroupExternals"
+        ],
+        "description": "Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.\n\nLeverage the search service to extract the requisite information from the system effectively.\n\nThe method returns a list structured with an extended `UserExternal` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.\n\nThe foreign key fields involved are: `User_Id, Group_Id`\n\n### Example\nIt searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.\n\n```http\nfields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000\n```",
+        "operationId": "List GroupExternal UserExternals",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```"
+            }
+          },
+          {
+            "name": "Fields",
+            "in": "query",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, User_Id, Group_Id\n```",
+            "schema": {
+              "type": "string",
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, User_Id, Group_Id\n```"
+            }
+          },
+          {
+            "name": "Filters",
+            "in": "query",
+            "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.\n\nThe name of the entity field. Example: `Name` or relation field `OwnerId.Name`\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn\n\nYou can add multiple values separated by comma when using the `In`, `NotIn` operators.\nExample of text field; `USA; FIN; ARE`\nExample of numeric field; `1, 2, 3`\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n",
+            "schema": {
+              "type": "string",
+              "description": "In the List methods, filtering of resources can be performed using filter parameters.\n\nYou can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.\n\nThe name of the entity field. Example: `Name` or relation field `OwnerId.Name`\n\nPlease refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.\n\nThe operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn\n\nYou can add multiple values separated by comma when using the `In`, `NotIn` operators.\nExample of text field; `USA; FIN; ARE`\nExample of numeric field; `1, 2, 3`\n\nExample of filters:\n```sql\nFilters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)\n\nFilters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)\n\nFilters=ExternalId In S100;S101;S120;100\n\nFilters=Id = 100\n\n```\n"
+            }
+          },
+          {
+            "name": "Orders",
+            "in": "query",
+            "description": "The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: \n```\nName DESC, CreatedOn ASC\n```",
+            "schema": {
+              "type": "string",
+              "description": "The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.\n\nExample: \n```\nName DESC, CreatedOn ASC\n```"
+            }
+          },
+          {
+            "name": "CurrentPage",
+            "in": "query",
+            "description": "This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.",
+            "schema": {
+              "type": "integer",
+              "description": "This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved.",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.\n\nThe value ranges from `1` to `1000` and defaults to `50`.",
+            "schema": {
+              "type": "integer",
+              "description": "The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.\n\nThe value ranges from `1` to `1000` and defaults to `50`.",
+              "format": "int32",
+              "default": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of UserExternals",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserExternals"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "AccessManager:Read",
+              "AccessUser:Read"
+            ]
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "GroupExternals"
+        ],
+        "description": "Use the `UserExternalsData` object resource to insert or update (Upsert) a list of `UserExternalData` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `UserExternalList` record structure as text fields in the foreign key fields.\n\nForeign key fields are: `User_Id, Group_Id`\n\n### Update a record of UserExternal\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.\n\n### Create a new record of UserExternal\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`UserExternalData`).\n\nThe response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `UserExternal` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.",
+        "operationId": "Patch GroupExternal UserExternals",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```"
+            }
+          },
+          {
+            "name": "DeleteNotExists",
+            "in": "query",
+            "description": "The Delete not exists function delete orphan values from a table.\n\nIf you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table.",
+            "schema": {
+              "type": "string",
+              "description": "The Delete not exists function delete orphan values from a table.\n\nIf you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table.",
+              "default": "false"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The list of UserExternal information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserExternalsData"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Data"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated list of UserExternal information. \n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserExternal"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "AccessManager:Create, Update",
+              "AccessUser:Create, Update"
+            ]
+          }
+        ]
+      }
+    },
+    "/Endpoint/rest/api/v1/GroupExternal/{Id}/UserExternal": {
+      "post": {
+        "tags": [
+          "GroupExternals"
+        ],
+        "description": "Use the `UserExternalPost` object resource to insert or update (Upsert) `UserExternal` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `UserExternalData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `User_Id, Group_Id`\n\n### Update a record of UserExternal\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n### Create a new record of UserExternal\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`UserExternalData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `UserExternal` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "operationId": "Upsert GroupExternal UserExternal",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "`UserExternal` information to insert or update.\n\nThe input parameter must be used in the `UserExternalData` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserExternalData"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Record"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated `UserExternal` information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserExternal"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "AccessManager:Create, Update",
+              "AccessUser:Create, Update"
+            ]
+          }
+        ]
+      }
+    },
+    "/Endpoint/rest/api/v1/GroupExternal/{Id}/UserExternal/{SubId}": {
+      "delete": {
+        "tags": [
+          "GroupExternals"
+        ],
+        "description": "Use the query string resource to delete `UserExternal` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `Id` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `UserExternal` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `User_Id, Group_Id`\n\n### Delete a record of UserExternal\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
+        "operationId": "Delete GroupExternal UserExternal",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```"
+            }
+          },
+          {
+            "name": "SubId",
+            "in": "path",
+            "description": "The identifier of the UserExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the UserExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "SubName",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\n\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\n\n```"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted `UserExternal` information.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserExternal"
                 }
               }
             }
@@ -1432,7 +3665,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Users"
+                  "$ref": "#/components/schemas/Users1"
                 }
               }
             }
@@ -1500,7 +3733,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UsersData"
+                "$ref": "#/components/schemas/UsersData1"
               }
             }
           },
@@ -1513,7 +3746,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User"
+                  "$ref": "#/components/schemas/User1"
                 }
               }
             }
@@ -1573,7 +3806,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UserData"
+                "$ref": "#/components/schemas/UserData1"
               }
             }
           },
@@ -1586,7 +3819,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User"
+                  "$ref": "#/components/schemas/User1"
                 }
               }
             }
@@ -1666,7 +3899,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User"
+                  "$ref": "#/components/schemas/User1"
                 }
               }
             }
@@ -2160,7 +4393,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Users"
+                  "$ref": "#/components/schemas/Users1"
                 }
               }
             }
@@ -2228,7 +4461,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UsersData"
+                "$ref": "#/components/schemas/UsersData1"
               }
             }
           },
@@ -2241,7 +4474,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User"
+                  "$ref": "#/components/schemas/User1"
                 }
               }
             }
@@ -2301,7 +4534,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UserData"
+                "$ref": "#/components/schemas/UserData1"
               }
             }
           },
@@ -2314,7 +4547,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User"
+                  "$ref": "#/components/schemas/User1"
                 }
               }
             }
@@ -2394,7 +4627,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User"
+                  "$ref": "#/components/schemas/User1"
                 }
               }
             }
@@ -4393,9 +6626,6 @@
             "type": "string",
             "description": "The identifier of account."
           },
-          "TenantId": {
-            "$ref": "#/components/schemas/FieldType"
-          },
           "Name": {
             "type": "string",
             "description": "The name of the account."
@@ -4450,40 +6680,9 @@
             "description": "Defines if the account is active and can be used.",
             "default": false,
             "example": false
-          },
-          "ModifiedOn": {
-            "type": "string",
-            "description": "The date the record was updated.",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
-          },
-          "CreatedOn": {
-            "type": "string",
-            "description": "The date the record was created.",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
           }
         },
         "description": "The record of Account information."
-      },
-      "FieldType": {
-        "required": [
-          "Value"
-        ],
-        "type": "object",
-        "properties": {
-          "Field": {
-            "type": "string",
-            "description": "The name of the data field. This can be any field name from the related database table, such as 'Email' from the User table or 'Name' from the Department table."
-          },
-          "Value": {
-            "type": "string",
-            "description": "The value corresponding to the specified data field. This value is used to identify the record in the related database table. For example, it could be an email address, a department name, or an external system's identifier."
-          }
-        },
-        "description": "The field object structure. This structure allows users to specify any related entity field and its corresponding value. When saving data, the system automatically retrieves and assigns the primary key value from the system database table based on the provided field name and value."
       },
       "Tenant": {
         "required": [
@@ -4548,6 +6747,23 @@
         },
         "description": "The record of Tenant information."
       },
+      "FieldType": {
+        "required": [
+          "Value"
+        ],
+        "type": "object",
+        "properties": {
+          "Field": {
+            "type": "string",
+            "description": "The name of the data field. This can be any field name from the related database table, such as 'Email' from the User table or 'Name' from the Department table."
+          },
+          "Value": {
+            "type": "string",
+            "description": "The value corresponding to the specified data field. This value is used to identify the record in the related database table. For example, it could be an email address, a department name, or an external system's identifier."
+          }
+        },
+        "description": "The field object structure. This structure allows users to specify any related entity field and its corresponding value. When saving data, the system automatically retrieves and assigns the primary key value from the system database table based on the provided field name and value."
+      },
       "Picture": {
         "type": "object",
         "properties": {
@@ -4607,6 +6823,829 @@
           }
         },
         "description": "The record of Picture information."
+      },
+      "AccessGroup": {
+        "required": [
+          "Id",
+          "Name"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The identifier of access group"
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of access group"
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external system code of the access group"
+          },
+          "Description": {
+            "type": "string",
+            "description": "The description of access group"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if record is active",
+            "default": false,
+            "example": false
+          },
+          "Is_System": {
+            "type": "boolean",
+            "description": "Defines if access group is system and end-user cannot change it general, permissions and applications.",
+            "default": false,
+            "example": false
+          },
+          "AccessGroupTypeId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "ModifiedOn": {
+            "type": "string",
+            "description": "The date the record was updated",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          },
+          "ModifiedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date the record was created",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          }
+        },
+        "description": "The record of AccessGroup information."
+      },
+      "AccessGroups": {
+        "type": "object",
+        "properties": {
+          "Meta": {
+            "$ref": "#/components/schemas/Meta"
+          },
+          "Data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AccessGroup"
+            },
+            "description": "The list of `AccessGroup records`"
+          }
+        },
+        "description": "The list of `AccessGroup` records"
+      },
+      "EnumAccessGroupType": {
+        "enum": [
+          "FullAccess",
+          "Locations",
+          "Departments"
+        ],
+        "type": "string",
+        "description": "The enum of AccessGroupType.",
+        "x-enums": [
+          {
+            "value": "FullAccess",
+            "name": "FullAccess",
+            "description": "Full access",
+            "isString": true
+          },
+          {
+            "value": "Locations",
+            "name": "Locations",
+            "description": "Locations",
+            "isString": true
+          },
+          {
+            "value": "Departments",
+            "name": "Departments",
+            "description": "Departments",
+            "isString": true
+          }
+        ]
+      },
+      "AccessGroupData": {
+        "required": [
+          "Name"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The identifier of access group."
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of access group."
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external system code of the access group."
+          },
+          "Description": {
+            "type": "string",
+            "description": "The description of access group."
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if record is active.",
+            "default": false,
+            "example": false
+          },
+          "Is_System": {
+            "type": "boolean",
+            "description": "Defines if access group is system and end-user cannot change it general, permissions and applications.",
+            "default": false,
+            "example": false
+          },
+          "AccessGroupTypeId": {
+            "$ref": "#/components/schemas/EnumAccessGroupType"
+          }
+        },
+        "description": "The record of AccessGroup information."
+      },
+      "Application": {
+        "required": [
+          "Id",
+          "ParentApplicationId",
+          "AccessApplicationId"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The identifier of  access group application"
+          },
+          "ParentApplicationId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "AccessApplicationId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if record is active",
+            "default": false,
+            "example": false
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date the record was created",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          }
+        },
+        "description": "The record of Application information."
+      },
+      "Applications": {
+        "type": "object",
+        "properties": {
+          "Meta": {
+            "$ref": "#/components/schemas/Meta"
+          },
+          "Data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Application"
+            },
+            "description": "The list of `Application records`"
+          }
+        },
+        "description": "The list of `Application` records"
+      },
+      "ApplicationData": {
+        "required": [
+          "ParentApplicationId",
+          "AccessApplicationId"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The identifier of  access group application."
+          },
+          "ParentApplicationId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "AccessApplicationId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if record is active.",
+            "default": false,
+            "example": false
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date the record was created.",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          }
+        },
+        "description": "The record of Application information."
+      },
+      "ApplicationText": {
+        "required": [
+          "ParentApplicationId",
+          "AccessApplicationId"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The identifier of  access group application."
+          },
+          "ParentApplicationId": {
+            "type": "string",
+            "description": "The identifier of the parent access application.  You can assign a role to a different access application and this allows for a user-friendly application/role structure."
+          },
+          "AccessApplicationId": {
+            "type": "string",
+            "description": "The identifier of the access application.  You can assign a role to a different access application and this allows for a user-friendly application/role structure."
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if record is active.",
+            "default": false,
+            "example": false
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date the record was created.",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          }
+        },
+        "description": "The record of Application information."
+      },
+      "ApplicationsData": {
+        "type": "object",
+        "properties": {
+          "Extra": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ListValidation"
+            },
+            "description": "List validation for entity attribute"
+          },
+          "IsFullValidation": {
+            "type": "boolean",
+            "description": "If the value is true, the data quality of all fields are checked. This has an effect on performance.",
+            "default": false,
+            "example": false
+          },
+          "Applications": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ApplicationText"
+            },
+            "description": "The list of `Application` data record for import"
+          }
+        },
+        "description": "The data loading record of Application importing"
+      },
+      "ListValidation": {
+        "required": [
+          "Name"
+        ],
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string",
+            "description": "The name of the entity field."
+          },
+          "FieldName": {
+            "type": "string",
+            "description": "The field name of relation database table.\n\nExample; \nThe field name is 'TenantId' and is associated with the 'Tenant' table. You want to use in the 'Tenant' table 'Name' field fetching data. Once 'Name' is specified, the validation service retrieves the tenant identifier from the 'Tenant' table based on the 'Name' field."
+          },
+          "Required": {
+            "type": "boolean",
+            "description": "If True, the value is required.",
+            "default": false,
+            "example": false
+          },
+          "Unique": {
+            "type": "boolean",
+            "description": "If True, the value must be unique in the database and you cannot add multiple values.",
+            "default": false,
+            "example": false
+          },
+          "Max": {
+            "type": "string",
+            "description": "The max value of input value."
+          },
+          "Min": {
+            "type": "string",
+            "description": "The min value of input value."
+          },
+          "Pattern": {
+            "type": "string",
+            "description": "The pattern of the validation. Searches the input string for an occurrence of a regular expression."
+          },
+          "DefaultValue": {
+            "type": "string",
+            "description": "The default value of row. If the value of the field is empty, the service automatically sets the value in the field. If the value does not match the data type, the value is cleaned. Remember data types."
+          }
+        },
+        "description": "List validation for entity attribute"
+      },
+      "Group": {
+        "required": [
+          "Id",
+          "GroupId",
+          "CreatedOn"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "description": "The identifier of group access group",
+            "format": "int64",
+            "default": 0,
+            "example": 0
+          },
+          "GroupId": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date when the record was created.",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          }
+        },
+        "description": "The record of Group information."
+      },
+      "Groups": {
+        "type": "object",
+        "properties": {
+          "Meta": {
+            "$ref": "#/components/schemas/Meta"
+          },
+          "Data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Group"
+            },
+            "description": "The list of `Group records`"
+          }
+        },
+        "description": "The list of `Group` records"
+      },
+      "GroupData": {
+        "required": [
+          "GroupId",
+          "CreatedOn"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "description": "The identifier of group access group.",
+            "format": "int64",
+            "default": 0,
+            "example": 0
+          },
+          "GroupId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date when the record was created.",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          }
+        },
+        "description": "The record of Group information."
+      },
+      "GroupText": {
+        "required": [
+          "GroupId",
+          "CreatedOn"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "description": "The identifier of group access group.",
+            "format": "int64",
+            "default": 0,
+            "example": 0
+          },
+          "GroupId": {
+            "type": "string",
+            "description": "The identifier of group."
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date when the record was created.",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          }
+        },
+        "description": "The record of Group information."
+      },
+      "GroupsData": {
+        "type": "object",
+        "properties": {
+          "Extra": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ListValidation"
+            },
+            "description": "List validation for entity attribute"
+          },
+          "IsFullValidation": {
+            "type": "boolean",
+            "description": "If the value is true, the data quality of all fields are checked. This has an effect on performance.",
+            "default": false,
+            "example": false
+          },
+          "Groups": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GroupText"
+            },
+            "description": "The list of `Group` data record for import"
+          }
+        },
+        "description": "The data loading record of Group importing"
+      },
+      "User": {
+        "required": [
+          "Id",
+          "UserId",
+          "CreatedOn"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "description": "The identifier of user access group",
+            "format": "int64",
+            "default": 0,
+            "example": 0
+          },
+          "UserId": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date when the record was created.",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          }
+        },
+        "description": "The record of User information."
+      },
+      "Users": {
+        "type": "object",
+        "properties": {
+          "Meta": {
+            "$ref": "#/components/schemas/Meta"
+          },
+          "Data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/User"
+            },
+            "description": "The list of `User records`"
+          }
+        },
+        "description": "The list of `User` records"
+      },
+      "UserData": {
+        "required": [
+          "UserId",
+          "CreatedOn"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "description": "The identifier of user access group.",
+            "format": "int64",
+            "default": 0,
+            "example": 0
+          },
+          "UserId": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date when the record was created.",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          }
+        },
+        "description": "The record of User information."
+      },
+      "UserText": {
+        "required": [
+          "UserId",
+          "CreatedOn"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "description": "The identifier of user access group.",
+            "format": "int64",
+            "default": 0,
+            "example": 0
+          },
+          "UserId": {
+            "type": "string",
+            "description": "The identifier of user."
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date when the record was created.",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          }
+        },
+        "description": "The record of User information."
+      },
+      "UsersData": {
+        "type": "object",
+        "properties": {
+          "Extra": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ListValidation"
+            },
+            "description": "List validation for entity attribute"
+          },
+          "IsFullValidation": {
+            "type": "boolean",
+            "description": "If the value is true, the data quality of all fields are checked. This has an effect on performance.",
+            "default": false,
+            "example": false
+          },
+          "Users": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserText"
+            },
+            "description": "The list of `User` data record for import"
+          }
+        },
+        "description": "The data loading record of User importing"
+      },
+      "GroupExternal": {
+        "required": [
+          "Id"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "format": "int32",
+            "default": 0,
+            "example": 0
+          },
+          "Name": {
+            "type": "string"
+          },
+          "Description": {
+            "type": "string"
+          },
+          "Created_By": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "Created": {
+            "type": "string",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          },
+          "Has_Custom_Management": {
+            "type": "boolean",
+            "default": false,
+            "example": false
+          }
+        },
+        "description": "The record of GroupExternal information."
+      },
+      "GroupExternals": {
+        "type": "object",
+        "properties": {
+          "Meta": {
+            "$ref": "#/components/schemas/Meta"
+          },
+          "Data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GroupExternal"
+            },
+            "description": "The list of `GroupExternal records`"
+          }
+        },
+        "description": "The list of `GroupExternal` records"
+      },
+      "GroupExternalData": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "format": "int32",
+            "default": 0,
+            "example": 0
+          },
+          "Name": {
+            "type": "string"
+          },
+          "Description": {
+            "type": "string"
+          },
+          "Created_By": {
+            "$ref": "#/components/schemas/FieldType"
+          },
+          "Created": {
+            "type": "string",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          },
+          "Has_Custom_Management": {
+            "type": "boolean",
+            "default": false,
+            "example": false
+          }
+        },
+        "description": "The record of GroupExternal information."
+      },
+      "GroupExternalText": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "format": "int32",
+            "default": 0,
+            "example": 0
+          },
+          "Name": {
+            "type": "string"
+          },
+          "Description": {
+            "type": "string"
+          },
+          "Created_By": {
+            "type": "string"
+          },
+          "Created": {
+            "type": "string",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          },
+          "Has_Custom_Management": {
+            "type": "boolean",
+            "default": false,
+            "example": false
+          }
+        },
+        "description": "The record of GroupExternal information."
+      },
+      "GroupExternalsData": {
+        "type": "object",
+        "properties": {
+          "Extra": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ListValidation"
+            },
+            "description": "List validation for entity attribute"
+          },
+          "IsFullValidation": {
+            "type": "boolean",
+            "description": "If the value is true, the data quality of all fields are checked. This has an effect on performance.",
+            "default": false,
+            "example": false
+          },
+          "GroupExternals": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GroupExternalText"
+            },
+            "description": "The list of `GroupExternal` data record for import"
+          }
+        },
+        "description": "The data loading record of GroupExternal importing"
+      },
+      "UserExternal": {
+        "required": [
+          "Id",
+          "User_Id"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "format": "int32",
+            "default": 0,
+            "example": 0
+          },
+          "User_Id": {
+            "$ref": "#/components/schemas/AbstractLong"
+          }
+        },
+        "description": "The record of UserExternal information."
+      },
+      "UserExternals": {
+        "type": "object",
+        "properties": {
+          "Meta": {
+            "$ref": "#/components/schemas/Meta"
+          },
+          "Data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserExternal"
+            },
+            "description": "The list of `UserExternal records`"
+          }
+        },
+        "description": "The list of `UserExternal` records"
+      },
+      "UserExternalData": {
+        "required": [
+          "User_Id"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "format": "int32",
+            "default": 0,
+            "example": 0
+          },
+          "User_Id": {
+            "$ref": "#/components/schemas/FieldType"
+          }
+        },
+        "description": "The record of UserExternal information."
+      },
+      "UserExternalText": {
+        "required": [
+          "User_Id"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "format": "int32",
+            "default": 0,
+            "example": 0
+          },
+          "User_Id": {
+            "type": "string"
+          }
+        },
+        "description": "The record of UserExternal information."
+      },
+      "UserExternalsData": {
+        "type": "object",
+        "properties": {
+          "Extra": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ListValidation"
+            },
+            "description": "List validation for entity attribute"
+          },
+          "IsFullValidation": {
+            "type": "boolean",
+            "description": "If the value is true, the data quality of all fields are checked. This has an effect on performance.",
+            "default": false,
+            "example": false
+          },
+          "UserExternals": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserExternalText"
+            },
+            "description": "The list of `UserExternal` data record for import"
+          }
+        },
+        "description": "The data loading record of UserExternal importing"
       },
       "Department": {
         "required": [
@@ -6521,6 +9560,13 @@
           "ParentDepartmentId": {
             "$ref": "#/components/schemas/FieldType"
           },
+          "Level": {
+            "type": "integer",
+            "description": "The department level at the hierarchy.",
+            "format": "int32",
+            "default": 0,
+            "example": 0
+          },
           "ContactName": {
             "type": "string",
             "description": "The contact name of company or department."
@@ -6574,6 +9620,13 @@
           "ParentDepartmentId": {
             "$ref": "#/components/schemas/FieldType"
           },
+          "Level": {
+            "type": "integer",
+            "description": "The department level at the hierarchy.",
+            "format": "int32",
+            "default": 0,
+            "example": 0
+          },
           "ContactName": {
             "type": "string",
             "description": "The contact name of company or department."
@@ -6615,6 +9668,13 @@
             "type": "string",
             "description": "The name of the department."
           },
+          "Level": {
+            "type": "integer",
+            "description": "The department level at the hierarchy.",
+            "format": "int32",
+            "default": 0,
+            "example": 0
+          },
           "ContactName": {
             "type": "string",
             "description": "The contact name of company or department."
@@ -6641,7 +9701,7 @@
         },
         "description": "The record of Department information."
       },
-      "User": {
+      "User1": {
         "required": [
           "Id"
         ],
@@ -6677,7 +9737,7 @@
         },
         "description": "The record of User information."
       },
-      "Users": {
+      "Users1": {
         "type": "object",
         "properties": {
           "Meta": {
@@ -6686,14 +9746,14 @@
           "Data": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/User"
+              "$ref": "#/components/schemas/User1"
             },
             "description": "The list of `User records`"
           }
         },
         "description": "The list of `User` records"
       },
-      "UserData": {
+      "UserData1": {
         "type": "object",
         "properties": {
           "Id": {
@@ -6706,7 +9766,7 @@
         },
         "description": "The record of User information."
       },
-      "UserText": {
+      "UserText1": {
         "type": "object",
         "properties": {
           "Id": {
@@ -6720,7 +9780,7 @@
         },
         "description": "The record of User information."
       },
-      "UsersData": {
+      "UsersData1": {
         "type": "object",
         "properties": {
           "Extra": {
@@ -6739,57 +9799,12 @@
           "Users": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/UserText"
+              "$ref": "#/components/schemas/UserText1"
             },
             "description": "The list of `User` data record for import"
           }
         },
         "description": "The data loading record of User importing"
-      },
-      "ListValidation": {
-        "required": [
-          "Name"
-        ],
-        "type": "object",
-        "properties": {
-          "Name": {
-            "type": "string",
-            "description": "The name of the entity field."
-          },
-          "FieldName": {
-            "type": "string",
-            "description": "The field name of relation database table.\n\nExample; \nThe field name is 'TenantId' and is associated with the 'Tenant' table. You want to use in the 'Tenant' table 'Name' field fetching data. Once 'Name' is specified, the validation service retrieves the tenant identifier from the 'Tenant' table based on the 'Name' field."
-          },
-          "Required": {
-            "type": "boolean",
-            "description": "If True, the value is required.",
-            "default": false,
-            "example": false
-          },
-          "Unique": {
-            "type": "boolean",
-            "description": "If True, the value must be unique in the database and you cannot add multiple values.",
-            "default": false,
-            "example": false
-          },
-          "Max": {
-            "type": "string",
-            "description": "The max value of input value."
-          },
-          "Min": {
-            "type": "string",
-            "description": "The min value of input value."
-          },
-          "Pattern": {
-            "type": "string",
-            "description": "The pattern of the validation. Searches the input string for an occurrence of a regular expression."
-          },
-          "DefaultValue": {
-            "type": "string",
-            "description": "The default value of row. If the value of the field is empty, the service automatically sets the value in the field. If the value does not match the data type, the value is cleaned. Remember data types."
-          }
-        },
-        "description": "List validation for entity attribute"
       },
       "Location": {
         "required": [
@@ -7088,8 +10103,7 @@
       "LocationInsertData": {
         "required": [
           "Id",
-          "Name",
-          "Is_Active"
+          "Name"
         ],
         "type": "object",
         "properties": {
@@ -7113,12 +10127,6 @@
           },
           "CurrencyId": {
             "$ref": "#/components/schemas/EnumCurrency"
-          },
-          "Is_Active": {
-            "type": "boolean",
-            "description": "Defines if the location is active and can be used.",
-            "default": false,
-            "example": false
           }
         },
         "description": "The record of Location information."

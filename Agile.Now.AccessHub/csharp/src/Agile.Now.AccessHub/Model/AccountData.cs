@@ -79,7 +79,6 @@ namespace Agile.Now.AccessHub.Model
         /// Initializes a new instance of the <see cref="AccountData" /> class.
         /// </summary>
         /// <param name="id">The identifier of account..</param>
-        /// <param name="tenantId">tenantId.</param>
         /// <param name="name">The name of the account..</param>
         /// <param name="firstName">Person's first name. (required).</param>
         /// <param name="lastName">Person's last name. (required).</param>
@@ -93,9 +92,7 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="notifyByEmail">Defines if a person should get notifications via e-mail. (default to false).</param>
         /// <param name="notifyBySMS">Defines if a contact should get notifications via SMS. (default to false).</param>
         /// <param name="isActive">Defines if the account is active and can be used. (default to false).</param>
-        /// <param name="modifiedOn">The date the record was updated. (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        /// <param name="createdOn">The date the record was created. (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public AccountData(string id = default, FieldType tenantId = default, string name = default, string firstName = default, string lastName = default, string phone = default, string email = default, EnumLanguage? languageId = default, EnumTimezone? timezoneId = default, EnumDateFormat? dateFormatId = default, string username = default, string externalId = default, bool notifyByEmail = false, bool notifyBySMS = false, bool isActive = false, DateTime modifiedOn = default, DateTime createdOn = default)
+        public AccountData(string id = default, string name = default, string firstName = default, string lastName = default, string phone = default, string email = default, EnumLanguage? languageId = default, EnumTimezone? timezoneId = default, EnumDateFormat? dateFormatId = default, string username = default, string externalId = default, bool notifyByEmail = false, bool notifyBySMS = false, bool isActive = false)
         {
             // to ensure "firstName" is required (not null)
             firstName = firstName ?? throw new ArgumentNullException("firstName is a required property for AccountData and cannot be null");
@@ -110,7 +107,6 @@ namespace Agile.Now.AccessHub.Model
             username = username ?? throw new ArgumentNullException("username is a required property for AccountData and cannot be null");
             Username = username;
             Id = id;
-            TenantId = tenantId;
             Name = name;
             Phone = phone;
             LanguageId = languageId;
@@ -120,8 +116,6 @@ namespace Agile.Now.AccessHub.Model
             NotifyByEmail = notifyByEmail;
             NotifyBySMS = notifyBySMS;
             IsActive = isActive;
-            ModifiedOn = modifiedOn;
-            CreatedOn = createdOn;
         }
 
         /// <summary>
@@ -130,12 +124,6 @@ namespace Agile.Now.AccessHub.Model
         /// <value>The identifier of account.</value>
         [DataMember(Name = "Id", EmitDefaultValue = false)]
         public string Id { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TenantId
-        /// </summary>
-        [DataMember(Name = "TenantId", EmitDefaultValue = false)]
-        public FieldType TenantId { get; set; }
 
         /// <summary>
         /// The name of the account.
@@ -211,22 +199,6 @@ namespace Agile.Now.AccessHub.Model
         public bool IsActive { get; set; }
 
         /// <summary>
-        /// The date the record was updated.
-        /// </summary>
-        /// <value>The date the record was updated.</value>
-        /// <example>1900-01-01T00:00Z</example>
-        [DataMember(Name = "ModifiedOn", EmitDefaultValue = false)]
-        public DateTime ModifiedOn { get; set; }
-
-        /// <summary>
-        /// The date the record was created.
-        /// </summary>
-        /// <value>The date the record was created.</value>
-        /// <example>1900-01-01T00:00Z</example>
-        [DataMember(Name = "CreatedOn", EmitDefaultValue = false)]
-        public DateTime CreatedOn { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -235,7 +207,6 @@ namespace Agile.Now.AccessHub.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class AccountData {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  TenantId: ").Append(TenantId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  FirstName: ").Append(FirstName).Append("\n");
             sb.Append("  LastName: ").Append(LastName).Append("\n");
@@ -249,8 +220,6 @@ namespace Agile.Now.AccessHub.Model
             sb.Append("  NotifyByEmail: ").Append(NotifyByEmail).Append("\n");
             sb.Append("  NotifyBySMS: ").Append(NotifyBySMS).Append("\n");
             sb.Append("  IsActive: ").Append(IsActive).Append("\n");
-            sb.Append("  ModifiedOn: ").Append(ModifiedOn).Append("\n");
-            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

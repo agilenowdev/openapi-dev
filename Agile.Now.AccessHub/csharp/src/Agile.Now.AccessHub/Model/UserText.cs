@@ -55,27 +55,45 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UserText" /> class.
         /// </summary>
-        /// <param name="id">The identifier of user department..</param>
-        /// <param name="userId">The identifier of the user who has link the department..</param>
-        public UserText(string id = default, string userId = default)
+        [JsonConstructorAttribute]
+        protected UserText() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UserText" /> class.
+        /// </summary>
+        /// <param name="id">The identifier of user access group. (default to 0).</param>
+        /// <param name="userId">The identifier of user. (required).</param>
+        /// <param name="createdOn">The date when the record was created. (required) (default to &quot;1900-01-01T00:00Z&quot;).</param>
+        public UserText(long id = 0, string userId = default, DateTime createdOn = default)
         {
-            Id = id;
+            // to ensure "userId" is required (not null)
+            userId = userId ?? throw new ArgumentNullException("userId is a required property for UserText and cannot be null");
             UserId = userId;
+            CreatedOn = createdOn;
+            Id = id;
         }
 
         /// <summary>
-        /// The identifier of user department.
+        /// The identifier of user access group.
         /// </summary>
-        /// <value>The identifier of user department.</value>
+        /// <value>The identifier of user access group.</value>
+        /// <example>0</example>
         [DataMember(Name = "Id", EmitDefaultValue = false)]
-        public string Id { get; set; }
+        public long Id { get; set; }
 
         /// <summary>
-        /// The identifier of the user who has link the department.
+        /// The identifier of user.
         /// </summary>
-        /// <value>The identifier of the user who has link the department.</value>
-        [DataMember(Name = "UserId", EmitDefaultValue = false)]
+        /// <value>The identifier of user.</value>
+        [DataMember(Name = "UserId", IsRequired = true, EmitDefaultValue = true)]
         public string UserId { get; set; }
+
+        /// <summary>
+        /// The date when the record was created.
+        /// </summary>
+        /// <value>The date when the record was created.</value>
+        /// <example>1900-01-01T00:00Z</example>
+        [DataMember(Name = "CreatedOn", IsRequired = true, EmitDefaultValue = true)]
+        public DateTime CreatedOn { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -87,6 +105,7 @@ namespace Agile.Now.AccessHub.Model
             sb.Append("class UserText {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
+            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
