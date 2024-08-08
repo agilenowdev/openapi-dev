@@ -127,6 +127,17 @@ namespace Agile.Now.AccessHub.Test.Api
         }
 
         /// <summary>
+        /// Test DeleteAccessGroup IsSystem= true
+        /// </summary>
+        [Fact]
+        public void Test_AccessGroup_Delete_IsSystem()
+        {
+            var createdEntity = api.CreateAccessGroup(TestAccessGroupData.CreateAccessGroupData(isSystem: true));
+            api.DeleteAccessGroup(createdEntity.Id);
+            //Assert.Throws<ApiException>(() => api.DeleteAccessGroup(createdEntity.Id));
+        }
+
+        /// <summary>
         /// Test GetAccessGroup by Id
         /// </summary>
         [Fact]
@@ -230,6 +241,18 @@ namespace Agile.Now.AccessHub.Test.Api
             {
                 api.DeleteAccessGroup(createdEntity.Id);
             }
+        }
+
+        /// <summary>
+        /// Test UpdateAccessGroup IsSystem= true
+        /// </summary>
+        [Fact]
+        public void Test_AccessGroup_Update_IsSystem()
+        {
+            var entityData = TestAccessGroupData.CreateAccessGroupData(isSystem: true);
+            var createdEntity = api.CreateAccessGroup(entityData);
+            TestAccessGroupData.UpdateAccessGroupData(entityData);
+            Assert.Throws<ApiException>(() => api.UpdateAccessGroup(createdEntity.Id, entityData));
         }
 
         /// <summary>

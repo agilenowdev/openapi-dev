@@ -15,7 +15,7 @@ internal static class TestAccessGroupData
     public static int[] Groups = new[] { 6626, 6625 };
     public static int[] Users = new[] { 35012, 34967 };
 
-    public static AccessGroupData CreateAccessGroupData(string suffix = null)
+    public static AccessGroupData CreateAccessGroupData(string suffix = null, bool isSystem = false)
     {
         var name = "unit-test-access-group" + suffix;
         var uniqueName = $"{name}-{DateTime.Now:yyyy-MM-dd-HH-mm-ss-fff}";
@@ -23,7 +23,9 @@ internal static class TestAccessGroupData
         (
             name: uniqueName,
             description: name,
-            accessGroupTypeId: EnumAccessGroupType.Departments
+            accessGroupTypeId: EnumAccessGroupType.Departments,
+            isActive: true,
+            isSystem: isSystem
         );
     }
 
@@ -32,7 +34,7 @@ internal static class TestAccessGroupData
 
     public static void UpdateAccessGroupData(AccessGroupData accessGroupInsertData)
     {
-        const string updated = "updated";
+        const string updated = "-updated";
         accessGroupInsertData.Description += updated;
         accessGroupInsertData.AccessGroupTypeId =
             accessGroupInsertData.AccessGroupTypeId == EnumAccessGroupType.Departments ?
