@@ -40,6 +40,10 @@ using Xunit;
 
 using Agile.Now.AccessHub.Client;
 using Agile.Now.AccessHub.Api;
+using Xunit.Abstractions;
+using Agile.Now.AccessHub.Model;
+using Agile.Now.ApiOrganizations.Test.Api;
+using System.Linq;
 // uncomment below to import models
 //using Agile.Now.AccessHub.Model;
 
@@ -54,16 +58,23 @@ namespace Agile.Now.AccessHub.Test.Api
     /// </remarks>
     public class DepartmentsApiTests : IDisposable
     {
-        private DepartmentsApi instance;
+        private readonly DepartmentsApi api;
 
-        public DepartmentsApiTests()
+        public DepartmentsApiTests(ITestOutputHelper testOutputHelper)
         {
-            instance = new DepartmentsApi();
+            Configuration configuration = new Configuration
+            {
+                BasePath = "https://dev.esystems.fi",
+                OAuthTokenUrl = "https://dev.esystems.fi/oAuth/rest/v2/Token",
+                OAuthFlow = Client.Auth.OAuthFlow.APPLICATION,
+                OAuthClientId = "c8907421-0886-4fb0-b859-d29966762e16",
+                OAuthClientSecret = "1da54fa9-ae11-4db3-9740-1bb47b85cd8e"
+            };
+            api = new DepartmentsApi(configuration);
         }
 
         public void Dispose()
         {
-            // Cleanup when everything is done.
         }
 
         /// <summary>
@@ -72,95 +83,262 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void InstanceTest()
         {
-            // TODO uncomment below to test 'IsType' DepartmentsApi
-            //Assert.IsType<DepartmentsApi>(instance);
+        }
+
+        void AssertDepartmentDataEqual(DepartmentInsertData departmentInsertData, Department department)
+        {
+            Assert.Equal(departmentInsertData.Name, department.Name);
+            Assert.Equal(departmentInsertData.ContactName, department.ContactName);
+            Assert.Equal(departmentInsertData.ContactEmail, department.ContactEmail);
+            //Assert.Equal(departmentInsertData.CountryId.ToString(), department.CountryId.Name);
         }
 
         /// <summary>
         /// Test CreateDepartment
         /// </summary>
         [Fact]
-        public void CreateDepartmentTest()
+        public void Test_Department_Create()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //DepartmentInsertData departmentInsertData = null;
-            //var response = instance.CreateDepartment(departmentInsertData);
-            //Assert.IsType<Department>(response);
+            var entityData = TestDepartmentData.CreateDepartmentData();
+            var createdEntity = api.CreateDepartment(entityData);
+            try
+            {
+                AssertDepartmentDataEqual(entityData, createdEntity);
+            }
+            finally
+            {
+                api.DeleteDepartment(createdEntity.Id);
+            }
         }
 
         /// <summary>
-        /// Test DeleteDepartment
+        /// Test DeleteDepartment by Id
         /// </summary>
         [Fact]
-        public void DeleteDepartmentTest()
+        public void Test_Department_Delete_ById()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string name = null;
-            //var response = instance.DeleteDepartment(id, name);
-            //Assert.IsType<Department>(response);
+            var createdEntity = api.CreateDepartment(TestDepartmentData.CreateDepartmentData());
+            api.DeleteDepartment(createdEntity.Id);
+            Assert.Throws<ApiException>(() => api.GetDepartment(createdEntity.Id));
+        }
+
+        /// <summary>
+        /// Test DeleteDepartment by Name
+        /// </summary>
+        [Fact]
+        public void Test_Department_Delete_ByName()
+        {
+            var createdEntity = api.CreateDepartment(TestDepartmentData.CreateDepartmentData());
+            api.DeleteDepartment(createdEntity.Name, "Name");
+            Assert.Throws<ApiException>(() => api.GetDepartment(createdEntity.Id));
+        }
+
+        /// <summary>
+        /// Test GetDepartment by Id
+        /// </summary>
+        [Fact]
+        public void Test_Department_Get_ById()
+        {
+            var createdEntity = api.CreateDepartment(TestDepartmentData.CreateDepartmentData());
+            try
+            {
+                Assert.Null(Record.Exception(() =>
+                {
+                    var existingEntity = api.GetDepartment(createdEntity.Id);
+                    Assert.Equal(createdEntity.Id, existingEntity.Id);
+                    return existingEntity;
+                }));
+            }
+            finally
+            {
+                api.DeleteDepartment(createdEntity.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test GetDepartment by Name
+        /// </summary>
+        [Fact]
+        public void Test_Department_Get_ByName()
+        {
+            var createdEntity = api.CreateDepartment(TestDepartmentData.CreateDepartmentData());
+            try
+            {
+                Assert.Null(Record.Exception(() =>
+                {
+                    var existingEntity = api.GetDepartment(createdEntity.Name, "Name");
+                    Assert.Equal(createdEntity.Name, existingEntity.Name);
+                    return existingEntity;
+                }));
+            }
+            finally
+            {
+                api.DeleteDepartment(createdEntity.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test ListDepartments by Id
+        /// </summary>
+        [Fact]
+        public void Test_Department_List_ById()
+        {
+            var createdEntities = TestDepartmentData.CreateDepartmentDataList(2).Select(
+                i => api.CreateDepartment(i)).ToArray();
+            try
+            {
+                var existingEntities = api.ListDepartments(
+                    filters: $"Id In {string.Join("; ", createdEntities.Select(i => i.Id))}").Data;
+                Assert.Equal(createdEntities.Length, existingEntities.Count);
+            }
+            finally
+            {
+                foreach (var i in createdEntities)
+                    api.DeleteDepartment(i.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test ListDepartments by Name
+        /// </summary>
+        [Fact]
+        public void Test_Department_List_ByName()
+        {
+            var createdEntities = TestDepartmentData.CreateDepartmentDataList(2).Select(
+                i => api.CreateDepartment(i)).ToArray();
+            try
+            {
+                var existingEntities = api.ListDepartments(
+                    filters: $"Name In {string.Join("; ", createdEntities.Select(i => i.Name))}").Data;
+                Assert.Equal(createdEntities.Length, existingEntities.Count);
+            }
+            finally
+            {
+                foreach (var i in createdEntities)
+                    api.DeleteDepartment(i.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test UpdateDepartment
+        /// </summary>
+        [Fact]
+        public void Test_Department_Update()
+        {
+            var entityData = TestDepartmentData.CreateDepartmentData();
+            var createdEntity = api.CreateDepartment(entityData);
+            try
+            {
+                TestDepartmentData.UpdateDepartmentData(entityData);
+                var updatedEntity = api.UpdateDepartment(createdEntity.Id, entityData.ToDepartmentUpdateData());
+                AssertDepartmentDataEqual(entityData, updatedEntity);
+            }
+            finally
+            {
+                api.DeleteDepartment(createdEntity.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test UpsertDepartment
+        /// </summary>
+        [Fact]
+        public void Test_Department_Upsert()
+        {
+            var entityData = TestDepartmentData.CreateDepartmentData();
+            var createdEntity = api.UpsertDepartment(entityData.ToDepartmentData());
+            try
+            {
+                AssertDepartmentDataEqual(entityData, createdEntity);
+                TestDepartmentData.UpdateDepartmentData(entityData);
+                entityData.Id = createdEntity.Id;
+                var updatedEntity = api.UpsertDepartment(entityData.ToDepartmentData());
+                Assert.Equal(createdEntity.Id, updatedEntity.Id);
+                AssertDepartmentDataEqual(entityData, updatedEntity);
+            }
+            finally
+            {
+                api.DeleteDepartment(createdEntity.Id);
+            }
         }
 
         /// <summary>
         /// Test DeleteDepartmentUser
         /// </summary>
         [Fact]
-        public void DeleteDepartmentUserTest()
+        public void Test_Department_User_Delete()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string subId = null;
-            //string name = null;
-            //string subName = null;
-            //var response = instance.DeleteDepartmentUser(id, subId, name, subName);
-            //Assert.IsType<User>(response);
-        }
-
-        /// <summary>
-        /// Test GetDepartment
-        /// </summary>
-        [Fact]
-        public void GetDepartmentTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string name = null;
-            //var response = instance.GetDepartment(id, name);
-            //Assert.IsType<Department>(response);
+            var entityData = TestDepartmentData.CreateDepartmentData();
+            var createdEntity = api.CreateDepartment(entityData);
+            try
+            {
+                var createdSubEntity = api.UpsertDepartmentUser(createdEntity.Id,
+                    new(userId: new("Id", TestDepartmentData.TestUsers[0].ToString())));
+                api.DeleteDepartmentUser(createdEntity.Id, createdSubEntity.Id);
+                var existingEntityUsers = api.ListDepartmentUsers(createdEntity.Id).Data;
+                Assert.Empty(existingEntityUsers);
+            }
+            finally
+            {
+                api.DeleteDepartment(createdEntity.Id);
+            }
         }
 
         /// <summary>
         /// Test ListDepartmentUsers
         /// </summary>
         [Fact]
-        public void ListDepartmentUsersTest()
+        public void Test_Department_User_List()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string name = null;
-            //string fields = null;
-            //string filters = null;
-            //string orders = null;
-            //int? currentPage = null;
-            //int? pageSize = null;
-            //var response = instance.ListDepartmentUsers(id, name, fields, filters, orders, currentPage, pageSize);
-            //Assert.IsType<Users>(response);
+            var entityData = TestDepartmentData.CreateDepartmentData();
+            var createdEntity = api.CreateDepartment(entityData);
+            try
+            {
+                var createdSubEntities = TestLocationData.TestUsers.Select(i =>
+                    api.UpsertDepartmentUser(createdEntity.Id, new(userId: new("Id", i.ToString())))).ToArray();
+                try
+                {
+                    var existingSubEntities = api.ListDepartmentUsers(createdEntity.Id).Data;
+                    Assert.Equal(existingSubEntities.Count, createdSubEntities.Length);
+                }
+                finally
+                {
+                    foreach (var i in createdSubEntities)
+                        api.DeleteDepartmentUser(createdEntity.Id, i.Id);
+                }
+            }
+            finally
+            {
+                api.DeleteDepartment(createdEntity.Id);
+            }
         }
 
         /// <summary>
-        /// Test ListDepartments
+        /// Test UpsertDepartmentUser
         /// </summary>
         [Fact]
-        public void ListDepartmentsTest()
+        public void Test_DepartmentUser_Upsert()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string fields = null;
-            //string filters = null;
-            //string orders = null;
-            //int? currentPage = null;
-            //int? pageSize = null;
-            //var response = instance.ListDepartments(fields, filters, orders, currentPage, pageSize);
-            //Assert.IsType<Departments>(response);
+            var entityData = TestDepartmentData.CreateDepartmentData();
+            var createdEntity = api.CreateDepartment(entityData);
+            try
+            {
+                var createdSubEntity = api.UpsertDepartmentUser(createdEntity.Id,
+                    new(userId: new("Id", TestDepartmentData.TestUsers[0].ToString())));
+                try
+                {
+                    var existingSubEntities = api.ListDepartmentUsers(createdEntity.Id).Data;
+                    Assert.Contains(existingSubEntities, i => i.Id == createdSubEntity.Id);
+                }
+                finally
+                {
+                    api.DeleteDepartmentUser(createdEntity.Id, createdSubEntity.Id);
+                }
+            }
+            finally
+            {
+                api.DeleteDepartment(createdEntity.Id);
+            }
         }
 
         /// <summary>
@@ -175,46 +353,6 @@ namespace Agile.Now.AccessHub.Test.Api
             //string name = null;
             //string deleteNotExists = null;
             //var response = instance.PatchDepartmentUsers(id, usersData, name, deleteNotExists);
-            //Assert.IsType<User>(response);
-        }
-
-        /// <summary>
-        /// Test UpdateDepartment
-        /// </summary>
-        [Fact]
-        public void UpdateDepartmentTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //DepartmentUpdateData departmentUpdateData = null;
-            //string name = null;
-            //var response = instance.UpdateDepartment(id, departmentUpdateData, name);
-            //Assert.IsType<Department>(response);
-        }
-
-        /// <summary>
-        /// Test UpsertDepartment
-        /// </summary>
-        [Fact]
-        public void UpsertDepartmentTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //DepartmentData departmentData = null;
-            //var response = instance.UpsertDepartment(departmentData);
-            //Assert.IsType<Department>(response);
-        }
-
-        /// <summary>
-        /// Test UpsertDepartmentUser
-        /// </summary>
-        [Fact]
-        public void UpsertDepartmentUserTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //UserData userData = null;
-            //string name = null;
-            //var response = instance.UpsertDepartmentUser(id, userData, name);
             //Assert.IsType<User>(response);
         }
     }

@@ -267,7 +267,7 @@ namespace Agile.Now.AccessHub.Test.Api
         /// Test DeleteGroupExternalUserExternal
         /// </summary>
         [Fact]
-        public void Test_GroupExternalUserExternal_Delete()
+        public void Test_Group_User_Delete()
         {
             var createdEntity = api.CreateGroupExternal(TestGroupData.CreateGroupData());
             try
@@ -289,7 +289,7 @@ namespace Agile.Now.AccessHub.Test.Api
         /// Test ListGroupExternalUserExternals
         /// </summary>
         [Fact]
-        public void Test_GroupExternalUserExternal_List()
+        public void Test_Group_User_List()
         {
             var createdEntity = api.CreateGroupExternal(TestGroupData.CreateGroupData());
             try
@@ -318,7 +318,7 @@ namespace Agile.Now.AccessHub.Test.Api
         /// Test UpsertAccessGroupUser
         /// </summary>
         [Fact]
-        public void Test_GroupUser_Upsert()
+        public void Test_Group_User_Upsert()
         {
             var createdGroup = api.CreateGroupExternal(TestGroupData.CreateGroupData());
             try
