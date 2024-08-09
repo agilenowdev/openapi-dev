@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Name** | **string** | The name of the department. | 
 **DepartmentTypeId** | [**EnumDepartmentType**](EnumDepartmentType.md) | The EnumDepartmentType enumeration | 
 **ParentDepartmentId** | [**FieldType**](FieldType.md) | The FieldType object structure | [optional] 
+**Level** | **int** | The department level at the hierarchy. | [optional] [default to 0]
 **ContactName** | **string** | The contact name of company or department. | [optional] 
 **ContactEmail** | **string** | The contact email of external company or department. | [optional] 
 **ContactPhone** | **string** | The  object structure | [optional] 

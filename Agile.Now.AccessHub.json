@@ -549,7 +549,7 @@
         "tags": [
           "Accounts"
         ],
-        "description": "Use the `TenantPost` object resource to insert or update (Upsert) `Tenant` using `UserId, TenantId.Name` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `TenantData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `UserId, TenantId, AccountId`\n\n### Update a record of Tenant\n* If the `UserId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `UserId` field value (primary key).\n* If the `TenantId.Name` field value is not empty and `UserId` field value is empty, action try insert record according `TenantId.Name` field value (if set, the value is a unique identifier).\n\n### Create a new record of Tenant\n* If the value in the `TenantId.Name` and `UserId` fields are empty then action insert a new record according input parameter entity record structure (`TenantData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Tenant` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "description": "Use the `TenantPost` object resource to insert or update (Upsert) `Tenant` using `UserId` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `TenantData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `UserId, TenantId, AccountId`\n\n### Update a record of Tenant\n* If the `UserId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `UserId` field value (primary key).\n* When the UserId field value is not provided, the system will automatically initiate the insertion of a new record.\n\n### Create a new record of Tenant\n* If the value in the `UserId` field is empty then action insert a new record according input parameter entity record structure (`TenantData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Tenant` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
         "operationId": "Upsert Account Tenant",
         "parameters": [
           {
@@ -623,7 +623,7 @@
         "tags": [
           "Accounts"
         ],
-        "description": "Use the query string resource to delete `Tenant` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `UserId, TenantId.Name` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `Tenant` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `UserId, TenantId, AccountId`\n\n### Delete a record of Tenant\n* If the `UserId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `UserId, TenantId.Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
+        "description": "Use the query string resource to delete `Tenant` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `UserId` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `Tenant` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `UserId, TenantId, AccountId`\n\n### Delete a record of Tenant\n* If the `UserId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `UserId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
         "operationId": "Delete Account Tenant",
         "parameters": [
           {
@@ -658,10 +658,10 @@
           {
             "name": "SubName",
             "in": "query",
-            "description": "The name of the database field. If empty, the entity `UserId` field is used.\n\nExample: \n```\nTenantId.Name\n```",
+            "description": "The name of the database field. If empty, the entity `UserId` field is used.\n\nExample: \n```\n\n```",
             "schema": {
               "type": "string",
-              "description": "The name of the database field. If empty, the entity `UserId` field is used.\n\nExample: \n```\nTenantId.Name\n```"
+              "description": "The name of the database field. If empty, the entity `UserId` field is used.\n\nExample: \n```\n\n```"
             }
           }
         ],
@@ -4393,9 +4393,6 @@
             "type": "string",
             "description": "The identifier of account."
           },
-          "TenantId": {
-            "$ref": "#/components/schemas/FieldType"
-          },
           "Name": {
             "type": "string",
             "description": "The name of the account."
@@ -4450,40 +4447,9 @@
             "description": "Defines if the account is active and can be used.",
             "default": false,
             "example": false
-          },
-          "ModifiedOn": {
-            "type": "string",
-            "description": "The date the record was updated.",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
-          },
-          "CreatedOn": {
-            "type": "string",
-            "description": "The date the record was created.",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
           }
         },
         "description": "The record of Account information."
-      },
-      "FieldType": {
-        "required": [
-          "Value"
-        ],
-        "type": "object",
-        "properties": {
-          "Field": {
-            "type": "string",
-            "description": "The name of the data field. This can be any field name from the related database table, such as 'Email' from the User table or 'Name' from the Department table."
-          },
-          "Value": {
-            "type": "string",
-            "description": "The value corresponding to the specified data field. This value is used to identify the record in the related database table. For example, it could be an email address, a department name, or an external system's identifier."
-          }
-        },
-        "description": "The field object structure. This structure allows users to specify any related entity field and its corresponding value. When saving data, the system automatically retrieves and assigns the primary key value from the system database table based on the provided field name and value."
       },
       "Tenant": {
         "required": [
@@ -4547,6 +4513,23 @@
           }
         },
         "description": "The record of Tenant information."
+      },
+      "FieldType": {
+        "required": [
+          "Value"
+        ],
+        "type": "object",
+        "properties": {
+          "Field": {
+            "type": "string",
+            "description": "The name of the data field. This can be any field name from the related database table, such as 'Email' from the User table or 'Name' from the Department table."
+          },
+          "Value": {
+            "type": "string",
+            "description": "The value corresponding to the specified data field. This value is used to identify the record in the related database table. For example, it could be an email address, a department name, or an external system's identifier."
+          }
+        },
+        "description": "The field object structure. This structure allows users to specify any related entity field and its corresponding value. When saving data, the system automatically retrieves and assigns the primary key value from the system database table based on the provided field name and value."
       },
       "Picture": {
         "type": "object",
@@ -6521,6 +6504,13 @@
           "ParentDepartmentId": {
             "$ref": "#/components/schemas/FieldType"
           },
+          "Level": {
+            "type": "integer",
+            "description": "The department level at the hierarchy.",
+            "format": "int32",
+            "default": 0,
+            "example": 0
+          },
           "ContactName": {
             "type": "string",
             "description": "The contact name of company or department."
@@ -6574,6 +6564,13 @@
           "ParentDepartmentId": {
             "$ref": "#/components/schemas/FieldType"
           },
+          "Level": {
+            "type": "integer",
+            "description": "The department level at the hierarchy.",
+            "format": "int32",
+            "default": 0,
+            "example": 0
+          },
           "ContactName": {
             "type": "string",
             "description": "The contact name of company or department."
@@ -6614,6 +6611,13 @@
           "Name": {
             "type": "string",
             "description": "The name of the department."
+          },
+          "Level": {
+            "type": "integer",
+            "description": "The department level at the hierarchy.",
+            "format": "int32",
+            "default": 0,
+            "example": 0
           },
           "ContactName": {
             "type": "string",
@@ -7088,8 +7092,7 @@
       "LocationInsertData": {
         "required": [
           "Id",
-          "Name",
-          "Is_Active"
+          "Name"
         ],
         "type": "object",
         "properties": {
@@ -7113,12 +7116,6 @@
           },
           "CurrencyId": {
             "$ref": "#/components/schemas/EnumCurrency"
-          },
-          "Is_Active": {
-            "type": "boolean",
-            "description": "Defines if the location is active and can be used.",
-            "default": false,
-            "example": false
           }
         },
         "description": "The record of Location information."

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ExternalId** | **string** | The external identifier of the department. | [optional] 
 **Name** | **string** | The name of the department. | 
+**Level** | **int** | The department level at the hierarchy. | [optional] [default to 0]
 **ContactName** | **string** | The contact name of company or department. | [optional] 
 **ContactEmail** | **string** | The contact email of external company or department. | [optional] 
 **ContactPhone** | **string** | The  object structure | [optional] 

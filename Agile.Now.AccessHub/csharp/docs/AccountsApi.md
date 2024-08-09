@@ -384,7 +384,7 @@ catch (ApiException e)
 # **DeleteAccountTenant**
 > Tenant DeleteAccountTenant (string id, string subId, string name = null, string subName = null)
 
-Use the query string resource to delete `Tenant` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `UserId, TenantId.Name` field(s) value and use the `DELETE` method of the resource to delete a record.
+Use the query string resource to delete `Tenant` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `UserId` field(s) value and use the `DELETE` method of the resource to delete a record.
 
 Method returns an extended `Tenant` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
@@ -393,7 +393,7 @@ Foreign key fields are: `UserId, TenantId, AccountId`
 ### Delete a record of Tenant
 * If the `UserId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
 * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
-* If the `UserId, TenantId.Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+* If the `UserId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
 The response body will contain the object of the deleted record if the call is successful.
 
@@ -420,7 +420,7 @@ namespace Example
             var id = "id_example";  // string | The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
             var subId = "subId_example";  // string | The identifier of the Tenant record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
             var name = "name_example";  // string | The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional) 
-            var subName = "subName_example";  // string | The name of the database field. If empty, the entity `UserId` field is used.  Example:  ``` TenantId.Name ``` (optional) 
+            var subName = "subName_example";  // string | The name of the database field. If empty, the entity `UserId` field is used.  Example:  ```  ``` (optional) 
 
             try
             {
@@ -476,7 +476,7 @@ catch (ApiException e)
 | **id** | **string** | The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
 | **subId** | **string** | The identifier of the Tenant record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
 | **name** | **string** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Id &#x60;&#x60;&#x60; | [optional]  |
-| **subName** | **string** | The name of the database field. If empty, the entity &#x60;UserId&#x60; field is used.  Example:  &#x60;&#x60;&#x60; TenantId.Name &#x60;&#x60;&#x60; | [optional]  |
+| **subName** | **string** | The name of the database field. If empty, the entity &#x60;UserId&#x60; field is used.  Example:  &#x60;&#x60;&#x60;  &#x60;&#x60;&#x60; | [optional]  |
 
 ### Return type
 
@@ -1382,7 +1382,7 @@ catch (ApiException e)
 # **UpsertAccountTenant**
 > Tenant UpsertAccountTenant (string id, TenantData tenantData, string name = null)
 
-Use the `TenantPost` object resource to insert or update (Upsert) `Tenant` using `UserId, TenantId.Name` field(s) value.
+Use the `TenantPost` object resource to insert or update (Upsert) `Tenant` using `UserId` field(s) value.
 
 You can supply the required field values in the request data, and then use the `POST` method of the resource.
 
@@ -1392,10 +1392,10 @@ Foreign key fields are: `UserId, TenantId, AccountId`
 
 ### Update a record of Tenant
 * If the `UserId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `UserId` field value (primary key).
-* If the `TenantId.Name` field value is not empty and `UserId` field value is empty, action try insert record according `TenantId.Name` field value (if set, the value is a unique identifier).
+* When the UserId field value is not provided, the system will automatically initiate the insertion of a new record.
 
 ### Create a new record of Tenant
-* If the value in the `TenantId.Name` and `UserId` fields are empty then action insert a new record according input parameter entity record structure (`TenantData`).
+* If the value in the `UserId` field is empty then action insert a new record according input parameter entity record structure (`TenantData`).
 
 The response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Tenant` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 

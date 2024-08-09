@@ -1100,7 +1100,7 @@ paths:
   /Endpoint/rest/api/v1/Account/{Id}/Tenant:
     post:
       description: |-
-        Use the `TenantPost` object resource to insert or update (Upsert) `Tenant` using `UserId, TenantId.Name` field(s) value.
+        Use the `TenantPost` object resource to insert or update (Upsert) `Tenant` using `UserId` field(s) value.
 
         You can supply the required field values in the request data, and then use the `POST` method of the resource.
 
@@ -1110,10 +1110,10 @@ paths:
 
         ### Update a record of Tenant
         * If the `UserId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `UserId` field value (primary key).
-        * If the `TenantId.Name` field value is not empty and `UserId` field value is empty, action try insert record according `TenantId.Name` field value (if set, the value is a unique identifier).
+        * When the UserId field value is not provided, the system will automatically initiate the insertion of a new record.
 
         ### Create a new record of Tenant
-        * If the value in the `TenantId.Name` and `UserId` fields are empty then action insert a new record according input parameter entity record structure (`TenantData`).
+        * If the value in the `UserId` field is empty then action insert a new record according input parameter entity record structure (`TenantData`).
 
         The response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Tenant` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
       operationId: Upsert Account Tenant
@@ -1237,7 +1237,7 @@ paths:
   /Endpoint/rest/api/v1/Account/{Id}/Tenant/{SubId}:
     delete:
       description: |-
-        Use the query string resource to delete `Tenant` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `UserId, TenantId.Name` field(s) value and use the `DELETE` method of the resource to delete a record.
+        Use the query string resource to delete `Tenant` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `UserId` field(s) value and use the `DELETE` method of the resource to delete a record.
 
         Method returns an extended `Tenant` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
@@ -1246,7 +1246,7 @@ paths:
         ### Delete a record of Tenant
         * If the `UserId` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
         * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
-        * If the `UserId, TenantId.Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+        * If the `UserId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
         The response body will contain the object of the deleted record if the call is successful.
       operationId: Delete Account Tenant
@@ -1297,14 +1297,14 @@ paths:
           type: string
         style: simple
       - description: "The name of the database field. If empty, the entity `UserId`\
-          \ field is used.\n\nExample: \n```\nTenantId.Name\n```"
+          \ field is used.\n\nExample: \n```\n\n```"
         explode: true
         in: query
         name: SubName
         required: false
         schema:
           description: "The name of the database field. If empty, the entity `UserId`\
-            \ field is used.\n\nExample: \n```\nTenantId.Name\n```"
+            \ field is used.\n\nExample: \n```\n\n```"
           type: string
         style: form
       responses:
@@ -7789,30 +7789,23 @@ components:
       description: The record of Account information.
       example:
         Email: Email
-        ModifiedOn: 1900-01-01T00:00:00Z
         FirstName: FirstName
         NotifyByEmail: false
         ExternalId: ExternalId
         TimezoneId: Afghanistan Standard Time
         NotifyBySMS: false
         Name: Name
-        TenantId:
-          Field: Field
-          Value: Value
         Is_Active: false
         Username: Username
         Phone: Phone
         DateFormatId: DD-MM-YYYY
         Id: Id
         LastName: LastName
-        CreatedOn: 1900-01-01T00:00:00Z
         LanguageId: ar-ae
       properties:
         Id:
           description: The identifier of account.
           type: string
-        TenantId:
-          $ref: '#/components/schemas/FieldType'
         Name:
           description: The name of the account.
           type: string
@@ -7859,46 +7852,11 @@ components:
           description: Defines if the account is active and can be used.
           example: false
           type: boolean
-        ModifiedOn:
-          default: 1900-01-01T00:00:00Z
-          description: The date the record was updated.
-          example: 1900-01-01T00:00:00Z
-          format: date-time
-          type: string
-        CreatedOn:
-          default: 1900-01-01T00:00:00Z
-          description: The date the record was created.
-          example: 1900-01-01T00:00:00Z
-          format: date-time
-          type: string
       required:
       - Email
       - FirstName
       - LastName
       - Username
-      type: object
-    FieldType:
-      description: "The field object structure. This structure allows users to specify\
-        \ any related entity field and its corresponding value. When saving data,\
-        \ the system automatically retrieves and assigns the primary key value from\
-        \ the system database table based on the provided field name and value."
-      example:
-        Field: Field
-        Value: Value
-      properties:
-        Field:
-          description: "The name of the data field. This can be any field name from\
-            \ the related database table, such as 'Email' from the User table or 'Name'\
-            \ from the Department table."
-          type: string
-        Value:
-          description: "The value corresponding to the specified data field. This\
-            \ value is used to identify the record in the related database table.\
-            \ For example, it could be an email address, a department name, or an\
-            \ external system's identifier."
-          type: string
-      required:
-      - Value
       type: object
     Tenant:
       description: The record of Tenant information.
@@ -7994,6 +7952,29 @@ components:
       required:
       - CreatedOn
       - TenantId
+      type: object
+    FieldType:
+      description: "The field object structure. This structure allows users to specify\
+        \ any related entity field and its corresponding value. When saving data,\
+        \ the system automatically retrieves and assigns the primary key value from\
+        \ the system database table based on the provided field name and value."
+      example:
+        Field: Field
+        Value: Value
+      properties:
+        Field:
+          description: "The name of the data field. This can be any field name from\
+            \ the related database table, such as 'Email' from the User table or 'Name'\
+            \ from the Department table."
+          type: string
+        Value:
+          description: "The value corresponding to the specified data field. This\
+            \ value is used to identify the record in the related database table.\
+            \ For example, it could be an email address, a department name, or an\
+            \ external system's identifier."
+          type: string
+      required:
+      - Value
       type: object
     Picture:
       description: The record of Picture information.
@@ -9554,6 +9535,7 @@ components:
         Is_Active: false
         ExternalId: ExternalId
         ContactEmail: ContactEmail
+        Level: 0
         Id: Id
         ParentDepartmentId:
           Field: Field
@@ -9574,6 +9556,12 @@ components:
           $ref: '#/components/schemas/EnumDepartmentType'
         ParentDepartmentId:
           $ref: '#/components/schemas/FieldType'
+        Level:
+          default: 0
+          description: The department level at the hierarchy.
+          example: 0
+          format: int32
+          type: integer
         ContactName:
           description: The contact name of company or department.
           type: string
@@ -9608,6 +9596,7 @@ components:
         Is_Active: false
         ExternalId: ExternalId
         ContactEmail: ContactEmail
+        Level: 0
         Id: Id
         ParentDepartmentId:
           Field: Field
@@ -9628,6 +9617,12 @@ components:
           $ref: '#/components/schemas/EnumDepartmentType'
         ParentDepartmentId:
           $ref: '#/components/schemas/FieldType'
+        Level:
+          default: 0
+          description: The department level at the hierarchy.
+          example: 0
+          format: int32
+          type: integer
         ContactName:
           description: The contact name of company or department.
           type: string
@@ -9662,6 +9657,7 @@ components:
         Is_Active: false
         ExternalId: ExternalId
         ContactEmail: ContactEmail
+        Level: 0
         ContactName: ContactName
         Name: Name
       properties:
@@ -9671,6 +9667,12 @@ components:
         Name:
           description: The name of the department.
           type: string
+        Level:
+          default: 0
+          description: The department level at the hierarchy.
+          example: 0
+          format: int32
+          type: integer
         ContactName:
           description: The contact name of company or department.
           type: string
@@ -10240,7 +10242,6 @@ components:
       description: The record of Location information.
       example:
         CountryId: AFG
-        Is_Active: false
         ExternalId: ExternalId
         Id: Id
         TimezoneId: Afghanistan Standard Time
@@ -10263,14 +10264,8 @@ components:
           $ref: '#/components/schemas/EnumTimezone'
         CurrencyId:
           $ref: '#/components/schemas/EnumCurrency'
-        Is_Active:
-          default: false
-          description: Defines if the location is active and can be used.
-          example: false
-          type: boolean
       required:
       - Id
-      - Is_Active
       - Name
       type: object
     LocationUpdateData:

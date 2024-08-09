@@ -68,19 +68,21 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         /// <param name="externalId">The external identifier of the department..</param>
         /// <param name="name">The name of the department. (required).</param>
+        /// <param name="level">The department level at the hierarchy. (default to 0).</param>
         /// <param name="contactName">The contact name of company or department..</param>
         /// <param name="contactEmail">The contact email of external company or department..</param>
         /// <param name="contactPhone">contactPhone.</param>
         /// <param name="ownerId">ownerId.</param>
         /// <param name="countryId">countryId.</param>
         /// <param name="isActive">Defines if the department is active and can be used. (required) (default to false).</param>
-        public DepartmentUpdateData(string externalId = default, string name = default, string contactName = default, string contactEmail = default, string contactPhone = default, FieldType ownerId = default, EnumCountry? countryId = default, bool isActive = false)
+        public DepartmentUpdateData(string externalId = default, string name = default, int level = 0, string contactName = default, string contactEmail = default, string contactPhone = default, FieldType ownerId = default, EnumCountry? countryId = default, bool isActive = false)
         {
             // to ensure "name" is required (not null)
             name = name ?? throw new ArgumentNullException("name is a required property for DepartmentUpdateData and cannot be null");
             Name = name;
             IsActive = isActive;
             ExternalId = externalId;
+            Level = level;
             ContactName = contactName;
             ContactEmail = contactEmail;
             ContactPhone = contactPhone;
@@ -101,6 +103,14 @@ namespace Agile.Now.AccessHub.Model
         /// <value>The name of the department.</value>
         [DataMember(Name = "Name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// The department level at the hierarchy.
+        /// </summary>
+        /// <value>The department level at the hierarchy.</value>
+        /// <example>0</example>
+        [DataMember(Name = "Level", EmitDefaultValue = false)]
+        public int Level { get; set; }
 
         /// <summary>
         /// The contact name of company or department.
@@ -146,6 +156,7 @@ namespace Agile.Now.AccessHub.Model
             sb.Append("class DepartmentUpdateData {\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Level: ").Append(Level).Append("\n");
             sb.Append("  ContactName: ").Append(ContactName).Append("\n");
             sb.Append("  ContactEmail: ").Append(ContactEmail).Append("\n");
             sb.Append("  ContactPhone: ").Append(ContactPhone).Append("\n");
