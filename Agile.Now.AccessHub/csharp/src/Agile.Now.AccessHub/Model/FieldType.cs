@@ -64,8 +64,6 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="value">The value corresponding to the specified data field. This value is used to identify the record in the related database table. For example, it could be an email address, a department name, or an external system's identifier. (required).</param>
         public FieldType(string field = default, string value = default)
         {
-            // to ensure "value" is required (not null)
-            value = value ?? throw new ArgumentNullException("value is a required property for FieldType and cannot be null");
             Value = value;
             Field = field;
         }
@@ -81,7 +79,7 @@ namespace Agile.Now.AccessHub.Model
         /// The value corresponding to the specified data field. This value is used to identify the record in the related database table. For example, it could be an email address, a department name, or an external system's identifier.
         /// </summary>
         /// <value>The value corresponding to the specified data field. This value is used to identify the record in the related database table. For example, it could be an email address, a department name, or an external system&#39;s identifier.</value>
-        [DataMember(Name = "Value", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Value", EmitDefaultValue = true)]
         public string Value { get; set; }
 
         /// <summary>

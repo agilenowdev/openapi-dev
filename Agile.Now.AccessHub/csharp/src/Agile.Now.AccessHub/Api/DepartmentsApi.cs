@@ -109,8 +109,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="subName">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>User</returns>
-        User DeleteDepartmentUser(string id, string subId, string name = default, string subName = default, int operationIndex = 0);
+        /// <returns>User1</returns>
+        User1 DeleteDepartmentUser(string id, string subId, string name = default, string subName = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -124,8 +124,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="subName">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of User</returns>
-        ApiResponse<User> DeleteDepartmentUserWithHttpInfo(string id, string subId, string name = default, string subName = default, int operationIndex = 0);
+        /// <returns>ApiResponse of User1</returns>
+        ApiResponse<User1> DeleteDepartmentUserWithHttpInfo(string id, string subId, string name = default, string subName = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -166,8 +166,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="currentPage">This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)</param>
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>Users</returns>
-        Users ListDepartmentUsers(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0);
+        /// <returns>Users1</returns>
+        Users1 ListDepartmentUsers(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -184,8 +184,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="currentPage">This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)</param>
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Users</returns>
-        ApiResponse<Users> ListDepartmentUsersWithHttpInfo(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0);
+        /// <returns>ApiResponse of Users1</returns>
+        ApiResponse<Users1> ListDepartmentUsersWithHttpInfo(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -225,12 +225,12 @@ namespace Agile.Now.AccessHub.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Department record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="usersData">The list of User information to insert or update.  The input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.</param>
+        /// <param name="usersData1">The list of User information to insert or update.  The input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>User</returns>
-        User PatchDepartmentUsers(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0);
+        /// <returns>User1</returns>
+        User1 PatchDepartmentUsers(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -240,12 +240,12 @@ namespace Agile.Now.AccessHub.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Department record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="usersData">The list of User information to insert or update.  The input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.</param>
+        /// <param name="usersData1">The list of User information to insert or update.  The input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of User</returns>
-        ApiResponse<User> PatchDepartmentUsersWithHttpInfo(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0);
+        /// <returns>ApiResponse of User1</returns>
+        ApiResponse<User1> PatchDepartmentUsersWithHttpInfo(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -304,11 +304,11 @@ namespace Agile.Now.AccessHub.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Department record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="userData">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="userData1">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>User</returns>
-        User UpsertDepartmentUser(string id, UserData userData, string name = default, int operationIndex = 0);
+        /// <returns>User1</returns>
+        User1 UpsertDepartmentUser(string id, UserData1 userData1, string name = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -318,11 +318,11 @@ namespace Agile.Now.AccessHub.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Department record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="userData">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="userData1">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of User</returns>
-        ApiResponse<User> UpsertDepartmentUserWithHttpInfo(string id, UserData userData, string name = default, int operationIndex = 0);
+        /// <returns>ApiResponse of User1</returns>
+        ApiResponse<User1> UpsertDepartmentUserWithHttpInfo(string id, UserData1 userData1, string name = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -397,8 +397,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="subName">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of User</returns>
-        System.Threading.Tasks.Task<User> DeleteDepartmentUserAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of User1</returns>
+        System.Threading.Tasks.Task<User1> DeleteDepartmentUserAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -413,8 +413,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="subName">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (User)</returns>
-        System.Threading.Tasks.Task<ApiResponse<User>> DeleteDepartmentUserWithHttpInfoAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (User1)</returns>
+        System.Threading.Tasks.Task<ApiResponse<User1>> DeleteDepartmentUserWithHttpInfoAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -458,8 +458,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Users</returns>
-        System.Threading.Tasks.Task<Users> ListDepartmentUsersAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of Users1</returns>
+        System.Threading.Tasks.Task<Users1> ListDepartmentUsersAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -477,8 +477,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Users)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Users>> ListDepartmentUsersWithHttpInfoAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (Users1)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Users1>> ListDepartmentUsersWithHttpInfoAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -520,13 +520,13 @@ namespace Agile.Now.AccessHub.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Department record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="usersData">The list of User information to insert or update.  The input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.</param>
+        /// <param name="usersData1">The list of User information to insert or update.  The input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of User</returns>
-        System.Threading.Tasks.Task<User> PatchDepartmentUsersAsync(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of User1</returns>
+        System.Threading.Tasks.Task<User1> PatchDepartmentUsersAsync(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -536,13 +536,13 @@ namespace Agile.Now.AccessHub.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Department record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="usersData">The list of User information to insert or update.  The input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.</param>
+        /// <param name="usersData1">The list of User information to insert or update.  The input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (User)</returns>
-        System.Threading.Tasks.Task<ApiResponse<User>> PatchDepartmentUsersWithHttpInfoAsync(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (User1)</returns>
+        System.Threading.Tasks.Task<ApiResponse<User1>> PatchDepartmentUsersWithHttpInfoAsync(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -605,12 +605,12 @@ namespace Agile.Now.AccessHub.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Department record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="userData">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="userData1">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of User</returns>
-        System.Threading.Tasks.Task<User> UpsertDepartmentUserAsync(string id, UserData userData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of User1</returns>
+        System.Threading.Tasks.Task<User1> UpsertDepartmentUserAsync(string id, UserData1 userData1, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -620,12 +620,12 @@ namespace Agile.Now.AccessHub.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Department record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="userData">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="userData1">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (User)</returns>
-        System.Threading.Tasks.Task<ApiResponse<User>> UpsertDepartmentUserWithHttpInfoAsync(string id, UserData userData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (User1)</returns>
+        System.Threading.Tasks.Task<ApiResponse<User1>> UpsertDepartmentUserWithHttpInfoAsync(string id, UserData1 userData1, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -1105,10 +1105,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="subName">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>User</returns>
-        public User DeleteDepartmentUser(string id, string subId, string name = default, string subName = default, int operationIndex = 0)
+        /// <returns>User1</returns>
+        public User1 DeleteDepartmentUser(string id, string subId, string name = default, string subName = default, int operationIndex = 0)
         {
-            ApiResponse<User> localVarResponse = DeleteDepartmentUserWithHttpInfo(id, subId, name, subName);
+            ApiResponse<User1> localVarResponse = DeleteDepartmentUserWithHttpInfo(id, subId, name, subName);
             return localVarResponse.Data;
         }
 
@@ -1121,8 +1121,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="subName">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of User</returns>
-        public ApiResponse<User> DeleteDepartmentUserWithHttpInfo(string id, string subId, string name = default, string subName = default, int operationIndex = 0)
+        /// <returns>ApiResponse of User1</returns>
+        public ApiResponse<User1> DeleteDepartmentUserWithHttpInfo(string id, string subId, string name = default, string subName = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->DeleteDepartmentUser");
@@ -1184,7 +1184,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = Client.Delete<User>("/Endpoint/rest/api/v1/Department/{Id}/User/{SubId}", localVarRequestOptions, Configuration);
+            var localVarResponse = Client.Delete<User1>("/Endpoint/rest/api/v1/Department/{Id}/User/{SubId}", localVarRequestOptions, Configuration);
             if (ExceptionFactory != null)
             {
                 Exception _exception = ExceptionFactory("DeleteDepartmentUser", localVarResponse);
@@ -1207,10 +1207,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="subName">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of User</returns>
-        public async System.Threading.Tasks.Task<User> DeleteDepartmentUserAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of User1</returns>
+        public async System.Threading.Tasks.Task<User1> DeleteDepartmentUserAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            ApiResponse<User> localVarResponse = await DeleteDepartmentUserWithHttpInfoAsync(id, subId, name, subName, operationIndex, cancellationToken).ConfigureAwait(false);
+            ApiResponse<User1> localVarResponse = await DeleteDepartmentUserWithHttpInfoAsync(id, subId, name, subName, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1224,8 +1224,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="subName">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (User)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<User>> DeleteDepartmentUserWithHttpInfoAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (User1)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<User1>> DeleteDepartmentUserWithHttpInfoAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->DeleteDepartmentUser");
@@ -1288,7 +1288,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await AsynchronousClient.DeleteAsync<User>("/Endpoint/rest/api/v1/Department/{Id}/User/{SubId}", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await AsynchronousClient.DeleteAsync<User1>("/Endpoint/rest/api/v1/Department/{Id}/User/{SubId}", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
             if (ExceptionFactory != null)
             {
@@ -1496,10 +1496,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="currentPage">This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)</param>
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>Users</returns>
-        public Users ListDepartmentUsers(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0)
+        /// <returns>Users1</returns>
+        public Users1 ListDepartmentUsers(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0)
         {
-            ApiResponse<Users> localVarResponse = ListDepartmentUsersWithHttpInfo(id, name, fields, filters, orders, currentPage, pageSize);
+            ApiResponse<Users1> localVarResponse = ListDepartmentUsersWithHttpInfo(id, name, fields, filters, orders, currentPage, pageSize);
             return localVarResponse.Data;
         }
 
@@ -1515,8 +1515,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="currentPage">This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)</param>
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Users</returns>
-        public ApiResponse<Users> ListDepartmentUsersWithHttpInfo(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0)
+        /// <returns>ApiResponse of Users1</returns>
+        public ApiResponse<Users1> ListDepartmentUsersWithHttpInfo(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->ListDepartmentUsers");
@@ -1590,7 +1590,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = Client.Get<Users>("/Endpoint/rest/api/v1/Department/{Id}/Users", localVarRequestOptions, Configuration);
+            var localVarResponse = Client.Get<Users1>("/Endpoint/rest/api/v1/Department/{Id}/Users", localVarRequestOptions, Configuration);
             if (ExceptionFactory != null)
             {
                 Exception _exception = ExceptionFactory("ListDepartmentUsers", localVarResponse);
@@ -1616,10 +1616,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Users</returns>
-        public async System.Threading.Tasks.Task<Users> ListDepartmentUsersAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of Users1</returns>
+        public async System.Threading.Tasks.Task<Users1> ListDepartmentUsersAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            ApiResponse<Users> localVarResponse = await ListDepartmentUsersWithHttpInfoAsync(id, name, fields, filters, orders, currentPage, pageSize, operationIndex, cancellationToken).ConfigureAwait(false);
+            ApiResponse<Users1> localVarResponse = await ListDepartmentUsersWithHttpInfoAsync(id, name, fields, filters, orders, currentPage, pageSize, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1636,8 +1636,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Users)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Users>> ListDepartmentUsersWithHttpInfoAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (Users1)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Users1>> ListDepartmentUsersWithHttpInfoAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->ListDepartmentUsers");
@@ -1712,7 +1712,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await AsynchronousClient.GetAsync<Users>("/Endpoint/rest/api/v1/Department/{Id}/Users", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await AsynchronousClient.GetAsync<Users1>("/Endpoint/rest/api/v1/Department/{Id}/Users", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
             if (ExceptionFactory != null)
             {
@@ -1949,14 +1949,14 @@ namespace Agile.Now.AccessHub.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Department record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="usersData">The list of User information to insert or update.  The input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.</param>
+        /// <param name="usersData1">The list of User information to insert or update.  The input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>User</returns>
-        public User PatchDepartmentUsers(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0)
+        /// <returns>User1</returns>
+        public User1 PatchDepartmentUsers(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0)
         {
-            ApiResponse<User> localVarResponse = PatchDepartmentUsersWithHttpInfo(id, usersData, name, deleteNotExists);
+            ApiResponse<User1> localVarResponse = PatchDepartmentUsersWithHttpInfo(id, usersData1, name, deleteNotExists);
             return localVarResponse.Data;
         }
 
@@ -1965,18 +1965,18 @@ namespace Agile.Now.AccessHub.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Department record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="usersData">The list of User information to insert or update.  The input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.</param>
+        /// <param name="usersData1">The list of User information to insert or update.  The input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of User</returns>
-        public ApiResponse<User> PatchDepartmentUsersWithHttpInfo(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0)
+        /// <returns>ApiResponse of User1</returns>
+        public ApiResponse<User1> PatchDepartmentUsersWithHttpInfo(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->PatchDepartmentUsers");
 
-            // verify the required parameter 'usersData' is set
-            usersData = usersData ?? throw new ApiException(400, "Missing required parameter 'usersData' when calling DepartmentsApi->PatchDepartmentUsers");
+            // verify the required parameter 'usersData1' is set
+            usersData1 = usersData1 ?? throw new ApiException(400, "Missing required parameter 'usersData1' when calling DepartmentsApi->PatchDepartmentUsers");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -2010,7 +2010,7 @@ namespace Agile.Now.AccessHub.Api
             {
                 localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "DeleteNotExists", deleteNotExists));
             }
-            localVarRequestOptions.Data = usersData;
+            localVarRequestOptions.Data = usersData1;
 
             localVarRequestOptions.Operation = "DepartmentsApi.PatchDepartmentUsers";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -2033,7 +2033,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = Client.Patch<User>("/Endpoint/rest/api/v1/Department/{Id}/Users", localVarRequestOptions, Configuration);
+            var localVarResponse = Client.Patch<User1>("/Endpoint/rest/api/v1/Department/{Id}/Users", localVarRequestOptions, Configuration);
             if (ExceptionFactory != null)
             {
                 Exception _exception = ExceptionFactory("PatchDepartmentUsers", localVarResponse);
@@ -2051,15 +2051,15 @@ namespace Agile.Now.AccessHub.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Department record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="usersData">The list of User information to insert or update.  The input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.</param>
+        /// <param name="usersData1">The list of User information to insert or update.  The input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of User</returns>
-        public async System.Threading.Tasks.Task<User> PatchDepartmentUsersAsync(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of User1</returns>
+        public async System.Threading.Tasks.Task<User1> PatchDepartmentUsersAsync(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            ApiResponse<User> localVarResponse = await PatchDepartmentUsersWithHttpInfoAsync(id, usersData, name, deleteNotExists, operationIndex, cancellationToken).ConfigureAwait(false);
+            ApiResponse<User1> localVarResponse = await PatchDepartmentUsersWithHttpInfoAsync(id, usersData1, name, deleteNotExists, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2068,19 +2068,19 @@ namespace Agile.Now.AccessHub.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Department record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="usersData">The list of User information to insert or update.  The input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.</param>
+        /// <param name="usersData1">The list of User information to insert or update.  The input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (User)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<User>> PatchDepartmentUsersWithHttpInfoAsync(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (User1)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<User1>> PatchDepartmentUsersWithHttpInfoAsync(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->PatchDepartmentUsers");
 
-            // verify the required parameter 'usersData' is set
-            usersData = usersData ?? throw new ApiException(400, "Missing required parameter 'usersData' when calling DepartmentsApi->PatchDepartmentUsers");
+            // verify the required parameter 'usersData1' is set
+            usersData1 = usersData1 ?? throw new ApiException(400, "Missing required parameter 'usersData1' when calling DepartmentsApi->PatchDepartmentUsers");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -2115,7 +2115,7 @@ namespace Agile.Now.AccessHub.Api
             {
                 localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "DeleteNotExists", deleteNotExists));
             }
-            localVarRequestOptions.Data = usersData;
+            localVarRequestOptions.Data = usersData1;
 
             localVarRequestOptions.Operation = "DepartmentsApi.PatchDepartmentUsers";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -2138,7 +2138,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await AsynchronousClient.PatchAsync<User>("/Endpoint/rest/api/v1/Department/{Id}/Users", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await AsynchronousClient.PatchAsync<User1>("/Endpoint/rest/api/v1/Department/{Id}/Users", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
             if (ExceptionFactory != null)
             {
@@ -2525,13 +2525,13 @@ namespace Agile.Now.AccessHub.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Department record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="userData">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="userData1">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>User</returns>
-        public User UpsertDepartmentUser(string id, UserData userData, string name = default, int operationIndex = 0)
+        /// <returns>User1</returns>
+        public User1 UpsertDepartmentUser(string id, UserData1 userData1, string name = default, int operationIndex = 0)
         {
-            ApiResponse<User> localVarResponse = UpsertDepartmentUserWithHttpInfo(id, userData, name);
+            ApiResponse<User1> localVarResponse = UpsertDepartmentUserWithHttpInfo(id, userData1, name);
             return localVarResponse.Data;
         }
 
@@ -2540,17 +2540,17 @@ namespace Agile.Now.AccessHub.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Department record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="userData">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="userData1">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of User</returns>
-        public ApiResponse<User> UpsertDepartmentUserWithHttpInfo(string id, UserData userData, string name = default, int operationIndex = 0)
+        /// <returns>ApiResponse of User1</returns>
+        public ApiResponse<User1> UpsertDepartmentUserWithHttpInfo(string id, UserData1 userData1, string name = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->UpsertDepartmentUser");
 
-            // verify the required parameter 'userData' is set
-            userData = userData ?? throw new ApiException(400, "Missing required parameter 'userData' when calling DepartmentsApi->UpsertDepartmentUser");
+            // verify the required parameter 'userData1' is set
+            userData1 = userData1 ?? throw new ApiException(400, "Missing required parameter 'userData1' when calling DepartmentsApi->UpsertDepartmentUser");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -2580,7 +2580,7 @@ namespace Agile.Now.AccessHub.Api
             {
                 localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "Name", name));
             }
-            localVarRequestOptions.Data = userData;
+            localVarRequestOptions.Data = userData1;
 
             localVarRequestOptions.Operation = "DepartmentsApi.UpsertDepartmentUser";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -2603,7 +2603,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = Client.Post<User>("/Endpoint/rest/api/v1/Department/{Id}/User", localVarRequestOptions, Configuration);
+            var localVarResponse = Client.Post<User1>("/Endpoint/rest/api/v1/Department/{Id}/User", localVarRequestOptions, Configuration);
             if (ExceptionFactory != null)
             {
                 Exception _exception = ExceptionFactory("UpsertDepartmentUser", localVarResponse);
@@ -2621,14 +2621,14 @@ namespace Agile.Now.AccessHub.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Department record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="userData">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="userData1">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of User</returns>
-        public async System.Threading.Tasks.Task<User> UpsertDepartmentUserAsync(string id, UserData userData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of User1</returns>
+        public async System.Threading.Tasks.Task<User1> UpsertDepartmentUserAsync(string id, UserData1 userData1, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            ApiResponse<User> localVarResponse = await UpsertDepartmentUserWithHttpInfoAsync(id, userData, name, operationIndex, cancellationToken).ConfigureAwait(false);
+            ApiResponse<User1> localVarResponse = await UpsertDepartmentUserWithHttpInfoAsync(id, userData1, name, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2637,18 +2637,18 @@ namespace Agile.Now.AccessHub.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Department record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="userData">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="userData1">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (User)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<User>> UpsertDepartmentUserWithHttpInfoAsync(string id, UserData userData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (User1)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<User1>> UpsertDepartmentUserWithHttpInfoAsync(string id, UserData1 userData1, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling DepartmentsApi->UpsertDepartmentUser");
 
-            // verify the required parameter 'userData' is set
-            userData = userData ?? throw new ApiException(400, "Missing required parameter 'userData' when calling DepartmentsApi->UpsertDepartmentUser");
+            // verify the required parameter 'userData1' is set
+            userData1 = userData1 ?? throw new ApiException(400, "Missing required parameter 'userData1' when calling DepartmentsApi->UpsertDepartmentUser");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -2679,7 +2679,7 @@ namespace Agile.Now.AccessHub.Api
             {
                 localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "Name", name));
             }
-            localVarRequestOptions.Data = userData;
+            localVarRequestOptions.Data = userData1;
 
             localVarRequestOptions.Operation = "DepartmentsApi.UpsertDepartmentUser";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -2702,7 +2702,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await AsynchronousClient.PostAsync<User>("/Endpoint/rest/api/v1/Department/{Id}/User", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await AsynchronousClient.PostAsync<User1>("/Endpoint/rest/api/v1/Department/{Id}/User", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
             if (ExceptionFactory != null)
             {

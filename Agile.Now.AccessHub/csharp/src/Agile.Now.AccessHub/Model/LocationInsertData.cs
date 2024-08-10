@@ -86,8 +86,6 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="currencyId">currencyId.</param>
         public LocationInsertData(string id = default, string externalId = default, string name = default, EnumCountry? countryId = default, EnumTimezone? timezoneId = default, EnumCurrency? currencyId = default)
         {
-            // to ensure "id" is required (not null)
-            id = id ?? throw new ArgumentNullException("id is a required property for LocationInsertData and cannot be null");
             Id = id;
             // to ensure "name" is required (not null)
             name = name ?? throw new ArgumentNullException("name is a required property for LocationInsertData and cannot be null");
@@ -102,7 +100,7 @@ namespace Agile.Now.AccessHub.Model
         /// The guid to identify the location.
         /// </summary>
         /// <value>The guid to identify the location.</value>
-        [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Id", EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>

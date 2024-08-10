@@ -86,8 +86,6 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="isActive">Defines if the department is active and can be used. (required) (default to false).</param>
         public DepartmentInsertData(string id = default, string externalId = default, string name = default, EnumDepartmentType departmentTypeId = default, FieldType parentDepartmentId = default, int level = 0, string contactName = default, string contactEmail = default, string contactPhone = default, FieldType ownerId = default, EnumCountry? countryId = default, bool isActive = false)
         {
-            // to ensure "id" is required (not null)
-            id = id ?? throw new ArgumentNullException("id is a required property for DepartmentInsertData and cannot be null");
             Id = id;
             // to ensure "name" is required (not null)
             name = name ?? throw new ArgumentNullException("name is a required property for DepartmentInsertData and cannot be null");
@@ -108,7 +106,7 @@ namespace Agile.Now.AccessHub.Model
         /// The guid to identify the department.
         /// </summary>
         /// <value>The guid to identify the department.</value>
-        [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Id", EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>

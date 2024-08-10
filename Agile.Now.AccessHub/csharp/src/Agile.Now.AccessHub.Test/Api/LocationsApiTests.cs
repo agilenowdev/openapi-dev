@@ -40,6 +40,10 @@ using Xunit;
 
 using Agile.Now.AccessHub.Client;
 using Agile.Now.AccessHub.Api;
+using Xunit.Abstractions;
+using Agile.Now.AccessHub.Model;
+using Agile.Now.ApiOrganizations.Test.Api;
+using System.Linq;
 // uncomment below to import models
 //using Agile.Now.AccessHub.Model;
 
@@ -54,16 +58,23 @@ namespace Agile.Now.AccessHub.Test.Api
     /// </remarks>
     public class LocationsApiTests : IDisposable
     {
-        private LocationsApi instance;
+        private readonly LocationsApi api;
 
-        public LocationsApiTests()
+        public LocationsApiTests(ITestOutputHelper testOutputHelper)
         {
-            instance = new LocationsApi();
+            Configuration configuration = new Configuration
+            {
+                BasePath = "https://dev.esystems.fi",
+                OAuthTokenUrl = "https://dev.esystems.fi/oAuth/rest/v2/Token",
+                OAuthFlow = Client.Auth.OAuthFlow.APPLICATION,
+                OAuthClientId = "c8907421-0886-4fb0-b859-d29966762e16",
+                OAuthClientSecret = "1da54fa9-ae11-4db3-9740-1bb47b85cd8e"
+            };
+            api = new LocationsApi(configuration);
         }
 
         public void Dispose()
         {
-            // Cleanup when everything is done.
         }
 
         /// <summary>
@@ -72,95 +83,261 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void InstanceTest()
         {
-            // TODO uncomment below to test 'IsType' LocationsApi
-            //Assert.IsType<LocationsApi>(instance);
+        }
+
+        void AssertLocationDataEqual(LocationInsertData locationInsertData, Location location)
+        {
+            Assert.Equal(locationInsertData.Name, location.Name);
+            //Assert.Equal(locationInsertData.CountryId.ToString(), location.CountryId.Name);
+            //Assert.Equal(locationInsertData.CurrencyId.ToString(), location.CurrencyId.Id);
         }
 
         /// <summary>
         /// Test CreateLocation
         /// </summary>
         [Fact]
-        public void CreateLocationTest()
+        public void Test_Location_Create()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //LocationInsertData locationInsertData = null;
-            //var response = instance.CreateLocation(locationInsertData);
-            //Assert.IsType<Location>(response);
+            var entityData = TestLocationData.CreateLocationData();
+            var createdEntity = api.CreateLocation(entityData);
+            try
+            {
+                AssertLocationDataEqual(entityData, createdEntity);
+            }
+            finally
+            {
+                api.DeleteLocation(createdEntity.Id);
+            }
         }
 
         /// <summary>
-        /// Test DeleteLocation
+        /// Test DeleteLocation by Id
         /// </summary>
         [Fact]
-        public void DeleteLocationTest()
+        public void Test_Location_Delete_ById()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string name = null;
-            //var response = instance.DeleteLocation(id, name);
-            //Assert.IsType<Location>(response);
+            var createdEntity = api.CreateLocation(TestLocationData.CreateLocationData());
+            api.DeleteLocation(createdEntity.Id);
+            Assert.Throws<ApiException>(() => api.GetLocation(createdEntity.Id));
+        }
+
+        /// <summary>
+        /// Test DeleteLocation by Name
+        /// </summary>
+        [Fact]
+        public void Test_Location_Delete_ByName()
+        {
+            var createdEntity = api.CreateLocation(TestLocationData.CreateLocationData());
+            api.DeleteLocation(createdEntity.Name, "Name");
+            Assert.Throws<ApiException>(() => api.GetLocation(createdEntity.Id));
+        }
+
+        /// <summary>
+        /// Test GetLocation by Id
+        /// </summary>
+        [Fact]
+        public void Test_Location_Get_ById()
+        {
+            var createdEntity = api.CreateLocation(TestLocationData.CreateLocationData());
+            try
+            {
+                Assert.Null(Record.Exception(() =>
+                {
+                    var existingEntity = api.GetLocation(createdEntity.Id);
+                    Assert.Equal(createdEntity.Id, existingEntity.Id);
+                    return existingEntity;
+                }));
+            }
+            finally
+            {
+                api.DeleteLocation(createdEntity.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test GetLocation by Name
+        /// </summary>
+        [Fact]
+        public void Test_Location_Get_ByName()
+        {
+            var createdEntity = api.CreateLocation(TestLocationData.CreateLocationData());
+            try
+            {
+                Assert.Null(Record.Exception(() =>
+                {
+                    var existingEntity = api.GetLocation(createdEntity.Name, "Name");
+                    Assert.Equal(createdEntity.Name, existingEntity.Name);
+                    return existingEntity;
+                }));
+            }
+            finally
+            {
+                api.DeleteLocation(createdEntity.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test ListLocations by Id
+        /// </summary>
+        [Fact]
+        public void Test_Location_List_ById()
+        {
+            var createdEntities = TestLocationData.CreateLocationDataList(2).Select(i => api.CreateLocation(i)).ToArray();
+            try
+            {
+                var existingEntities = api.ListLocations(
+                    filters: $"Id In {string.Join("; ", createdEntities.Select(i => i.Id))}").Data;
+                Assert.Equal(createdEntities.Length, existingEntities.Count);
+            }
+            finally
+            {
+                foreach (var i in createdEntities)
+                    api.DeleteLocation(i.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test ListLocations by Name
+        /// </summary>
+        [Fact]
+        public void Test_Location_List_ByName()
+        {
+            var entityData = TestLocationData.CreateLocationDataList(2);
+            var createdEntities = entityData.Select(i => api.CreateLocation(i)).ToArray();
+            try
+            {
+                var existingEntities = api.ListLocations(
+                    filters: $"Name In {string.Join("; ", createdEntities.Select(i => i.Name))}").Data;
+                Assert.Equal(createdEntities.Length, existingEntities.Count);
+            }
+            finally
+            {
+                foreach (var i in createdEntities)
+                    api.DeleteLocation(i.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test UpdateLocation
+        /// </summary>
+        [Fact]
+        public void Test_Location_Update()
+        {
+            var entityData = TestLocationData.CreateLocationData();
+            var createdEntity = api.CreateLocation(entityData);
+            try
+            {
+                TestLocationData.UpdateLocationData(entityData);
+                var updatedEntity = api.UpdateLocation(createdEntity.Id, entityData.ToLocationUpdateData());
+                AssertLocationDataEqual(entityData, updatedEntity);
+            }
+            finally
+            {
+                api.DeleteLocation(createdEntity.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test UpsertLocation
+        /// </summary>
+        [Fact]
+        public void Test_Location_Upsert()
+        {
+            var entityData = TestLocationData.CreateLocationData();
+            var createdEntity = api.UpsertLocation(entityData.ToLocationData());
+            try
+            {
+                AssertLocationDataEqual(entityData, createdEntity);
+                TestLocationData.UpdateLocationData(entityData);
+                entityData.Id = createdEntity.Id;
+                var updatedEntity = api.UpsertLocation(entityData.ToLocationData());
+                Assert.Equal(createdEntity.Id, updatedEntity.Id);
+                AssertLocationDataEqual(entityData, updatedEntity);
+            }
+            finally
+            {
+                api.DeleteLocation(createdEntity.Id);
+            }
         }
 
         /// <summary>
         /// Test DeleteLocationUser
         /// </summary>
         [Fact]
-        public void DeleteLocationUserTest()
+        public void Test_Location_User_Delete()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string subId = null;
-            //string name = null;
-            //string subName = null;
-            //var response = instance.DeleteLocationUser(id, subId, name, subName);
-            //Assert.IsType<User>(response);
-        }
-
-        /// <summary>
-        /// Test GetLocation
-        /// </summary>
-        [Fact]
-        public void GetLocationTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string name = null;
-            //var response = instance.GetLocation(id, name);
-            //Assert.IsType<Location>(response);
+            var entityData = TestLocationData.CreateLocationData();
+            var createdEntity = api.CreateLocation(entityData);
+            try
+            {
+                var createdSubEntity = api.UpsertLocationUser(createdEntity.Id,
+                    new(userId: new("Id", TestLocationData.TestUsers[0].ToString())));
+                api.DeleteLocationUser(createdEntity.Id, createdSubEntity.Id);
+                var existingSubEntities = api.ListLocationUsers(createdEntity.Id).Data;
+                Assert.DoesNotContain(existingSubEntities, i => i.Id == createdSubEntity.Id);
+            }
+            finally
+            {
+                api.DeleteLocation(createdEntity.Id);
+            }
         }
 
         /// <summary>
         /// Test ListLocationUsers
         /// </summary>
         [Fact]
-        public void ListLocationUsersTest()
+        public void Test_Location_User_List()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //string name = null;
-            //string fields = null;
-            //string filters = null;
-            //string orders = null;
-            //int? currentPage = null;
-            //int? pageSize = null;
-            //var response = instance.ListLocationUsers(id, name, fields, filters, orders, currentPage, pageSize);
-            //Assert.IsType<Users>(response);
+            var entityData = TestLocationData.CreateLocationData();
+            var createdEntity = api.CreateLocation(entityData);
+            try
+            {
+                var createdSubEntities = TestLocationData.TestUsers.Select(i =>
+                    api.UpsertLocationUser(createdEntity.Id, new(userId: new("Id", i.ToString())))).ToArray();
+                try
+                {
+                    var existingSubEntities = api.ListLocationUsers(createdEntity.Id).Data;
+                    Assert.Equal(createdSubEntities.Length, existingSubEntities.Count);
+                }
+                finally
+                {
+                    foreach (var i in createdSubEntities)
+                        api.DeleteLocationUser(createdEntity.Id, i.Id);
+
+                }
+            }
+            finally
+            {
+                api.DeleteLocation(createdEntity.Id);
+            }
         }
 
         /// <summary>
-        /// Test ListLocations
+        /// Test UpsertLocationUser
         /// </summary>
         [Fact]
-        public void ListLocationsTest()
+        public void Test_LocationUser_Upsert()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string fields = null;
-            //string filters = null;
-            //string orders = null;
-            //int? currentPage = null;
-            //int? pageSize = null;
-            //var response = instance.ListLocations(fields, filters, orders, currentPage, pageSize);
-            //Assert.IsType<Locations>(response);
+            var entityData = TestLocationData.CreateLocationData();
+            var createdEntity = api.CreateLocation(entityData);
+            try
+            {
+                var createdSubEntity = api.UpsertLocationUser(createdEntity.Id,
+                    new(userId: new("Id", TestLocationData.TestUsers[0].ToString())));
+                try
+                {
+                    var existingSubEntities = api.ListLocationUsers(createdEntity.Id).Data;
+                    Assert.Contains(existingSubEntities, i => i.Id == createdSubEntity.Id);
+                }
+                finally
+                {
+                    api.DeleteLocationUser(createdEntity.Id, createdSubEntity.Id);
+                }
+            }
+            finally
+            {
+                api.DeleteLocation(createdEntity.Id);
+            }
         }
 
         /// <summary>
@@ -175,46 +352,6 @@ namespace Agile.Now.AccessHub.Test.Api
             //string name = null;
             //string deleteNotExists = null;
             //var response = instance.PatchLocationUsers(id, usersData, name, deleteNotExists);
-            //Assert.IsType<User>(response);
-        }
-
-        /// <summary>
-        /// Test UpdateLocation
-        /// </summary>
-        [Fact]
-        public void UpdateLocationTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //LocationUpdateData locationUpdateData = null;
-            //string name = null;
-            //var response = instance.UpdateLocation(id, locationUpdateData, name);
-            //Assert.IsType<Location>(response);
-        }
-
-        /// <summary>
-        /// Test UpsertLocation
-        /// </summary>
-        [Fact]
-        public void UpsertLocationTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //LocationData locationData = null;
-            //var response = instance.UpsertLocation(locationData);
-            //Assert.IsType<Location>(response);
-        }
-
-        /// <summary>
-        /// Test UpsertLocationUser
-        /// </summary>
-        [Fact]
-        public void UpsertLocationUserTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //UserData userData = null;
-            //string name = null;
-            //var response = instance.UpsertLocationUser(id, userData, name);
             //Assert.IsType<User>(response);
         }
     }
