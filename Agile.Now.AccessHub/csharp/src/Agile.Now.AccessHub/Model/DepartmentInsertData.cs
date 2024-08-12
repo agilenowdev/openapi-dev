@@ -59,9 +59,6 @@ namespace Agile.Now.AccessHub.Model
         [DataMember(Name = "DepartmentTypeId", IsRequired = true, EmitDefaultValue = true)]
         public EnumDepartmentType DepartmentTypeId { get; set; }
 
-        [DataMember(Name = "Is_Deleted", EmitDefaultValue = true)]
-        public bool Is_Deleted { get; set; }
-
         /// <summary>
         /// Gets or Sets CountryId
         /// </summary>

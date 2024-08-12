@@ -60,63 +60,38 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="User" /> class.
         /// </summary>
-        /// <param name="id">The identifier of user department (required).</param>
-        /// <param name="userId">userId.</param>
-        /// <param name="modifiedOn">The date the record was updated (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        /// <param name="modifiedBy">modifiedBy.</param>
-        /// <param name="createdBy">createdBy.</param>
-        /// <param name="createdOn">The date the record was created (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public User(string id = default, AbstractLong userId = default, DateTime modifiedOn = default, AbstractLong modifiedBy = default, AbstractLong createdBy = default, DateTime createdOn = default)
+        /// <param name="id">The identifier of user access group (required) (default to 0).</param>
+        /// <param name="userId">userId (required).</param>
+        /// <param name="createdOn">The date when the record was created. (required) (default to &quot;1900-01-01T00:00Z&quot;).</param>
+        public User(long id = 0, AbstractLong userId = default, DateTime createdOn = default)
         {
-            // to ensure "id" is required (not null)
-            id = id ?? throw new ArgumentNullException("id is a required property for User and cannot be null");
             Id = id;
+            // to ensure "userId" is required (not null)
+            userId = userId ?? throw new ArgumentNullException("userId is a required property for User and cannot be null");
             UserId = userId;
-            ModifiedOn = modifiedOn;
-            ModifiedBy = modifiedBy;
-            CreatedBy = createdBy;
             CreatedOn = createdOn;
         }
 
         /// <summary>
-        /// The identifier of user department
+        /// The identifier of user access group
         /// </summary>
-        /// <value>The identifier of user department</value>
+        /// <value>The identifier of user access group</value>
+        /// <example>0</example>
         [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
-        public string Id { get; set; }
+        public long Id { get; set; }
 
         /// <summary>
         /// Gets or Sets UserId
         /// </summary>
-        [DataMember(Name = "UserId", EmitDefaultValue = false)]
+        [DataMember(Name = "UserId", IsRequired = true, EmitDefaultValue = true)]
         public AbstractLong UserId { get; set; }
 
         /// <summary>
-        /// The date the record was updated
+        /// The date when the record was created.
         /// </summary>
-        /// <value>The date the record was updated</value>
+        /// <value>The date when the record was created.</value>
         /// <example>1900-01-01T00:00Z</example>
-        [DataMember(Name = "ModifiedOn", EmitDefaultValue = false)]
-        public DateTime ModifiedOn { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ModifiedBy
-        /// </summary>
-        [DataMember(Name = "ModifiedBy", EmitDefaultValue = false)]
-        public AbstractLong ModifiedBy { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CreatedBy
-        /// </summary>
-        [DataMember(Name = "CreatedBy", EmitDefaultValue = false)]
-        public AbstractLong CreatedBy { get; set; }
-
-        /// <summary>
-        /// The date the record was created
-        /// </summary>
-        /// <value>The date the record was created</value>
-        /// <example>1900-01-01T00:00Z</example>
-        [DataMember(Name = "CreatedOn", EmitDefaultValue = false)]
+        [DataMember(Name = "CreatedOn", IsRequired = true, EmitDefaultValue = true)]
         public DateTime CreatedOn { get; set; }
 
         /// <summary>
@@ -129,9 +104,6 @@ namespace Agile.Now.AccessHub.Model
             sb.Append("class User {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
-            sb.Append("  ModifiedOn: ").Append(ModifiedOn).Append("\n");
-            sb.Append("  ModifiedBy: ").Append(ModifiedBy).Append("\n");
-            sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

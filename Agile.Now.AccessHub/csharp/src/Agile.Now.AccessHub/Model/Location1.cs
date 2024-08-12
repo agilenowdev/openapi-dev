@@ -49,85 +49,59 @@ namespace Agile.Now.AccessHub.Model
     /// <summary>
     /// The record of Location information.
     /// </summary>
-    [DataContract(Name = "LocationInsertData")]
-    public partial class LocationInsertData : IValidatableObject
+    [DataContract(Name = "Location1")]
+    public partial class Location1 : IValidatableObject
     {
-
         /// <summary>
-        /// Gets or Sets CountryId
-        /// </summary>
-        [DataMember(Name = "CountryId", EmitDefaultValue = false)]
-        public EnumCountry? CountryId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TimezoneId
-        /// </summary>
-        [DataMember(Name = "TimezoneId", EmitDefaultValue = false)]
-        public EnumTimezone? TimezoneId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CurrencyId
-        /// </summary>
-        [DataMember(Name = "CurrencyId", EmitDefaultValue = false)]
-        public EnumCurrency? CurrencyId { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="LocationInsertData" /> class.
+        /// Initializes a new instance of the <see cref="Location1" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected LocationInsertData() { }
+        protected Location1() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="LocationInsertData" /> class.
+        /// Initializes a new instance of the <see cref="Location1" /> class.
         /// </summary>
-        /// <param name="id">The guid to identify the location. (required).</param>
-        /// <param name="externalId">The external identifier of the location..</param>
-        /// <param name="name">The name of the location. The value must be unique in the system and you cannot add multiple values. (required).</param>
-        /// <param name="countryId">countryId.</param>
-        /// <param name="timezoneId">timezoneId.</param>
-        /// <param name="currencyId">currencyId.</param>
-        /// <param name="isDeleted">Defines if the location is deleted and cannot be used. (default to false).</param>
-        public LocationInsertData(string id = default, string externalId = default, string name = default, EnumCountry? countryId = default, EnumTimezone? timezoneId = default, EnumCurrency? currencyId = default, bool isDeleted = false)
+        /// <param name="id">The identifier of user location (required).</param>
+        /// <param name="locationId">locationId.</param>
+        /// <param name="modifiedOn">The date the record was updated (default to &quot;1900-01-01T00:00Z&quot;).</param>
+        /// <param name="createdOn">The date the record was created (default to &quot;1900-01-01T00:00Z&quot;).</param>
+        public Location1(string id = default, AbstractText locationId = default, DateTime modifiedOn = default, DateTime createdOn = default)
         {
             // to ensure "id" is required (not null)
-            id = id ?? throw new ArgumentNullException("id is a required property for LocationInsertData and cannot be null");
+            id = id ?? throw new ArgumentNullException("id is a required property for Location1 and cannot be null");
             Id = id;
-            // to ensure "name" is required (not null)
-            name = name ?? throw new ArgumentNullException("name is a required property for LocationInsertData and cannot be null");
-            Name = name;
-            ExternalId = externalId;
-            CountryId = countryId;
-            TimezoneId = timezoneId;
-            CurrencyId = currencyId;
-            IsDeleted = isDeleted;
+            LocationId = locationId;
+            ModifiedOn = modifiedOn;
+            CreatedOn = createdOn;
         }
 
         /// <summary>
-        /// The guid to identify the location.
+        /// The identifier of user location
         /// </summary>
-        /// <value>The guid to identify the location.</value>
+        /// <value>The identifier of user location</value>
         [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>
-        /// The external identifier of the location.
+        /// Gets or Sets LocationId
         /// </summary>
-        /// <value>The external identifier of the location.</value>
-        [DataMember(Name = "ExternalId", EmitDefaultValue = false)]
-        public string ExternalId { get; set; }
+        [DataMember(Name = "LocationId", EmitDefaultValue = false)]
+        public AbstractText LocationId { get; set; }
 
         /// <summary>
-        /// The name of the location. The value must be unique in the system and you cannot add multiple values.
+        /// The date the record was updated
         /// </summary>
-        /// <value>The name of the location. The value must be unique in the system and you cannot add multiple values.</value>
-        [DataMember(Name = "Name", IsRequired = true, EmitDefaultValue = true)]
-        public string Name { get; set; }
+        /// <value>The date the record was updated</value>
+        /// <example>1900-01-01T00:00Z</example>
+        [DataMember(Name = "ModifiedOn", EmitDefaultValue = false)]
+        public DateTime ModifiedOn { get; set; }
 
         /// <summary>
-        /// Defines if the location is deleted and cannot be used.
+        /// The date the record was created
         /// </summary>
-        /// <value>Defines if the location is deleted and cannot be used.</value>
-        /// <example>false</example>
-        [DataMember(Name = "Is_Deleted", EmitDefaultValue = true)]
-        public bool IsDeleted { get; set; }
+        /// <value>The date the record was created</value>
+        /// <example>1900-01-01T00:00Z</example>
+        [DataMember(Name = "CreatedOn", EmitDefaultValue = false)]
+        public DateTime CreatedOn { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -136,14 +110,11 @@ namespace Agile.Now.AccessHub.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class LocationInsertData {\n");
+            sb.Append("class Location1 {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  CountryId: ").Append(CountryId).Append("\n");
-            sb.Append("  TimezoneId: ").Append(TimezoneId).Append("\n");
-            sb.Append("  CurrencyId: ").Append(CurrencyId).Append("\n");
-            sb.Append("  IsDeleted: ").Append(IsDeleted).Append("\n");
+            sb.Append("  LocationId: ").Append(LocationId).Append("\n");
+            sb.Append("  ModifiedOn: ").Append(ModifiedOn).Append("\n");
+            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

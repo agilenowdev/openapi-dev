@@ -47,27 +47,27 @@ using OpenAPIDateConverter = Agile.Now.AccessHub.Client.OpenAPIDateConverter;
 namespace Agile.Now.AccessHub.Model
 {
     /// <summary>
-    /// The record of User information.
+    /// The record of AccessGroup information.
     /// </summary>
-    [DataContract(Name = "UserData")]
-    public partial class UserData : IValidatableObject
+    [DataContract(Name = "AccessGroupData1")]
+    public partial class AccessGroupData1 : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="UserData" /> class.
+        /// Initializes a new instance of the <see cref="AccessGroupData1" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected UserData() { }
+        protected AccessGroupData1() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="UserData" /> class.
+        /// Initializes a new instance of the <see cref="AccessGroupData1" /> class.
         /// </summary>
         /// <param name="id">The identifier of user access group. (default to 0).</param>
-        /// <param name="userId">userId (required).</param>
+        /// <param name="accessGroupId">accessGroupId (required).</param>
         /// <param name="createdOn">The date when the record was created. (required) (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public UserData(long id = 0, FieldType userId = default, DateTime createdOn = default)
+        public AccessGroupData1(long id = 0, FieldType accessGroupId = default, DateTime createdOn = default)
         {
-            // to ensure "userId" is required (not null)
-            userId = userId ?? throw new ArgumentNullException("userId is a required property for UserData and cannot be null");
-            UserId = userId;
+            // to ensure "accessGroupId" is required (not null)
+            accessGroupId = accessGroupId ?? throw new ArgumentNullException("accessGroupId is a required property for AccessGroupData1 and cannot be null");
+            AccessGroupId = accessGroupId;
             CreatedOn = createdOn;
             Id = id;
         }
@@ -81,10 +81,10 @@ namespace Agile.Now.AccessHub.Model
         public long Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets UserId
+        /// Gets or Sets AccessGroupId
         /// </summary>
-        [DataMember(Name = "UserId", IsRequired = true, EmitDefaultValue = true)]
-        public FieldType UserId { get; set; }
+        [DataMember(Name = "AccessGroupId", IsRequired = true, EmitDefaultValue = true)]
+        public FieldType AccessGroupId { get; set; }
 
         /// <summary>
         /// The date when the record was created.
@@ -101,9 +101,9 @@ namespace Agile.Now.AccessHub.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class UserData {\n");
+            sb.Append("class AccessGroupData1 {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  UserId: ").Append(UserId).Append("\n");
+            sb.Append("  AccessGroupId: ").Append(AccessGroupId).Append("\n");
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

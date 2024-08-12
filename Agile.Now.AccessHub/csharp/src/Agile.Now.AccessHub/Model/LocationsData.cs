@@ -47,52 +47,45 @@ using OpenAPIDateConverter = Agile.Now.AccessHub.Client.OpenAPIDateConverter;
 namespace Agile.Now.AccessHub.Model
 {
     /// <summary>
-    /// The record of User information.
+    /// The data loading record of Location importing
     /// </summary>
-    [DataContract(Name = "UserData")]
-    public partial class UserData : IValidatableObject
+    [DataContract(Name = "LocationsData")]
+    public partial class LocationsData : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="UserData" /> class.
+        /// Initializes a new instance of the <see cref="LocationsData" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected UserData() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UserData" /> class.
-        /// </summary>
-        /// <param name="id">The identifier of user access group. (default to 0).</param>
-        /// <param name="userId">userId (required).</param>
-        /// <param name="createdOn">The date when the record was created. (required) (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public UserData(long id = 0, FieldType userId = default, DateTime createdOn = default)
+        /// <param name="extra">List validation for entity attribute.</param>
+        /// <param name="isFullValidation">If the value is true, the data quality of all fields are checked. This has an effect on performance. (default to false).</param>
+        /// <param name="locations">The list of `Location` data record for import.</param>
+        public LocationsData(List<ListValidation> extra = default, bool isFullValidation = false, List<LocationText> locations = default)
         {
-            // to ensure "userId" is required (not null)
-            userId = userId ?? throw new ArgumentNullException("userId is a required property for UserData and cannot be null");
-            UserId = userId;
-            CreatedOn = createdOn;
-            Id = id;
+            Extra = extra;
+            IsFullValidation = isFullValidation;
+            Locations = locations;
         }
 
         /// <summary>
-        /// The identifier of user access group.
+        /// List validation for entity attribute
         /// </summary>
-        /// <value>The identifier of user access group.</value>
-        /// <example>0</example>
-        [DataMember(Name = "Id", EmitDefaultValue = false)]
-        public long Id { get; set; }
+        /// <value>List validation for entity attribute</value>
+        [DataMember(Name = "Extra", EmitDefaultValue = false)]
+        public List<ListValidation> Extra { get; set; }
 
         /// <summary>
-        /// Gets or Sets UserId
+        /// If the value is true, the data quality of all fields are checked. This has an effect on performance.
         /// </summary>
-        [DataMember(Name = "UserId", IsRequired = true, EmitDefaultValue = true)]
-        public FieldType UserId { get; set; }
+        /// <value>If the value is true, the data quality of all fields are checked. This has an effect on performance.</value>
+        /// <example>false</example>
+        [DataMember(Name = "IsFullValidation", EmitDefaultValue = true)]
+        public bool IsFullValidation { get; set; }
 
         /// <summary>
-        /// The date when the record was created.
+        /// The list of `Location` data record for import
         /// </summary>
-        /// <value>The date when the record was created.</value>
-        /// <example>1900-01-01T00:00Z</example>
-        [DataMember(Name = "CreatedOn", IsRequired = true, EmitDefaultValue = true)]
-        public DateTime CreatedOn { get; set; }
+        /// <value>The list of &#x60;Location&#x60; data record for import</value>
+        [DataMember(Name = "Locations", EmitDefaultValue = false)]
+        public List<LocationText> Locations { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -101,10 +94,10 @@ namespace Agile.Now.AccessHub.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class UserData {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  UserId: ").Append(UserId).Append("\n");
-            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
+            sb.Append("class LocationsData {\n");
+            sb.Append("  Extra: ").Append(Extra).Append("\n");
+            sb.Append("  IsFullValidation: ").Append(IsFullValidation).Append("\n");
+            sb.Append("  Locations: ").Append(Locations).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

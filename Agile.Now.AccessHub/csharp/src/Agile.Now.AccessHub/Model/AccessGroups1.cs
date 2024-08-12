@@ -47,52 +47,34 @@ using OpenAPIDateConverter = Agile.Now.AccessHub.Client.OpenAPIDateConverter;
 namespace Agile.Now.AccessHub.Model
 {
     /// <summary>
-    /// The record of User information.
+    /// The list of `AccessGroup` records
     /// </summary>
-    [DataContract(Name = "UserData")]
-    public partial class UserData : IValidatableObject
+    [DataContract(Name = "AccessGroups1")]
+    public partial class AccessGroups1 : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="UserData" /> class.
+        /// Initializes a new instance of the <see cref="AccessGroups1" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected UserData() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UserData" /> class.
-        /// </summary>
-        /// <param name="id">The identifier of user access group. (default to 0).</param>
-        /// <param name="userId">userId (required).</param>
-        /// <param name="createdOn">The date when the record was created. (required) (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public UserData(long id = 0, FieldType userId = default, DateTime createdOn = default)
+        /// <param name="meta">meta.</param>
+        /// <param name="data">The list of `AccessGroup records`.</param>
+        public AccessGroups1(Meta meta = default, List<AccessGroup1> data = default)
         {
-            // to ensure "userId" is required (not null)
-            userId = userId ?? throw new ArgumentNullException("userId is a required property for UserData and cannot be null");
-            UserId = userId;
-            CreatedOn = createdOn;
-            Id = id;
+            Meta = meta;
+            Data = data;
         }
 
         /// <summary>
-        /// The identifier of user access group.
+        /// Gets or Sets Meta
         /// </summary>
-        /// <value>The identifier of user access group.</value>
-        /// <example>0</example>
-        [DataMember(Name = "Id", EmitDefaultValue = false)]
-        public long Id { get; set; }
+        [DataMember(Name = "Meta", EmitDefaultValue = false)]
+        public Meta Meta { get; set; }
 
         /// <summary>
-        /// Gets or Sets UserId
+        /// The list of `AccessGroup records`
         /// </summary>
-        [DataMember(Name = "UserId", IsRequired = true, EmitDefaultValue = true)]
-        public FieldType UserId { get; set; }
-
-        /// <summary>
-        /// The date when the record was created.
-        /// </summary>
-        /// <value>The date when the record was created.</value>
-        /// <example>1900-01-01T00:00Z</example>
-        [DataMember(Name = "CreatedOn", IsRequired = true, EmitDefaultValue = true)]
-        public DateTime CreatedOn { get; set; }
+        /// <value>The list of &#x60;AccessGroup records&#x60;</value>
+        [DataMember(Name = "Data", EmitDefaultValue = false)]
+        public List<AccessGroup1> Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -101,10 +83,9 @@ namespace Agile.Now.AccessHub.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class UserData {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  UserId: ").Append(UserId).Append("\n");
-            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
+            sb.Append("class AccessGroups1 {\n");
+            sb.Append("  Meta: ").Append(Meta).Append("\n");
+            sb.Append("  Data: ").Append(Data).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

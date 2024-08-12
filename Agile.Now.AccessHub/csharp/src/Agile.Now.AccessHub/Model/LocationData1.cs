@@ -47,52 +47,34 @@ using OpenAPIDateConverter = Agile.Now.AccessHub.Client.OpenAPIDateConverter;
 namespace Agile.Now.AccessHub.Model
 {
     /// <summary>
-    /// The record of User information.
+    /// The record of Location information.
     /// </summary>
-    [DataContract(Name = "UserData")]
-    public partial class UserData : IValidatableObject
+    [DataContract(Name = "LocationData1")]
+    public partial class LocationData1 : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="UserData" /> class.
+        /// Initializes a new instance of the <see cref="LocationData1" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected UserData() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UserData" /> class.
-        /// </summary>
-        /// <param name="id">The identifier of user access group. (default to 0).</param>
-        /// <param name="userId">userId (required).</param>
-        /// <param name="createdOn">The date when the record was created. (required) (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public UserData(long id = 0, FieldType userId = default, DateTime createdOn = default)
+        /// <param name="id">The identifier of user location..</param>
+        /// <param name="locationId">locationId.</param>
+        public LocationData1(string id = default, FieldType locationId = default)
         {
-            // to ensure "userId" is required (not null)
-            userId = userId ?? throw new ArgumentNullException("userId is a required property for UserData and cannot be null");
-            UserId = userId;
-            CreatedOn = createdOn;
             Id = id;
+            LocationId = locationId;
         }
 
         /// <summary>
-        /// The identifier of user access group.
+        /// The identifier of user location.
         /// </summary>
-        /// <value>The identifier of user access group.</value>
-        /// <example>0</example>
+        /// <value>The identifier of user location.</value>
         [DataMember(Name = "Id", EmitDefaultValue = false)]
-        public long Id { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets UserId
+        /// Gets or Sets LocationId
         /// </summary>
-        [DataMember(Name = "UserId", IsRequired = true, EmitDefaultValue = true)]
-        public FieldType UserId { get; set; }
-
-        /// <summary>
-        /// The date when the record was created.
-        /// </summary>
-        /// <value>The date when the record was created.</value>
-        /// <example>1900-01-01T00:00Z</example>
-        [DataMember(Name = "CreatedOn", IsRequired = true, EmitDefaultValue = true)]
-        public DateTime CreatedOn { get; set; }
+        [DataMember(Name = "LocationId", EmitDefaultValue = false)]
+        public FieldType LocationId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -101,10 +83,9 @@ namespace Agile.Now.AccessHub.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class UserData {\n");
+            sb.Append("class LocationData1 {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  UserId: ").Append(UserId).Append("\n");
-            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
+            sb.Append("  LocationId: ").Append(LocationId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

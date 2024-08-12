@@ -78,17 +78,17 @@ namespace Example
             // Configure OAuth2 access token for authorization: OAuth2
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
-            var apiInstance = new AccountsApi(config);
-            var accountData = new AccountData(); // AccountData | `Account` information to insert.  The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.
+            var apiInstance = new AccessGroupsApi(config);
+            var accessGroupData = new AccessGroupData(); // AccessGroupData | `AccessGroup` information to insert.  The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.
 
             try
             {
-                Account result = apiInstance.CreateAccount(accountData);
+                AccessGroup result = apiInstance.CreateAccessGroup(accessGroupData);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
             {
-                Debug.Print("Exception when calling AccountsApi.CreateAccount: " + e.Message );
+                Debug.Print("Exception when calling AccessGroupsApi.CreateAccessGroup: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -105,6 +105,24 @@ All URIs are relative to *https://dev.esystems.fi*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AccessGroupsApi* | [**CreateAccessGroup**](docs/AccessGroupsApi.md#createaccessgroup) | **POST** /Endpoint/rest/api/v1/AccessGroup | 
+*AccessGroupsApi* | [**DeleteAccessGroup**](docs/AccessGroupsApi.md#deleteaccessgroup) | **DELETE** /Endpoint/rest/api/v1/AccessGroup/{Id} | 
+*AccessGroupsApi* | [**DeleteAccessGroupApplication**](docs/AccessGroupsApi.md#deleteaccessgroupapplication) | **DELETE** /Endpoint/rest/api/v1/AccessGroup/{Id}/Application/{SubId} | 
+*AccessGroupsApi* | [**DeleteAccessGroupGroup**](docs/AccessGroupsApi.md#deleteaccessgroupgroup) | **DELETE** /Endpoint/rest/api/v1/AccessGroup/{Id}/Group/{SubId} | 
+*AccessGroupsApi* | [**DeleteAccessGroupUser**](docs/AccessGroupsApi.md#deleteaccessgroupuser) | **DELETE** /Endpoint/rest/api/v1/AccessGroup/{Id}/User/{SubId} | 
+*AccessGroupsApi* | [**GetAccessGroup**](docs/AccessGroupsApi.md#getaccessgroup) | **GET** /Endpoint/rest/api/v1/AccessGroup/{Id} | 
+*AccessGroupsApi* | [**ListAccessGroupApplications**](docs/AccessGroupsApi.md#listaccessgroupapplications) | **GET** /Endpoint/rest/api/v1/AccessGroup/{Id}/Applications | 
+*AccessGroupsApi* | [**ListAccessGroupGroups**](docs/AccessGroupsApi.md#listaccessgroupgroups) | **GET** /Endpoint/rest/api/v1/AccessGroup/{Id}/Groups | 
+*AccessGroupsApi* | [**ListAccessGroupUsers**](docs/AccessGroupsApi.md#listaccessgroupusers) | **GET** /Endpoint/rest/api/v1/AccessGroup/{Id}/Users | 
+*AccessGroupsApi* | [**ListAccessGroups**](docs/AccessGroupsApi.md#listaccessgroups) | **GET** /Endpoint/rest/api/v1/AccessGroups | 
+*AccessGroupsApi* | [**PatchAccessGroupApplications**](docs/AccessGroupsApi.md#patchaccessgroupapplications) | **PATCH** /Endpoint/rest/api/v1/AccessGroup/{Id}/Applications | 
+*AccessGroupsApi* | [**PatchAccessGroupGroups**](docs/AccessGroupsApi.md#patchaccessgroupgroups) | **PATCH** /Endpoint/rest/api/v1/AccessGroup/{Id}/Groups | 
+*AccessGroupsApi* | [**PatchAccessGroupUsers**](docs/AccessGroupsApi.md#patchaccessgroupusers) | **PATCH** /Endpoint/rest/api/v1/AccessGroup/{Id}/Users | 
+*AccessGroupsApi* | [**UpdateAccessGroup**](docs/AccessGroupsApi.md#updateaccessgroup) | **PUT** /Endpoint/rest/api/v1/AccessGroup/{Id} | 
+*AccessGroupsApi* | [**UpsertAccessGroup**](docs/AccessGroupsApi.md#upsertaccessgroup) | **PATCH** /Endpoint/rest/api/v1/AccessGroup | 
+*AccessGroupsApi* | [**UpsertAccessGroupApplication**](docs/AccessGroupsApi.md#upsertaccessgroupapplication) | **POST** /Endpoint/rest/api/v1/AccessGroup/{Id}/Application | 
+*AccessGroupsApi* | [**UpsertAccessGroupGroup**](docs/AccessGroupsApi.md#upsertaccessgroupgroup) | **POST** /Endpoint/rest/api/v1/AccessGroup/{Id}/Group | 
+*AccessGroupsApi* | [**UpsertAccessGroupUser**](docs/AccessGroupsApi.md#upsertaccessgroupuser) | **POST** /Endpoint/rest/api/v1/AccessGroup/{Id}/User | 
 *AccountsApi* | [**CreateAccount**](docs/AccountsApi.md#createaccount) | **POST** /Endpoint/rest/api/v1/Account | 
 *AccountsApi* | [**DeleteAccount**](docs/AccountsApi.md#deleteaccount) | **DELETE** /Endpoint/rest/api/v1/Account/{Id} | 
 *AccountsApi* | [**DeleteAccountPicture**](docs/AccountsApi.md#deleteaccountpicture) | **DELETE** /Endpoint/rest/api/v1/Account/{Id}/Picture/{SubId} | 
@@ -139,6 +157,17 @@ Class | Method | HTTP request | Description
 *DepartmentsApi* | [**UpsertDepartmentUser**](docs/DepartmentsApi.md#upsertdepartmentuser) | **POST** /Endpoint/rest/api/v1/Department/{Id}/User | 
 *EntitiesApi* | [**GetEntity**](docs/EntitiesApi.md#getentity) | **GET** /Endpoint/rest/api/v1/Entity/{Id} | 
 *EntitiesApi* | [**ListEntities**](docs/EntitiesApi.md#listentities) | **GET** /Endpoint/rest/api/v1/Entities | 
+*GroupExternalsApi* | [**CreateGroupExternal**](docs/GroupExternalsApi.md#creategroupexternal) | **POST** /Endpoint/rest/api/v1/GroupExternal | 
+*GroupExternalsApi* | [**DeleteGroupExternal**](docs/GroupExternalsApi.md#deletegroupexternal) | **DELETE** /Endpoint/rest/api/v1/GroupExternal/{Id} | 
+*GroupExternalsApi* | [**DeleteGroupExternalUserExternal**](docs/GroupExternalsApi.md#deletegroupexternaluserexternal) | **DELETE** /Endpoint/rest/api/v1/GroupExternal/{Id}/UserExternal/{SubId} | 
+*GroupExternalsApi* | [**GetGroupExternal**](docs/GroupExternalsApi.md#getgroupexternal) | **GET** /Endpoint/rest/api/v1/GroupExternal/{Id} | 
+*GroupExternalsApi* | [**ListGroupExternalUserExternals**](docs/GroupExternalsApi.md#listgroupexternaluserexternals) | **GET** /Endpoint/rest/api/v1/GroupExternal/{Id}/UserExternals | 
+*GroupExternalsApi* | [**ListGroupExternals**](docs/GroupExternalsApi.md#listgroupexternals) | **GET** /Endpoint/rest/api/v1/GroupExternals | 
+*GroupExternalsApi* | [**PatchGroupExternalUserExternals**](docs/GroupExternalsApi.md#patchgroupexternaluserexternals) | **PATCH** /Endpoint/rest/api/v1/GroupExternal/{Id}/UserExternals | 
+*GroupExternalsApi* | [**PatchGroupExternals**](docs/GroupExternalsApi.md#patchgroupexternals) | **PATCH** /Endpoint/rest/api/v1/GroupExternals/Json | 
+*GroupExternalsApi* | [**UpdateGroupExternal**](docs/GroupExternalsApi.md#updategroupexternal) | **PUT** /Endpoint/rest/api/v1/GroupExternal/{Id} | 
+*GroupExternalsApi* | [**UpsertGroupExternal**](docs/GroupExternalsApi.md#upsertgroupexternal) | **PATCH** /Endpoint/rest/api/v1/GroupExternal | 
+*GroupExternalsApi* | [**UpsertGroupExternalUserExternal**](docs/GroupExternalsApi.md#upsertgroupexternaluserexternal) | **POST** /Endpoint/rest/api/v1/GroupExternal/{Id}/UserExternal | 
 *LocationsApi* | [**CreateLocation**](docs/LocationsApi.md#createlocation) | **POST** /Endpoint/rest/api/v1/Location | 
 *LocationsApi* | [**DeleteLocation**](docs/LocationsApi.md#deletelocation) | **DELETE** /Endpoint/rest/api/v1/Location/{Id} | 
 *LocationsApi* | [**DeleteLocationUser**](docs/LocationsApi.md#deletelocationuser) | **DELETE** /Endpoint/rest/api/v1/Location/{Id}/User/{SubId} | 
@@ -149,6 +178,25 @@ Class | Method | HTTP request | Description
 *LocationsApi* | [**UpdateLocation**](docs/LocationsApi.md#updatelocation) | **PUT** /Endpoint/rest/api/v1/Location/{Id} | 
 *LocationsApi* | [**UpsertLocation**](docs/LocationsApi.md#upsertlocation) | **PATCH** /Endpoint/rest/api/v1/Location | 
 *LocationsApi* | [**UpsertLocationUser**](docs/LocationsApi.md#upsertlocationuser) | **POST** /Endpoint/rest/api/v1/Location/{Id}/User | 
+*UsersApi* | [**DeleteUserAccessGroup**](docs/UsersApi.md#deleteuseraccessgroup) | **DELETE** /Endpoint/rest/api/v1/User/{Id}/AccessGroup/{SubId} | 
+*UsersApi* | [**DeleteUserDepartment**](docs/UsersApi.md#deleteuserdepartment) | **DELETE** /Endpoint/rest/api/v1/User/{Id}/Department/{SubId} | 
+*UsersApi* | [**DeleteUserGroup**](docs/UsersApi.md#deleteusergroup) | **DELETE** /Endpoint/rest/api/v1/User/{Id}/Group/{SubId} | 
+*UsersApi* | [**DeleteUserLocation**](docs/UsersApi.md#deleteuserlocation) | **DELETE** /Endpoint/rest/api/v1/User/{Id}/Location/{SubId} | 
+*UsersApi* | [**GetUser**](docs/UsersApi.md#getuser) | **GET** /Endpoint/rest/api/v1/User/{Id} | 
+*UsersApi* | [**ListUserAccessGroups**](docs/UsersApi.md#listuseraccessgroups) | **GET** /Endpoint/rest/api/v1/User/{Id}/AccessGroups | 
+*UsersApi* | [**ListUserAccessRoles**](docs/UsersApi.md#listuseraccessroles) | **GET** /Endpoint/rest/api/v1/User/{Id}/AccessRoles | 
+*UsersApi* | [**ListUserApplications**](docs/UsersApi.md#listuserapplications) | **GET** /Endpoint/rest/api/v1/User/{Id}/Applications | 
+*UsersApi* | [**ListUserDepartments**](docs/UsersApi.md#listuserdepartments) | **GET** /Endpoint/rest/api/v1/User/{Id}/Departments | 
+*UsersApi* | [**ListUserEffectivePermissions**](docs/UsersApi.md#listusereffectivepermissions) | **GET** /Endpoint/rest/api/v1/User/{Id}/EffectivePermissions | 
+*UsersApi* | [**ListUserGroups**](docs/UsersApi.md#listusergroups) | **GET** /Endpoint/rest/api/v1/User/{Id}/Groups | 
+*UsersApi* | [**ListUserLocations**](docs/UsersApi.md#listuserlocations) | **GET** /Endpoint/rest/api/v1/User/{Id}/Locations | 
+*UsersApi* | [**ListUsers**](docs/UsersApi.md#listusers) | **GET** /Endpoint/rest/api/v1/Users | 
+*UsersApi* | [**PatchUserDepartments**](docs/UsersApi.md#patchuserdepartments) | **PATCH** /Endpoint/rest/api/v1/User/{Id}/Departments | 
+*UsersApi* | [**PatchUserLocations**](docs/UsersApi.md#patchuserlocations) | **PATCH** /Endpoint/rest/api/v1/User/{Id}/Locations | 
+*UsersApi* | [**UpsertUserAccessGroup**](docs/UsersApi.md#upsertuseraccessgroup) | **POST** /Endpoint/rest/api/v1/User/{Id}/AccessGroup | 
+*UsersApi* | [**UpsertUserDepartment**](docs/UsersApi.md#upsertuserdepartment) | **POST** /Endpoint/rest/api/v1/User/{Id}/Department | 
+*UsersApi* | [**UpsertUserGroup**](docs/UsersApi.md#upsertusergroup) | **POST** /Endpoint/rest/api/v1/User/{Id}/Group | 
+*UsersApi* | [**UpsertUserLocation**](docs/UsersApi.md#upsertuserlocation) | **POST** /Endpoint/rest/api/v1/User/{Id}/Location | 
 
 
 <a id="documentation-for-models"></a>
@@ -156,9 +204,24 @@ Class | Method | HTTP request | Description
 
  - [Model.AbstractLong](docs/models/AbstractLong.md)
  - [Model.AbstractText](docs/models/AbstractText.md)
+ - [Model.AccessGroup](docs/models/AccessGroup.md)
+ - [Model.AccessGroup1](docs/models/AccessGroup1.md)
+ - [Model.AccessGroupData](docs/models/AccessGroupData.md)
+ - [Model.AccessGroupData1](docs/models/AccessGroupData1.md)
+ - [Model.AccessGroups](docs/models/AccessGroups.md)
+ - [Model.AccessGroups1](docs/models/AccessGroups1.md)
+ - [Model.AccessRole](docs/models/AccessRole.md)
+ - [Model.AccessRoles](docs/models/AccessRoles.md)
  - [Model.Account](docs/models/Account.md)
  - [Model.AccountData](docs/models/AccountData.md)
  - [Model.Accounts](docs/models/Accounts.md)
+ - [Model.Application](docs/models/Application.md)
+ - [Model.Application1](docs/models/Application1.md)
+ - [Model.ApplicationData](docs/models/ApplicationData.md)
+ - [Model.ApplicationText](docs/models/ApplicationText.md)
+ - [Model.Applications](docs/models/Applications.md)
+ - [Model.Applications1](docs/models/Applications1.md)
+ - [Model.ApplicationsData](docs/models/ApplicationsData.md)
  - [Model.Config](docs/models/Config.md)
  - [Model.ConfigData](docs/models/ConfigData.md)
  - [Model.ConfigText](docs/models/ConfigText.md)
@@ -168,12 +231,20 @@ Class | Method | HTTP request | Description
  - [Model.ConnectionData](docs/models/ConnectionData.md)
  - [Model.Connections](docs/models/Connections.md)
  - [Model.Department](docs/models/Department.md)
+ - [Model.Department1](docs/models/Department1.md)
  - [Model.DepartmentData](docs/models/DepartmentData.md)
+ - [Model.DepartmentData1](docs/models/DepartmentData1.md)
  - [Model.DepartmentInsertData](docs/models/DepartmentInsertData.md)
+ - [Model.DepartmentText](docs/models/DepartmentText.md)
  - [Model.DepartmentUpdateData](docs/models/DepartmentUpdateData.md)
  - [Model.Departments](docs/models/Departments.md)
+ - [Model.Departments1](docs/models/Departments1.md)
+ - [Model.DepartmentsData](docs/models/DepartmentsData.md)
+ - [Model.EffectivePermission](docs/models/EffectivePermission.md)
+ - [Model.EffectivePermissions](docs/models/EffectivePermissions.md)
  - [Model.Entities](docs/models/Entities.md)
  - [Model.Entity](docs/models/Entity.md)
+ - [Model.EnumAccessGroupType](docs/models/EnumAccessGroupType.md)
  - [Model.EnumCountry](docs/models/EnumCountry.md)
  - [Model.EnumCurrency](docs/models/EnumCurrency.md)
  - [Model.EnumDateFormat](docs/models/EnumDateFormat.md)
@@ -182,12 +253,30 @@ Class | Method | HTTP request | Description
  - [Model.EnumTimezone](docs/models/EnumTimezone.md)
  - [Model.Error](docs/models/Error.md)
  - [Model.FieldType](docs/models/FieldType.md)
+ - [Model.Group](docs/models/Group.md)
+ - [Model.Group1](docs/models/Group1.md)
+ - [Model.GroupData](docs/models/GroupData.md)
+ - [Model.GroupData1](docs/models/GroupData1.md)
+ - [Model.GroupExternal](docs/models/GroupExternal.md)
+ - [Model.GroupExternalData](docs/models/GroupExternalData.md)
+ - [Model.GroupExternalText](docs/models/GroupExternalText.md)
+ - [Model.GroupExternals](docs/models/GroupExternals.md)
+ - [Model.GroupExternalsData](docs/models/GroupExternalsData.md)
+ - [Model.GroupText](docs/models/GroupText.md)
+ - [Model.Groups](docs/models/Groups.md)
+ - [Model.Groups1](docs/models/Groups1.md)
+ - [Model.GroupsData](docs/models/GroupsData.md)
  - [Model.ListValidation](docs/models/ListValidation.md)
  - [Model.Location](docs/models/Location.md)
+ - [Model.Location1](docs/models/Location1.md)
  - [Model.LocationData](docs/models/LocationData.md)
+ - [Model.LocationData1](docs/models/LocationData1.md)
  - [Model.LocationInsertData](docs/models/LocationInsertData.md)
+ - [Model.LocationText](docs/models/LocationText.md)
  - [Model.LocationUpdateData](docs/models/LocationUpdateData.md)
  - [Model.Locations](docs/models/Locations.md)
+ - [Model.Locations1](docs/models/Locations1.md)
+ - [Model.LocationsData](docs/models/LocationsData.md)
  - [Model.Meta](docs/models/Meta.md)
  - [Model.Picture](docs/models/Picture.md)
  - [Model.PictureData](docs/models/PictureData.md)
@@ -196,10 +285,22 @@ Class | Method | HTTP request | Description
  - [Model.TenantData](docs/models/TenantData.md)
  - [Model.Tenants](docs/models/Tenants.md)
  - [Model.User](docs/models/User.md)
+ - [Model.User1](docs/models/User1.md)
+ - [Model.User2](docs/models/User2.md)
  - [Model.UserData](docs/models/UserData.md)
+ - [Model.UserData1](docs/models/UserData1.md)
+ - [Model.UserExternal](docs/models/UserExternal.md)
+ - [Model.UserExternalData](docs/models/UserExternalData.md)
+ - [Model.UserExternalText](docs/models/UserExternalText.md)
+ - [Model.UserExternals](docs/models/UserExternals.md)
+ - [Model.UserExternalsData](docs/models/UserExternalsData.md)
  - [Model.UserText](docs/models/UserText.md)
+ - [Model.UserText1](docs/models/UserText1.md)
  - [Model.Users](docs/models/Users.md)
+ - [Model.Users1](docs/models/Users1.md)
+ - [Model.Users2](docs/models/Users2.md)
  - [Model.UsersData](docs/models/UsersData.md)
+ - [Model.UsersData1](docs/models/UsersData1.md)
 
 
 <a id="documentation-for-authorization"></a>
