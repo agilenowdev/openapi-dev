@@ -59,6 +59,9 @@ namespace Agile.Now.AccessHub.Model
         [DataMember(Name = "CountryId", EmitDefaultValue = false)]
         public EnumCountry? CountryId { get; set; }
 
+        [DataMember(Name = "Is_Deleted", EmitDefaultValue = true)]
+        public bool Is_Deleted { get; set; }
+
         /// <summary>
         /// Gets or Sets TimezoneId
         /// </summary>
