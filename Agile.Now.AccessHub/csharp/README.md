@@ -178,25 +178,6 @@ Class | Method | HTTP request | Description
 *LocationsApi* | [**UpdateLocation**](docs/LocationsApi.md#updatelocation) | **PUT** /Endpoint/rest/api/v1/Location/{Id} | 
 *LocationsApi* | [**UpsertLocation**](docs/LocationsApi.md#upsertlocation) | **PATCH** /Endpoint/rest/api/v1/Location | 
 *LocationsApi* | [**UpsertLocationUser**](docs/LocationsApi.md#upsertlocationuser) | **POST** /Endpoint/rest/api/v1/Location/{Id}/User | 
-*UsersApi* | [**DeleteUserAccessGroup**](docs/UsersApi.md#deleteuseraccessgroup) | **DELETE** /Endpoint/rest/api/v1/User/{Id}/AccessGroup/{SubId} | 
-*UsersApi* | [**DeleteUserDepartment**](docs/UsersApi.md#deleteuserdepartment) | **DELETE** /Endpoint/rest/api/v1/User/{Id}/Department/{SubId} | 
-*UsersApi* | [**DeleteUserGroup**](docs/UsersApi.md#deleteusergroup) | **DELETE** /Endpoint/rest/api/v1/User/{Id}/Group/{SubId} | 
-*UsersApi* | [**DeleteUserLocation**](docs/UsersApi.md#deleteuserlocation) | **DELETE** /Endpoint/rest/api/v1/User/{Id}/Location/{SubId} | 
-*UsersApi* | [**GetUser**](docs/UsersApi.md#getuser) | **GET** /Endpoint/rest/api/v1/User/{Id} | 
-*UsersApi* | [**ListUserAccessGroups**](docs/UsersApi.md#listuseraccessgroups) | **GET** /Endpoint/rest/api/v1/User/{Id}/AccessGroups | 
-*UsersApi* | [**ListUserAccessRoles**](docs/UsersApi.md#listuseraccessroles) | **GET** /Endpoint/rest/api/v1/User/{Id}/AccessRoles | 
-*UsersApi* | [**ListUserApplications**](docs/UsersApi.md#listuserapplications) | **GET** /Endpoint/rest/api/v1/User/{Id}/Applications | 
-*UsersApi* | [**ListUserDepartments**](docs/UsersApi.md#listuserdepartments) | **GET** /Endpoint/rest/api/v1/User/{Id}/Departments | 
-*UsersApi* | [**ListUserEffectivePermissions**](docs/UsersApi.md#listusereffectivepermissions) | **GET** /Endpoint/rest/api/v1/User/{Id}/EffectivePermissions | 
-*UsersApi* | [**ListUserGroups**](docs/UsersApi.md#listusergroups) | **GET** /Endpoint/rest/api/v1/User/{Id}/Groups | 
-*UsersApi* | [**ListUserLocations**](docs/UsersApi.md#listuserlocations) | **GET** /Endpoint/rest/api/v1/User/{Id}/Locations | 
-*UsersApi* | [**ListUsers**](docs/UsersApi.md#listusers) | **GET** /Endpoint/rest/api/v1/Users | 
-*UsersApi* | [**PatchUserDepartments**](docs/UsersApi.md#patchuserdepartments) | **PATCH** /Endpoint/rest/api/v1/User/{Id}/Departments | 
-*UsersApi* | [**PatchUserLocations**](docs/UsersApi.md#patchuserlocations) | **PATCH** /Endpoint/rest/api/v1/User/{Id}/Locations | 
-*UsersApi* | [**UpsertUserAccessGroup**](docs/UsersApi.md#upsertuseraccessgroup) | **POST** /Endpoint/rest/api/v1/User/{Id}/AccessGroup | 
-*UsersApi* | [**UpsertUserDepartment**](docs/UsersApi.md#upsertuserdepartment) | **POST** /Endpoint/rest/api/v1/User/{Id}/Department | 
-*UsersApi* | [**UpsertUserGroup**](docs/UsersApi.md#upsertusergroup) | **POST** /Endpoint/rest/api/v1/User/{Id}/Group | 
-*UsersApi* | [**UpsertUserLocation**](docs/UsersApi.md#upsertuserlocation) | **POST** /Endpoint/rest/api/v1/User/{Id}/Location | 
 
 
 <a id="documentation-for-models"></a>
@@ -205,22 +186,15 @@ Class | Method | HTTP request | Description
  - [Model.AbstractLong](docs/models/AbstractLong.md)
  - [Model.AbstractText](docs/models/AbstractText.md)
  - [Model.AccessGroup](docs/models/AccessGroup.md)
- - [Model.AccessGroup1](docs/models/AccessGroup1.md)
  - [Model.AccessGroupData](docs/models/AccessGroupData.md)
- - [Model.AccessGroupData1](docs/models/AccessGroupData1.md)
  - [Model.AccessGroups](docs/models/AccessGroups.md)
- - [Model.AccessGroups1](docs/models/AccessGroups1.md)
- - [Model.AccessRole](docs/models/AccessRole.md)
- - [Model.AccessRoles](docs/models/AccessRoles.md)
  - [Model.Account](docs/models/Account.md)
  - [Model.AccountData](docs/models/AccountData.md)
  - [Model.Accounts](docs/models/Accounts.md)
  - [Model.Application](docs/models/Application.md)
- - [Model.Application1](docs/models/Application1.md)
  - [Model.ApplicationData](docs/models/ApplicationData.md)
  - [Model.ApplicationText](docs/models/ApplicationText.md)
  - [Model.Applications](docs/models/Applications.md)
- - [Model.Applications1](docs/models/Applications1.md)
  - [Model.ApplicationsData](docs/models/ApplicationsData.md)
  - [Model.Config](docs/models/Config.md)
  - [Model.ConfigData](docs/models/ConfigData.md)
@@ -231,17 +205,10 @@ Class | Method | HTTP request | Description
  - [Model.ConnectionData](docs/models/ConnectionData.md)
  - [Model.Connections](docs/models/Connections.md)
  - [Model.Department](docs/models/Department.md)
- - [Model.Department1](docs/models/Department1.md)
  - [Model.DepartmentData](docs/models/DepartmentData.md)
- - [Model.DepartmentData1](docs/models/DepartmentData1.md)
  - [Model.DepartmentInsertData](docs/models/DepartmentInsertData.md)
- - [Model.DepartmentText](docs/models/DepartmentText.md)
  - [Model.DepartmentUpdateData](docs/models/DepartmentUpdateData.md)
  - [Model.Departments](docs/models/Departments.md)
- - [Model.Departments1](docs/models/Departments1.md)
- - [Model.DepartmentsData](docs/models/DepartmentsData.md)
- - [Model.EffectivePermission](docs/models/EffectivePermission.md)
- - [Model.EffectivePermissions](docs/models/EffectivePermissions.md)
  - [Model.Entities](docs/models/Entities.md)
  - [Model.Entity](docs/models/Entity.md)
  - [Model.EnumAccessGroupType](docs/models/EnumAccessGroupType.md)
@@ -254,9 +221,7 @@ Class | Method | HTTP request | Description
  - [Model.Error](docs/models/Error.md)
  - [Model.FieldType](docs/models/FieldType.md)
  - [Model.Group](docs/models/Group.md)
- - [Model.Group1](docs/models/Group1.md)
  - [Model.GroupData](docs/models/GroupData.md)
- - [Model.GroupData1](docs/models/GroupData1.md)
  - [Model.GroupExternal](docs/models/GroupExternal.md)
  - [Model.GroupExternalData](docs/models/GroupExternalData.md)
  - [Model.GroupExternalText](docs/models/GroupExternalText.md)
@@ -264,19 +229,13 @@ Class | Method | HTTP request | Description
  - [Model.GroupExternalsData](docs/models/GroupExternalsData.md)
  - [Model.GroupText](docs/models/GroupText.md)
  - [Model.Groups](docs/models/Groups.md)
- - [Model.Groups1](docs/models/Groups1.md)
  - [Model.GroupsData](docs/models/GroupsData.md)
  - [Model.ListValidation](docs/models/ListValidation.md)
  - [Model.Location](docs/models/Location.md)
- - [Model.Location1](docs/models/Location1.md)
  - [Model.LocationData](docs/models/LocationData.md)
- - [Model.LocationData1](docs/models/LocationData1.md)
  - [Model.LocationInsertData](docs/models/LocationInsertData.md)
- - [Model.LocationText](docs/models/LocationText.md)
  - [Model.LocationUpdateData](docs/models/LocationUpdateData.md)
  - [Model.Locations](docs/models/Locations.md)
- - [Model.Locations1](docs/models/Locations1.md)
- - [Model.LocationsData](docs/models/LocationsData.md)
  - [Model.Meta](docs/models/Meta.md)
  - [Model.Picture](docs/models/Picture.md)
  - [Model.PictureData](docs/models/PictureData.md)
@@ -286,7 +245,6 @@ Class | Method | HTTP request | Description
  - [Model.Tenants](docs/models/Tenants.md)
  - [Model.User](docs/models/User.md)
  - [Model.User1](docs/models/User1.md)
- - [Model.User2](docs/models/User2.md)
  - [Model.UserData](docs/models/UserData.md)
  - [Model.UserData1](docs/models/UserData1.md)
  - [Model.UserExternal](docs/models/UserExternal.md)
@@ -298,7 +256,6 @@ Class | Method | HTTP request | Description
  - [Model.UserText1](docs/models/UserText1.md)
  - [Model.Users](docs/models/Users.md)
  - [Model.Users1](docs/models/Users1.md)
- - [Model.Users2](docs/models/Users2.md)
  - [Model.UsersData](docs/models/UsersData.md)
  - [Model.UsersData1](docs/models/UsersData1.md)
 
