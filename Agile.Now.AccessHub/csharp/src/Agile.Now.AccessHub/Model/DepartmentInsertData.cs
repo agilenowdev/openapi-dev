@@ -87,8 +87,11 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="ownerId">ownerId.</param>
         /// <param name="countryId">countryId.</param>
         /// <param name="isActive">Defines if the department is active and can be used. (required) (default to false).</param>
-        public DepartmentInsertData(string id = default, string externalId = default, string name = default, EnumDepartmentType departmentTypeId = default, FieldType parentDepartmentId = default, int level = 0, string contactName = default, string contactEmail = default, string contactPhone = default, FieldType ownerId = default, EnumCountry? countryId = default, bool isActive = false)
+        /// <param name="isDeleted">Defines if the department is deleted and cannot be used. (default to false).</param>
+        public DepartmentInsertData(string id = default, string externalId = default, string name = default, EnumDepartmentType departmentTypeId = default, FieldType parentDepartmentId = default, int level = 0, string contactName = default, string contactEmail = default, string contactPhone = default, FieldType ownerId = default, EnumCountry? countryId = default, bool isActive = false, bool isDeleted = false)
         {
+            // to ensure "id" is required (not null)
+            id = id ?? throw new ArgumentNullException("id is a required property for DepartmentInsertData and cannot be null");
             Id = id;
             // to ensure "name" is required (not null)
             name = name ?? throw new ArgumentNullException("name is a required property for DepartmentInsertData and cannot be null");
@@ -103,13 +106,14 @@ namespace Agile.Now.AccessHub.Model
             ContactPhone = contactPhone;
             OwnerId = ownerId;
             CountryId = countryId;
+            IsDeleted = isDeleted;
         }
 
         /// <summary>
         /// The guid to identify the department.
         /// </summary>
         /// <value>The guid to identify the department.</value>
-        [DataMember(Name = "Id", EmitDefaultValue = true)]
+        [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>
@@ -175,6 +179,14 @@ namespace Agile.Now.AccessHub.Model
         public bool IsActive { get; set; }
 
         /// <summary>
+        /// Defines if the department is deleted and cannot be used.
+        /// </summary>
+        /// <value>Defines if the department is deleted and cannot be used.</value>
+        /// <example>false</example>
+        [DataMember(Name = "Is_Deleted", EmitDefaultValue = true)]
+        public bool IsDeleted { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -194,6 +206,7 @@ namespace Agile.Now.AccessHub.Model
             sb.Append("  OwnerId: ").Append(OwnerId).Append("\n");
             sb.Append("  CountryId: ").Append(CountryId).Append("\n");
             sb.Append("  IsActive: ").Append(IsActive).Append("\n");
+            sb.Append("  IsDeleted: ").Append(IsDeleted).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

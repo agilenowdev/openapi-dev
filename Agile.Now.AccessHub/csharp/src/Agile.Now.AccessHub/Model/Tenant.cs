@@ -65,7 +65,11 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="createdOn">The date the record was created (required) (default to &quot;1900-01-01T00:00Z&quot;).</param>
         public Tenant(AbstractLong userId = default, AbstractLong tenantId = default, DateTime createdOn = default)
         {
+            // to ensure "userId" is required (not null)
+            userId = userId ?? throw new ArgumentNullException("userId is a required property for Tenant and cannot be null");
             UserId = userId;
+            // to ensure "tenantId" is required (not null)
+            tenantId = tenantId ?? throw new ArgumentNullException("tenantId is a required property for Tenant and cannot be null");
             TenantId = tenantId;
             CreatedOn = createdOn;
         }
@@ -73,13 +77,13 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Gets or Sets UserId
         /// </summary>
-        [DataMember(Name = "UserId", EmitDefaultValue = true)]
+        [DataMember(Name = "UserId", IsRequired = true, EmitDefaultValue = true)]
         public AbstractLong UserId { get; set; }
 
         /// <summary>
         /// Gets or Sets TenantId
         /// </summary>
-        [DataMember(Name = "TenantId", EmitDefaultValue = true)]
+        [DataMember(Name = "TenantId", IsRequired = true, EmitDefaultValue = true)]
         public AbstractLong TenantId { get; set; }
 
         /// <summary>
@@ -87,7 +91,7 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         /// <value>The date the record was created</value>
         /// <example>1900-01-01T00:00Z</example>
-        [DataMember(Name = "CreatedOn", EmitDefaultValue = true)]
+        [DataMember(Name = "CreatedOn", IsRequired = true, EmitDefaultValue = true)]
         public DateTime CreatedOn { get; set; }
 
         /// <summary>

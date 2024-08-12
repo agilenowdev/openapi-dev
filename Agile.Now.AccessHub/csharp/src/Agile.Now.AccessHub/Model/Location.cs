@@ -76,6 +76,8 @@ namespace Agile.Now.AccessHub.Model
             // to ensure "id" is required (not null)
             id = id ?? throw new ArgumentNullException("id is a required property for Location and cannot be null");
             Id = id;
+            // to ensure "name" is required (not null)
+            name = name ?? throw new ArgumentNullException("name is a required property for Location and cannot be null");
             Name = name;
             IsActive = isActive;
             ExternalId = externalId;
@@ -106,7 +108,7 @@ namespace Agile.Now.AccessHub.Model
         /// The name of the location
         /// </summary>
         /// <value>The name of the location</value>
-        [DataMember(Name = "Name", EmitDefaultValue = true)]
+        [DataMember(Name = "Name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -132,7 +134,7 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         /// <value>Defines if the location is active and can be used</value>
         /// <example>false</example>
-        [DataMember(Name = "Is_Active", EmitDefaultValue = true)]
+        [DataMember(Name = "Is_Active", IsRequired = true, EmitDefaultValue = true)]
         public bool IsActive { get; set; }
 
         /// <summary>
