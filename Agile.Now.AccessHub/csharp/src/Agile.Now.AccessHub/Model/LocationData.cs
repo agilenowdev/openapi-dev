@@ -85,7 +85,8 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="timezoneId">timezoneId.</param>
         /// <param name="currencyId">currencyId.</param>
         /// <param name="isActive">Defines if the location is active and can be used. (required) (default to false).</param>
-        public LocationData(string id = default, string externalId = default, string name = default, EnumCountry? countryId = default, EnumTimezone? timezoneId = default, EnumCurrency? currencyId = default, bool isActive = false)
+        /// <param name="isDeleted">Defines if the location is deleted and cannot be used. (default to false).</param>
+        public LocationData(string id = default, string externalId = default, string name = default, EnumCountry? countryId = default, EnumTimezone? timezoneId = default, EnumCurrency? currencyId = default, bool isActive = false, bool isDeleted = false)
         {
             // to ensure "name" is required (not null)
             name = name ?? throw new ArgumentNullException("name is a required property for LocationData and cannot be null");
@@ -96,6 +97,7 @@ namespace Agile.Now.AccessHub.Model
             CountryId = countryId;
             TimezoneId = timezoneId;
             CurrencyId = currencyId;
+            IsDeleted = isDeleted;
         }
 
         /// <summary>
@@ -128,6 +130,14 @@ namespace Agile.Now.AccessHub.Model
         public bool IsActive { get; set; }
 
         /// <summary>
+        /// Defines if the location is deleted and cannot be used.
+        /// </summary>
+        /// <value>Defines if the location is deleted and cannot be used.</value>
+        /// <example>false</example>
+        [DataMember(Name = "Is_Deleted", EmitDefaultValue = true)]
+        public bool IsDeleted { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -142,6 +152,7 @@ namespace Agile.Now.AccessHub.Model
             sb.Append("  TimezoneId: ").Append(TimezoneId).Append("\n");
             sb.Append("  CurrencyId: ").Append(CurrencyId).Append("\n");
             sb.Append("  IsActive: ").Append(IsActive).Append("\n");
+            sb.Append("  IsDeleted: ").Append(IsDeleted).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
