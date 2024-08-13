@@ -7,7 +7,7 @@ internal static class DepartmentTestData
 {
     public static DepartmentInsertData CreateDepartmentData(string suffix = null)
     {
-        var name = CommonTestData.NamePrefix + "department" + suffix;
+        var name = CommonTestData.CreateTestEntityName("department", suffix);
         return new DepartmentInsertData
         (
             name: name.MakeUnique(),

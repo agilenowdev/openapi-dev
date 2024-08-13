@@ -16,7 +16,7 @@ internal static class AccessGroupTestData
 
     public static AccessGroupData CreateAccessGroupData(string suffix = null)
     {
-        var name = CommonTestData.NamePrefix + "access-group" + suffix;
+        var name = CommonTestData.CreateTestEntityName("access-group", suffix);
         return new
         (
             name: name.MakeUnique(),
@@ -36,8 +36,4 @@ internal static class AccessGroupTestData
     public static ApplicationData CreateApplicationData(string id) => new(
         parentApplicationId: new("Id", ParentApplication),
         accessApplicationId: new("Id", id));
-
-    public static GroupData CreateGroupData(int id) => new(
-        groupId: new("Id", id.ToString()),
-        createdOn: DateTime.Now);
 }

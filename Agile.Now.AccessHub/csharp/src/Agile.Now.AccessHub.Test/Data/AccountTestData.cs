@@ -13,7 +13,7 @@ namespace Agile.Now.ApiAccounts.Test.Api
 
         public static AccountData CreateAccountData(string suffix = null)
         {
-            var name = CommonTestData.NamePrefix + "account" + suffix;
+            var name = CommonTestData.CreateTestEntityName("account", suffix);
             var uniqueName = name.MakeUnique();
             return new AccountData
             (

@@ -471,7 +471,7 @@ namespace Agile.Now.AccessHub.Test.Api
             try
             {
                 var createdSubEntity = api.UpsertAccessGroupGroup(created.Id,
-                    AccessGroupTestData.CreateGroupData(UserTestData.Groups[0]));
+                    UserTestData.CreateGroupData(UserTestData.Groups[0]));
                 api.DeleteAccessGroupGroup(created.Id, createdSubEntity.Id.ToString());
                 var existing = api.ListAccessGroupGroups(created.Id).Data;
                 Assert.Empty(existing);
@@ -492,7 +492,7 @@ namespace Agile.Now.AccessHub.Test.Api
             try
             {
                 var createdSubEntities = UserTestData.Groups.Select(i =>
-                    api.UpsertAccessGroupGroup(created.Id, AccessGroupTestData.CreateGroupData(i))).ToArray();
+                    api.UpsertAccessGroupGroup(created.Id, UserTestData.CreateGroupData(i))).ToArray();
                 var existing = api.ListAccessGroupGroups(created.Id).Data;
                 Assert.Equal(createdSubEntities.Length, existing.Count);
             }
@@ -512,7 +512,7 @@ namespace Agile.Now.AccessHub.Test.Api
             try
             {
                 var createdSubEntity = api.UpsertAccessGroupGroup(created.Id,
-                    AccessGroupTestData.CreateGroupData(UserTestData.Groups[0]));
+                    UserTestData.CreateGroupData(UserTestData.Groups[0]));
                 var existing = api.ListAccessGroupGroups(created.Id).Data;
                 Assert.Contains(existing, i => i.Id == createdSubEntity.Id);
             }
@@ -532,7 +532,7 @@ namespace Agile.Now.AccessHub.Test.Api
             try
             {
                 var createdSubEntity = api.UpsertAccessGroupGroup(created.Id,
-                    AccessGroupTestData.CreateGroupData(UserTestData.Groups[0]));
+                    UserTestData.CreateGroupData(UserTestData.Groups[0]));
                 api.PatchAccessGroupGroups(created.Id, new(groups: new List<GroupText> {
                     new(
                         groupId: UserTestData.Groups[1].ToString(),

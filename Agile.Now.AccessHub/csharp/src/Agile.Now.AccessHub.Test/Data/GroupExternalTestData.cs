@@ -7,7 +7,7 @@ internal static class GroupExternalTestData
 {
     public static GroupExternalData CreateGroupExternalData(string suffix = null)
     {
-        var name = CommonTestData.NamePrefix + "group-external" + suffix;
+        var name = CommonTestData.CreateTestEntityName("group-external", suffix);
         return new GroupExternalData
         (
             name: name.MakeUnique(),
