@@ -73,8 +73,6 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="createdOn">The date the record was created (default to &quot;1900-01-01T00:00Z&quot;).</param>
         public AccessGroup(string id = default, string name = default, string externalId = default, string description = default, bool isActive = false, bool isSystem = false, AbstractText accessGroupTypeId = default, DateTime modifiedOn = default, AbstractLong modifiedBy = default, AbstractLong createdBy = default, DateTime createdOn = default)
         {
-            // to ensure "id" is required (not null)
-            id = id ?? throw new ArgumentNullException("id is a required property for AccessGroup and cannot be null");
             Id = id;
             // to ensure "name" is required (not null)
             name = name ?? throw new ArgumentNullException("name is a required property for AccessGroup and cannot be null");
@@ -94,7 +92,7 @@ namespace Agile.Now.AccessHub.Model
         /// The identifier of access group
         /// </summary>
         /// <value>The identifier of access group</value>
-        [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Id", EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>

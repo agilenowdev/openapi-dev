@@ -1,6 +1,6 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Agile.Now.AccessHub.Model;
+using Agile.Now.AccessHub.Test.Data;
 
 namespace Agile.Now.ApiAccessGroups.Test.Api;
 
@@ -16,17 +16,14 @@ internal static class AccessGroupTestData
 
     public static int[] Groups = new[] { 6626, 6625, 6624 };
 
-    public static AccessGroupData CreateAccessGroupData(string suffix = null, bool isSystem = false)
+    public static AccessGroupData CreateAccessGroupData(string suffix = null)
     {
-        var name = "unit-test-access-group" + suffix;
-        var uniqueName = $"{name}-{DateTime.Now:yyyy-MM-dd-HH-mm-ss-fff}";
+        var name = CommonTestData.NamePrefix + "access-group" + suffix;
         return new
         (
-            name: uniqueName,
+            name: name.MakeUnique(),
             description: name,
-            accessGroupTypeId: EnumAccessGroupType.Departments,
-            isActive: true,
-            isSystem: isSystem
+            accessGroupTypeId: EnumAccessGroupType.Departments
         );
     }
 
