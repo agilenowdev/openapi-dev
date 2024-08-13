@@ -99,7 +99,7 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_Department_Create()
         {
-            var entityData = TestDepartmentData.CreateDepartmentData();
+            var entityData = DepartmentTestData.CreateDepartmentData();
             var createdEntity = api.CreateDepartment(entityData);
             try
             {
@@ -117,7 +117,7 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_Department_Delete_ById()
         {
-            var createdEntity = api.CreateDepartment(TestDepartmentData.CreateDepartmentData());
+            var createdEntity = api.CreateDepartment(DepartmentTestData.CreateDepartmentData());
             api.DeleteDepartment(createdEntity.Id);
             Assert.Throws<ApiException>(() => api.GetDepartment(createdEntity.Id));
         }
@@ -128,7 +128,7 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_Department_Delete_ByName()
         {
-            var createdEntity = api.CreateDepartment(TestDepartmentData.CreateDepartmentData());
+            var createdEntity = api.CreateDepartment(DepartmentTestData.CreateDepartmentData());
             api.DeleteDepartment(createdEntity.Name, "Name");
             Assert.Throws<ApiException>(() => api.GetDepartment(createdEntity.Id));
         }
@@ -139,7 +139,7 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_Department_Get_ById()
         {
-            var createdEntity = api.CreateDepartment(TestDepartmentData.CreateDepartmentData());
+            var createdEntity = api.CreateDepartment(DepartmentTestData.CreateDepartmentData());
             try
             {
                 Assert.Null(Record.Exception(() =>
@@ -161,7 +161,7 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_Department_Get_ByName()
         {
-            var createdEntity = api.CreateDepartment(TestDepartmentData.CreateDepartmentData());
+            var createdEntity = api.CreateDepartment(DepartmentTestData.CreateDepartmentData());
             try
             {
                 Assert.Null(Record.Exception(() =>
@@ -183,7 +183,7 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_Department_List_ById()
         {
-            var createdEntities = TestDepartmentData.CreateDepartmentDataList(2).Select(
+            var createdEntities = DepartmentTestData.CreateDepartmentDataList(2).Select(
                 i => api.CreateDepartment(i)).ToArray();
             try
             {
@@ -204,7 +204,7 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_Department_List_ByName()
         {
-            var createdEntities = TestDepartmentData.CreateDepartmentDataList(2).Select(
+            var createdEntities = DepartmentTestData.CreateDepartmentDataList(2).Select(
                 i => api.CreateDepartment(i)).ToArray();
             try
             {
@@ -225,11 +225,11 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_Department_Update()
         {
-            var entityData = TestDepartmentData.CreateDepartmentData();
+            var entityData = DepartmentTestData.CreateDepartmentData();
             var createdEntity = api.CreateDepartment(entityData);
             try
             {
-                TestDepartmentData.UpdateDepartmentData(entityData);
+                DepartmentTestData.UpdateDepartmentData(entityData);
                 var updatedEntity = api.UpdateDepartment(createdEntity.Id, entityData.ToDepartmentUpdateData());
                 AssertDepartmentDataEqual(entityData, updatedEntity);
             }
@@ -245,12 +245,12 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_Department_Upsert()
         {
-            var entityData = TestDepartmentData.CreateDepartmentData();
+            var entityData = DepartmentTestData.CreateDepartmentData();
             var createdEntity = api.UpsertDepartment(entityData.ToDepartmentData());
             try
             {
                 AssertDepartmentDataEqual(entityData, createdEntity);
-                TestDepartmentData.UpdateDepartmentData(entityData);
+                DepartmentTestData.UpdateDepartmentData(entityData);
                 entityData.Id = createdEntity.Id;
                 var updatedEntity = api.UpsertDepartment(entityData.ToDepartmentData());
                 Assert.Equal(createdEntity.Id, updatedEntity.Id);
@@ -268,12 +268,12 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_Department_User_Delete()
         {
-            var entityData = TestDepartmentData.CreateDepartmentData();
+            var entityData = DepartmentTestData.CreateDepartmentData();
             var createdEntity = api.CreateDepartment(entityData);
             try
             {
                 var createdSubEntity = api.UpsertDepartmentUser(createdEntity.Id,
-                    new(userId: new("Id", TestDepartmentData.TestUsers[0].ToString())));
+                    new(userId: new("Id", DepartmentTestData.TestUsers[0].ToString())));
                 api.DeleteDepartmentUser(createdEntity.Id, createdSubEntity.Id);
                 var existingEntityUsers = api.ListDepartmentUsers(createdEntity.Id).Data;
                 Assert.Empty(existingEntityUsers);
@@ -290,11 +290,11 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_Department_User_List()
         {
-            var entityData = TestDepartmentData.CreateDepartmentData();
+            var entityData = DepartmentTestData.CreateDepartmentData();
             var createdEntity = api.CreateDepartment(entityData);
             try
             {
-                var createdSubEntities = TestLocationData.TestUsers.Select(i =>
+                var createdSubEntities = LocationTestData.TestUsers.Select(i =>
                     api.UpsertDepartmentUser(createdEntity.Id, new(userId: new("Id", i.ToString())))).ToArray();
                 try
                 {
@@ -319,12 +319,12 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_DepartmentUser_Upsert()
         {
-            var entityData = TestDepartmentData.CreateDepartmentData();
+            var entityData = DepartmentTestData.CreateDepartmentData();
             var createdEntity = api.CreateDepartment(entityData);
             try
             {
                 var createdSubEntity = api.UpsertDepartmentUser(createdEntity.Id,
-                    new(userId: new("Id", TestDepartmentData.TestUsers[0].ToString())));
+                    new(userId: new("Id", DepartmentTestData.TestUsers[0].ToString())));
                 try
                 {
                     var existingSubEntities = api.ListDepartmentUsers(createdEntity.Id).Data;

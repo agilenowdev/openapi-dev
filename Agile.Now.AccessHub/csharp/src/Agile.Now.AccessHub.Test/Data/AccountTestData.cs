@@ -6,7 +6,7 @@ using Agile.Now.AccessHub.Model;
 
 namespace Agile.Now.ApiAccounts.Test.Api
 {
-    internal static class TestAccountData
+    internal static class AccountTestData
     {
         public const int DefaultTenant = 15;
         public const int AnotherTenant = 7182;//7186

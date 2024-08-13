@@ -62,50 +62,32 @@ namespace Agile.Now.AccessHub.Test.Api
 
         public GroupExternalsApiTests(ITestOutputHelper testOutputHelper)
         {
-            Configuration configuration = new Configuration
-            {
-                BasePath = "https://dev.esystems.fi",
-                OAuthTokenUrl = "https://dev.esystems.fi/oAuth/rest/v2/Token",
-                OAuthFlow = Client.Auth.OAuthFlow.APPLICATION,
-                OAuthClientId = "c8907421-0886-4fb0-b859-d29966762e16",
-                OAuthClientSecret = "1da54fa9-ae11-4db3-9740-1bb47b85cd8e"
-            };
-            api = new GroupExternalsApi(configuration);
+            api = new GroupExternalsApi(Settings.Connections[0]);
         }
 
-        public void Dispose()
-        {
-        }
+        public void Dispose() { }
 
-        /// <summary>
-        /// Test an instance of GroupExternalsApi
-        /// </summary>
-        [Fact]
-        public void InstanceTest()
+        void AssertGroupExternalDataEqual(GroupExternalData data, GroupExternal group)
         {
-        }
-
-        void AssertGroupDataEqual(GroupExternalData entityData, GroupExternal group)
-        {
-            Assert.Equal(entityData.Name, group.Name);
-            Assert.Equal(entityData.Description, group.Description);
+            Assert.Equal(data.Name, group.Name);
+            Assert.Equal(data.Description, group.Description);
         }
 
         /// <summary>
         /// Test CreateGroupExternal
         /// </summary>
         [Fact]
-        public void Test_Group_Create()
+        public void Test_GroupExternal_Create()
         {
-            var entityData = TestGroupData.CreateGroupData();
-            var createdEntity = api.CreateGroupExternal(entityData);
+            var data = GroupExternalTestData.CreateGroupExternalData();
+            var created = api.CreateGroupExternal(data);
             try
             {
-                AssertGroupDataEqual(entityData, createdEntity);
+                AssertGroupExternalDataEqual(data, created);
             }
             finally
             {
-                api.DeleteGroupExternal(createdEntity.Id.ToString());
+                api.DeleteGroupExternal(created.Id.ToString());
             }
         }
 
@@ -113,43 +95,43 @@ namespace Agile.Now.AccessHub.Test.Api
         /// Test DeleteGroupExternal by Id
         /// </summary>
         [Fact]
-        public void Test_Group_Delete_ById()
+        public void Test_GroupExternal_Delete_ById()
         {
-            var createdEntity = api.CreateGroupExternal(TestGroupData.CreateGroupData());
-            api.DeleteGroupExternal(createdEntity.Id.ToString());
-            Assert.Throws<ApiException>(() => api.GetGroupExternal(createdEntity.Id.ToString()));
+            var created = api.CreateGroupExternal(GroupExternalTestData.CreateGroupExternalData());
+            api.DeleteGroupExternal(created.Id.ToString());
+            Assert.Throws<ApiException>(() => api.GetGroupExternal(created.Id.ToString()));
         }
 
         /// <summary>
         /// Test DeleteGroupExternal by Name
         /// </summary>
         [Fact]
-        public void Test_Group_Delete_ByName()
+        public void Test_GroupExternal_Delete_ByName()
         {
-            var createdEntity = api.CreateGroupExternal(TestGroupData.CreateGroupData());
-            api.DeleteGroupExternal(createdEntity.Name, "Name");
-            Assert.Throws<ApiException>(() => api.GetGroupExternal(createdEntity.Id.ToString()));
+            var created = api.CreateGroupExternal(GroupExternalTestData.CreateGroupExternalData());
+            api.DeleteGroupExternal(created.Name, "Name");
+            Assert.Throws<ApiException>(() => api.GetGroupExternal(created.Id.ToString()));
         }
 
         /// <summary>
         /// Test GetGroup by Id
         /// </summary>
         [Fact]
-        public void Test_Group_Get_ById()
+        public void Test_GroupExternal_Get_ById()
         {
-            var createdEntity = api.CreateGroupExternal(TestGroupData.CreateGroupData());
+            var created = api.CreateGroupExternal(GroupExternalTestData.CreateGroupExternalData());
             try
             {
                 Assert.Null(Record.Exception(() =>
                 {
-                    var existingGroup = api.GetGroupExternal(createdEntity.Id.ToString());
-                    Assert.Equal(createdEntity.Id, existingGroup.Id);
-                    return existingGroup;
+                    var existing = api.GetGroupExternal(created.Id.ToString());
+                    Assert.Equal(created.Id, existing.Id);
+                    return existing;
                 }));
             }
             finally
             {
-                api.DeleteGroupExternal(createdEntity.Id.ToString());
+                api.DeleteGroupExternal(created.Id.ToString());
             }
         }
 
@@ -157,21 +139,21 @@ namespace Agile.Now.AccessHub.Test.Api
         /// Test GetGroup by Name
         /// </summary>
         [Fact]
-        public void Test_Group_Get_ByName()
+        public void Test_GroupExternal_Get_ByName()
         {
-            var createdEntity = api.CreateGroupExternal(TestGroupData.CreateGroupData());
+            var created = api.CreateGroupExternal(GroupExternalTestData.CreateGroupExternalData());
             try
             {
                 Assert.Null(Record.Exception(() =>
                 {
-                    var existingGroup = api.GetGroupExternal(createdEntity.Name, "Name");
-                    Assert.Equal(createdEntity.Name, existingGroup.Name);
-                    return existingGroup;
+                    var existing = api.GetGroupExternal(created.Name, "Name");
+                    Assert.Equal(created.Name, existing.Name);
+                    return existing;
                 }));
             }
             finally
             {
-                api.DeleteGroupExternal(createdEntity.Id.ToString());
+                api.DeleteGroupExternal(created.Id.ToString());
             }
         }
 
@@ -179,18 +161,19 @@ namespace Agile.Now.AccessHub.Test.Api
         /// Test ListGroups by Id
         /// </summary>
         [Fact]
-        public void Test_Group_List_ById()
+        public void Test_GroupExternal_List_ById()
         {
-            var createdEntities = TestGroupData.CreateGroupDataList(2).Select(i => api.CreateGroupExternal(i)).ToArray();
+            var created = CommonTestData.CreateTestDataList(2, GroupExternalTestData.CreateGroupExternalData).
+                Select(i => api.CreateGroupExternal(i)).ToArray();
             try
             {
-                var existingEntities = api.ListGroupExternals(
-                    filters: $"Id In {string.Join(", ", createdEntities.Select(i => i.Id))}").Data;
-                Assert.Equal(existingEntities.Count, createdEntities.Length);
+                var existing = api.ListGroupExternals(
+                    filters: $"Id In {string.Join(", ", created.Select(i => i.Id))}").Data;
+                Assert.Equal(existing.Count, created.Length);
             }
             finally
             {
-                foreach (var i in createdEntities)
+                foreach (var i in created)
                     api.DeleteGroupExternal(i.Id.ToString());
             }
         }
@@ -199,19 +182,19 @@ namespace Agile.Now.AccessHub.Test.Api
         /// Test ListGroups by Name
         /// </summary>
         [Fact]
-        public void Test_Group_List_ByName()
+        public void Test_GroupExternal_List_ByName()
         {
-            var entityData = TestGroupData.CreateGroupDataList(2);
-            var createdEntities = entityData.Select(i => api.CreateGroupExternal(i)).ToArray();
+            var created = CommonTestData.CreateTestDataList(2, GroupExternalTestData.CreateGroupExternalData).
+                Select(i => api.CreateGroupExternal(i)).ToArray();
             try
             {
-                var existingEntities = api.ListGroupExternals(
-                    filters: $"Name In {string.Join("; ", createdEntities.Select(i => i.Name))}");
-                Assert.Equal(existingEntities.Data.Count, createdEntities.Length);
+                var existing = api.ListGroupExternals(
+                    filters: $"Name In {string.Join("; ", created.Select(i => i.Name))}");
+                Assert.Equal(existing.Data.Count, created.Length);
             }
             finally
             {
-                foreach (var i in createdEntities)
+                foreach (var i in created)
                     api.DeleteGroupExternal(i.Id.ToString());
             }
         }
@@ -220,19 +203,19 @@ namespace Agile.Now.AccessHub.Test.Api
         /// Test UpdateGroup
         /// </summary>
         [Fact]
-        public void Test_Group_Update()
+        public void Test_GroupExternal_Update()
         {
-            var entityData = TestGroupData.CreateGroupData();
-            var createdEntity = api.CreateGroupExternal(entityData);
+            var data = GroupExternalTestData.CreateGroupExternalData();
+            var created = api.CreateGroupExternal(data);
             try
             {
-                TestGroupData.UpdateGroupData(entityData);
-                var updatedGroup = api.UpdateGroupExternal(createdEntity.Id.ToString(), entityData);
-                AssertGroupDataEqual(entityData, updatedGroup);
+                GroupExternalTestData.UpdateGroupExternalData(data);
+                var updated = api.UpdateGroupExternal(created.Id.ToString(), data);
+                AssertGroupExternalDataEqual(data, updated);
             }
             finally
             {
-                api.DeleteGroupExternal(createdEntity.Id.ToString());
+                api.DeleteGroupExternal(created.Id.ToString());
             }
         }
 
@@ -240,22 +223,22 @@ namespace Agile.Now.AccessHub.Test.Api
         /// Test UpsertGroup
         /// </summary>
         [Fact]
-        public void Test_Group_Upsert()
+        public void Test_GroupExternal_Upsert()
         {
-            var entityData = TestGroupData.CreateGroupData();
-            var createdEntity = api.UpsertGroupExternal(entityData);
+            var data = GroupExternalTestData.CreateGroupExternalData();
+            var created = api.UpsertGroupExternal(data);
             try
             {
-                AssertGroupDataEqual(entityData, createdEntity);
-                TestGroupData.UpdateGroupData(entityData);
-                entityData.Id = createdEntity.Id;
-                var updatedEntity = api.UpsertGroupExternal(entityData);
-                Assert.Equal(createdEntity.Id, updatedEntity.Id);
-                AssertGroupDataEqual(entityData, updatedEntity);
+                AssertGroupExternalDataEqual(data, created);
+                GroupExternalTestData.UpdateGroupExternalData(data);
+                data.Id = created.Id;
+                var updated = api.UpsertGroupExternal(data);
+                Assert.Equal(created.Id, updated.Id);
+                AssertGroupExternalDataEqual(data, updated);
             }
             finally
             {
-                api.DeleteGroupExternal(createdEntity.Id.ToString());
+                api.DeleteGroupExternal(created.Id.ToString());
             }
         }
 
@@ -263,33 +246,35 @@ namespace Agile.Now.AccessHub.Test.Api
         /// Test PatchGroup
         /// </summary>
         [Fact]
-        public void Test_Group_Patch()
+        public void Test_GroupExternal_Patch()
         {
-            var entityData = TestGroupData.CreateGroupDataList(2);
-            var createdEntity = api.CreateGroupExternal(entityData[0]);
-            TestGroupData.UpdateGroupData(entityData[0]);
-            var anotherEntity = entityData[1].ToGroupExternalText();
+            var dataForUpdate = GroupExternalTestData.CreateGroupExternalData();
+            var dataForCreate = GroupExternalTestData.CreateGroupExternalData();
+            var updated = api.CreateGroupExternal(dataForUpdate);
+            dataForUpdate.Id = updated.Id;
+            GroupExternalTestData.UpdateGroupExternalData(dataForUpdate);
             try
             {
-                api.PatchGroupExternals(new(groupExternals: new List<GroupExternalText> {
-                    new(
-                        name: anotherEntity.Name,
-                        description: anotherEntity.Description),
-                    new(
-                        id: createdEntity.Id,
-                        name: entityData[0].Name,
-                        description: entityData[0].Description)
-                }));
-                var existingEntities = api.ListGroupExternals(createdEntity.Id.ToString()).Data;
-                Assert.Contains(existingEntities, i =>
-                    entityData[0].Id == createdEntity.Id &&
-                    entityData[0].Equal(i));
-                Assert.Contains(existingEntities, i =>
-                    entityData[1].Equal(i));
+                var patched = api.PatchGroupExternals(new(groupExternals: new List<GroupExternalText> {
+                    dataForUpdate.ToGroupExternalText(),
+                    dataForCreate.ToGroupExternalText()
+                })).Data;
+                var created = patched.First(i => i.Id != updated.Id);
+                try
+                {
+                    var existing = api.ListGroupExternals(
+                        filters: $"Id In {string.Join(", ", patched.Select(i => i.Id))}").Data;
+                    Assert.Contains(existing, i => dataForUpdate.DataEqual(i) && dataForUpdate.Id == updated.Id);
+                    Assert.Contains(existing, i => dataForCreate.DataEqual(i));
+                }
+                finally
+                {
+                    api.DeleteGroupExternal(created.Id.ToString());
+                }
             }
             finally
             {
-                api.DeleteGroupExternal(createdEntity.Id.ToString());
+                api.DeleteGroupExternal(updated.Id.ToString());
             }
         }
 
@@ -297,21 +282,21 @@ namespace Agile.Now.AccessHub.Test.Api
         /// Test DeleteGroupExternalUserExternal
         /// </summary>
         [Fact]
-        public void Test_Group_User_Delete()
+        public void Test_GroupExternal_User_Delete()
         {
-            var createdEntity = api.CreateGroupExternal(TestGroupData.CreateGroupData());
+            var created = api.CreateGroupExternal(GroupExternalTestData.CreateGroupExternalData());
             try
             {
-                var createdSubEntity = api.UpsertGroupExternalUserExternal(createdEntity.Id.ToString(),
-                    new(userId: new("Id", TestUserData.Users[0].ToString())));
-                api.DeleteGroupExternalUserExternal(createdEntity.Id.ToString(), createdSubEntity.Id.ToString());
+                var createdSubEntity = api.UpsertGroupExternalUserExternal(created.Id.ToString(),
+                    new(userId: new("Id", UserTestData.Users[0].ToString())));
+                api.DeleteGroupExternalUserExternal(created.Id.ToString(), createdSubEntity.Id.ToString());
                 var existingdGroupExternalUserExternals =
-                    api.ListGroupExternalUserExternals(createdEntity.Id.ToString()).Data;
+                    api.ListGroupExternalUserExternals(created.Id.ToString()).Data;
                 Assert.Empty(existingdGroupExternalUserExternals);
             }
             finally
             {
-                api.DeleteGroupExternal(createdEntity.Id.ToString());
+                api.DeleteGroupExternal(created.Id.ToString());
             }
         }
 
@@ -319,20 +304,20 @@ namespace Agile.Now.AccessHub.Test.Api
         /// Test ListGroupExternalUserExternals
         /// </summary>
         [Fact]
-        public void Test_Group_User_List()
+        public void Test_GroupExternal_User_List()
         {
-            var createdEntity = api.CreateGroupExternal(TestGroupData.CreateGroupData());
+            var created = api.CreateGroupExternal(GroupExternalTestData.CreateGroupExternalData());
             try
             {
-                var createdSubEntities = TestUserData.Users.Select(i =>
-                    api.UpsertGroupExternalUserExternal(createdEntity.Id.ToString(),
+                var createdSubEntities = UserTestData.Users.Select(i =>
+                    api.UpsertGroupExternalUserExternal(created.Id.ToString(),
                         new(userId: new("Id", i.ToString())))).ToArray();
-                var existingSubEntities = api.ListGroupExternalUserExternals(createdEntity.Id.ToString()).Data;
+                var existingSubEntities = api.ListGroupExternalUserExternals(created.Id.ToString()).Data;
                 Assert.Equal(createdSubEntities.Length, existingSubEntities.Count);
             }
             finally
             {
-                api.DeleteGroupExternal(createdEntity.Id.ToString());
+                api.DeleteGroupExternal(created.Id.ToString());
             }
         }
 
@@ -340,19 +325,19 @@ namespace Agile.Now.AccessHub.Test.Api
         /// Test UpsertAccessGroupUser
         /// </summary>
         [Fact]
-        public void Test_Group_User_Upsert()
+        public void Test_GroupExternal_User_Upsert()
         {
-            var createdEntity = api.CreateGroupExternal(TestGroupData.CreateGroupData());
+            var created = api.CreateGroupExternal(GroupExternalTestData.CreateGroupExternalData());
             try
             {
-                var createdSubEntity = api.UpsertGroupExternalUserExternal(createdEntity.Id.ToString(),
-                    new(userId: new("Id", TestUserData.Users[0].ToString())));
-                var existingSubEntities = api.ListGroupExternalUserExternals(createdEntity.Id.ToString()).Data;
+                var createdSubEntity = api.UpsertGroupExternalUserExternal(created.Id.ToString(),
+                    new(userId: new("Id", UserTestData.Users[0].ToString())));
+                var existingSubEntities = api.ListGroupExternalUserExternals(created.Id.ToString()).Data;
                 Assert.Contains(existingSubEntities, i => i.Id == createdSubEntity.Id);
             }
             finally
             {
-                api.DeleteGroupExternal(createdEntity.Id.ToString());
+                api.DeleteGroupExternal(created.Id.ToString());
             }
         }
 
@@ -360,31 +345,31 @@ namespace Agile.Now.AccessHub.Test.Api
         /// Test PatchGroupUser
         /// </summary>
         [Fact]
-        public void Test_Group_User_Patch()
+        public void Test_GroupExternal_User_Patch()
         {
-            var createdEntity = api.CreateGroupExternal(TestGroupData.CreateGroupData());
+            var created = api.CreateGroupExternal(GroupExternalTestData.CreateGroupExternalData());
             try
             {
-                var createdSubEntity = api.UpsertGroupExternalUserExternal(createdEntity.Id.ToString(),
-                    new(userId: new("Id", TestUserData.Users[0].ToString())));
-                api.PatchGroupExternalUserExternals(createdEntity.Id.ToString(),
+                var createdSubEntity = api.UpsertGroupExternalUserExternal(created.Id.ToString(),
+                    new(userId: new("Id", UserTestData.Users[0].ToString())));
+                api.PatchGroupExternalUserExternals(created.Id.ToString(),
                     new(userExternals: new List<UserExternalText> {
                         new(
-                            userId: TestUserData.Users[1].ToString()),
+                            userId: UserTestData.Users[1].ToString()),
                         new(
                             id: createdSubEntity.Id,
-                            userId: TestUserData.Users[2].ToString())
+                            userId: UserTestData.Users[2].ToString())
                     }));
-                var existingEntities = api.ListGroupExternalUserExternals(createdEntity.Id.ToString()).Data;
-                Assert.Contains(existingEntities, i =>
-                    i.UserId.Id == TestUserData.Users[1]);
-                Assert.Contains(existingEntities, i =>
+                var existing = api.ListGroupExternalUserExternals(created.Id.ToString()).Data;
+                Assert.Contains(existing, i =>
+                    i.UserId.Id == UserTestData.Users[1]);
+                Assert.Contains(existing, i =>
                     i.Id == createdSubEntity.Id &&
-                    i.UserId.Id == TestUserData.Users[2]);
+                    i.UserId.Id == UserTestData.Users[2]);
             }
             finally
             {
-                api.DeleteGroupExternal(createdEntity.Id.ToString());
+                api.DeleteGroupExternal(created.Id.ToString());
             }
         }
     }

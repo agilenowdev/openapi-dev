@@ -4,7 +4,7 @@ using Agile.Now.AccessHub.Model;
 
 namespace Agile.Now.ApiAccessGroups.Test.Api;
 
-internal static class TestAccessGroupData
+internal static class AccessGroupTestData
 {
     public static string[] Applications = new[] {
         "15478BAE-C17D-4966-8288-F2F743A4B0EA",
