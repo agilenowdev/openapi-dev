@@ -17,7 +17,7 @@ internal static class GroupExternalTestData
 
     public static void UpdateGroupExternalData(GroupExternalData groupExternalData)
     {
-        groupExternalData.Description += CommonTestData.UpdatedSuffix;
+        groupExternalData.Description = groupExternalData.Description.MarkUpdated();
     }
 
     public static GroupExternalText ToGroupExternalText(this GroupExternalData groupExternalData) => new(

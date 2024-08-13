@@ -1,41 +1,33 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Agile.Now.AccessHub.Model;
+using Agile.Now.AccessHub.Test.Data;
 
 namespace Agile.Now.ApiOrganizations.Test.Api;
 
 internal static class DepartmentTestData
 {
-    public static int[] TestUsers = new[] { 35012, 34967 };
     public static string[] Departments = new[] { "2E97527D-5BD7-4CC0-81B8-14B6C2CA325F" };
 
     public static DepartmentInsertData CreateDepartmentData(string suffix = null)
     {
-        var name = "unit-test-department" + suffix;
-        var uniqueName = $"{name}-{DateTime.Now:yyyy-MM-dd-HH-mm-ss-fff}";
-        return new
+        var name = CommonTestData.NamePrefix + "department" + suffix;
+        return new DepartmentInsertData
         (
-            name: uniqueName,
+            name: name.MakeUnique(),
             departmentTypeId: EnumDepartmentType.Internal,
-            parentDepartmentId: new("Id", null),
+            parentDepartmentId: new("Id", ""),
+            contactEmail: name + "@agilenow.io",
             contactName: name,
-            contactEmail: name + "@agilenow.io"
-        )
-        {
-            CountryId = EnumCountry.Finland,
-            Level = 1,
-            IsActive = true
-        };
+            countryId: EnumCountry.Finland
+        );
     }
-
-    public static DepartmentInsertData[] CreateDepartmentDataList(int count) =>
-        Enumerable.Range(0, count).Select(i => CreateDepartmentData(i.ToString())).ToArray();
 
     public static void UpdateDepartmentData(DepartmentInsertData departmentInsertData)
     {
-        const string updated = "updated";
-        departmentInsertData.CountryId = departmentInsertData.CountryId == EnumCountry.Finland ?
-            EnumCountry.UnitedStatesOfAmerica : EnumCountry.Finland;
+        departmentInsertData.ContactName = departmentInsertData.ContactName.MarkUpdated();
+        departmentInsertData.ContactEmail = departmentInsertData.ContactEmail.MarkUpdated();
+        departmentInsertData.CountryId = departmentInsertData.CountryId == 
+            EnumCountry.Finland ? EnumCountry.UnitedStatesOfAmerica : EnumCountry.Finland;
     }
 
     public static DepartmentUpdateData ToDepartmentUpdateData(this DepartmentInsertData departmentInsertData) =>

@@ -82,8 +82,6 @@ namespace Agile.Now.AccessHub.Model
             // to ensure "id" is required (not null)
             id = id ?? throw new ArgumentNullException("id is a required property for Department and cannot be null");
             Id = id;
-            // to ensure "name" is required (not null)
-            name = name ?? throw new ArgumentNullException("name is a required property for Department and cannot be null");
             Name = name;
             // to ensure "departmentTypeId" is required (not null)
             departmentTypeId = departmentTypeId ?? throw new ArgumentNullException("departmentTypeId is a required property for Department and cannot be null");
@@ -122,7 +120,7 @@ namespace Agile.Now.AccessHub.Model
         /// The name of the department
         /// </summary>
         /// <value>The name of the department</value>
-        [DataMember(Name = "Name", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Name", EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>

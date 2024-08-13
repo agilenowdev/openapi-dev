@@ -27,13 +27,9 @@ internal static class AccessGroupTestData
         );
     }
 
-    public static AccessGroupData[] CreateAccessGroupDataList(int count) =>
-        Enumerable.Range(0, count).Select(i => CreateAccessGroupData(i.ToString())).ToArray();
-
     public static void UpdateAccessGroupData(AccessGroupData accessGroupInsertData)
     {
-        const string updated = "-updated";
-        accessGroupInsertData.Description += updated;
+        accessGroupInsertData.Description = accessGroupInsertData.Description.MarkUpdated();
         accessGroupInsertData.AccessGroupTypeId =
             accessGroupInsertData.AccessGroupTypeId == EnumAccessGroupType.Departments ?
                 EnumAccessGroupType.Locations : EnumAccessGroupType.Departments;

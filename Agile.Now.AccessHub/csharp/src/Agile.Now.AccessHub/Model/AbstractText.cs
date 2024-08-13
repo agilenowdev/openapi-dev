@@ -66,8 +66,6 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="type">The type of the record object. This attribute is used to classify the record into specific categories or types, helping to organize and manage different kinds of records. This attribute is optional..</param>
         public AbstractText(string id = default, string externalId = default, string name = default, string type = default)
         {
-            // to ensure "id" is required (not null)
-            id = id ?? throw new ArgumentNullException("id is a required property for AbstractText and cannot be null");
             Id = id;
             ExternalId = externalId;
             Name = name;
@@ -79,7 +77,7 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         /// <value>The primary key of the record. It uniquely identifies each record within the dataset. This attribute is required and must be unique across all records.</value>
         /// <example>3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5</example>
-        [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Id", EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>

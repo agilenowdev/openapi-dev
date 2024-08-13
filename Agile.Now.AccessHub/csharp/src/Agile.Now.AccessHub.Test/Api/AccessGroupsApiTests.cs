@@ -183,8 +183,8 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_AccessGroup_List_ById()
         {
-            var created = AccessGroupTestData.CreateAccessGroupDataList(2).Select(
-                i => api.CreateAccessGroup(i)).ToArray();
+            var created = CommonTestData.CreateTestDataList(2, AccessGroupTestData.CreateAccessGroupData).
+                Select(i => api.CreateAccessGroup(i)).ToArray();
             try
             {
                 var existingEntities = api.ListAccessGroups(
@@ -204,8 +204,8 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_AccessGroup_List_ByName()
         {
-            var created = AccessGroupTestData.CreateAccessGroupDataList(2).Select(
-                i => api.CreateAccessGroup(i)).ToArray();
+            var created = CommonTestData.CreateTestDataList(2, AccessGroupTestData.CreateAccessGroupData).
+                Select(i => api.CreateAccessGroup(i)).ToArray();
             try
             {
                 var existingEntities = api.ListAccessGroups(
