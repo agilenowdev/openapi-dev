@@ -7,7 +7,7 @@ internal static class LocationTestData
 {
     public static LocationInsertData CreateLocationData(string suffix = null)
     {
-        var name = CommonTestData.NamePrefix + "unit-test-location" + suffix;
+        var name = CommonTestData.NamePrefix + "location" + suffix;
         return new LocationInsertData
         (
             name: name.MakeUnique(),

@@ -1,8 +1,7 @@
-﻿using System;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Text;
 using Agile.Now.AccessHub.Model;
+using Agile.Now.AccessHub.Test.Data;
 
 namespace Agile.Now.ApiAccounts.Test.Api
 {
@@ -14,31 +13,29 @@ namespace Agile.Now.ApiAccounts.Test.Api
 
         public static AccountData CreateAccountData(string suffix = null)
         {
-            var name = "unit-test-account" + suffix;
-            var uniqueName = $"{name}-{DateTime.Now:yyyy-MM-dd-HH-mm-ss-fff}";
-            return new
+            var name = CommonTestData.NamePrefix + "account" + suffix;
+            var uniqueName = name.MakeUnique();
+            return new AccountData
             (
                 firstName: name,
                 lastName: "lastName" + suffix,
                 email: uniqueName + "@agilenow.io",
                 username: uniqueName,
-                isActive: true,
+                dateFormatId: EnumDateFormat.DdMmYyyy,
+                timezoneId: EnumTimezone.Gmt0100Azores,
                 languageId: EnumLanguage.Finnish
-            )
-            {
-                DateFormatId = EnumDateFormat.DdMmYyyy
-            };
+            );
         }
-
-        public static AccountData[] CreateAccountDataList(int count) =>
-            Enumerable.Range(0, count).Select(i => CreateAccountData(i.ToString())).ToArray();
 
         public static void UpdateAccountData(AccountData accountData)
         {
-            const string updated = "updated";
-            accountData.LastName += updated;
-            accountData.FirstName += updated;
-            accountData.Email = updated + accountData.Email;
+            accountData.FirstName = accountData.FirstName.MarkUpdated();
+            accountData.LastName = accountData.LastName.MarkUpdated();
+            accountData.Email = accountData.Email.MarkUpdated();
+            accountData.DateFormatId = accountData.DateFormatId == EnumDateFormat.DdMmYyyy ?
+                EnumDateFormat.YyyyMmDd : EnumDateFormat.DdMmYyyy;
+            accountData.TimezoneId = accountData.TimezoneId == EnumTimezone.Gmt0100Azores ?
+                EnumTimezone.Gmt0100CapeVerdeIs : EnumTimezone.Gmt0100Azores;
             accountData.LanguageId = accountData.LanguageId == EnumLanguage.Finnish ?
                 EnumLanguage.English : EnumLanguage.Finnish;
         }

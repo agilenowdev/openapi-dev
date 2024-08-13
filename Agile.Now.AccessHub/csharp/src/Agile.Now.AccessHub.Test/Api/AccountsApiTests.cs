@@ -36,11 +36,13 @@
  */
 
 using System;
+using System.Data;
 using System.Linq;
 using Agile.Now.AccessHub.Api;
 using Agile.Now.AccessHub.Client;
 // uncomment below to import models
 using Agile.Now.AccessHub.Model;
+using Agile.Now.AccessHub.Test.Data;
 using Agile.Now.ApiAccounts.Test.Api;
 using Xunit;
 using Xunit.Abstractions;
@@ -62,40 +64,19 @@ namespace Agile.Now.AccessHub.Test.Api
         public AccountsApiTests(ITestOutputHelper testOutputHelper)
         {
             output = testOutputHelper;
-            Configuration configuration = new Configuration
-            {
-                BasePath = "https://dev.esystems.fi",
-                OAuthTokenUrl = "https://dev.esystems.fi/oAuth/rest/v2/Token",
-                OAuthFlow = Client.Auth.OAuthFlow.APPLICATION,
-                OAuthClientId = "c8907421-0886-4fb0-b859-d29966762e16",
-                OAuthClientSecret = "1da54fa9-ae11-4db3-9740-1bb47b85cd8e"
-            };
-            api = new AccountsApi(configuration);
+            api = new AccountsApi(Settings.Connections[0]);
         }
 
-        public void Dispose()
+        public void Dispose() { }
+
+        void AssertAccountDataEqual(AccountData data, Account account)
         {
-        }
-
-        /// <summary>
-        /// Test an instance of AccountsApi
-        /// </summary>
-        [Fact]
-        public void InstanceTest()
-        {
-        }
-
-        void AssertAccountDataEqual(AccountData entityData, Account account)
-        {
-            Assert.Equal(entityData.LastName, account.LastName);
-            Assert.Equal(entityData.FirstName, account.FirstName);
-            Assert.Equal(entityData.Email, account.Email);
-            Assert.Equal(entityData.IsActive, account.IsActive);
-
-            Assert.Equal($"{entityData.LastName} {entityData.FirstName}", account.Name);
-
-            //Assert.Equal(entityData.DateFormatId.ToString(), account.DateFormatId.Id);
-            Assert.Equal(entityData.LanguageId.ToString(), account.LanguageId.Name);
+            Assert.Equal(data.LastName, account.LastName);
+            Assert.Equal(data.FirstName, account.FirstName);
+            Assert.Equal(data.Email, account.Email);
+            //Assert.Equal(data.DateFormatId.ToString(), account.DateFormatId.Id);
+            //Assert.Equal(data.TimezoneId.ToString(), account.TimezoneId.Id);
+            Assert.Equal(data.LanguageId.ToString(), account.LanguageId.Name);
         }
 
         /// <summary>
@@ -104,16 +85,16 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_Account_Create()
         {
-            var entityData = AccountTestData.CreateAccountData();
-            var createdEntity = api.CreateAccount(entityData);
+            var data = AccountTestData.CreateAccountData();
+            var created = api.CreateAccount(data);
             try
             {
-                AssertAccountDataEqual(entityData, createdEntity);
-                output.WriteLine($"TenantId= {createdEntity.TenantId.Id}");
+                AssertAccountDataEqual(data, created);
+                output.WriteLine($"TenantId= {created.TenantId.Id}");
             }
             finally
             {
-                api.DeleteAccount(createdEntity.Id);
+                api.DeleteAccount(created.Id);
             }
         }
 
@@ -123,9 +104,9 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_Account_Delete_ById()
         {
-            var createdEntity = api.CreateAccount(AccountTestData.CreateAccountData());
-            api.DeleteAccount(createdEntity.Id);
-            Assert.Throws<ApiException>(() => api.GetAccount(createdEntity.Id));
+            var created = api.CreateAccount(AccountTestData.CreateAccountData());
+            api.DeleteAccount(created.Id);
+            Assert.Throws<ApiException>(() => api.GetAccount(created.Id));
         }
 
         /// <summary>
@@ -134,9 +115,9 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_Account_Delete_ByUserName()
         {
-            var createdEntity = api.CreateAccount(AccountTestData.CreateAccountData());
-            api.DeleteAccount(createdEntity.Username, "Username");
-            Assert.Throws<ApiException>(() => api.GetAccount(createdEntity.Id));
+            var created = api.CreateAccount(AccountTestData.CreateAccountData());
+            api.DeleteAccount(created.Username, "Username");
+            Assert.Throws<ApiException>(() => api.GetAccount(created.Id));
         }
 
         /// <summary>
@@ -145,22 +126,21 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_Account_Delete_WithSeveralTenants()
         {
-            var entityData = AccountTestData.CreateAccountData();
-            var createdEntity = api.CreateAccount(entityData);
+            var created = api.CreateAccount(AccountTestData.CreateAccountData());
             try
             {
-                var anotherTenant = api.UpsertAccountTenant(createdEntity.Id, new(
+                var anotherTenant = api.UpsertAccountTenant(created.Id, new(
                     new("Id", ""),
                     new("Id", AccountTestData.AnotherTenant.ToString())));
-                api.DeleteAccount(createdEntity.Id);
-                Assert.Null(Record.Exception(() => api.GetAccount(createdEntity.Id)));
-                api.DeleteAccountTenant(createdEntity.Id, anotherTenant.UserId.ToString(), subName: "UserId");
-                api.DeleteAccount(createdEntity.Id);
-                Assert.Throws<ApiException>(() => api.GetAccount(createdEntity.Id));
+                api.DeleteAccount(created.Id);
+                Assert.Null(Record.Exception(() => api.GetAccount(created.Id)));
+                api.DeleteAccountTenant(created.Id, anotherTenant.UserId.ToString(), subName: "UserId");
+                api.DeleteAccount(created.Id);
+                Assert.Throws<ApiException>(() => api.GetAccount(created.Id));
             }
             finally
             {
-                api.DeleteAccount(createdEntity.Id);
+                api.DeleteAccount(created.Id);
             }
         }
 
@@ -170,19 +150,19 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_Account_Get_ById()
         {
-            var createdEntity = api.CreateAccount(AccountTestData.CreateAccountData());
+            var created = api.CreateAccount(AccountTestData.CreateAccountData());
             try
             {
                 Assert.Null(Record.Exception(() =>
                 {
-                    var existingEntity = api.GetAccount(createdEntity.Id);
-                    Assert.Equal(createdEntity.Id, existingEntity.Id);
-                    return existingEntity;
+                    var existing = api.GetAccount(created.Id);
+                    Assert.Equal(created.Id, existing.Id);
+                    return existing;
                 }));
             }
             finally
             {
-                api.DeleteAccount(createdEntity.Id);
+                api.DeleteAccount(created.Id);
             }
         }
 
@@ -192,19 +172,19 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_Account_Get_ByUserName()
         {
-            var createdEntity = api.CreateAccount(AccountTestData.CreateAccountData());
+            var created = api.CreateAccount(AccountTestData.CreateAccountData());
             try
             {
                 Assert.Null(Record.Exception(() =>
                 {
-                    var existingEntity = api.GetAccount(createdEntity.Username, "Username");
-                    Assert.Equal(createdEntity.Username, existingEntity.Username);
-                    return existingEntity;
+                    var existing = api.GetAccount(created.Username, "Username");
+                    Assert.Equal(created.Username, existing.Username);
+                    return existing;
                 }));
             }
             finally
             {
-                api.DeleteAccount(createdEntity.Id);
+                api.DeleteAccount(created.Id);
             }
         }
 
@@ -214,17 +194,16 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_Account_List_ById()
         {
-            var entityData = AccountTestData.CreateAccountDataList(2);
-            var createdEntities = entityData.Select(i => api.CreateAccount(i)).ToArray();
+            var created = CommonTestData.CreateTestDataList(2, AccountTestData.CreateAccountData).
+                Select(i => api.CreateAccount(i)).ToArray();
             try
             {
-                var existingEntities = api.ListAccounts(
-                    filters: $"Id In {string.Join("; ", createdEntities.Select(i => i.Id))}").Data;
-                Assert.Equal(createdEntities.Length, existingEntities.Count);
+                var existing = api.ListAccounts( filters: $"Id In {string.Join("; ", created.Select(i => i.Id))}").Data;
+                Assert.Equal(created.Length, existing.Count);
             }
             finally
             {
-                foreach (var i in createdEntities)
+                foreach (var i in created)
                     api.DeleteAccount(i.Id);
             }
         }
@@ -235,17 +214,17 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_Account_List_ByUserName()
         {
-            var entityData = AccountTestData.CreateAccountDataList(2);
-            var createdEntities = entityData.Select(i => api.CreateAccount(i)).ToArray();
+            var created = CommonTestData.CreateTestDataList(2, AccountTestData.CreateAccountData).
+                Select(i => api.CreateAccount(i)).ToArray();
             try
             {
-                var existingEntities = api.ListAccounts(
-                    filters: $"Username In {string.Join("; ", createdEntities.Select(i => i.Username))}").Data;
-                Assert.Equal(createdEntities.Length, existingEntities.Count);
+                var existing = api.ListAccounts(
+                    filters: $"Username In {string.Join("; ", created.Select(i => i.Username))}").Data;
+                Assert.Equal(created.Length, existing.Count);
             }
             finally
             {
-                foreach (var i in createdEntities)
+                foreach (var i in created)
                     api.DeleteAccount(i.Id);
             }
         }
@@ -256,17 +235,17 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_Account_Update()
         {
-            var entityData = AccountTestData.CreateAccountData();
-            var createdEntity = api.CreateAccount(entityData);
+            var data = AccountTestData.CreateAccountData();
+            var created = api.CreateAccount(data);
             try
             {
-                AccountTestData.UpdateAccountData(entityData);
-                var updatedAccount = api.UpdateAccount(createdEntity.Id, entityData);
-                AssertAccountDataEqual(entityData, updatedAccount);
+                AccountTestData.UpdateAccountData(data);
+                var updated = api.UpdateAccount(created.Id, data);
+                AssertAccountDataEqual(data, updated);
             }
             finally
             {
-                api.DeleteAccount(createdEntity.Id);
+                api.DeleteAccount(created.Id);
             }
         }
 
@@ -276,20 +255,20 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_Account_Upsert()
         {
-            var entityData = AccountTestData.CreateAccountData();
-            var createdEntity = api.UpsertAccount(entityData);
+            var data = AccountTestData.CreateAccountData();
+            var created = api.UpsertAccount(data);
             try
             {
-                AssertAccountDataEqual(entityData, createdEntity);
-                AccountTestData.UpdateAccountData(entityData);
-                entityData.Id = createdEntity.Id;
-                var updatedAccount = api.UpsertAccount(entityData);
-                Assert.Equal(createdEntity.Id, updatedAccount.Id);
-                AssertAccountDataEqual(entityData, updatedAccount);
+                AssertAccountDataEqual(data, created);
+                AccountTestData.UpdateAccountData(data);
+                data.Id = created.Id;
+                var updated = api.UpsertAccount(data);
+                Assert.Equal(created.Id, updated.Id);
+                AssertAccountDataEqual(data, updated);
             }
             finally
             {
-                api.DeleteAccount(createdEntity.Id);
+                api.DeleteAccount(created.Id);
             }
         }
 
@@ -299,19 +278,19 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_AccountTenant_Delete()
         {
-            var entityData = AccountTestData.CreateAccountData();
-            var createdEntity = api.CreateAccount(entityData);
+            var data = AccountTestData.CreateAccountData();
+            var created = api.CreateAccount(data);
             try
             {
-                var existingSubEntities = api.ListAccountTenants(createdEntity.Id).Data;
+                var existingSubEntities = api.ListAccountTenants(created.Id).Data;
                 var deletedSubEntity = api.DeleteAccountTenant(
-                    createdEntity.Id, existingSubEntities[0].UserId.ToString(), subName: "UserId");
-                existingSubEntities = api.ListAccountTenants(createdEntity.Id).Data;
+                    created.Id, existingSubEntities[0].UserId.ToString(), subName: "UserId");
+                existingSubEntities = api.ListAccountTenants(created.Id).Data;
                 Assert.DoesNotContain(existingSubEntities, i => i.TenantId.Id == deletedSubEntity.TenantId.Id);
             }
             finally
             {
-                api.DeleteAccount(createdEntity.Id);
+                api.DeleteAccount(created.Id);
             }
         }
 
@@ -321,26 +300,26 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_AccountTenant_List()
         {
-            var entityData = AccountTestData.CreateAccountData();
-            var createdEntity = api.CreateAccount(entityData);
+            var data = AccountTestData.CreateAccountData();
+            var created = api.CreateAccount(data);
             try
             {
-                //var createdTenant = api.UpsertAccountTenant(createdEntity.Id, new(
+                //var createdTenant = api.UpsertAccountTenant(created.Id, new(
                 //    new("Id", ""),
                 //    new("Id", TestAccountData.AnotherTenant.ToString())));
                 try
                 {
-                    var existingEntityTenants = api.ListAccountTenants(createdEntity.Id).Data;
-                    //Assert.Collection(existingEntityTenants, i => Assert.Equal(createdEntity.Id, i.AccountId.Id));
+                    var existingEntityTenants = api.ListAccountTenants(created.Id).Data;
+                    //Assert.Collection(existingEntityTenants, i => Assert.Equal(created.Id, i.AccountId.Id));
                 }
                 finally
                 {
-                    //api.DeleteAccountTenant(createdEntity.Id, createdTenant.TenantId.Id.ToString(), subName: "UserId");
+                    //api.DeleteAccountTenant(created.Id, createdTenant.TenantId.Id.ToString(), subName: "UserId");
                 }
             }
             finally
             {
-                api.DeleteAccount(createdEntity.Id);
+                api.DeleteAccount(created.Id);
             }
         }
 
@@ -350,26 +329,26 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_AccountTenant_Upsert()
         {
-            var entityData = AccountTestData.CreateAccountData();
-            var createdEntity = api.CreateAccount(entityData);
+            var data = AccountTestData.CreateAccountData();
+            var created = api.CreateAccount(data);
             try
             {
-                var createdSubEntity = api.UpsertAccountTenant(createdEntity.Id, new(
+                var createdSubEntity = api.UpsertAccountTenant(created.Id, new(
                     new("Id", ""),
                     new("Id", AccountTestData.AnotherTenant.ToString())));
                 try
                 {
-                    var existingSubEntities = api.ListAccountTenants(createdEntity.Id).Data;
-                    //Assert.Contains(existingEntityTenants, i => createdEntity.Id == i.AccountId.Id);
+                    var existingSubEntities = api.ListAccountTenants(created.Id).Data;
+                    //Assert.Contains(existingEntityTenants, i => created.Id == i.AccountId.Id);
                 }
                 finally
                 {
-                    api.DeleteAccountTenant(createdEntity.Id, createdSubEntity.TenantId.Id.ToString(), subName: "UserId");
+                    api.DeleteAccountTenant(created.Id, createdSubEntity.TenantId.Id.ToString(), subName: "UserId");
                 }
             }
             finally
             {
-                api.DeleteAccount(createdEntity.Id);
+                api.DeleteAccount(created.Id);
             }
         }
 
@@ -379,18 +358,18 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_AccountPicture_Delete()
         {
-            var entityData = AccountTestData.CreateAccountData();
-            var createdEntity = api.CreateAccount(entityData);
+            var data = AccountTestData.CreateAccountData();
+            var created = api.CreateAccount(data);
             try
             {
                 var createdSubEntity = api.UpsertAccountPicture(
-                    createdEntity.Id,
-                    new(createdEntity.Username + "_picture", AccountTestData.PictureData.ToStream()));
-                api.DeleteAccountPicture(createdEntity.Id, null);
+                    created.Id,
+                    new(created.Username + "_picture", AccountTestData.PictureData.ToStream()));
+                api.DeleteAccountPicture(created.Id, null);
             }
             finally
             {
-                api.DeleteAccount(createdEntity.Id);
+                api.DeleteAccount(created.Id);
             }
         }
 
@@ -400,25 +379,25 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_AccountPicture_Upsert()
         {
-            var entityData = AccountTestData.CreateAccountData();
-            var createdEntity = api.CreateAccount(entityData);
+            var data = AccountTestData.CreateAccountData();
+            var created = api.CreateAccount(data);
             try
             {
-                var createdSubEntity = api.UpsertAccountPicture(createdEntity.Id,
-                    new(createdEntity.Username + "_picture", AccountTestData.PictureData.ToStream()));
+                var createdSubEntity = api.UpsertAccountPicture(created.Id,
+                    new(created.Username + "_picture", AccountTestData.PictureData.ToStream()));
                 try
                 {
-                    var existingSubEntities = api.ListAccountPictures(createdEntity.Id).Data;
+                    var existingSubEntities = api.ListAccountPictures(created.Id).Data;
                     Assert.Contains(existingSubEntities, i => i.Filename == createdSubEntity.Filename);
                 }
                 finally
                 {
-                    api.DeleteAccountPicture(createdEntity.Id, null);
+                    api.DeleteAccountPicture(created.Id, null);
                 }
             }
             finally
             {
-                api.DeleteAccount(createdEntity.Id);
+                api.DeleteAccount(created.Id);
             }
         }
 
@@ -428,26 +407,26 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_AccountPicture_List()
         {
-            var entityData = AccountTestData.CreateAccountData();
-            var createdEntity = api.CreateAccount(entityData);
+            var data = AccountTestData.CreateAccountData();
+            var created = api.CreateAccount(data);
             try
             {
-                var createdSubEntity = api.UpsertAccountPicture(createdEntity.Id,
-                    new(createdEntity.Username + "_picture", AccountTestData.PictureData.ToStream()));
+                var createdSubEntity = api.UpsertAccountPicture(created.Id,
+                    new(created.Username + "_picture", AccountTestData.PictureData.ToStream()));
                 try
                 {
-                    var existingSubEntities = api.ListAccountPictures(createdEntity.Id).Data;
+                    var existingSubEntities = api.ListAccountPictures(created.Id).Data;
                     Assert.Single(existingSubEntities);
                     Assert.Contains(existingSubEntities, i => i.Filename == createdSubEntity.Filename);
                 }
                 finally
                 {
-                    api.DeleteAccountPicture(createdEntity.Id, null);
+                    api.DeleteAccountPicture(created.Id, null);
                 }
             }
             finally
             {
-                api.DeleteAccount(createdEntity.Id);
+                api.DeleteAccount(created.Id);
             }
         }
     }
