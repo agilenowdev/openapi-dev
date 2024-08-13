@@ -1,4 +1,4 @@
-﻿using System.Linq;
+﻿using System;
 using Agile.Now.AccessHub.Model;
 using Agile.Now.AccessHub.Test.Data;
 
@@ -13,8 +13,6 @@ internal static class AccessGroupTestData
     };
 
     public static string ParentApplication = "3B594DDA-3F5D-431A-A532-A3EDFFA9BD98";
-
-    public static int[] Groups = new[] { 6626, 6625, 6624 };
 
     public static AccessGroupData CreateAccessGroupData(string suffix = null)
     {
@@ -34,4 +32,12 @@ internal static class AccessGroupTestData
             accessGroupInsertData.AccessGroupTypeId == EnumAccessGroupType.Departments ?
                 EnumAccessGroupType.Locations : EnumAccessGroupType.Departments;
     }
+
+    public static ApplicationData CreateApplicationData(string id) => new(
+        parentApplicationId: new("Id", ParentApplication),
+        accessApplicationId: new("Id", id));
+
+    public static GroupData CreateGroupData(int id) => new(
+        groupId: new("Id", id.ToString()),
+        createdOn: DateTime.Now);
 }

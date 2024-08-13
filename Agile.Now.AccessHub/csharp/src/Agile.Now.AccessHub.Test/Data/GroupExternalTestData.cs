@@ -28,4 +28,6 @@ internal static class GroupExternalTestData
     public static bool DataEqual(this GroupExternalData groupExternalData, GroupExternal groupExternal) =>
         groupExternalData.Name == groupExternal.Name &&
         groupExternalData.Description == groupExternal.Description;
+
+    public static UserExternalData CreateUserExternalData(int id) => new(userId: new("Id", id.ToString()));
 }

@@ -36,6 +36,7 @@
  */
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Agile.Now.AccessHub.Api;
 using Agile.Now.AccessHub.Client;
@@ -250,15 +251,14 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_Location_User_Delete()
         {
-            var entityData = LocationTestData.CreateLocationData();
-            var created = api.CreateLocation(entityData);
+            var created = api.CreateLocation(LocationTestData.CreateLocationData());
             try
             {
                 var createdSubEntity = api.UpsertLocationUser(created.Id,
-                    new(userId: new("Id", UserTestData.Users[0].ToString())));
+                    UserTestData.CreateUserData1(UserTestData.Users[0]));
                 api.DeleteLocationUser(created.Id, createdSubEntity.Id);
-                var existingSubEntities = api.ListLocationUsers(created.Id).Data;
-                Assert.DoesNotContain(existingSubEntities, i => i.Id == createdSubEntity.Id);
+                var existing = api.ListLocationUsers(created.Id).Data;
+                Assert.DoesNotContain(existing, i => i.Id == createdSubEntity.Id);
             }
             finally
             {
@@ -272,16 +272,15 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_Location_User_List()
         {
-            var entityData = LocationTestData.CreateLocationData();
-            var created = api.CreateLocation(entityData);
+            var created = api.CreateLocation(LocationTestData.CreateLocationData());
             try
             {
                 var createdSubEntities = UserTestData.Users.Select(i =>
-                    api.UpsertLocationUser(created.Id, new(userId: new("Id", i.ToString())))).ToArray();
+                    api.UpsertLocationUser(created.Id, UserTestData.CreateUserData1(i))).ToArray();
                 try
                 {
-                    var existingSubEntities = api.ListLocationUsers(created.Id).Data;
-                    Assert.Equal(createdSubEntities.Length, existingSubEntities.Count);
+                    var existing = api.ListLocationUsers(created.Id).Data;
+                    Assert.Equal(createdSubEntities.Length, existing.Count);
                 }
                 finally
                 {
@@ -300,18 +299,17 @@ namespace Agile.Now.AccessHub.Test.Api
         /// Test UpsertLocationUser
         /// </summary>
         [Fact]
-        public void Test_LocationUser_Upsert()
+        public void Test_Location_User_Upsert()
         {
-            var entityData = LocationTestData.CreateLocationData();
-            var created = api.CreateLocation(entityData);
+            var created = api.CreateLocation(LocationTestData.CreateLocationData());
             try
             {
                 var createdSubEntity = api.UpsertLocationUser(created.Id,
-                    new(userId: new("Id", UserTestData.Users[0].ToString())));
+                    UserTestData.CreateUserData1(UserTestData.Users[0]));
                 try
                 {
-                    var existingSubEntities = api.ListLocationUsers(created.Id).Data;
-                    Assert.Contains(existingSubEntities, i => i.Id == createdSubEntity.Id);
+                    var existing = api.ListLocationUsers(created.Id).Data;
+                    Assert.Contains(existing, i => i.Id == createdSubEntity.Id);
                 }
                 finally
                 {
@@ -328,15 +326,26 @@ namespace Agile.Now.AccessHub.Test.Api
         /// Test PatchLocationUsers
         /// </summary>
         [Fact]
-        public void PatchLocationUsersTest()
+        public void Test_Location_User_Patch()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //UsersData usersData = null;
-            //string name = null;
-            //string deleteNotExists = null;
-            //var response = instance.PatchLocationUsers(id, usersData, name, deleteNotExists);
-            //Assert.IsType<User>(response);
+            var created = api.CreateLocation(LocationTestData.CreateLocationData());
+            try
+            {
+                var createdSubEntity = api.UpsertLocationUser(created.Id.ToString(),
+                    UserTestData.CreateUserData1(UserTestData.Users[0]));
+                api.PatchLocationUsers(created.Id.ToString(),
+                    new(users: new List<UserText1> {
+                        new(userId: UserTestData.Users[1].ToString()),
+                        new(userId: UserTestData.Users[2].ToString(), id: createdSubEntity.Id)
+                    }));
+                var existing = api.ListLocationUsers(created.Id.ToString()).Data;
+                Assert.Contains(existing, i => i.UserId.Id == UserTestData.Users[1]);
+                Assert.Contains(existing, i => i.UserId.Id == UserTestData.Users[2] && i.Id == createdSubEntity.Id);
+            }
+            finally
+            {
+                api.DeleteLocation(created.Id.ToString());
+            }
         }
     }
 }

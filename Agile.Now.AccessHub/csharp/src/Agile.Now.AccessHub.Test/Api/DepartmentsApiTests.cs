@@ -36,11 +36,13 @@
  */
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Agile.Now.AccessHub.Api;
 using Agile.Now.AccessHub.Client;
 using Agile.Now.AccessHub.Model;
 using Agile.Now.AccessHub.Test.Data;
+using Agile.Now.ApiAccessGroups.Test.Api;
 using Agile.Now.ApiOrganizations.Test.Api;
 using Xunit;
 using Xunit.Abstractions;
@@ -252,15 +254,14 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_Department_User_Delete()
         {
-            var data = DepartmentTestData.CreateDepartmentData();
-            var created = api.CreateDepartment(data);
+            var created = api.CreateDepartment(DepartmentTestData.CreateDepartmentData());
             try
             {
                 var createdSubEntity = api.UpsertDepartmentUser(created.Id,
-                    new(userId: new("Id", UserTestData.Users[0].ToString())));
+                    UserTestData.CreateUserData1(UserTestData.Users[0]));
                 api.DeleteDepartmentUser(created.Id, createdSubEntity.Id);
-                var existingEntityUsers = api.ListDepartmentUsers(created.Id).Data;
-                Assert.Empty(existingEntityUsers);
+                var existing = api.ListDepartmentUsers(created.Id).Data;
+                Assert.Empty(existing);
             }
             finally
             {
@@ -274,16 +275,15 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_Department_User_List()
         {
-            var data = DepartmentTestData.CreateDepartmentData();
-            var created = api.CreateDepartment(data);
+            var created = api.CreateDepartment(DepartmentTestData.CreateDepartmentData());
             try
             {
                 var createdSubEntities = UserTestData.Users.Select(i =>
-                    api.UpsertDepartmentUser(created.Id, new(userId: new("Id", i.ToString())))).ToArray();
+                    api.UpsertDepartmentUser(created.Id, UserTestData.CreateUserData1(i))).ToArray();
                 try
                 {
-                    var existingSubEntities = api.ListDepartmentUsers(created.Id).Data;
-                    Assert.Equal(existingSubEntities.Count, createdSubEntities.Length);
+                    var existing = api.ListDepartmentUsers(created.Id).Data;
+                    Assert.Equal(existing.Count, createdSubEntities.Length);
                 }
                 finally
                 {
@@ -301,18 +301,17 @@ namespace Agile.Now.AccessHub.Test.Api
         /// Test UpsertDepartmentUser
         /// </summary>
         [Fact]
-        public void Test_DepartmentUser_Upsert()
+        public void Test_Department_User_Upsert()
         {
-            var data = DepartmentTestData.CreateDepartmentData();
-            var created = api.CreateDepartment(data);
+            var created = api.CreateDepartment(DepartmentTestData.CreateDepartmentData());
             try
             {
                 var createdSubEntity = api.UpsertDepartmentUser(created.Id,
-                    new(userId: new("Id", UserTestData.Users[0].ToString())));
+                    UserTestData.CreateUserData1(UserTestData.Users[0]));
                 try
                 {
-                    var existingSubEntities = api.ListDepartmentUsers(created.Id).Data;
-                    Assert.Contains(existingSubEntities, i => i.Id == createdSubEntity.Id);
+                    var existing = api.ListDepartmentUsers(created.Id).Data;
+                    Assert.Contains(existing, i => i.Id == createdSubEntity.Id);
                 }
                 finally
                 {
@@ -329,15 +328,26 @@ namespace Agile.Now.AccessHub.Test.Api
         /// Test PatchDepartmentUsers
         /// </summary>
         [Fact]
-        public void PatchDepartmentUsersTest()
+        public void Test_Department_User_Patch()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //UsersData usersData = null;
-            //string name = null;
-            //string deleteNotExists = null;
-            //var response = instance.PatchDepartmentUsers(id, usersData, name, deleteNotExists);
-            //Assert.IsType<User>(response);
+            var created = api.CreateDepartment(DepartmentTestData.CreateDepartmentData());
+            try
+            {
+                var createdSubEntity = api.UpsertDepartmentUser(created.Id.ToString(),
+                    UserTestData.CreateUserData1(UserTestData.Users[0]));
+                api.PatchDepartmentUsers(created.Id.ToString(),
+                    new(users: new List<UserText1> {
+                        new(userId: UserTestData.Users[1].ToString()),
+                        new(userId: UserTestData.Users[2].ToString(), id: createdSubEntity.Id)
+                    }));
+                var existing = api.ListDepartmentUsers(created.Id.ToString()).Data;
+                Assert.Contains(existing, i => i.UserId.Id == UserTestData.Users[1]);
+                Assert.Contains(existing, i => i.UserId.Id == UserTestData.Users[2] && i.Id == createdSubEntity.Id);
+            }
+            finally
+            {
+                api.DeleteDepartment(created.Id.ToString());
+            }
         }
     }
 }

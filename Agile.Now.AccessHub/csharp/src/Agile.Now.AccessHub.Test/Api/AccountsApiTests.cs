@@ -278,8 +278,7 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_AccountTenant_Delete()
         {
-            var data = AccountTestData.CreateAccountData();
-            var created = api.CreateAccount(data);
+            var created = api.CreateAccount(AccountTestData.CreateAccountData());
             try
             {
                 var existingSubEntities = api.ListAccountTenants(created.Id).Data;
@@ -300,8 +299,7 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_AccountTenant_List()
         {
-            var data = AccountTestData.CreateAccountData();
-            var created = api.CreateAccount(data);
+            var created = api.CreateAccount(AccountTestData.CreateAccountData());
             try
             {
                 //var createdTenant = api.UpsertAccountTenant(created.Id, new(
@@ -329,8 +327,7 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_AccountTenant_Upsert()
         {
-            var data = AccountTestData.CreateAccountData();
-            var created = api.CreateAccount(data);
+            var created = api.CreateAccount(AccountTestData.CreateAccountData());
             try
             {
                 var createdSubEntity = api.UpsertAccountTenant(created.Id, new(
@@ -358,8 +355,7 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_AccountPicture_Delete()
         {
-            var data = AccountTestData.CreateAccountData();
-            var created = api.CreateAccount(data);
+            var created = api.CreateAccount(AccountTestData.CreateAccountData());
             try
             {
                 var createdSubEntity = api.UpsertAccountPicture(
@@ -379,8 +375,7 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_AccountPicture_Upsert()
         {
-            var data = AccountTestData.CreateAccountData();
-            var created = api.CreateAccount(data);
+            var created = api.CreateAccount(AccountTestData.CreateAccountData());
             try
             {
                 var createdSubEntity = api.UpsertAccountPicture(created.Id,
@@ -407,8 +402,7 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_AccountPicture_List()
         {
-            var data = AccountTestData.CreateAccountData();
-            var created = api.CreateAccount(data);
+            var created = api.CreateAccount(AccountTestData.CreateAccountData());
             try
             {
                 var createdSubEntity = api.UpsertAccountPicture(created.Id,
