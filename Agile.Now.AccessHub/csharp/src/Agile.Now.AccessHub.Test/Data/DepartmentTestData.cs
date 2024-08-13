@@ -1,13 +1,10 @@
-﻿using System.Linq;
-using Agile.Now.AccessHub.Model;
+﻿using Agile.Now.AccessHub.Model;
 using Agile.Now.AccessHub.Test.Data;
 
 namespace Agile.Now.ApiOrganizations.Test.Api;
 
 internal static class DepartmentTestData
 {
-    public static string[] Departments = new[] { "2E97527D-5BD7-4CC0-81B8-14B6C2CA325F" };
-
     public static DepartmentInsertData CreateDepartmentData(string suffix = null)
     {
         var name = CommonTestData.NamePrefix + "department" + suffix;
@@ -31,7 +28,7 @@ internal static class DepartmentTestData
     }
 
     public static DepartmentUpdateData ToDepartmentUpdateData(this DepartmentInsertData departmentInsertData) =>
-        new
+        new DepartmentUpdateData 
         (
             name: departmentInsertData.Name,
             contactName: departmentInsertData.ContactName,
@@ -44,6 +41,7 @@ internal static class DepartmentTestData
         (
             id: departmentInsertData.Id,
             name: departmentInsertData.Name,
+            parentDepartmentId: departmentInsertData.ParentDepartmentId,    
             departmentTypeId: departmentInsertData.DepartmentTypeId,
             contactName: departmentInsertData.ContactName,
             contactEmail: departmentInsertData.ContactEmail,

@@ -36,14 +36,14 @@
  */
 
 using System;
-using Xunit;
-
-using Agile.Now.AccessHub.Client;
-using Agile.Now.AccessHub.Api;
-using Xunit.Abstractions;
-using Agile.Now.AccessHub.Model;
-using Agile.Now.ApiOrganizations.Test.Api;
 using System.Linq;
+using Agile.Now.AccessHub.Api;
+using Agile.Now.AccessHub.Client;
+using Agile.Now.AccessHub.Model;
+using Agile.Now.AccessHub.Test.Data;
+using Agile.Now.ApiOrganizations.Test.Api;
+using Xunit;
+using Xunit.Abstractions;
 // uncomment below to import models
 //using Agile.Now.AccessHub.Model;
 
@@ -62,33 +62,16 @@ namespace Agile.Now.AccessHub.Test.Api
 
         public LocationsApiTests(ITestOutputHelper testOutputHelper)
         {
-            Configuration configuration = new Configuration
-            {
-                BasePath = "https://dev.esystems.fi",
-                OAuthTokenUrl = "https://dev.esystems.fi/oAuth/rest/v2/Token",
-                OAuthFlow = Client.Auth.OAuthFlow.APPLICATION,
-                OAuthClientId = "c8907421-0886-4fb0-b859-d29966762e16",
-                OAuthClientSecret = "1da54fa9-ae11-4db3-9740-1bb47b85cd8e"
-            };
-            api = new LocationsApi(configuration);
+            api = new LocationsApi(Settings.Connections[0]);
         }
 
-        public void Dispose()
-        {
-        }
-
-        /// <summary>
-        /// Test an instance of LocationsApi
-        /// </summary>
-        [Fact]
-        public void InstanceTest()
-        {
-        }
+        public void Dispose() { }
 
         void AssertLocationDataEqual(LocationInsertData locationInsertData, Location location)
         {
             Assert.Equal(locationInsertData.Name, location.Name);
             //Assert.Equal(locationInsertData.CountryId.ToString(), location.CountryId.Name);
+            //Assert.Equal(locationInsertData.TimezoneId.ToString(), location.TimezoneId.Name);
             //Assert.Equal(locationInsertData.CurrencyId.ToString(), location.CurrencyId.Id);
         }
 
@@ -99,14 +82,14 @@ namespace Agile.Now.AccessHub.Test.Api
         public void Test_Location_Create()
         {
             var entityData = LocationTestData.CreateLocationData();
-            var createdEntity = api.CreateLocation(entityData);
+            var created = api.CreateLocation(entityData);
             try
             {
-                AssertLocationDataEqual(entityData, createdEntity);
+                AssertLocationDataEqual(entityData, created);
             }
             finally
             {
-                api.DeleteLocation(createdEntity.Id);
+                api.DeleteLocation(created.Id);
             }
         }
 
@@ -116,9 +99,9 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_Location_Delete_ById()
         {
-            var createdEntity = api.CreateLocation(LocationTestData.CreateLocationData());
-            api.DeleteLocation(createdEntity.Id);
-            Assert.Throws<ApiException>(() => api.GetLocation(createdEntity.Id));
+            var created = api.CreateLocation(LocationTestData.CreateLocationData());
+            api.DeleteLocation(created.Id);
+            Assert.Throws<ApiException>(() => api.GetLocation(created.Id));
         }
 
         /// <summary>
@@ -127,9 +110,9 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_Location_Delete_ByName()
         {
-            var createdEntity = api.CreateLocation(LocationTestData.CreateLocationData());
-            api.DeleteLocation(createdEntity.Name, "Name");
-            Assert.Throws<ApiException>(() => api.GetLocation(createdEntity.Id));
+            var created = api.CreateLocation(LocationTestData.CreateLocationData());
+            api.DeleteLocation(created.Name, "Name");
+            Assert.Throws<ApiException>(() => api.GetLocation(created.Id));
         }
 
         /// <summary>
@@ -138,19 +121,19 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_Location_Get_ById()
         {
-            var createdEntity = api.CreateLocation(LocationTestData.CreateLocationData());
+            var created = api.CreateLocation(LocationTestData.CreateLocationData());
             try
             {
                 Assert.Null(Record.Exception(() =>
                 {
-                    var existingEntity = api.GetLocation(createdEntity.Id);
-                    Assert.Equal(createdEntity.Id, existingEntity.Id);
-                    return existingEntity;
+                    var existing = api.GetLocation(created.Id);
+                    Assert.Equal(created.Id, existing.Id);
+                    return existing;
                 }));
             }
             finally
             {
-                api.DeleteLocation(createdEntity.Id);
+                api.DeleteLocation(created.Id);
             }
         }
 
@@ -160,19 +143,19 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_Location_Get_ByName()
         {
-            var createdEntity = api.CreateLocation(LocationTestData.CreateLocationData());
+            var created = api.CreateLocation(LocationTestData.CreateLocationData());
             try
             {
                 Assert.Null(Record.Exception(() =>
                 {
-                    var existingEntity = api.GetLocation(createdEntity.Name, "Name");
-                    Assert.Equal(createdEntity.Name, existingEntity.Name);
-                    return existingEntity;
+                    var existing = api.GetLocation(created.Name, "Name");
+                    Assert.Equal(created.Name, existing.Name);
+                    return existing;
                 }));
             }
             finally
             {
-                api.DeleteLocation(createdEntity.Id);
+                api.DeleteLocation(created.Id);
             }
         }
 
@@ -182,16 +165,17 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_Location_List_ById()
         {
-            var createdEntities = LocationTestData.CreateLocationDataList(2).Select(i => api.CreateLocation(i)).ToArray();
+            var created = CommonTestData.CreateTestDataList(2, LocationTestData.CreateLocationData).
+                Select(i => api.CreateLocation(i)).ToArray();
             try
             {
-                var existingEntities = api.ListLocations(
-                    filters: $"Id In {string.Join("; ", createdEntities.Select(i => i.Id))}").Data;
-                Assert.Equal(createdEntities.Length, existingEntities.Count);
+                var existing = api.ListLocations(
+                    filters: $"Id In {string.Join("; ", created.Select(i => i.Id))}").Data;
+                Assert.Equal(created.Length, existing.Count);
             }
             finally
             {
-                foreach (var i in createdEntities)
+                foreach (var i in created)
                     api.DeleteLocation(i.Id);
             }
         }
@@ -202,17 +186,17 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_Location_List_ByName()
         {
-            var entityData = LocationTestData.CreateLocationDataList(2);
-            var createdEntities = entityData.Select(i => api.CreateLocation(i)).ToArray();
+            var created = CommonTestData.CreateTestDataList(2, LocationTestData.CreateLocationData).
+                Select(i => api.CreateLocation(i)).ToArray();
             try
             {
-                var existingEntities = api.ListLocations(
-                    filters: $"Name In {string.Join("; ", createdEntities.Select(i => i.Name))}").Data;
-                Assert.Equal(createdEntities.Length, existingEntities.Count);
+                var existing = api.ListLocations(
+                    filters: $"Name In {string.Join("; ", created.Select(i => i.Name))}").Data;
+                Assert.Equal(created.Length, existing.Count);
             }
             finally
             {
-                foreach (var i in createdEntities)
+                foreach (var i in created)
                     api.DeleteLocation(i.Id);
             }
         }
@@ -224,16 +208,16 @@ namespace Agile.Now.AccessHub.Test.Api
         public void Test_Location_Update()
         {
             var entityData = LocationTestData.CreateLocationData();
-            var createdEntity = api.CreateLocation(entityData);
+            var created = api.CreateLocation(entityData);
             try
             {
                 LocationTestData.UpdateLocationData(entityData);
-                var updatedEntity = api.UpdateLocation(createdEntity.Id, entityData.ToLocationUpdateData());
-                AssertLocationDataEqual(entityData, updatedEntity);
+                var updated = api.UpdateLocation(created.Id, entityData.ToLocationUpdateData());
+                AssertLocationDataEqual(entityData, updated);
             }
             finally
             {
-                api.DeleteLocation(createdEntity.Id);
+                api.DeleteLocation(created.Id);
             }
         }
 
@@ -244,19 +228,19 @@ namespace Agile.Now.AccessHub.Test.Api
         public void Test_Location_Upsert()
         {
             var entityData = LocationTestData.CreateLocationData();
-            var createdEntity = api.UpsertLocation(entityData.ToLocationData());
+            var created = api.UpsertLocation(entityData.ToLocationData());
             try
             {
-                AssertLocationDataEqual(entityData, createdEntity);
+                AssertLocationDataEqual(entityData, created);
                 LocationTestData.UpdateLocationData(entityData);
-                entityData.Id = createdEntity.Id;
-                var updatedEntity = api.UpsertLocation(entityData.ToLocationData());
-                Assert.Equal(createdEntity.Id, updatedEntity.Id);
-                AssertLocationDataEqual(entityData, updatedEntity);
+                entityData.Id = created.Id;
+                var updated = api.UpsertLocation(entityData.ToLocationData());
+                Assert.Equal(created.Id, updated.Id);
+                AssertLocationDataEqual(entityData, updated);
             }
             finally
             {
-                api.DeleteLocation(createdEntity.Id);
+                api.DeleteLocation(created.Id);
             }
         }
 
@@ -267,18 +251,18 @@ namespace Agile.Now.AccessHub.Test.Api
         public void Test_Location_User_Delete()
         {
             var entityData = LocationTestData.CreateLocationData();
-            var createdEntity = api.CreateLocation(entityData);
+            var created = api.CreateLocation(entityData);
             try
             {
-                var createdSubEntity = api.UpsertLocationUser(createdEntity.Id,
-                    new(userId: new("Id", LocationTestData.TestUsers[0].ToString())));
-                api.DeleteLocationUser(createdEntity.Id, createdSubEntity.Id);
-                var existingSubEntities = api.ListLocationUsers(createdEntity.Id).Data;
+                var createdSubEntity = api.UpsertLocationUser(created.Id,
+                    new(userId: new("Id", UserTestData.Users[0].ToString())));
+                api.DeleteLocationUser(created.Id, createdSubEntity.Id);
+                var existingSubEntities = api.ListLocationUsers(created.Id).Data;
                 Assert.DoesNotContain(existingSubEntities, i => i.Id == createdSubEntity.Id);
             }
             finally
             {
-                api.DeleteLocation(createdEntity.Id);
+                api.DeleteLocation(created.Id);
             }
         }
 
@@ -289,26 +273,26 @@ namespace Agile.Now.AccessHub.Test.Api
         public void Test_Location_User_List()
         {
             var entityData = LocationTestData.CreateLocationData();
-            var createdEntity = api.CreateLocation(entityData);
+            var created = api.CreateLocation(entityData);
             try
             {
-                var createdSubEntities = LocationTestData.TestUsers.Select(i =>
-                    api.UpsertLocationUser(createdEntity.Id, new(userId: new("Id", i.ToString())))).ToArray();
+                var createdSubEntities = UserTestData.Users.Select(i =>
+                    api.UpsertLocationUser(created.Id, new(userId: new("Id", i.ToString())))).ToArray();
                 try
                 {
-                    var existingSubEntities = api.ListLocationUsers(createdEntity.Id).Data;
+                    var existingSubEntities = api.ListLocationUsers(created.Id).Data;
                     Assert.Equal(createdSubEntities.Length, existingSubEntities.Count);
                 }
                 finally
                 {
                     foreach (var i in createdSubEntities)
-                        api.DeleteLocationUser(createdEntity.Id, i.Id);
+                        api.DeleteLocationUser(created.Id, i.Id);
 
                 }
             }
             finally
             {
-                api.DeleteLocation(createdEntity.Id);
+                api.DeleteLocation(created.Id);
             }
         }
 
@@ -319,24 +303,24 @@ namespace Agile.Now.AccessHub.Test.Api
         public void Test_LocationUser_Upsert()
         {
             var entityData = LocationTestData.CreateLocationData();
-            var createdEntity = api.CreateLocation(entityData);
+            var created = api.CreateLocation(entityData);
             try
             {
-                var createdSubEntity = api.UpsertLocationUser(createdEntity.Id,
-                    new(userId: new("Id", LocationTestData.TestUsers[0].ToString())));
+                var createdSubEntity = api.UpsertLocationUser(created.Id,
+                    new(userId: new("Id", UserTestData.Users[0].ToString())));
                 try
                 {
-                    var existingSubEntities = api.ListLocationUsers(createdEntity.Id).Data;
+                    var existingSubEntities = api.ListLocationUsers(created.Id).Data;
                     Assert.Contains(existingSubEntities, i => i.Id == createdSubEntity.Id);
                 }
                 finally
                 {
-                    api.DeleteLocationUser(createdEntity.Id, createdSubEntity.Id);
+                    api.DeleteLocationUser(created.Id, createdSubEntity.Id);
                 }
             }
             finally
             {
-                api.DeleteLocation(createdEntity.Id);
+                api.DeleteLocation(created.Id);
             }
         }
 

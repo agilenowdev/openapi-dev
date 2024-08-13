@@ -278,7 +278,7 @@ namespace Agile.Now.AccessHub.Test.Api
             var created = api.CreateDepartment(data);
             try
             {
-                var createdSubEntities = LocationTestData.TestUsers.Select(i =>
+                var createdSubEntities = UserTestData.Users.Select(i =>
                     api.UpsertDepartmentUser(created.Id, new(userId: new("Id", i.ToString())))).ToArray();
                 try
                 {

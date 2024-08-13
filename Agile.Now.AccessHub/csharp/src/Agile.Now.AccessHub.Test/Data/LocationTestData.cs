@@ -1,35 +1,28 @@
-﻿using System;
-using System.Linq;
-using Agile.Now.AccessHub.Model;
+﻿using Agile.Now.AccessHub.Model;
+using Agile.Now.AccessHub.Test.Data;
 
 namespace Agile.Now.ApiOrganizations.Test.Api;
 
 internal static class LocationTestData
 {
-    public static int[] TestUsers = new[] { 35012, 34967 };
-    public static string[] Locations = new[] { "27036EDD-AA1F-4EBA-8EC9-D2DFBC7B9A59" };
-
     public static LocationInsertData CreateLocationData(string suffix = null)
     {
-        var name = "unit-test-location" + suffix;
-        var uniqueName = $"{name}-{DateTime.Now:yyyy-MM-dd-HH-mm-ss-fff}";
+        var name = CommonTestData.NamePrefix + "unit-test-location" + suffix;
         return new LocationInsertData
         (
-            name: uniqueName,
+            name: name.MakeUnique(),
             countryId: EnumCountry.Finland,
-            currencyId: EnumCurrency.UnitedStatesDollar,
-            timezoneId: EnumTimezone.Gmt0100WestCentralAfrica
+            timezoneId: EnumTimezone.Gmt0100WestCentralAfrica,
+            currencyId: EnumCurrency.UnitedStatesDollar
         );
     }
 
-    public static LocationInsertData[] CreateLocationDataList(int count) =>
-        Enumerable.Range(0, count).Select(i => CreateLocationData(i.ToString())).ToArray();
-
     public static void UpdateLocationData(LocationInsertData locationInsertData)
     {
-        const string updated = "updated";
         locationInsertData.CountryId = locationInsertData.CountryId == EnumCountry.Finland ?
             EnumCountry.UnitedStatesOfAmerica : EnumCountry.Finland;
+        locationInsertData.TimezoneId = locationInsertData.TimezoneId == EnumTimezone.Gmt0100WestCentralAfrica ?
+            EnumTimezone.Gmt0100Azores : EnumTimezone.Gmt0100WestCentralAfrica;
         locationInsertData.CurrencyId = locationInsertData.CurrencyId == EnumCurrency.UnitedStatesDollar ?
             EnumCurrency.Euro : EnumCurrency.UnitedStatesDollar;
     }
@@ -39,6 +32,7 @@ internal static class LocationTestData
         (
             name: locationInsertData.Name,
             countryId: locationInsertData.CountryId,
+            timezoneId: locationInsertData.TimezoneId,
             currencyId: locationInsertData.CurrencyId
         );
 
@@ -48,7 +42,7 @@ internal static class LocationTestData
             id: locationInsertData.Id,
             name: locationInsertData.Name,
             countryId: locationInsertData.CountryId,
-            currencyId: locationInsertData.CurrencyId,
-            timezoneId: locationInsertData.TimezoneId
+            timezoneId: locationInsertData.TimezoneId,
+            currencyId: locationInsertData.CurrencyId
         );
 }
