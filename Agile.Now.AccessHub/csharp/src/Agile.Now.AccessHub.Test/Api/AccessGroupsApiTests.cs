@@ -67,12 +67,6 @@ namespace Agile.Now.AccessHub.Test.Api
 
         public void Dispose() { }
 
-        /// <summary>
-        /// Test an instance of AccessGroupsApi
-        /// </summary>
-        [Fact]
-        public void InstanceTest() { }
-
         void AssertAccessGroupDataEqual(AccessGroupData AccessGroupData, AccessGroup AccessGroup)
         {
             Assert.Equal(AccessGroupData.Name, AccessGroup.Name);
@@ -408,6 +402,102 @@ namespace Agile.Now.AccessHub.Test.Api
                     i.Id == createdSubEntity.Id &&
                     i.ParentApplicationId.Id == AccessGroupTestData.ParentApplication &&
                     i.AccessApplicationId.Id == AccessGroupTestData.Applications[2]);
+            }
+            finally
+            {
+                api.DeleteAccessGroup(created.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test DeleteAccessGroupPermission
+        /// </summary>
+        [Fact]
+        public void Test_AccessGroup_Permission_Delete()
+        {
+            var created = api.CreateAccessGroup(AccessGroupTestData.CreateAccessGroupData());
+            try
+            {
+                var createdSubEntity = api.UpsertAccessGroupPermission(created.Id,
+                    AccessGroupTestData.CreatePermissionData(AccessGroupTestData.Permissions[0]));
+                api.DeleteAccessGroupPermission(created.Id, createdSubEntity.Id.ToString());
+                var existing = api.ListAccessGroupPermissions(created.Id).Data;
+                Assert.Empty(existing);
+            }
+            finally
+            {
+                api.DeleteAccessGroup(created.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test ListAccessGroupAccessPermissions
+        /// </summary>
+        [Fact]
+        public void Test_AccessGroup_Permission_List()
+        {
+            var created = api.CreateAccessGroup(AccessGroupTestData.CreateAccessGroupData());
+            try
+            {
+                var createdSubEntities = AccessGroupTestData.Permissions.Select(i =>
+                    api.UpsertAccessGroupPermission(created.Id, 
+                        AccessGroupTestData.CreatePermissionData(i))).ToArray();
+                var existing = api.ListAccessGroupPermissions(created.Id).Data;
+                Assert.Equal(createdSubEntities.Length, existing.Count);
+            }
+            finally
+            {
+                api.DeleteAccessGroup(created.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test UpsertAccessGroupPermission
+        /// </summary>
+        [Fact]
+        public void Test_AccessGroup_Permission_Upsert()
+        {
+            var data = AccessGroupTestData.CreateAccessGroupData();
+            var created = api.CreateAccessGroup(data);
+            try
+            {
+                var createdSubEntity = api.UpsertAccessGroupPermission(created.Id,
+                    AccessGroupTestData.CreatePermissionData(AccessGroupTestData.Permissions[0]));
+                var existing = api.ListAccessGroupPermissions(created.Id).Data;
+                Assert.Contains(existing, i => i.Id == createdSubEntity.Id);
+            }
+            finally
+            {
+                api.DeleteAccessGroup(created.Id);
+            }
+        }
+
+        /// <summary>
+        /// Test PatchAccessGroupPermission
+        /// </summary>
+        [Fact]
+        public void Test_AccessGroup_Permission_Patch()
+        {
+            var created = api.CreateAccessGroup(AccessGroupTestData.CreateAccessGroupData());
+            try
+            {
+                var createdSubEntity = api.UpsertAccessGroupPermission(created.Id,
+                    AccessGroupTestData.CreatePermissionData(AccessGroupTestData.Permissions[0]));
+                api.PatchAccessGroupPermissions(created.Id, new(permissions: new List<PermissionText> {
+                    new(
+                        permissionId: AccessGroupTestData.Permissions[1].ToString(),
+                        createdOn: DateTime.Now),
+                    new(
+                        permissionId: AccessGroupTestData.Permissions[2].ToString(),
+                        createdOn: DateTime.Now,
+                        id: createdSubEntity.Id)
+                }));
+                var existing = api.ListAccessGroupPermissions(created.Id).Data;
+                Assert.Contains(existing, i =>
+                    i.PermissionId.Id == AccessGroupTestData.Permissions[1].ToString());
+                Assert.Contains(existing, i =>
+                    i.PermissionId.Id == AccessGroupTestData.Permissions[2].ToString() &&
+                    i.Id == createdSubEntity.Id);
             }
             finally
             {

@@ -109,19 +109,23 @@ Class | Method | HTTP request | Description
 *AccessGroupsApi* | [**DeleteAccessGroup**](docs/AccessGroupsApi.md#deleteaccessgroup) | **DELETE** /Endpoint/rest/api/v1/AccessGroup/{Id} | 
 *AccessGroupsApi* | [**DeleteAccessGroupApplication**](docs/AccessGroupsApi.md#deleteaccessgroupapplication) | **DELETE** /Endpoint/rest/api/v1/AccessGroup/{Id}/Application/{SubId} | 
 *AccessGroupsApi* | [**DeleteAccessGroupGroup**](docs/AccessGroupsApi.md#deleteaccessgroupgroup) | **DELETE** /Endpoint/rest/api/v1/AccessGroup/{Id}/Group/{SubId} | 
+*AccessGroupsApi* | [**DeleteAccessGroupPermission**](docs/AccessGroupsApi.md#deleteaccessgrouppermission) | **DELETE** /Endpoint/rest/api/v1/AccessGroup/{Id}/Permission/{SubId} | 
 *AccessGroupsApi* | [**DeleteAccessGroupUser**](docs/AccessGroupsApi.md#deleteaccessgroupuser) | **DELETE** /Endpoint/rest/api/v1/AccessGroup/{Id}/User/{SubId} | 
 *AccessGroupsApi* | [**GetAccessGroup**](docs/AccessGroupsApi.md#getaccessgroup) | **GET** /Endpoint/rest/api/v1/AccessGroup/{Id} | 
 *AccessGroupsApi* | [**ListAccessGroupApplications**](docs/AccessGroupsApi.md#listaccessgroupapplications) | **GET** /Endpoint/rest/api/v1/AccessGroup/{Id}/Applications | 
 *AccessGroupsApi* | [**ListAccessGroupGroups**](docs/AccessGroupsApi.md#listaccessgroupgroups) | **GET** /Endpoint/rest/api/v1/AccessGroup/{Id}/Groups | 
+*AccessGroupsApi* | [**ListAccessGroupPermissions**](docs/AccessGroupsApi.md#listaccessgrouppermissions) | **GET** /Endpoint/rest/api/v1/AccessGroup/{Id}/Permissions | 
 *AccessGroupsApi* | [**ListAccessGroupUsers**](docs/AccessGroupsApi.md#listaccessgroupusers) | **GET** /Endpoint/rest/api/v1/AccessGroup/{Id}/Users | 
 *AccessGroupsApi* | [**ListAccessGroups**](docs/AccessGroupsApi.md#listaccessgroups) | **GET** /Endpoint/rest/api/v1/AccessGroups | 
 *AccessGroupsApi* | [**PatchAccessGroupApplications**](docs/AccessGroupsApi.md#patchaccessgroupapplications) | **PATCH** /Endpoint/rest/api/v1/AccessGroup/{Id}/Applications | 
 *AccessGroupsApi* | [**PatchAccessGroupGroups**](docs/AccessGroupsApi.md#patchaccessgroupgroups) | **PATCH** /Endpoint/rest/api/v1/AccessGroup/{Id}/Groups | 
+*AccessGroupsApi* | [**PatchAccessGroupPermissions**](docs/AccessGroupsApi.md#patchaccessgrouppermissions) | **PATCH** /Endpoint/rest/api/v1/AccessGroup/{Id}/Permissions | 
 *AccessGroupsApi* | [**PatchAccessGroupUsers**](docs/AccessGroupsApi.md#patchaccessgroupusers) | **PATCH** /Endpoint/rest/api/v1/AccessGroup/{Id}/Users | 
 *AccessGroupsApi* | [**UpdateAccessGroup**](docs/AccessGroupsApi.md#updateaccessgroup) | **PUT** /Endpoint/rest/api/v1/AccessGroup/{Id} | 
 *AccessGroupsApi* | [**UpsertAccessGroup**](docs/AccessGroupsApi.md#upsertaccessgroup) | **PATCH** /Endpoint/rest/api/v1/AccessGroup | 
 *AccessGroupsApi* | [**UpsertAccessGroupApplication**](docs/AccessGroupsApi.md#upsertaccessgroupapplication) | **POST** /Endpoint/rest/api/v1/AccessGroup/{Id}/Application | 
 *AccessGroupsApi* | [**UpsertAccessGroupGroup**](docs/AccessGroupsApi.md#upsertaccessgroupgroup) | **POST** /Endpoint/rest/api/v1/AccessGroup/{Id}/Group | 
+*AccessGroupsApi* | [**UpsertAccessGroupPermission**](docs/AccessGroupsApi.md#upsertaccessgrouppermission) | **POST** /Endpoint/rest/api/v1/AccessGroup/{Id}/Permission | 
 *AccessGroupsApi* | [**UpsertAccessGroupUser**](docs/AccessGroupsApi.md#upsertaccessgroupuser) | **POST** /Endpoint/rest/api/v1/AccessGroup/{Id}/User | 
 *AccountsApi* | [**CreateAccount**](docs/AccountsApi.md#createaccount) | **POST** /Endpoint/rest/api/v1/Account | 
 *AccountsApi* | [**DeleteAccount**](docs/AccountsApi.md#deleteaccount) | **DELETE** /Endpoint/rest/api/v1/Account/{Id} | 
@@ -217,6 +221,7 @@ Class | Method | HTTP request | Description
  - [Model.EnumDateFormat](docs/models/EnumDateFormat.md)
  - [Model.EnumDepartmentType](docs/models/EnumDepartmentType.md)
  - [Model.EnumLanguage](docs/models/EnumLanguage.md)
+ - [Model.EnumPermissionType](docs/models/EnumPermissionType.md)
  - [Model.EnumTimezone](docs/models/EnumTimezone.md)
  - [Model.Error](docs/models/Error.md)
  - [Model.FieldType](docs/models/FieldType.md)
@@ -237,6 +242,11 @@ Class | Method | HTTP request | Description
  - [Model.LocationUpdateData](docs/models/LocationUpdateData.md)
  - [Model.Locations](docs/models/Locations.md)
  - [Model.Meta](docs/models/Meta.md)
+ - [Model.Permission](docs/models/Permission.md)
+ - [Model.PermissionData](docs/models/PermissionData.md)
+ - [Model.PermissionText](docs/models/PermissionText.md)
+ - [Model.Permissions](docs/models/Permissions.md)
+ - [Model.PermissionsData](docs/models/PermissionsData.md)
  - [Model.Picture](docs/models/Picture.md)
  - [Model.PictureData](docs/models/PictureData.md)
  - [Model.Pictures](docs/models/Pictures.md)
