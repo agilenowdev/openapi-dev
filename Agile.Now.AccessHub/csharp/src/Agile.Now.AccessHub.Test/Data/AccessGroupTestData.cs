@@ -12,6 +12,12 @@ internal static class AccessGroupTestData
         "F32007E7-C34E-4043-8E6E-5EB75B7240FB"
     };
 
+    public static EnumPermissionType[] Permissions = new[] {
+        EnumPermissionType.Import,
+        EnumPermissionType.Export,
+        EnumPermissionType.Delete
+    };
+
     public static string ParentApplication = "3B594DDA-3F5D-431A-A532-A3EDFFA9BD98";
 
     public static AccessGroupData CreateAccessGroupData(string suffix = null)
@@ -36,4 +42,8 @@ internal static class AccessGroupTestData
     public static ApplicationData CreateApplicationData(string id) => new(
         parentApplicationId: new("Id", ParentApplication),
         accessApplicationId: new("Id", id));
+
+    public static PermissionData CreatePermissionData(EnumPermissionType id) => new(
+        permissionId: id, 
+        createdOn: DateTime.Now);
 }

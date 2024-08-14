@@ -42,6 +42,7 @@ docs/EnumCurrency.md
 docs/EnumDateFormat.md
 docs/EnumDepartmentType.md
 docs/EnumLanguage.md
+docs/EnumPermissionType.md
 docs/EnumTimezone.md
 docs/Error.md
 docs/FieldType.md
@@ -64,6 +65,11 @@ docs/LocationUpdateData.md
 docs/Locations.md
 docs/LocationsApi.md
 docs/Meta.md
+docs/Permission.md
+docs/PermissionData.md
+docs/PermissionText.md
+docs/Permissions.md
+docs/PermissionsData.md
 docs/Picture.md
 docs/PictureData.md
 docs/Pictures.md
@@ -149,6 +155,7 @@ src/Agile.Now.AccessHub/Model/EnumCurrency.cs
 src/Agile.Now.AccessHub/Model/EnumDateFormat.cs
 src/Agile.Now.AccessHub/Model/EnumDepartmentType.cs
 src/Agile.Now.AccessHub/Model/EnumLanguage.cs
+src/Agile.Now.AccessHub/Model/EnumPermissionType.cs
 src/Agile.Now.AccessHub/Model/EnumTimezone.cs
 src/Agile.Now.AccessHub/Model/Error.cs
 src/Agile.Now.AccessHub/Model/FieldType.cs
@@ -169,6 +176,11 @@ src/Agile.Now.AccessHub/Model/LocationInsertData.cs
 src/Agile.Now.AccessHub/Model/LocationUpdateData.cs
 src/Agile.Now.AccessHub/Model/Locations.cs
 src/Agile.Now.AccessHub/Model/Meta.cs
+src/Agile.Now.AccessHub/Model/Permission.cs
+src/Agile.Now.AccessHub/Model/PermissionData.cs
+src/Agile.Now.AccessHub/Model/PermissionText.cs
+src/Agile.Now.AccessHub/Model/Permissions.cs
+src/Agile.Now.AccessHub/Model/PermissionsData.cs
 src/Agile.Now.AccessHub/Model/Picture.cs
 src/Agile.Now.AccessHub/Model/PictureData.cs
 src/Agile.Now.AccessHub/Model/Pictures.cs
