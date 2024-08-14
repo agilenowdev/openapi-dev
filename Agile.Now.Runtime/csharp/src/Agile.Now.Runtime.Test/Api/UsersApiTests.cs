@@ -38,11 +38,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Agile.Now.AccessHub.Test.Data;
-using Agile.Now.ApiAccessGroups.Test.Api;
 using Agile.Now.ApiOrganizations.Test.Api;
 using Agile.Now.Runtime.Api;
-using Agile.Now.Runtime.Client;
-using Agile.Now.Runtime.Client.Auth;
 using Agile.Now.Runtime.Model;
 using Xunit;
 using Xunit.Abstractions;
@@ -64,20 +61,10 @@ namespace Agile.Now.AccessHub.Test.Api
 
         public UsersApiTests(ITestOutputHelper testOutputHelper)
         {
-            Configuration configuration = new Configuration
-            {
-                BasePath = "https://dev.esystems.fi",
-                OAuthTokenUrl = "https://dev.esystems.fi/oAuth/rest/v2/Token",
-                OAuthFlow = OAuthFlow.APPLICATION,
-                OAuthClientId = "c8907421-0886-4fb0-b859-d29966762e16",
-                OAuthClientSecret = "1da54fa9-ae11-4db3-9740-1bb47b85cd8e"
-            };
-            api = new UsersApi(configuration);
+            api = new UsersApi(Settings.Connections[0]);
         }
 
-        public void Dispose()
-        {
-        }
+        public void Dispose() { }
 
         /// <summary>
         /// Test GetUser by Id
@@ -87,9 +74,9 @@ namespace Agile.Now.AccessHub.Test.Api
         {
             Assert.Null(Record.Exception(() =>
             {
-                var existingEntity = api.GetUser(TestUserData.Users[2].ToString());
-                Assert.Equal(TestUserData.Users[2], existingEntity.Id);
-                return existingEntity;
+                var entity = api.GetUser(TestUserData.Users[0].Id.ToString());
+                Assert.Equal(TestUserData.Users[0].Id, entity.Id);
+                return entity;
             }));
         }
 
@@ -101,9 +88,9 @@ namespace Agile.Now.AccessHub.Test.Api
         {
             Assert.Null(Record.Exception(() =>
             {
-                var existingEntity = api.GetUser(TestUserData.Users[2].ToString(), "Name");
-                Assert.Equal("test test", existingEntity.Id.ToString());
-                return existingEntity;
+                var entity = api.GetUser(TestUserData.Users[0].Name, "Name");
+                Assert.Equal(TestUserData.Users[0].Name, entity.Id.ToString());
+                return entity;
             }));
         }
 
@@ -113,9 +100,9 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_User_List_ById()
         {
-            var existingEntities = api.ListUsers(
-                filters: $"Id In {string.Join("; ", TestUserData.Users[1], TestUserData.Users[2])}").Data;
-            Assert.Equal(2, existingEntities.Count);
+            var entity = api.ListUsers(
+                filters: $"Id In {string.Join("; ", TestUserData.Users[0].Id, TestUserData.Users[1].Id)}").Data;
+            Assert.Equal(2, entity.Count);
         }
 
         /// <summary>
@@ -124,9 +111,9 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_User_List_ByName()
         {
-            var existingEntities = api.ListUsers(
-                filters: $"Name In {string.Join("; ", TestUserData.Users[2])}").Data;
-            Assert.Single(existingEntities);
+            var entity = api.ListUsers(
+                filters: $"Name In {string.Join("; ", TestUserData.Users[0].Name, TestUserData.Users[0].Name)}").Data;
+            Assert.Single(entity);
         }
 
         /// <summary>
@@ -135,12 +122,12 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_User_AccessGroup_Delete()
         {
-            var existedEntity = TestUserData.Users[0];
-            var createdSubEntity = api.UpsertUserAccessGroup(existedEntity.ToString(), new(
-                accessGroupId: new("Id", TestUserData.AccessGroups[0].ToString()), createdOn: DateTime.Now));
-            api.DeleteUserAccessGroup(existedEntity.ToString(), createdSubEntity.Id.ToString());
-            var existingdSubEntities = api.ListUserAccessGroups(existedEntity.ToString()).Data;
-            Assert.Empty(existingdSubEntities);
+            var entity = TestUserData.Users[0];
+            var created = api.UpsertUserAccessGroup(entity.Id.ToString(),
+                TestUserData.CreateAccessGroupData(TestUserData.AccessGroups[0]));
+            api.DeleteUserAccessGroup(entity.Id.ToString(), created.Id.ToString());
+            var existing = api.ListUserAccessGroups(entity.Id.ToString()).Data;
+            Assert.Empty(existing);
         }
 
         /// <summary>
@@ -149,12 +136,11 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_User_AccessGroup_List()
         {
-            var existedEntity = TestUserData.Users[0];
-            var createdSubEntities = TestUserData.AccessGroups.Select(i =>
-                api.UpsertUserAccessGroup(existedEntity.ToString(),
-                    new(accessGroupId: new("Id", i.ToString()), createdOn: DateTime.Now))).ToArray();
-            var existingSubEntities = api.ListUserAccessGroups(existedEntity.ToString()).Data;
-            Assert.Equal(createdSubEntities.Length, existingSubEntities.Count);
+            var entity = TestUserData.Users[0];
+            var created = TestUserData.AccessGroups.Select(i =>
+                api.UpsertUserAccessGroup(entity.Id.ToString(), TestUserData.CreateAccessGroupData(i))).ToArray();
+            var existing = api.ListUserAccessGroups(entity.Id.ToString()).Data;
+            Assert.Equal(created.Length, existing.Count);
         }
 
         /// <summary>
@@ -163,11 +149,11 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_User_AccessGroup_Upsert()
         {
-            var existedEntity = TestUserData.Users[0];
-            var createdSubEntity = api.UpsertUserAccessGroup(existedEntity.ToString(), new(
-                accessGroupId: new("Id", TestUserData.AccessGroups[0].ToString()), createdOn: DateTime.Now));
-            var existingSubEntities = api.ListUserAccessGroups(existedEntity.ToString()).Data;
-            Assert.Contains(existingSubEntities, i => i.Id == createdSubEntity.Id);
+            var entity = TestUserData.Users[0];
+            var created = api.UpsertUserAccessGroup(entity.Id.ToString(),
+                TestUserData.CreateAccessGroupData(TestUserData.AccessGroups[0]));
+            var existing = api.ListUserAccessGroups(entity.Id.ToString()).Data;
+            Assert.Contains(existing, i => i.Id == created.Id);
         }
 
         /// <summary>
@@ -176,12 +162,11 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_User_Group_Delete()
         {
-            var existedEntity = TestUserData.Users[0];
-            var createdSubEntity = api.UpsertUserGroup(existedEntity.ToString(), new(
-                groupId: new("Id", TestAccessGroupData.Groups[0].ToString())));
-            api.DeleteUserGroup(existedEntity.ToString(), createdSubEntity.Id.ToString());
-            var existingdSubEntities = api.ListUserGroups(existedEntity.ToString()).Data;
-            Assert.Empty(existingdSubEntities);
+            var entity = TestUserData.Users[0];
+            var created = api.UpsertUserGroup(entity.Id.ToString(), TestUserData.CreateGroupData(TestUserData.Groups[0]));
+            api.DeleteUserGroup(entity.Id.ToString(), created.Id.ToString());
+            var existing = api.ListUserGroups(entity.Id.ToString()).Data;
+            Assert.Empty(existing);
         }
 
         /// <summary>
@@ -190,12 +175,11 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_User_Group_List()
         {
-            var existedEntity = TestUserData.Users[0];
-            var createdSubEntities = TestAccessGroupData.Groups.Select(i =>
-                api.UpsertUserGroup(existedEntity.ToString(),
-                    new(groupId: new("Id", i.ToString())))).ToArray();
-            var existingSubEntities = api.ListUserGroups(existedEntity.ToString()).Data;
-            Assert.Equal(createdSubEntities.Length, existingSubEntities.Count);
+            var entity = TestUserData.Users[0];
+            var created = TestUserData.Groups.Select(i =>
+                api.UpsertUserGroup(entity.Id.ToString(), TestUserData.CreateGroupData(i))).ToArray();
+            var existing = api.ListUserGroups(entity.Id.ToString()).Data;
+            Assert.Equal(created.Length, existing.Count);
         }
 
         /// <summary>
@@ -204,11 +188,10 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_User_Group_Upsert()
         {
-            var existedEntity = TestUserData.Users[0];
-            var createdSubEntity = api.UpsertUserGroup(existedEntity.ToString(), new(
-                groupId: new("Id", TestAccessGroupData.Groups[0].ToString())));
-            var existingSubEntities = api.ListUserGroups(existedEntity.ToString()).Data;
-            Assert.Contains(existingSubEntities, i => i.Id == createdSubEntity.Id);
+            var entity = TestUserData.Users[0];
+            var created = api.UpsertUserGroup(entity.Id.ToString(), TestUserData.CreateGroupData(TestUserData.Groups[0]));
+            var existing = api.ListUserGroups(entity.Id.ToString()).Data;
+            Assert.Contains(existing, i => i.Id == created.Id);
         }
 
         /// <summary>
@@ -217,12 +200,12 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_User_Department_Delete()
         {
-            var existedEntity = TestUserData.Users[0];
-            var createdSubEntity = api.UpsertUserDepartment(existedEntity.ToString(), new(
-                departmentId: new("Id", TestDepartmentData.Departments[0].ToString())));
-            api.DeleteUserDepartment(existedEntity.ToString(), createdSubEntity.Id.ToString());
-            var existingdSubEntities = api.ListUserDepartments(existedEntity.ToString()).Data;
-            Assert.Empty(existingdSubEntities);
+            var entity = TestUserData.Users[0];
+            var created = api.UpsertUserDepartment(entity.Id.ToString(),
+                TestUserData.CreateDepartmentData(TestUserData.Departments[0]));
+            api.DeleteUserDepartment(entity.Id.ToString(), created.Id.ToString());
+            var existing = api.ListUserDepartments(entity.Id.ToString()).Data;
+            Assert.Empty(existing);
         }
 
         /// <summary>
@@ -231,12 +214,12 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_User_Department_List()
         {
-            var existedEntity = TestUserData.Users[0];
-            var createdSubEntities = TestDepartmentData.Departments.Select(i =>
-                api.UpsertUserDepartment(existedEntity.ToString(),
-                    new(departmentId: new("Id", i.ToString())))).ToArray();
-            var existingSubEntities = api.ListUserDepartments(existedEntity.ToString()).Data;
-            Assert.Equal(createdSubEntities.Length, existingSubEntities.Count);
+            var entity = TestUserData.Users[0];
+            var created = TestUserData.Departments.Select(i =>
+                api.UpsertUserDepartment(entity.Id.ToString(),
+                    TestUserData.CreateDepartmentData(i))).ToArray();
+            var existing = api.ListUserDepartments(entity.Id.ToString()).Data;
+            Assert.Equal(created.Length, existing.Count);
         }
 
         /// <summary>
@@ -245,11 +228,11 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_User_Department_Upsert()
         {
-            var existedEntity = TestUserData.Users[0];
-            var createdSubEntity = api.UpsertUserDepartment(existedEntity.ToString(), new(
-                departmentId: new("Id", TestDepartmentData.Departments[0].ToString())));
-            var existingSubEntities = api.ListUserDepartments(existedEntity.ToString()).Data;
-            Assert.Contains(existingSubEntities, i => i.Id == createdSubEntity.Id);
+            var entity = TestUserData.Users[0];
+            var created = api.UpsertUserDepartment(entity.Id.ToString(),
+                TestUserData.CreateDepartmentData(TestUserData.Departments[0]));
+            var existing = api.ListUserDepartments(entity.Id.ToString()).Data;
+            Assert.Contains(existing, i => i.Id == created.Id);
         }
 
         /// <summary>
@@ -258,19 +241,16 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_User_Department_Patch()
         {
-            var existedEntity = TestUserData.Users[0];
-            var createdSubEntity = api.UpsertUserDepartment(existedEntity.ToString(), new(
-                departmentId: new("Id", TestDepartmentData.Departments[0].ToString())));
-            api.PatchUserDepartments(existedEntity.ToString(), new(departments: new List<DepartmentText> {
-                    new(departmentId: TestDepartmentData.Departments[1].ToString()),
-                    new(departmentId: TestDepartmentData.Departments[2].ToString(), id: createdSubEntity.Id)
-                }));
-            var existingEntities = api.ListUserDepartments(existedEntity.ToString()).Data;
-            Assert.Contains(existingEntities, i =>
-                i.DepartmentId.Id == TestDepartmentData.Departments[1]);
-            Assert.Contains(existingEntities, i =>
-                i.Id == createdSubEntity.Id &&
-                i.DepartmentId.Id == TestDepartmentData.Departments[2]);
+            var entity = TestUserData.Users[0];
+            var created = api.UpsertUserDepartment(entity.Id.ToString(),
+                TestUserData.CreateDepartmentData(TestUserData.Departments[0]));
+            api.PatchUserDepartments(entity.Id.ToString(), new(departments: new List<DepartmentText> {
+                new(departmentId: TestUserData.Departments[1].ToString()),
+                new(departmentId: TestUserData.Departments[2].ToString(), id: created.Id)
+            }));
+            var existing = api.ListUserDepartments(entity.Id.ToString()).Data;
+            Assert.Contains(existing, i => i.DepartmentId.Id == TestUserData.Departments[1]);
+            Assert.Contains(existing, i => i.DepartmentId.Id == TestUserData.Departments[2] && i.Id == created.Id);
         }
 
         /// <summary>
@@ -279,12 +259,12 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_User_Location_Delete()
         {
-            var existedEntity = TestUserData.Users[0];
-            var createdSubEntity = api.UpsertUserLocation(existedEntity.ToString(), new(
-                locationId: new("Id", TestLocationData.Locations[0].ToString())));
-            api.DeleteUserLocation(existedEntity.ToString(), createdSubEntity.Id.ToString());
-            var existingdSubEntities = api.ListUserLocations(existedEntity.ToString()).Data;
-            Assert.Empty(existingdSubEntities);
+            var entity = TestUserData.Users[0];
+            var created = api.UpsertUserLocation(entity.Id.ToString(),
+                TestUserData.CreateLocationData(TestUserData.Locations[0]));
+            api.DeleteUserLocation(entity.Id.ToString(), created.Id.ToString());
+            var existing = api.ListUserLocations(entity.Id.ToString()).Data;
+            Assert.Empty(existing);
         }
 
         /// <summary>
@@ -293,12 +273,12 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_User_Location_List()
         {
-            var existedEntity = TestUserData.Users[0];
-            var createdSubEntities = TestLocationData.Locations.Select(i =>
-                api.UpsertUserLocation(existedEntity.ToString(),
-                    new(locationId: new("Id", i.ToString())))).ToArray();
-            var existingSubEntities = api.ListUserLocations(existedEntity.ToString()).Data;
-            Assert.Equal(createdSubEntities.Length, existingSubEntities.Count);
+            var entity = TestUserData.Users[0];
+            var created = TestLocationData.Locations.Select(i =>
+                api.UpsertUserLocation(entity.Id.ToString(),
+                    TestUserData.CreateLocationData(i))).ToArray();
+            var existing = api.ListUserLocations(entity.Id.ToString()).Data;
+            Assert.Equal(created.Length, existing.Count);
         }
 
         /// <summary>
@@ -307,11 +287,11 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_User_Location_Upsert()
         {
-            var existedEntity = TestUserData.Users[0];
-            var createdSubEntity = api.UpsertUserLocation(existedEntity.ToString(), new(
-                locationId: new("Id", TestLocationData.Locations[0].ToString())));
-            var existingSubEntities = api.ListUserLocations(existedEntity.ToString()).Data;
-            Assert.Contains(existingSubEntities, i => i.Id == createdSubEntity.Id);
+            var entity = TestUserData.Users[0];
+            var created = api.UpsertUserLocation(entity.Id.ToString(),
+                TestUserData.CreateLocationData(TestUserData.Locations[0]));
+            var existing = api.ListUserLocations(entity.Id.ToString()).Data;
+            Assert.Contains(existing, i => i.Id == created.Id);
         }
 
         /// <summary>
@@ -320,19 +300,16 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_User_Location_Patch()
         {
-            var existedEntity = TestUserData.Users[0];
-            var createdSubEntity = api.UpsertUserLocation(existedEntity.ToString(), new(
-                locationId: new("Id", TestLocationData.Locations[0].ToString())));
-            api.PatchUserLocations(existedEntity.ToString(), new(locations: new List<LocationText> {
-                    new(locationId: TestLocationData.Locations[1].ToString()),
-                    new(locationId: TestLocationData.Locations[2].ToString(), id: createdSubEntity.Id)
-                }));
-            var existingEntities = api.ListUserLocations(existedEntity.ToString()).Data;
-            Assert.Contains(existingEntities, i =>
-                i.LocationId.Id == TestLocationData.Locations[1]);
-            Assert.Contains(existingEntities, i =>
-                i.Id == createdSubEntity.Id &&
-                i.LocationId.Id == TestLocationData.Locations[2]);
+            var entity = TestUserData.Users[0];
+            var created = api.UpsertUserLocation(entity.Id.ToString(),
+                TestUserData.CreateLocationData(TestUserData.Locations[0]));
+            api.PatchUserLocations(entity.Id.ToString(), new(locations: new List<LocationText> {
+                new(locationId: TestLocationData.Locations[1].ToString()),
+                new(locationId: TestLocationData.Locations[2].ToString(), id: created.Id)
+            }));
+            var existing = api.ListUserLocations(entity.Id.ToString()).Data;
+            Assert.Contains(existing, i => i.LocationId.Id == TestLocationData.Locations[1]);
+            Assert.Contains(existing, i => i.LocationId.Id == TestLocationData.Locations[2] && i.Id == created.Id);
         }
 
         /// <summary>
@@ -341,9 +318,9 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_User_Application_List()
         {
-            var existedEntity = TestUserData.Users[0];
-            var existingSubEntities = api.ListUserApplications(existedEntity.ToString()).Data;
-            Assert.NotEmpty(existingSubEntities);
+            var entity = TestUserData.Users[0];
+            var existing = api.ListUserApplications(entity.Id.ToString()).Data;
+            Assert.NotEmpty(existing);
         }
 
         /// <summary>
@@ -352,9 +329,9 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_User_EffectivePermissions_List()
         {
-            var existedEntity = TestUserData.Users[0];
-            var existingSubEntities = api.ListUserEffectivePermissions(existedEntity.ToString()).Data;
-            Assert.NotEmpty(existingSubEntities);
+            var entity = TestUserData.Users[0];
+            var existing = api.ListUserEffectivePermissions(entity.Id.ToString()).Data;
+            Assert.NotEmpty(existing);
         }
     }
 }

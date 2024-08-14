@@ -10,5 +10,5 @@ internal static class TestAccessGroupData
 
     public static string ParentApplication = "3B594DDA-3F5D-431A-A532-A3EDFFA9BD98";
 
-    public static int[] Groups = new[] { 6626, 6625, 6624 };
+    
 }
