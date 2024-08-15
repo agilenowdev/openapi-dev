@@ -11,6 +11,10 @@ public class TestUserData
         (14996, "Rui Test") 
     };
 
+    public const int UserWithApplications = 5739;
+    public const int UserWithEffectivePermissions = 17068;
+    public const int UserWithAccessRoles = 17068;
+
     public static readonly string[] AccessGroups = new[] {
         "254DE5D5-6FE0-4E0E-BDAE-F88557FFE79D",
         "471B0202-9B3A-4761-85A6-961260685251"

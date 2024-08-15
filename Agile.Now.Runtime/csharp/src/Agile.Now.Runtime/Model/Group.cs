@@ -65,8 +65,6 @@ namespace Agile.Now.Runtime.Model
         public Group(int id = 0, AbstractLong groupId = default)
         {
             Id = id;
-            // to ensure "groupId" is required (not null)
-            groupId = groupId ?? throw new ArgumentNullException("groupId is a required property for Group and cannot be null");
             GroupId = groupId;
         }
 
@@ -80,7 +78,7 @@ namespace Agile.Now.Runtime.Model
         /// <summary>
         /// Gets or Sets GroupId
         /// </summary>
-        [DataMember(Name = "Group_Id", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Group_Id", EmitDefaultValue = true)]
         public AbstractLong GroupId { get; set; }
 
         /// <summary>

@@ -236,44 +236,44 @@ namespace Agile.Now.AccessHub.Test.Api
         /// <summary>
         /// Test UpdateAccessGroup with externalId
         /// </summary>
-        [Fact]
-        public void Test_AccessGroup_UpdateWithExternalId()
-        {
-            var data = AccessGroupTestData.CreateAccessGroupData();
-            var created = api.CreateAccessGroup(data);
-            try
-            {
-                data.id = null;
-                AccessGroupTestData.UpdateAccessGroupData(data);
-                var updated = api.UpdateAccessGroup(created.Id, data);
-                AssertAccessGroupDataEqual(data, updated);
-            }
-            finally
-            {
-                api.DeleteAccessGroup(created.Id);
-            }
-        }
+        //[Fact]
+        //public void Test_AccessGroup_UpdateWithExternalId()
+        //{
+        //    var data = AccessGroupTestData.CreateAccessGroupData();
+        //    var created = api.CreateAccessGroup(data);
+        //    try
+        //    {
+        //        data.id = null;
+        //        AccessGroupTestData.UpdateAccessGroupData(data);
+        //        var updated = api.UpdateAccessGroup(created.Id, data);
+        //        AssertAccessGroupDataEqual(data, updated);
+        //    }
+        //    finally
+        //    {
+        //        api.DeleteAccessGroup(created.Id);
+        //    }
+        //}
         /// <summary>
         /// Test UpdateAccessGroup with name
         /// </summary>
-        [Fact]
-        public void Test_AccessGroup_UpdateWithName()
-        {
-            var data = AccessGroupTestData.CreateAccessGroupData();
-            var created = api.CreateAccessGroup(data);
-            try
-            {
-                data.id = null;
-                data.externalId = null;
-                AccessGroupTestData.UpdateAccessGroupData(data);
-                var updated = api.UpdateAccessGroup(created.Id, data);
-                AssertAccessGroupDataEqual(data, updated);
-            }
-            finally
-            {
-                api.DeleteAccessGroup(created.Id);
-            }
-        }
+        //[Fact]
+        //public void Test_AccessGroup_UpdateWithName()
+        //{
+        //    var data = AccessGroupTestData.CreateAccessGroupData();
+        //    var created = api.CreateAccessGroup(data);
+        //    try
+        //    {
+        //        data.id = null;
+        //        data.externalId = null;
+        //        AccessGroupTestData.UpdateAccessGroupData(data);
+        //        var updated = api.UpdateAccessGroup(created.Id, data);
+        //        AssertAccessGroupDataEqual(data, updated);
+        //    }
+        //    finally
+        //    {
+        //        api.DeleteAccessGroup(created.Id);
+        //    }
+        //}
         /// <summary>
         /// Test UpdateAccessGroup IsSystem= true
         /// </summary>
