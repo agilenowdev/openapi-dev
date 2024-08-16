@@ -139,7 +139,8 @@ namespace Agile.Now.AccessHub.Test.Api
         {
             var entity = TestUserData.Users[0];
             var created = TestUserData.AccessGroups.Select(i =>
-                api.UpsertUserAccessGroup(entity.Id.ToString(), TestUserData.CreateAccessGroupData(i))).ToArray();
+                api.UpsertUserAccessGroup(entity.Id.ToString(), 
+                    TestUserData.CreateAccessGroupData(i))).ToArray();
             var existing = api.ListUserAccessGroups(entity.Id.ToString()).Data;
             Assert.Equal(created.Length, existing.Count);
         }
