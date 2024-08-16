@@ -11,7 +11,7 @@ public class TestUserData
         (14996, "Rui Test") 
     };
 
-    public const int UserWithApplications = 5739;
+    public const int UserWithApplications = 17068;
     public const int UserWithEffectivePermissions = 17068;
     public const int UserWithAccessRoles = 17068;
 

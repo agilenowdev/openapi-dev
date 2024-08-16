@@ -173,7 +173,7 @@ namespace Agile.Now.Runtime.Model
         /// </summary>
         /// <value>Defines if the application is active and can be used</value>
         /// <example>false</example>
-        [DataMember(Name = "Is_Active", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Is_Active", EmitDefaultValue = true)]
         public bool IsActive { get; set; }
 
         /// <summary>
@@ -181,7 +181,7 @@ namespace Agile.Now.Runtime.Model
         /// </summary>
         /// <value>Determines whether the application is readonly and can be modified</value>
         /// <example>false</example>
-        [DataMember(Name = "Is_ReadOnly", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Is_ReadOnly", EmitDefaultValue = true)]
         public bool IsReadOnly { get; set; }
 
         /// <summary>
