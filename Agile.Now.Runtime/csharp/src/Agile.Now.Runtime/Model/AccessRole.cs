@@ -80,8 +80,6 @@ namespace Agile.Now.Runtime.Model
             // to ensure "id" is required (not null)
             id = id ?? throw new ArgumentNullException("id is a required property for AccessRole and cannot be null");
             Id = id;
-            // to ensure "roleKey" is required (not null)
-            roleKey = roleKey ?? throw new ArgumentNullException("roleKey is a required property for AccessRole and cannot be null");
             RoleKey = roleKey;
             IsReadOnly = isReadOnly;
             Name = name;
@@ -116,7 +114,7 @@ namespace Agile.Now.Runtime.Model
         ///  The key used to identify the role must be unique within each workspace.
         /// </summary>
         /// <value> The key used to identify the role must be unique within each workspace.</value>
-        [DataMember(Name = "RoleKey", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "RoleKey", EmitDefaultValue = true)]
         public string RoleKey { get; set; }
 
         /// <summary>
@@ -185,7 +183,7 @@ namespace Agile.Now.Runtime.Model
         /// </summary>
         /// <value>Determines whether the role is readonly and can be modified</value>
         /// <example>false</example>
-        [DataMember(Name = "Is_ReadOnly", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Is_ReadOnly", EmitDefaultValue = true)]
         public bool IsReadOnly { get; set; }
 
         /// <summary>
