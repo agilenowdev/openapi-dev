@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.36"
+    "version": "3.0.37"
   },
   "servers": [
     {
@@ -1515,7 +1515,7 @@
         "tags": [
           "Users"
         ],
-        "description": "Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.\n\nLeverage the search service to extract the requisite information from the system effectively.\n\nThe method returns a list structured with an extended `AccessRole` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.\n\nThe foreign key fields involved are: `AccessApplicationId, RoleId, ApplicationId, EspaceId, ModifiedBy, CreatedBy`\n\n### Example\nIt searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.\n\n```http\nfields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000\n```",
+        "description": "Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.\n\nLeverage the search service to extract the requisite information from the system effectively.\n\nThe method returns a list structured with an extended `AccessRole` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.\n\nThe foreign key fields involved are: `User_Id, Role_Id`\n\n### Example\nIt searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.\n\n```http\nfields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000\n```",
         "operationId": "List User AccessRoles",
         "parameters": [
           {
@@ -1540,10 +1540,10 @@
           {
             "name": "Fields",
             "in": "query",
-            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, RoleId, ApplicationId, EspaceId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, User_Id, Role_Id\n```",
             "schema": {
               "type": "string",
-              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, RoleId, ApplicationId, EspaceId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```"
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, User_Id, Role_Id\n```"
             }
           },
           {
@@ -2439,78 +2439,18 @@
       "AccessRole": {
         "required": [
           "Id",
-          "RoleKey",
-          "Is_ReadOnly"
+          "Role_Id"
         ],
         "type": "object",
         "properties": {
           "Id": {
-            "type": "string",
-            "description": "The identifier of the role"
+            "type": "integer",
+            "format": "int32",
+            "default": 0,
+            "example": 0
           },
-          "Name": {
-            "type": "string",
-            "description": "Name of role"
-          },
-          "RoleKey": {
-            "type": "string",
-            "description": " The key used to identify the role must be unique within each workspace."
-          },
-          "FullName": {
-            "type": "string",
-            "description": "Full name of role. Example Application 1 \\ Espace 1 \\ Role 1"
-          },
-          "Description": {
-            "type": "string",
-            "description": "The description of access group"
-          },
-          "ExternalId": {
-            "type": "string",
-            "description": "The external system code of the role"
-          },
-          "AccessApplicationId": {
-            "$ref": "#/components/schemas/AbstractText"
-          },
-          "RoleId": {
+          "Role_Id": {
             "$ref": "#/components/schemas/AbstractLong"
-          },
-          "ApplicationId": {
-            "$ref": "#/components/schemas/AbstractLong"
-          },
-          "EspaceId": {
-            "$ref": "#/components/schemas/AbstractLong"
-          },
-          "Is_Active": {
-            "type": "boolean",
-            "description": "Defines if record is active",
-            "default": false,
-            "example": false
-          },
-          "Is_Custom": {
-            "type": "boolean",
-            "description": "Determines whether the role has been modified externally or whether it is synchronized from the OutSystems structure",
-            "default": false,
-            "example": false
-          },
-          "Is_ReadOnly": {
-            "type": "boolean",
-            "description": "Determines whether the role is readonly and can be modified",
-            "default": false,
-            "example": false
-          },
-          "ModifiedOn": {
-            "type": "string",
-            "description": "The date the record was updated",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
-          },
-          "CreatedOn": {
-            "type": "string",
-            "description": "The date the record was created",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
           }
         },
         "description": "The record of AccessRole information."
