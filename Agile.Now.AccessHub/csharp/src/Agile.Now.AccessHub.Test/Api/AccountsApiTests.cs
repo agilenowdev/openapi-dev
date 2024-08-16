@@ -198,7 +198,8 @@ namespace Agile.Now.AccessHub.Test.Api
                 Select(i => api.CreateAccount(i)).ToArray();
             try
             {
-                var existing = api.ListAccounts( filters: $"Id In {string.Join("; ", created.Select(i => i.Id))}").Data;
+                var existing = api.ListAccounts(
+                    filters: $"Id In {string.Join("; ", created.Select(i => i.Id))}").Data;
                 Assert.Equal(created.Length, existing.Count);
             }
             finally

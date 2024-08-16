@@ -71,11 +71,12 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_User_Get_ById()
         {
+            var existing = TestUserData.Users[0];
             Assert.Null(Record.Exception(() =>
             {
-                var entity = api.GetUser(TestUserData.Users[0].Id.ToString());
-                Assert.Equal(TestUserData.Users[0].Id, entity.Id);
-                return entity;
+                var found = api.GetUser(existing.Id.ToString());
+                Assert.Equal(existing.Id, found.Id);
+                return found;
             }));
         }
 
@@ -85,11 +86,12 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_User_Get_ByName()
         {
+            var existing = TestUserData.Users[0];
             Assert.Null(Record.Exception(() =>
             {
-                var entity = api.GetUser(TestUserData.Users[0].Name, "Name");
-                Assert.Equal(TestUserData.Users[0].Name, entity.Name.ToString());
-                return entity;
+                var found = api.GetUser(existing.Name, "Name");
+                Assert.Equal(existing.Name, found.Name.ToString());
+                return found;
             }));
         }
 
@@ -100,8 +102,8 @@ namespace Agile.Now.AccessHub.Test.Api
         public void Test_User_List_ById()
         {
             var entity = api.ListUsers(
-                filters: $"Id In {string.Join(", ", TestUserData.Users[0].Id, TestUserData.Users[1].Id)}").Data;
-            Assert.Equal(2, entity.Count);
+                filters: $"Id In {string.Join(", ", TestUserData.Users.Select(i => i.Id))}").Data;
+            Assert.Equal(TestUserData.Users.Length, entity.Count);
         }
 
         /// <summary>
@@ -111,8 +113,8 @@ namespace Agile.Now.AccessHub.Test.Api
         public void Test_User_List_ByName()
         {
             var entity = api.ListUsers(
-                filters: $"Name In {string.Join("; ", TestUserData.Users[0].Name, TestUserData.Users[0].Name)}").Data;
-            Assert.Single(entity);
+                filters: $"Name In {string.Join("; ", TestUserData.Users.Select(i => i.Name))}").Data;
+            Assert.Equal(TestUserData.Users.Length, entity.Count);
         }
 
         /// <summary>
