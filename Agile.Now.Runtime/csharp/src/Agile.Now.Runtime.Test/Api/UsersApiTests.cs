@@ -141,8 +141,15 @@ namespace Agile.Now.AccessHub.Test.Api
             var created = TestUserData.AccessGroups.Select(i =>
                 api.UpsertUserAccessGroup(entity.Id.ToString(), 
                     TestUserData.CreateAccessGroupData(i))).ToArray();
-            var existing = api.ListUserAccessGroups(entity.Id.ToString()).Data;
-            Assert.Equal(created.Length, existing.Count);
+            try
+            {
+                var existing = api.ListUserAccessGroups(entity.Id.ToString()).Data;
+                Assert.Equal(created.Length, existing.Count);
+            }
+            finally {
+                foreach (var i in created)
+                    api.DeleteUserAccessGroup(entity.Id.ToString(), i.Id.ToString());
+            }
         }
 
         /// <summary>
@@ -154,8 +161,14 @@ namespace Agile.Now.AccessHub.Test.Api
             var entity = TestUserData.Users[0];
             var created = api.UpsertUserAccessGroup(entity.Id.ToString(),
                 TestUserData.CreateAccessGroupData(TestUserData.AccessGroups[0]));
-            var existing = api.ListUserAccessGroups(entity.Id.ToString()).Data;
-            Assert.Contains(existing, i => i.Id == created.Id);
+            try
+            {
+                var existing = api.ListUserAccessGroups(entity.Id.ToString()).Data;
+                Assert.Contains(existing, i => i.Id == created.Id);
+            }
+            finally {
+                api.DeleteUserAccessGroup(entity.Id.ToString(), created.Id.ToString());
+            }
         }
 
         /// <summary>
@@ -180,8 +193,15 @@ namespace Agile.Now.AccessHub.Test.Api
             var entity = TestUserData.Users[0];
             var created = TestUserData.Groups.Select(i =>
                 api.UpsertUserGroup(entity.Id.ToString(), TestUserData.CreateGroupData(i))).ToArray();
-            var existing = api.ListUserGroups(entity.Id.ToString()).Data;
-            Assert.Equal(created.Length, existing.Count);
+            try
+            {
+                var existing = api.ListUserGroups(entity.Id.ToString()).Data;
+                Assert.Equal(created.Length, existing.Count);
+            }
+            finally {
+                foreach (var i in created)
+                    api.DeleteUserGroup(entity.Id.ToString(), i.Id.ToString());
+            }
         }
 
         /// <summary>
@@ -218,7 +238,8 @@ namespace Agile.Now.AccessHub.Test.Api
         {
             var entity = TestUserData.Users[0];
             var created = TestUserData.Departments.Select(i =>
-                api.UpsertUserDepartment(entity.Id.ToString(), TestUserData.CreateDepartmentData(i))).ToArray();
+                api.UpsertUserDepartment(entity.Id.ToString(), 
+                    TestUserData.CreateDepartmentData(i))).ToArray();
             try
             {
                 var existing = api.ListUserDepartments(entity.Id.ToString()).Data;

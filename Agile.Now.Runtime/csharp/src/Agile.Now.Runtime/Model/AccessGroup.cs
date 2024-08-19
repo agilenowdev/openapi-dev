@@ -66,8 +66,6 @@ namespace Agile.Now.Runtime.Model
         public AccessGroup(long id = 0, AbstractText accessGroupId = default, DateTime createdOn = default)
         {
             Id = id;
-            // to ensure "accessGroupId" is required (not null)
-            accessGroupId = accessGroupId ?? throw new ArgumentNullException("accessGroupId is a required property for AccessGroup and cannot be null");
             AccessGroupId = accessGroupId;
             CreatedOn = createdOn;
         }
@@ -77,13 +75,13 @@ namespace Agile.Now.Runtime.Model
         /// </summary>
         /// <value>The identifier of user access group</value>
         /// <example>0</example>
-        [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Id", EmitDefaultValue = true)]
         public long Id { get; set; }
 
         /// <summary>
         /// Gets or Sets AccessGroupId
         /// </summary>
-        [DataMember(Name = "AccessGroupId", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "AccessGroupId", EmitDefaultValue = true)]
         public AbstractText AccessGroupId { get; set; }
 
         /// <summary>
@@ -91,7 +89,7 @@ namespace Agile.Now.Runtime.Model
         /// </summary>
         /// <value>The date when the record was created.</value>
         /// <example>1900-01-01T00:00Z</example>
-        [DataMember(Name = "CreatedOn", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "CreatedOn", EmitDefaultValue = true)]
         public DateTime CreatedOn { get; set; }
 
         /// <summary>
