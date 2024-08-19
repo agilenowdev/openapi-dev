@@ -212,8 +212,14 @@ namespace Agile.Now.AccessHub.Test.Api
         {
             var entity = TestUserData.Users[0];
             var created = api.UpsertUserGroup(entity.Id.ToString(), TestUserData.CreateGroupData(TestUserData.Groups[0]));
-            var existing = api.ListUserGroups(entity.Id.ToString()).Data;
-            Assert.Contains(existing, i => i.Id == created.Id);
+            try
+            {
+                var existing = api.ListUserGroups(entity.Id.ToString()).Data;
+                Assert.Contains(existing, i => i.Id == created.Id);
+            }
+            finally {
+                api.DeleteUserGroup(entity.Id.ToString(), created.Id.ToString());
+            }
         }
 
         /// <summary>
