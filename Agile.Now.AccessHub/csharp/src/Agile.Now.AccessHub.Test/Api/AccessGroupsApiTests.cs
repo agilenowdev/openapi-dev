@@ -92,6 +92,25 @@ namespace Agile.Now.AccessHub.Test.Api
             }
         }
 
+        [Fact]
+        public void Test_AccessGroup_Create_WithExternalId()
+        {
+            var externalId = Guid.NewGuid().ToString();
+            var data = AccessGroupTestData.CreateAccessGroupData();
+            data.ExternalId = externalId;
+            var created = api.CreateAccessGroup(data);
+            try
+            {
+                data = AccessGroupTestData.CreateAccessGroupData();
+                data.ExternalId = externalId;
+                Assert.Throws<ApiException>(() => api.CreateAccessGroup(data));
+            }
+            finally
+            {
+                api.DeleteAccessGroup(created.Id);
+            }
+        }
+
         /// <summary>
         /// Test DeleteAccessGroup by Id
         /// </summary>
@@ -233,50 +252,6 @@ namespace Agile.Now.AccessHub.Test.Api
             }
         }
 
-        /// <summary>
-        /// Test UpdateAccessGroup with externalId
-        /// </summary>
-        //[Fact]
-        //public void Test_AccessGroup_UpdateWithExternalId()
-        //{
-        //    var data = AccessGroupTestData.CreateAccessGroupData();
-        //    var created = api.CreateAccessGroup(data);
-        //    try
-        //    {
-        //        data.id = null;
-        //        AccessGroupTestData.UpdateAccessGroupData(data);
-        //        var updated = api.UpdateAccessGroup(created.Id, data);
-        //        AssertAccessGroupDataEqual(data, updated);
-        //    }
-        //    finally
-        //    {
-        //        api.DeleteAccessGroup(created.Id);
-        //    }
-        //}
-        /// <summary>
-        /// Test UpdateAccessGroup with name
-        /// </summary>
-        //[Fact]
-        //public void Test_AccessGroup_UpdateWithName()
-        //{
-        //    var data = AccessGroupTestData.CreateAccessGroupData();
-        //    var created = api.CreateAccessGroup(data);
-        //    try
-        //    {
-        //        data.id = null;
-        //        data.externalId = null;
-        //        AccessGroupTestData.UpdateAccessGroupData(data);
-        //        var updated = api.UpdateAccessGroup(created.Id, data);
-        //        AssertAccessGroupDataEqual(data, updated);
-        //    }
-        //    finally
-        //    {
-        //        api.DeleteAccessGroup(created.Id);
-        //    }
-        //}
-        /// <summary>
-        /// Test UpdateAccessGroup IsSystem= true
-        /// </summary>
         [Fact]
         public void Test_AccessGroup_Update_IsSystem()
         {
@@ -440,7 +415,7 @@ namespace Agile.Now.AccessHub.Test.Api
             try
             {
                 var createdSubEntities = AccessGroupTestData.Permissions.Select(i =>
-                    api.UpsertAccessGroupPermission(created.Id, 
+                    api.UpsertAccessGroupPermission(created.Id,
                         AccessGroupTestData.CreatePermissionData(i))).ToArray();
                 var existing = api.ListAccessGroupPermissions(created.Id).Data;
                 Assert.Equal(createdSubEntities.Length, existing.Count);
@@ -504,93 +479,6 @@ namespace Agile.Now.AccessHub.Test.Api
                 api.DeleteAccessGroup(created.Id);
             }
         }
-
-        /// <summary>
-        /// Test DeleteAccessGroupPermission
-        /// </summary>
-        //[Fact]
-        //public void Test_AccessGroup_Permission_Delete()
-        //{
-        //    var accessGroupData = TestAccessGroupData.CreateAccessGroupData();
-        //    var createdAccessGroup = api.CreateAccessGroup(accessGroupData);
-        //    try
-        //    {
-        //        var permission = api.UpsertAccessGroupPermission(createdAccessGroup.Id,
-        //            new PermissionData(permissionId: EnumPermissionType.Import, createdOn: DateTime.Now));
-        //        var deletedPermission = api.DeleteAccessGroupPermission(createdAccessGroup.Id, permission.Id.ToString());
-        //        var existingPermission = api.ListAccessGroupPermissions(createdAccessGroup.Id).Data;
-        //        Assert.Empty(existingPermission);
-        //    }
-        //    finally
-        //    {
-        //        api.DeleteAccessGroup(createdAccessGroup.Id);
-        //    }
-        //}
-
-        /// <summary>
-        /// Test ListAccessGroupPermissions
-        /// </summary>
-        //[Fact]
-        //public void Test_AccessGroup_Permission_List()
-        //{
-        //    var AccessGroupData = TestAccessGroupData.CreateAccessGroupData();
-        //    var createdAccessGroup = api.CreateAccessGroup(AccessGroupData);
-        //    try
-        //    {
-        //        var createdAccessGroupPermissions = new[] {
-        //            api.UpsertAccessGroupPermission(createdAccessGroup.Id,
-        //                new PermissionData ( permissionId: EnumPermissionType.Import, createdOn: DateTime.Now)),
-        //            api.UpsertAccessGroupPermission(createdAccessGroup.Id,
-        //                new PermissionData ( permissionId: EnumPermissionType.Export, createdOn: DateTime.Now))
-        //        };
-        //        try
-        //        {
-        //            var existingAccessGroupPermissions = api.ListAccessGroupPermissions(createdAccessGroup.Id).Data;
-        //            Assert.Equal(createdAccessGroupPermissions.Length, existingAccessGroupPermissions.Count);
-        //        }
-        //        finally
-        //        {
-        //            foreach (var i in createdAccessGroupPermissions)
-        //                api.DeleteAccessGroupPermission(createdAccessGroup.Id, i.Id.ToString());
-        //        }
-        //    }
-        //    finally
-        //    {
-        //        api.DeleteAccessGroup(createdAccessGroup.Id);
-        //    }
-        //}
-
-        /// <summary>
-        /// Test UpsertAccessGroupPermission
-        /// </summary>
-        //[Fact]
-        //public void Test_AccessGroup_Permission_Upsert()
-        //{
-        //    var accessGroupData = TestAccessGroupData.CreateAccessGroupData();
-        //    var createdAccessGroup = api.CreateAccessGroup(accessGroupData);
-        //    try
-        //    {
-        //        var createdAccessGroupPermission = api.UpsertAccessGroupPermission(createdAccessGroup.Id,
-        //            new PermissionData
-        //            (
-        //                permissionId: EnumPermissionType.Import,
-        //                createdOn: DateTime.Now
-        //            ));
-        //        try
-        //        {
-        //            var existingAccessGroupPermissions = api.ListAccessGroupPermissions(createdAccessGroup.Id).Data;
-        //            Assert.Contains(existingAccessGroupPermissions, i => i.Id == createdAccessGroupPermission.Id);
-        //        }
-        //        finally
-        //        {
-        //            api.DeleteAccessGroupPermission(createdAccessGroup.Id, createdAccessGroupPermission.Id.ToString());
-        //        }
-        //    }
-        //    finally
-        //    {
-        //        api.DeleteAccessGroup(createdAccessGroup.Id);
-        //    }
-        //}
 
         /// <summary>
         /// Test DeleteAccessGroupUser

@@ -44,6 +44,7 @@ using Agile.Now.AccessHub.Client;
 using Agile.Now.AccessHub.Model;
 using Agile.Now.AccessHub.Test.Data;
 using Agile.Now.ApiAccounts.Test.Api;
+using Agile.Now.ApiAccounts.Test.Api;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -91,6 +92,25 @@ namespace Agile.Now.AccessHub.Test.Api
             {
                 AssertAccountDataEqual(data, created);
                 output.WriteLine($"TenantId= {created.TenantId.Id}");
+            }
+            finally
+            {
+                api.DeleteAccount(created.Id);
+            }
+        }
+
+        [Fact]
+        public void Test_Account_Create_WithExternalId()
+        {
+            var externalId = Guid.NewGuid().ToString();
+            var data = AccountTestData.CreateAccountData();
+            data.ExternalId = externalId;
+            var created = api.CreateAccount(data);
+            try
+            {
+                data = AccountTestData.CreateAccountData();
+                data.ExternalId = externalId;
+                Assert.Throws<ApiException>(() => api.CreateAccount(data));
             }
             finally
             {

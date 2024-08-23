@@ -94,6 +94,25 @@ namespace Agile.Now.AccessHub.Test.Api
             }
         }
 
+        [Fact]
+        public void Test_Location_Create_WithExternalId()
+        {
+            var externalId = Guid.NewGuid().ToString();
+            var data = LocationTestData.CreateLocationData();
+            data.ExternalId = externalId;
+            var created = api.CreateLocation(data);
+            try
+            {
+                data = LocationTestData.CreateLocationData();
+                data.ExternalId = externalId;
+                Assert.Throws<ApiException>(() => api.CreateLocation(data));
+            }
+            finally
+            {
+                api.DeleteLocation(created.Id);
+            }
+        }
+
         /// <summary>
         /// Test DeleteLocation by Id
         /// </summary>
