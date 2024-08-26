@@ -1,7 +1,7 @@
 ﻿using Agile.Now.Runtime.Client;
 using Agile.Now.Runtime.Client.Auth;
 
-namespace Agile.Now.AccessHub.Test.Api
+namespace Agile.Now.Runtime.Test.Api
 {
     public static class Settings
     {
