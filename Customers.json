@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.24"
+    "version": "3.0.25"
   },
   "servers": [
     {
@@ -1204,7 +1204,7 @@
         ],
         "type": "object",
         "properties": {
-          "Error": {
+          "Errors": {
             "type": "array",
             "items": {
               "type": "string",
@@ -1305,37 +1305,34 @@
       },
       "AbstractLong": {
         "required": [
-          "Id",
-          "ExternalId",
-          "Name",
-          "Type"
+          "Id"
         ],
         "type": "object",
         "properties": {
           "Id": {
             "type": "integer",
-            "description": "The primary key of the record row. If the Id attribute is used, then it must be unique",
+            "description": "The primary key of the record. It uniquely identifies each record within the dataset. This attribute is required and must be unique across all records.",
             "format": "int64",
             "default": 0,
             "example": 1234567891234567
           },
           "ExternalId": {
             "type": "string",
-            "description": "The external identier of the record row. If the External Id attribute is used, then it must be unique",
+            "description": "An external identifier for the record, which can be used to link the record to external systems or datasets. This attribute is optional but should be unique if provided.",
             "example": "3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5"
           },
           "Name": {
             "type": "string",
-            "description": "The name of the record row",
+            "description": "The name of the record. This attribute provides a human-readable identifier for the record, making it easier to recognize and differentiate records in lists or other displays. This attribute is optional.",
             "example": "Bob Normal"
           },
           "Type": {
             "type": "string",
-            "description": "The type of the record object",
+            "description": "The type of the record object. This attribute is used to classify the record into specific categories or types, helping to organize and manage different kinds of records. This attribute is optional.",
             "example": "User"
           }
         },
-        "description": "The abstract object structure"
+        "description": "This structure represents an abstract object with a primary key of type Long. It is used to encapsulate detailed information about related entities."
       },
       "Customers": {
         "type": "object",
@@ -1422,21 +1419,20 @@
       },
       "FieldType": {
         "required": [
-          "Field",
           "Value"
         ],
         "type": "object",
         "properties": {
           "Field": {
             "type": "string",
-            "description": "The name of the data field"
+            "description": "The name of the data field. This can be any field name from the related database table, such as 'Email' from the User table or 'Name' from the Department table."
           },
           "Value": {
             "type": "string",
-            "description": "The value of the data row"
+            "description": "The value corresponding to the specified data field. This value is used to identify the record in the related database table. For example, it could be an email address, a department name, or an external system's identifier."
           }
         },
-        "description": "The field object structure"
+        "description": "The field object structure. This structure allows users to specify any related entity field and its corresponding value. When saving data, the system automatically retrieves and assigns the primary key value from the system database table based on the provided field name and value."
       },
       "CustomerText": {
         "required": [
@@ -1547,7 +1543,7 @@
           },
           "FieldName": {
             "type": "string",
-            "description": "The field name of relation database table.\n\nExample; \nThe field name is &quot;TenantId&quot; and is associated with the &quot;Tenant&quot; table. You want to use in the &quot;Tenant&quot; table &quot;Name&quot; field fetching data. Once &quot;Name&quot; is specified, the validation service retrieves the tenant identifier from the &quot;Tenant&quot; table based on the &quot;Name&quot; field."
+            "description": "The field name of relation database table.\n\nExample; \nThe field name is 'TenantId' and is associated with the 'Tenant' table. You want to use in the 'Tenant' table 'Name' field fetching data. Once 'Name' is specified, the validation service retrieves the tenant identifier from the 'Tenant' table based on the 'Name' field."
           },
           "Required": {
             "type": "boolean",
