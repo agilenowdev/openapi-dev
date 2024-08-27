@@ -97,6 +97,25 @@ namespace Agile.Now.AccessHub.Test.Api
             }
         }
 
+        [Fact]
+        public void Test_Department_Create_WithExternalId()
+        {
+            var externalId = Guid.NewGuid().ToString();
+            var data = DepartmentTestData.CreateDepartmentData();
+            data.ExternalId = externalId;
+            var created = api.CreateDepartment(data);
+            try
+            {
+                data = DepartmentTestData.CreateDepartmentData();
+                data.ExternalId = externalId;
+                Assert.Throws<ApiException>(() => api.CreateDepartment(data));
+            }
+            finally
+            {
+                api.DeleteDepartment(created.Id);
+            }
+        }
+
         /// <summary>
         /// Test DeleteDepartment by Id
         /// </summary>

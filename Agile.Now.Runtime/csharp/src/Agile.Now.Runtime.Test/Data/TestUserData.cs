@@ -1,17 +1,17 @@
 ﻿using System;
 using Agile.Now.Runtime.Model;
 
-namespace Agile.Now.AccessHub.Test.Data;
+namespace Agile.Now.Runtime.Test.Data;
 
 public class TestUserData
 {
-    public static readonly (int Id, string Name)[] Users = new[] { 
-        (29788, "Demo Test"), 
+    public static readonly (int Id, string Name)[] Users = new[] {
+        (29788, "Demo Test"),
         (16862, "test test"),
-        (14996, "Rui Test") 
+        (14996, "Rui Test")
     };
 
-    public const int UserWithApplications = 5739;
+    public const int UserWithApplications = 17068;
     public const int UserWithEffectivePermissions = 17068;
     public const int UserWithAccessRoles = 17068;
 

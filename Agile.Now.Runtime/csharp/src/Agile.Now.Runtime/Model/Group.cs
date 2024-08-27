@@ -72,7 +72,7 @@ namespace Agile.Now.Runtime.Model
         /// Gets or Sets Id
         /// </summary>
         /// <example>0</example>
-        [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Id", EmitDefaultValue = true)]
         public int Id { get; set; }
 
         /// <summary>

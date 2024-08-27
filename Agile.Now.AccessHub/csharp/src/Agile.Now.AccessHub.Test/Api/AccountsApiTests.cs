@@ -44,6 +44,7 @@ using Agile.Now.AccessHub.Client;
 using Agile.Now.AccessHub.Model;
 using Agile.Now.AccessHub.Test.Data;
 using Agile.Now.ApiAccounts.Test.Api;
+using Agile.Now.ApiAccounts.Test.Api;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -91,6 +92,25 @@ namespace Agile.Now.AccessHub.Test.Api
             {
                 AssertAccountDataEqual(data, created);
                 output.WriteLine($"TenantId= {created.TenantId.Id}");
+            }
+            finally
+            {
+                api.DeleteAccount(created.Id);
+            }
+        }
+
+        [Fact]
+        public void Test_Account_Create_WithExternalId()
+        {
+            var externalId = Guid.NewGuid().ToString();
+            var data = AccountTestData.CreateAccountData();
+            data.ExternalId = externalId;
+            var created = api.CreateAccount(data);
+            try
+            {
+                data = AccountTestData.CreateAccountData();
+                data.ExternalId = externalId;
+                Assert.Throws<ApiException>(() => api.CreateAccount(data));
             }
             finally
             {
@@ -198,7 +218,8 @@ namespace Agile.Now.AccessHub.Test.Api
                 Select(i => api.CreateAccount(i)).ToArray();
             try
             {
-                var existing = api.ListAccounts( filters: $"Id In {string.Join("; ", created.Select(i => i.Id))}").Data;
+                var existing = api.ListAccounts(
+                    filters: $"Id In {string.Join("; ", created.Select(i => i.Id))}").Data;
                 Assert.Equal(created.Length, existing.Count);
             }
             finally
@@ -283,7 +304,7 @@ namespace Agile.Now.AccessHub.Test.Api
             {
                 var existingSubEntities = api.ListAccountTenants(created.Id).Data;
                 var deletedSubEntity = api.DeleteAccountTenant(
-                    created.Id, existingSubEntities[0].UserId.ToString(), subName: "UserId");
+                    created.Id, existingSubEntities[0].UserId.Id.ToString(), subName: "UserId");
                 existingSubEntities = api.ListAccountTenants(created.Id).Data;
                 Assert.DoesNotContain(existingSubEntities, i => i.TenantId.Id == deletedSubEntity.TenantId.Id);
             }
@@ -302,18 +323,9 @@ namespace Agile.Now.AccessHub.Test.Api
             var created = api.CreateAccount(AccountTestData.CreateAccountData());
             try
             {
-                //var createdTenant = api.UpsertAccountTenant(created.Id, new(
-                //    new("Id", ""),
-                //    new("Id", TestAccountData.AnotherTenant.ToString())));
-                try
-                {
-                    var existingEntityTenants = api.ListAccountTenants(created.Id).Data;
-                    //Assert.Collection(existingEntityTenants, i => Assert.Equal(created.Id, i.AccountId.Id));
-                }
-                finally
-                {
-                    //api.DeleteAccountTenant(created.Id, createdTenant.TenantId.Id.ToString(), subName: "UserId");
-                }
+
+                var existingSubEntities = api.ListAccountTenants(created.Id).Data;
+                Assert.Contains(existingSubEntities, i => i.TenantId.Id == created.TenantId.Id);
             }
             finally
             {
