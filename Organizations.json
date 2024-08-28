@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "2.0.132"
+    "version": "2.0.133"
   },
   "servers": [
     {
@@ -4741,8 +4741,7 @@
       },
       "LocationData": {
         "required": [
-          "Name",
-          "Is_Active"
+          "Name"
         ],
         "type": "object",
         "properties": {
@@ -4766,12 +4765,6 @@
           },
           "CurrencyId": {
             "$ref": "#/components/schemas/EnumCurrency"
-          },
-          "Is_Active": {
-            "type": "boolean",
-            "description": "Defines if the location is active and can be used.",
-            "default": false,
-            "example": false
           },
           "Is_Deleted": {
             "type": "boolean",
@@ -4821,8 +4814,7 @@
       },
       "LocationUpdateData": {
         "required": [
-          "Name",
-          "Is_Active"
+          "Name"
         ],
         "type": "object",
         "properties": {
@@ -4842,12 +4834,6 @@
           },
           "CurrencyId": {
             "$ref": "#/components/schemas/EnumCurrency"
-          },
-          "Is_Active": {
-            "type": "boolean",
-            "description": "Defines if the location is active and can be used.",
-            "default": false,
-            "example": false
           }
         },
         "description": "The record of Location information."
