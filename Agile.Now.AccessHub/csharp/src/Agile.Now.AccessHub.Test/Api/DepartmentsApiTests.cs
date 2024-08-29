@@ -97,8 +97,11 @@ namespace Agile.Now.AccessHub.Test.Api
             }
         }
 
+        /// <summary>
+        /// Test CreateDepartment with not unique ExternalId
+        /// </summary>
         [Fact]
-        public void Test_Department_Create_WithExternalId()
+        public void Test_Department_Create_WithNotUniqueExternalId()
         {
             var externalId = Guid.NewGuid().ToString();
             var data = DepartmentTestData.CreateDepartmentData();

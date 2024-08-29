@@ -94,8 +94,11 @@ namespace Agile.Now.AccessHub.Test.Api
             }
         }
 
+        /// <summary>
+        /// Test CreateLocation with not unique ExternalId
+        /// </summary>
         [Fact]
-        public void Test_Location_Create_WithExternalId()
+        public void Test_Location_Create_WithNotUniqueExternalId()
         {
             var externalId = Guid.NewGuid().ToString();
             var data = LocationTestData.CreateLocationData();
