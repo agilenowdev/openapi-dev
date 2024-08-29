@@ -1132,52 +1132,9 @@
             "description": "If true, the configuration is active.",
             "default": false,
             "example": false
-          },
-          "Is_System": {
-            "type": "boolean",
-            "description": "If true, the configuration is internal to the system and not visible in the user interface.",
-            "default": false,
-            "example": false
-          },
-          "ModifiedBy": {
-            "$ref": "#/components/schemas/FieldType"
-          },
-          "ModifiedOn": {
-            "type": "string",
-            "description": "The date the record was updated.",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
-          },
-          "CreatedBy": {
-            "$ref": "#/components/schemas/FieldType"
-          },
-          "CreatedOn": {
-            "type": "string",
-            "description": "The date the record was created.",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
           }
         },
         "description": "The record of Connection information."
-      },
-      "FieldType": {
-        "required": [
-          "Value"
-        ],
-        "type": "object",
-        "properties": {
-          "Field": {
-            "type": "string",
-            "description": "The name of the data field. This can be any field name from the related database table, such as 'Email' from the User table or 'Name' from the Department table."
-          },
-          "Value": {
-            "type": "string",
-            "description": "The value corresponding to the specified data field. This value is used to identify the record in the related database table. For example, it could be an email address, a department name, or an external system's identifier."
-          }
-        },
-        "description": "The field object structure. This structure allows users to specify any related entity field and its corresponding value. When saving data, the system automatically retrieves and assigns the primary key value from the system database table based on the provided field name and value."
       },
       "Config": {
         "required": [
@@ -1344,6 +1301,23 @@
           }
         },
         "description": "The record of Config information."
+      },
+      "FieldType": {
+        "required": [
+          "Value"
+        ],
+        "type": "object",
+        "properties": {
+          "Field": {
+            "type": "string",
+            "description": "The name of the data field. This can be any field name from the related database table, such as 'Email' from the User table or 'Name' from the Department table."
+          },
+          "Value": {
+            "type": "string",
+            "description": "The value corresponding to the specified data field. This value is used to identify the record in the related database table. For example, it could be an email address, a department name, or an external system's identifier."
+          }
+        },
+        "description": "The field object structure. This structure allows users to specify any related entity field and its corresponding value. When saving data, the system automatically retrieves and assigns the primary key value from the system database table based on the provided field name and value."
       },
       "ConfigText": {
         "required": [
