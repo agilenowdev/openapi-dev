@@ -57,12 +57,10 @@ namespace Agile.Now.Runtime.Test.Api
     public class UsersApiTests : IDisposable
     {
         private readonly UsersApi api;
-        private readonly AccessHub.Api.DepartmentsApi departmentsApi;
 
         public UsersApiTests(ITestOutputHelper testOutputHelper)
         {
             api = new(Settings.Connections[0]);
-            departmentsApi = new(AccessHub.Test.Api.Settings.Connections[0]);
         }
 
         public void Dispose() { }
@@ -234,18 +232,12 @@ namespace Agile.Now.Runtime.Test.Api
         [Fact]
         public void Test_User_Department_Delete()
         {
-            var created = departmentsApi.CreateDepartment(ApiOrganizations.Test.Api.DepartmentTestData.CreateDepartmentData());
-            try
-            {
-                var createdSubEntity = api.UpsertUserDepartment(created.Id.ToString(),
-                    TestUserData.CreateDepartmentData(TestUserData.Departments[0]));
-                api.DeleteUserDepartment(created.Id.ToString(), createdSubEntity.Id.ToString());
-                var existing = api.ListUserDepartments(created.Id.ToString()).Data;
-                Assert.Empty(existing);
-            }
-            finally {
-                departmentsApi.DeleteDepartment(created.Id);
-            }
+            var entity = TestUserData.Users[0];
+            var created = api.UpsertUserDepartment(entity.Id.ToString(),
+                TestUserData.CreateDepartmentData(TestUserData.Departments[0]));
+            api.DeleteUserDepartment(entity.Id.ToString(), created.Id.ToString());
+            var existing = api.ListUserDepartments(entity.Id.ToString()).Data;
+            Assert.Empty(existing);
         }
 
         /// <summary>
@@ -256,8 +248,7 @@ namespace Agile.Now.Runtime.Test.Api
         {
             var entity = TestUserData.Users[0];
             var created = TestUserData.Departments.Select(i =>
-                api.UpsertUserDepartment(entity.Id.ToString(),
-                    TestUserData.CreateDepartmentData(i))).ToArray();
+                api.UpsertUserDepartment(entity.Id.ToString(), TestUserData.CreateDepartmentData(i))).ToArray();
             try
             {
                 var existing = api.ListUserDepartments(entity.Id.ToString()).Data;

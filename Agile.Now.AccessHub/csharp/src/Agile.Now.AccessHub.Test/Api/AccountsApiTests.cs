@@ -304,7 +304,7 @@ namespace Agile.Now.AccessHub.Test.Api
             {
                 var existingSubEntities = api.ListAccountTenants(created.Id).Data;
                 var deletedSubEntity = api.DeleteAccountTenant(
-                    created.Id, existingSubEntities[0].UserId.Id.ToString(), subName: "UserId");
+                    created.Id, "15", subName: "UserId");
                 existingSubEntities = api.ListAccountTenants(created.Id).Data;
                 Assert.DoesNotContain(existingSubEntities, i => i.TenantId.Id == deletedSubEntity.TenantId.Id);
             }
@@ -391,7 +391,7 @@ namespace Agile.Now.AccessHub.Test.Api
             try
             {
                 var createdSubEntity = api.UpsertAccountPicture(created.Id,
-                    new(created.Username + "_picture", AccountTestData.PictureData.ToStream()));
+                    new(created.Username + "_picture", AccountTestData.PictureData.ToStream()), name: "AccountId");
                 try
                 {
                     var existingSubEntities = api.ListAccountPictures(created.Id).Data;

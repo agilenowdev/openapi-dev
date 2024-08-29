@@ -16,13 +16,4 @@
   <ItemGroup>
     <ProjectReference Include="..\Agile.Now.Runtime\Agile.Now.Runtime.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Agile.Now.AccessHub">
-      <HintPath>..\..\..\..\Agile.Now.AccessHub\csharp\src\Agile.Now.AccessHub\bin\Debug\netstandard2.0\Agile.Now.AccessHub.dll</HintPath>
-    </Reference>
-    <Reference Include="Agile.Now.AccessHub.Test">
-      <HintPath>..\..\..\..\Agile.Now.AccessHub\csharp\src\Agile.Now.AccessHub.Test\bin\Debug\net7.0\Agile.Now.AccessHub.Test.dll</HintPath>
-    </Reference>
-  </ItemGroup>
 </Project>

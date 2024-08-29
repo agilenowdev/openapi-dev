@@ -227,13 +227,13 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_Location_Update()
         {
-            var entityData = LocationTestData.CreateLocationData();
-            var created = api.CreateLocation(entityData);
+            var data = LocationTestData.CreateLocationData();
+            var created = api.CreateLocation(data);
             try
             {
-                LocationTestData.UpdateLocationData(entityData);
-                var updated = api.UpdateLocation(created.Id, entityData.ToLocationUpdateData());
-                AssertLocationDataEqual(entityData, updated);
+                LocationTestData.UpdateLocationData(data);
+                var updated = api.UpdateLocation(created.Id, data.ToLocationUpdateData());
+                AssertLocationDataEqual(data, updated);
             }
             finally
             {
@@ -247,16 +247,16 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_Location_Upsert()
         {
-            var entityData = LocationTestData.CreateLocationData();
-            var created = api.UpsertLocation(entityData.ToLocationData());
+            var data = LocationTestData.CreateLocationData();
+            var created = api.UpsertLocation(data.ToLocationData());
             try
             {
-                AssertLocationDataEqual(entityData, created);
-                LocationTestData.UpdateLocationData(entityData);
-                entityData.Id = created.Id;
-                var updated = api.UpsertLocation(entityData.ToLocationData());
+                AssertLocationDataEqual(data, created);
+                LocationTestData.UpdateLocationData(data);
+                data.Id = created.Id;
+                var updated = api.UpsertLocation(data.ToLocationData());
                 Assert.Equal(created.Id, updated.Id);
-                AssertLocationDataEqual(entityData, updated);
+                AssertLocationDataEqual(data, updated);
             }
             finally
             {
