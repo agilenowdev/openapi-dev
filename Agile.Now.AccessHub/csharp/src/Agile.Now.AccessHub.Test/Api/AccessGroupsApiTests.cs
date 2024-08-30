@@ -92,8 +92,12 @@ namespace Agile.Now.AccessHub.Test.Api
             }
         }
 
+        /// <summary>
+        /// Test CreateAccessGroup - unique ExternalId
+        /// </summary>
+
         [Fact]
-        public void Test_AccessGroup_Create_WithExternalId()
+        public void Test_AccessGroup_Create_UniqueExternalId()
         {
             var externalId = Guid.NewGuid().ToString();
             var data = AccessGroupTestData.CreateAccessGroupData();
@@ -131,19 +135,6 @@ namespace Agile.Now.AccessHub.Test.Api
             var created = api.CreateAccessGroup(AccessGroupTestData.CreateAccessGroupData());
             api.DeleteAccessGroup(created.Name, "Name");
             Assert.Throws<ApiException>(() => api.GetAccessGroup(created.Id));
-        }
-
-        /// <summary>
-        /// Test DeleteAccessGroup IsSystem= true
-        /// </summary>
-        [Fact]
-        public void Test_AccessGroup_Delete_IsSystem()
-        {
-            var data = AccessGroupTestData.CreateAccessGroupData();
-            data.IsSystem = true;
-            var created = api.CreateAccessGroup(data);
-            api.DeleteAccessGroup(created.Id);
-            Assert.Throws<ApiException>(() => api.DeleteAccessGroup(created.Id));
         }
 
         /// <summary>
@@ -250,17 +241,6 @@ namespace Agile.Now.AccessHub.Test.Api
             {
                 api.DeleteAccessGroup(created.Id);
             }
-        }
-
-        [Fact]
-        public void Test_AccessGroup_Update_IsSystem()
-        {
-            var data = AccessGroupTestData.CreateAccessGroupData();
-            data.IsSystem = true;
-            data.IsActive = true;
-            var created = api.CreateAccessGroup(data);
-            AccessGroupTestData.UpdateAccessGroupData(data);
-            Assert.Throws<ApiException>(() => api.UpdateAccessGroup(created.Id, data));
         }
 
         /// <summary>

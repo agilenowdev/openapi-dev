@@ -42,6 +42,7 @@ using Agile.Now.AccessHub.Client;
 using Agile.Now.AccessHub.Model;
 using Agile.Now.AccessHub.Test.Data;
 using Agile.Now.ApiAccessGroups.Test.Api;
+using Agile.Now.ApiOrganizations.Test.Api;
 using Xunit;
 using Xunit.Abstractions;
 // uncomment below to import models
@@ -84,6 +85,28 @@ namespace Agile.Now.AccessHub.Test.Api
             try
             {
                 AssertGroupExternalDataEqual(data, created);
+            }
+            finally
+            {
+                api.DeleteGroupExternal(created.Id.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Test CreateGroupExternal - unique ExternalId
+        /// </summary>
+        [Fact]
+        public void Test_GroupExternal_Create_UniqueExternalId()
+        {
+            var externalId = Guid.NewGuid().ToString();
+            var data = GroupExternalTestData.CreateGroupExternalData();
+            data.ExternalId = externalId;
+            var created = api.CreateGroupExternal(data);
+            try
+            {
+                data = GroupExternalTestData.CreateGroupExternalData();
+                data.ExternalId = externalId;
+                Assert.Throws<ApiException>(() => api.CreateGroupExternal(data));
             }
             finally
             {
