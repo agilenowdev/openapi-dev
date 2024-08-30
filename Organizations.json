@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "2.0.134"
+    "version": "2.0.136"
   },
   "servers": [
     {
@@ -3560,12 +3560,6 @@
             "description": "Defines if the department is active and can be used.",
             "default": false,
             "example": false
-          },
-          "Is_Deleted": {
-            "type": "boolean",
-            "description": "Defines if the department is deleted and cannot be used.",
-            "default": false,
-            "example": false
           }
         },
         "description": "The record of Department information."
@@ -3641,12 +3635,6 @@
           "Is_Active": {
             "type": "boolean",
             "description": "Defines if the department is active and can be used.",
-            "default": false,
-            "example": false
-          },
-          "Is_Deleted": {
-            "type": "boolean",
-            "description": "Defines if the department is deleted and cannot be used.",
             "default": false,
             "example": false
           }
@@ -4741,7 +4729,8 @@
       },
       "LocationData": {
         "required": [
-          "Name"
+          "Name",
+          "Is_Active"
         ],
         "type": "object",
         "properties": {
@@ -4766,9 +4755,9 @@
           "CurrencyId": {
             "$ref": "#/components/schemas/EnumCurrency"
           },
-          "Is_Deleted": {
+          "Is_Active": {
             "type": "boolean",
-            "description": "Defines if the location is deleted and cannot be used.",
+            "description": "Defines if the location is active and can be used.",
             "default": false,
             "example": false
           }
@@ -4802,19 +4791,14 @@
           },
           "CurrencyId": {
             "$ref": "#/components/schemas/EnumCurrency"
-          },
-          "Is_Deleted": {
-            "type": "boolean",
-            "description": "Defines if the location is deleted and cannot be used.",
-            "default": false,
-            "example": false
           }
         },
         "description": "The record of Location information."
       },
       "LocationUpdateData": {
         "required": [
-          "Name"
+          "Name",
+          "Is_Active"
         ],
         "type": "object",
         "properties": {
@@ -4834,6 +4818,12 @@
           },
           "CurrencyId": {
             "$ref": "#/components/schemas/EnumCurrency"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the location is active and can be used.",
+            "default": false,
+            "example": false
           }
         },
         "description": "The record of Location information."
