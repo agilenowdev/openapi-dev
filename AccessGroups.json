@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.69"
+    "version": "3.0.71"
   },
   "servers": [
     {
@@ -3284,8 +3284,7 @@
       },
       "PermissionData": {
         "required": [
-          "PermissionId",
-          "CreatedOn"
+          "PermissionId"
         ],
         "type": "object",
         "properties": {
@@ -3310,21 +3309,13 @@
             "description": "Defines if record is active.",
             "default": false,
             "example": false
-          },
-          "CreatedOn": {
-            "type": "string",
-            "description": "The date when the record was created.",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
           }
         },
         "description": "The record of Permission information."
       },
       "PermissionText": {
         "required": [
-          "PermissionId",
-          "CreatedOn"
+          "PermissionId"
         ],
         "type": "object",
         "properties": {
@@ -3352,13 +3343,6 @@
             "description": "Defines if record is active.",
             "default": false,
             "example": false
-          },
-          "CreatedOn": {
-            "type": "string",
-            "description": "The date when the record was created.",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
           }
         },
         "description": "The record of Permission information."
@@ -3435,8 +3419,7 @@
       },
       "GroupData": {
         "required": [
-          "GroupId",
-          "CreatedOn"
+          "GroupId"
         ],
         "type": "object",
         "properties": {
@@ -3449,21 +3432,13 @@
           },
           "GroupId": {
             "$ref": "#/components/schemas/FieldType"
-          },
-          "CreatedOn": {
-            "type": "string",
-            "description": "The date when the record was created.",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
           }
         },
         "description": "The record of Group information."
       },
       "GroupText": {
         "required": [
-          "GroupId",
-          "CreatedOn"
+          "GroupId"
         ],
         "type": "object",
         "properties": {
@@ -3477,13 +3452,6 @@
           "GroupId": {
             "type": "string",
             "description": "The identifier of group."
-          },
-          "CreatedOn": {
-            "type": "string",
-            "description": "The date when the record was created.",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
           }
         },
         "description": "The record of Group information."
@@ -3560,8 +3528,7 @@
       },
       "UserData": {
         "required": [
-          "UserId",
-          "CreatedOn"
+          "UserId"
         ],
         "type": "object",
         "properties": {
@@ -3574,21 +3541,13 @@
           },
           "UserId": {
             "$ref": "#/components/schemas/FieldType"
-          },
-          "CreatedOn": {
-            "type": "string",
-            "description": "The date when the record was created.",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
           }
         },
         "description": "The record of User information."
       },
       "UserText": {
         "required": [
-          "UserId",
-          "CreatedOn"
+          "UserId"
         ],
         "type": "object",
         "properties": {
@@ -3602,13 +3561,6 @@
           "UserId": {
             "type": "string",
             "description": "The identifier of user."
-          },
-          "CreatedOn": {
-            "type": "string",
-            "description": "The date when the record was created.",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
           }
         },
         "description": "The record of User information."
