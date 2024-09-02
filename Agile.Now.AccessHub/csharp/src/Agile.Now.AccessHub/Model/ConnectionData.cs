@@ -67,12 +67,7 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="secretKey">A secret key for signing payloads, enhancing security. The pattern of the value (Secure). The default of the value (Generate password)..</param>
         /// <param name="uRL">Webhook external service URL-address. The value must be unique in the system and you cannot add multiple values. The pattern of the value (^(http(s)://.)[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)$). (required).</param>
         /// <param name="isActive">If true, the configuration is active. (default to false).</param>
-        /// <param name="isSystem">If true, the configuration is internal to the system and not visible in the user interface. (default to false).</param>
-        /// <param name="modifiedBy">modifiedBy.</param>
-        /// <param name="modifiedOn">The date the record was updated. (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        /// <param name="createdBy">createdBy.</param>
-        /// <param name="createdOn">The date the record was created. (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public ConnectionData(string id = default, string name = default, string description = default, string apiKey = default, string secretKey = default, string uRL = default, bool isActive = false, bool isSystem = false, FieldType modifiedBy = default, DateTime modifiedOn = default, FieldType createdBy = default, DateTime createdOn = default)
+        public ConnectionData(string id = default, string name = default, string description = default, string apiKey = default, string secretKey = default, string uRL = default, bool isActive = false)
         {
             // to ensure "name" is required (not null)
             name = name ?? throw new ArgumentNullException("name is a required property for ConnectionData and cannot be null");
@@ -85,11 +80,6 @@ namespace Agile.Now.AccessHub.Model
             ApiKey = apiKey;
             SecretKey = secretKey;
             IsActive = isActive;
-            IsSystem = isSystem;
-            ModifiedBy = modifiedBy;
-            ModifiedOn = modifiedOn;
-            CreatedBy = createdBy;
-            CreatedOn = createdOn;
         }
 
         /// <summary>
@@ -143,42 +133,6 @@ namespace Agile.Now.AccessHub.Model
         public bool IsActive { get; set; }
 
         /// <summary>
-        /// If true, the configuration is internal to the system and not visible in the user interface.
-        /// </summary>
-        /// <value>If true, the configuration is internal to the system and not visible in the user interface.</value>
-        /// <example>false</example>
-        [DataMember(Name = "Is_System", EmitDefaultValue = true)]
-        public bool IsSystem { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ModifiedBy
-        /// </summary>
-        [DataMember(Name = "ModifiedBy", EmitDefaultValue = false)]
-        public FieldType ModifiedBy { get; set; }
-
-        /// <summary>
-        /// The date the record was updated.
-        /// </summary>
-        /// <value>The date the record was updated.</value>
-        /// <example>1900-01-01T00:00Z</example>
-        [DataMember(Name = "ModifiedOn", EmitDefaultValue = false)]
-        public DateTime ModifiedOn { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CreatedBy
-        /// </summary>
-        [DataMember(Name = "CreatedBy", EmitDefaultValue = false)]
-        public FieldType CreatedBy { get; set; }
-
-        /// <summary>
-        /// The date the record was created.
-        /// </summary>
-        /// <value>The date the record was created.</value>
-        /// <example>1900-01-01T00:00Z</example>
-        [DataMember(Name = "CreatedOn", EmitDefaultValue = false)]
-        public DateTime CreatedOn { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -193,11 +147,6 @@ namespace Agile.Now.AccessHub.Model
             sb.Append("  SecretKey: ").Append(SecretKey).Append("\n");
             sb.Append("  URL: ").Append(URL).Append("\n");
             sb.Append("  IsActive: ").Append(IsActive).Append("\n");
-            sb.Append("  IsSystem: ").Append(IsSystem).Append("\n");
-            sb.Append("  ModifiedBy: ").Append(ModifiedBy).Append("\n");
-            sb.Append("  ModifiedOn: ").Append(ModifiedOn).Append("\n");
-            sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
-            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

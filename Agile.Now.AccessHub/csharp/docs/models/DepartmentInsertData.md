@@ -17,7 +17,6 @@ Name | Type | Description | Notes
 **OwnerId** | [**FieldType**](FieldType.md) | The FieldType object structure | [optional] 
 **CountryId** | [**EnumCountry**](EnumCountry.md) | The EnumCountry enumeration | [optional] 
 **IsActive** | **bool** | Defines if the department is active and can be used. | [default to false]
-**IsDeleted** | **bool** | Defines if the department is deleted and cannot be used. | [optional] [default to false]
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

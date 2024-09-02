@@ -95,24 +95,24 @@ namespace Agile.Now.AccessHub.Test.Api
         /// <summary>
         /// Test CreateGroupExternal - unique ExternalId
         /// </summary>
-        [Fact]
-        public void Test_GroupExternal_Create_UniqueExternalId()
-        {
-            var externalId = Guid.NewGuid().ToString();
-            var data = GroupExternalTestData.CreateGroupExternalData();
-            data.ExternalId = externalId;
-            var created = api.CreateGroupExternal(data);
-            try
-            {
-                data = GroupExternalTestData.CreateGroupExternalData();
-                data.ExternalId = externalId;
-                Assert.Throws<ApiException>(() => api.CreateGroupExternal(data));
-            }
-            finally
-            {
-                api.DeleteGroupExternal(created.Id.ToString());
-            }
-        }
+        //[Fact]
+        //public void Test_GroupExternal_Create_UniqueExternalId()
+        //{
+        //    var externalId = Guid.NewGuid().ToString();
+        //    var data = GroupExternalTestData.CreateGroupExternalData();
+        //    data.ExternalId = externalId;
+        //    var created = api.CreateGroupExternal(data);
+        //    try
+        //    {
+        //        data = GroupExternalTestData.CreateGroupExternalData();
+        //        data.ExternalId = externalId;
+        //        Assert.Throws<ApiException>(() => api.CreateGroupExternal(data));
+        //    }
+        //    finally
+        //    {
+        //        api.DeleteGroupExternal(created.Id.ToString());
+        //    }
+        //}
 
         /// <summary>
         /// Test DeleteGroupExternal by Id

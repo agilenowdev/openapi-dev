@@ -21,8 +21,7 @@ public class TestUserData
     };
 
     public static AccessGroupData CreateAccessGroupData(string id) => new(
-        accessGroupId: new("Id", id),
-        createdOn: DateTime.Now);
+        accessGroupId: new("Id", id));
 
     public static readonly int[] Groups = new[] { 6626, 6625, 6624 };
 

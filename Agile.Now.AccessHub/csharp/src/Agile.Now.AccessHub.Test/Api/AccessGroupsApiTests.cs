@@ -67,11 +67,11 @@ namespace Agile.Now.AccessHub.Test.Api
 
         public void Dispose() { }
 
-        void AssertAccessGroupDataEqual(AccessGroupData AccessGroupData, AccessGroup AccessGroup)
+        void AssertAccessGroupDataEqual(AccessGroupInsertData accessGroupInsertData, AccessGroup AccessGroup)
         {
-            Assert.Equal(AccessGroupData.Name, AccessGroup.Name);
-            Assert.Equal(AccessGroupData.Description, AccessGroup.Description);
-            Assert.Equal(AccessGroupData.AccessGroupTypeId.ToString(), AccessGroup.AccessGroupTypeId.Id);
+            Assert.Equal(accessGroupInsertData.Name, AccessGroup.Name);
+            Assert.Equal(accessGroupInsertData.Description, AccessGroup.Description);
+            Assert.Equal(accessGroupInsertData.AccessGroupTypeId.ToString(), AccessGroup.AccessGroupTypeId.Id);
         }
 
         /// <summary>
@@ -234,7 +234,7 @@ namespace Agile.Now.AccessHub.Test.Api
             try
             {
                 AccessGroupTestData.UpdateAccessGroupData(data);
-                var updated = api.UpdateAccessGroup(created.Id, data);
+                var updated = api.UpdateAccessGroup(created.Id, data.ToAccessGroupUpdateData());
                 AssertAccessGroupDataEqual(data, updated);
             }
             finally
@@ -250,13 +250,13 @@ namespace Agile.Now.AccessHub.Test.Api
         public void Test_AccessGroup_Upsert()
         {
             var data = AccessGroupTestData.CreateAccessGroupData();
-            var created = api.UpsertAccessGroup(data);
+            var created = api.UpsertAccessGroup(data.ToAccessGroupData());
             try
             {
                 AssertAccessGroupDataEqual(data, created);
                 AccessGroupTestData.UpdateAccessGroupData(data);
                 data.Id = created.Id;
-                var updated = api.UpsertAccessGroup(data);
+                var updated = api.UpsertAccessGroup(data.ToAccessGroupData());
                 Assert.Equal(created.Id, updated.Id);
                 AssertAccessGroupDataEqual(data, updated);
             }

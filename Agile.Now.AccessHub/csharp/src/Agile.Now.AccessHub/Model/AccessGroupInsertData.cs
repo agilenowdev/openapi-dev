@@ -47,75 +47,88 @@ using OpenAPIDateConverter = Agile.Now.AccessHub.Client.OpenAPIDateConverter;
 namespace Agile.Now.AccessHub.Model
 {
     /// <summary>
-    /// The record of Location information.
+    /// The record of AccessGroup information.
     /// </summary>
-    [DataContract(Name = "LocationInsertData")]
-    public partial class LocationInsertData : IValidatableObject
+    [DataContract(Name = "AccessGroupInsertData")]
+    public partial class AccessGroupInsertData : IValidatableObject
     {
 
         /// <summary>
-        /// Gets or Sets CountryId
+        /// Gets or Sets AccessGroupTypeId
         /// </summary>
-        [DataMember(Name = "CountryId", EmitDefaultValue = false)]
-        public EnumCountry? CountryId { get; set; }
-
+        [DataMember(Name = "AccessGroupTypeId", EmitDefaultValue = false)]
+        public EnumAccessGroupType? AccessGroupTypeId { get; set; }
         /// <summary>
-        /// Gets or Sets TimezoneId
-        /// </summary>
-        [DataMember(Name = "TimezoneId", EmitDefaultValue = false)]
-        public EnumTimezone? TimezoneId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CurrencyId
-        /// </summary>
-        [DataMember(Name = "CurrencyId", EmitDefaultValue = false)]
-        public EnumCurrency? CurrencyId { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="LocationInsertData" /> class.
+        /// Initializes a new instance of the <see cref="AccessGroupInsertData" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected LocationInsertData() { }
+        protected AccessGroupInsertData() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="LocationInsertData" /> class.
+        /// Initializes a new instance of the <see cref="AccessGroupInsertData" /> class.
         /// </summary>
-        /// <param name="id">The guid to identify the location. (required).</param>
-        /// <param name="externalId">The external identifier of the location..</param>
-        /// <param name="name">The name of the location. The value must be unique in the system and you cannot add multiple values. (required).</param>
-        /// <param name="countryId">countryId.</param>
-        /// <param name="timezoneId">timezoneId.</param>
-        /// <param name="currencyId">currencyId.</param>
-        public LocationInsertData(string id = default, string externalId = default, string name = default, EnumCountry? countryId = default, EnumTimezone? timezoneId = default, EnumCurrency? currencyId = default)
+        /// <param name="id">The identifier of access group. (required).</param>
+        /// <param name="name">The name of access group. (required).</param>
+        /// <param name="externalId">The external system code of the access group..</param>
+        /// <param name="description">The description of access group..</param>
+        /// <param name="isActive">Defines if record is active. (default to false).</param>
+        /// <param name="isSystem">Defines if access group is system and end-user cannot change it general, permissions and applications. (default to false).</param>
+        /// <param name="accessGroupTypeId">accessGroupTypeId.</param>
+        public AccessGroupInsertData(string id = default, string name = default, string externalId = default, string description = default, bool isActive = false, bool isSystem = false, EnumAccessGroupType? accessGroupTypeId = default)
         {
             Id = id;
             // to ensure "name" is required (not null)
-            name = name ?? throw new ArgumentNullException("name is a required property for LocationInsertData and cannot be null");
+            name = name ?? throw new ArgumentNullException("name is a required property for AccessGroupInsertData and cannot be null");
             Name = name;
             ExternalId = externalId;
-            CountryId = countryId;
-            TimezoneId = timezoneId;
-            CurrencyId = currencyId;
+            Description = description;
+            IsActive = isActive;
+            IsSystem = isSystem;
+            AccessGroupTypeId = accessGroupTypeId;
         }
 
         /// <summary>
-        /// The guid to identify the location.
+        /// The identifier of access group.
         /// </summary>
-        /// <value>The guid to identify the location.</value>
+        /// <value>The identifier of access group.</value>
         [DataMember(Name = "Id", EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>
-        /// The external identifier of the location.
+        /// The name of access group.
         /// </summary>
-        /// <value>The external identifier of the location.</value>
+        /// <value>The name of access group.</value>
+        [DataMember(Name = "Name", IsRequired = true, EmitDefaultValue = true)]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// The external system code of the access group.
+        /// </summary>
+        /// <value>The external system code of the access group.</value>
         [DataMember(Name = "ExternalId", EmitDefaultValue = false)]
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// The name of the location. The value must be unique in the system and you cannot add multiple values.
+        /// The description of access group.
         /// </summary>
-        /// <value>The name of the location. The value must be unique in the system and you cannot add multiple values.</value>
-        [DataMember(Name = "Name", IsRequired = true, EmitDefaultValue = true)]
-        public string Name { get; set; }
+        /// <value>The description of access group.</value>
+        [DataMember(Name = "Description", EmitDefaultValue = false)]
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Defines if record is active.
+        /// </summary>
+        /// <value>Defines if record is active.</value>
+        /// <example>false</example>
+        [DataMember(Name = "Is_Active", EmitDefaultValue = true)]
+        public bool IsActive { get; set; }
+
+        /// <summary>
+        /// Defines if access group is system and end-user cannot change it general, permissions and applications.
+        /// </summary>
+        /// <value>Defines if access group is system and end-user cannot change it general, permissions and applications.</value>
+        /// <example>false</example>
+        [DataMember(Name = "Is_System", EmitDefaultValue = true)]
+        public bool IsSystem { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -124,13 +137,14 @@ namespace Agile.Now.AccessHub.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class LocationInsertData {\n");
+            sb.Append("class AccessGroupInsertData {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  CountryId: ").Append(CountryId).Append("\n");
-            sb.Append("  TimezoneId: ").Append(TimezoneId).Append("\n");
-            sb.Append("  CurrencyId: ").Append(CurrencyId).Append("\n");
+            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  IsActive: ").Append(IsActive).Append("\n");
+            sb.Append("  IsSystem: ").Append(IsSystem).Append("\n");
+            sb.Append("  AccessGroupTypeId: ").Append(AccessGroupTypeId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

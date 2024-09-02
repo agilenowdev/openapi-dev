@@ -82,9 +82,17 @@ namespace Agile.Now.AccessHub.Model
             // to ensure "id" is required (not null)
             id = id ?? throw new ArgumentNullException("id is a required property for Account and cannot be null");
             Id = id;
+            // to ensure "firstName" is required (not null)
+            firstName = firstName ?? throw new ArgumentNullException("firstName is a required property for Account and cannot be null");
             FirstName = firstName;
+            // to ensure "lastName" is required (not null)
+            lastName = lastName ?? throw new ArgumentNullException("lastName is a required property for Account and cannot be null");
             LastName = lastName;
+            // to ensure "email" is required (not null)
+            email = email ?? throw new ArgumentNullException("email is a required property for Account and cannot be null");
             Email = email;
+            // to ensure "username" is required (not null)
+            username = username ?? throw new ArgumentNullException("username is a required property for Account and cannot be null");
             Username = username;
             TenantId = tenantId;
             Name = name;
@@ -124,14 +132,14 @@ namespace Agile.Now.AccessHub.Model
         /// Person's first name
         /// </summary>
         /// <value>Person&#39;s first name</value>
-        [DataMember(Name = "FirstName", EmitDefaultValue = true)]
+        [DataMember(Name = "FirstName", IsRequired = true, EmitDefaultValue = true)]
         public string FirstName { get; set; }
 
         /// <summary>
         /// Person's last name
         /// </summary>
         /// <value>Person&#39;s last name</value>
-        [DataMember(Name = "LastName", EmitDefaultValue = true)]
+        [DataMember(Name = "LastName", IsRequired = true, EmitDefaultValue = true)]
         public string LastName { get; set; }
 
         /// <summary>
@@ -145,7 +153,7 @@ namespace Agile.Now.AccessHub.Model
         /// The e-mail of account. The email is unique in the system
         /// </summary>
         /// <value>The e-mail of account. The email is unique in the system</value>
-        [DataMember(Name = "Email", EmitDefaultValue = true)]
+        [DataMember(Name = "Email", IsRequired = true, EmitDefaultValue = true)]
         public string Email { get; set; }
 
         /// <summary>
@@ -170,7 +178,7 @@ namespace Agile.Now.AccessHub.Model
         /// Username used to log in into the system. The username is unique in the system
         /// </summary>
         /// <value>Username used to log in into the system. The username is unique in the system</value>
-        [DataMember(Name = "Username", EmitDefaultValue = true)]
+        [DataMember(Name = "Username", IsRequired = true, EmitDefaultValue = true)]
         public string Username { get; set; }
 
         /// <summary>

@@ -1,7 +1,7 @@
 /*
  * Agile.Now.Runtime API
  *
- * Agile.Now.Runtime
+ * Agile.Now.Runtime is a dynamic and secure REST API designed to streamline the management of users, their access groups, user groups, organizations, locations, applications, and roles within a single-tenant environment. This API provides a robust, scalable, and secure platform for businesses to manage user access and organizational structures effectively. It supports both Role-Based Access Control (RBAC) and Attribute-Based Access Control (ABAC) to ensure fine-grained security and flexibility.
  *
  * The version of the OpenAPI document: 1.0
  * Contact: dev@agilenow.io
@@ -65,6 +65,8 @@ namespace Agile.Now.Runtime.Model
         public Group(int id = 0, AbstractLong groupId = default)
         {
             Id = id;
+            // to ensure "groupId" is required (not null)
+            groupId = groupId ?? throw new ArgumentNullException("groupId is a required property for Group and cannot be null");
             GroupId = groupId;
         }
 
@@ -72,13 +74,13 @@ namespace Agile.Now.Runtime.Model
         /// Gets or Sets Id
         /// </summary>
         /// <example>0</example>
-        [DataMember(Name = "Id", EmitDefaultValue = true)]
+        [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
         public int Id { get; set; }
 
         /// <summary>
         /// Gets or Sets GroupId
         /// </summary>
-        [DataMember(Name = "Group_Id", EmitDefaultValue = true)]
+        [DataMember(Name = "Group_Id", IsRequired = true, EmitDefaultValue = true)]
         public AbstractLong GroupId { get; set; }
 
         /// <summary>

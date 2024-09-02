@@ -134,7 +134,7 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         /// <value>Defines if the location is active and can be used</value>
         /// <example>false</example>
-        [DataMember(Name = "Is_Active", EmitDefaultValue = true)]
+        [DataMember(Name = "Is_Active", IsRequired = true, EmitDefaultValue = true)]
         public bool IsActive { get; set; }
 
         /// <summary>

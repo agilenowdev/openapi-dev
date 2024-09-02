@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "Agile.Now.Runtime API",
-    "description": "Agile.Now.Runtime",
+    "description": "Agile.Now.Runtime is a dynamic and secure REST API designed to streamline the management of users, their access groups, user groups, organizations, locations, applications, and roles within a single-tenant environment. This API provides a robust, scalable, and secure platform for businesses to manage user access and organizational structures effectively. It supports both Role-Based Access Control (RBAC) and Attribute-Based Access Control (ABAC) to ensure fine-grained security and flexibility.",
     "contact": {
       "name": "Agile.Now Dev Team",
       "email": "dev@agilenow.io",
@@ -1414,7 +1414,7 @@
         "tags": [
           "Users"
         ],
-        "description": "Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.\n\nLeverage the search service to extract the requisite information from the system effectively.\n\nThe method returns a list structured with an extended `Application` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.\n\nThe foreign key fields involved are: `ApplicationId, AuthenticationId, ModifiedBy, CreatedBy`\n\n### Example\nIt searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.\n\n```http\nfields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000\n```",
+        "description": "Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.\n\nLeverage the search service to extract the requisite information from the system effectively.\n\nThe method returns a list structured with an extended `Application` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.\n\nThe foreign key fields involved are: `UserId, AccessRoleId, RoleId, AccessGroupTypeId`\n\n### Example\nIt searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.\n\n```http\nfields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000\n```",
         "operationId": "List User Applications",
         "parameters": [
           {
@@ -1439,10 +1439,10 @@
           {
             "name": "Fields",
             "in": "query",
-            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, ApplicationId, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_TestApp, Is_Active, Is_ReadOnly, AuthenticationId, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, UserId, AccessRoleId, RoleId, AccessGroupTypeId, Create, Read, Update, Delete, Details, Export, Import, Generic, CreatedOn\n```",
             "schema": {
               "type": "string",
-              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, ApplicationId, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_TestApp, Is_Active, Is_ReadOnly, AuthenticationId, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```"
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, UserId, AccessRoleId, RoleId, AccessGroupTypeId, Create, Read, Update, Delete, Details, Export, Import, Generic, CreatedOn\n```"
             }
           },
           {
@@ -1525,7 +1525,7 @@
         "tags": [
           "Users"
         ],
-        "description": "Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.\n\nLeverage the search service to extract the requisite information from the system effectively.\n\nThe method returns a list structured with an extended `AccessRole` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.\n\nThe foreign key fields involved are: `AccessApplicationId, RoleId, ApplicationId, EspaceId, ModifiedBy, CreatedBy`\n\n### Example\nIt searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.\n\n```http\nfields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000\n```",
+        "description": "Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.\n\nLeverage the search service to extract the requisite information from the system effectively.\n\nThe method returns a list structured with an extended `AccessRole` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.\n\nThe foreign key fields involved are: `UserId, AccessRoleId, RoleId, AccessGroupTypeId`\n\n### Example\nIt searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.\n\n```http\nfields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000\n```",
         "operationId": "List User AccessRoles",
         "parameters": [
           {
@@ -1550,10 +1550,10 @@
           {
             "name": "Fields",
             "in": "query",
-            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, RoleId, ApplicationId, EspaceId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, UserId, AccessRoleId, RoleId, AccessGroupTypeId, Create, Read, Update, Delete, Details, Export, Import, Generic, CreatedOn\n```",
             "schema": {
               "type": "string",
-              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, RoleId, ApplicationId, EspaceId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```"
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, UserId, AccessRoleId, RoleId, AccessGroupTypeId, Create, Read, Update, Delete, Details, Export, Import, Generic, CreatedOn\n```"
             }
           },
           {
@@ -2348,77 +2348,70 @@
       "Application": {
         "required": [
           "Id",
-          "Is_Active",
-          "Is_ReadOnly"
+          "AccessRoleId"
         ],
         "type": "object",
         "properties": {
           "Id": {
             "type": "string",
-            "description": "The identifier of the access application"
+            "description": "The identifier of entity"
           },
-          "ApplicationId": {
-            "$ref": "#/components/schemas/AbstractLong"
-          },
-          "Name": {
-            "type": "string",
-            "description": "Name of application"
-          },
-          "ApplicationKey": {
-            "type": "string",
-            "description": "The key used to identify the application must be unique within each workspace."
-          },
-          "ExternalId": {
-            "type": "string",
-            "description": "The external system code of the application"
-          },
-          "Description": {
-            "type": "string",
-            "description": "The description of access group"
-          },
-          "WebSiteURL": {
-            "type": "string",
-            "description": "Web Site URL of application"
-          },
-          "Is_System": {
-            "type": "boolean",
-            "description": "Defines if application is system (setting menu)",
-            "default": false,
-            "example": false
-          },
-          "Is_EndUser": {
-            "type": "boolean",
-            "description": "Specifies whether the application is an end-user application",
-            "default": false,
-            "example": false
-          },
-          "Is_TestApp": {
-            "type": "boolean",
-            "description": "Specifies whether the application is a test application",
-            "default": false,
-            "example": false
-          },
-          "Is_Active": {
-            "type": "boolean",
-            "description": "Defines if the application is active and can be used",
-            "default": false,
-            "example": false
-          },
-          "Is_ReadOnly": {
-            "type": "boolean",
-            "description": "Determines whether the application is readonly and can be modified",
-            "default": false,
-            "example": false
-          },
-          "AuthenticationId": {
+          "AccessRoleId": {
             "$ref": "#/components/schemas/AbstractText"
           },
-          "ModifiedOn": {
-            "type": "string",
-            "description": "The date the record was updated",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
+          "RoleId": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "AccessGroupTypeId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "Create": {
+            "type": "boolean",
+            "description": "Create access of role",
+            "default": false,
+            "example": false
+          },
+          "Read": {
+            "type": "boolean",
+            "description": "Read access of role",
+            "default": false,
+            "example": false
+          },
+          "Update": {
+            "type": "boolean",
+            "description": "Update access of role",
+            "default": false,
+            "example": false
+          },
+          "Delete": {
+            "type": "boolean",
+            "description": "Delete access of role",
+            "default": false,
+            "example": false
+          },
+          "Details": {
+            "type": "boolean",
+            "description": "Details access of role",
+            "default": false,
+            "example": false
+          },
+          "Export": {
+            "type": "boolean",
+            "description": "Export access of role",
+            "default": false,
+            "example": false
+          },
+          "Import": {
+            "type": "boolean",
+            "description": "Import access of role",
+            "default": false,
+            "example": false
+          },
+          "Generic": {
+            "type": "boolean",
+            "description": "Generic access without CRUD of role",
+            "default": false,
+            "example": false
           },
           "CreatedOn": {
             "type": "string",
@@ -2449,71 +2442,70 @@
       "AccessRole": {
         "required": [
           "Id",
-          "RoleKey",
-          "Is_ReadOnly"
+          "AccessRoleId"
         ],
         "type": "object",
         "properties": {
           "Id": {
             "type": "string",
-            "description": "The identifier of the role"
+            "description": "The identifier of entity"
           },
-          "Name": {
-            "type": "string",
-            "description": "Name of role"
-          },
-          "RoleKey": {
-            "type": "string",
-            "description": " The key used to identify the role must be unique within each workspace."
-          },
-          "FullName": {
-            "type": "string",
-            "description": "Full name of role. Example Application 1 \\ Espace 1 \\ Role 1"
-          },
-          "Description": {
-            "type": "string",
-            "description": "The description of access group"
-          },
-          "ExternalId": {
-            "type": "string",
-            "description": "The external system code of the role"
-          },
-          "AccessApplicationId": {
+          "AccessRoleId": {
             "$ref": "#/components/schemas/AbstractText"
           },
           "RoleId": {
             "$ref": "#/components/schemas/AbstractLong"
           },
-          "ApplicationId": {
-            "$ref": "#/components/schemas/AbstractLong"
+          "AccessGroupTypeId": {
+            "$ref": "#/components/schemas/AbstractText"
           },
-          "EspaceId": {
-            "$ref": "#/components/schemas/AbstractLong"
-          },
-          "Is_Active": {
+          "Create": {
             "type": "boolean",
-            "description": "Defines if record is active",
+            "description": "Create access of role",
             "default": false,
             "example": false
           },
-          "Is_Custom": {
+          "Read": {
             "type": "boolean",
-            "description": "Determines whether the role has been modified externally or whether it is synchronized from the OutSystems structure",
+            "description": "Read access of role",
             "default": false,
             "example": false
           },
-          "Is_ReadOnly": {
+          "Update": {
             "type": "boolean",
-            "description": "Determines whether the role is readonly and can be modified",
+            "description": "Update access of role",
             "default": false,
             "example": false
           },
-          "ModifiedOn": {
-            "type": "string",
-            "description": "The date the record was updated",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
+          "Delete": {
+            "type": "boolean",
+            "description": "Delete access of role",
+            "default": false,
+            "example": false
+          },
+          "Details": {
+            "type": "boolean",
+            "description": "Details access of role",
+            "default": false,
+            "example": false
+          },
+          "Export": {
+            "type": "boolean",
+            "description": "Export access of role",
+            "default": false,
+            "example": false
+          },
+          "Import": {
+            "type": "boolean",
+            "description": "Import access of role",
+            "default": false,
+            "example": false
+          },
+          "Generic": {
+            "type": "boolean",
+            "description": "Generic access without CRUD of role",
+            "default": false,
+            "example": false
           },
           "CreatedOn": {
             "type": "string",

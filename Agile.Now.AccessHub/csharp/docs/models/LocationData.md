@@ -12,7 +12,6 @@ Name | Type | Description | Notes
 **TimezoneId** | [**EnumTimezone**](EnumTimezone.md) | The EnumTimezone enumeration | [optional] 
 **CurrencyId** | [**EnumCurrency**](EnumCurrency.md) | The EnumCurrency enumeration | [optional] 
 **IsActive** | **bool** | Defines if the location is active and can be used. | [default to false]
-**IsDeleted** | **bool** | Defines if the location is deleted and cannot be used. | [optional] [default to false]
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

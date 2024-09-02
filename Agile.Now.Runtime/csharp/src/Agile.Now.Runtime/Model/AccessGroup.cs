@@ -1,7 +1,7 @@
 /*
  * Agile.Now.Runtime API
  *
- * Agile.Now.Runtime
+ * Agile.Now.Runtime is a dynamic and secure REST API designed to streamline the management of users, their access groups, user groups, organizations, locations, applications, and roles within a single-tenant environment. This API provides a robust, scalable, and secure platform for businesses to manage user access and organizational structures effectively. It supports both Role-Based Access Control (RBAC) and Attribute-Based Access Control (ABAC) to ensure fine-grained security and flexibility.
  *
  * The version of the OpenAPI document: 1.0
  * Contact: dev@agilenow.io
@@ -66,6 +66,8 @@ namespace Agile.Now.Runtime.Model
         public AccessGroup(long id = 0, AbstractText accessGroupId = default, DateTime createdOn = default)
         {
             Id = id;
+            // to ensure "accessGroupId" is required (not null)
+            accessGroupId = accessGroupId ?? throw new ArgumentNullException("accessGroupId is a required property for AccessGroup and cannot be null");
             AccessGroupId = accessGroupId;
             CreatedOn = createdOn;
         }
@@ -75,13 +77,13 @@ namespace Agile.Now.Runtime.Model
         /// </summary>
         /// <value>The identifier of user access group</value>
         /// <example>0</example>
-        [DataMember(Name = "Id", EmitDefaultValue = true)]
+        [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
         public long Id { get; set; }
 
         /// <summary>
         /// Gets or Sets AccessGroupId
         /// </summary>
-        [DataMember(Name = "AccessGroupId", EmitDefaultValue = true)]
+        [DataMember(Name = "AccessGroupId", IsRequired = true, EmitDefaultValue = true)]
         public AbstractText AccessGroupId { get; set; }
 
         /// <summary>
@@ -89,7 +91,7 @@ namespace Agile.Now.Runtime.Model
         /// </summary>
         /// <value>The date when the record was created.</value>
         /// <example>1900-01-01T00:00Z</example>
-        [DataMember(Name = "CreatedOn", EmitDefaultValue = true)]
+        [DataMember(Name = "CreatedOn", IsRequired = true, EmitDefaultValue = true)]
         public DateTime CreatedOn { get; set; }
 
         /// <summary>

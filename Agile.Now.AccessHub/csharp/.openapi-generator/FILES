@@ -7,6 +7,8 @@ docs/AbstractLong.md
 docs/AbstractText.md
 docs/AccessGroup.md
 docs/AccessGroupData.md
+docs/AccessGroupInsertData.md
+docs/AccessGroupUpdateData.md
 docs/AccessGroups.md
 docs/AccessGroupsApi.md
 docs/Account.md
@@ -125,6 +127,8 @@ src/Agile.Now.AccessHub/Model/AbstractOpenAPISchema.cs
 src/Agile.Now.AccessHub/Model/AbstractText.cs
 src/Agile.Now.AccessHub/Model/AccessGroup.cs
 src/Agile.Now.AccessHub/Model/AccessGroupData.cs
+src/Agile.Now.AccessHub/Model/AccessGroupInsertData.cs
+src/Agile.Now.AccessHub/Model/AccessGroupUpdateData.cs
 src/Agile.Now.AccessHub/Model/AccessGroups.cs
 src/Agile.Now.AccessHub/Model/Account.cs
 src/Agile.Now.AccessHub/Model/AccountData.cs

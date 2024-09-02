@@ -79,11 +79,11 @@ namespace Example
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new AccessGroupsApi(config);
-            var accessGroupData = new AccessGroupData(); // AccessGroupData | `AccessGroup` information to insert.  The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.
+            var accessGroupInsertData = new AccessGroupInsertData(); // AccessGroupInsertData | `AccessGroup` information to insert.  The input parameter must be used in the `AccessGroupInsertData` record structure inside the `FieldType` parameter in the foreign key fields.
 
             try
             {
-                AccessGroup result = apiInstance.CreateAccessGroup(accessGroupData);
+                AccessGroup result = apiInstance.CreateAccessGroup(accessGroupInsertData);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -191,6 +191,8 @@ Class | Method | HTTP request | Description
  - [Model.AbstractText](docs/models/AbstractText.md)
  - [Model.AccessGroup](docs/models/AccessGroup.md)
  - [Model.AccessGroupData](docs/models/AccessGroupData.md)
+ - [Model.AccessGroupInsertData](docs/models/AccessGroupInsertData.md)
+ - [Model.AccessGroupUpdateData](docs/models/AccessGroupUpdateData.md)
  - [Model.AccessGroups](docs/models/AccessGroups.md)
  - [Model.Account](docs/models/Account.md)
  - [Model.AccountData](docs/models/AccountData.md)

@@ -78,9 +78,6 @@ namespace Agile.Now.AccessHub.Model
         [DataMember(Name = "Id", EmitDefaultValue = false)]
         public int Id { get; set; }
 
-        [DataMember(Name = "ExternalId", EmitDefaultValue = false)]
-        public string ExternalId { get; set; }
-
         /// <summary>
         /// Gets or Sets Name
         /// </summary>

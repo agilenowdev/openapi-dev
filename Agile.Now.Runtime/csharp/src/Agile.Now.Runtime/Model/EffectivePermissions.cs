@@ -1,7 +1,7 @@
 /*
  * Agile.Now.Runtime API
  *
- * Agile.Now.Runtime
+ * Agile.Now.Runtime is a dynamic and secure REST API designed to streamline the management of users, their access groups, user groups, organizations, locations, applications, and roles within a single-tenant environment. This API provides a robust, scalable, and secure platform for businesses to manage user access and organizational structures effectively. It supports both Role-Based Access Control (RBAC) and Attribute-Based Access Control (ABAC) to ensure fine-grained security and flexibility.
  *
  * The version of the OpenAPI document: 1.0
  * Contact: dev@agilenow.io

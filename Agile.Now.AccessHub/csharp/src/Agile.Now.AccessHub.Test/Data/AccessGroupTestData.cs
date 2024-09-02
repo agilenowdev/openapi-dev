@@ -20,7 +20,7 @@ internal static class AccessGroupTestData
 
     public static readonly string ParentApplication = "3B594DDA-3F5D-431A-A532-A3EDFFA9BD98";
 
-    public static AccessGroupData CreateAccessGroupData(string suffix = null)
+    public static AccessGroupInsertData CreateAccessGroupData(string suffix = null)
     {
         var name = CommonTestData.CreateTestEntityName("access-group", suffix);
         return new
@@ -31,7 +31,7 @@ internal static class AccessGroupTestData
         );
     }
 
-    public static void UpdateAccessGroupData(AccessGroupData accessGroupInsertData)
+    public static void UpdateAccessGroupData(AccessGroupInsertData accessGroupInsertData)
     {
         accessGroupInsertData.Description = accessGroupInsertData.Description.MarkUpdated();
         accessGroupInsertData.AccessGroupTypeId =
@@ -39,11 +39,26 @@ internal static class AccessGroupTestData
                 EnumAccessGroupType.Locations : EnumAccessGroupType.Departments;
     }
 
+    public static AccessGroupUpdateData ToAccessGroupUpdateData(this AccessGroupInsertData accessGroupInsertData) =>
+        new AccessGroupUpdateData(
+            name: accessGroupInsertData.Name,
+            description: accessGroupInsertData.Description,
+            accessGroupTypeId: accessGroupInsertData.AccessGroupTypeId
+        );
+
+    public static AccessGroupData ToAccessGroupData(this AccessGroupInsertData accessGroupInsertData) =>
+        new AccessGroupData(
+            name: accessGroupInsertData.Name,
+            externalId: accessGroupInsertData.ExternalId,
+            description: accessGroupInsertData.Description,
+            accessGroupTypeId: accessGroupInsertData.AccessGroupTypeId
+        );
+
     public static ApplicationData CreateApplicationData(string id) => new(
         parentApplicationId: new("Id", ParentApplication),
         accessApplicationId: new("Id", id));
 
     public static PermissionData CreatePermissionData(EnumPermissionType id) => new(
-        permissionId: id, 
+        permissionId: id,
         createdOn: DateTime.Now);
 }
