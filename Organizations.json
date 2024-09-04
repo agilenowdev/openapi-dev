@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "2.0.142"
+    "version": "2.0.143"
   },
   "servers": [
     {
@@ -3531,13 +3531,6 @@
           "ParentDepartmentId": {
             "$ref": "#/components/schemas/FieldType"
           },
-          "Level": {
-            "type": "integer",
-            "description": "The department level at the hierarchy.",
-            "format": "int32",
-            "default": 0,
-            "example": 0
-          },
           "ContactName": {
             "type": "string",
             "description": "The contact name of company or department."
@@ -3585,8 +3578,7 @@
         "required": [
           "Id",
           "Name",
-          "DepartmentTypeId",
-          "Is_Active"
+          "DepartmentTypeId"
         ],
         "type": "object",
         "properties": {
@@ -3608,13 +3600,6 @@
           "ParentDepartmentId": {
             "$ref": "#/components/schemas/FieldType"
           },
-          "Level": {
-            "type": "integer",
-            "description": "The department level at the hierarchy.",
-            "format": "int32",
-            "default": 0,
-            "example": 0
-          },
           "ContactName": {
             "type": "string",
             "description": "The contact name of company or department."
@@ -3631,12 +3616,6 @@
           },
           "CountryId": {
             "$ref": "#/components/schemas/EnumCountry"
-          },
-          "Is_Active": {
-            "type": "boolean",
-            "description": "Defines if the department is active and can be used.",
-            "default": false,
-            "example": false
           }
         },
         "description": "The record of Department information."
@@ -3655,13 +3634,6 @@
           "Name": {
             "type": "string",
             "description": "The name of the department."
-          },
-          "Level": {
-            "type": "integer",
-            "description": "The department level at the hierarchy.",
-            "format": "int32",
-            "default": 0,
-            "example": 0
           },
           "ContactName": {
             "type": "string",
@@ -4744,7 +4716,7 @@
           },
           "Name": {
             "type": "string",
-            "description": "The name of the location. The value must be unique in the system and you cannot add multiple values."
+            "description": "The name of the location."
           },
           "CountryId": {
             "$ref": "#/components/schemas/EnumCountry"
@@ -4781,7 +4753,7 @@
           },
           "Name": {
             "type": "string",
-            "description": "The name of the location. The value must be unique in the system and you cannot add multiple values."
+            "description": "The name of the location."
           },
           "CountryId": {
             "$ref": "#/components/schemas/EnumCountry"
@@ -4808,7 +4780,7 @@
           },
           "Name": {
             "type": "string",
-            "description": "The name of the location. The value must be unique in the system and you cannot add multiple values."
+            "description": "The name of the location."
           },
           "CountryId": {
             "$ref": "#/components/schemas/EnumCountry"
