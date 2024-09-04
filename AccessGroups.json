@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.71"
+    "version": "3.0.72"
   },
   "servers": [
     {
@@ -82,7 +82,7 @@
         "tags": [
           "AccessGroups"
         ],
-        "description": "Use the `AccessGroupUpdateData` object resource to update `AccessGroup` using `Id` field(s) value.\n\nProvide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record. \n\nThe input parameter must be used in the `AccessGroupUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`\n\n### Update a record of AccessGroup\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the updated record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "description": "Use the `AccessGroupData` object resource to update `AccessGroup` using `Id` field(s) value.\n\nProvide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record. \n\nThe input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`\n\n### Update a record of AccessGroup\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the updated record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
         "operationId": "Update AccessGroup",
         "parameters": [
           {
@@ -106,11 +106,11 @@
           }
         ],
         "requestBody": {
-          "description": "AccessGroup information to update.\n\nThe input parameter must be used in the `AccessGroupUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "description": "AccessGroup information to update.\n\nThe input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AccessGroupUpdateData"
+                "$ref": "#/components/schemas/AccessGroupData"
               }
             }
           },
@@ -359,14 +359,14 @@
         "tags": [
           "AccessGroups"
         ],
-        "description": "Use the `AccessGroupInsertData` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `AccessGroupInsertData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`\n\n### Create a new record of AccessGroup\n* If the value in the `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupInsertData`).\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`AccessGroupInsertData`).\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the created record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\n",
+        "description": "Use the `AccessGroupData` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`\n\n### Create a new record of AccessGroup\n* If the value in the `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupData`).\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`AccessGroupData`).\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the created record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\n",
         "operationId": "Create AccessGroup",
         "requestBody": {
-          "description": "`AccessGroup` information to insert.\n\nThe input parameter must be used in the `AccessGroupInsertData` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "description": "`AccessGroup` information to insert.\n\nThe input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AccessGroupInsertData"
+                "$ref": "#/components/schemas/AccessGroupData"
               }
             }
           },
@@ -2842,87 +2842,6 @@
         ]
       },
       "AccessGroupData": {
-        "required": [
-          "Name"
-        ],
-        "type": "object",
-        "properties": {
-          "Id": {
-            "type": "string",
-            "description": "The identifier of access group."
-          },
-          "Name": {
-            "type": "string",
-            "description": "The name of access group."
-          },
-          "ExternalId": {
-            "type": "string",
-            "description": "The external system code of the access group."
-          },
-          "Description": {
-            "type": "string",
-            "description": "The description of access group."
-          },
-          "Is_Active": {
-            "type": "boolean",
-            "description": "Defines if record is active.",
-            "default": false,
-            "example": false
-          },
-          "Is_System": {
-            "type": "boolean",
-            "description": "Defines if access group is system and end-user cannot change it general, permissions and applications.",
-            "default": false,
-            "example": false
-          },
-          "AccessGroupTypeId": {
-            "$ref": "#/components/schemas/EnumAccessGroupType"
-          }
-        },
-        "description": "The record of AccessGroup information."
-      },
-      "AccessGroupInsertData": {
-        "required": [
-          "Id",
-          "Name"
-        ],
-        "type": "object",
-        "properties": {
-          "Id": {
-            "type": "string",
-            "description": "The identifier of access group."
-          },
-          "Name": {
-            "type": "string",
-            "description": "The name of access group."
-          },
-          "ExternalId": {
-            "type": "string",
-            "description": "The external system code of the access group."
-          },
-          "Description": {
-            "type": "string",
-            "description": "The description of access group."
-          },
-          "Is_Active": {
-            "type": "boolean",
-            "description": "Defines if record is active.",
-            "default": false,
-            "example": false
-          },
-          "Is_System": {
-            "type": "boolean",
-            "description": "Defines if access group is system and end-user cannot change it general, permissions and applications.",
-            "default": false,
-            "example": false
-          },
-          "AccessGroupTypeId": {
-            "$ref": "#/components/schemas/EnumAccessGroupType"
-          }
-        },
-        "description": "The record of AccessGroup information."
-      },
-      "AccessGroupUpdateData": {
         "required": [
           "Name"
         ],
