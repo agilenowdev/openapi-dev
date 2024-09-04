@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.72"
+    "version": "3.0.73"
   },
   "servers": [
     {
@@ -2947,13 +2947,6 @@
             "description": "Defines if record is active.",
             "default": false,
             "example": false
-          },
-          "CreatedOn": {
-            "type": "string",
-            "description": "The date the record was created.",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
           }
         },
         "description": "The record of Application information."
@@ -2999,13 +2992,6 @@
             "description": "Defines if record is active.",
             "default": false,
             "example": false
-          },
-          "CreatedOn": {
-            "type": "string",
-            "description": "The date the record was created.",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
           }
         },
         "description": "The record of Application information."
