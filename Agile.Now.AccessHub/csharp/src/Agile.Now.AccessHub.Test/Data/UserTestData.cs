@@ -11,7 +11,7 @@ public class UserTestData
         userId: new("Id", id.ToString()),
         createdOn: DateTime.Now);
 
-    public static UserData1 CreateUserData1(int id) => new(userId: new("Id", id.ToString()));
+    public static UserData1 CreateUserData1(int userId) => new(userId: new("Id", userId.ToString()));
 
     public static readonly int[] Groups = new[] { 6626, 6625, 6624 };
 

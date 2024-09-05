@@ -44,6 +44,7 @@ using Agile.Now.AccessHub.Test.Data;
 using Agile.Now.ApiAccessGroups.Test.Api;
 using Xunit;
 using Xunit.Abstractions;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 // uncomment below to import models
 //using Agile.Now.AccessHub.Model;
 
@@ -314,14 +315,18 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_AccessGroup_Application_Upsert()
         {
-            var data = AccessGroupTestData.CreateAccessGroupData();
-            var created = api.CreateAccessGroup(data);
+            var created = api.CreateAccessGroup(AccessGroupTestData.CreateAccessGroupData());
             try
             {
-                var createdSubEntity = api.UpsertAccessGroupApplication(created.Id,
-                    AccessGroupTestData.CreateApplicationData(AccessGroupTestData.Applications[0]));
+                var data = AccessGroupTestData.CreateApplicationData(AccessGroupTestData.Applications[0]);
+                var createdSubEntity = api.UpsertAccessGroupApplication(created.Id, data);
                 var existing = api.ListAccessGroupApplications(created.Id).Data;
                 Assert.Contains(existing, i => i.Id == createdSubEntity.Id);
+                data = AccessGroupTestData.CreateApplicationData(AccessGroupTestData.Applications[1]);
+                data.Id = createdSubEntity.Id;
+                var updated = api.UpsertAccessGroupApplication(created.Id, data);
+                Assert.Equal(createdSubEntity.Id, updated.Id);
+                Assert.Equal(data.AccessApplicationId.Value, updated.AccessApplicationId.Id);
             }
             finally
             {
@@ -412,14 +417,18 @@ namespace Agile.Now.AccessHub.Test.Api
         [Fact]
         public void Test_AccessGroup_Permission_Upsert()
         {
-            var data = AccessGroupTestData.CreateAccessGroupData();
-            var created = api.CreateAccessGroup(data);
+            var created = api.CreateAccessGroup(AccessGroupTestData.CreateAccessGroupData());
             try
             {
-                var createdSubEntity = api.UpsertAccessGroupPermission(created.Id,
-                    AccessGroupTestData.CreatePermissionData(AccessGroupTestData.Permissions[0]));
+                var data = AccessGroupTestData.CreatePermissionData(AccessGroupTestData.Permissions[0]);
+                var createdSubEntity = api.UpsertAccessGroupPermission(created.Id, data);
                 var existing = api.ListAccessGroupPermissions(created.Id).Data;
                 Assert.Contains(existing, i => i.Id == createdSubEntity.Id);
+                data = AccessGroupTestData.CreatePermissionData(AccessGroupTestData.Permissions[1]);
+                data.Id = createdSubEntity.Id;
+                var updated = api.UpsertAccessGroupPermission(created.Id, data);
+                Assert.Equal(createdSubEntity.Id, updated.Id);
+                Assert.Equal(data.PermissionId.ToString(), updated.PermissionId.Id);
             }
             finally
             {
@@ -510,10 +519,15 @@ namespace Agile.Now.AccessHub.Test.Api
             var created = api.CreateAccessGroup(AccessGroupTestData.CreateAccessGroupData());
             try
             {
-                var createdSubEntity = api.UpsertAccessGroupGroup(created.Id,
-                    UserTestData.CreateGroupData(UserTestData.Groups[0]));
+                var data = UserTestData.CreateGroupData(UserTestData.Groups[0]);
+                var createdSubEntity = api.UpsertAccessGroupGroup(created.Id, data);
                 var existing = api.ListAccessGroupGroups(created.Id).Data;
                 Assert.Contains(existing, i => i.Id == createdSubEntity.Id);
+                data = UserTestData.CreateGroupData(UserTestData.Groups[1]);
+                data.Id = createdSubEntity.Id;
+                var updated = api.UpsertAccessGroupGroup(created.Id, data);
+                Assert.Equal(createdSubEntity.Id, updated.Id);
+                Assert.Equal(data.GroupId.Value, updated.GroupId.Id.ToString());
             }
             finally
             {
@@ -601,10 +615,15 @@ namespace Agile.Now.AccessHub.Test.Api
             var created = api.CreateAccessGroup(AccessGroupTestData.CreateAccessGroupData());
             try
             {
-                var createdSubEntity = api.UpsertAccessGroupUser(created.Id,
-                    UserTestData.CreateUserData(UserTestData.Users[0]));
+                var data = UserTestData.CreateUserData(UserTestData.Users[0]);
+                var createdSubEntity = api.UpsertAccessGroupUser(created.Id, data);
                 var existing = api.ListAccessGroupUsers(created.Id).Data;
                 Assert.Contains(existing, i => i.Id == createdSubEntity.Id);
+                data = UserTestData.CreateUserData(UserTestData.Users[1]);
+                data.Id = createdSubEntity.Id;
+                var updated = api.UpsertAccessGroupUser(created.Id, data);
+                Assert.Equal(createdSubEntity.Id, updated.Id);
+                Assert.Equal(data.UserId.Value, updated.UserId.Id.ToString());
             }
             finally
             {

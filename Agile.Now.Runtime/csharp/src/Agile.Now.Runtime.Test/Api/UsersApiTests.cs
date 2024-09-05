@@ -42,6 +42,7 @@ using Agile.Now.Runtime.Model;
 using Agile.Now.Runtime.Test.Data;
 using Xunit;
 using Xunit.Abstractions;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 // uncomment below to import models
 //using Agile.Now.AccessHub.Model;
 
@@ -160,12 +161,17 @@ namespace Agile.Now.Runtime.Test.Api
         public void Test_User_AccessGroup_Upsert()
         {
             var entity = TestUserData.Users[0];
-            var created = api.UpsertUserAccessGroup(entity.Id.ToString(),
-                TestUserData.CreateAccessGroupData(TestUserData.AccessGroups[0]));
+            var data = TestUserData.CreateAccessGroupData(TestUserData.AccessGroups[0]);
+            var created = api.UpsertUserAccessGroup(entity.Id.ToString(), data);
             try
             {
                 var existing = api.ListUserAccessGroups(entity.Id.ToString()).Data;
                 Assert.Contains(existing, i => i.Id == created.Id);
+                data = TestUserData.CreateAccessGroupData(TestUserData.AccessGroups[1]);
+                data.Id = created.Id;
+                var updated = api.UpsertUserAccessGroup(entity.Id.ToString(), data);
+                Assert.Equal(created.Id, updated.Id);
+                Assert.Equal(data.AccessGroupId.Value, updated.AccessGroupId.Id);
             }
             finally
             {
@@ -214,11 +220,17 @@ namespace Agile.Now.Runtime.Test.Api
         public void Test_User_Group_Upsert()
         {
             var entity = TestUserData.Users[0];
-            var created = api.UpsertUserGroup(entity.Id.ToString(), TestUserData.CreateGroupData(TestUserData.Groups[0]));
+            var data = TestUserData.CreateGroupData(TestUserData.Groups[0]);
+            var created = api.UpsertUserGroup(entity.Id.ToString(), data);
             try
             {
                 var existing = api.ListUserGroups(entity.Id.ToString()).Data;
                 Assert.Contains(existing, i => i.Id == created.Id);
+                data = TestUserData.CreateGroupData(TestUserData.Groups[1]);
+                data.Id = created.Id;
+                var updated = api.UpsertUserGroup(entity.Id.ToString(), data);
+                Assert.Equal(created.Id, updated.Id);
+                Assert.Equal(data.GroupId.Value, updated.GroupId.Id.ToString());
             }
             finally
             {
@@ -268,12 +280,17 @@ namespace Agile.Now.Runtime.Test.Api
         public void Test_User_Department_Upsert()
         {
             var entity = TestUserData.Users[0];
-            var created = api.UpsertUserDepartment(entity.Id.ToString(),
-                TestUserData.CreateDepartmentData(TestUserData.Departments[0]));
+            var data = TestUserData.CreateDepartmentData(TestUserData.Departments[0]);
+            var created = api.UpsertUserDepartment(entity.Id.ToString(), data);
             try
             {
                 var existing = api.ListUserDepartments(entity.Id.ToString()).Data;
                 Assert.Contains(existing, i => i.Id == created.Id);
+                data = TestUserData.CreateDepartmentData(TestUserData.Departments[1]);
+                data.Id = created.Id;
+                var updated = api.UpsertUserDepartment(entity.Id.ToString(), data);
+                Assert.Equal(created.Id, updated.Id);
+                Assert.Equal(data.DepartmentId.Value, updated.DepartmentId.Id);
             }
             finally
             {
@@ -348,12 +365,17 @@ namespace Agile.Now.Runtime.Test.Api
         public void Test_User_Location_Upsert()
         {
             var entity = TestUserData.Users[0];
-            var created = api.UpsertUserLocation(entity.Id.ToString(),
-                TestUserData.CreateLocationData(TestUserData.Locations[0]));
+            var data = TestUserData.CreateLocationData(TestUserData.Locations[0]);
+            var created = api.UpsertUserLocation(entity.Id.ToString(), data);
             try
             {
                 var existing = api.ListUserLocations(entity.Id.ToString()).Data;
                 Assert.Contains(existing, i => i.Id == created.Id);
+                data = TestUserData.CreateLocationData(TestUserData.Locations[1]);
+                data.Id = created.Id;
+                var updated = api.UpsertUserLocation(entity.Id.ToString(), data);
+                Assert.Equal(created.Id, updated.Id);
+                Assert.Equal(data.LocationId.Value, updated.LocationId.Id);
             }
             finally
             {

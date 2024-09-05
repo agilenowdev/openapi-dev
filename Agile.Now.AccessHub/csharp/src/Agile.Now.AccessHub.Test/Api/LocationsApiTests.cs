@@ -326,12 +326,17 @@ namespace Agile.Now.AccessHub.Test.Api
             var created = api.CreateLocation(LocationTestData.CreateLocationData());
             try
             {
-                var createdSubEntity = api.UpsertLocationUser(created.Id,
-                    UserTestData.CreateUserData1(UserTestData.Users[0]));
+                var data = UserTestData.CreateUserData1(UserTestData.Users[0]);
+                var createdSubEntity = api.UpsertLocationUser(created.Id, data);
                 try
                 {
                     var existing = api.ListLocationUsers(created.Id).Data;
                     Assert.Contains(existing, i => i.Id == createdSubEntity.Id);
+                    data = UserTestData.CreateUserData1(UserTestData.Users[1]);
+                    data.Id = createdSubEntity.Id;
+                    var updated = api.UpsertLocationUser(created.Id, data);
+                    Assert.Equal(createdSubEntity.Id, updated.Id);
+                    Assert.Equal(data.UserId.Value, updated.UserId.Id.ToString());
                 }
                 finally
                 {

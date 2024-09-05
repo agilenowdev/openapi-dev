@@ -45,6 +45,7 @@ using Agile.Now.ApiAccessGroups.Test.Api;
 using Agile.Now.ApiOrganizations.Test.Api;
 using Xunit;
 using Xunit.Abstractions;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 // uncomment below to import models
 //using Agile.Now.AccessHub.Model;
 
@@ -352,10 +353,15 @@ namespace Agile.Now.AccessHub.Test.Api
             var created = api.CreateGroupExternal(GroupExternalTestData.CreateGroupExternalData());
             try
             {
-                var createdSubEntity = api.UpsertGroupExternalUserExternal(created.Id.ToString(),
-                    GroupExternalTestData.CreateUserExternalData(UserTestData.Users[0]));
+                var data = GroupExternalTestData.CreateUserExternalData(UserTestData.Users[0]);
+                var createdSubEntity = api.UpsertGroupExternalUserExternal(created.Id.ToString(), data);
                 var existing = api.ListGroupExternalUserExternals(created.Id.ToString()).Data;
                 Assert.Contains(existing, i => i.Id == createdSubEntity.Id);
+                data = GroupExternalTestData.CreateUserExternalData(UserTestData.Users[1]);
+                data.Id = createdSubEntity.Id;
+                var updated = api.UpsertGroupExternalUserExternal(created.Id.ToString(), data);
+                Assert.Equal(createdSubEntity.Id, updated.Id);
+                Assert.Equal(data.UserId.Value, updated.UserId.Id.ToString());
             }
             finally
             {

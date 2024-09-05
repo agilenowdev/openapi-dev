@@ -46,6 +46,7 @@ using Agile.Now.ApiAccessGroups.Test.Api;
 using Agile.Now.ApiOrganizations.Test.Api;
 using Xunit;
 using Xunit.Abstractions;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 // uncomment below to import models
 //using Agile.Now.AccessHub.Model;
 
@@ -328,12 +329,17 @@ namespace Agile.Now.AccessHub.Test.Api
             var created = api.CreateDepartment(DepartmentTestData.CreateDepartmentData());
             try
             {
-                var createdSubEntity = api.UpsertDepartmentUser(created.Id,
-                    UserTestData.CreateUserData1(UserTestData.Users[0]));
+                var data = UserTestData.CreateUserData1(UserTestData.Users[0]);
+                var createdSubEntity = api.UpsertDepartmentUser(created.Id, data);
                 try
                 {
                     var existing = api.ListDepartmentUsers(created.Id).Data;
                     Assert.Contains(existing, i => i.Id == createdSubEntity.Id);
+                    data = UserTestData.CreateUserData1(UserTestData.Users[1]);
+                    data.Id = createdSubEntity.Id;
+                    var updated = api.UpsertDepartmentUser(created.Id, data);
+                    Assert.Equal(createdSubEntity.Id, updated.Id);
+                    Assert.Equal(data.UserId.Value, updated.UserId.Id.ToString());
                 }
                 finally
                 {
