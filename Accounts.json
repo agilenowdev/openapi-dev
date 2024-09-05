@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "2.0.97"
+    "version": "2.0.101"
   },
   "servers": [
     {
@@ -2131,8 +2131,7 @@
       },
       "TenantData": {
         "required": [
-          "TenantId",
-          "CreatedOn"
+          "TenantId"
         ],
         "type": "object",
         "properties": {
@@ -2141,13 +2140,6 @@
           },
           "TenantId": {
             "$ref": "#/components/schemas/FieldType"
-          },
-          "CreatedOn": {
-            "type": "string",
-            "description": "The date the record was created.",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
           }
         },
         "description": "The record of Tenant information."
@@ -2218,13 +2210,6 @@
             "type": "string",
             "description": "Picture of account.",
             "format": "binary"
-          },
-          "CreatedOn": {
-            "type": "string",
-            "description": "Date the record was created.",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
           }
         },
         "description": "The record of Picture information."
