@@ -2737,9 +2737,6 @@
         "description": "The record of AccessGroup information."
       },
       "AbstractText": {
-        "required": [
-          "Id"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -2766,9 +2763,6 @@
         "description": "This structure represents an abstract object with a primary key of type Text. It is used to encapsulate detailed information about related entities."
       },
       "AbstractLong": {
-        "required": [
-          "Id"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -2843,6 +2837,7 @@
       },
       "AccessGroupData": {
         "required": [
+          "Id",
           "Name"
         ],
         "type": "object",
@@ -2927,6 +2922,7 @@
       },
       "ApplicationData": {
         "required": [
+          "Id",
           "ParentApplicationId",
           "AccessApplicationId"
         ],
@@ -2970,6 +2966,7 @@
       },
       "ApplicationText": {
         "required": [
+          "Id",
           "ParentApplicationId",
           "AccessApplicationId"
         ],
@@ -3189,6 +3186,7 @@
       },
       "PermissionData": {
         "required": [
+          "Id",
           "PermissionId"
         ],
         "type": "object",
@@ -3220,6 +3218,7 @@
       },
       "PermissionText": {
         "required": [
+          "Id",
           "PermissionId"
         ],
         "type": "object",
@@ -3324,6 +3323,7 @@
       },
       "GroupData": {
         "required": [
+          "Id",
           "GroupId"
         ],
         "type": "object",
@@ -3343,6 +3343,7 @@
       },
       "GroupText": {
         "required": [
+          "Id",
           "GroupId"
         ],
         "type": "object",
@@ -3433,6 +3434,7 @@
       },
       "UserData": {
         "required": [
+          "Id",
           "UserId"
         ],
         "type": "object",
@@ -3452,6 +3454,7 @@
       },
       "UserText": {
         "required": [
+          "Id",
           "UserId"
         ],
         "type": "object",
@@ -3548,6 +3551,9 @@
         "description": "The list of `GroupExternal` records"
       },
       "GroupExternalData": {
+        "required": [
+          "Id"
+        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -3580,6 +3586,9 @@
         "description": "The record of GroupExternal information."
       },
       "GroupExternalText": {
+        "required": [
+          "Id"
+        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -3674,6 +3683,7 @@
       },
       "UserExternalData": {
         "required": [
+          "Id",
           "User_Id"
         ],
         "type": "object",
@@ -3692,6 +3702,7 @@
       },
       "UserExternalText": {
         "required": [
+          "Id",
           "User_Id"
         ],
         "type": "object",
