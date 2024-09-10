@@ -1114,9 +1114,6 @@
         "description": "The record of Account information."
       },
       "AbstractLong": {
-        "required": [
-          "Id"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -1145,9 +1142,6 @@
         "description": "This structure represents an abstract object with a primary key of type Long. It is used to encapsulate detailed information about related entities."
       },
       "AbstractText": {
-        "required": [
-          "Id"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -2020,6 +2014,7 @@
       },
       "AccountData": {
         "required": [
+          "Id",
           "FirstName",
           "LastName",
           "Email",
@@ -2131,6 +2126,7 @@
       },
       "TenantData": {
         "required": [
+          "UserId",
           "TenantId"
         ],
         "type": "object",
