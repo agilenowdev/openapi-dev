@@ -2836,10 +2836,6 @@
         ]
       },
       "AccessGroupData": {
-        "required": [
-          "Id",
-          "Name"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -2921,11 +2917,6 @@
         "description": "The list of `Application` records"
       },
       "ApplicationData": {
-        "required": [
-          "Id",
-          "ParentApplicationId",
-          "AccessApplicationId"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -2965,11 +2956,6 @@
         "description": "The field object structure. This structure allows users to specify any related entity field and its corresponding value. When saving data, the system automatically retrieves and assigns the primary key value from the system database table based on the provided field name and value."
       },
       "ApplicationText": {
-        "required": [
-          "Id",
-          "ParentApplicationId",
-          "AccessApplicationId"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -3185,10 +3171,6 @@
         ]
       },
       "PermissionData": {
-        "required": [
-          "Id",
-          "PermissionId"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -3217,10 +3199,6 @@
         "description": "The record of Permission information."
       },
       "PermissionText": {
-        "required": [
-          "Id",
-          "PermissionId"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -3322,10 +3300,6 @@
         "description": "The list of `Group` records"
       },
       "GroupData": {
-        "required": [
-          "Id",
-          "GroupId"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -3342,10 +3316,6 @@
         "description": "The record of Group information."
       },
       "GroupText": {
-        "required": [
-          "Id",
-          "GroupId"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -3433,10 +3403,6 @@
         "description": "The list of `User` records"
       },
       "UserData": {
-        "required": [
-          "Id",
-          "UserId"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -3453,10 +3419,6 @@
         "description": "The record of User information."
       },
       "UserText": {
-        "required": [
-          "Id",
-          "UserId"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -3551,9 +3513,6 @@
         "description": "The list of `GroupExternal` records"
       },
       "GroupExternalData": {
-        "required": [
-          "Id"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -3586,9 +3545,6 @@
         "description": "The record of GroupExternal information."
       },
       "GroupExternalText": {
-        "required": [
-          "Id"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -3682,10 +3638,6 @@
         "description": "The list of `UserExternal` records"
       },
       "UserExternalData": {
-        "required": [
-          "Id",
-          "User_Id"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -3701,10 +3653,6 @@
         "description": "The record of UserExternal information."
       },
       "UserExternalText": {
-        "required": [
-          "Id",
-          "User_Id"
-        ],
         "type": "object",
         "properties": {
           "Id": {
