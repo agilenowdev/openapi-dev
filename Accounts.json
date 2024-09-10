@@ -2013,13 +2013,6 @@
         ]
       },
       "AccountData": {
-        "required": [
-          "Id",
-          "FirstName",
-          "LastName",
-          "Email",
-          "Username"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -2125,10 +2118,6 @@
         "description": "The list of `Tenant` records"
       },
       "TenantData": {
-        "required": [
-          "UserId",
-          "TenantId"
-        ],
         "type": "object",
         "properties": {
           "UserId": {
