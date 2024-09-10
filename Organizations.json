@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "2.0.147"
+    "version": "2.0.148"
   },
   "servers": [
     {
@@ -3571,6 +3571,7 @@
       },
       "DepartmentInsertData": {
         "required": [
+          "Id",
           "Name",
           "DepartmentTypeId"
         ],
@@ -4739,6 +4740,7 @@
       },
       "LocationInsertData": {
         "required": [
+          "Id",
           "Name"
         ],
         "type": "object",
