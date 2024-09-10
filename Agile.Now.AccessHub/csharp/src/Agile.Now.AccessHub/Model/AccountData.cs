@@ -73,45 +73,32 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AccountData" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected AccountData() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AccountData" /> class.
-        /// </summary>
         /// <param name="id">The identifier of account..</param>
         /// <param name="name">The name of the account..</param>
-        /// <param name="firstName">Person's first name. (required).</param>
-        /// <param name="lastName">Person's last name. (required).</param>
+        /// <param name="firstName">Person's first name..</param>
+        /// <param name="lastName">Person's last name..</param>
         /// <param name="phone">The phone number of account. The phone number is unique in the system..</param>
-        /// <param name="email">The e-mail of account. The email is unique in the system. (required).</param>
+        /// <param name="email">The e-mail of account. The email is unique in the system..</param>
         /// <param name="languageId">languageId.</param>
         /// <param name="timezoneId">timezoneId.</param>
         /// <param name="dateFormatId">dateFormatId.</param>
-        /// <param name="username">Username used to log in into the system. The username is unique in the system. The value must be unique in the system and you cannot add multiple values. (required).</param>
+        /// <param name="username">Username used to log in into the system. The username is unique in the system. The value must be unique in the system and you cannot add multiple values..</param>
         /// <param name="externalId">External Authentication identifier. Example Azure AD guid. The value must be unique in the system and you cannot add multiple values..</param>
         /// <param name="notifyByEmail">Defines if a person should get notifications via e-mail. (default to false).</param>
         /// <param name="notifyBySMS">Defines if a contact should get notifications via SMS. (default to false).</param>
         /// <param name="isActive">Defines if the account is active and can be used. (default to false).</param>
         public AccountData(string id = default, string name = default, string firstName = default, string lastName = default, string phone = default, string email = default, EnumLanguage? languageId = default, EnumTimezone? timezoneId = default, EnumDateFormat? dateFormatId = default, string username = default, string externalId = default, bool notifyByEmail = false, bool notifyBySMS = false, bool isActive = false)
         {
-            // to ensure "firstName" is required (not null)
-            firstName = firstName ?? throw new ArgumentNullException("firstName is a required property for AccountData and cannot be null");
-            FirstName = firstName;
-            // to ensure "lastName" is required (not null)
-            lastName = lastName ?? throw new ArgumentNullException("lastName is a required property for AccountData and cannot be null");
-            LastName = lastName;
-            // to ensure "email" is required (not null)
-            email = email ?? throw new ArgumentNullException("email is a required property for AccountData and cannot be null");
-            Email = email;
-            // to ensure "username" is required (not null)
-            username = username ?? throw new ArgumentNullException("username is a required property for AccountData and cannot be null");
-            Username = username;
             Id = id;
             Name = name;
+            FirstName = firstName;
+            LastName = lastName;
             Phone = phone;
+            Email = email;
             LanguageId = languageId;
             TimezoneId = timezoneId;
             DateFormatId = dateFormatId;
+            Username = username;
             ExternalId = externalId;
             NotifyByEmail = notifyByEmail;
             NotifyBySMS = notifyBySMS;
@@ -136,14 +123,14 @@ namespace Agile.Now.AccessHub.Model
         /// Person's first name.
         /// </summary>
         /// <value>Person&#39;s first name.</value>
-        [DataMember(Name = "FirstName", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "FirstName", EmitDefaultValue = false)]
         public string FirstName { get; set; }
 
         /// <summary>
         /// Person's last name.
         /// </summary>
         /// <value>Person&#39;s last name.</value>
-        [DataMember(Name = "LastName", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "LastName", EmitDefaultValue = false)]
         public string LastName { get; set; }
 
         /// <summary>
@@ -157,14 +144,14 @@ namespace Agile.Now.AccessHub.Model
         /// The e-mail of account. The email is unique in the system.
         /// </summary>
         /// <value>The e-mail of account. The email is unique in the system.</value>
-        [DataMember(Name = "Email", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Email", EmitDefaultValue = false)]
         public string Email { get; set; }
 
         /// <summary>
         /// Username used to log in into the system. The username is unique in the system. The value must be unique in the system and you cannot add multiple values.
         /// </summary>
         /// <value>Username used to log in into the system. The username is unique in the system. The value must be unique in the system and you cannot add multiple values.</value>
-        [DataMember(Name = "Username", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Username", EmitDefaultValue = false)]
         public string Username { get; set; }
 
         /// <summary>

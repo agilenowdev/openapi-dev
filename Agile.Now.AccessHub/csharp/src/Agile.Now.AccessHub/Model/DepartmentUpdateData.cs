@@ -61,33 +61,24 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DepartmentUpdateData" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected DepartmentUpdateData() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DepartmentUpdateData" /> class.
-        /// </summary>
         /// <param name="externalId">The external identifier of the department..</param>
-        /// <param name="name">The name of the department. (required).</param>
-        /// <param name="level">The department level at the hierarchy. (default to 0).</param>
+        /// <param name="name">The name of the department..</param>
         /// <param name="contactName">The contact name of company or department..</param>
         /// <param name="contactEmail">The contact email of external company or department..</param>
         /// <param name="contactPhone">contactPhone.</param>
         /// <param name="ownerId">ownerId.</param>
         /// <param name="countryId">countryId.</param>
-        /// <param name="isActive">Defines if the department is active and can be used. (required) (default to false).</param>
-        public DepartmentUpdateData(string externalId = default, string name = default, int level = 0, string contactName = default, string contactEmail = default, string contactPhone = default, FieldType ownerId = default, EnumCountry? countryId = default, bool isActive = false)
+        /// <param name="isActive">Defines if the department is active and can be used. (default to false).</param>
+        public DepartmentUpdateData(string externalId = default, string name = default, string contactName = default, string contactEmail = default, string contactPhone = default, FieldType ownerId = default, EnumCountry? countryId = default, bool isActive = false)
         {
-            // to ensure "name" is required (not null)
-            name = name ?? throw new ArgumentNullException("name is a required property for DepartmentUpdateData and cannot be null");
-            Name = name;
-            IsActive = isActive;
             ExternalId = externalId;
-            Level = level;
+            Name = name;
             ContactName = contactName;
             ContactEmail = contactEmail;
             ContactPhone = contactPhone;
             OwnerId = ownerId;
             CountryId = countryId;
+            IsActive = isActive;
         }
 
         /// <summary>
@@ -101,16 +92,8 @@ namespace Agile.Now.AccessHub.Model
         /// The name of the department.
         /// </summary>
         /// <value>The name of the department.</value>
-        [DataMember(Name = "Name", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
         public string Name { get; set; }
-
-        /// <summary>
-        /// The department level at the hierarchy.
-        /// </summary>
-        /// <value>The department level at the hierarchy.</value>
-        /// <example>0</example>
-        [DataMember(Name = "Level", EmitDefaultValue = false)]
-        public int Level { get; set; }
 
         /// <summary>
         /// The contact name of company or department.
@@ -143,7 +126,7 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         /// <value>Defines if the department is active and can be used.</value>
         /// <example>false</example>
-        [DataMember(Name = "Is_Active", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Is_Active", EmitDefaultValue = true)]
         public bool IsActive { get; set; }
 
         /// <summary>
@@ -156,7 +139,6 @@ namespace Agile.Now.AccessHub.Model
             sb.Append("class DepartmentUpdateData {\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Level: ").Append(Level).Append("\n");
             sb.Append("  ContactName: ").Append(ContactName).Append("\n");
             sb.Append("  ContactEmail: ").Append(ContactEmail).Append("\n");
             sb.Append("  ContactPhone: ").Append(ContactPhone).Append("\n");

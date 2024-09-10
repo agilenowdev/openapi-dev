@@ -73,27 +73,20 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="LocationUpdateData" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected LocationUpdateData() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="LocationUpdateData" /> class.
-        /// </summary>
         /// <param name="externalId">The external identifier of the location..</param>
-        /// <param name="name">The name of the location. The value must be unique in the system and you cannot add multiple values. (required).</param>
+        /// <param name="name">The name of the location..</param>
         /// <param name="countryId">countryId.</param>
         /// <param name="timezoneId">timezoneId.</param>
         /// <param name="currencyId">currencyId.</param>
-        /// <param name="isActive">Defines if the location is active and can be used. (required) (default to false).</param>
+        /// <param name="isActive">Defines if the location is active and can be used. (default to false).</param>
         public LocationUpdateData(string externalId = default, string name = default, EnumCountry? countryId = default, EnumTimezone? timezoneId = default, EnumCurrency? currencyId = default, bool isActive = false)
         {
-            // to ensure "name" is required (not null)
-            name = name ?? throw new ArgumentNullException("name is a required property for LocationUpdateData and cannot be null");
-            Name = name;
-            IsActive = isActive;
             ExternalId = externalId;
+            Name = name;
             CountryId = countryId;
             TimezoneId = timezoneId;
             CurrencyId = currencyId;
+            IsActive = isActive;
         }
 
         /// <summary>
@@ -104,10 +97,10 @@ namespace Agile.Now.AccessHub.Model
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// The name of the location. The value must be unique in the system and you cannot add multiple values.
+        /// The name of the location.
         /// </summary>
-        /// <value>The name of the location. The value must be unique in the system and you cannot add multiple values.</value>
-        [DataMember(Name = "Name", IsRequired = true, EmitDefaultValue = true)]
+        /// <value>The name of the location.</value>
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
@@ -115,7 +108,7 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         /// <value>Defines if the location is active and can be used.</value>
         /// <example>false</example>
-        [DataMember(Name = "Is_Active", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Is_Active", EmitDefaultValue = true)]
         public bool IsActive { get; set; }
 
         /// <summary>

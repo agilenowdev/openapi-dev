@@ -53,25 +53,25 @@ namespace Agile.Now.AccessHub.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Use the `AccessGroupInsertData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `AccessGroupInsertData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`  ### Create a new record of AccessGroup * If the value in the `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupInsertData`). * If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`AccessGroupInsertData`). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
+        /// Use the `AccessGroupData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`  ### Create a new record of AccessGroup * If the value in the `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupData`). * If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`AccessGroupData`). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accessGroupInsertData">`AccessGroup` information to insert.  The input parameter must be used in the `AccessGroupInsertData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="accessGroupData">`AccessGroup` information to insert.  The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AccessGroup</returns>
-        AccessGroup CreateAccessGroup(AccessGroupInsertData accessGroupInsertData, int operationIndex = 0);
+        AccessGroup CreateAccessGroup(AccessGroupData accessGroupData, int operationIndex = 0);
 
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Use the `AccessGroupInsertData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `AccessGroupInsertData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`  ### Create a new record of AccessGroup * If the value in the `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupInsertData`). * If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`AccessGroupInsertData`). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
+        /// Use the `AccessGroupData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`  ### Create a new record of AccessGroup * If the value in the `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupData`). * If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`AccessGroupData`). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accessGroupInsertData">`AccessGroup` information to insert.  The input parameter must be used in the `AccessGroupInsertData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="accessGroupData">`AccessGroup` information to insert.  The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of AccessGroup</returns>
-        ApiResponse<AccessGroup> CreateAccessGroupWithHttpInfo(AccessGroupInsertData accessGroupInsertData, int operationIndex = 0);
+        ApiResponse<AccessGroup> CreateAccessGroupWithHttpInfo(AccessGroupData accessGroupData, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -529,29 +529,29 @@ namespace Agile.Now.AccessHub.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Use the `AccessGroupUpdateData` object resource to update `AccessGroup` using `Id` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `AccessGroupUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`  ### Update a record of AccessGroup * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+        /// Use the `AccessGroupData` object resource to update `AccessGroup` using `Id` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`  ### Update a record of AccessGroup * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="accessGroupUpdateData">AccessGroup information to update.  The input parameter must be used in the `AccessGroupUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="accessGroupData">AccessGroup information to update.  The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AccessGroup</returns>
-        AccessGroup UpdateAccessGroup(string id, AccessGroupUpdateData accessGroupUpdateData, string name = default, int operationIndex = 0);
+        AccessGroup UpdateAccessGroup(string id, AccessGroupData accessGroupData, string name = default, int operationIndex = 0);
 
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Use the `AccessGroupUpdateData` object resource to update `AccessGroup` using `Id` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `AccessGroupUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`  ### Update a record of AccessGroup * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+        /// Use the `AccessGroupData` object resource to update `AccessGroup` using `Id` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`  ### Update a record of AccessGroup * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="accessGroupUpdateData">AccessGroup information to update.  The input parameter must be used in the `AccessGroupUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="accessGroupData">AccessGroup information to update.  The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of AccessGroup</returns>
-        ApiResponse<AccessGroup> UpdateAccessGroupWithHttpInfo(string id, AccessGroupUpdateData accessGroupUpdateData, string name = default, int operationIndex = 0);
+        ApiResponse<AccessGroup> UpdateAccessGroupWithHttpInfo(string id, AccessGroupData accessGroupData, string name = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -696,27 +696,27 @@ namespace Agile.Now.AccessHub.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Use the `AccessGroupInsertData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `AccessGroupInsertData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`  ### Create a new record of AccessGroup * If the value in the `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupInsertData`). * If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`AccessGroupInsertData`). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
+        /// Use the `AccessGroupData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`  ### Create a new record of AccessGroup * If the value in the `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupData`). * If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`AccessGroupData`). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accessGroupInsertData">`AccessGroup` information to insert.  The input parameter must be used in the `AccessGroupInsertData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="accessGroupData">`AccessGroup` information to insert.  The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AccessGroup</returns>
-        System.Threading.Tasks.Task<AccessGroup> CreateAccessGroupAsync(AccessGroupInsertData accessGroupInsertData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<AccessGroup> CreateAccessGroupAsync(AccessGroupData accessGroupData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Use the `AccessGroupInsertData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `AccessGroupInsertData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`  ### Create a new record of AccessGroup * If the value in the `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupInsertData`). * If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`AccessGroupInsertData`). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
+        /// Use the `AccessGroupData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`  ### Create a new record of AccessGroup * If the value in the `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupData`). * If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`AccessGroupData`). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accessGroupInsertData">`AccessGroup` information to insert.  The input parameter must be used in the `AccessGroupInsertData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="accessGroupData">`AccessGroup` information to insert.  The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AccessGroup)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AccessGroup>> CreateAccessGroupWithHttpInfoAsync(AccessGroupInsertData accessGroupInsertData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<AccessGroup>> CreateAccessGroupWithHttpInfoAsync(AccessGroupData accessGroupData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -1204,31 +1204,31 @@ namespace Agile.Now.AccessHub.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Use the `AccessGroupUpdateData` object resource to update `AccessGroup` using `Id` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `AccessGroupUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`  ### Update a record of AccessGroup * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+        /// Use the `AccessGroupData` object resource to update `AccessGroup` using `Id` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`  ### Update a record of AccessGroup * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="accessGroupUpdateData">AccessGroup information to update.  The input parameter must be used in the `AccessGroupUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="accessGroupData">AccessGroup information to update.  The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AccessGroup</returns>
-        System.Threading.Tasks.Task<AccessGroup> UpdateAccessGroupAsync(string id, AccessGroupUpdateData accessGroupUpdateData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<AccessGroup> UpdateAccessGroupAsync(string id, AccessGroupData accessGroupData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Use the `AccessGroupUpdateData` object resource to update `AccessGroup` using `Id` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `AccessGroupUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`  ### Update a record of AccessGroup * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+        /// Use the `AccessGroupData` object resource to update `AccessGroup` using `Id` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`  ### Update a record of AccessGroup * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="accessGroupUpdateData">AccessGroup information to update.  The input parameter must be used in the `AccessGroupUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="accessGroupData">AccessGroup information to update.  The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AccessGroup)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AccessGroup>> UpdateAccessGroupWithHttpInfoAsync(string id, AccessGroupUpdateData accessGroupUpdateData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<AccessGroup>> UpdateAccessGroupWithHttpInfoAsync(string id, AccessGroupData accessGroupData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -1487,29 +1487,29 @@ namespace Agile.Now.AccessHub.Api
         }
 
         /// <summary>
-        /// Use the `AccessGroupInsertData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `AccessGroupInsertData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`  ### Create a new record of AccessGroup * If the value in the `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupInsertData`). * If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`AccessGroupInsertData`). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
+        /// Use the `AccessGroupData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`  ### Create a new record of AccessGroup * If the value in the `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupData`). * If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`AccessGroupData`). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accessGroupInsertData">`AccessGroup` information to insert.  The input parameter must be used in the `AccessGroupInsertData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="accessGroupData">`AccessGroup` information to insert.  The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AccessGroup</returns>
-        public AccessGroup CreateAccessGroup(AccessGroupInsertData accessGroupInsertData, int operationIndex = 0)
+        public AccessGroup CreateAccessGroup(AccessGroupData accessGroupData, int operationIndex = 0)
         {
-            ApiResponse<AccessGroup> localVarResponse = CreateAccessGroupWithHttpInfo(accessGroupInsertData);
+            ApiResponse<AccessGroup> localVarResponse = CreateAccessGroupWithHttpInfo(accessGroupData);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Use the `AccessGroupInsertData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `AccessGroupInsertData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`  ### Create a new record of AccessGroup * If the value in the `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupInsertData`). * If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`AccessGroupInsertData`). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
+        /// Use the `AccessGroupData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`  ### Create a new record of AccessGroup * If the value in the `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupData`). * If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`AccessGroupData`). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accessGroupInsertData">`AccessGroup` information to insert.  The input parameter must be used in the `AccessGroupInsertData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="accessGroupData">`AccessGroup` information to insert.  The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of AccessGroup</returns>
-        public ApiResponse<AccessGroup> CreateAccessGroupWithHttpInfo(AccessGroupInsertData accessGroupInsertData, int operationIndex = 0)
+        public ApiResponse<AccessGroup> CreateAccessGroupWithHttpInfo(AccessGroupData accessGroupData, int operationIndex = 0)
         {
-            // verify the required parameter 'accessGroupInsertData' is set
-            accessGroupInsertData = accessGroupInsertData ?? throw new ApiException(400, "Missing required parameter 'accessGroupInsertData' when calling AccessGroupsApi->CreateAccessGroup");
+            // verify the required parameter 'accessGroupData' is set
+            accessGroupData = accessGroupData ?? throw new ApiException(400, "Missing required parameter 'accessGroupData' when calling AccessGroupsApi->CreateAccessGroup");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -1534,7 +1534,7 @@ namespace Agile.Now.AccessHub.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.Data = accessGroupInsertData;
+            localVarRequestOptions.Data = accessGroupData;
 
             localVarRequestOptions.Operation = "AccessGroupsApi.CreateAccessGroup";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -1571,31 +1571,31 @@ namespace Agile.Now.AccessHub.Api
         }
 
         /// <summary>
-        /// Use the `AccessGroupInsertData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `AccessGroupInsertData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`  ### Create a new record of AccessGroup * If the value in the `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupInsertData`). * If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`AccessGroupInsertData`). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
+        /// Use the `AccessGroupData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`  ### Create a new record of AccessGroup * If the value in the `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupData`). * If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`AccessGroupData`). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accessGroupInsertData">`AccessGroup` information to insert.  The input parameter must be used in the `AccessGroupInsertData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="accessGroupData">`AccessGroup` information to insert.  The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AccessGroup</returns>
-        public async System.Threading.Tasks.Task<AccessGroup> CreateAccessGroupAsync(AccessGroupInsertData accessGroupInsertData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<AccessGroup> CreateAccessGroupAsync(AccessGroupData accessGroupData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            ApiResponse<AccessGroup> localVarResponse = await CreateAccessGroupWithHttpInfoAsync(accessGroupInsertData, operationIndex, cancellationToken).ConfigureAwait(false);
+            ApiResponse<AccessGroup> localVarResponse = await CreateAccessGroupWithHttpInfoAsync(accessGroupData, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Use the `AccessGroupInsertData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `AccessGroupInsertData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`  ### Create a new record of AccessGroup * If the value in the `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupInsertData`). * If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`AccessGroupInsertData`). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
+        /// Use the `AccessGroupData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`  ### Create a new record of AccessGroup * If the value in the `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupData`). * If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`AccessGroupData`). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accessGroupInsertData">`AccessGroup` information to insert.  The input parameter must be used in the `AccessGroupInsertData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="accessGroupData">`AccessGroup` information to insert.  The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AccessGroup)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<AccessGroup>> CreateAccessGroupWithHttpInfoAsync(AccessGroupInsertData accessGroupInsertData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ApiResponse<AccessGroup>> CreateAccessGroupWithHttpInfoAsync(AccessGroupData accessGroupData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            // verify the required parameter 'accessGroupInsertData' is set
-            accessGroupInsertData = accessGroupInsertData ?? throw new ApiException(400, "Missing required parameter 'accessGroupInsertData' when calling AccessGroupsApi->CreateAccessGroup");
+            // verify the required parameter 'accessGroupData' is set
+            accessGroupData = accessGroupData ?? throw new ApiException(400, "Missing required parameter 'accessGroupData' when calling AccessGroupsApi->CreateAccessGroup");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -1621,7 +1621,7 @@ namespace Agile.Now.AccessHub.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.Data = accessGroupInsertData;
+            localVarRequestOptions.Data = accessGroupData;
 
             localVarRequestOptions.Operation = "AccessGroupsApi.CreateAccessGroup";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -4865,36 +4865,36 @@ namespace Agile.Now.AccessHub.Api
         }
 
         /// <summary>
-        /// Use the `AccessGroupUpdateData` object resource to update `AccessGroup` using `Id` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `AccessGroupUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`  ### Update a record of AccessGroup * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+        /// Use the `AccessGroupData` object resource to update `AccessGroup` using `Id` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`  ### Update a record of AccessGroup * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="accessGroupUpdateData">AccessGroup information to update.  The input parameter must be used in the `AccessGroupUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="accessGroupData">AccessGroup information to update.  The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AccessGroup</returns>
-        public AccessGroup UpdateAccessGroup(string id, AccessGroupUpdateData accessGroupUpdateData, string name = default, int operationIndex = 0)
+        public AccessGroup UpdateAccessGroup(string id, AccessGroupData accessGroupData, string name = default, int operationIndex = 0)
         {
-            ApiResponse<AccessGroup> localVarResponse = UpdateAccessGroupWithHttpInfo(id, accessGroupUpdateData, name);
+            ApiResponse<AccessGroup> localVarResponse = UpdateAccessGroupWithHttpInfo(id, accessGroupData, name);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Use the `AccessGroupUpdateData` object resource to update `AccessGroup` using `Id` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `AccessGroupUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`  ### Update a record of AccessGroup * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+        /// Use the `AccessGroupData` object resource to update `AccessGroup` using `Id` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`  ### Update a record of AccessGroup * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="accessGroupUpdateData">AccessGroup information to update.  The input parameter must be used in the `AccessGroupUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="accessGroupData">AccessGroup information to update.  The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of AccessGroup</returns>
-        public ApiResponse<AccessGroup> UpdateAccessGroupWithHttpInfo(string id, AccessGroupUpdateData accessGroupUpdateData, string name = default, int operationIndex = 0)
+        public ApiResponse<AccessGroup> UpdateAccessGroupWithHttpInfo(string id, AccessGroupData accessGroupData, string name = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling AccessGroupsApi->UpdateAccessGroup");
 
-            // verify the required parameter 'accessGroupUpdateData' is set
-            accessGroupUpdateData = accessGroupUpdateData ?? throw new ApiException(400, "Missing required parameter 'accessGroupUpdateData' when calling AccessGroupsApi->UpdateAccessGroup");
+            // verify the required parameter 'accessGroupData' is set
+            accessGroupData = accessGroupData ?? throw new ApiException(400, "Missing required parameter 'accessGroupData' when calling AccessGroupsApi->UpdateAccessGroup");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -4924,7 +4924,7 @@ namespace Agile.Now.AccessHub.Api
             {
                 localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "Name", name));
             }
-            localVarRequestOptions.Data = accessGroupUpdateData;
+            localVarRequestOptions.Data = accessGroupData;
 
             localVarRequestOptions.Operation = "AccessGroupsApi.UpdateAccessGroup";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -4961,38 +4961,38 @@ namespace Agile.Now.AccessHub.Api
         }
 
         /// <summary>
-        /// Use the `AccessGroupUpdateData` object resource to update `AccessGroup` using `Id` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `AccessGroupUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`  ### Update a record of AccessGroup * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+        /// Use the `AccessGroupData` object resource to update `AccessGroup` using `Id` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`  ### Update a record of AccessGroup * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="accessGroupUpdateData">AccessGroup information to update.  The input parameter must be used in the `AccessGroupUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="accessGroupData">AccessGroup information to update.  The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AccessGroup</returns>
-        public async System.Threading.Tasks.Task<AccessGroup> UpdateAccessGroupAsync(string id, AccessGroupUpdateData accessGroupUpdateData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<AccessGroup> UpdateAccessGroupAsync(string id, AccessGroupData accessGroupData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            ApiResponse<AccessGroup> localVarResponse = await UpdateAccessGroupWithHttpInfoAsync(id, accessGroupUpdateData, name, operationIndex, cancellationToken).ConfigureAwait(false);
+            ApiResponse<AccessGroup> localVarResponse = await UpdateAccessGroupWithHttpInfoAsync(id, accessGroupData, name, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Use the `AccessGroupUpdateData` object resource to update `AccessGroup` using `Id` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `AccessGroupUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`  ### Update a record of AccessGroup * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+        /// Use the `AccessGroupData` object resource to update `AccessGroup` using `Id` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`  ### Update a record of AccessGroup * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="accessGroupUpdateData">AccessGroup information to update.  The input parameter must be used in the `AccessGroupUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="accessGroupData">AccessGroup information to update.  The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AccessGroup)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<AccessGroup>> UpdateAccessGroupWithHttpInfoAsync(string id, AccessGroupUpdateData accessGroupUpdateData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ApiResponse<AccessGroup>> UpdateAccessGroupWithHttpInfoAsync(string id, AccessGroupData accessGroupData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling AccessGroupsApi->UpdateAccessGroup");
 
-            // verify the required parameter 'accessGroupUpdateData' is set
-            accessGroupUpdateData = accessGroupUpdateData ?? throw new ApiException(400, "Missing required parameter 'accessGroupUpdateData' when calling AccessGroupsApi->UpdateAccessGroup");
+            // verify the required parameter 'accessGroupData' is set
+            accessGroupData = accessGroupData ?? throw new ApiException(400, "Missing required parameter 'accessGroupData' when calling AccessGroupsApi->UpdateAccessGroup");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -5023,7 +5023,7 @@ namespace Agile.Now.AccessHub.Api
             {
                 localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "Name", name));
             }
-            localVarRequestOptions.Data = accessGroupUpdateData;
+            localVarRequestOptions.Data = accessGroupData;
 
             localVarRequestOptions.Operation = "AccessGroupsApi.UpdateAccessGroup";
             localVarRequestOptions.OperationIndex = operationIndex;

@@ -2318,7 +2318,7 @@
           {
             "value": "CIV",
             "name": "CTeDIvoire",
-            "description": "Côte d'Ivoire",
+            "description": "Cï¿½te d'Ivoire",
             "isString": true
           },
           {
@@ -3092,7 +3092,7 @@
           {
             "value": "REU",
             "name": "RUnion",
-            "description": "Réunion",
+            "description": "Rï¿½union",
             "isString": true
           },
           {
@@ -3146,7 +3146,7 @@
           {
             "value": "BLM",
             "name": "SaintBarthLemy",
-            "description": "Saint-Barthélemy",
+            "description": "Saint-Barthï¿½lemy",
             "isString": true
           },
           {

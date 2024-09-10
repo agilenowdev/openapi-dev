@@ -2168,11 +2168,11 @@ paths:
       tags:
       - AccessGroups
     put:
-      description: "Use the `AccessGroupUpdateData` object resource to update `AccessGroup`\
+      description: "Use the `AccessGroupData` object resource to update `AccessGroup`\
         \ using `Id` field(s) value.\n\nProvide the updated record information in\
         \ your request data and use the `PUT` method of the resource with a specific\
         \ record ID to update that record. \n\nThe input parameter must be used in\
-        \ the `AccessGroupUpdateData` record structure inside the `FieldType` parameter\
+        \ the `AccessGroupData` record structure inside the `FieldType` parameter\
         \ in the foreign key fields.\n\nForeign key fields are: `AccessGroupTypeId,\
         \ ModifiedBy, CreatedBy`\n\n### Update a record of AccessGroup\n* If the `Id`\
         \ field value is not matched, then a `404` error is reported (`Errors/Not\
@@ -2220,11 +2220,11 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AccessGroupUpdateData'
+              $ref: '#/components/schemas/AccessGroupData'
         description: |-
           AccessGroup information to update.
 
-          The input parameter must be used in the `AccessGroupUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.
+          The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.
         required: true
         x-bodyName: Record
       responses:
@@ -2639,17 +2639,17 @@ paths:
       - AccessGroups
     post:
       description: |+
-        Use the `AccessGroupInsertData` object resource to create new records.
+        Use the `AccessGroupData` object resource to create new records.
 
         You can supply the required field values in the request data, and then use the `POST` method of the resource.
 
-        The input parameter must be used in the `AccessGroupInsertData` record structure inside the `FieldType` parameter in the foreign key fields.
+        The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.
 
         Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`
 
         ### Create a new record of AccessGroup
-        * If the value in the `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupInsertData`).
-        * If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`AccessGroupInsertData`).
+        * If the value in the `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupData`).
+        * If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`AccessGroupData`).
         * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
         The response body will contain the object of the created record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
@@ -2659,11 +2659,11 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AccessGroupInsertData'
+              $ref: '#/components/schemas/AccessGroupData'
         description: |-
           `AccessGroup` information to insert.
 
-          The input parameter must be used in the `AccessGroupInsertData` record structure inside the `FieldType` parameter in the foreign key fields.
+          The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.
         required: true
         x-bodyName: Record
       responses:
@@ -12269,8 +12269,6 @@ components:
             \ manage different kinds of records. This attribute is optional."
           example: User
           type: string
-      required:
-      - Id
       type: object
     AbstractText:
       description: This structure represents an abstract object with a primary key
@@ -12306,8 +12304,6 @@ components:
             \ manage different kinds of records. This attribute is optional."
           example: User
           type: string
-      required:
-      - Id
       type: object
     Accounts:
       description: The list of `Account` records
@@ -13050,11 +13046,6 @@ components:
           description: Defines if the account is active and can be used.
           example: false
           type: boolean
-      required:
-      - Email
-      - FirstName
-      - LastName
-      - Username
       type: object
     Tenant:
       description: The record of Tenant information.
@@ -13135,21 +13126,11 @@ components:
         UserId:
           Field: Field
           Value: Value
-        CreatedOn: 1900-01-01T00:00:00Z
       properties:
         UserId:
           $ref: '#/components/schemas/FieldType'
         TenantId:
           $ref: '#/components/schemas/FieldType'
-        CreatedOn:
-          default: 1900-01-01T00:00:00Z
-          description: The date the record was created.
-          example: 1900-01-01T00:00:00Z
-          format: date-time
-          type: string
-      required:
-      - CreatedOn
-      - TenantId
       type: object
     FieldType:
       description: "The field object structure. This structure allows users to specify\
@@ -13224,7 +13205,6 @@ components:
       example:
         Picture: ""
         Filename: Filename
-        CreatedOn: 1900-01-01T00:00:00Z
       properties:
         Filename:
           description: Filename of account picture.
@@ -13232,12 +13212,6 @@ components:
         Picture:
           description: Picture of account.
           format: binary
-          type: string
-        CreatedOn:
-          default: 1900-01-01T00:00:00Z
-          description: Date the record was created.
-          example: 1900-01-01T00:00:00Z
-          format: date-time
           type: string
       type: object
     AccessGroup:
@@ -13403,85 +13377,6 @@ components:
         Is_Active: false
         AccessGroupTypeId: FullAccess
         ExternalId: ExternalId
-        Is_System: false
-        Id: Id
-        Name: Name
-      properties:
-        Id:
-          description: The identifier of access group.
-          type: string
-        Name:
-          description: The name of access group.
-          type: string
-        ExternalId:
-          description: The external system code of the access group.
-          type: string
-        Description:
-          description: The description of access group.
-          type: string
-        Is_Active:
-          default: false
-          description: Defines if record is active.
-          example: false
-          type: boolean
-        Is_System:
-          default: false
-          description: "Defines if access group is system and end-user cannot change\
-            \ it general, permissions and applications."
-          example: false
-          type: boolean
-        AccessGroupTypeId:
-          $ref: '#/components/schemas/EnumAccessGroupType'
-      required:
-      - Name
-      type: object
-    AccessGroupInsertData:
-      description: The record of AccessGroup information.
-      example:
-        Description: Description
-        Is_Active: false
-        AccessGroupTypeId: FullAccess
-        ExternalId: ExternalId
-        Is_System: false
-        Id: Id
-        Name: Name
-      properties:
-        Id:
-          description: The identifier of access group.
-          type: string
-        Name:
-          description: The name of access group.
-          type: string
-        ExternalId:
-          description: The external system code of the access group.
-          type: string
-        Description:
-          description: The description of access group.
-          type: string
-        Is_Active:
-          default: false
-          description: Defines if record is active.
-          example: false
-          type: boolean
-        Is_System:
-          default: false
-          description: "Defines if access group is system and end-user cannot change\
-            \ it general, permissions and applications."
-          example: false
-          type: boolean
-        AccessGroupTypeId:
-          $ref: '#/components/schemas/EnumAccessGroupType'
-      required:
-      - Id
-      - Name
-      type: object
-    AccessGroupUpdateData:
-      description: The record of AccessGroup information.
-      example:
-        Description: Description
-        Is_Active: false
-        AccessGroupTypeId: FullAccess
-        ExternalId: ExternalId
         Id: Id
         Name: Name
       properties:
@@ -13504,8 +13399,6 @@ components:
           type: boolean
         AccessGroupTypeId:
           $ref: '#/components/schemas/EnumAccessGroupType'
-      required:
-      - Name
       type: object
     Application:
       description: The record of Application information.
@@ -13602,7 +13495,6 @@ components:
           Field: Field
           Value: Value
         Id: Id
-        CreatedOn: 1900-01-01T00:00:00Z
       properties:
         Id:
           description: The identifier of  access group application.
@@ -13616,15 +13508,6 @@ components:
           description: Defines if record is active.
           example: false
           type: boolean
-        CreatedOn:
-          default: 1900-01-01T00:00:00Z
-          description: The date the record was created.
-          example: 1900-01-01T00:00:00Z
-          format: date-time
-          type: string
-      required:
-      - AccessApplicationId
-      - ParentApplicationId
       type: object
     ApplicationText:
       description: The record of Application information.
@@ -13633,7 +13516,6 @@ components:
         Is_Active: false
         ParentApplicationId: ParentApplicationId
         Id: Id
-        CreatedOn: 1900-01-01T00:00:00Z
       properties:
         Id:
           description: The identifier of  access group application.
@@ -13653,15 +13535,6 @@ components:
           description: Defines if record is active.
           example: false
           type: boolean
-        CreatedOn:
-          default: 1900-01-01T00:00:00Z
-          description: The date the record was created.
-          example: 1900-01-01T00:00:00Z
-          format: date-time
-          type: string
-      required:
-      - AccessApplicationId
-      - ParentApplicationId
       type: object
     ApplicationsData:
       description: The data loading record of Application importing
@@ -13689,12 +13562,10 @@ components:
           Is_Active: false
           ParentApplicationId: ParentApplicationId
           Id: Id
-          CreatedOn: 1900-01-01T00:00:00Z
         - AccessApplicationId: AccessApplicationId
           Is_Active: false
           ParentApplicationId: ParentApplicationId
           Id: Id
-          CreatedOn: 1900-01-01T00:00:00Z
       properties:
         Extra:
           description: List validation for entity attribute
@@ -13921,7 +13792,6 @@ components:
           Field: Field
           Value: Value
         Id: 0
-        CreatedOn: 1900-01-01T00:00:00Z
         PermissionId: Create
         RoleId:
           Field: Field
@@ -13944,15 +13814,6 @@ components:
           description: Defines if record is active.
           example: false
           type: boolean
-        CreatedOn:
-          default: 1900-01-01T00:00:00Z
-          description: The date when the record was created.
-          example: 1900-01-01T00:00:00Z
-          format: date-time
-          type: string
-      required:
-      - CreatedOn
-      - PermissionId
       type: object
     PermissionText:
       description: The record of Permission information.
@@ -13960,7 +13821,6 @@ components:
         Is_Active: false
         AccessRoleId: AccessRoleId
         Id: 0
-        CreatedOn: 1900-01-01T00:00:00Z
         PermissionId: PermissionId
         RoleId: RoleId
       properties:
@@ -13984,15 +13844,6 @@ components:
           description: Defines if record is active.
           example: false
           type: boolean
-        CreatedOn:
-          default: 1900-01-01T00:00:00Z
-          description: The date when the record was created.
-          example: 1900-01-01T00:00:00Z
-          format: date-time
-          type: string
-      required:
-      - CreatedOn
-      - PermissionId
       type: object
     PermissionsData:
       description: The data loading record of Permission importing
@@ -14019,13 +13870,11 @@ components:
         - Is_Active: false
           AccessRoleId: AccessRoleId
           Id: 0
-          CreatedOn: 1900-01-01T00:00:00Z
           PermissionId: PermissionId
           RoleId: RoleId
         - Is_Active: false
           AccessRoleId: AccessRoleId
           Id: 0
-          CreatedOn: 1900-01-01T00:00:00Z
           PermissionId: PermissionId
           RoleId: RoleId
       properties:
@@ -14112,7 +13961,6 @@ components:
       description: The record of Group information.
       example:
         Id: 0
-        CreatedOn: 1900-01-01T00:00:00Z
         GroupId:
           Field: Field
           Value: Value
@@ -14125,21 +13973,11 @@ components:
           type: integer
         GroupId:
           $ref: '#/components/schemas/FieldType'
-        CreatedOn:
-          default: 1900-01-01T00:00:00Z
-          description: The date when the record was created.
-          example: 1900-01-01T00:00:00Z
-          format: date-time
-          type: string
-      required:
-      - CreatedOn
-      - GroupId
       type: object
     GroupText:
       description: The record of Group information.
       example:
         Id: 0
-        CreatedOn: 1900-01-01T00:00:00Z
         GroupId: GroupId
       properties:
         Id:
@@ -14151,15 +13989,6 @@ components:
         GroupId:
           description: The identifier of group.
           type: string
-        CreatedOn:
-          default: 1900-01-01T00:00:00Z
-          description: The date when the record was created.
-          example: 1900-01-01T00:00:00Z
-          format: date-time
-          type: string
-      required:
-      - CreatedOn
-      - GroupId
       type: object
     GroupsData:
       description: The data loading record of Group importing
@@ -14184,10 +14013,8 @@ components:
         IsFullValidation: false
         Groups:
         - Id: 0
-          CreatedOn: 1900-01-01T00:00:00Z
           GroupId: GroupId
         - Id: 0
-          CreatedOn: 1900-01-01T00:00:00Z
           GroupId: GroupId
       properties:
         Extra:
@@ -14276,7 +14103,6 @@ components:
           Field: Field
           Value: Value
         Id: 0
-        CreatedOn: 1900-01-01T00:00:00Z
       properties:
         Id:
           default: 0
@@ -14286,22 +14112,12 @@ components:
           type: integer
         UserId:
           $ref: '#/components/schemas/FieldType'
-        CreatedOn:
-          default: 1900-01-01T00:00:00Z
-          description: The date when the record was created.
-          example: 1900-01-01T00:00:00Z
-          format: date-time
-          type: string
-      required:
-      - CreatedOn
-      - UserId
       type: object
     UserText:
       description: The record of User information.
       example:
         UserId: UserId
         Id: 0
-        CreatedOn: 1900-01-01T00:00:00Z
       properties:
         Id:
           default: 0
@@ -14312,15 +14128,6 @@ components:
         UserId:
           description: The identifier of user.
           type: string
-        CreatedOn:
-          default: 1900-01-01T00:00:00Z
-          description: The date when the record was created.
-          example: 1900-01-01T00:00:00Z
-          format: date-time
-          type: string
-      required:
-      - CreatedOn
-      - UserId
       type: object
     UsersData:
       description: The data loading record of User importing
@@ -14346,10 +14153,8 @@ components:
         Users:
         - UserId: UserId
           Id: 0
-          CreatedOn: 1900-01-01T00:00:00Z
         - UserId: UserId
           Id: 0
-          CreatedOn: 1900-01-01T00:00:00Z
       properties:
         Extra:
           description: List validation for entity attribute
@@ -14625,8 +14430,6 @@ components:
           type: integer
         User_Id:
           $ref: '#/components/schemas/FieldType'
-      required:
-      - User_Id
       type: object
     UserExternalText:
       description: The record of UserExternal information.
@@ -14641,8 +14444,6 @@ components:
           type: integer
         User_Id:
           type: string
-      required:
-      - User_Id
       type: object
     UserExternalsData:
       description: The data loading record of UserExternal importing
@@ -16181,7 +15982,6 @@ components:
         Is_Active: false
         ExternalId: ExternalId
         ContactEmail: ContactEmail
-        Level: 0
         Id: Id
         ParentDepartmentId:
           Field: Field
@@ -16202,12 +16002,6 @@ components:
           $ref: '#/components/schemas/EnumDepartmentType'
         ParentDepartmentId:
           $ref: '#/components/schemas/FieldType'
-        Level:
-          default: 0
-          description: The department level at the hierarchy.
-          example: 0
-          format: int32
-          type: integer
         ContactName:
           description: The contact name of company or department.
           type: string
@@ -16225,10 +16019,6 @@ components:
           description: Defines if the department is active and can be used.
           example: false
           type: boolean
-      required:
-      - DepartmentTypeId
-      - Is_Active
-      - Name
       type: object
     DepartmentInsertData:
       description: The record of Department information.
@@ -16239,10 +16029,8 @@ components:
         OwnerId:
           Field: Field
           Value: Value
-        Is_Active: false
         ExternalId: ExternalId
         ContactEmail: ContactEmail
-        Level: 0
         Id: Id
         ParentDepartmentId:
           Field: Field
@@ -16263,12 +16051,6 @@ components:
           $ref: '#/components/schemas/EnumDepartmentType'
         ParentDepartmentId:
           $ref: '#/components/schemas/FieldType'
-        Level:
-          default: 0
-          description: The department level at the hierarchy.
-          example: 0
-          format: int32
-          type: integer
         ContactName:
           description: The contact name of company or department.
           type: string
@@ -16281,16 +16063,6 @@ components:
           $ref: '#/components/schemas/FieldType'
         CountryId:
           $ref: '#/components/schemas/EnumCountry'
-        Is_Active:
-          default: false
-          description: Defines if the department is active and can be used.
-          example: false
-          type: boolean
-      required:
-      - DepartmentTypeId
-      - Id
-      - Is_Active
-      - Name
       type: object
     DepartmentUpdateData:
       description: The record of Department information.
@@ -16303,7 +16075,6 @@ components:
         Is_Active: false
         ExternalId: ExternalId
         ContactEmail: ContactEmail
-        Level: 0
         ContactName: ContactName
         Name: Name
       properties:
@@ -16313,12 +16084,6 @@ components:
         Name:
           description: The name of the department.
           type: string
-        Level:
-          default: 0
-          description: The department level at the hierarchy.
-          example: 0
-          format: int32
-          type: integer
         ContactName:
           description: The contact name of company or department.
           type: string
@@ -16336,9 +16101,6 @@ components:
           description: Defines if the department is active and can be used.
           example: false
           type: boolean
-      required:
-      - Is_Active
-      - Name
       type: object
     User1:
       description: The record of User information.
@@ -16815,8 +16577,7 @@ components:
           description: The external identifier of the location.
           type: string
         Name:
-          description: The name of the location. The value must be unique in the system
-            and you cannot add multiple values.
+          description: The name of the location.
           type: string
         CountryId:
           $ref: '#/components/schemas/EnumCountry'
@@ -16829,9 +16590,6 @@ components:
           description: Defines if the location is active and can be used.
           example: false
           type: boolean
-      required:
-      - Is_Active
-      - Name
       type: object
     LocationInsertData:
       description: The record of Location information.
@@ -16850,8 +16608,7 @@ components:
           description: The external identifier of the location.
           type: string
         Name:
-          description: The name of the location. The value must be unique in the system
-            and you cannot add multiple values.
+          description: The name of the location.
           type: string
         CountryId:
           $ref: '#/components/schemas/EnumCountry'
@@ -16859,9 +16616,6 @@ components:
           $ref: '#/components/schemas/EnumTimezone'
         CurrencyId:
           $ref: '#/components/schemas/EnumCurrency'
-      required:
-      - Id
-      - Name
       type: object
     LocationUpdateData:
       description: The record of Location information.
@@ -16877,8 +16631,7 @@ components:
           description: The external identifier of the location.
           type: string
         Name:
-          description: The name of the location. The value must be unique in the system
-            and you cannot add multiple values.
+          description: The name of the location.
           type: string
         CountryId:
           $ref: '#/components/schemas/EnumCountry'
@@ -16891,9 +16644,6 @@ components:
           description: Defines if the location is active and can be used.
           example: false
           type: boolean
-      required:
-      - Is_Active
-      - Name
       type: object
     Connection:
       description: The record of Connection information.
@@ -16951,7 +16701,7 @@ components:
           example: false
           type: boolean
         ModifiedBy:
-          $ref: '#/components/schemas/AbstractLong'
+          $ref: '#/components/schemas/AbstractLong1'
         ModifiedOn:
           default: 1900-01-01T00:00:00Z
           description: The date the record was updated.
@@ -16959,7 +16709,7 @@ components:
           format: date-time
           type: string
         CreatedBy:
-          $ref: '#/components/schemas/AbstractLong'
+          $ref: '#/components/schemas/AbstractLong1'
         CreatedOn:
           default: 1900-01-01T00:00:00Z
           description: The date the record was created.
@@ -16970,6 +16720,45 @@ components:
       - Id
       - Name
       - URL
+      type: object
+    AbstractLong1:
+      description: This structure represents an abstract object with a primary key
+        of type Long. It is used to encapsulate detailed information about related
+        entities.
+      example:
+        Type: User
+        ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+        Id: 1234567891234567
+        Name: Bob Normal
+      properties:
+        Id:
+          default: 0
+          description: The primary key of the record. It uniquely identifies each
+            record within the dataset. This attribute is required and must be unique
+            across all records.
+          example: 1234567891234567
+          format: int64
+          type: integer
+        ExternalId:
+          description: "An external identifier for the record, which can be used to\
+            \ link the record to external systems or datasets. This attribute is optional\
+            \ but should be unique if provided."
+          example: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+          type: string
+        Name:
+          description: "The name of the record. This attribute provides a human-readable\
+            \ identifier for the record, making it easier to recognize and differentiate\
+            \ records in lists or other displays. This attribute is optional."
+          example: Bob Normal
+          type: string
+        Type:
+          description: "The type of the record object. This attribute is used to classify\
+            \ the record into specific categories or types, helping to organize and\
+            \ manage different kinds of records. This attribute is optional."
+          example: User
+          type: string
+      required:
+      - Id
       type: object
     Connections:
       description: The list of `Connection` records
@@ -17105,7 +16894,7 @@ components:
           description: The identifier of the config
           type: string
         WebhookEntityId:
-          $ref: '#/components/schemas/AbstractText'
+          $ref: '#/components/schemas/AbstractText1'
         HasCreateAccess:
           default: false
           description: Service has create access to data
@@ -17127,7 +16916,7 @@ components:
           example: false
           type: boolean
         ModifiedBy:
-          $ref: '#/components/schemas/AbstractLong'
+          $ref: '#/components/schemas/AbstractLong1'
         ModifiedOn:
           default: 1900-01-01T00:00:00Z
           description: The date the record was updated.
@@ -17135,7 +16924,7 @@ components:
           format: date-time
           type: string
         CreatedBy:
-          $ref: '#/components/schemas/AbstractLong'
+          $ref: '#/components/schemas/AbstractLong1'
         CreatedOn:
           default: 1900-01-01T00:00:00Z
           description: The date the record was created.
@@ -17207,6 +16996,43 @@ components:
           items:
             $ref: '#/components/schemas/Config'
           type: array
+      type: object
+    AbstractText1:
+      description: This structure represents an abstract object with a primary key
+        of type Text. It is used to encapsulate detailed information about related
+        entities.
+      example:
+        Type: User
+        ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+        Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+        Name: Bob Normal
+      properties:
+        Id:
+          description: The primary key of the record. It uniquely identifies each
+            record within the dataset. This attribute is required and must be unique
+            across all records.
+          example: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+          type: string
+        ExternalId:
+          description: "An external identifier for the record, which can be used to\
+            \ link the record to external systems or datasets. This attribute is optional\
+            \ but should be unique if provided."
+          example: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+          type: string
+        Name:
+          description: "The name of the record. This attribute provides a human-readable\
+            \ identifier for the record, making it easier to recognize and differentiate\
+            \ records in lists or other displays. This attribute is optional."
+          example: Bob Normal
+          type: string
+        Type:
+          description: "The type of the record object. This attribute is used to classify\
+            \ the record into specific categories or types, helping to organize and\
+            \ manage different kinds of records. This attribute is optional."
+          example: User
+          type: string
+      required:
+      - Id
       type: object
     ConfigData:
       description: The record of Config information.
@@ -17417,7 +17243,7 @@ components:
           description: Name of application
           type: string
         InternalConfigId:
-          $ref: '#/components/schemas/AbstractText'
+          $ref: '#/components/schemas/AbstractText1'
         Is_Active:
           default: false
           description: "If true, the entity is active"

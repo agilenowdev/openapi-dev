@@ -3939,8 +3939,6 @@ components:
             \ manage different kinds of records. This attribute is optional."
           example: User
           type: string
-      required:
-      - Id
       type: object
     AbstractLong:
       description: This structure represents an abstract object with a primary key
@@ -3978,8 +3976,6 @@ components:
             \ manage different kinds of records. This attribute is optional."
           example: User
           type: string
-      required:
-      - Id
       type: object
     AccessGroupData:
       description: The record of AccessGroup information.
@@ -3988,7 +3984,6 @@ components:
         AccessGroupId:
           Field: Field
           Value: Value
-        CreatedOn: 1900-01-01T00:00:00Z
       properties:
         Id:
           default: 0
@@ -3998,15 +3993,6 @@ components:
           type: integer
         AccessGroupId:
           $ref: '#/components/schemas/FieldType'
-        CreatedOn:
-          default: 1900-01-01T00:00:00Z
-          description: The date when the record was created.
-          example: 1900-01-01T00:00:00Z
-          format: date-time
-          type: string
-      required:
-      - AccessGroupId
-      - CreatedOn
       type: object
     FieldType:
       description: "The field object structure. This structure allows users to specify\
@@ -4097,8 +4083,6 @@ components:
           type: integer
         Group_Id:
           $ref: '#/components/schemas/FieldType'
-      required:
-      - Group_Id
       type: object
     Department:
       description: The record of Department information.

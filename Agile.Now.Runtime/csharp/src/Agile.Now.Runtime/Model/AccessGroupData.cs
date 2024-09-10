@@ -55,21 +55,12 @@ namespace Agile.Now.Runtime.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AccessGroupData" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected AccessGroupData() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AccessGroupData" /> class.
-        /// </summary>
         /// <param name="id">The identifier of user access group. (default to 0).</param>
-        /// <param name="accessGroupId">accessGroupId (required).</param>
-        /// <param name="createdOn">The date when the record was created. (required) (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public AccessGroupData(long id = 0, FieldType accessGroupId = default, DateTime createdOn = default)
+        /// <param name="accessGroupId">accessGroupId.</param>
+        public AccessGroupData(long id = 0, FieldType accessGroupId = default)
         {
-            // to ensure "accessGroupId" is required (not null)
-            accessGroupId = accessGroupId ?? throw new ArgumentNullException("accessGroupId is a required property for AccessGroupData and cannot be null");
-            AccessGroupId = accessGroupId;
-            CreatedOn = createdOn;
             Id = id;
+            AccessGroupId = accessGroupId;
         }
 
         /// <summary>
@@ -83,16 +74,8 @@ namespace Agile.Now.Runtime.Model
         /// <summary>
         /// Gets or Sets AccessGroupId
         /// </summary>
-        [DataMember(Name = "AccessGroupId", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "AccessGroupId", EmitDefaultValue = false)]
         public FieldType AccessGroupId { get; set; }
-
-        /// <summary>
-        /// The date when the record was created.
-        /// </summary>
-        /// <value>The date when the record was created.</value>
-        /// <example>1900-01-01T00:00Z</example>
-        [DataMember(Name = "CreatedOn", IsRequired = true, EmitDefaultValue = true)]
-        public DateTime CreatedOn { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -104,7 +87,6 @@ namespace Agile.Now.Runtime.Model
             sb.Append("class AccessGroupData {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  AccessGroupId: ").Append(AccessGroupId).Append("\n");
-            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

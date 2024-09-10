@@ -73,24 +73,17 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="LocationInsertData" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected LocationInsertData() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="LocationInsertData" /> class.
-        /// </summary>
-        /// <param name="id">The guid to identify the location. (required).</param>
+        /// <param name="id">The guid to identify the location..</param>
         /// <param name="externalId">The external identifier of the location..</param>
-        /// <param name="name">The name of the location. The value must be unique in the system and you cannot add multiple values. (required).</param>
+        /// <param name="name">The name of the location..</param>
         /// <param name="countryId">countryId.</param>
         /// <param name="timezoneId">timezoneId.</param>
         /// <param name="currencyId">currencyId.</param>
         public LocationInsertData(string id = default, string externalId = default, string name = default, EnumCountry? countryId = default, EnumTimezone? timezoneId = default, EnumCurrency? currencyId = default)
         {
             Id = id;
-            // to ensure "name" is required (not null)
-            name = name ?? throw new ArgumentNullException("name is a required property for LocationInsertData and cannot be null");
-            Name = name;
             ExternalId = externalId;
+            Name = name;
             CountryId = countryId;
             TimezoneId = timezoneId;
             CurrencyId = currencyId;
@@ -100,7 +93,7 @@ namespace Agile.Now.AccessHub.Model
         /// The guid to identify the location.
         /// </summary>
         /// <value>The guid to identify the location.</value>
-        [DataMember(Name = "Id", EmitDefaultValue = true)]
+        [DataMember(Name = "Id", EmitDefaultValue = false)]
         public string Id { get; set; }
 
         /// <summary>
@@ -111,10 +104,10 @@ namespace Agile.Now.AccessHub.Model
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// The name of the location. The value must be unique in the system and you cannot add multiple values.
+        /// The name of the location.
         /// </summary>
-        /// <value>The name of the location. The value must be unique in the system and you cannot add multiple values.</value>
-        [DataMember(Name = "Name", IsRequired = true, EmitDefaultValue = true)]
+        /// <value>The name of the location.</value>
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>

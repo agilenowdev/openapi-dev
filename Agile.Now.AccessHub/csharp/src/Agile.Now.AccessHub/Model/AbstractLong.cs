@@ -55,12 +55,7 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AbstractLong" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected AbstractLong() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AbstractLong" /> class.
-        /// </summary>
-        /// <param name="id">The primary key of the record. It uniquely identifies each record within the dataset. This attribute is required and must be unique across all records. (required) (default to 0).</param>
+        /// <param name="id">The primary key of the record. It uniquely identifies each record within the dataset. This attribute is required and must be unique across all records. (default to 0).</param>
         /// <param name="externalId">An external identifier for the record, which can be used to link the record to external systems or datasets. This attribute is optional but should be unique if provided..</param>
         /// <param name="name">The name of the record. This attribute provides a human-readable identifier for the record, making it easier to recognize and differentiate records in lists or other displays. This attribute is optional..</param>
         /// <param name="type">The type of the record object. This attribute is used to classify the record into specific categories or types, helping to organize and manage different kinds of records. This attribute is optional..</param>
@@ -77,7 +72,7 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         /// <value>The primary key of the record. It uniquely identifies each record within the dataset. This attribute is required and must be unique across all records.</value>
         /// <example>1234567891234567</example>
-        [DataMember(Name = "Id", EmitDefaultValue = true)]
+        [DataMember(Name = "Id", EmitDefaultValue = false)]
         public long Id { get; set; }
 
         /// <summary>

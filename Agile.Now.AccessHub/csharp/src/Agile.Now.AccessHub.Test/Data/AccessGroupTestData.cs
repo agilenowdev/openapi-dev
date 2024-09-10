@@ -20,7 +20,7 @@ internal static class AccessGroupTestData
 
     public static readonly string ParentApplication = "3B594DDA-3F5D-431A-A532-A3EDFFA9BD98";
 
-    public static AccessGroupInsertData CreateAccessGroupData(string suffix = null)
+    public static AccessGroupData CreateAccessGroupData(string suffix = null)
     {
         var name = CommonTestData.CreateTestEntityName("access-group", suffix);
         return new
@@ -31,7 +31,7 @@ internal static class AccessGroupTestData
         );
     }
 
-    public static void UpdateAccessGroupData(AccessGroupInsertData accessGroupInsertData)
+    public static void UpdateAccessGroupData(AccessGroupData accessGroupInsertData)
     {
         accessGroupInsertData.Description = accessGroupInsertData.Description.MarkUpdated();
         accessGroupInsertData.AccessGroupTypeId =
@@ -58,7 +58,5 @@ internal static class AccessGroupTestData
         parentApplicationId: new("Id", ParentApplication),
         accessApplicationId: new("Id", id));
 
-    public static PermissionData CreatePermissionData(EnumPermissionType id) => new(
-        permissionId: id,
-        createdOn: DateTime.Now);
+    public static PermissionData CreatePermissionData(EnumPermissionType id) => new( permissionId: id);
 }

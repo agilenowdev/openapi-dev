@@ -56,29 +56,22 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Gets or Sets PermissionId
         /// </summary>
-        [DataMember(Name = "PermissionId", IsRequired = true, EmitDefaultValue = true)]
-        public EnumPermissionType PermissionId { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PermissionData" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        protected PermissionData() { }
+        [DataMember(Name = "PermissionId", EmitDefaultValue = false)]
+        public EnumPermissionType? PermissionId { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="PermissionData" /> class.
         /// </summary>
         /// <param name="id">The identifier of entity. (default to 0).</param>
         /// <param name="accessRoleId">accessRoleId.</param>
         /// <param name="roleId">roleId.</param>
-        /// <param name="permissionId">permissionId (required).</param>
+        /// <param name="permissionId">permissionId.</param>
         /// <param name="isActive">Defines if record is active. (default to false).</param>
-        /// <param name="createdOn">The date when the record was created. (required) (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public PermissionData(long id = 0, FieldType accessRoleId = default, FieldType roleId = default, EnumPermissionType permissionId = default, bool isActive = false, DateTime createdOn = default)
+        public PermissionData(long id = 0, FieldType accessRoleId = default, FieldType roleId = default, EnumPermissionType? permissionId = default, bool isActive = false)
         {
-            PermissionId = permissionId;
-            CreatedOn = createdOn;
             Id = id;
             AccessRoleId = accessRoleId;
             RoleId = roleId;
+            PermissionId = permissionId;
             IsActive = isActive;
         }
 
@@ -111,14 +104,6 @@ namespace Agile.Now.AccessHub.Model
         public bool IsActive { get; set; }
 
         /// <summary>
-        /// The date when the record was created.
-        /// </summary>
-        /// <value>The date when the record was created.</value>
-        /// <example>1900-01-01T00:00Z</example>
-        [DataMember(Name = "CreatedOn", IsRequired = true, EmitDefaultValue = true)]
-        public DateTime CreatedOn { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -131,7 +116,6 @@ namespace Agile.Now.AccessHub.Model
             sb.Append("  RoleId: ").Append(RoleId).Append("\n");
             sb.Append("  PermissionId: ").Append(PermissionId).Append("\n");
             sb.Append("  IsActive: ").Append(IsActive).Append("\n");
-            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

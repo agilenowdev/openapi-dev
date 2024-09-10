@@ -29,19 +29,19 @@ All URIs are relative to *https://dev.esystems.fi*
 
 <a id="createaccessgroup"></a>
 # **CreateAccessGroup**
-> AccessGroup CreateAccessGroup (AccessGroupInsertData accessGroupInsertData)
+> AccessGroup CreateAccessGroup (AccessGroupData accessGroupData)
 
-Use the `AccessGroupInsertData` object resource to create new records.
+Use the `AccessGroupData` object resource to create new records.
 
 You can supply the required field values in the request data, and then use the `POST` method of the resource.
 
-The input parameter must be used in the `AccessGroupInsertData` record structure inside the `FieldType` parameter in the foreign key fields.
+The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.
 
 Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`
 
 ### Create a new record of AccessGroup
-* If the value in the `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupInsertData`).
-* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`AccessGroupInsertData`).
+* If the value in the `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupData`).
+* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`AccessGroupData`).
 * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
 The response body will contain the object of the created record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
@@ -68,11 +68,11 @@ namespace Example
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new AccessGroupsApi(config);
-            var accessGroupInsertData = new AccessGroupInsertData(); // AccessGroupInsertData | `AccessGroup` information to insert.  The input parameter must be used in the `AccessGroupInsertData` record structure inside the `FieldType` parameter in the foreign key fields.
+            var accessGroupData = new AccessGroupData(); // AccessGroupData | `AccessGroup` information to insert.  The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.
 
             try
             {
-                AccessGroup result = apiInstance.CreateAccessGroup(accessGroupInsertData);
+                AccessGroup result = apiInstance.CreateAccessGroup(accessGroupData);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -98,7 +98,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<AccessGroup> response = apiInstance.CreateAccessGroupWithHttpInfo(accessGroupInsertData);
+    ApiResponse<AccessGroup> response = apiInstance.CreateAccessGroupWithHttpInfo(accessGroupData);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -121,7 +121,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **accessGroupInsertData** | [**AccessGroupInsertData**](models/AccessGroupInsertData.md) | &#x60;AccessGroup&#x60; information to insert.  The input parameter must be used in the &#x60;AccessGroupInsertData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
+| **accessGroupData** | [**AccessGroupData**](models/AccessGroupData.md) | &#x60;AccessGroup&#x60; information to insert.  The input parameter must be used in the &#x60;AccessGroupData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
 
 ### Return type
 
@@ -2041,13 +2041,13 @@ catch (ApiException e)
 
 <a id="updateaccessgroup"></a>
 # **UpdateAccessGroup**
-> AccessGroup UpdateAccessGroup (string id, AccessGroupUpdateData accessGroupUpdateData, string name = null)
+> AccessGroup UpdateAccessGroup (string id, AccessGroupData accessGroupData, string name = null)
 
-Use the `AccessGroupUpdateData` object resource to update `AccessGroup` using `Id` field(s) value.
+Use the `AccessGroupData` object resource to update `AccessGroup` using `Id` field(s) value.
 
 Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record. 
 
-The input parameter must be used in the `AccessGroupUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.
+The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.
 
 Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`
 
@@ -2079,12 +2079,12 @@ namespace Example
 
             var apiInstance = new AccessGroupsApi(config);
             var id = "id_example";  // string | The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
-            var accessGroupUpdateData = new AccessGroupUpdateData(); // AccessGroupUpdateData | AccessGroup information to update.  The input parameter must be used in the `AccessGroupUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.
+            var accessGroupData = new AccessGroupData(); // AccessGroupData | AccessGroup information to update.  The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.
             var name = "name_example";  // string | The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional) 
 
             try
             {
-                AccessGroup result = apiInstance.UpdateAccessGroup(id, accessGroupUpdateData, name);
+                AccessGroup result = apiInstance.UpdateAccessGroup(id, accessGroupData, name);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2110,7 +2110,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<AccessGroup> response = apiInstance.UpdateAccessGroupWithHttpInfo(id, accessGroupUpdateData, name);
+    ApiResponse<AccessGroup> response = apiInstance.UpdateAccessGroupWithHttpInfo(id, accessGroupData, name);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -2134,7 +2134,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **id** | **string** | The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
-| **accessGroupUpdateData** | [**AccessGroupUpdateData**](models/AccessGroupUpdateData.md) | AccessGroup information to update.  The input parameter must be used in the &#x60;AccessGroupUpdateData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
+| **accessGroupData** | [**AccessGroupData**](models/AccessGroupData.md) | AccessGroup information to update.  The input parameter must be used in the &#x60;AccessGroupData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
 | **name** | **string** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60;  &#x60;&#x60;&#x60; | [optional]  |
 
 ### Return type

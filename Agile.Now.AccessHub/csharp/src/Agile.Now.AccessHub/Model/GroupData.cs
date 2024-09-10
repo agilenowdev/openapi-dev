@@ -55,21 +55,12 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GroupData" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected GroupData() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GroupData" /> class.
-        /// </summary>
         /// <param name="id">The identifier of group access group. (default to 0).</param>
-        /// <param name="groupId">groupId (required).</param>
-        /// <param name="createdOn">The date when the record was created. (required) (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public GroupData(long id = 0, FieldType groupId = default, DateTime createdOn = default)
+        /// <param name="groupId">groupId.</param>
+        public GroupData(long id = 0, FieldType groupId = default)
         {
-            // to ensure "groupId" is required (not null)
-            groupId = groupId ?? throw new ArgumentNullException("groupId is a required property for GroupData and cannot be null");
-            GroupId = groupId;
-            CreatedOn = createdOn;
             Id = id;
+            GroupId = groupId;
         }
 
         /// <summary>
@@ -83,16 +74,8 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Gets or Sets GroupId
         /// </summary>
-        [DataMember(Name = "GroupId", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "GroupId", EmitDefaultValue = false)]
         public FieldType GroupId { get; set; }
-
-        /// <summary>
-        /// The date when the record was created.
-        /// </summary>
-        /// <value>The date when the record was created.</value>
-        /// <example>1900-01-01T00:00Z</example>
-        [DataMember(Name = "CreatedOn", IsRequired = true, EmitDefaultValue = true)]
-        public DateTime CreatedOn { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -104,7 +87,6 @@ namespace Agile.Now.AccessHub.Model
             sb.Append("class GroupData {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  GroupId: ").Append(GroupId).Append("\n");
-            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

@@ -55,26 +55,17 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="PermissionText" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected PermissionText() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PermissionText" /> class.
-        /// </summary>
         /// <param name="id">The identifier of entity. (default to 0).</param>
         /// <param name="accessRoleId">The identifier of access role..</param>
         /// <param name="roleId">The identifier of role..</param>
-        /// <param name="permissionId">The identifier of permission. (required).</param>
+        /// <param name="permissionId">The identifier of permission..</param>
         /// <param name="isActive">Defines if record is active. (default to false).</param>
-        /// <param name="createdOn">The date when the record was created. (required) (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public PermissionText(long id = 0, string accessRoleId = default, string roleId = default, string permissionId = default, bool isActive = false, DateTime createdOn = default)
+        public PermissionText(long id = 0, string accessRoleId = default, string roleId = default, string permissionId = default, bool isActive = false)
         {
-            // to ensure "permissionId" is required (not null)
-            permissionId = permissionId ?? throw new ArgumentNullException("permissionId is a required property for PermissionText and cannot be null");
-            PermissionId = permissionId;
-            CreatedOn = createdOn;
             Id = id;
             AccessRoleId = accessRoleId;
             RoleId = roleId;
+            PermissionId = permissionId;
             IsActive = isActive;
         }
 
@@ -104,7 +95,7 @@ namespace Agile.Now.AccessHub.Model
         /// The identifier of permission.
         /// </summary>
         /// <value>The identifier of permission.</value>
-        [DataMember(Name = "PermissionId", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "PermissionId", EmitDefaultValue = false)]
         public string PermissionId { get; set; }
 
         /// <summary>
@@ -114,14 +105,6 @@ namespace Agile.Now.AccessHub.Model
         /// <example>false</example>
         [DataMember(Name = "Is_Active", EmitDefaultValue = true)]
         public bool IsActive { get; set; }
-
-        /// <summary>
-        /// The date when the record was created.
-        /// </summary>
-        /// <value>The date when the record was created.</value>
-        /// <example>1900-01-01T00:00Z</example>
-        [DataMember(Name = "CreatedOn", IsRequired = true, EmitDefaultValue = true)]
-        public DateTime CreatedOn { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -136,7 +119,6 @@ namespace Agile.Now.AccessHub.Model
             sb.Append("  RoleId: ").Append(RoleId).Append("\n");
             sb.Append("  PermissionId: ").Append(PermissionId).Append("\n");
             sb.Append("  IsActive: ").Append(IsActive).Append("\n");
-            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

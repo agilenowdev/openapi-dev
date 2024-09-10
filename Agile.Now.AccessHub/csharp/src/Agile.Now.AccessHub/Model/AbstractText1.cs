@@ -47,85 +47,64 @@ using OpenAPIDateConverter = Agile.Now.AccessHub.Client.OpenAPIDateConverter;
 namespace Agile.Now.AccessHub.Model
 {
     /// <summary>
-    /// The record of Entity information.
+    /// This structure represents an abstract object with a primary key of type Text. It is used to encapsulate detailed information about related entities.
     /// </summary>
-    [DataContract(Name = "Entity")]
-    public partial class Entity : IValidatableObject
+    [DataContract(Name = "AbstractText1")]
+    public partial class AbstractText1 : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Entity" /> class.
+        /// Initializes a new instance of the <see cref="AbstractText1" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected Entity() { }
+        protected AbstractText1() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="Entity" /> class.
+        /// Initializes a new instance of the <see cref="AbstractText1" /> class.
         /// </summary>
-        /// <param name="id">The Guid identifier of web hook entity (required).</param>
-        /// <param name="name">Name of entity (required).</param>
-        /// <param name="application">Name of application (required).</param>
-        /// <param name="internalConfigId">internalConfigId (required).</param>
-        /// <param name="isActive">If true, the entity is active (default to false).</param>
-        /// <param name="createdOn">The date the record was created. (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public Entity(string id = default, string name = default, string application = default, AbstractText1 internalConfigId = default, bool isActive = false, DateTime createdOn = default)
+        /// <param name="id">The primary key of the record. It uniquely identifies each record within the dataset. This attribute is required and must be unique across all records. (required).</param>
+        /// <param name="externalId">An external identifier for the record, which can be used to link the record to external systems or datasets. This attribute is optional but should be unique if provided..</param>
+        /// <param name="name">The name of the record. This attribute provides a human-readable identifier for the record, making it easier to recognize and differentiate records in lists or other displays. This attribute is optional..</param>
+        /// <param name="type">The type of the record object. This attribute is used to classify the record into specific categories or types, helping to organize and manage different kinds of records. This attribute is optional..</param>
+        public AbstractText1(string id = default, string externalId = default, string name = default, string type = default)
         {
             // to ensure "id" is required (not null)
-            id = id ?? throw new ArgumentNullException("id is a required property for Entity and cannot be null");
+            id = id ?? throw new ArgumentNullException("id is a required property for AbstractText1 and cannot be null");
             Id = id;
-            // to ensure "name" is required (not null)
-            name = name ?? throw new ArgumentNullException("name is a required property for Entity and cannot be null");
+            ExternalId = externalId;
             Name = name;
-            // to ensure "application" is required (not null)
-            application = application ?? throw new ArgumentNullException("application is a required property for Entity and cannot be null");
-            Application = application;
-            // to ensure "internalConfigId" is required (not null)
-            internalConfigId = internalConfigId ?? throw new ArgumentNullException("internalConfigId is a required property for Entity and cannot be null");
-            InternalConfigId = internalConfigId;
-            IsActive = isActive;
-            CreatedOn = createdOn;
+            Type = type;
         }
 
         /// <summary>
-        /// The Guid identifier of web hook entity
+        /// The primary key of the record. It uniquely identifies each record within the dataset. This attribute is required and must be unique across all records.
         /// </summary>
-        /// <value>The Guid identifier of web hook entity</value>
+        /// <value>The primary key of the record. It uniquely identifies each record within the dataset. This attribute is required and must be unique across all records.</value>
+        /// <example>3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5</example>
         [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>
-        /// Name of entity
+        /// An external identifier for the record, which can be used to link the record to external systems or datasets. This attribute is optional but should be unique if provided.
         /// </summary>
-        /// <value>Name of entity</value>
-        [DataMember(Name = "Name", IsRequired = true, EmitDefaultValue = true)]
+        /// <value>An external identifier for the record, which can be used to link the record to external systems or datasets. This attribute is optional but should be unique if provided.</value>
+        /// <example>3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5</example>
+        [DataMember(Name = "ExternalId", EmitDefaultValue = false)]
+        public string ExternalId { get; set; }
+
+        /// <summary>
+        /// The name of the record. This attribute provides a human-readable identifier for the record, making it easier to recognize and differentiate records in lists or other displays. This attribute is optional.
+        /// </summary>
+        /// <value>The name of the record. This attribute provides a human-readable identifier for the record, making it easier to recognize and differentiate records in lists or other displays. This attribute is optional.</value>
+        /// <example>Bob Normal</example>
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Name of application
+        /// The type of the record object. This attribute is used to classify the record into specific categories or types, helping to organize and manage different kinds of records. This attribute is optional.
         /// </summary>
-        /// <value>Name of application</value>
-        [DataMember(Name = "Application", IsRequired = true, EmitDefaultValue = true)]
-        public string Application { get; set; }
-
-        /// <summary>
-        /// Gets or Sets InternalConfigId
-        /// </summary>
-        [DataMember(Name = "InternalConfigId", IsRequired = true, EmitDefaultValue = true)]
-        public AbstractText1 InternalConfigId { get; set; }
-
-        /// <summary>
-        /// If true, the entity is active
-        /// </summary>
-        /// <value>If true, the entity is active</value>
-        /// <example>false</example>
-        [DataMember(Name = "Is_Active", EmitDefaultValue = true)]
-        public bool IsActive { get; set; }
-
-        /// <summary>
-        /// The date the record was created.
-        /// </summary>
-        /// <value>The date the record was created.</value>
-        /// <example>1900-01-01T00:00Z</example>
-        [DataMember(Name = "CreatedOn", EmitDefaultValue = false)]
-        public DateTime CreatedOn { get; set; }
+        /// <value>The type of the record object. This attribute is used to classify the record into specific categories or types, helping to organize and manage different kinds of records. This attribute is optional.</value>
+        /// <example>User</example>
+        [DataMember(Name = "Type", EmitDefaultValue = false)]
+        public string Type { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -134,13 +113,11 @@ namespace Agile.Now.AccessHub.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class Entity {\n");
+            sb.Append("class AbstractText1 {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Application: ").Append(Application).Append("\n");
-            sb.Append("  InternalConfigId: ").Append(InternalConfigId).Append("\n");
-            sb.Append("  IsActive: ").Append(IsActive).Append("\n");
-            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

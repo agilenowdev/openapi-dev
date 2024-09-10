@@ -56,8 +56,8 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Gets or Sets DepartmentTypeId
         /// </summary>
-        [DataMember(Name = "DepartmentTypeId", IsRequired = true, EmitDefaultValue = true)]
-        public EnumDepartmentType DepartmentTypeId { get; set; }
+        [DataMember(Name = "DepartmentTypeId", EmitDefaultValue = false)]
+        public EnumDepartmentType? DepartmentTypeId { get; set; }
 
         /// <summary>
         /// Gets or Sets CountryId
@@ -67,39 +67,30 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DepartmentData" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected DepartmentData() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DepartmentData" /> class.
-        /// </summary>
         /// <param name="id">The guid to identify the department..</param>
         /// <param name="externalId">The external identifier of the department..</param>
-        /// <param name="name">The name of the department. (required).</param>
-        /// <param name="departmentTypeId">departmentTypeId (required).</param>
+        /// <param name="name">The name of the department..</param>
+        /// <param name="departmentTypeId">departmentTypeId.</param>
         /// <param name="parentDepartmentId">parentDepartmentId.</param>
-        /// <param name="level">The department level at the hierarchy. (default to 0).</param>
         /// <param name="contactName">The contact name of company or department..</param>
         /// <param name="contactEmail">The contact email of external company or department..</param>
         /// <param name="contactPhone">contactPhone.</param>
         /// <param name="ownerId">ownerId.</param>
         /// <param name="countryId">countryId.</param>
-        /// <param name="isActive">Defines if the department is active and can be used. (required) (default to false).</param>
-        public DepartmentData(string id = default, string externalId = default, string name = default, EnumDepartmentType departmentTypeId = default, FieldType parentDepartmentId = default, int level = 0, string contactName = default, string contactEmail = default, string contactPhone = default, FieldType ownerId = default, EnumCountry? countryId = default, bool isActive = false)
+        /// <param name="isActive">Defines if the department is active and can be used. (default to false).</param>
+        public DepartmentData(string id = default, string externalId = default, string name = default, EnumDepartmentType? departmentTypeId = default, FieldType parentDepartmentId = default, string contactName = default, string contactEmail = default, string contactPhone = default, FieldType ownerId = default, EnumCountry? countryId = default, bool isActive = false)
         {
-            // to ensure "name" is required (not null)
-            name = name ?? throw new ArgumentNullException("name is a required property for DepartmentData and cannot be null");
-            Name = name;
-            DepartmentTypeId = departmentTypeId;
-            IsActive = isActive;
             Id = id;
             ExternalId = externalId;
+            Name = name;
+            DepartmentTypeId = departmentTypeId;
             ParentDepartmentId = parentDepartmentId;
-            Level = level;
             ContactName = contactName;
             ContactEmail = contactEmail;
             ContactPhone = contactPhone;
             OwnerId = ownerId;
             CountryId = countryId;
+            IsActive = isActive;
         }
 
         /// <summary>
@@ -120,7 +111,7 @@ namespace Agile.Now.AccessHub.Model
         /// The name of the department.
         /// </summary>
         /// <value>The name of the department.</value>
-        [DataMember(Name = "Name", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
@@ -128,14 +119,6 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         [DataMember(Name = "ParentDepartmentId", EmitDefaultValue = false)]
         public FieldType ParentDepartmentId { get; set; }
-
-        /// <summary>
-        /// The department level at the hierarchy.
-        /// </summary>
-        /// <value>The department level at the hierarchy.</value>
-        /// <example>0</example>
-        [DataMember(Name = "Level", EmitDefaultValue = false)]
-        public int Level { get; set; }
 
         /// <summary>
         /// The contact name of company or department.
@@ -168,7 +151,7 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         /// <value>Defines if the department is active and can be used.</value>
         /// <example>false</example>
-        [DataMember(Name = "Is_Active", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Is_Active", EmitDefaultValue = true)]
         public bool IsActive { get; set; }
 
         /// <summary>
@@ -184,7 +167,6 @@ namespace Agile.Now.AccessHub.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  DepartmentTypeId: ").Append(DepartmentTypeId).Append("\n");
             sb.Append("  ParentDepartmentId: ").Append(ParentDepartmentId).Append("\n");
-            sb.Append("  Level: ").Append(Level).Append("\n");
             sb.Append("  ContactName: ").Append(ContactName).Append("\n");
             sb.Append("  ContactEmail: ").Append(ContactEmail).Append("\n");
             sb.Append("  ContactPhone: ").Append(ContactPhone).Append("\n");

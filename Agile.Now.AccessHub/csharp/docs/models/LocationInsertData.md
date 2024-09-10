@@ -5,9 +5,9 @@ The record of Location information.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | The guid to identify the location. | 
+**Id** | **string** | The guid to identify the location. | [optional] 
 **ExternalId** | **string** | The external identifier of the location. | [optional] 
-**Name** | **string** | The name of the location. The value must be unique in the system and you cannot add multiple values. | 
+**Name** | **string** | The name of the location. | [optional] 
 **CountryId** | [**EnumCountry**](EnumCountry.md) | The EnumCountry enumeration | [optional] 
 **TimezoneId** | [**EnumTimezone**](EnumTimezone.md) | The EnumTimezone enumeration | [optional] 
 **CurrencyId** | [**EnumCurrency**](EnumCurrency.md) | The EnumCurrency enumeration | [optional] 

@@ -70,7 +70,7 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="modifiedOn">The date the record was updated. (default to &quot;1900-01-01T00:00Z&quot;).</param>
         /// <param name="createdBy">createdBy.</param>
         /// <param name="createdOn">The date the record was created. (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public Config(string id = default, AbstractText webhookEntityId = default, bool hasCreateAccess = false, bool hasUpdateAccess = false, bool hasDeleteAccess = false, bool isActive = false, AbstractLong modifiedBy = default, DateTime modifiedOn = default, AbstractLong createdBy = default, DateTime createdOn = default)
+        public Config(string id = default, AbstractText1 webhookEntityId = default, bool hasCreateAccess = false, bool hasUpdateAccess = false, bool hasDeleteAccess = false, bool isActive = false, AbstractLong1 modifiedBy = default, DateTime modifiedOn = default, AbstractLong1 createdBy = default, DateTime createdOn = default)
         {
             // to ensure "id" is required (not null)
             id = id ?? throw new ArgumentNullException("id is a required property for Config and cannot be null");
@@ -99,7 +99,7 @@ namespace Agile.Now.AccessHub.Model
         /// Gets or Sets WebhookEntityId
         /// </summary>
         [DataMember(Name = "WebhookEntityId", IsRequired = true, EmitDefaultValue = true)]
-        public AbstractText WebhookEntityId { get; set; }
+        public AbstractText1 WebhookEntityId { get; set; }
 
         /// <summary>
         /// Service has create access to data
@@ -137,7 +137,7 @@ namespace Agile.Now.AccessHub.Model
         /// Gets or Sets ModifiedBy
         /// </summary>
         [DataMember(Name = "ModifiedBy", EmitDefaultValue = false)]
-        public AbstractLong ModifiedBy { get; set; }
+        public AbstractLong1 ModifiedBy { get; set; }
 
         /// <summary>
         /// The date the record was updated.
@@ -151,7 +151,7 @@ namespace Agile.Now.AccessHub.Model
         /// Gets or Sets CreatedBy
         /// </summary>
         [DataMember(Name = "CreatedBy", EmitDefaultValue = false)]
-        public AbstractLong CreatedBy { get; set; }
+        public AbstractLong1 CreatedBy { get; set; }
 
         /// <summary>
         /// The date the record was created.

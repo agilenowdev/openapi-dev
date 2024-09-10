@@ -55,19 +55,12 @@ namespace Agile.Now.Runtime.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GroupData" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected GroupData() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GroupData" /> class.
-        /// </summary>
         /// <param name="id">id (default to 0).</param>
-        /// <param name="groupId">groupId (required).</param>
+        /// <param name="groupId">groupId.</param>
         public GroupData(int id = 0, FieldType groupId = default)
         {
-            // to ensure "groupId" is required (not null)
-            groupId = groupId ?? throw new ArgumentNullException("groupId is a required property for GroupData and cannot be null");
-            GroupId = groupId;
             Id = id;
+            GroupId = groupId;
         }
 
         /// <summary>
@@ -80,7 +73,7 @@ namespace Agile.Now.Runtime.Model
         /// <summary>
         /// Gets or Sets GroupId
         /// </summary>
-        [DataMember(Name = "Group_Id", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Group_Id", EmitDefaultValue = false)]
         public FieldType GroupId { get; set; }
 
         /// <summary>

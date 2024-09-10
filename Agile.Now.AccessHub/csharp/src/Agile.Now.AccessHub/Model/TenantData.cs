@@ -55,21 +55,12 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TenantData" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected TenantData() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TenantData" /> class.
-        /// </summary>
         /// <param name="userId">userId.</param>
-        /// <param name="tenantId">tenantId (required).</param>
-        /// <param name="createdOn">The date the record was created. (required) (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public TenantData(FieldType userId = default, FieldType tenantId = default, DateTime createdOn = default)
+        /// <param name="tenantId">tenantId.</param>
+        public TenantData(FieldType userId = default, FieldType tenantId = default)
         {
-            // to ensure "tenantId" is required (not null)
-            tenantId = tenantId ?? throw new ArgumentNullException("tenantId is a required property for TenantData and cannot be null");
-            TenantId = tenantId;
-            CreatedOn = createdOn;
             UserId = userId;
+            TenantId = tenantId;
         }
 
         /// <summary>
@@ -81,16 +72,8 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Gets or Sets TenantId
         /// </summary>
-        [DataMember(Name = "TenantId", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "TenantId", EmitDefaultValue = false)]
         public FieldType TenantId { get; set; }
-
-        /// <summary>
-        /// The date the record was created.
-        /// </summary>
-        /// <value>The date the record was created.</value>
-        /// <example>1900-01-01T00:00Z</example>
-        [DataMember(Name = "CreatedOn", IsRequired = true, EmitDefaultValue = true)]
-        public DateTime CreatedOn { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -102,7 +85,6 @@ namespace Agile.Now.AccessHub.Model
             sb.Append("class TenantData {\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
             sb.Append("  TenantId: ").Append(TenantId).Append("\n");
-            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

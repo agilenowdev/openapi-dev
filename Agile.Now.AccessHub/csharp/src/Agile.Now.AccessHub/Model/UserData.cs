@@ -55,21 +55,12 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UserData" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected UserData() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UserData" /> class.
-        /// </summary>
         /// <param name="id">The identifier of user access group. (default to 0).</param>
-        /// <param name="userId">userId (required).</param>
-        /// <param name="createdOn">The date when the record was created. (required) (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public UserData(long id = 0, FieldType userId = default, DateTime createdOn = default)
+        /// <param name="userId">userId.</param>
+        public UserData(long id = 0, FieldType userId = default)
         {
-            // to ensure "userId" is required (not null)
-            userId = userId ?? throw new ArgumentNullException("userId is a required property for UserData and cannot be null");
-            UserId = userId;
-            CreatedOn = createdOn;
             Id = id;
+            UserId = userId;
         }
 
         /// <summary>
@@ -83,16 +74,8 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Gets or Sets UserId
         /// </summary>
-        [DataMember(Name = "UserId", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "UserId", EmitDefaultValue = false)]
         public FieldType UserId { get; set; }
-
-        /// <summary>
-        /// The date when the record was created.
-        /// </summary>
-        /// <value>The date when the record was created.</value>
-        /// <example>1900-01-01T00:00Z</example>
-        [DataMember(Name = "CreatedOn", IsRequired = true, EmitDefaultValue = true)]
-        public DateTime CreatedOn { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -104,7 +87,6 @@ namespace Agile.Now.AccessHub.Model
             sb.Append("class UserData {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
-            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

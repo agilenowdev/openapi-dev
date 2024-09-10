@@ -55,19 +55,12 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UserExternalText" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected UserExternalText() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UserExternalText" /> class.
-        /// </summary>
         /// <param name="id">id (default to 0).</param>
-        /// <param name="userId">userId (required).</param>
+        /// <param name="userId">userId.</param>
         public UserExternalText(int id = 0, string userId = default)
         {
-            // to ensure "userId" is required (not null)
-            userId = userId ?? throw new ArgumentNullException("userId is a required property for UserExternalText and cannot be null");
-            UserId = userId;
             Id = id;
+            UserId = userId;
         }
 
         /// <summary>
@@ -80,7 +73,7 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Gets or Sets UserId
         /// </summary>
-        [DataMember(Name = "User_Id", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "User_Id", EmitDefaultValue = false)]
         public string UserId { get; set; }
 
         /// <summary>

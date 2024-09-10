@@ -57,12 +57,10 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         /// <param name="filename">Filename of account picture..</param>
         /// <param name="picture">Picture of account..</param>
-        /// <param name="createdOn">Date the record was created. (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public PictureData(string filename = default, System.IO.Stream picture = default, DateTime createdOn = default)
+        public PictureData(string filename = default, System.IO.Stream picture = default)
         {
             Filename = filename;
             Picture = picture;
-            CreatedOn = createdOn;
         }
 
         /// <summary>
@@ -80,14 +78,6 @@ namespace Agile.Now.AccessHub.Model
         public System.IO.Stream Picture { get; set; }
 
         /// <summary>
-        /// Date the record was created.
-        /// </summary>
-        /// <value>Date the record was created.</value>
-        /// <example>1900-01-01T00:00Z</example>
-        [DataMember(Name = "CreatedOn", EmitDefaultValue = false)]
-        public DateTime CreatedOn { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -97,7 +87,6 @@ namespace Agile.Now.AccessHub.Model
             sb.Append("class PictureData {\n");
             sb.Append("  Filename: ").Append(Filename).Append("\n");
             sb.Append("  Picture: ").Append(Picture).Append("\n");
-            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

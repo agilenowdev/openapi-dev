@@ -55,27 +55,16 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ApplicationData" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected ApplicationData() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ApplicationData" /> class.
-        /// </summary>
         /// <param name="id">The identifier of  access group application..</param>
-        /// <param name="parentApplicationId">parentApplicationId (required).</param>
-        /// <param name="accessApplicationId">accessApplicationId (required).</param>
+        /// <param name="parentApplicationId">parentApplicationId.</param>
+        /// <param name="accessApplicationId">accessApplicationId.</param>
         /// <param name="isActive">Defines if record is active. (default to false).</param>
-        /// <param name="createdOn">The date the record was created. (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public ApplicationData(string id = default, FieldType parentApplicationId = default, FieldType accessApplicationId = default, bool isActive = false, DateTime createdOn = default)
+        public ApplicationData(string id = default, FieldType parentApplicationId = default, FieldType accessApplicationId = default, bool isActive = false)
         {
-            // to ensure "parentApplicationId" is required (not null)
-            parentApplicationId = parentApplicationId ?? throw new ArgumentNullException("parentApplicationId is a required property for ApplicationData and cannot be null");
-            ParentApplicationId = parentApplicationId;
-            // to ensure "accessApplicationId" is required (not null)
-            accessApplicationId = accessApplicationId ?? throw new ArgumentNullException("accessApplicationId is a required property for ApplicationData and cannot be null");
-            AccessApplicationId = accessApplicationId;
             Id = id;
+            ParentApplicationId = parentApplicationId;
+            AccessApplicationId = accessApplicationId;
             IsActive = isActive;
-            CreatedOn = createdOn;
         }
 
         /// <summary>
@@ -88,13 +77,13 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Gets or Sets ParentApplicationId
         /// </summary>
-        [DataMember(Name = "ParentApplicationId", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "ParentApplicationId", EmitDefaultValue = false)]
         public FieldType ParentApplicationId { get; set; }
 
         /// <summary>
         /// Gets or Sets AccessApplicationId
         /// </summary>
-        [DataMember(Name = "AccessApplicationId", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "AccessApplicationId", EmitDefaultValue = false)]
         public FieldType AccessApplicationId { get; set; }
 
         /// <summary>
@@ -104,14 +93,6 @@ namespace Agile.Now.AccessHub.Model
         /// <example>false</example>
         [DataMember(Name = "Is_Active", EmitDefaultValue = true)]
         public bool IsActive { get; set; }
-
-        /// <summary>
-        /// The date the record was created.
-        /// </summary>
-        /// <value>The date the record was created.</value>
-        /// <example>1900-01-01T00:00Z</example>
-        [DataMember(Name = "CreatedOn", EmitDefaultValue = false)]
-        public DateTime CreatedOn { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -125,7 +106,6 @@ namespace Agile.Now.AccessHub.Model
             sb.Append("  ParentApplicationId: ").Append(ParentApplicationId).Append("\n");
             sb.Append("  AccessApplicationId: ").Append(AccessApplicationId).Append("\n");
             sb.Append("  IsActive: ").Append(IsActive).Append("\n");
-            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

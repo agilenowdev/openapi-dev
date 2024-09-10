@@ -1946,9 +1946,6 @@
         "description": "The list of `AccessGroup` records"
       },
       "AbstractText": {
-        "required": [
-          "Id"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -1975,9 +1972,6 @@
         "description": "This structure represents an abstract object with a primary key of type Text. It is used to encapsulate detailed information about related entities."
       },
       "AbstractLong": {
-        "required": [
-          "Id"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -2006,10 +2000,6 @@
         "description": "This structure represents an abstract object with a primary key of type Long. It is used to encapsulate detailed information about related entities."
       },
       "AccessGroupData": {
-        "required": [
-          "AccessGroupId",
-          "CreatedOn"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -2021,13 +2011,6 @@
           },
           "AccessGroupId": {
             "$ref": "#/components/schemas/FieldType"
-          },
-          "CreatedOn": {
-            "type": "string",
-            "description": "The date when the record was created.",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
           }
         },
         "description": "The record of AccessGroup information."
@@ -2085,9 +2068,6 @@
         "description": "The list of `Group` records"
       },
       "GroupData": {
-        "required": [
-          "Group_Id"
-        ],
         "type": "object",
         "properties": {
           "Id": {
