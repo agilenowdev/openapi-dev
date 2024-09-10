@@ -1643,9 +1643,6 @@
         "description": "The record of Department information."
       },
       "AbstractText": {
-        "required": [
-          "Id"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -1672,9 +1669,6 @@
         "description": "This structure represents an abstract object with a primary key of type Text. It is used to encapsulate detailed information about related entities."
       },
       "AbstractLong": {
-        "required": [
-          "Id"
-        ],
         "type": "object",
         "properties": {
           "Id": {
