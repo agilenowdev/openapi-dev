@@ -2324,7 +2324,7 @@
           {
             "value": "CIV",
             "name": "CTeDIvoire",
-            "description": "Cï¿½te d'Ivoire",
+            "description": "Côte d'Ivoire",
             "isString": true
           },
           {
@@ -3098,7 +3098,7 @@
           {
             "value": "REU",
             "name": "RUnion",
-            "description": "Rï¿½union",
+            "description": "Réunion",
             "isString": true
           },
           {
@@ -3152,7 +3152,7 @@
           {
             "value": "BLM",
             "name": "SaintBarthLemy",
-            "description": "Saint-Barthï¿½lemy",
+            "description": "Saint-Barthélemy",
             "isString": true
           },
           {
@@ -3507,6 +3507,7 @@
       },
       "DepartmentData": {
         "required": [
+          "Id",
           "Name",
           "DepartmentTypeId",
           "Is_Active"
@@ -3576,7 +3577,6 @@
       },
       "DepartmentInsertData": {
         "required": [
-          "Id",
           "Name",
           "DepartmentTypeId"
         ],
@@ -3714,6 +3714,9 @@
         "description": "The list of `User` records"
       },
       "UserData": {
+        "required": [
+          "Id"
+        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -3727,6 +3730,9 @@
         "description": "The record of User information."
       },
       "UserText": {
+        "required": [
+          "Id"
+        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -4701,6 +4707,7 @@
       },
       "LocationData": {
         "required": [
+          "Id",
           "Name",
           "Is_Active"
         ],
@@ -4738,7 +4745,6 @@
       },
       "LocationInsertData": {
         "required": [
-          "Id",
           "Name"
         ],
         "type": "object",
