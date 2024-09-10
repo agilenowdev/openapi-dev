@@ -1990,10 +1990,6 @@
         "description": "This structure represents an abstract object with a primary key of type Long. It is used to encapsulate detailed information about related entities."
       },
       "AccessGroupData": {
-        "required": [
-          "Id",
-          "AccessGroupId"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -2062,10 +2058,6 @@
         "description": "The list of `Group` records"
       },
       "GroupData": {
-        "required": [
-          "Id",
-          "Group_Id"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -2127,9 +2119,6 @@
         "description": "The list of `Department` records"
       },
       "DepartmentData": {
-        "required": [
-          "Id"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -2143,9 +2132,6 @@
         "description": "The record of Department information."
       },
       "DepartmentText": {
-        "required": [
-          "Id"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -2277,9 +2263,6 @@
         "description": "The list of `Location` records"
       },
       "LocationData": {
-        "required": [
-          "Id"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -2293,9 +2276,6 @@
         "description": "The record of Location information."
       },
       "LocationText": {
-        "required": [
-          "Id"
-        ],
         "type": "object",
         "properties": {
           "Id": {
