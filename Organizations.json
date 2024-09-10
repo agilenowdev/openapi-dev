@@ -3500,12 +3500,6 @@
         ]
       },
       "DepartmentData": {
-        "required": [
-          "Id",
-          "Name",
-          "DepartmentTypeId",
-          "Is_Active"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -3570,11 +3564,6 @@
         "description": "The field object structure. This structure allows users to specify any related entity field and its corresponding value. When saving data, the system automatically retrieves and assigns the primary key value from the system database table based on the provided field name and value."
       },
       "DepartmentInsertData": {
-        "required": [
-          "Id",
-          "Name",
-          "DepartmentTypeId"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -3616,10 +3605,6 @@
         "description": "The record of Department information."
       },
       "DepartmentUpdateData": {
-        "required": [
-          "Name",
-          "Is_Active"
-        ],
         "type": "object",
         "properties": {
           "ExternalId": {
@@ -3709,9 +3694,6 @@
         "description": "The list of `User` records"
       },
       "UserData": {
-        "required": [
-          "Id"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -3725,9 +3707,6 @@
         "description": "The record of User information."
       },
       "UserText": {
-        "required": [
-          "Id"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -4701,11 +4680,6 @@
         ]
       },
       "LocationData": {
-        "required": [
-          "Id",
-          "Name",
-          "Is_Active"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -4739,10 +4713,6 @@
         "description": "The record of Location information."
       },
       "LocationInsertData": {
-        "required": [
-          "Id",
-          "Name"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -4770,10 +4740,6 @@
         "description": "The record of Location information."
       },
       "LocationUpdateData": {
-        "required": [
-          "Name",
-          "Is_Active"
-        ],
         "type": "object",
         "properties": {
           "ExternalId": {
