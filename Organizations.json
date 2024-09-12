@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "2.0.148"
+    "version": "2.0.149"
   },
   "servers": [
     {
@@ -565,7 +565,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User"
+                  "$ref": "#/components/schemas/Users"
                 }
               }
             }
@@ -1293,7 +1293,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User"
+                  "$ref": "#/components/schemas/Users"
                 }
               }
             }
@@ -2318,7 +2318,7 @@
           {
             "value": "CIV",
             "name": "CTeDIvoire",
-            "description": "Cï¿½te d'Ivoire",
+            "description": "Côte d'Ivoire",
             "isString": true
           },
           {
@@ -3092,7 +3092,7 @@
           {
             "value": "REU",
             "name": "RUnion",
-            "description": "Rï¿½union",
+            "description": "Réunion",
             "isString": true
           },
           {
@@ -3146,7 +3146,7 @@
           {
             "value": "BLM",
             "name": "SaintBarthLemy",
-            "description": "Saint-Barthï¿½lemy",
+            "description": "Saint-Barthélemy",
             "isString": true
           },
           {
