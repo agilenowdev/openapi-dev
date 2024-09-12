@@ -8264,7 +8264,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User1'
+                $ref: '#/components/schemas/Users1'
           description: "Inserted or updated list of User information. \n"
         "400":
           content:
@@ -9762,7 +9762,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User1'
+                $ref: '#/components/schemas/Users1'
           description: "Inserted or updated list of User information. \n"
         "400":
           content:

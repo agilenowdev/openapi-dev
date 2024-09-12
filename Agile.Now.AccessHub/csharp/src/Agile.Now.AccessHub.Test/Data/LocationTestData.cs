@@ -1,5 +1,6 @@
 ﻿using Agile.Now.AccessHub.Model;
 using Agile.Now.AccessHub.Test.Data;
+using Xunit;
 
 namespace Agile.Now.ApiOrganizations.Test.Api;
 
@@ -17,7 +18,7 @@ internal static class LocationTestData
         );
     }
 
-    public static void UpdateLocationData(LocationInsertData locationInsertData)
+    public static void Update(this LocationInsertData locationInsertData)
     {
         locationInsertData.CountryId = locationInsertData.CountryId == EnumCountry.Finland ?
             EnumCountry.UnitedStatesOfAmerica : EnumCountry.Finland;
@@ -25,6 +26,13 @@ internal static class LocationTestData
             EnumTimezone.Gmt0100Azores : EnumTimezone.Gmt0100WestCentralAfrica;
         locationInsertData.CurrencyId = locationInsertData.CurrencyId == EnumCurrency.UnitedStatesDollar ?
             EnumCurrency.Euro : EnumCurrency.UnitedStatesDollar;
+    }
+
+    public static void AssertEqual(this LocationInsertData locationInsertData, Location location) {
+        Assert.Equal(locationInsertData.Name, location.Name);
+        //Assert.Equal(locationInsertData.CountryId.ToString(), location.CountryId.Name);
+        //Assert.Equal(locationInsertData.TimezoneId.ToString(), location.TimezoneId.Name);
+        //Assert.Equal(locationInsertData.CurrencyId.ToString(), location.CurrencyId.Id);
     }
 
     public static LocationUpdateData ToLocationUpdateData(this LocationInsertData locationInsertData) =>

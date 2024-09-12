@@ -755,7 +755,7 @@ catch (ApiException e)
 
 <a id="patchdepartmentusers"></a>
 # **PatchDepartmentUsers**
-> User1 PatchDepartmentUsers (string id, UsersData1 usersData1, string name = null, string deleteNotExists = null)
+> Users1 PatchDepartmentUsers (string id, UsersData1 usersData1, string name = null, string deleteNotExists = null)
 
 Use the `UsersData` object resource to insert or update (Upsert) a list of `UserData` using `Id` field(s) value.
 
@@ -802,7 +802,7 @@ namespace Example
 
             try
             {
-                User1 result = apiInstance.PatchDepartmentUsers(id, usersData1, name, deleteNotExists);
+                Users1 result = apiInstance.PatchDepartmentUsers(id, usersData1, name, deleteNotExists);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -828,7 +828,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<User1> response = apiInstance.PatchDepartmentUsersWithHttpInfo(id, usersData1, name, deleteNotExists);
+    ApiResponse<Users1> response = apiInstance.PatchDepartmentUsersWithHttpInfo(id, usersData1, name, deleteNotExists);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -858,7 +858,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**User1**](models/User1.md)
+[**Users1**](models/Users1.md)
 
 ### Authorization
 

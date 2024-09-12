@@ -4094,7 +4094,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User1"
+                  "$ref": "#/components/schemas/Users1"
                 }
               }
             }
@@ -4822,7 +4822,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User1"
+                  "$ref": "#/components/schemas/Users1"
                 }
               }
             }

@@ -1,4 +1,5 @@
 ﻿using Agile.Now.AccessHub.Client;
+using Xunit;
 
 namespace Agile.Now.AccessHub.Test.Api
 {

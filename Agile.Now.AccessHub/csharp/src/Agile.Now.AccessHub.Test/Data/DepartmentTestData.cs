@@ -1,5 +1,6 @@
 ﻿using Agile.Now.AccessHub.Model;
 using Agile.Now.AccessHub.Test.Data;
+using Xunit;
 
 namespace Agile.Now.ApiOrganizations.Test.Api;
 
@@ -19,12 +20,21 @@ internal static class DepartmentTestData
         );
     }
 
-    public static void UpdateDepartmentData(DepartmentInsertData departmentInsertData)
+    public static void Update(this DepartmentInsertData departmentInsertData)
     {
         departmentInsertData.ContactName = departmentInsertData.ContactName.MarkUpdated();
         departmentInsertData.ContactEmail = departmentInsertData.ContactEmail.MarkUpdated();
         departmentInsertData.CountryId = departmentInsertData.CountryId == 
             EnumCountry.Finland ? EnumCountry.UnitedStatesOfAmerica : EnumCountry.Finland;
+    }
+
+    public static void AssertEqual(this DepartmentInsertData departmentInsertData, Department department) {
+        Assert.Equal(departmentInsertData.Name, department.Name);
+        Assert.Equal(departmentInsertData.DepartmentTypeId.ToString(), department.DepartmentTypeId.Id);
+        Assert.Equal(departmentInsertData.ParentDepartmentId.Value ?? "", department.ParentDepartmentId.Id ?? "");
+        Assert.Equal(departmentInsertData.ContactName, department.ContactName);
+        Assert.Equal(departmentInsertData.ContactEmail, department.ContactEmail);
+        //Assert.Equal(departmentInsertData.CountryId.ToString(), department.CountryId.Name);
     }
 
     public static DepartmentUpdateData ToDepartmentUpdateData(this DepartmentInsertData departmentInsertData) =>

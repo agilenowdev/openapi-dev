@@ -78,6 +78,8 @@ namespace Agile.Now.Runtime.Model
             // to ensure "id" is required (not null)
             id = id ?? throw new ArgumentNullException("id is a required property for EffectivePermission and cannot be null");
             Id = id;
+            // to ensure "accessRoleId" is required (not null)
+            accessRoleId = accessRoleId ?? throw new ArgumentNullException("accessRoleId is a required property for EffectivePermission and cannot be null");
             AccessRoleId = accessRoleId;
             RoleId = roleId;
             AccessGroupTypeId = accessGroupTypeId;
@@ -102,7 +104,7 @@ namespace Agile.Now.Runtime.Model
         /// <summary>
         /// Gets or Sets AccessRoleId
         /// </summary>
-        [DataMember(Name = "AccessRoleId", EmitDefaultValue = true)]
+        [DataMember(Name = "AccessRoleId", IsRequired = true, EmitDefaultValue = true)]
         public AbstractText AccessRoleId { get; set; }
 
         /// <summary>

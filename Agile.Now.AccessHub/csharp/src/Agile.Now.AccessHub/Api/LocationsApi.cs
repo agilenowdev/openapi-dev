@@ -229,8 +229,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>User1</returns>
-        User1 PatchLocationUsers(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0);
+        /// <returns>Users1</returns>
+        Users1 PatchLocationUsers(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -244,8 +244,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of User1</returns>
-        ApiResponse<User1> PatchLocationUsersWithHttpInfo(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0);
+        /// <returns>ApiResponse of Users1</returns>
+        ApiResponse<Users1> PatchLocationUsersWithHttpInfo(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -525,8 +525,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of User1</returns>
-        System.Threading.Tasks.Task<User1> PatchLocationUsersAsync(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of Users1</returns>
+        System.Threading.Tasks.Task<Users1> PatchLocationUsersAsync(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -541,8 +541,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (User1)</returns>
-        System.Threading.Tasks.Task<ApiResponse<User1>> PatchLocationUsersWithHttpInfoAsync(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (Users1)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Users1>> PatchLocationUsersWithHttpInfoAsync(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -1953,10 +1953,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>User1</returns>
-        public User1 PatchLocationUsers(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0)
+        /// <returns>Users1</returns>
+        public Users1 PatchLocationUsers(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0)
         {
-            ApiResponse<User1> localVarResponse = PatchLocationUsersWithHttpInfo(id, usersData1, name, deleteNotExists);
+            ApiResponse<Users1> localVarResponse = PatchLocationUsersWithHttpInfo(id, usersData1, name, deleteNotExists);
             return localVarResponse.Data;
         }
 
@@ -1969,8 +1969,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of User1</returns>
-        public ApiResponse<User1> PatchLocationUsersWithHttpInfo(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0)
+        /// <returns>ApiResponse of Users1</returns>
+        public ApiResponse<Users1> PatchLocationUsersWithHttpInfo(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->PatchLocationUsers");
@@ -2033,7 +2033,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = Client.Patch<User1>("/Endpoint/rest/api/v1/Location/{Id}/Users", localVarRequestOptions, Configuration);
+            var localVarResponse = Client.Patch<Users1>("/Endpoint/rest/api/v1/Location/{Id}/Users", localVarRequestOptions, Configuration);
             if (ExceptionFactory != null)
             {
                 Exception _exception = ExceptionFactory("PatchLocationUsers", localVarResponse);
@@ -2056,10 +2056,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of User1</returns>
-        public async System.Threading.Tasks.Task<User1> PatchLocationUsersAsync(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of Users1</returns>
+        public async System.Threading.Tasks.Task<Users1> PatchLocationUsersAsync(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            ApiResponse<User1> localVarResponse = await PatchLocationUsersWithHttpInfoAsync(id, usersData1, name, deleteNotExists, operationIndex, cancellationToken).ConfigureAwait(false);
+            ApiResponse<Users1> localVarResponse = await PatchLocationUsersWithHttpInfoAsync(id, usersData1, name, deleteNotExists, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2073,8 +2073,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (User1)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<User1>> PatchLocationUsersWithHttpInfoAsync(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (Users1)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Users1>> PatchLocationUsersWithHttpInfoAsync(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->PatchLocationUsers");
@@ -2138,7 +2138,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await AsynchronousClient.PatchAsync<User1>("/Endpoint/rest/api/v1/Location/{Id}/Users", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await AsynchronousClient.PatchAsync<Users1>("/Endpoint/rest/api/v1/Location/{Id}/Users", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
             if (ExceptionFactory != null)
             {

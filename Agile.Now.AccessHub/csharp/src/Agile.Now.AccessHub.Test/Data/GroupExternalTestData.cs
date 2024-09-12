@@ -1,12 +1,11 @@
 ﻿using Agile.Now.AccessHub.Model;
 using Agile.Now.AccessHub.Test.Data;
+using Xunit;
 
 namespace Agile.Now.ApiAccessGroups.Test.Api;
 
-internal static class GroupExternalTestData
-{
-    public static GroupExternalData CreateGroupExternalData(string suffix = null)
-    {
+internal static class GroupExternalTestData {
+    public static GroupExternalData CreateGroupExternalData(string suffix = null) {
         var name = CommonTestData.CreateTestEntityName("group-external", suffix);
         return new GroupExternalData
         (
@@ -15,9 +14,13 @@ internal static class GroupExternalTestData
         );
     }
 
-    public static void UpdateGroupExternalData(GroupExternalData groupExternalData)
-    {
+    public static void Update(this GroupExternalData groupExternalData) {
         groupExternalData.Description = groupExternalData.Description.MarkUpdated();
+    }
+
+    public static void AssertEqual(this GroupExternalData data, GroupExternal group) {
+        Assert.Equal(data.Name, group.Name);
+        Assert.Equal(data.Description, group.Description);
     }
 
     public static GroupExternalText ToGroupExternalText(this GroupExternalData groupExternalData) => new(

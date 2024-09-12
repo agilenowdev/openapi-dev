@@ -230,7 +230,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>UserExternal</returns>
-        UserExternal PatchGroupExternalUserExternals(string id, UserExternalsData userExternalsData, string name = default, string deleteNotExists = default, int operationIndex = 0);
+        UserExternals PatchGroupExternalUserExternals(string id, UserExternalsData userExternalsData, string name = default, string deleteNotExists = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -245,7 +245,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of UserExternal</returns>
-        ApiResponse<UserExternal> PatchGroupExternalUserExternalsWithHttpInfo(string id, UserExternalsData userExternalsData, string name = default, string deleteNotExists = default, int operationIndex = 0);
+        ApiResponse<UserExternals> PatchGroupExternalUserExternalsWithHttpInfo(string id, UserExternalsData userExternalsData, string name = default, string deleteNotExists = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -2002,9 +2002,9 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>UserExternal</returns>
-        public UserExternal PatchGroupExternalUserExternals(string id, UserExternalsData userExternalsData, string name = default, string deleteNotExists = default, int operationIndex = 0)
+        public UserExternals PatchGroupExternalUserExternals(string id, UserExternalsData userExternalsData, string name = default, string deleteNotExists = default, int operationIndex = 0)
         {
-            ApiResponse<UserExternal> localVarResponse = PatchGroupExternalUserExternalsWithHttpInfo(id, userExternalsData, name, deleteNotExists);
+            ApiResponse<UserExternals> localVarResponse = PatchGroupExternalUserExternalsWithHttpInfo(id, userExternalsData, name, deleteNotExists);
             return localVarResponse.Data;
         }
 
@@ -2018,7 +2018,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of UserExternal</returns>
-        public ApiResponse<UserExternal> PatchGroupExternalUserExternalsWithHttpInfo(string id, UserExternalsData userExternalsData, string name = default, string deleteNotExists = default, int operationIndex = 0)
+        public ApiResponse<UserExternals> PatchGroupExternalUserExternalsWithHttpInfo(string id, UserExternalsData userExternalsData, string name = default, string deleteNotExists = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling GroupExternalsApi->PatchGroupExternalUserExternals");
@@ -2081,7 +2081,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = Client.Patch<UserExternal>("/Endpoint/rest/api/v1/GroupExternal/{Id}/UserExternals", localVarRequestOptions, Configuration);
+            var localVarResponse = Client.Patch<UserExternals>("/Endpoint/rest/api/v1/GroupExternal/{Id}/UserExternals", localVarRequestOptions, Configuration);
             if (ExceptionFactory != null)
             {
                 Exception _exception = ExceptionFactory("PatchGroupExternalUserExternals", localVarResponse);

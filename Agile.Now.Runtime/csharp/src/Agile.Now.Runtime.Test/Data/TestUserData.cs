@@ -8,7 +8,8 @@ public class TestUserData
     public static readonly (int Id, string Name)[] Users = new[] {
         (29788, "Demo Test"),
         (16862, "test test"),
-        (14996, "Rui Test")
+        (14996, "Rui Test"),
+        (41196, "lastName3 unit-test-account3")
     };
 
     public const int UserWithApplications = 17068;

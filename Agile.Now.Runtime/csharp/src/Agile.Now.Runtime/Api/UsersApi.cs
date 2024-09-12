@@ -479,7 +479,7 @@ namespace Agile.Now.Runtime.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Department</returns>
-        Department PatchUserDepartments(string id, DepartmentsData departmentsData, string name = default, string deleteNotExists = default, int operationIndex = 0);
+        Departments PatchUserDepartments(string id, DepartmentsData departmentsData, string name = default, string deleteNotExists = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -494,7 +494,7 @@ namespace Agile.Now.Runtime.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Department</returns>
-        ApiResponse<Department> PatchUserDepartmentsWithHttpInfo(string id, DepartmentsData departmentsData, string name = default, string deleteNotExists = default, int operationIndex = 0);
+        ApiResponse<Departments> PatchUserDepartmentsWithHttpInfo(string id, DepartmentsData departmentsData, string name = default, string deleteNotExists = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -508,7 +508,7 @@ namespace Agile.Now.Runtime.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Location</returns>
-        Location PatchUserLocations(string id, LocationsData locationsData, string name = default, string deleteNotExists = default, int operationIndex = 0);
+        Locations PatchUserLocations(string id, LocationsData locationsData, string name = default, string deleteNotExists = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -523,7 +523,7 @@ namespace Agile.Now.Runtime.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Location</returns>
-        ApiResponse<Location> PatchUserLocationsWithHttpInfo(string id, LocationsData locationsData, string name = default, string deleteNotExists = default, int operationIndex = 0);
+        ApiResponse<Locations> PatchUserLocationsWithHttpInfo(string id, LocationsData locationsData, string name = default, string deleteNotExists = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -4306,9 +4306,9 @@ namespace Agile.Now.Runtime.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Department</returns>
-        public Department PatchUserDepartments(string id, DepartmentsData departmentsData, string name = default, string deleteNotExists = default, int operationIndex = 0)
+        public Departments PatchUserDepartments(string id, DepartmentsData departmentsData, string name = default, string deleteNotExists = default, int operationIndex = 0)
         {
-            ApiResponse<Department> localVarResponse = PatchUserDepartmentsWithHttpInfo(id, departmentsData, name, deleteNotExists);
+            ApiResponse<Departments> localVarResponse = PatchUserDepartmentsWithHttpInfo(id, departmentsData, name, deleteNotExists);
             return localVarResponse.Data;
         }
 
@@ -4322,7 +4322,7 @@ namespace Agile.Now.Runtime.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Department</returns>
-        public ApiResponse<Department> PatchUserDepartmentsWithHttpInfo(string id, DepartmentsData departmentsData, string name = default, string deleteNotExists = default, int operationIndex = 0)
+        public ApiResponse<Departments> PatchUserDepartmentsWithHttpInfo(string id, DepartmentsData departmentsData, string name = default, string deleteNotExists = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling UsersApi->PatchUserDepartments");
@@ -4385,7 +4385,7 @@ namespace Agile.Now.Runtime.Api
             }
 
             // make the HTTP request
-            var localVarResponse = Client.Patch<Department>("/Endpoint/rest/api/v1/User/{Id}/Departments", localVarRequestOptions, Configuration);
+            var localVarResponse = Client.Patch<Departments>("/Endpoint/rest/api/v1/User/{Id}/Departments", localVarRequestOptions, Configuration);
             if (ExceptionFactory != null)
             {
                 Exception _exception = ExceptionFactory("PatchUserDepartments", localVarResponse);
@@ -4514,9 +4514,9 @@ namespace Agile.Now.Runtime.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Location</returns>
-        public Location PatchUserLocations(string id, LocationsData locationsData, string name = default, string deleteNotExists = default, int operationIndex = 0)
+        public Locations PatchUserLocations(string id, LocationsData locationsData, string name = default, string deleteNotExists = default, int operationIndex = 0)
         {
-            ApiResponse<Location> localVarResponse = PatchUserLocationsWithHttpInfo(id, locationsData, name, deleteNotExists);
+            ApiResponse<Locations> localVarResponse = PatchUserLocationsWithHttpInfo(id, locationsData, name, deleteNotExists);
             return localVarResponse.Data;
         }
 
@@ -4530,7 +4530,7 @@ namespace Agile.Now.Runtime.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Location</returns>
-        public ApiResponse<Location> PatchUserLocationsWithHttpInfo(string id, LocationsData locationsData, string name = default, string deleteNotExists = default, int operationIndex = 0)
+        public ApiResponse<Locations> PatchUserLocationsWithHttpInfo(string id, LocationsData locationsData, string name = default, string deleteNotExists = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling UsersApi->PatchUserLocations");
@@ -4593,7 +4593,7 @@ namespace Agile.Now.Runtime.Api
             }
 
             // make the HTTP request
-            var localVarResponse = Client.Patch<Location>("/Endpoint/rest/api/v1/User/{Id}/Locations", localVarRequestOptions, Configuration);
+            var localVarResponse = Client.Patch<Locations>("/Endpoint/rest/api/v1/User/{Id}/Locations", localVarRequestOptions, Configuration);
             if (ExceptionFactory != null)
             {
                 Exception _exception = ExceptionFactory("PatchUserLocations", localVarResponse);
