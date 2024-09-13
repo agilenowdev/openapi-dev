@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.54"
+    "version": "3.0.55"
   },
   "servers": [
     {
@@ -1689,32 +1689,58 @@
       },
       "User": {
         "required": [
-          "Id"
+          "Id",
+          "Creation_Date",
+          "Is_Active"
         ],
         "type": "object",
         "properties": {
           "Id": {
             "type": "integer",
-            "description": "The guid to identify the contact user",
-            "format": "int64",
+            "description": "Unique identifier of the user.",
+            "format": "int32",
             "default": 0,
             "example": 0
           },
           "Name": {
-            "type": "string"
-          },
-          "UserId": {
-            "$ref": "#/components/schemas/AbstractLong"
-          },
-          "CreatedBy": {
-            "$ref": "#/components/schemas/AbstractLong"
-          },
-          "CreatedOn": {
             "type": "string",
-            "description": "The date the record was created",
+            "description": "Full name of the user."
+          },
+          "Username": {
+            "type": "string",
+            "description": "Login name of the user."
+          },
+          "Email": {
+            "type": "string",
+            "description": "Email contact of the user."
+          },
+          "MobilePhone": {
+            "type": "string",
+            "description": "Mobile phone number of the user."
+          },
+          "External_Id": {
+            "type": "string",
+            "description": "The user identifier in an external system to the Platform."
+          },
+          "Creation_Date": {
+            "type": "string",
+            "description": "The date the user was created.",
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
+          },
+          "Last_Login": {
+            "type": "string",
+            "description": "Last time the user logged in the application.",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Indicates if the user is still active.",
+            "default": false,
+            "example": false
           }
         },
         "description": "The record of User information."
