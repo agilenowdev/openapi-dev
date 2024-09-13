@@ -41,9 +41,9 @@ namespace Agile.Now.ApiAccounts.Test.Api {
             Assert.Equal(data.LastName, account.LastName);
             Assert.Equal(data.FirstName, account.FirstName);
             Assert.Equal(data.Email, account.Email);
-            //Assert.Equal(data.DateFormatId.ToString(), account.DateFormatId.Id);
-            //Assert.Equal(data.TimezoneId.ToString(), account.TimezoneId.Id);
-            Assert.Equal(data.LanguageId.ToString(), account.LanguageId.Name);
+            Assert.Equal(data.DateFormatId, EnumDateFormatValueConverter.FromString(account.DateFormatId.Id));
+            Assert.Equal(data.TimezoneId, EnumTimezoneValueConverter.FromString(account.TimezoneId.Id));
+            Assert.Equal(data.LanguageId, EnumLanguageValueConverter.FromString(account.LanguageId.Id));
         }
 
         public static Stream ToStream(this string s) => new TestStream(Encoding.UTF8.GetBytes(s ?? ""));

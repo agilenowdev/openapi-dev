@@ -4,10 +4,8 @@ using Xunit;
 
 namespace Agile.Now.ApiOrganizations.Test.Api;
 
-internal static class DepartmentTestData
-{
-    public static DepartmentInsertData CreateDepartmentData(string suffix = null)
-    {
+internal static class DepartmentTestData {
+    public static DepartmentInsertData CreateDepartmentData(string suffix = null) {
         var name = CommonTestData.CreateTestEntityName("department", suffix);
         return new DepartmentInsertData
         (
@@ -20,11 +18,10 @@ internal static class DepartmentTestData
         );
     }
 
-    public static void Update(this DepartmentInsertData departmentInsertData)
-    {
+    public static void Update(this DepartmentInsertData departmentInsertData) {
         departmentInsertData.ContactName = departmentInsertData.ContactName.MarkUpdated();
         departmentInsertData.ContactEmail = departmentInsertData.ContactEmail.MarkUpdated();
-        departmentInsertData.CountryId = departmentInsertData.CountryId == 
+        departmentInsertData.CountryId = departmentInsertData.CountryId ==
             EnumCountry.Finland ? EnumCountry.UnitedStatesOfAmerica : EnumCountry.Finland;
     }
 
@@ -34,11 +31,11 @@ internal static class DepartmentTestData
         Assert.Equal(departmentInsertData.ParentDepartmentId.Value ?? "", department.ParentDepartmentId.Id ?? "");
         Assert.Equal(departmentInsertData.ContactName, department.ContactName);
         Assert.Equal(departmentInsertData.ContactEmail, department.ContactEmail);
-        //Assert.Equal(departmentInsertData.CountryId.ToString(), department.CountryId.Name);
+        Assert.Equal(departmentInsertData.CountryId, EnumCountryValueConverter.FromString(department.CountryId.Id));
     }
 
     public static DepartmentUpdateData ToDepartmentUpdateData(this DepartmentInsertData departmentInsertData) =>
-        new DepartmentUpdateData 
+        new DepartmentUpdateData
         (
             name: departmentInsertData.Name,
             contactName: departmentInsertData.ContactName,
@@ -51,7 +48,7 @@ internal static class DepartmentTestData
         (
             id: departmentInsertData.Id,
             name: departmentInsertData.Name,
-            parentDepartmentId: departmentInsertData.ParentDepartmentId,    
+            parentDepartmentId: departmentInsertData.ParentDepartmentId,
             departmentTypeId: departmentInsertData.DepartmentTypeId,
             contactName: departmentInsertData.ContactName,
             contactEmail: departmentInsertData.ContactEmail,

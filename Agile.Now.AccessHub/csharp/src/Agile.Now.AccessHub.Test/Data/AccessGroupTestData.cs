@@ -1,12 +1,10 @@
-﻿using System;
-using Agile.Now.AccessHub.Model;
+﻿using Agile.Now.AccessHub.Model;
 using Agile.Now.AccessHub.Test.Data;
 using Xunit;
 
 namespace Agile.Now.ApiAccessGroups.Test.Api;
 
-internal static class AccessGroupTestData
-{
+internal static class AccessGroupTestData {
     public static readonly string[] Applications = new[] {
         "15478BAE-C17D-4966-8288-F2F743A4B0EA",
         "5BEE1686-32A5-4469-958C-EFF31CB9EC07",
@@ -21,8 +19,7 @@ internal static class AccessGroupTestData
 
     public static readonly string ParentApplication = "3B594DDA-3F5D-431A-A532-A3EDFFA9BD98";
 
-    public static AccessGroupData CreateAccessGroupData(string suffix = null)
-    {
+    public static AccessGroupData CreateAccessGroupData(string suffix = null) {
         var name = CommonTestData.CreateTestEntityName("access-group", suffix);
         return new
         (
@@ -32,8 +29,7 @@ internal static class AccessGroupTestData
         );
     }
 
-    public static void Update(this AccessGroupData accessGroupInsertData)
-    {
+    public static void Update(this AccessGroupData accessGroupInsertData) {
         accessGroupInsertData.Description = accessGroupInsertData.Description.MarkUpdated();
         accessGroupInsertData.AccessGroupTypeId =
             accessGroupInsertData.AccessGroupTypeId == EnumAccessGroupType.Departments ?
@@ -43,7 +39,8 @@ internal static class AccessGroupTestData
     public static void AssertEqual(this AccessGroupData accessGroupInsertData, AccessGroup AccessGroup) {
         Assert.Equal(accessGroupInsertData.Name, AccessGroup.Name);
         Assert.Equal(accessGroupInsertData.Description, AccessGroup.Description);
-        Assert.Equal(accessGroupInsertData.AccessGroupTypeId.ToString(), AccessGroup.AccessGroupTypeId.Id);
+        Assert.Equal(accessGroupInsertData.AccessGroupTypeId,
+            EnumAccessGroupTypeValueConverter.FromString(AccessGroup.AccessGroupTypeId.Id));
     }
 
     public static AccessGroupUpdateData ToAccessGroupUpdateData(this AccessGroupInsertData accessGroupInsertData) =>
@@ -70,5 +67,5 @@ internal static class AccessGroupTestData
         accessApplicationId: accessApplicationId,
         id: id);
 
-    public static PermissionData CreatePermissionData(EnumPermissionType id) => new( permissionId: id);
+    public static PermissionData CreatePermissionData(EnumPermissionType id) => new(permissionId: id);
 }
