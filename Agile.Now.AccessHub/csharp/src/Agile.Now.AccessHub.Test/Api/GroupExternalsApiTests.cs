@@ -182,8 +182,8 @@ namespace Agile.Now.AccessHub.Test.Api {
                 var filters = $"Name In {string.Join("; ", created.Select(i => i.Name))}";
                 var pageSize = 2;
                 var pages = new[] {
+                    api.ListGroupExternals(filters: filters, currentPage: 0, pageSize: pageSize).Data,
                     api.ListGroupExternals(filters: filters, currentPage: 1, pageSize: pageSize).Data,
-                    api.ListGroupExternals(filters: filters, currentPage: 2, pageSize: pageSize).Data,
                 };
                 Assert.Equal(pageSize, pages[0].Count);
                 Assert.Equal(pageSize, pages[1].Count);

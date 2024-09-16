@@ -117,8 +117,8 @@ namespace Agile.Now.Runtime.Test.Api {
             var filters = $"Name In {string.Join("; ", existing.Select(i => i.Name))}";
             var pageSize = 2;
             var pages = new[] {
+                    api.ListUsers(filters: filters, currentPage: 0, pageSize: pageSize).Data,
                     api.ListUsers(filters: filters, currentPage: 1, pageSize: pageSize).Data,
-                    api.ListUsers(filters: filters, currentPage: 2, pageSize: pageSize).Data,
                 };
             Assert.Equal(pageSize, pages[0].Count);
             Assert.Equal(pageSize, pages[1].Count);
