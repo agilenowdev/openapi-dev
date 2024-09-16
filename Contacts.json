@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.55"
+    "version": "3.0.57"
   },
   "servers": [
     {
@@ -1372,32 +1372,6 @@
             "description": "Defines if the contact is active and can be used.",
             "default": false,
             "example": false
-          },
-          "Is_Deleted": {
-            "type": "boolean",
-            "description": "Defines if the contact is deleted and cannot be used.",
-            "default": false,
-            "example": false
-          },
-          "ModifiedOn": {
-            "type": "string",
-            "description": "The date the record was updated.",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
-          },
-          "ModifiedBy": {
-            "$ref": "#/components/schemas/FieldType"
-          },
-          "CreatedBy": {
-            "$ref": "#/components/schemas/FieldType"
-          },
-          "CreatedOn": {
-            "type": "string",
-            "description": "The date the record was created.",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
           }
         },
         "description": "The record of Contact information."
@@ -1450,34 +1424,6 @@
             "description": "Defines if the contact is active and can be used.",
             "default": false,
             "example": false
-          },
-          "Is_Deleted": {
-            "type": "boolean",
-            "description": "Defines if the contact is deleted and cannot be used.",
-            "default": false,
-            "example": false
-          },
-          "ModifiedOn": {
-            "type": "string",
-            "description": "The date the record was updated.",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
-          },
-          "ModifiedBy": {
-            "type": "string",
-            "description": "The Identifier of the user who updated the record."
-          },
-          "CreatedBy": {
-            "type": "string",
-            "description": "The Identifier of the user who created the record."
-          },
-          "CreatedOn": {
-            "type": "string",
-            "description": "The date the record was created.",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
           }
         },
         "description": "The record of Contact information."
