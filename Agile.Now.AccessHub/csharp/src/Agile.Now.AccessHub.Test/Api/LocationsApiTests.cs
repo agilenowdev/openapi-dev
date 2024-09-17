@@ -100,7 +100,6 @@ namespace Agile.Now.AccessHub.Test.Api {
         }
 
         /// <summary>
-        /// Test DeleteLocation by Id
         /// </summary>
         [Fact]
         public void Test_Location_Delete_ById() {

@@ -1679,7 +1679,7 @@ catch (ApiException e)
 
 <a id="patchuserdepartments"></a>
 # **PatchUserDepartments**
-> Department PatchUserDepartments (string id, DepartmentsData departmentsData, string name = null, string deleteNotExists = null)
+> Departments PatchUserDepartments (string id, DepartmentsData departmentsData, string name = null, string deleteNotExists = null)
 
 Use the `DepartmentsData` object resource to insert or update (Upsert) a list of `DepartmentData` using `Id, UserId.Email, UserId.Username` field(s) value.
 
@@ -1726,7 +1726,7 @@ namespace Example
 
             try
             {
-                Department result = apiInstance.PatchUserDepartments(id, departmentsData, name, deleteNotExists);
+                Departments result = apiInstance.PatchUserDepartments(id, departmentsData, name, deleteNotExists);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1752,7 +1752,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<Department> response = apiInstance.PatchUserDepartmentsWithHttpInfo(id, departmentsData, name, deleteNotExists);
+    ApiResponse<Departments> response = apiInstance.PatchUserDepartmentsWithHttpInfo(id, departmentsData, name, deleteNotExists);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -1782,7 +1782,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**Department**](models/Department.md)
+[**Departments**](models/Departments.md)
 
 ### Authorization
 
@@ -1807,7 +1807,7 @@ catch (ApiException e)
 
 <a id="patchuserlocations"></a>
 # **PatchUserLocations**
-> Location PatchUserLocations (string id, LocationsData locationsData, string name = null, string deleteNotExists = null)
+> Locations PatchUserLocations (string id, LocationsData locationsData, string name = null, string deleteNotExists = null)
 
 Use the `LocationsData` object resource to insert or update (Upsert) a list of `LocationData` using `Id, UserId.Email, UserId.Username` field(s) value.
 
@@ -1854,7 +1854,7 @@ namespace Example
 
             try
             {
-                Location result = apiInstance.PatchUserLocations(id, locationsData, name, deleteNotExists);
+                Locations result = apiInstance.PatchUserLocations(id, locationsData, name, deleteNotExists);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1880,7 +1880,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<Location> response = apiInstance.PatchUserLocationsWithHttpInfo(id, locationsData, name, deleteNotExists);
+    ApiResponse<Locations> response = apiInstance.PatchUserLocationsWithHttpInfo(id, locationsData, name, deleteNotExists);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -1910,7 +1910,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**Location**](models/Location.md)
+[**Locations**](models/Locations.md)
 
 ### Authorization
 

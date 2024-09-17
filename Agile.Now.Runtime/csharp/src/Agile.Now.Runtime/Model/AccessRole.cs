@@ -60,52 +60,91 @@ namespace Agile.Now.Runtime.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AccessRole" /> class.
         /// </summary>
-        /// <param name="id">The identifier of entity (required).</param>
-        /// <param name="accessRoleId">accessRoleId (required).</param>
+        /// <param name="id">The identifier of the role (required).</param>
+        /// <param name="name">Name of role.</param>
+        /// <param name="roleKey"> The key used to identify the role must be unique within each workspace. (required).</param>
+        /// <param name="fullName">Full name of role. Example Application 1 \\ Espace 1 \\ Role 1.</param>
+        /// <param name="description">The description of access group.</param>
+        /// <param name="externalId">The external system code of the role.</param>
+        /// <param name="accessApplicationId">accessApplicationId.</param>
         /// <param name="roleId">roleId.</param>
-        /// <param name="accessGroupTypeId">accessGroupTypeId.</param>
-        /// <param name="create">Create access of role (default to false).</param>
-        /// <param name="read">Read access of role (default to false).</param>
-        /// <param name="update">Update access of role (default to false).</param>
-        /// <param name="delete">Delete access of role (default to false).</param>
-        /// <param name="details">Details access of role (default to false).</param>
-        /// <param name="export">Export access of role (default to false).</param>
-        /// <param name="import">Import access of role (default to false).</param>
-        /// <param name="generic">Generic access without CRUD of role (default to false).</param>
+        /// <param name="applicationId">applicationId.</param>
+        /// <param name="espaceId">espaceId.</param>
+        /// <param name="isActive">Defines if record is active (default to false).</param>
+        /// <param name="isCustom">Determines whether the role has been modified externally or whether it is synchronized from the OutSystems structure (default to false).</param>
+        /// <param name="isReadOnly">Determines whether the role is readonly and can be modified (required) (default to false).</param>
+        /// <param name="modifiedOn">The date the record was updated (default to &quot;1900-01-01T00:00Z&quot;).</param>
         /// <param name="createdOn">The date the record was created (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public AccessRole(string id = default, AbstractText accessRoleId = default, AbstractLong roleId = default, AbstractText accessGroupTypeId = default, bool create = false, bool read = false, bool update = false, bool delete = false, bool details = false, bool export = false, bool import = false, bool generic = false, DateTime createdOn = default)
+        public AccessRole(string id = default, string name = default, string roleKey = default, string fullName = default, string description = default, string externalId = default, AbstractText accessApplicationId = default, AbstractLong roleId = default, AbstractLong applicationId = default, AbstractLong espaceId = default, bool isActive = false, bool isCustom = false, bool isReadOnly = false, DateTime modifiedOn = default, DateTime createdOn = default)
         {
             // to ensure "id" is required (not null)
             id = id ?? throw new ArgumentNullException("id is a required property for AccessRole and cannot be null");
             Id = id;
-            // to ensure "accessRoleId" is required (not null)
-            accessRoleId = accessRoleId ?? throw new ArgumentNullException("accessRoleId is a required property for AccessRole and cannot be null");
-            AccessRoleId = accessRoleId;
+            // to ensure "roleKey" is required (not null)
+            roleKey = roleKey ?? throw new ArgumentNullException("roleKey is a required property for AccessRole and cannot be null");
+            RoleKey = roleKey;
+            IsReadOnly = isReadOnly;
+            Name = name;
+            FullName = fullName;
+            Description = description;
+            ExternalId = externalId;
+            AccessApplicationId = accessApplicationId;
             RoleId = roleId;
-            AccessGroupTypeId = accessGroupTypeId;
-            Create = create;
-            Read = read;
-            Update = update;
-            Delete = delete;
-            Details = details;
-            Export = export;
-            Import = import;
-            Generic = generic;
+            ApplicationId = applicationId;
+            EspaceId = espaceId;
+            IsActive = isActive;
+            IsCustom = isCustom;
+            ModifiedOn = modifiedOn;
             CreatedOn = createdOn;
         }
 
         /// <summary>
-        /// The identifier of entity
+        /// The identifier of the role
         /// </summary>
-        /// <value>The identifier of entity</value>
+        /// <value>The identifier of the role</value>
         [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets AccessRoleId
+        /// Name of role
         /// </summary>
-        [DataMember(Name = "AccessRoleId", IsRequired = true, EmitDefaultValue = true)]
-        public AbstractText AccessRoleId { get; set; }
+        /// <value>Name of role</value>
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
+        public string Name { get; set; }
+
+        /// <summary>
+        ///  The key used to identify the role must be unique within each workspace.
+        /// </summary>
+        /// <value> The key used to identify the role must be unique within each workspace.</value>
+        [DataMember(Name = "RoleKey", IsRequired = true, EmitDefaultValue = true)]
+        public string RoleKey { get; set; }
+
+        /// <summary>
+        /// Full name of role. Example Application 1 \\ Espace 1 \\ Role 1
+        /// </summary>
+        /// <value>Full name of role. Example Application 1 \\ Espace 1 \\ Role 1</value>
+        [DataMember(Name = "FullName", EmitDefaultValue = false)]
+        public string FullName { get; set; }
+
+        /// <summary>
+        /// The description of access group
+        /// </summary>
+        /// <value>The description of access group</value>
+        [DataMember(Name = "Description", EmitDefaultValue = false)]
+        public string Description { get; set; }
+
+        /// <summary>
+        /// The external system code of the role
+        /// </summary>
+        /// <value>The external system code of the role</value>
+        [DataMember(Name = "ExternalId", EmitDefaultValue = false)]
+        public string ExternalId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AccessApplicationId
+        /// </summary>
+        [DataMember(Name = "AccessApplicationId", EmitDefaultValue = false)]
+        public AbstractText AccessApplicationId { get; set; }
 
         /// <summary>
         /// Gets or Sets RoleId
@@ -114,74 +153,48 @@ namespace Agile.Now.Runtime.Model
         public AbstractLong RoleId { get; set; }
 
         /// <summary>
-        /// Gets or Sets AccessGroupTypeId
+        /// Gets or Sets ApplicationId
         /// </summary>
-        [DataMember(Name = "AccessGroupTypeId", EmitDefaultValue = false)]
-        public AbstractText AccessGroupTypeId { get; set; }
+        [DataMember(Name = "ApplicationId", EmitDefaultValue = false)]
+        public AbstractLong ApplicationId { get; set; }
 
         /// <summary>
-        /// Create access of role
+        /// Gets or Sets EspaceId
         /// </summary>
-        /// <value>Create access of role</value>
-        /// <example>false</example>
-        [DataMember(Name = "Create", EmitDefaultValue = true)]
-        public bool Create { get; set; }
+        [DataMember(Name = "EspaceId", EmitDefaultValue = false)]
+        public AbstractLong EspaceId { get; set; }
 
         /// <summary>
-        /// Read access of role
+        /// Defines if record is active
         /// </summary>
-        /// <value>Read access of role</value>
+        /// <value>Defines if record is active</value>
         /// <example>false</example>
-        [DataMember(Name = "Read", EmitDefaultValue = true)]
-        public bool Read { get; set; }
+        [DataMember(Name = "Is_Active", EmitDefaultValue = true)]
+        public bool IsActive { get; set; }
 
         /// <summary>
-        /// Update access of role
+        /// Determines whether the role has been modified externally or whether it is synchronized from the OutSystems structure
         /// </summary>
-        /// <value>Update access of role</value>
+        /// <value>Determines whether the role has been modified externally or whether it is synchronized from the OutSystems structure</value>
         /// <example>false</example>
-        [DataMember(Name = "Update", EmitDefaultValue = true)]
-        public bool Update { get; set; }
+        [DataMember(Name = "Is_Custom", EmitDefaultValue = true)]
+        public bool IsCustom { get; set; }
 
         /// <summary>
-        /// Delete access of role
+        /// Determines whether the role is readonly and can be modified
         /// </summary>
-        /// <value>Delete access of role</value>
+        /// <value>Determines whether the role is readonly and can be modified</value>
         /// <example>false</example>
-        [DataMember(Name = "Delete", EmitDefaultValue = true)]
-        public bool Delete { get; set; }
+        [DataMember(Name = "Is_ReadOnly", IsRequired = true, EmitDefaultValue = true)]
+        public bool IsReadOnly { get; set; }
 
         /// <summary>
-        /// Details access of role
+        /// The date the record was updated
         /// </summary>
-        /// <value>Details access of role</value>
-        /// <example>false</example>
-        [DataMember(Name = "Details", EmitDefaultValue = true)]
-        public bool Details { get; set; }
-
-        /// <summary>
-        /// Export access of role
-        /// </summary>
-        /// <value>Export access of role</value>
-        /// <example>false</example>
-        [DataMember(Name = "Export", EmitDefaultValue = true)]
-        public bool Export { get; set; }
-
-        /// <summary>
-        /// Import access of role
-        /// </summary>
-        /// <value>Import access of role</value>
-        /// <example>false</example>
-        [DataMember(Name = "Import", EmitDefaultValue = true)]
-        public bool Import { get; set; }
-
-        /// <summary>
-        /// Generic access without CRUD of role
-        /// </summary>
-        /// <value>Generic access without CRUD of role</value>
-        /// <example>false</example>
-        [DataMember(Name = "Generic", EmitDefaultValue = true)]
-        public bool Generic { get; set; }
+        /// <value>The date the record was updated</value>
+        /// <example>1900-01-01T00:00Z</example>
+        [DataMember(Name = "ModifiedOn", EmitDefaultValue = false)]
+        public DateTime ModifiedOn { get; set; }
 
         /// <summary>
         /// The date the record was created
@@ -200,17 +213,19 @@ namespace Agile.Now.Runtime.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class AccessRole {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  AccessRoleId: ").Append(AccessRoleId).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  RoleKey: ").Append(RoleKey).Append("\n");
+            sb.Append("  FullName: ").Append(FullName).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
+            sb.Append("  AccessApplicationId: ").Append(AccessApplicationId).Append("\n");
             sb.Append("  RoleId: ").Append(RoleId).Append("\n");
-            sb.Append("  AccessGroupTypeId: ").Append(AccessGroupTypeId).Append("\n");
-            sb.Append("  Create: ").Append(Create).Append("\n");
-            sb.Append("  Read: ").Append(Read).Append("\n");
-            sb.Append("  Update: ").Append(Update).Append("\n");
-            sb.Append("  Delete: ").Append(Delete).Append("\n");
-            sb.Append("  Details: ").Append(Details).Append("\n");
-            sb.Append("  Export: ").Append(Export).Append("\n");
-            sb.Append("  Import: ").Append(Import).Append("\n");
-            sb.Append("  Generic: ").Append(Generic).Append("\n");
+            sb.Append("  ApplicationId: ").Append(ApplicationId).Append("\n");
+            sb.Append("  EspaceId: ").Append(EspaceId).Append("\n");
+            sb.Append("  IsActive: ").Append(IsActive).Append("\n");
+            sb.Append("  IsCustom: ").Append(IsCustom).Append("\n");
+            sb.Append("  IsReadOnly: ").Append(IsReadOnly).Append("\n");
+            sb.Append("  ModifiedOn: ").Append(ModifiedOn).Append("\n");
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

@@ -756,7 +756,7 @@ catch (ApiException e)
 
 <a id="patchgroupexternaluserexternals"></a>
 # **PatchGroupExternalUserExternals**
-> UserExternal PatchGroupExternalUserExternals (string id, UserExternalsData userExternalsData, string name = null, string deleteNotExists = null)
+> UserExternals PatchGroupExternalUserExternals (string id, UserExternalsData userExternalsData, string name = null, string deleteNotExists = null)
 
 Use the `UserExternalsData` object resource to insert or update (Upsert) a list of `UserExternalData` using `Id` field(s) value.
 
@@ -803,7 +803,7 @@ namespace Example
 
             try
             {
-                UserExternal result = apiInstance.PatchGroupExternalUserExternals(id, userExternalsData, name, deleteNotExists);
+                UserExternals result = apiInstance.PatchGroupExternalUserExternals(id, userExternalsData, name, deleteNotExists);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -829,7 +829,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<UserExternal> response = apiInstance.PatchGroupExternalUserExternalsWithHttpInfo(id, userExternalsData, name, deleteNotExists);
+    ApiResponse<UserExternals> response = apiInstance.PatchGroupExternalUserExternalsWithHttpInfo(id, userExternalsData, name, deleteNotExists);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -859,7 +859,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**UserExternal**](models/UserExternal.md)
+[**UserExternals**](models/UserExternals.md)
 
 ### Authorization
 

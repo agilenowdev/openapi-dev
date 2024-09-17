@@ -130,7 +130,7 @@ namespace Agile.Now.AccessHub.Test.Api {
                     new("Id", AccountTestData.AnotherTenant.ToString())));
                 api.DeleteAccount(created.Id);
                 Assert.Null(Record.Exception(() => api.GetAccount(created.Id)));
-                api.DeleteAccountTenant(created.Id, anotherTenant.UserId.ToString(), subName: "UserId");
+                api.DeleteAccountTenant(created.Id, anotherTenant.Id.ToString(), subName: "UserId");
                 api.DeleteAccount(created.Id);
                 Assert.Throws<ApiException>(() => api.GetAccount(created.Id));
             }
@@ -277,16 +277,15 @@ namespace Agile.Now.AccessHub.Test.Api {
         /// </summary>
         [Fact]
         public void Test_AccountTenant_Delete() {
-            var created = api.CreateAccount(AccountTestData.CreateAccountData());
+            var entity = api.CreateAccount(AccountTestData.CreateAccountData());
             try {
-                var existingSubEntities = api.ListAccountTenants(created.Id).Data;
-                var deletedSubEntity = api.DeleteAccountTenant(
-                    created.Id, "15", subName: "UserId");
-                existingSubEntities = api.ListAccountTenants(created.Id).Data;
-                Assert.DoesNotContain(existingSubEntities, i => i.TenantId.Id == deletedSubEntity.TenantId.Id);
+                var existing = api.ListAccountTenants(entity.Id).Data;
+                var deleted = api.DeleteAccountTenant(entity.Id, existing[0].Id.ToString());
+                existing = api.ListAccountTenants(entity.Id).Data;
+                Assert.DoesNotContain(existing, i => i.Id == deleted.Id);
             }
             finally {
-                api.DeleteAccount(created.Id);
+                api.DeleteAccount(entity.Id);
             }
         }
 
@@ -299,7 +298,7 @@ namespace Agile.Now.AccessHub.Test.Api {
             try {
 
                 var existingSubEntities = api.ListAccountTenants(created.Id).Data;
-                Assert.Contains(existingSubEntities, i => i.TenantId.Id == created.TenantId.Id);
+                Assert.Contains(existingSubEntities, i => i.Id == created.TenantId.Id);
             }
             finally {
                 api.DeleteAccount(created.Id);
@@ -311,21 +310,24 @@ namespace Agile.Now.AccessHub.Test.Api {
         /// </summary>
         [Fact]
         public void Test_AccountTenant_Upsert() {
-            var created = api.CreateAccount(AccountTestData.CreateAccountData());
+            // WIP
+            var entity = api.CreateAccount(AccountTestData.CreateAccountData());
             try {
-                var createdSubEntity = api.UpsertAccountTenant(created.Id, new(
-                    new("Id", ""),
-                    new("Id", AccountTestData.AnotherTenant.ToString())));
+                var created = api.UpsertAccountTenant(entity.Id, new(
+                    userId: new("Id", UserTestData.Users[0].ToString()),
+                    tenantId: new("Id", AccountTestData.AnotherTenant.ToString())));
                 try {
-                    var existingSubEntities = api.ListAccountTenants(created.Id).Data;
+                    var existingSubEntities = api.ListAccountTenants(entity.Id).Data;
                     //Assert.Contains(existingEntityTenants, i => created.Id == i.AccountId.Id);
                 }
                 finally {
-                    api.DeleteAccountTenant(created.Id, createdSubEntity.TenantId.Id.ToString(), subName: "UserId");
+                    //api.DeleteAccountTenant(created.Id, createdSubEntity.TenantId.Id.ToString(), subName: "UserId");
+                    //api.DeleteAccountTenant("78b8f190-834a-4501-a2c7-ea173b327936",
+                    //    "34560", subName: "UserId");
                 }
             }
             finally {
-                api.DeleteAccount(created.Id);
+                api.DeleteAccount(entity.Id);
             }
         }
 

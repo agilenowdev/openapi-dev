@@ -434,8 +434,9 @@ paths:
           \ attributes. If list is empty or &quot;*&quot; then all of fields will\
           \ be returned.\n\nThis method converts a string list to a string with a\
           \ comma separator.\n\nExample: \n```\nId, TenantId, Name, FirstName, LastName,\
-          \ Phone, Email, LanguageId, TimezoneId, DateFormatId, Username, ExternalId,\
-          \ NotifyByEmail, NotifyBySMS, Is_Active, ModifiedOn, CreatedOn\n```"
+          \ Phone, PhoneVerified, Email, EmailVerified, LanguageId, TimezoneId, DateFormatId,\
+          \ Username, ExternalId, NotifyByEmail, NotifyBySMS, Is_Active, ModifiedOn,\
+          \ CreatedOn\n```"
         explode: true
         in: query
         name: Fields
@@ -446,9 +447,9 @@ paths:
             \ attributes. If list is empty or &quot;*&quot; then all of fields will\
             \ be returned.\n\nThis method converts a string list to a string with\
             \ a comma separator.\n\nExample: \n```\nId, TenantId, Name, FirstName,\
-            \ LastName, Phone, Email, LanguageId, TimezoneId, DateFormatId, Username,\
-            \ ExternalId, NotifyByEmail, NotifyBySMS, Is_Active, ModifiedOn, CreatedOn\n\
-            ```"
+            \ LastName, Phone, PhoneVerified, Email, EmailVerified, LanguageId, TimezoneId,\
+            \ DateFormatId, Username, ExternalId, NotifyByEmail, NotifyBySMS, Is_Active,\
+            \ ModifiedOn, CreatedOn\n```"
           type: string
         style: form
       - description: |
@@ -3075,7 +3076,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Application'
+                $ref: '#/components/schemas/Applications'
           description: "Inserted or updated list of Application information. \n"
         "400":
           content:
@@ -3766,7 +3767,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Permission'
+                $ref: '#/components/schemas/Permissions'
           description: "Inserted or updated list of Permission information. \n"
         "400":
           content:
@@ -4457,7 +4458,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Group'
+                $ref: '#/components/schemas/Groups'
           description: "Inserted or updated list of Group information. \n"
         "400":
           content:
@@ -5148,7 +5149,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/Users'
           description: "Inserted or updated list of User information. \n"
         "400":
           content:
@@ -6761,7 +6762,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UserExternal'
+                $ref: '#/components/schemas/UserExternals'
           description: "Inserted or updated list of UserExternal information. \n"
         "400":
           content:
@@ -12143,6 +12144,7 @@ components:
           Name: Bob Normal
         NotifyBySMS: false
         Name: Name
+        EmailVerified: false
         TenantId:
           Type: User
           ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
@@ -12151,6 +12153,7 @@ components:
         Is_Active: false
         Username: Username
         Phone: Phone
+        PhoneVerified: false
         DateFormatId:
           Type: User
           ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
@@ -12183,9 +12186,19 @@ components:
           description: The phone number of account. The phone number is unique in
             the system
           type: string
+        PhoneVerified:
+          default: false
+          description: Indicates whether the phone number has been verified.
+          example: false
+          type: boolean
         Email:
           description: The e-mail of account. The email is unique in the system
           type: string
+        EmailVerified:
+          default: false
+          description: Indicates whether the email address has been verified.
+          example: false
+          type: boolean
         LanguageId:
           $ref: '#/components/schemas/AbstractText'
         TimezoneId:
@@ -12326,6 +12339,7 @@ components:
             Name: Bob Normal
           NotifyBySMS: false
           Name: Name
+          EmailVerified: false
           TenantId:
             Type: User
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
@@ -12334,6 +12348,7 @@ components:
           Is_Active: false
           Username: Username
           Phone: Phone
+          PhoneVerified: false
           DateFormatId:
             Type: User
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
@@ -12359,6 +12374,7 @@ components:
             Name: Bob Normal
           NotifyBySMS: false
           Name: Name
+          EmailVerified: false
           TenantId:
             Type: User
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
@@ -12367,6 +12383,7 @@ components:
           Is_Active: false
           Username: Username
           Phone: Phone
+          PhoneVerified: false
           DateFormatId:
             Type: User
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
@@ -13050,32 +13067,33 @@ components:
     Tenant:
       description: The record of Tenant information.
       example:
-        TenantId:
+        Espace_Id:
           Type: User
           ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
           Id: 1234567891234567
           Name: Bob Normal
-        UserId:
-          Type: User
-          ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-          Id: 1234567891234567
-          Name: Bob Normal
-        CreatedOn: 1900-01-01T00:00:00Z
+        Is_Active: false
+        Id: 0
+        Name: Name
       properties:
-        UserId:
-          $ref: '#/components/schemas/AbstractLong'
-        TenantId:
-          $ref: '#/components/schemas/AbstractLong'
-        CreatedOn:
-          default: 1900-01-01T00:00:00Z
-          description: The date the record was created
-          example: 1900-01-01T00:00:00Z
-          format: date-time
+        Id:
+          default: 0
+          example: 0
+          format: int32
+          type: integer
+        Name:
           type: string
+        Espace_Id:
+          $ref: '#/components/schemas/AbstractLong'
+        Is_Active:
+          default: false
+          example: false
+          type: boolean
       required:
-      - CreatedOn
-      - TenantId
-      - UserId
+      - Espace_Id
+      - Id
+      - Is_Active
+      - Name
       type: object
     Tenants:
       description: The list of `Tenant` records
@@ -13086,28 +13104,22 @@ components:
           CurrentPage: 50
           TotalItems: 1000
         Data:
-        - TenantId:
+        - Espace_Id:
             Type: User
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Id: 1234567891234567
             Name: Bob Normal
-          UserId:
+          Is_Active: false
+          Id: 0
+          Name: Name
+        - Espace_Id:
             Type: User
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Id: 1234567891234567
             Name: Bob Normal
-          CreatedOn: 1900-01-01T00:00:00Z
-        - TenantId:
-            Type: User
-            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-            Id: 1234567891234567
-            Name: Bob Normal
-          UserId:
-            Type: User
-            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-            Id: 1234567891234567
-            Name: Bob Normal
-          CreatedOn: 1900-01-01T00:00:00Z
+          Is_Active: false
+          Id: 0
+          Name: Name
       properties:
         Meta:
           $ref: '#/components/schemas/Meta'

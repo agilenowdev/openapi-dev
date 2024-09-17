@@ -229,7 +229,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>UserExternal</returns>
+        /// <returns>UserExternals</returns>
         UserExternals PatchGroupExternalUserExternals(string id, UserExternalsData userExternalsData, string name = default, string deleteNotExists = default, int operationIndex = 0);
 
         /// <summary>
@@ -244,7 +244,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of UserExternal</returns>
+        /// <returns>ApiResponse of UserExternals</returns>
         ApiResponse<UserExternals> PatchGroupExternalUserExternalsWithHttpInfo(string id, UserExternalsData userExternalsData, string name = default, string deleteNotExists = default, int operationIndex = 0);
         /// <summary>
         /// 
@@ -548,8 +548,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of UserExternal</returns>
-        System.Threading.Tasks.Task<UserExternal> PatchGroupExternalUserExternalsAsync(string id, UserExternalsData userExternalsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of UserExternals</returns>
+        System.Threading.Tasks.Task<UserExternals> PatchGroupExternalUserExternalsAsync(string id, UserExternalsData userExternalsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -564,8 +564,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (UserExternal)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UserExternal>> PatchGroupExternalUserExternalsWithHttpInfoAsync(string id, UserExternalsData userExternalsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (UserExternals)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UserExternals>> PatchGroupExternalUserExternalsWithHttpInfoAsync(string id, UserExternalsData userExternalsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -2001,7 +2001,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>UserExternal</returns>
+        /// <returns>UserExternals</returns>
         public UserExternals PatchGroupExternalUserExternals(string id, UserExternalsData userExternalsData, string name = default, string deleteNotExists = default, int operationIndex = 0)
         {
             ApiResponse<UserExternals> localVarResponse = PatchGroupExternalUserExternalsWithHttpInfo(id, userExternalsData, name, deleteNotExists);
@@ -2017,7 +2017,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of UserExternal</returns>
+        /// <returns>ApiResponse of UserExternals</returns>
         public ApiResponse<UserExternals> PatchGroupExternalUserExternalsWithHttpInfo(string id, UserExternalsData userExternalsData, string name = default, string deleteNotExists = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
@@ -2104,10 +2104,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of UserExternal</returns>
-        public async System.Threading.Tasks.Task<UserExternal> PatchGroupExternalUserExternalsAsync(string id, UserExternalsData userExternalsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of UserExternals</returns>
+        public async System.Threading.Tasks.Task<UserExternals> PatchGroupExternalUserExternalsAsync(string id, UserExternalsData userExternalsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            ApiResponse<UserExternal> localVarResponse = await PatchGroupExternalUserExternalsWithHttpInfoAsync(id, userExternalsData, name, deleteNotExists, operationIndex, cancellationToken).ConfigureAwait(false);
+            ApiResponse<UserExternals> localVarResponse = await PatchGroupExternalUserExternalsWithHttpInfoAsync(id, userExternalsData, name, deleteNotExists, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2121,8 +2121,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (UserExternal)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<UserExternal>> PatchGroupExternalUserExternalsWithHttpInfoAsync(string id, UserExternalsData userExternalsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (UserExternals)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<UserExternals>> PatchGroupExternalUserExternalsWithHttpInfoAsync(string id, UserExternalsData userExternalsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling GroupExternalsApi->PatchGroupExternalUserExternals");
@@ -2186,7 +2186,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await AsynchronousClient.PatchAsync<UserExternal>("/Endpoint/rest/api/v1/GroupExternal/{Id}/UserExternals", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await AsynchronousClient.PatchAsync<UserExternals>("/Endpoint/rest/api/v1/GroupExternal/{Id}/UserExternals", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
             if (ExceptionFactory != null)
             {

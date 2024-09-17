@@ -11,7 +11,9 @@ Name | Type | Description | Notes
 **FirstName** | **string** | Person&#39;s first name | 
 **LastName** | **string** | Person&#39;s last name | 
 **Phone** | **string** | The phone number of account. The phone number is unique in the system | [optional] 
+**PhoneVerified** | **bool** | Indicates whether the phone number has been verified. | [optional] [default to false]
 **Email** | **string** | The e-mail of account. The email is unique in the system | 
+**EmailVerified** | **bool** | Indicates whether the email address has been verified. | [optional] [default to false]
 **LanguageId** | [**AbstractText**](AbstractText.md) | The AbstractText object structure | [optional] 
 **TimezoneId** | [**AbstractText**](AbstractText.md) | The AbstractText object structure | [optional] 
 **DateFormatId** | [**AbstractText**](AbstractText.md) | The AbstractText object structure | [optional] 

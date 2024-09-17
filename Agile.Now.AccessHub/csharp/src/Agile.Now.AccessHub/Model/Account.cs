@@ -66,7 +66,9 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="firstName">Person's first name (required).</param>
         /// <param name="lastName">Person's last name (required).</param>
         /// <param name="phone">The phone number of account. The phone number is unique in the system.</param>
+        /// <param name="phoneVerified">Indicates whether the phone number has been verified. (default to false).</param>
         /// <param name="email">The e-mail of account. The email is unique in the system (required).</param>
+        /// <param name="emailVerified">Indicates whether the email address has been verified. (default to false).</param>
         /// <param name="languageId">languageId.</param>
         /// <param name="timezoneId">timezoneId.</param>
         /// <param name="dateFormatId">dateFormatId.</param>
@@ -77,7 +79,7 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="isActive">Defines if the account is active and can be used (default to false).</param>
         /// <param name="modifiedOn">The date the record was updated (default to &quot;1900-01-01T00:00Z&quot;).</param>
         /// <param name="createdOn">The date the record was created (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public Account(string id = default, AbstractLong tenantId = default, string name = default, string firstName = default, string lastName = default, string phone = default, string email = default, AbstractText languageId = default, AbstractText timezoneId = default, AbstractText dateFormatId = default, string username = default, string externalId = default, bool notifyByEmail = false, bool notifyBySMS = false, bool isActive = false, DateTime modifiedOn = default, DateTime createdOn = default)
+        public Account(string id = default, AbstractLong tenantId = default, string name = default, string firstName = default, string lastName = default, string phone = default, bool phoneVerified = false, string email = default, bool emailVerified = false, AbstractText languageId = default, AbstractText timezoneId = default, AbstractText dateFormatId = default, string username = default, string externalId = default, bool notifyByEmail = false, bool notifyBySMS = false, bool isActive = false, DateTime modifiedOn = default, DateTime createdOn = default)
         {
             // to ensure "id" is required (not null)
             id = id ?? throw new ArgumentNullException("id is a required property for Account and cannot be null");
@@ -97,6 +99,8 @@ namespace Agile.Now.AccessHub.Model
             TenantId = tenantId;
             Name = name;
             Phone = phone;
+            PhoneVerified = phoneVerified;
+            EmailVerified = emailVerified;
             LanguageId = languageId;
             TimezoneId = timezoneId;
             DateFormatId = dateFormatId;
@@ -150,11 +154,27 @@ namespace Agile.Now.AccessHub.Model
         public string Phone { get; set; }
 
         /// <summary>
+        /// Indicates whether the phone number has been verified.
+        /// </summary>
+        /// <value>Indicates whether the phone number has been verified.</value>
+        /// <example>false</example>
+        [DataMember(Name = "PhoneVerified", EmitDefaultValue = true)]
+        public bool PhoneVerified { get; set; }
+
+        /// <summary>
         /// The e-mail of account. The email is unique in the system
         /// </summary>
         /// <value>The e-mail of account. The email is unique in the system</value>
         [DataMember(Name = "Email", IsRequired = true, EmitDefaultValue = true)]
         public string Email { get; set; }
+
+        /// <summary>
+        /// Indicates whether the email address has been verified.
+        /// </summary>
+        /// <value>Indicates whether the email address has been verified.</value>
+        /// <example>false</example>
+        [DataMember(Name = "EmailVerified", EmitDefaultValue = true)]
+        public bool EmailVerified { get; set; }
 
         /// <summary>
         /// Gets or Sets LanguageId
@@ -242,7 +262,9 @@ namespace Agile.Now.AccessHub.Model
             sb.Append("  FirstName: ").Append(FirstName).Append("\n");
             sb.Append("  LastName: ").Append(LastName).Append("\n");
             sb.Append("  Phone: ").Append(Phone).Append("\n");
+            sb.Append("  PhoneVerified: ").Append(PhoneVerified).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
+            sb.Append("  EmailVerified: ").Append(EmailVerified).Append("\n");
             sb.Append("  LanguageId: ").Append(LanguageId).Append("\n");
             sb.Append("  TimezoneId: ").Append(TimezoneId).Append("\n");
             sb.Append("  DateFormatId: ").Append(DateFormatId).Append("\n");

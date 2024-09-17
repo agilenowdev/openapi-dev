@@ -60,39 +60,47 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Tenant" /> class.
         /// </summary>
-        /// <param name="userId">userId (required).</param>
-        /// <param name="tenantId">tenantId (required).</param>
-        /// <param name="createdOn">The date the record was created (required) (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public Tenant(AbstractLong userId = default, AbstractLong tenantId = default, DateTime createdOn = default)
+        /// <param name="id">id (required) (default to 0).</param>
+        /// <param name="name">name (required).</param>
+        /// <param name="espaceId">espaceId (required).</param>
+        /// <param name="isActive">isActive (required) (default to false).</param>
+        public Tenant(int id = 0, string name = default, AbstractLong espaceId = default, bool isActive = false)
         {
-            // to ensure "userId" is required (not null)
-            userId = userId ?? throw new ArgumentNullException("userId is a required property for Tenant and cannot be null");
-            UserId = userId;
-            // to ensure "tenantId" is required (not null)
-            tenantId = tenantId ?? throw new ArgumentNullException("tenantId is a required property for Tenant and cannot be null");
-            TenantId = tenantId;
-            CreatedOn = createdOn;
+            Id = id;
+            // to ensure "name" is required (not null)
+            name = name ?? throw new ArgumentNullException("name is a required property for Tenant and cannot be null");
+            Name = name;
+            // to ensure "espaceId" is required (not null)
+            espaceId = espaceId ?? throw new ArgumentNullException("espaceId is a required property for Tenant and cannot be null");
+            EspaceId = espaceId;
+            IsActive = isActive;
         }
 
         /// <summary>
-        /// Gets or Sets UserId
+        /// Gets or Sets Id
         /// </summary>
-        [DataMember(Name = "UserId", IsRequired = true, EmitDefaultValue = true)]
-        public AbstractLong UserId { get; set; }
+        /// <example>0</example>
+        [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
+        public int Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets TenantId
+        /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name = "TenantId", IsRequired = true, EmitDefaultValue = true)]
-        public AbstractLong TenantId { get; set; }
+        [DataMember(Name = "Name", IsRequired = true, EmitDefaultValue = true)]
+        public string Name { get; set; }
 
         /// <summary>
-        /// The date the record was created
+        /// Gets or Sets EspaceId
         /// </summary>
-        /// <value>The date the record was created</value>
-        /// <example>1900-01-01T00:00Z</example>
-        [DataMember(Name = "CreatedOn", IsRequired = true, EmitDefaultValue = true)]
-        public DateTime CreatedOn { get; set; }
+        [DataMember(Name = "Espace_Id", IsRequired = true, EmitDefaultValue = true)]
+        public AbstractLong EspaceId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets IsActive
+        /// </summary>
+        /// <example>false</example>
+        [DataMember(Name = "Is_Active", IsRequired = true, EmitDefaultValue = true)]
+        public bool IsActive { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -102,9 +110,10 @@ namespace Agile.Now.AccessHub.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class Tenant {\n");
-            sb.Append("  UserId: ").Append(UserId).Append("\n");
-            sb.Append("  TenantId: ").Append(TenantId).Append("\n");
-            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  EspaceId: ").Append(EspaceId).Append("\n");
+            sb.Append("  IsActive: ").Append(IsActive).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

@@ -256,10 +256,10 @@
           {
             "name": "Fields",
             "in": "query",
-            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, TenantId, Name, FirstName, LastName, Phone, Email, LanguageId, TimezoneId, DateFormatId, Username, ExternalId, NotifyByEmail, NotifyBySMS, Is_Active, ModifiedOn, CreatedOn\n```",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, TenantId, Name, FirstName, LastName, Phone, PhoneVerified, Email, EmailVerified, LanguageId, TimezoneId, DateFormatId, Username, ExternalId, NotifyByEmail, NotifyBySMS, Is_Active, ModifiedOn, CreatedOn\n```",
             "schema": {
               "type": "string",
-              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, TenantId, Name, FirstName, LastName, Phone, Email, LanguageId, TimezoneId, DateFormatId, Username, ExternalId, NotifyByEmail, NotifyBySMS, Is_Active, ModifiedOn, CreatedOn\n```"
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, TenantId, Name, FirstName, LastName, Phone, PhoneVerified, Email, EmailVerified, LanguageId, TimezoneId, DateFormatId, Username, ExternalId, NotifyByEmail, NotifyBySMS, Is_Active, ModifiedOn, CreatedOn\n```"
             }
           },
           {
@@ -1528,7 +1528,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Application"
+                  "$ref": "#/components/schemas/Applications"
                 }
               }
             }
@@ -1876,7 +1876,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Permission"
+                  "$ref": "#/components/schemas/Permissions"
                 }
               }
             }
@@ -2224,7 +2224,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Group"
+                  "$ref": "#/components/schemas/Groups"
                 }
               }
             }
@@ -2572,7 +2572,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User"
+                  "$ref": "#/components/schemas/Users"
                 }
               }
             }
@@ -3363,7 +3363,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UserExternal"
+                  "$ref": "#/components/schemas/UserExternals"
                 }
               }
             }
@@ -6000,9 +6000,21 @@
             "type": "string",
             "description": "The phone number of account. The phone number is unique in the system"
           },
+          "PhoneVerified": {
+            "type": "boolean",
+            "description": "Indicates whether the phone number has been verified.",
+            "default": false,
+            "example": false
+          },
           "Email": {
             "type": "string",
             "description": "The e-mail of account. The email is unique in the system"
+          },
+          "EmailVerified": {
+            "type": "boolean",
+            "description": "Indicates whether the email address has been verified.",
+            "default": false,
+            "example": false
           },
           "LanguageId": {
             "$ref": "#/components/schemas/AbstractText"
@@ -7022,24 +7034,29 @@
       },
       "Tenant": {
         "required": [
-          "UserId",
-          "TenantId",
-          "CreatedOn"
+          "Id",
+          "Name",
+          "Espace_Id",
+          "Is_Active"
         ],
         "type": "object",
         "properties": {
-          "UserId": {
+          "Id": {
+            "type": "integer",
+            "format": "int32",
+            "default": 0,
+            "example": 0
+          },
+          "Name": {
+            "type": "string"
+          },
+          "Espace_Id": {
             "$ref": "#/components/schemas/AbstractLong"
           },
-          "TenantId": {
-            "$ref": "#/components/schemas/AbstractLong"
-          },
-          "CreatedOn": {
-            "type": "string",
-            "description": "The date the record was created",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
+          "Is_Active": {
+            "type": "boolean",
+            "default": false,
+            "example": false
           }
         },
         "description": "The record of Tenant information."

@@ -1772,7 +1772,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Department'
+                $ref: '#/components/schemas/Departments'
           description: "Inserted or updated list of Department information. \n"
         "400":
           content:
@@ -2463,7 +2463,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Location'
+                $ref: '#/components/schemas/Locations'
           description: "Inserted or updated list of Location information. \n"
         "400":
           content:
@@ -4412,81 +4412,84 @@ components:
     Application:
       description: The record of Application information.
       example:
-        Delete: false
-        Import: false
-        AccessGroupTypeId:
+        ApplicationKey: ApplicationKey
+        Description: Description
+        ModifiedOn: 1900-01-01T00:00:00Z
+        ExternalId: ExternalId
+        Is_ReadOnly: false
+        AuthenticationId:
           Type: User
           ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
           Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
           Name: Bob Normal
-        Generic: false
-        Update: false
-        RoleId:
+        Name: Name
+        Is_Active: false
+        Is_TestApp: false
+        WebSiteURL: WebSiteURL
+        Is_System: false
+        Is_EndUser: false
+        Id: Id
+        CreatedOn: 1900-01-01T00:00:00Z
+        ApplicationId:
           Type: User
           ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
           Id: 1234567891234567
           Name: Bob Normal
-        Read: false
-        Details: false
-        Create: false
-        AccessRoleId:
-          Type: User
-          ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-          Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-          Name: Bob Normal
-        Export: false
-        Id: Id
-        CreatedOn: 1900-01-01T00:00:00Z
       properties:
         Id:
-          description: The identifier of entity
+          description: The identifier of the access application
           type: string
-        AccessRoleId:
-          $ref: '#/components/schemas/AbstractText'
-        RoleId:
+        ApplicationId:
           $ref: '#/components/schemas/AbstractLong'
-        AccessGroupTypeId:
+        Name:
+          description: Name of application
+          type: string
+        ApplicationKey:
+          description: The key used to identify the application must be unique within
+            each workspace.
+          type: string
+        ExternalId:
+          description: The external system code of the application
+          type: string
+        Description:
+          description: The description of access group
+          type: string
+        WebSiteURL:
+          description: Web Site URL of application
+          type: string
+        Is_System:
+          default: false
+          description: Defines if application is system (setting menu)
+          example: false
+          type: boolean
+        Is_EndUser:
+          default: false
+          description: Specifies whether the application is an end-user application
+          example: false
+          type: boolean
+        Is_TestApp:
+          default: false
+          description: Specifies whether the application is a test application
+          example: false
+          type: boolean
+        Is_Active:
+          default: false
+          description: Defines if the application is active and can be used
+          example: false
+          type: boolean
+        Is_ReadOnly:
+          default: false
+          description: Determines whether the application is readonly and can be modified
+          example: false
+          type: boolean
+        AuthenticationId:
           $ref: '#/components/schemas/AbstractText'
-        Create:
-          default: false
-          description: Create access of role
-          example: false
-          type: boolean
-        Read:
-          default: false
-          description: Read access of role
-          example: false
-          type: boolean
-        Update:
-          default: false
-          description: Update access of role
-          example: false
-          type: boolean
-        Delete:
-          default: false
-          description: Delete access of role
-          example: false
-          type: boolean
-        Details:
-          default: false
-          description: Details access of role
-          example: false
-          type: boolean
-        Export:
-          default: false
-          description: Export access of role
-          example: false
-          type: boolean
-        Import:
-          default: false
-          description: Import access of role
-          example: false
-          type: boolean
-        Generic:
-          default: false
-          description: Generic access without CRUD of role
-          example: false
-          type: boolean
+        ModifiedOn:
+          default: 1900-01-01T00:00:00Z
+          description: The date the record was updated
+          example: 1900-01-01T00:00:00Z
+          format: date-time
+          type: string
         CreatedOn:
           default: 1900-01-01T00:00:00Z
           description: The date the record was created
@@ -4494,8 +4497,9 @@ components:
           format: date-time
           type: string
       required:
-      - AccessRoleId
       - Id
+      - Is_Active
+      - Is_ReadOnly
       type: object
     Applications:
       description: The list of `Application` records
@@ -4506,56 +4510,52 @@ components:
           CurrentPage: 50
           TotalItems: 1000
         Data:
-        - Delete: false
-          Import: false
-          AccessGroupTypeId:
+        - ApplicationKey: ApplicationKey
+          Description: Description
+          ModifiedOn: 1900-01-01T00:00:00Z
+          ExternalId: ExternalId
+          Is_ReadOnly: false
+          AuthenticationId:
             Type: User
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Name: Bob Normal
-          Generic: false
-          Update: false
-          RoleId:
+          Name: Name
+          Is_Active: false
+          Is_TestApp: false
+          WebSiteURL: WebSiteURL
+          Is_System: false
+          Is_EndUser: false
+          Id: Id
+          CreatedOn: 1900-01-01T00:00:00Z
+          ApplicationId:
             Type: User
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Id: 1234567891234567
             Name: Bob Normal
-          Read: false
-          Details: false
-          Create: false
-          AccessRoleId:
+        - ApplicationKey: ApplicationKey
+          Description: Description
+          ModifiedOn: 1900-01-01T00:00:00Z
+          ExternalId: ExternalId
+          Is_ReadOnly: false
+          AuthenticationId:
             Type: User
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Name: Bob Normal
-          Export: false
+          Name: Name
+          Is_Active: false
+          Is_TestApp: false
+          WebSiteURL: WebSiteURL
+          Is_System: false
+          Is_EndUser: false
           Id: Id
           CreatedOn: 1900-01-01T00:00:00Z
-        - Delete: false
-          Import: false
-          AccessGroupTypeId:
-            Type: User
-            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-            Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-            Name: Bob Normal
-          Generic: false
-          Update: false
-          RoleId:
+          ApplicationId:
             Type: User
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Id: 1234567891234567
             Name: Bob Normal
-          Read: false
-          Details: false
-          Create: false
-          AccessRoleId:
-            Type: User
-            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-            Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-            Name: Bob Normal
-          Export: false
-          Id: Id
-          CreatedOn: 1900-01-01T00:00:00Z
       properties:
         Meta:
           $ref: '#/components/schemas/Meta'
@@ -4568,81 +4568,88 @@ components:
     AccessRole:
       description: The record of AccessRole information.
       example:
-        Delete: false
-        Import: false
-        AccessGroupTypeId:
-          Type: User
-          ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-          Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-          Name: Bob Normal
-        Generic: false
-        Update: false
+        RoleKey: RoleKey
+        Description: Description
+        ModifiedOn: 1900-01-01T00:00:00Z
+        ExternalId: ExternalId
+        Is_ReadOnly: false
         RoleId:
           Type: User
           ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
           Id: 1234567891234567
           Name: Bob Normal
-        Read: false
-        Details: false
-        Create: false
-        AccessRoleId:
+        Name: Name
+        Is_Custom: false
+        AccessApplicationId:
           Type: User
           ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
           Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
           Name: Bob Normal
-        Export: false
+        Is_Active: false
+        FullName: FullName
         Id: Id
         CreatedOn: 1900-01-01T00:00:00Z
+        ApplicationId:
+          Type: User
+          ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+          Id: 1234567891234567
+          Name: Bob Normal
+        EspaceId:
+          Type: User
+          ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+          Id: 1234567891234567
+          Name: Bob Normal
       properties:
         Id:
-          description: The identifier of entity
+          description: The identifier of the role
           type: string
-        AccessRoleId:
+        Name:
+          description: Name of role
+          type: string
+        RoleKey:
+          description: ' The key used to identify the role must be unique within each
+            workspace.'
+          type: string
+        FullName:
+          description: Full name of role. Example Application 1 \ Espace 1 \ Role
+            1
+          type: string
+        Description:
+          description: The description of access group
+          type: string
+        ExternalId:
+          description: The external system code of the role
+          type: string
+        AccessApplicationId:
           $ref: '#/components/schemas/AbstractText'
         RoleId:
           $ref: '#/components/schemas/AbstractLong'
-        AccessGroupTypeId:
-          $ref: '#/components/schemas/AbstractText'
-        Create:
+        ApplicationId:
+          $ref: '#/components/schemas/AbstractLong'
+        EspaceId:
+          $ref: '#/components/schemas/AbstractLong'
+        Is_Active:
           default: false
-          description: Create access of role
+          description: Defines if record is active
           example: false
           type: boolean
-        Read:
+        Is_Custom:
           default: false
-          description: Read access of role
+          description: Determines whether the role has been modified externally or
+            whether it is synchronized from the OutSystems structure
           example: false
           type: boolean
-        Update:
+        Is_ReadOnly:
           default: false
-          description: Update access of role
+          description: Determines whether the role is readonly and can be modified
           example: false
           type: boolean
-        Delete:
-          default: false
-          description: Delete access of role
-          example: false
-          type: boolean
-        Details:
-          default: false
-          description: Details access of role
-          example: false
-          type: boolean
-        Export:
-          default: false
-          description: Export access of role
-          example: false
-          type: boolean
-        Import:
-          default: false
-          description: Import access of role
-          example: false
-          type: boolean
-        Generic:
-          default: false
-          description: Generic access without CRUD of role
-          example: false
-          type: boolean
+        ModifiedOn:
+          default: 1900-01-01T00:00:00Z
+          description: The date the record was updated
+          example: 1900-01-01T00:00:00Z
+          format: date-time
+          type: string
         CreatedOn:
           default: 1900-01-01T00:00:00Z
           description: The date the record was created
@@ -4650,8 +4657,9 @@ components:
           format: date-time
           type: string
       required:
-      - AccessRoleId
       - Id
+      - Is_ReadOnly
+      - RoleKey
       type: object
     AccessRoles:
       description: The list of `AccessRole` records
@@ -4662,56 +4670,68 @@ components:
           CurrentPage: 50
           TotalItems: 1000
         Data:
-        - Delete: false
-          Import: false
-          AccessGroupTypeId:
-            Type: User
-            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-            Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-            Name: Bob Normal
-          Generic: false
-          Update: false
+        - RoleKey: RoleKey
+          Description: Description
+          ModifiedOn: 1900-01-01T00:00:00Z
+          ExternalId: ExternalId
+          Is_ReadOnly: false
           RoleId:
             Type: User
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Id: 1234567891234567
             Name: Bob Normal
-          Read: false
-          Details: false
-          Create: false
-          AccessRoleId:
+          Name: Name
+          Is_Custom: false
+          AccessApplicationId:
             Type: User
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Name: Bob Normal
-          Export: false
+          Is_Active: false
+          FullName: FullName
           Id: Id
           CreatedOn: 1900-01-01T00:00:00Z
-        - Delete: false
-          Import: false
-          AccessGroupTypeId:
+          ApplicationId:
             Type: User
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-            Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Id: 1234567891234567
             Name: Bob Normal
-          Generic: false
-          Update: false
+          EspaceId:
+            Type: User
+            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Id: 1234567891234567
+            Name: Bob Normal
+        - RoleKey: RoleKey
+          Description: Description
+          ModifiedOn: 1900-01-01T00:00:00Z
+          ExternalId: ExternalId
+          Is_ReadOnly: false
           RoleId:
             Type: User
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Id: 1234567891234567
             Name: Bob Normal
-          Read: false
-          Details: false
-          Create: false
-          AccessRoleId:
+          Name: Name
+          Is_Custom: false
+          AccessApplicationId:
             Type: User
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Name: Bob Normal
-          Export: false
+          Is_Active: false
+          FullName: FullName
           Id: Id
           CreatedOn: 1900-01-01T00:00:00Z
+          ApplicationId:
+            Type: User
+            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Id: 1234567891234567
+            Name: Bob Normal
+          EspaceId:
+            Type: User
+            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Id: 1234567891234567
+            Name: Bob Normal
       properties:
         Meta:
           $ref: '#/components/schemas/Meta'

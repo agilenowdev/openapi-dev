@@ -1529,7 +1529,7 @@ catch (ApiException e)
 
 <a id="patchaccessgroupapplications"></a>
 # **PatchAccessGroupApplications**
-> Application PatchAccessGroupApplications (string id, ApplicationsData applicationsData, string name = null, string deleteNotExists = null)
+> Applications PatchAccessGroupApplications (string id, ApplicationsData applicationsData, string name = null, string deleteNotExists = null)
 
 Use the `ApplicationsData` object resource to insert or update (Upsert) a list of `ApplicationData` using `Id` field(s) value.
 
@@ -1576,7 +1576,7 @@ namespace Example
 
             try
             {
-                Application result = apiInstance.PatchAccessGroupApplications(id, applicationsData, name, deleteNotExists);
+                Applications result = apiInstance.PatchAccessGroupApplications(id, applicationsData, name, deleteNotExists);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1602,7 +1602,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<Application> response = apiInstance.PatchAccessGroupApplicationsWithHttpInfo(id, applicationsData, name, deleteNotExists);
+    ApiResponse<Applications> response = apiInstance.PatchAccessGroupApplicationsWithHttpInfo(id, applicationsData, name, deleteNotExists);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -1632,7 +1632,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**Application**](models/Application.md)
+[**Applications**](models/Applications.md)
 
 ### Authorization
 
@@ -1657,7 +1657,7 @@ catch (ApiException e)
 
 <a id="patchaccessgroupgroups"></a>
 # **PatchAccessGroupGroups**
-> Group PatchAccessGroupGroups (string id, GroupsData groupsData, string name = null, string deleteNotExists = null)
+> Groups PatchAccessGroupGroups (string id, GroupsData groupsData, string name = null, string deleteNotExists = null)
 
 Use the `GroupsData` object resource to insert or update (Upsert) a list of `GroupData` using `Id` field(s) value.
 
@@ -1704,7 +1704,7 @@ namespace Example
 
             try
             {
-                Group result = apiInstance.PatchAccessGroupGroups(id, groupsData, name, deleteNotExists);
+                Groups result = apiInstance.PatchAccessGroupGroups(id, groupsData, name, deleteNotExists);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1730,7 +1730,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<Group> response = apiInstance.PatchAccessGroupGroupsWithHttpInfo(id, groupsData, name, deleteNotExists);
+    ApiResponse<Groups> response = apiInstance.PatchAccessGroupGroupsWithHttpInfo(id, groupsData, name, deleteNotExists);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -1760,7 +1760,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**Group**](models/Group.md)
+[**Groups**](models/Groups.md)
 
 ### Authorization
 
@@ -1785,7 +1785,7 @@ catch (ApiException e)
 
 <a id="patchaccessgrouppermissions"></a>
 # **PatchAccessGroupPermissions**
-> Permission PatchAccessGroupPermissions (string id, PermissionsData permissionsData, string name = null, string deleteNotExists = null)
+> Permissions PatchAccessGroupPermissions (string id, PermissionsData permissionsData, string name = null, string deleteNotExists = null)
 
 Use the `PermissionsData` object resource to insert or update (Upsert) a list of `PermissionData` using `Id` field(s) value.
 
@@ -1832,7 +1832,7 @@ namespace Example
 
             try
             {
-                Permission result = apiInstance.PatchAccessGroupPermissions(id, permissionsData, name, deleteNotExists);
+                Permissions result = apiInstance.PatchAccessGroupPermissions(id, permissionsData, name, deleteNotExists);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1858,7 +1858,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<Permission> response = apiInstance.PatchAccessGroupPermissionsWithHttpInfo(id, permissionsData, name, deleteNotExists);
+    ApiResponse<Permissions> response = apiInstance.PatchAccessGroupPermissionsWithHttpInfo(id, permissionsData, name, deleteNotExists);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -1888,7 +1888,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**Permission**](models/Permission.md)
+[**Permissions**](models/Permissions.md)
 
 ### Authorization
 
@@ -1913,7 +1913,7 @@ catch (ApiException e)
 
 <a id="patchaccessgroupusers"></a>
 # **PatchAccessGroupUsers**
-> User PatchAccessGroupUsers (string id, UsersData usersData, string name = null, string deleteNotExists = null)
+> Users PatchAccessGroupUsers (string id, UsersData usersData, string name = null, string deleteNotExists = null)
 
 Use the `UsersData` object resource to insert or update (Upsert) a list of `UserData` using `Id` field(s) value.
 
@@ -1960,7 +1960,7 @@ namespace Example
 
             try
             {
-                User result = apiInstance.PatchAccessGroupUsers(id, usersData, name, deleteNotExists);
+                Users result = apiInstance.PatchAccessGroupUsers(id, usersData, name, deleteNotExists);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1986,7 +1986,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<User> response = apiInstance.PatchAccessGroupUsersWithHttpInfo(id, usersData, name, deleteNotExists);
+    ApiResponse<Users> response = apiInstance.PatchAccessGroupUsersWithHttpInfo(id, usersData, name, deleteNotExists);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -2016,7 +2016,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**User**](models/User.md)
+[**Users**](models/Users.md)
 
 ### Authorization
 

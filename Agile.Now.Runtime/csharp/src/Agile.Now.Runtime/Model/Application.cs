@@ -60,128 +60,143 @@ namespace Agile.Now.Runtime.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Application" /> class.
         /// </summary>
-        /// <param name="id">The identifier of entity (required).</param>
-        /// <param name="accessRoleId">accessRoleId (required).</param>
-        /// <param name="roleId">roleId.</param>
-        /// <param name="accessGroupTypeId">accessGroupTypeId.</param>
-        /// <param name="create">Create access of role (default to false).</param>
-        /// <param name="read">Read access of role (default to false).</param>
-        /// <param name="update">Update access of role (default to false).</param>
-        /// <param name="delete">Delete access of role (default to false).</param>
-        /// <param name="details">Details access of role (default to false).</param>
-        /// <param name="export">Export access of role (default to false).</param>
-        /// <param name="import">Import access of role (default to false).</param>
-        /// <param name="generic">Generic access without CRUD of role (default to false).</param>
+        /// <param name="id">The identifier of the access application (required).</param>
+        /// <param name="applicationId">applicationId.</param>
+        /// <param name="name">Name of application.</param>
+        /// <param name="applicationKey">The key used to identify the application must be unique within each workspace..</param>
+        /// <param name="externalId">The external system code of the application.</param>
+        /// <param name="description">The description of access group.</param>
+        /// <param name="webSiteURL">Web Site URL of application.</param>
+        /// <param name="isSystem">Defines if application is system (setting menu) (default to false).</param>
+        /// <param name="isEndUser">Specifies whether the application is an end-user application (default to false).</param>
+        /// <param name="isTestApp">Specifies whether the application is a test application (default to false).</param>
+        /// <param name="isActive">Defines if the application is active and can be used (required) (default to false).</param>
+        /// <param name="isReadOnly">Determines whether the application is readonly and can be modified (required) (default to false).</param>
+        /// <param name="authenticationId">authenticationId.</param>
+        /// <param name="modifiedOn">The date the record was updated (default to &quot;1900-01-01T00:00Z&quot;).</param>
         /// <param name="createdOn">The date the record was created (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public Application(string id = default, AbstractText accessRoleId = default, AbstractLong roleId = default, AbstractText accessGroupTypeId = default, bool create = false, bool read = false, bool update = false, bool delete = false, bool details = false, bool export = false, bool import = false, bool generic = false, DateTime createdOn = default)
+        public Application(string id = default, AbstractLong applicationId = default, string name = default, string applicationKey = default, string externalId = default, string description = default, string webSiteURL = default, bool isSystem = false, bool isEndUser = false, bool isTestApp = false, bool isActive = false, bool isReadOnly = false, AbstractText authenticationId = default, DateTime modifiedOn = default, DateTime createdOn = default)
         {
             // to ensure "id" is required (not null)
             id = id ?? throw new ArgumentNullException("id is a required property for Application and cannot be null");
             Id = id;
-            // to ensure "accessRoleId" is required (not null)
-            accessRoleId = accessRoleId ?? throw new ArgumentNullException("accessRoleId is a required property for Application and cannot be null");
-            AccessRoleId = accessRoleId;
-            RoleId = roleId;
-            AccessGroupTypeId = accessGroupTypeId;
-            Create = create;
-            Read = read;
-            Update = update;
-            Delete = delete;
-            Details = details;
-            Export = export;
-            Import = import;
-            Generic = generic;
+            IsActive = isActive;
+            IsReadOnly = isReadOnly;
+            ApplicationId = applicationId;
+            Name = name;
+            ApplicationKey = applicationKey;
+            ExternalId = externalId;
+            Description = description;
+            WebSiteURL = webSiteURL;
+            IsSystem = isSystem;
+            IsEndUser = isEndUser;
+            IsTestApp = isTestApp;
+            AuthenticationId = authenticationId;
+            ModifiedOn = modifiedOn;
             CreatedOn = createdOn;
         }
 
         /// <summary>
-        /// The identifier of entity
+        /// The identifier of the access application
         /// </summary>
-        /// <value>The identifier of entity</value>
+        /// <value>The identifier of the access application</value>
         [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets AccessRoleId
+        /// Gets or Sets ApplicationId
         /// </summary>
-        [DataMember(Name = "AccessRoleId", IsRequired = true, EmitDefaultValue = true)]
-        public AbstractText AccessRoleId { get; set; }
+        [DataMember(Name = "ApplicationId", EmitDefaultValue = false)]
+        public AbstractLong ApplicationId { get; set; }
 
         /// <summary>
-        /// Gets or Sets RoleId
+        /// Name of application
         /// </summary>
-        [DataMember(Name = "RoleId", EmitDefaultValue = false)]
-        public AbstractLong RoleId { get; set; }
+        /// <value>Name of application</value>
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
+        public string Name { get; set; }
 
         /// <summary>
-        /// Gets or Sets AccessGroupTypeId
+        /// The key used to identify the application must be unique within each workspace.
         /// </summary>
-        [DataMember(Name = "AccessGroupTypeId", EmitDefaultValue = false)]
-        public AbstractText AccessGroupTypeId { get; set; }
+        /// <value>The key used to identify the application must be unique within each workspace.</value>
+        [DataMember(Name = "ApplicationKey", EmitDefaultValue = false)]
+        public string ApplicationKey { get; set; }
 
         /// <summary>
-        /// Create access of role
+        /// The external system code of the application
         /// </summary>
-        /// <value>Create access of role</value>
+        /// <value>The external system code of the application</value>
+        [DataMember(Name = "ExternalId", EmitDefaultValue = false)]
+        public string ExternalId { get; set; }
+
+        /// <summary>
+        /// The description of access group
+        /// </summary>
+        /// <value>The description of access group</value>
+        [DataMember(Name = "Description", EmitDefaultValue = false)]
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Web Site URL of application
+        /// </summary>
+        /// <value>Web Site URL of application</value>
+        [DataMember(Name = "WebSiteURL", EmitDefaultValue = false)]
+        public string WebSiteURL { get; set; }
+
+        /// <summary>
+        /// Defines if application is system (setting menu)
+        /// </summary>
+        /// <value>Defines if application is system (setting menu)</value>
         /// <example>false</example>
-        [DataMember(Name = "Create", EmitDefaultValue = true)]
-        public bool Create { get; set; }
+        [DataMember(Name = "Is_System", EmitDefaultValue = true)]
+        public bool IsSystem { get; set; }
 
         /// <summary>
-        /// Read access of role
+        /// Specifies whether the application is an end-user application
         /// </summary>
-        /// <value>Read access of role</value>
+        /// <value>Specifies whether the application is an end-user application</value>
         /// <example>false</example>
-        [DataMember(Name = "Read", EmitDefaultValue = true)]
-        public bool Read { get; set; }
+        [DataMember(Name = "Is_EndUser", EmitDefaultValue = true)]
+        public bool IsEndUser { get; set; }
 
         /// <summary>
-        /// Update access of role
+        /// Specifies whether the application is a test application
         /// </summary>
-        /// <value>Update access of role</value>
+        /// <value>Specifies whether the application is a test application</value>
         /// <example>false</example>
-        [DataMember(Name = "Update", EmitDefaultValue = true)]
-        public bool Update { get; set; }
+        [DataMember(Name = "Is_TestApp", EmitDefaultValue = true)]
+        public bool IsTestApp { get; set; }
 
         /// <summary>
-        /// Delete access of role
+        /// Defines if the application is active and can be used
         /// </summary>
-        /// <value>Delete access of role</value>
+        /// <value>Defines if the application is active and can be used</value>
         /// <example>false</example>
-        [DataMember(Name = "Delete", EmitDefaultValue = true)]
-        public bool Delete { get; set; }
+        [DataMember(Name = "Is_Active", IsRequired = true, EmitDefaultValue = true)]
+        public bool IsActive { get; set; }
 
         /// <summary>
-        /// Details access of role
+        /// Determines whether the application is readonly and can be modified
         /// </summary>
-        /// <value>Details access of role</value>
+        /// <value>Determines whether the application is readonly and can be modified</value>
         /// <example>false</example>
-        [DataMember(Name = "Details", EmitDefaultValue = true)]
-        public bool Details { get; set; }
+        [DataMember(Name = "Is_ReadOnly", IsRequired = true, EmitDefaultValue = true)]
+        public bool IsReadOnly { get; set; }
 
         /// <summary>
-        /// Export access of role
+        /// Gets or Sets AuthenticationId
         /// </summary>
-        /// <value>Export access of role</value>
-        /// <example>false</example>
-        [DataMember(Name = "Export", EmitDefaultValue = true)]
-        public bool Export { get; set; }
+        [DataMember(Name = "AuthenticationId", EmitDefaultValue = false)]
+        public AbstractText AuthenticationId { get; set; }
 
         /// <summary>
-        /// Import access of role
+        /// The date the record was updated
         /// </summary>
-        /// <value>Import access of role</value>
-        /// <example>false</example>
-        [DataMember(Name = "Import", EmitDefaultValue = true)]
-        public bool Import { get; set; }
-
-        /// <summary>
-        /// Generic access without CRUD of role
-        /// </summary>
-        /// <value>Generic access without CRUD of role</value>
-        /// <example>false</example>
-        [DataMember(Name = "Generic", EmitDefaultValue = true)]
-        public bool Generic { get; set; }
+        /// <value>The date the record was updated</value>
+        /// <example>1900-01-01T00:00Z</example>
+        [DataMember(Name = "ModifiedOn", EmitDefaultValue = false)]
+        public DateTime ModifiedOn { get; set; }
 
         /// <summary>
         /// The date the record was created
@@ -200,17 +215,19 @@ namespace Agile.Now.Runtime.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class Application {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  AccessRoleId: ").Append(AccessRoleId).Append("\n");
-            sb.Append("  RoleId: ").Append(RoleId).Append("\n");
-            sb.Append("  AccessGroupTypeId: ").Append(AccessGroupTypeId).Append("\n");
-            sb.Append("  Create: ").Append(Create).Append("\n");
-            sb.Append("  Read: ").Append(Read).Append("\n");
-            sb.Append("  Update: ").Append(Update).Append("\n");
-            sb.Append("  Delete: ").Append(Delete).Append("\n");
-            sb.Append("  Details: ").Append(Details).Append("\n");
-            sb.Append("  Export: ").Append(Export).Append("\n");
-            sb.Append("  Import: ").Append(Import).Append("\n");
-            sb.Append("  Generic: ").Append(Generic).Append("\n");
+            sb.Append("  ApplicationId: ").Append(ApplicationId).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  ApplicationKey: ").Append(ApplicationKey).Append("\n");
+            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  WebSiteURL: ").Append(WebSiteURL).Append("\n");
+            sb.Append("  IsSystem: ").Append(IsSystem).Append("\n");
+            sb.Append("  IsEndUser: ").Append(IsEndUser).Append("\n");
+            sb.Append("  IsTestApp: ").Append(IsTestApp).Append("\n");
+            sb.Append("  IsActive: ").Append(IsActive).Append("\n");
+            sb.Append("  IsReadOnly: ").Append(IsReadOnly).Append("\n");
+            sb.Append("  AuthenticationId: ").Append(AuthenticationId).Append("\n");
+            sb.Append("  ModifiedOn: ").Append(ModifiedOn).Append("\n");
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

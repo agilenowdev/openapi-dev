@@ -878,7 +878,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Department"
+                  "$ref": "#/components/schemas/Departments"
                 }
               }
             }
@@ -1226,7 +1226,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Location"
+                  "$ref": "#/components/schemas/Locations"
                 }
               }
             }
@@ -2328,70 +2328,77 @@
       "Application": {
         "required": [
           "Id",
-          "AccessRoleId"
+          "Is_Active",
+          "Is_ReadOnly"
         ],
         "type": "object",
         "properties": {
           "Id": {
             "type": "string",
-            "description": "The identifier of entity"
+            "description": "The identifier of the access application"
           },
-          "AccessRoleId": {
-            "$ref": "#/components/schemas/AbstractText"
-          },
-          "RoleId": {
+          "ApplicationId": {
             "$ref": "#/components/schemas/AbstractLong"
           },
-          "AccessGroupTypeId": {
+          "Name": {
+            "type": "string",
+            "description": "Name of application"
+          },
+          "ApplicationKey": {
+            "type": "string",
+            "description": "The key used to identify the application must be unique within each workspace."
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external system code of the application"
+          },
+          "Description": {
+            "type": "string",
+            "description": "The description of access group"
+          },
+          "WebSiteURL": {
+            "type": "string",
+            "description": "Web Site URL of application"
+          },
+          "Is_System": {
+            "type": "boolean",
+            "description": "Defines if application is system (setting menu)",
+            "default": false,
+            "example": false
+          },
+          "Is_EndUser": {
+            "type": "boolean",
+            "description": "Specifies whether the application is an end-user application",
+            "default": false,
+            "example": false
+          },
+          "Is_TestApp": {
+            "type": "boolean",
+            "description": "Specifies whether the application is a test application",
+            "default": false,
+            "example": false
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the application is active and can be used",
+            "default": false,
+            "example": false
+          },
+          "Is_ReadOnly": {
+            "type": "boolean",
+            "description": "Determines whether the application is readonly and can be modified",
+            "default": false,
+            "example": false
+          },
+          "AuthenticationId": {
             "$ref": "#/components/schemas/AbstractText"
           },
-          "Create": {
-            "type": "boolean",
-            "description": "Create access of role",
-            "default": false,
-            "example": false
-          },
-          "Read": {
-            "type": "boolean",
-            "description": "Read access of role",
-            "default": false,
-            "example": false
-          },
-          "Update": {
-            "type": "boolean",
-            "description": "Update access of role",
-            "default": false,
-            "example": false
-          },
-          "Delete": {
-            "type": "boolean",
-            "description": "Delete access of role",
-            "default": false,
-            "example": false
-          },
-          "Details": {
-            "type": "boolean",
-            "description": "Details access of role",
-            "default": false,
-            "example": false
-          },
-          "Export": {
-            "type": "boolean",
-            "description": "Export access of role",
-            "default": false,
-            "example": false
-          },
-          "Import": {
-            "type": "boolean",
-            "description": "Import access of role",
-            "default": false,
-            "example": false
-          },
-          "Generic": {
-            "type": "boolean",
-            "description": "Generic access without CRUD of role",
-            "default": false,
-            "example": false
+          "ModifiedOn": {
+            "type": "string",
+            "description": "The date the record was updated",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
           },
           "CreatedOn": {
             "type": "string",
@@ -2422,70 +2429,71 @@
       "AccessRole": {
         "required": [
           "Id",
-          "AccessRoleId"
+          "RoleKey",
+          "Is_ReadOnly"
         ],
         "type": "object",
         "properties": {
           "Id": {
             "type": "string",
-            "description": "The identifier of entity"
+            "description": "The identifier of the role"
           },
-          "AccessRoleId": {
+          "Name": {
+            "type": "string",
+            "description": "Name of role"
+          },
+          "RoleKey": {
+            "type": "string",
+            "description": " The key used to identify the role must be unique within each workspace."
+          },
+          "FullName": {
+            "type": "string",
+            "description": "Full name of role. Example Application 1 \\ Espace 1 \\ Role 1"
+          },
+          "Description": {
+            "type": "string",
+            "description": "The description of access group"
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external system code of the role"
+          },
+          "AccessApplicationId": {
             "$ref": "#/components/schemas/AbstractText"
           },
           "RoleId": {
             "$ref": "#/components/schemas/AbstractLong"
           },
-          "AccessGroupTypeId": {
-            "$ref": "#/components/schemas/AbstractText"
+          "ApplicationId": {
+            "$ref": "#/components/schemas/AbstractLong"
           },
-          "Create": {
+          "EspaceId": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "Is_Active": {
             "type": "boolean",
-            "description": "Create access of role",
+            "description": "Defines if record is active",
             "default": false,
             "example": false
           },
-          "Read": {
+          "Is_Custom": {
             "type": "boolean",
-            "description": "Read access of role",
+            "description": "Determines whether the role has been modified externally or whether it is synchronized from the OutSystems structure",
             "default": false,
             "example": false
           },
-          "Update": {
+          "Is_ReadOnly": {
             "type": "boolean",
-            "description": "Update access of role",
+            "description": "Determines whether the role is readonly and can be modified",
             "default": false,
             "example": false
           },
-          "Delete": {
-            "type": "boolean",
-            "description": "Delete access of role",
-            "default": false,
-            "example": false
-          },
-          "Details": {
-            "type": "boolean",
-            "description": "Details access of role",
-            "default": false,
-            "example": false
-          },
-          "Export": {
-            "type": "boolean",
-            "description": "Export access of role",
-            "default": false,
-            "example": false
-          },
-          "Import": {
-            "type": "boolean",
-            "description": "Import access of role",
-            "default": false,
-            "example": false
-          },
-          "Generic": {
-            "type": "boolean",
-            "description": "Generic access without CRUD of role",
-            "default": false,
-            "example": false
+          "ModifiedOn": {
+            "type": "string",
+            "description": "The date the record was updated",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
           },
           "CreatedOn": {
             "type": "string",

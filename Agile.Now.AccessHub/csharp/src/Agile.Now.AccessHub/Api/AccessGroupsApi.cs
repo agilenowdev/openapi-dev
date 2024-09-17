@@ -421,7 +421,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>Application</returns>
+        /// <returns>Applications</returns>
         Applications PatchAccessGroupApplications(string id, ApplicationsData applicationsData, string name = default, string deleteNotExists = default, int operationIndex = 0);
 
         /// <summary>
@@ -436,7 +436,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Application</returns>
+        /// <returns>ApiResponse of Applications</returns>
         ApiResponse<Applications> PatchAccessGroupApplicationsWithHttpInfo(string id, ApplicationsData applicationsData, string name = default, string deleteNotExists = default, int operationIndex = 0);
         /// <summary>
         /// 
@@ -450,7 +450,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>Group</returns>
+        /// <returns>Groups</returns>
         Groups PatchAccessGroupGroups(string id, GroupsData groupsData, string name = default, string deleteNotExists = default, int operationIndex = 0);
 
         /// <summary>
@@ -465,7 +465,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Group</returns>
+        /// <returns>ApiResponse of Groups</returns>
         ApiResponse<Groups> PatchAccessGroupGroupsWithHttpInfo(string id, GroupsData groupsData, string name = default, string deleteNotExists = default, int operationIndex = 0);
         /// <summary>
         /// 
@@ -479,7 +479,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>Permission</returns>
+        /// <returns>Permissions</returns>
         Permissions PatchAccessGroupPermissions(string id, PermissionsData permissionsData, string name = default, string deleteNotExists = default, int operationIndex = 0);
 
         /// <summary>
@@ -494,7 +494,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Permission</returns>
+        /// <returns>ApiResponse of Permissions</returns>
         ApiResponse<Permissions> PatchAccessGroupPermissionsWithHttpInfo(string id, PermissionsData permissionsData, string name = default, string deleteNotExists = default, int operationIndex = 0);
         /// <summary>
         /// 
@@ -508,7 +508,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>User</returns>
+        /// <returns>Users</returns>
         Users PatchAccessGroupUsers(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0);
 
         /// <summary>
@@ -523,7 +523,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of User</returns>
+        /// <returns>ApiResponse of Users</returns>
         ApiResponse<Users> PatchAccessGroupUsersWithHttpInfo(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0);
         /// <summary>
         /// 
@@ -1089,8 +1089,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Application</returns>
-        System.Threading.Tasks.Task<Application> PatchAccessGroupApplicationsAsync(string id, ApplicationsData applicationsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of Applications</returns>
+        System.Threading.Tasks.Task<Applications> PatchAccessGroupApplicationsAsync(string id, ApplicationsData applicationsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -1105,8 +1105,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Application)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Application>> PatchAccessGroupApplicationsWithHttpInfoAsync(string id, ApplicationsData applicationsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (Applications)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Applications>> PatchAccessGroupApplicationsWithHttpInfoAsync(string id, ApplicationsData applicationsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -1120,8 +1120,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Group</returns>
-        System.Threading.Tasks.Task<Group> PatchAccessGroupGroupsAsync(string id, GroupsData groupsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of Groups</returns>
+        System.Threading.Tasks.Task<Groups> PatchAccessGroupGroupsAsync(string id, GroupsData groupsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -1136,8 +1136,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Group)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Group>> PatchAccessGroupGroupsWithHttpInfoAsync(string id, GroupsData groupsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (Groups)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Groups>> PatchAccessGroupGroupsWithHttpInfoAsync(string id, GroupsData groupsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -1151,8 +1151,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Permission</returns>
-        System.Threading.Tasks.Task<Permission> PatchAccessGroupPermissionsAsync(string id, PermissionsData permissionsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of Permissions</returns>
+        System.Threading.Tasks.Task<Permissions> PatchAccessGroupPermissionsAsync(string id, PermissionsData permissionsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -1167,8 +1167,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Permission)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Permission>> PatchAccessGroupPermissionsWithHttpInfoAsync(string id, PermissionsData permissionsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (Permissions)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Permissions>> PatchAccessGroupPermissionsWithHttpInfoAsync(string id, PermissionsData permissionsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -1182,8 +1182,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of User</returns>
-        System.Threading.Tasks.Task<User> PatchAccessGroupUsersAsync(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of Users</returns>
+        System.Threading.Tasks.Task<Users> PatchAccessGroupUsersAsync(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -1198,8 +1198,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (User)</returns>
-        System.Threading.Tasks.Task<ApiResponse<User>> PatchAccessGroupUsersWithHttpInfoAsync(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (Users)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Users>> PatchAccessGroupUsersWithHttpInfoAsync(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -4041,7 +4041,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>Application</returns>
+        /// <returns>Applications</returns>
         public Applications PatchAccessGroupApplications(string id, ApplicationsData applicationsData, string name = default, string deleteNotExists = default, int operationIndex = 0)
         {
             ApiResponse<Applications> localVarResponse = PatchAccessGroupApplicationsWithHttpInfo(id, applicationsData, name, deleteNotExists);
@@ -4057,7 +4057,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Application</returns>
+        /// <returns>ApiResponse of Applications</returns>
         public ApiResponse<Applications> PatchAccessGroupApplicationsWithHttpInfo(string id, ApplicationsData applicationsData, string name = default, string deleteNotExists = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
@@ -4144,10 +4144,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Application</returns>
-        public async System.Threading.Tasks.Task<Application> PatchAccessGroupApplicationsAsync(string id, ApplicationsData applicationsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of Applications</returns>
+        public async System.Threading.Tasks.Task<Applications> PatchAccessGroupApplicationsAsync(string id, ApplicationsData applicationsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            ApiResponse<Application> localVarResponse = await PatchAccessGroupApplicationsWithHttpInfoAsync(id, applicationsData, name, deleteNotExists, operationIndex, cancellationToken).ConfigureAwait(false);
+            ApiResponse<Applications> localVarResponse = await PatchAccessGroupApplicationsWithHttpInfoAsync(id, applicationsData, name, deleteNotExists, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -4161,8 +4161,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Application)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Application>> PatchAccessGroupApplicationsWithHttpInfoAsync(string id, ApplicationsData applicationsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (Applications)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Applications>> PatchAccessGroupApplicationsWithHttpInfoAsync(string id, ApplicationsData applicationsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling AccessGroupsApi->PatchAccessGroupApplications");
@@ -4226,7 +4226,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await AsynchronousClient.PatchAsync<Application>("/Endpoint/rest/api/v1/AccessGroup/{Id}/Applications", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await AsynchronousClient.PatchAsync<Applications>("/Endpoint/rest/api/v1/AccessGroup/{Id}/Applications", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
             if (ExceptionFactory != null)
             {
@@ -4249,7 +4249,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>Group</returns>
+        /// <returns>Groups</returns>
         public Groups PatchAccessGroupGroups(string id, GroupsData groupsData, string name = default, string deleteNotExists = default, int operationIndex = 0)
         {
             ApiResponse<Groups> localVarResponse = PatchAccessGroupGroupsWithHttpInfo(id, groupsData, name, deleteNotExists);
@@ -4265,7 +4265,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Group</returns>
+        /// <returns>ApiResponse of Groups</returns>
         public ApiResponse<Groups> PatchAccessGroupGroupsWithHttpInfo(string id, GroupsData groupsData, string name = default, string deleteNotExists = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
@@ -4352,10 +4352,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Group</returns>
-        public async System.Threading.Tasks.Task<Group> PatchAccessGroupGroupsAsync(string id, GroupsData groupsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of Groups</returns>
+        public async System.Threading.Tasks.Task<Groups> PatchAccessGroupGroupsAsync(string id, GroupsData groupsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            ApiResponse<Group> localVarResponse = await PatchAccessGroupGroupsWithHttpInfoAsync(id, groupsData, name, deleteNotExists, operationIndex, cancellationToken).ConfigureAwait(false);
+            ApiResponse<Groups> localVarResponse = await PatchAccessGroupGroupsWithHttpInfoAsync(id, groupsData, name, deleteNotExists, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -4369,8 +4369,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Group)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Group>> PatchAccessGroupGroupsWithHttpInfoAsync(string id, GroupsData groupsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (Groups)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Groups>> PatchAccessGroupGroupsWithHttpInfoAsync(string id, GroupsData groupsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling AccessGroupsApi->PatchAccessGroupGroups");
@@ -4434,7 +4434,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await AsynchronousClient.PatchAsync<Group>("/Endpoint/rest/api/v1/AccessGroup/{Id}/Groups", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await AsynchronousClient.PatchAsync<Groups>("/Endpoint/rest/api/v1/AccessGroup/{Id}/Groups", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
             if (ExceptionFactory != null)
             {
@@ -4457,7 +4457,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>Permission</returns>
+        /// <returns>Permissions</returns>
         public Permissions PatchAccessGroupPermissions(string id, PermissionsData permissionsData, string name = default, string deleteNotExists = default, int operationIndex = 0)
         {
             ApiResponse<Permissions> localVarResponse = PatchAccessGroupPermissionsWithHttpInfo(id, permissionsData, name, deleteNotExists);
@@ -4473,7 +4473,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Permission</returns>
+        /// <returns>ApiResponse of Permissions</returns>
         public ApiResponse<Permissions> PatchAccessGroupPermissionsWithHttpInfo(string id, PermissionsData permissionsData, string name = default, string deleteNotExists = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
@@ -4560,10 +4560,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Permission</returns>
-        public async System.Threading.Tasks.Task<Permission> PatchAccessGroupPermissionsAsync(string id, PermissionsData permissionsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of Permissions</returns>
+        public async System.Threading.Tasks.Task<Permissions> PatchAccessGroupPermissionsAsync(string id, PermissionsData permissionsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            ApiResponse<Permission> localVarResponse = await PatchAccessGroupPermissionsWithHttpInfoAsync(id, permissionsData, name, deleteNotExists, operationIndex, cancellationToken).ConfigureAwait(false);
+            ApiResponse<Permissions> localVarResponse = await PatchAccessGroupPermissionsWithHttpInfoAsync(id, permissionsData, name, deleteNotExists, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -4577,8 +4577,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Permission)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Permission>> PatchAccessGroupPermissionsWithHttpInfoAsync(string id, PermissionsData permissionsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (Permissions)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Permissions>> PatchAccessGroupPermissionsWithHttpInfoAsync(string id, PermissionsData permissionsData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling AccessGroupsApi->PatchAccessGroupPermissions");
@@ -4642,7 +4642,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await AsynchronousClient.PatchAsync<Permission>("/Endpoint/rest/api/v1/AccessGroup/{Id}/Permissions", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await AsynchronousClient.PatchAsync<Permissions>("/Endpoint/rest/api/v1/AccessGroup/{Id}/Permissions", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
             if (ExceptionFactory != null)
             {
@@ -4665,7 +4665,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>User</returns>
+        /// <returns>Users</returns>
         public Users PatchAccessGroupUsers(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0)
         {
             ApiResponse<Users> localVarResponse = PatchAccessGroupUsersWithHttpInfo(id, usersData, name, deleteNotExists);
@@ -4681,7 +4681,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of User</returns>
+        /// <returns>ApiResponse of Users</returns>
         public ApiResponse<Users> PatchAccessGroupUsersWithHttpInfo(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
@@ -4768,10 +4768,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of User</returns>
-        public async System.Threading.Tasks.Task<User> PatchAccessGroupUsersAsync(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of Users</returns>
+        public async System.Threading.Tasks.Task<Users> PatchAccessGroupUsersAsync(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            ApiResponse<User> localVarResponse = await PatchAccessGroupUsersWithHttpInfoAsync(id, usersData, name, deleteNotExists, operationIndex, cancellationToken).ConfigureAwait(false);
+            ApiResponse<Users> localVarResponse = await PatchAccessGroupUsersWithHttpInfoAsync(id, usersData, name, deleteNotExists, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -4785,8 +4785,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (User)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<User>> PatchAccessGroupUsersWithHttpInfoAsync(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (Users)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Users>> PatchAccessGroupUsersWithHttpInfoAsync(string id, UsersData usersData, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling AccessGroupsApi->PatchAccessGroupUsers");
@@ -4850,7 +4850,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await AsynchronousClient.PatchAsync<User>("/Endpoint/rest/api/v1/AccessGroup/{Id}/Users", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await AsynchronousClient.PatchAsync<Users>("/Endpoint/rest/api/v1/AccessGroup/{Id}/Users", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
             if (ExceptionFactory != null)
             {
