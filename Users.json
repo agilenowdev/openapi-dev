@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.99"
+    "version": "3.0.100"
   },
   "servers": [
     {
@@ -1894,24 +1894,51 @@
       "AccessGroup": {
         "required": [
           "Id",
-          "AccessGroupId",
-          "CreatedOn"
+          "Name"
         ],
         "type": "object",
         "properties": {
           "Id": {
-            "type": "integer",
-            "description": "The identifier of user access group",
-            "format": "int64",
-            "default": 0,
-            "example": 0
+            "type": "string",
+            "description": "The identifier of access group"
           },
-          "AccessGroupId": {
+          "Name": {
+            "type": "string",
+            "description": "The name of access group"
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external system code of the access group"
+          },
+          "Description": {
+            "type": "string",
+            "description": "The description of access group"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if record is active",
+            "default": false,
+            "example": false
+          },
+          "Is_System": {
+            "type": "boolean",
+            "description": "Defines if access group is system and end-user cannot change it general, permissions and applications.",
+            "default": false,
+            "example": false
+          },
+          "AccessGroupTypeId": {
             "$ref": "#/components/schemas/AbstractText"
+          },
+          "ModifiedOn": {
+            "type": "string",
+            "description": "The date the record was updated",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
           },
           "CreatedOn": {
             "type": "string",
-            "description": "The date when the record was created.",
+            "description": "The date the record was created",
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
