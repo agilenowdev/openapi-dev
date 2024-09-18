@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.101"
+    "version": "3.0.102"
   },
   "servers": [
     {
@@ -2051,8 +2051,7 @@
       },
       "Group": {
         "required": [
-          "Id",
-          "Group_Id"
+          "Id"
         ],
         "type": "object",
         "properties": {
@@ -2062,8 +2061,22 @@
             "default": 0,
             "example": 0
           },
-          "Group_Id": {
-            "$ref": "#/components/schemas/AbstractLong"
+          "Name": {
+            "type": "string"
+          },
+          "Description": {
+            "type": "string"
+          },
+          "Created": {
+            "type": "string",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          },
+          "Has_Custom_Management": {
+            "type": "boolean",
+            "default": false,
+            "example": false
           }
         },
         "description": "The record of Group information."
