@@ -3846,32 +3846,60 @@ components:
     AccessGroup:
       description: The record of AccessGroup information.
       example:
-        Id: 0
-        AccessGroupId:
+        Description: Description
+        Is_Active: false
+        AccessGroupTypeId:
           Type: User
           ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
           Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
           Name: Bob Normal
+        ModifiedOn: 1900-01-01T00:00:00Z
+        ExternalId: ExternalId
+        Is_System: false
+        Id: Id
         CreatedOn: 1900-01-01T00:00:00Z
+        Name: Name
       properties:
         Id:
-          default: 0
-          description: The identifier of user access group
-          example: 0
-          format: int64
-          type: integer
-        AccessGroupId:
+          description: The identifier of access group
+          type: string
+        Name:
+          description: The name of access group
+          type: string
+        ExternalId:
+          description: The external system code of the access group
+          type: string
+        Description:
+          description: The description of access group
+          type: string
+        Is_Active:
+          default: false
+          description: Defines if record is active
+          example: false
+          type: boolean
+        Is_System:
+          default: false
+          description: "Defines if access group is system and end-user cannot change\
+            \ it general, permissions and applications."
+          example: false
+          type: boolean
+        AccessGroupTypeId:
           $ref: '#/components/schemas/AbstractText'
+        ModifiedOn:
+          default: 1900-01-01T00:00:00Z
+          description: The date the record was updated
+          example: 1900-01-01T00:00:00Z
+          format: date-time
+          type: string
         CreatedOn:
           default: 1900-01-01T00:00:00Z
-          description: The date when the record was created.
+          description: The date the record was created
           example: 1900-01-01T00:00:00Z
           format: date-time
           type: string
       required:
-      - AccessGroupId
-      - CreatedOn
       - Id
+      - Name
       type: object
     AccessGroups:
       description: The list of `AccessGroup` records
@@ -3882,20 +3910,32 @@ components:
           CurrentPage: 50
           TotalItems: 1000
         Data:
-        - Id: 0
-          AccessGroupId:
+        - Description: Description
+          Is_Active: false
+          AccessGroupTypeId:
             Type: User
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Name: Bob Normal
+          ModifiedOn: 1900-01-01T00:00:00Z
+          ExternalId: ExternalId
+          Is_System: false
+          Id: Id
           CreatedOn: 1900-01-01T00:00:00Z
-        - Id: 0
-          AccessGroupId:
+          Name: Name
+        - Description: Description
+          Is_Active: false
+          AccessGroupTypeId:
             Type: User
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Name: Bob Normal
+          ModifiedOn: 1900-01-01T00:00:00Z
+          ExternalId: ExternalId
+          Is_System: false
+          Id: Id
           CreatedOn: 1900-01-01T00:00:00Z
+          Name: Name
       properties:
         Meta:
           $ref: '#/components/schemas/Meta'
@@ -4020,22 +4060,31 @@ components:
     Group:
       description: The record of Group information.
       example:
-        Group_Id:
-          Type: User
-          ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-          Id: 1234567891234567
-          Name: Bob Normal
+        Has_Custom_Management: false
+        Description: Description
         Id: 0
+        Name: Name
+        Created: 1900-01-01T00:00:00Z
       properties:
         Id:
           default: 0
           example: 0
           format: int32
           type: integer
-        Group_Id:
-          $ref: '#/components/schemas/AbstractLong'
+        Name:
+          type: string
+        Description:
+          type: string
+        Created:
+          default: 1900-01-01T00:00:00Z
+          example: 1900-01-01T00:00:00Z
+          format: date-time
+          type: string
+        Has_Custom_Management:
+          default: false
+          example: false
+          type: boolean
       required:
-      - Group_Id
       - Id
       type: object
     Groups:
@@ -4047,18 +4096,16 @@ components:
           CurrentPage: 50
           TotalItems: 1000
         Data:
-        - Group_Id:
-            Type: User
-            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-            Id: 1234567891234567
-            Name: Bob Normal
+        - Has_Custom_Management: false
+          Description: Description
           Id: 0
-        - Group_Id:
-            Type: User
-            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-            Id: 1234567891234567
-            Name: Bob Normal
+          Name: Name
+          Created: 1900-01-01T00:00:00Z
+        - Has_Custom_Management: false
+          Description: Description
           Id: 0
+          Name: Name
+          Created: 1900-01-01T00:00:00Z
       properties:
         Meta:
           $ref: '#/components/schemas/Meta'

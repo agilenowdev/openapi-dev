@@ -61,13 +61,17 @@ namespace Agile.Now.Runtime.Model
         /// Initializes a new instance of the <see cref="Group" /> class.
         /// </summary>
         /// <param name="id">id (required) (default to 0).</param>
-        /// <param name="groupId">groupId (required).</param>
-        public Group(int id = 0, AbstractLong groupId = default)
+        /// <param name="name">name.</param>
+        /// <param name="description">description.</param>
+        /// <param name="created">created (default to &quot;1900-01-01T00:00Z&quot;).</param>
+        /// <param name="hasCustomManagement">hasCustomManagement (default to false).</param>
+        public Group(int id = 0, string name = default, string description = default, DateTime created = default, bool hasCustomManagement = false)
         {
             Id = id;
-            // to ensure "groupId" is required (not null)
-            groupId = groupId ?? throw new ArgumentNullException("groupId is a required property for Group and cannot be null");
-            GroupId = groupId;
+            Name = name;
+            Description = description;
+            Created = created;
+            HasCustomManagement = hasCustomManagement;
         }
 
         /// <summary>
@@ -78,10 +82,30 @@ namespace Agile.Now.Runtime.Model
         public int Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets GroupId
+        /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name = "Group_Id", IsRequired = true, EmitDefaultValue = true)]
-        public AbstractLong GroupId { get; set; }
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Description
+        /// </summary>
+        [DataMember(Name = "Description", EmitDefaultValue = false)]
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Created
+        /// </summary>
+        /// <example>1900-01-01T00:00Z</example>
+        [DataMember(Name = "Created", EmitDefaultValue = false)]
+        public DateTime Created { get; set; }
+
+        /// <summary>
+        /// Gets or Sets HasCustomManagement
+        /// </summary>
+        /// <example>false</example>
+        [DataMember(Name = "Has_Custom_Management", EmitDefaultValue = true)]
+        public bool HasCustomManagement { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -92,7 +116,10 @@ namespace Agile.Now.Runtime.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class Group {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  GroupId: ").Append(GroupId).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  Created: ").Append(Created).Append("\n");
+            sb.Append("  HasCustomManagement: ").Append(HasCustomManagement).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

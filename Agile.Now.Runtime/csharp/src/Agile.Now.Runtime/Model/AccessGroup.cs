@@ -60,38 +60,96 @@ namespace Agile.Now.Runtime.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AccessGroup" /> class.
         /// </summary>
-        /// <param name="id">The identifier of user access group (required) (default to 0).</param>
-        /// <param name="accessGroupId">accessGroupId (required).</param>
-        /// <param name="createdOn">The date when the record was created. (required) (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public AccessGroup(long id = 0, AbstractText accessGroupId = default, DateTime createdOn = default)
+        /// <param name="id">The identifier of access group (required).</param>
+        /// <param name="name">The name of access group (required).</param>
+        /// <param name="externalId">The external system code of the access group.</param>
+        /// <param name="description">The description of access group.</param>
+        /// <param name="isActive">Defines if record is active (default to false).</param>
+        /// <param name="isSystem">Defines if access group is system and end-user cannot change it general, permissions and applications. (default to false).</param>
+        /// <param name="accessGroupTypeId">accessGroupTypeId.</param>
+        /// <param name="modifiedOn">The date the record was updated (default to &quot;1900-01-01T00:00Z&quot;).</param>
+        /// <param name="createdOn">The date the record was created (default to &quot;1900-01-01T00:00Z&quot;).</param>
+        public AccessGroup(string id = default, string name = default, string externalId = default, string description = default, bool isActive = false, bool isSystem = false, AbstractText accessGroupTypeId = default, DateTime modifiedOn = default, DateTime createdOn = default)
         {
+            // to ensure "id" is required (not null)
+            id = id ?? throw new ArgumentNullException("id is a required property for AccessGroup and cannot be null");
             Id = id;
-            // to ensure "accessGroupId" is required (not null)
-            accessGroupId = accessGroupId ?? throw new ArgumentNullException("accessGroupId is a required property for AccessGroup and cannot be null");
-            AccessGroupId = accessGroupId;
+            // to ensure "name" is required (not null)
+            name = name ?? throw new ArgumentNullException("name is a required property for AccessGroup and cannot be null");
+            Name = name;
+            ExternalId = externalId;
+            Description = description;
+            IsActive = isActive;
+            IsSystem = isSystem;
+            AccessGroupTypeId = accessGroupTypeId;
+            ModifiedOn = modifiedOn;
             CreatedOn = createdOn;
         }
 
         /// <summary>
-        /// The identifier of user access group
+        /// The identifier of access group
         /// </summary>
-        /// <value>The identifier of user access group</value>
-        /// <example>0</example>
+        /// <value>The identifier of access group</value>
         [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
-        public long Id { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets AccessGroupId
+        /// The name of access group
         /// </summary>
-        [DataMember(Name = "AccessGroupId", IsRequired = true, EmitDefaultValue = true)]
-        public AbstractText AccessGroupId { get; set; }
+        /// <value>The name of access group</value>
+        [DataMember(Name = "Name", IsRequired = true, EmitDefaultValue = true)]
+        public string Name { get; set; }
 
         /// <summary>
-        /// The date when the record was created.
+        /// The external system code of the access group
         /// </summary>
-        /// <value>The date when the record was created.</value>
+        /// <value>The external system code of the access group</value>
+        [DataMember(Name = "ExternalId", EmitDefaultValue = false)]
+        public string ExternalId { get; set; }
+
+        /// <summary>
+        /// The description of access group
+        /// </summary>
+        /// <value>The description of access group</value>
+        [DataMember(Name = "Description", EmitDefaultValue = false)]
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Defines if record is active
+        /// </summary>
+        /// <value>Defines if record is active</value>
+        /// <example>false</example>
+        [DataMember(Name = "Is_Active", EmitDefaultValue = true)]
+        public bool IsActive { get; set; }
+
+        /// <summary>
+        /// Defines if access group is system and end-user cannot change it general, permissions and applications.
+        /// </summary>
+        /// <value>Defines if access group is system and end-user cannot change it general, permissions and applications.</value>
+        /// <example>false</example>
+        [DataMember(Name = "Is_System", EmitDefaultValue = true)]
+        public bool IsSystem { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AccessGroupTypeId
+        /// </summary>
+        [DataMember(Name = "AccessGroupTypeId", EmitDefaultValue = false)]
+        public AbstractText AccessGroupTypeId { get; set; }
+
+        /// <summary>
+        /// The date the record was updated
+        /// </summary>
+        /// <value>The date the record was updated</value>
         /// <example>1900-01-01T00:00Z</example>
-        [DataMember(Name = "CreatedOn", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "ModifiedOn", EmitDefaultValue = false)]
+        public DateTime ModifiedOn { get; set; }
+
+        /// <summary>
+        /// The date the record was created
+        /// </summary>
+        /// <value>The date the record was created</value>
+        /// <example>1900-01-01T00:00Z</example>
+        [DataMember(Name = "CreatedOn", EmitDefaultValue = false)]
         public DateTime CreatedOn { get; set; }
 
         /// <summary>
@@ -103,7 +161,13 @@ namespace Agile.Now.Runtime.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class AccessGroup {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  AccessGroupId: ").Append(AccessGroupId).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  IsActive: ").Append(IsActive).Append("\n");
+            sb.Append("  IsSystem: ").Append(IsSystem).Append("\n");
+            sb.Append("  AccessGroupTypeId: ").Append(AccessGroupTypeId).Append("\n");
+            sb.Append("  ModifiedOn: ").Append(ModifiedOn).Append("\n");
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
