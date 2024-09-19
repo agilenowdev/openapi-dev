@@ -1,4 +1,5 @@
-﻿using Agile.Now.AccessHub.Model;
+﻿using System;
+using Agile.Now.AccessHub.Model;
 using Agile.Now.AccessHub.Test.Data;
 using Xunit;
 
@@ -9,6 +10,7 @@ internal static class LocationTestData {
         var name = CommonTestData.CreateTestEntityName("location", suffix);
         return new LocationInsertData
         (
+            externalId: Guid.NewGuid().ToString(),
             name: name.MakeUnique(),
             countryId: EnumCountry.Finland,
             timezoneId: EnumTimezone.Gmt0100WestCentralAfrica,

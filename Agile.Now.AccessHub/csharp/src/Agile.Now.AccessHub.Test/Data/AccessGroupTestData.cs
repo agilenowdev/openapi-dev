@@ -21,10 +21,11 @@ internal static class AccessGroupTestData {
 
     public static AccessGroupData CreateAccessGroupData(string suffix = null) {
         var name = CommonTestData.CreateTestEntityName("access-group", suffix);
-        return new
+        return new AccessGroupData
         (
             name: name.MakeUnique(),
             description: name,
+            isActive: true,
             accessGroupTypeId: EnumAccessGroupType.Departments
         );
     }
@@ -39,6 +40,7 @@ internal static class AccessGroupTestData {
     public static void AssertEqual(this AccessGroupData accessGroupInsertData, AccessGroup AccessGroup) {
         Assert.Equal(accessGroupInsertData.Name, AccessGroup.Name);
         Assert.Equal(accessGroupInsertData.Description, AccessGroup.Description);
+        Assert.Equal(accessGroupInsertData.IsActive, AccessGroup.IsActive);
         Assert.Equal(accessGroupInsertData.AccessGroupTypeId,
             EnumAccessGroupTypeValueConverter.FromString(AccessGroup.AccessGroupTypeId.Id));
     }

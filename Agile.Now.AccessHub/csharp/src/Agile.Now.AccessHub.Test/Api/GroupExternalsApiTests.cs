@@ -205,6 +205,7 @@ namespace Agile.Now.AccessHub.Test.Api {
             try {
                 data.Update();
                 var updated = api.UpdateGroupExternal(created.Id.ToString(), data);
+                Assert.Equal(created.Id, updated.Id);
                 data.AssertEqual(updated);
             }
             finally {

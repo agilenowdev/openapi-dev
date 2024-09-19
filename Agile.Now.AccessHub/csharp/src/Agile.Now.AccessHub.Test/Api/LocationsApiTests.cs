@@ -81,6 +81,25 @@ namespace Agile.Now.AccessHub.Test.Api {
         }
 
         /// <summary>
+        /// Test CreateLocation - unique Name
+        /// </summary>
+        [Fact]
+        public void Test_Location_Create_UniqueName() {
+            var uniqueValue = Guid.NewGuid().ToString();
+            var data = LocationTestData.CreateLocationData();
+            data.Name = uniqueValue;
+            var created = api.CreateLocation(data);
+            try {
+                data = LocationTestData.CreateLocationData();
+                data.Name = uniqueValue;
+                Assert.Throws<ApiException>(() => api.CreateLocation(data));
+            }
+            finally {
+                api.DeleteLocation(created.Id);
+            }
+        }
+
+        /// <summary>
         /// Test CreateLocation - unique ExternalId
         /// </summary>
         [Fact]
@@ -224,6 +243,7 @@ namespace Agile.Now.AccessHub.Test.Api {
             try {
                 data.Update();
                 var updated = api.UpdateLocation(created.Id, data.ToLocationUpdateData());
+                Assert.Equal(created.Id, updated.Id);
                 data.AssertEqual(updated);
             }
             finally {

@@ -226,6 +226,7 @@ namespace Agile.Now.AccessHub.Test.Api {
             try {
                 data.Update();
                 var updated = api.UpdateAccessGroup(created.Id, data);
+                Assert.Equal(created.Id, updated.Id);
                 data.AssertEqual(updated);
             }
             finally {

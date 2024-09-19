@@ -163,21 +163,21 @@ namespace Agile.Now.Runtime.Test.Api {
         /// </summary>
         [Fact]
         public void Test_User_AccessGroup_Upsert() {
-            //var entity = TestUserData.Users[0];
-            //var data = TestUserData.CreateAccessGroupData(TestUserData.AccessGroups[0]);
-            //var created = api.UpsertUserAccessGroup(entity.Id.ToString(), data);
-            //try {
-            //    var existing = api.ListUserAccessGroups(entity.Id.ToString()).Data;
-            //    Assert.Contains(existing, i => i.Id == created.Id);
-            //    data = TestUserData.CreateAccessGroupData(TestUserData.AccessGroups[1]);
-            //    data.Id = created.Id;
-            //    var updated = api.UpsertUserAccessGroup(entity.Id.ToString(), data);
-            //    Assert.Equal(created.Id, updated.Id);
-            //    Assert.Equal(data.AccessGroupId.Value, updated.AccessGroupId.Id);
-            //}
-            //finally {
-            //    api.DeleteUserAccessGroup(entity.Id.ToString(), created.Id.ToString());
-            //}
+            var entity = TestUserData.Users[1];
+            var data = TestUserData.CreateAccessGroupData(TestUserData.AccessGroups[0]);
+            var created = api.UpsertUserAccessGroup(entity.Id.ToString(), data);
+            try {
+                var existing = api.ListUserAccessGroups(entity.Id.ToString()).Data;
+                Assert.Contains(existing, i => i.Id == created.Id);
+                data = TestUserData.CreateAccessGroupData(TestUserData.AccessGroups[1]);
+                data.Id = created.Id;
+                var updated = api.UpsertUserAccessGroup(entity.Id.ToString(), data);
+                Assert.Equal(created.Id, updated.Id);
+                Assert.Equal(data.AccessGroupId.Value, updated.AccessGroupId.Id);
+            }
+            finally {
+                api.DeleteUserAccessGroup(entity.Id.ToString(), created.Id.ToString());
+            }
         }
 
         /// <summary>
