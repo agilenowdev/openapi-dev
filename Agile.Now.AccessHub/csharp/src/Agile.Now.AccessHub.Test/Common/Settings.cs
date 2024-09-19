@@ -1,8 +1,6 @@
 ﻿using Agile.Now.AccessHub.Client;
-using Xunit;
 
-namespace Agile.Now.AccessHub.Test.Api
-{
+namespace Agile.Now.AccessHub.Test.Common {
     public static class Settings
     {
         public static readonly Configuration[] Connections = new[] {

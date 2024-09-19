@@ -40,6 +40,8 @@ using System.Data;
 using System.Linq;
 using Agile.Now.AccessHub.Api;
 using Agile.Now.AccessHub.Client;
+using Agile.Now.AccessHub.Test.Common;
+
 // uncomment below to import models
 using Agile.Now.AccessHub.Test.Data;
 using Agile.Now.ApiAccessGroups.Test.Api;
@@ -47,7 +49,8 @@ using Agile.Now.ApiAccounts.Test.Api;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Agile.Now.AccessHub.Test.Api {
+namespace Agile.Now.AccessHub.Test.Api
+{
     /// <summary>
     ///  Class for testing AccountsApi
     /// </summary>

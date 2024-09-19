@@ -3,14 +3,6 @@ using Agile.Now.AccessHub.Client;
 using Xunit;
 
 namespace Agile.Now.AccessHub.Test.Api {
-    public class ApiTest {
-        public readonly EntityTest Entity;
-
-        public ApiTest(EntityTest entity) {
-            Entity = entity;
-        }
-    }
-
     public abstract class EntityTest {
         public abstract void Test_Create();
         public abstract void Test_Create_WithUniqueAttributes();
@@ -159,62 +151,6 @@ namespace Agile.Now.AccessHub.Test.Api {
             finally {
                 Methods.Delete(Id.Get(created), "Id");
             }
-        }
-    }
-
-    public class Attribute<TEntity, TId, TCreateData> {
-        public readonly string Name;
-        public readonly Func<TEntity, TId> Get;
-        public readonly Action<TCreateData, string> Set;
-
-        public Attribute(string name, Func<TEntity, TId> get, Action<TCreateData, string> set) {
-            this.Name = name;
-            this.Get = get;
-            this.Set = set;
-        }
-    }
-
-    public class Methods<TEntity, TId, TCreateData, TUpdateData, TUpsertData> {
-        public readonly Func<TCreateData, TEntity> Create;
-        public readonly Action<TId, string> Delete;
-        public readonly Func<TId, string, TEntity> Get;
-        public readonly Func<TId, TUpdateData, string, TEntity> Update;
-        public readonly Func<TUpsertData, TEntity> Upsert;
-
-        public Methods(
-            Func<TCreateData, TEntity> create,
-            Action<TId, string> delete,
-            Func<TId, string, TEntity> get,
-            Func<TId, TUpdateData, string, TEntity> update,
-            Func<TUpsertData, TEntity> upsert) {
-
-            Create = create;
-            Delete = delete;
-            Get = get;
-            Update = update;
-            Upsert = upsert;
-        }
-    }
-
-    public class TestData<TEntity, TCreateData, TUpdateData, TUpsertData> {
-        public readonly Func<TCreateData> GetCreateData;
-        public readonly Func<TCreateData, TUpdateData> GetUpdateData;
-        public readonly Func<TCreateData, TUpsertData> GetUpsertData;
-        public readonly Action<TCreateData> Update;
-        public readonly Action<TCreateData, TEntity> AssertEqual;
-
-        public TestData(
-            Func<TCreateData> getCreateData,
-            Func<TCreateData, TUpdateData> getUpdateData,
-            Func<TCreateData, TUpsertData> getUpsertData,
-            Action<TCreateData> update,
-            Action<TCreateData, TEntity> assertEqual) {
-
-            GetCreateData = getCreateData;
-            GetUpdateData = getUpdateData;
-            GetUpsertData = getUpsertData;
-            Update = update;
-            AssertEqual = assertEqual;
         }
     }
 }

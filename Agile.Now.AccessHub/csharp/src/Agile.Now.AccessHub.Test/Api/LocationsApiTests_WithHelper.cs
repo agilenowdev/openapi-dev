@@ -1,5 +1,6 @@
 using Agile.Now.AccessHub.Api;
 using Agile.Now.AccessHub.Model;
+using Agile.Now.AccessHub.Test.Common;
 using Agile.Now.ApiOrganizations.Test.Api;
 using Xunit;
 using Xunit.Abstractions;
@@ -18,12 +19,8 @@ namespace Agile.Now.AccessHub.Test.Api {
                     id: new("Id", entity => entity.Id, (entity, id) => entity.Id = id),
                     updatedId: entity => entity.Id,
                     uniqueAttributes: new Attribute<Location, string, LocationInsertData>[] {
-                        new(
-                            "ExternalId",
-                            data => data.ExternalId, (data, value) => data.ExternalId = value),
-                        new(
-                            "Name",
-                            data => data.Name, (data, value) => data.Name = value),
+                        new( "ExternalId", data => data.ExternalId, (data, value) => data.ExternalId = value),
+                        new( "Name", data => data.Name, (data, value) => data.Name = value),
                     },
                     methods: new(
                         create: data => api.CreateLocation(data),
