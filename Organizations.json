@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "2.0.155"
+    "version": "2.0.156"
   },
   "servers": [
     {
@@ -4708,6 +4708,12 @@
             "description": "Defines if the location is active and can be used.",
             "default": false,
             "example": false
+          },
+          "Is_Deleted": {
+            "type": "boolean",
+            "description": "Defines if the location is deleted and cannot be used.",
+            "default": false,
+            "example": false
           }
         },
         "description": "The record of Location information."
@@ -4762,6 +4768,12 @@
           "Is_Active": {
             "type": "boolean",
             "description": "Defines if the location is active and can be used.",
+            "default": false,
+            "example": false
+          },
+          "Is_Deleted": {
+            "type": "boolean",
+            "description": "Defines if the location is deleted and cannot be used.",
             "default": false,
             "example": false
           }
