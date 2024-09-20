@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Text;
 using Agile.Now.AccessHub.Model;
 using Agile.Now.AccessHub.Test.Data;
@@ -15,6 +16,7 @@ namespace Agile.Now.ApiAccounts.Test.Api {
             var uniqueName = name.MakeUnique();
             return new AccountData
             (
+                externalId: Guid.NewGuid().ToString(),
                 firstName: name,
                 lastName: "lastName" + suffix,
                 email: uniqueName + "@agilenow.io",

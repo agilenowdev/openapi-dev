@@ -1,4 +1,5 @@
-﻿using Agile.Now.AccessHub.Model;
+﻿using System;
+using Agile.Now.AccessHub.Model;
 using Agile.Now.AccessHub.Test.Data;
 using Xunit;
 
@@ -23,6 +24,7 @@ internal static class AccessGroupTestData {
         var name = CommonTestData.CreateTestEntityName("access-group", suffix);
         return new AccessGroupData
         (
+            externalId: Guid.NewGuid().ToString(),
             name: name.MakeUnique(),
             description: name,
             isActive: true,
@@ -44,21 +46,6 @@ internal static class AccessGroupTestData {
         Assert.Equal(accessGroupInsertData.AccessGroupTypeId,
             EnumAccessGroupTypeValueConverter.FromString(AccessGroup.AccessGroupTypeId.Id));
     }
-
-    public static AccessGroupUpdateData ToAccessGroupUpdateData(this AccessGroupInsertData accessGroupInsertData) =>
-        new AccessGroupUpdateData(
-            name: accessGroupInsertData.Name,
-            description: accessGroupInsertData.Description,
-            accessGroupTypeId: accessGroupInsertData.AccessGroupTypeId
-        );
-
-    public static AccessGroupData ToAccessGroupData(this AccessGroupInsertData accessGroupInsertData) =>
-        new AccessGroupData(
-            name: accessGroupInsertData.Name,
-            externalId: accessGroupInsertData.ExternalId,
-            description: accessGroupInsertData.Description,
-            accessGroupTypeId: accessGroupInsertData.AccessGroupTypeId
-        );
 
     public static ApplicationData CreateApplicationData(string id) => new(
         parentApplicationId: new("Id", ParentApplication),

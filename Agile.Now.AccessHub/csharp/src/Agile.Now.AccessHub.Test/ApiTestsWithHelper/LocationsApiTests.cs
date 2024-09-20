@@ -1,15 +1,16 @@
 using Agile.Now.AccessHub.Api;
 using Agile.Now.AccessHub.Model;
+using Agile.Now.AccessHub.Test.Api;
 using Agile.Now.AccessHub.Test.Common;
 using Agile.Now.ApiOrganizations.Test.Api;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Agile.Now.AccessHub.Test.Api {
-    public class LocationsApiTests_WithHelper {
+namespace Agile.Now.AccessHub.Test.ApiTestsWithHelper {
+    public class LocationsApiTests {
         readonly ApiTest test;
 
-        public LocationsApiTests_WithHelper(ITestOutputHelper testOutputHelper) {
+        public LocationsApiTests(ITestOutputHelper testOutputHelper) {
             var api = new LocationsApi(Settings.Connections[0]);
             test = new(
                 entity: new EntityTest<
@@ -19,8 +20,8 @@ namespace Agile.Now.AccessHub.Test.Api {
                     id: new("Id", entity => entity.Id, (entity, id) => entity.Id = id),
                     updatedId: entity => entity.Id,
                     uniqueAttributes: new Attribute<Location, string, LocationInsertData>[] {
-                        new( "ExternalId", data => data.ExternalId, (data, value) => data.ExternalId = value),
-                        new( "Name", data => data.Name, (data, value) => data.Name = value),
+                        new("ExternalId", data => data.ExternalId, (data, value) => data.ExternalId = value),
+                        new("Name", data => data.Name, (data, value) => data.Name = value),
                     },
                     methods: new(
                         create: data => api.CreateLocation(data),
@@ -30,10 +31,10 @@ namespace Agile.Now.AccessHub.Test.Api {
                         upsert: data => api.UpsertLocation(data)),
                     testData: new(
                         getCreateData: () => LocationTestData.CreateLocationData(),
-                        getUpdateData: data => LocationTestData.ToLocationUpdateData(data),
-                        getUpsertData: data => LocationTestData.ToLocationData(data),
-                        update: data => LocationTestData.Update(data),
-                        assertEqual: (data, entity) => LocationTestData.AssertEqual(data, entity))));
+                        getUpdateData: data => data.ToLocationUpdateData(),
+                        getUpsertData: data => data.ToLocationData(),
+                        update: data => data.Update(),
+                        assertEqual: (data, entity) => data.AssertEqual(entity))));
         }
 
         [Fact]

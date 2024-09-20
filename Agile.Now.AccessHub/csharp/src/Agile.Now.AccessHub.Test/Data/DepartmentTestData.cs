@@ -1,4 +1,5 @@
-﻿using Agile.Now.AccessHub.Model;
+﻿using System;
+using Agile.Now.AccessHub.Model;
 using Agile.Now.AccessHub.Test.Data;
 using Xunit;
 
@@ -9,6 +10,7 @@ internal static class DepartmentTestData {
         var name = CommonTestData.CreateTestEntityName("department", suffix);
         return new DepartmentInsertData
         (
+            externalId: Guid.NewGuid().ToString(),
             name: name.MakeUnique(),
             departmentTypeId: EnumDepartmentType.Internal,
             parentDepartmentId: new("Id", ""),
