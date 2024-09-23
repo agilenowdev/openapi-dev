@@ -263,7 +263,7 @@ namespace Agile.Now.AccessHub.Test.Api
             var entity = api.CreateDepartment(DepartmentTestData.CreateDepartmentData());
             try {
                 var created = api.UpsertDepartmentUser(entity.Id, UserTestData.CreateUserData1(UserTestData.Users[0]));
-                api.DeleteDepartmentUser(entity.Id, created.Id);
+                api.DeleteDepartmentUser(entity.Id, created.Id.ToString());
                 var existing = api.ListDepartmentUsers(entity.Id).Data;
                 Assert.Empty(existing);
             }
@@ -287,7 +287,7 @@ namespace Agile.Now.AccessHub.Test.Api
                 }
                 finally {
                     foreach(var i in created)
-                        api.DeleteDepartmentUser(entity.Id, i.Id);
+                        api.DeleteDepartmentUser(entity.Id, i.Id.ToString());
                 }
             }
             finally {
@@ -308,13 +308,13 @@ namespace Agile.Now.AccessHub.Test.Api
                     var existing = api.ListDepartmentUsers(entity.Id).Data;
                     Assert.Contains(existing, i => i.Id == created.Id);
                     data = UserTestData.CreateUserData1(UserTestData.Users[1]);
-                    data.Id = created.Id;
+                    data.Id = created.Id.ToString();
                     var updated = api.UpsertDepartmentUser(entity.Id, data);
                     Assert.Equal(created.Id, updated.Id);
-                    Assert.Equal(data.UserId.Value, updated.UserId.Id.ToString());
+                    Assert.Equal(data.UserId.Value, updated.Id.ToString());
                 }
                 finally {
-                    api.DeleteDepartmentUser(entity.Id, created.Id);
+                    api.DeleteDepartmentUser(entity.Id, created.Id.ToString(), subName: "UserId");
                 }
             }
             finally {
@@ -335,19 +335,19 @@ namespace Agile.Now.AccessHub.Test.Api
                     var patched = api.PatchDepartmentUsers(entity.Id.ToString(),
                         new(users: new List<UserText1> {
                             new(userId: UserTestData.Users[1].ToString()),
-                            new(userId: UserTestData.Users[2].ToString(), id: created.Id)
+                            new(userId: UserTestData.Users[2].ToString(), id: created.Id.ToString())
                         })).Data;
                     try {
                         var existing = api.ListDepartmentUsers(entity.Id.ToString()).Data;
-                        Assert.Contains(existing, i => i.UserId.Id == UserTestData.Users[1]);
-                        Assert.Contains(existing, i => i.UserId.Id == UserTestData.Users[2] && i.Id == created.Id);
+                        Assert.Contains(existing, i => i.Id == UserTestData.Users[1]);
+                        Assert.Contains(existing, i => i.Id == UserTestData.Users[2] && i.Id == created.Id);
                     }
                     finally {
-                        api.DeleteDepartmentUser(entity.Id, patched.First(i => i.Id != created.Id).Id);
+                        api.DeleteDepartmentUser(entity.Id, patched.First(i => i.Id != created.Id).Id.ToString());
                     }
                 }
                 finally {
-                    api.DeleteDepartmentUser(entity.Id, created.Id);
+                    api.DeleteDepartmentUser(entity.Id, created.Id.ToString());
                 }
             }
             finally {
@@ -367,18 +367,18 @@ namespace Agile.Now.AccessHub.Test.Api
                 try {
                     api.PatchDepartmentUsers(entity.Id.ToString(),
                         new(users: new List<UserText1> {
-                            new(userId: UserTestData.Users[2].ToString(), id: toPatch.Id)
+                            new(userId: UserTestData.Users[2].ToString(), id: toPatch.Id.ToString())
                         }),
                         deleteNotExists: true.ToString());
                     toDelete = null;
                     var existing = api.ListDepartmentUsers(entity.Id.ToString()).Data;
                     Assert.Single(existing);
-                    Assert.Contains(existing, i => i.UserId.Id == UserTestData.Users[2] && i.Id == toPatch.Id);
+                    Assert.Contains(existing, i => i.Id == UserTestData.Users[2] && i.Id == toPatch.Id);
                 }
                 finally {
                     if(toDelete != null)
-                        api.DeleteDepartmentUser(entity.Id, toDelete.Id);
-                    api.DeleteDepartmentUser(entity.Id, toPatch.Id);
+                        api.DeleteDepartmentUser(entity.Id, toDelete.Id.ToString());
+                    api.DeleteDepartmentUser(entity.Id, toPatch.Id.ToString());
                 }
             }
             finally {

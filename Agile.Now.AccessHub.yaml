@@ -1930,7 +1930,7 @@ paths:
   /Endpoint/rest/api/v1/AccessGroup/{Id}:
     delete:
       description: |-
-        Use the query string resource to delete `AccessGroup` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id` field(s) value and use the `DELETE` method of the resource to delete a record.
+        Use the query string resource to delete `AccessGroup` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id, Name, ExternalId` field(s) value and use the `DELETE` method of the resource to delete a record.
 
         Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
@@ -1939,7 +1939,7 @@ paths:
         ### Delete a record of AccessGroup
         * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
         * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
-        * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+        * If the `Id, Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
         The response body will contain the object of the deleted record if the call is successful.
       operationId: Delete AccessGroup
@@ -1962,14 +1962,14 @@ paths:
           type: string
         style: simple
       - description: "The name of the database field. If empty, the entity `Id` field\
-          \ is used.\n\nExample: \n```\n\n```"
+          \ is used.\n\nExample: \n```\nName,ExternalId\n```"
         explode: true
         in: query
         name: Name
         required: false
         schema:
           description: "The name of the database field. If empty, the entity `Id`\
-            \ field is used.\n\nExample: \n```\n\n```"
+            \ field is used.\n\nExample: \n```\nName,ExternalId\n```"
           type: string
         style: form
       responses:
@@ -2060,7 +2060,7 @@ paths:
         ### Get a record of AccessGroup
         * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
         * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
-        * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+        * If the `Id, Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
       operationId: Get AccessGroup
       parameters:
       - description: |-
@@ -2081,14 +2081,14 @@ paths:
           type: string
         style: simple
       - description: "The name of the database field. If empty, the entity `Id` field\
-          \ is used.\n\nExample: \n```\n\n```"
+          \ is used.\n\nExample: \n```\nName,ExternalId\n```"
         explode: true
         in: query
         name: Name
         required: false
         schema:
           description: "The name of the database field. If empty, the entity `Id`\
-            \ field is used.\n\nExample: \n```\n\n```"
+            \ field is used.\n\nExample: \n```\nName,ExternalId\n```"
           type: string
         style: form
       responses:
@@ -2170,23 +2170,23 @@ paths:
       - AccessGroups
     put:
       description: "Use the `AccessGroupData` object resource to update `AccessGroup`\
-        \ using `Id` field(s) value.\n\nProvide the updated record information in\
-        \ your request data and use the `PUT` method of the resource with a specific\
-        \ record ID to update that record. \n\nThe input parameter must be used in\
-        \ the `AccessGroupData` record structure inside the `FieldType` parameter\
-        \ in the foreign key fields.\n\nForeign key fields are: `AccessGroupTypeId,\
+        \ using `Id, Name, ExternalId` field(s) value.\n\nProvide the updated record\
+        \ information in your request data and use the `PUT` method of the resource\
+        \ with a specific record ID to update that record. \n\nThe input parameter\
+        \ must be used in the `AccessGroupData` record structure inside the `FieldType`\
+        \ parameter in the foreign key fields.\n\nForeign key fields are: `AccessGroupTypeId,\
         \ ModifiedBy, CreatedBy`\n\n### Update a record of AccessGroup\n* If the `Id`\
         \ field value is not matched, then a `404` error is reported (`Errors/Not\
         \ Found`), and the error record is returned.. You cannot change `Id` field\
         \ value (primary key).\n* If the `Id` field value is matched multiple times,\
         \ then a `400` error is reported (`Errors/Multible Rows`), and the error record\
-        \ is returned.\n* If the `Id` field value is matched multiple times, then\
-        \ a `400` error is reported (`Errors/Multible Rows`), and the error record\
-        \ is returned.\n\nThe response body will contain the object of the updated\
-        \ record if the call is successful. Method returns an extended `AccessGroup`\
-        \ structure. Here, all foreign key fields are abstract object structures,\
-        \ utilizing `AbstractText` or `AbstractLong` data types, offering a detailed\
-        \ view of the data and related entities."
+        \ is returned.\n* If the `Id, Name, ExternalId` field value is matched multiple\
+        \ times, then a `400` error is reported (`Errors/Multible Rows`), and the\
+        \ error record is returned.\n\nThe response body will contain the object of\
+        \ the updated record if the call is successful. Method returns an extended\
+        \ `AccessGroup` structure. Here, all foreign key fields are abstract object\
+        \ structures, utilizing `AbstractText` or `AbstractLong` data types, offering\
+        \ a detailed view of the data and related entities."
       operationId: Update AccessGroup
       parameters:
       - description: |-
@@ -2207,14 +2207,14 @@ paths:
           type: string
         style: simple
       - description: "The name of the database field. If empty, the entity `Id` field\
-          \ is used.\n\nExample: \n```\n\n```"
+          \ is used.\n\nExample: \n```\nName,ExternalId\n```"
         explode: true
         in: query
         name: Name
         required: false
         schema:
           description: "The name of the database field. If empty, the entity `Id`\
-            \ field is used.\n\nExample: \n```\n\n```"
+            \ field is used.\n\nExample: \n```\nName,ExternalId\n```"
           type: string
         style: form
       requestBody:
@@ -2533,7 +2533,7 @@ paths:
   /Endpoint/rest/api/v1/AccessGroup:
     patch:
       description: |-
-        Use the `AccessGroupData` object resource to insert or update (Upsert) `AccessGroup` using `Id` field(s) value.
+        Use the `AccessGroupData` object resource to insert or update (Upsert) `AccessGroup` using `Id, Name, ExternalId` field(s) value.
 
         You can supply the required field values in the request data, and then use the `POST` method of the resource.
 
@@ -2543,10 +2543,10 @@ paths:
 
         ### Update a record of AccessGroup
         * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).
-        * When the Id field value is not provided, the system will automatically initiate the insertion of a new record.
+        * If the `Name,ExternalId` field value is not empty and `Id` field value is empty, action try insert record according `Name,ExternalId` field value (if set, the value is a unique identifier).
 
         ### Create a new record of AccessGroup
-        * If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`AccessGroupData`).
+        * If the value in the `Name,ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupData`).
 
         The response body will contain the object of the updated or created record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
       operationId: Upsert AccessGroup
@@ -2649,9 +2649,9 @@ paths:
         Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`
 
         ### Create a new record of AccessGroup
-        * If the value in the `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupData`).
-        * If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`AccessGroupData`).
-        * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+        * If the value in the `Id, Name, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupData`).
+        * If the value in the `Name,ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupData`).
+        * If the `Id, Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
         The response body will contain the object of the created record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
@@ -5511,7 +5511,7 @@ paths:
   /Endpoint/rest/api/v1/GroupExternal/{Id}:
     delete:
       description: |-
-        Use the query string resource to delete `GroupExternal` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id` field(s) value and use the `DELETE` method of the resource to delete a record.
+        Use the query string resource to delete `GroupExternal` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id, Name` field(s) value and use the `DELETE` method of the resource to delete a record.
 
         Method returns an extended `GroupExternal` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
@@ -5520,7 +5520,7 @@ paths:
         ### Delete a record of GroupExternal
         * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
         * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
-        * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+        * If the `Id, Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
         The response body will contain the object of the deleted record if the call is successful.
       operationId: Delete GroupExternal
@@ -5543,14 +5543,14 @@ paths:
           type: string
         style: simple
       - description: "The name of the database field. If empty, the entity `Id` field\
-          \ is used.\n\nExample: \n```\n\n```"
+          \ is used.\n\nExample: \n```\nName\n```"
         explode: true
         in: query
         name: Name
         required: false
         schema:
           description: "The name of the database field. If empty, the entity `Id`\
-            \ field is used.\n\nExample: \n```\n\n```"
+            \ field is used.\n\nExample: \n```\nName\n```"
           type: string
         style: form
       responses:
@@ -5641,7 +5641,7 @@ paths:
         ### Get a record of GroupExternal
         * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
         * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
-        * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+        * If the `Id, Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
       operationId: Get GroupExternal
       parameters:
       - description: |-
@@ -5662,14 +5662,14 @@ paths:
           type: string
         style: simple
       - description: "The name of the database field. If empty, the entity `Id` field\
-          \ is used.\n\nExample: \n```\n\n```"
+          \ is used.\n\nExample: \n```\nName\n```"
         explode: true
         in: query
         name: Name
         required: false
         schema:
           description: "The name of the database field. If empty, the entity `Id`\
-            \ field is used.\n\nExample: \n```\n\n```"
+            \ field is used.\n\nExample: \n```\nName\n```"
           type: string
         style: form
       responses:
@@ -5751,8 +5751,8 @@ paths:
       - GroupExternals
     put:
       description: "Use the `GroupExternalData` object resource to update `GroupExternal`\
-        \ using `Id` field(s) value.\n\nProvide the updated record information in\
-        \ your request data and use the `PUT` method of the resource with a specific\
+        \ using `Id, Name` field(s) value.\n\nProvide the updated record information\
+        \ in your request data and use the `PUT` method of the resource with a specific\
         \ record ID to update that record. \n\nThe input parameter must be used in\
         \ the `GroupExternalData` record structure inside the `FieldType` parameter\
         \ in the foreign key fields.\n\nForeign key fields are: `Created_By`\n\n###\
@@ -5760,13 +5760,13 @@ paths:
         \ then a `404` error is reported (`Errors/Not Found`), and the error record\
         \ is returned.. You cannot change `Id` field value (primary key).\n* If the\
         \ `Id` field value is matched multiple times, then a `400` error is reported\
-        \ (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id`\
-        \ field value is matched multiple times, then a `400` error is reported (`Errors/Multible\
-        \ Rows`), and the error record is returned.\n\nThe response body will contain\
-        \ the object of the updated record if the call is successful. Method returns\
-        \ an extended `GroupExternal` structure. Here, all foreign key fields are\
-        \ abstract object structures, utilizing `AbstractText` or `AbstractLong` data\
-        \ types, offering a detailed view of the data and related entities."
+        \ (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id,\
+        \ Name` field value is matched multiple times, then a `400` error is reported\
+        \ (`Errors/Multible Rows`), and the error record is returned.\n\nThe response\
+        \ body will contain the object of the updated record if the call is successful.\
+        \ Method returns an extended `GroupExternal` structure. Here, all foreign\
+        \ key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong`\
+        \ data types, offering a detailed view of the data and related entities."
       operationId: Update GroupExternal
       parameters:
       - description: |-
@@ -5787,14 +5787,14 @@ paths:
           type: string
         style: simple
       - description: "The name of the database field. If empty, the entity `Id` field\
-          \ is used.\n\nExample: \n```\n\n```"
+          \ is used.\n\nExample: \n```\nName\n```"
         explode: true
         in: query
         name: Name
         required: false
         schema:
           description: "The name of the database field. If empty, the entity `Id`\
-            \ field is used.\n\nExample: \n```\n\n```"
+            \ field is used.\n\nExample: \n```\nName\n```"
           type: string
         style: form
       requestBody:
@@ -6111,7 +6111,7 @@ paths:
   /Endpoint/rest/api/v1/GroupExternal:
     patch:
       description: |-
-        Use the `GroupExternalData` object resource to insert or update (Upsert) `GroupExternal` using `Id` field(s) value.
+        Use the `GroupExternalData` object resource to insert or update (Upsert) `GroupExternal` using `Id, Name` field(s) value.
 
         You can supply the required field values in the request data, and then use the `POST` method of the resource.
 
@@ -6121,10 +6121,10 @@ paths:
 
         ### Update a record of GroupExternal
         * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).
-        * When the Id field value is not provided, the system will automatically initiate the insertion of a new record.
+        * If the `Name` field value is not empty and `Id` field value is empty, action try insert record according `Name` field value (if set, the value is a unique identifier).
 
         ### Create a new record of GroupExternal
-        * If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`GroupExternalData`).
+        * If the value in the `Name` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`GroupExternalData`).
 
         The response body will contain the object of the updated or created record if the call is successful. Method returns an extended `GroupExternal` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
       operationId: Upsert GroupExternal
@@ -6227,9 +6227,9 @@ paths:
         Foreign key fields are: `Created_By`
 
         ### Create a new record of GroupExternal
-        * If the value in the `Id` fields are empty then action insert a new record according input parameter entity record structure (`GroupExternalData`).
-        * If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`GroupExternalData`).
-        * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+        * If the value in the `Id, Name` fields are empty then action insert a new record according input parameter entity record structure (`GroupExternalData`).
+        * If the value in the `Name` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`GroupExternalData`).
+        * If the `Id, Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
         The response body will contain the object of the created record if the call is successful. Method returns an extended `GroupExternal` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
@@ -6325,7 +6325,7 @@ paths:
   /Endpoint/rest/api/v1/GroupExternals/Json:
     patch:
       description: |-
-        Use the `GroupExternalsText` object resource to insert or update (Upsert) a list of `GroupExternalList` using `Id` field(s) value.
+        Use the `GroupExternalsText` object resource to insert or update (Upsert) a list of `GroupExternalList` using `Id, Name` field(s) value.
 
         You can supply the required field values in the request data, and then use the `PATCH` method of the resource.
 
@@ -6335,12 +6335,12 @@ paths:
 
         ### Update a record of GroupExternal
         * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned. You cannot change `Id` field value (primary key).
-        * When the Id field value is not provided, the system will automatically initiate the insertion of a new record.
+        * If the `Name` field value is not empty and `Id` field value is empty, action try insert record according `Name` field value (if set, the value is a unique identifier).
 
         **Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.
 
         ### Create a new record of GroupExternal
-        * If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`GroupExternalData`).
+        * If the value in the `Name` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`GroupExternalData`).
 
         The response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `GroupExternal` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.
       operationId: Patch GroupExternals
@@ -16117,48 +16117,58 @@ components:
     User1:
       description: The record of User information.
       example:
-        CreatedBy:
-          Type: User
-          ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-          Id: 1234567891234567
-          Name: Bob Normal
-        ModifiedOn: 1900-01-01T00:00:00Z
-        UserId:
-          Type: User
-          ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-          Id: 1234567891234567
-          Name: Bob Normal
-        Id: Id
-        CreatedOn: 1900-01-01T00:00:00Z
-        ModifiedBy:
-          Type: User
-          ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-          Id: 1234567891234567
-          Name: Bob Normal
+        External_Id: External_Id
+        Email: Email
+        Is_Active: false
+        Username: Username
+        Last_Login: 1900-01-01T00:00:00Z
+        Creation_Date: 1900-01-01T00:00:00Z
+        Id: 0
+        MobilePhone: MobilePhone
+        Name: Name
       properties:
         Id:
-          description: The identifier of user department
+          default: 0
+          description: Unique identifier of the user.
+          example: 0
+          format: int32
+          type: integer
+        Name:
+          description: Full name of the user.
           type: string
-        UserId:
-          $ref: '#/components/schemas/AbstractLong'
-        ModifiedOn:
+        Username:
+          description: Login name of the user.
+          type: string
+        Email:
+          description: Email contact of the user.
+          type: string
+        MobilePhone:
+          description: Mobile phone number of the user.
+          type: string
+        External_Id:
+          description: The user identifier in an external system to the Platform.
+          type: string
+        Creation_Date:
           default: 1900-01-01T00:00:00Z
-          description: The date the record was updated
+          description: The date the user was created.
           example: 1900-01-01T00:00:00Z
           format: date-time
           type: string
-        ModifiedBy:
-          $ref: '#/components/schemas/AbstractLong'
-        CreatedBy:
-          $ref: '#/components/schemas/AbstractLong'
-        CreatedOn:
+        Last_Login:
           default: 1900-01-01T00:00:00Z
-          description: The date the record was created
+          description: Last time the user logged in the application.
           example: 1900-01-01T00:00:00Z
           format: date-time
           type: string
+        Is_Active:
+          default: false
+          description: Indicates if the user is still active.
+          example: false
+          type: boolean
       required:
+      - Creation_Date
       - Id
+      - Is_Active
       type: object
     Users1:
       description: The list of `User` records
@@ -16169,42 +16179,24 @@ components:
           CurrentPage: 50
           TotalItems: 1000
         Data:
-        - CreatedBy:
-            Type: User
-            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-            Id: 1234567891234567
-            Name: Bob Normal
-          ModifiedOn: 1900-01-01T00:00:00Z
-          UserId:
-            Type: User
-            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-            Id: 1234567891234567
-            Name: Bob Normal
-          Id: Id
-          CreatedOn: 1900-01-01T00:00:00Z
-          ModifiedBy:
-            Type: User
-            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-            Id: 1234567891234567
-            Name: Bob Normal
-        - CreatedBy:
-            Type: User
-            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-            Id: 1234567891234567
-            Name: Bob Normal
-          ModifiedOn: 1900-01-01T00:00:00Z
-          UserId:
-            Type: User
-            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-            Id: 1234567891234567
-            Name: Bob Normal
-          Id: Id
-          CreatedOn: 1900-01-01T00:00:00Z
-          ModifiedBy:
-            Type: User
-            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-            Id: 1234567891234567
-            Name: Bob Normal
+        - External_Id: External_Id
+          Email: Email
+          Is_Active: false
+          Username: Username
+          Last_Login: 1900-01-01T00:00:00Z
+          Creation_Date: 1900-01-01T00:00:00Z
+          Id: 0
+          MobilePhone: MobilePhone
+          Name: Name
+        - External_Id: External_Id
+          Email: Email
+          Is_Active: false
+          Username: Username
+          Last_Login: 1900-01-01T00:00:00Z
+          Creation_Date: 1900-01-01T00:00:00Z
+          Id: 0
+          MobilePhone: MobilePhone
+          Name: Name
       properties:
         Meta:
           $ref: '#/components/schemas/Meta'

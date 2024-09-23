@@ -29,9 +29,9 @@ The input parameter must be used in the `GroupExternalData` record structure ins
 Foreign key fields are: `Created_By`
 
 ### Create a new record of GroupExternal
-* If the value in the `Id` fields are empty then action insert a new record according input parameter entity record structure (`GroupExternalData`).
-* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`GroupExternalData`).
-* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+* If the value in the `Id, Name` fields are empty then action insert a new record according input parameter entity record structure (`GroupExternalData`).
+* If the value in the `Name` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`GroupExternalData`).
+* If the `Id, Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
 The response body will contain the object of the created record if the call is successful. Method returns an extended `GroupExternal` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
@@ -141,7 +141,7 @@ catch (ApiException e)
 # **DeleteGroupExternal**
 > GroupExternal DeleteGroupExternal (string id, string name = null)
 
-Use the query string resource to delete `GroupExternal` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id` field(s) value and use the `DELETE` method of the resource to delete a record.
+Use the query string resource to delete `GroupExternal` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id, Name` field(s) value and use the `DELETE` method of the resource to delete a record.
 
 Method returns an extended `GroupExternal` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
@@ -150,7 +150,7 @@ Foreign key fields are: `Created_By`
 ### Delete a record of GroupExternal
 * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
 * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
-* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+* If the `Id, Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
 The response body will contain the object of the deleted record if the call is successful.
 
@@ -175,7 +175,7 @@ namespace Example
 
             var apiInstance = new GroupExternalsApi(config);
             var id = "id_example";  // string | The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
-            var name = "name_example";  // string | The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional) 
+            var name = "name_example";  // string | The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name ``` (optional) 
 
             try
             {
@@ -229,7 +229,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **id** | **string** | The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
-| **name** | **string** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60;  &#x60;&#x60;&#x60; | [optional]  |
+| **name** | **string** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Name &#x60;&#x60;&#x60; | [optional]  |
 
 ### Return type
 
@@ -392,7 +392,7 @@ Foreign key fields are: `Created_By`
 ### Get a record of GroupExternal
 * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
 * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
-* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+* If the `Id, Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
 ### Example
 ```csharp
@@ -415,7 +415,7 @@ namespace Example
 
             var apiInstance = new GroupExternalsApi(config);
             var id = "id_example";  // string | The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
-            var name = "name_example";  // string | The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional) 
+            var name = "name_example";  // string | The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name ``` (optional) 
 
             try
             {
@@ -469,7 +469,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **id** | **string** | The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
-| **name** | **string** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60;  &#x60;&#x60;&#x60; | [optional]  |
+| **name** | **string** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Name &#x60;&#x60;&#x60; | [optional]  |
 
 ### Return type
 
@@ -886,7 +886,7 @@ catch (ApiException e)
 # **PatchGroupExternals**
 > GroupExternals PatchGroupExternals (GroupExternalsData groupExternalsData)
 
-Use the `GroupExternalsText` object resource to insert or update (Upsert) a list of `GroupExternalList` using `Id` field(s) value.
+Use the `GroupExternalsText` object resource to insert or update (Upsert) a list of `GroupExternalList` using `Id, Name` field(s) value.
 
 You can supply the required field values in the request data, and then use the `PATCH` method of the resource.
 
@@ -896,12 +896,12 @@ Foreign key fields are: `Created_By`
 
 ### Update a record of GroupExternal
 * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned. You cannot change `Id` field value (primary key).
-* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.
+* If the `Name` field value is not empty and `Id` field value is empty, action try insert record according `Name` field value (if set, the value is a unique identifier).
 
 **Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.
 
 ### Create a new record of GroupExternal
-* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`GroupExternalData`).
+* If the value in the `Name` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`GroupExternalData`).
 
 The response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `GroupExternal` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.
 
@@ -1009,7 +1009,7 @@ catch (ApiException e)
 # **UpdateGroupExternal**
 > GroupExternal UpdateGroupExternal (string id, GroupExternalData groupExternalData, string name = null)
 
-Use the `GroupExternalData` object resource to update `GroupExternal` using `Id` field(s) value.
+Use the `GroupExternalData` object resource to update `GroupExternal` using `Id, Name` field(s) value.
 
 Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record. 
 
@@ -1020,7 +1020,7 @@ Foreign key fields are: `Created_By`
 ### Update a record of GroupExternal
 * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).
 * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
-* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+* If the `Id, Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
 The response body will contain the object of the updated record if the call is successful. Method returns an extended `GroupExternal` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
@@ -1046,7 +1046,7 @@ namespace Example
             var apiInstance = new GroupExternalsApi(config);
             var id = "id_example";  // string | The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
             var groupExternalData = new GroupExternalData(); // GroupExternalData | GroupExternal information to update.  The input parameter must be used in the `GroupExternalData` record structure inside the `FieldType` parameter in the foreign key fields.
-            var name = "name_example";  // string | The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional) 
+            var name = "name_example";  // string | The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name ``` (optional) 
 
             try
             {
@@ -1101,7 +1101,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **id** | **string** | The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
 | **groupExternalData** | [**GroupExternalData**](models/GroupExternalData.md) | GroupExternal information to update.  The input parameter must be used in the &#x60;GroupExternalData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
-| **name** | **string** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60;  &#x60;&#x60;&#x60; | [optional]  |
+| **name** | **string** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Name &#x60;&#x60;&#x60; | [optional]  |
 
 ### Return type
 
@@ -1132,7 +1132,7 @@ catch (ApiException e)
 # **UpsertGroupExternal**
 > GroupExternal UpsertGroupExternal (GroupExternalData groupExternalData)
 
-Use the `GroupExternalData` object resource to insert or update (Upsert) `GroupExternal` using `Id` field(s) value.
+Use the `GroupExternalData` object resource to insert or update (Upsert) `GroupExternal` using `Id, Name` field(s) value.
 
 You can supply the required field values in the request data, and then use the `POST` method of the resource.
 
@@ -1142,10 +1142,10 @@ Foreign key fields are: `Created_By`
 
 ### Update a record of GroupExternal
 * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).
-* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.
+* If the `Name` field value is not empty and `Id` field value is empty, action try insert record according `Name` field value (if set, the value is a unique identifier).
 
 ### Create a new record of GroupExternal
-* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`GroupExternalData`).
+* If the value in the `Name` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`GroupExternalData`).
 
 The response body will contain the object of the updated or created record if the call is successful. Method returns an extended `GroupExternal` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 

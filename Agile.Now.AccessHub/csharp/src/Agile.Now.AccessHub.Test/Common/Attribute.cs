@@ -1,15 +1,15 @@
 ﻿using System;
 
-namespace Agile.Now.AccessHub.Test.Api {
-    public class Attribute<TEntity, TId, TCreateData> {
+namespace Agile.Now.AccessHub.Test.Common {
+    public class Attribute<TEntity, TId, TInsertData> {
         public readonly string Name;
         public readonly Func<TEntity, TId> Get;
-        public readonly Action<TCreateData, string> Set;
+        public readonly Action<TInsertData, TId> Set;
 
-        public Attribute(string name, Func<TEntity, TId> get, Action<TCreateData, string> set) {
-            this.Name = name;
-            this.Get = get;
-            this.Set = set;
+        public Attribute(string name, Func<TEntity, TId> get, Action<TInsertData, TId> set) {
+            Name = name;
+            Get = get;
+            Set = set;
         }
     }
 }

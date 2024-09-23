@@ -40,9 +40,9 @@ The input parameter must be used in the `AccessGroupData` record structure insid
 Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`
 
 ### Create a new record of AccessGroup
-* If the value in the `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupData`).
-* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`AccessGroupData`).
-* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+* If the value in the `Id, Name, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupData`).
+* If the value in the `Name,ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupData`).
+* If the `Id, Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
 The response body will contain the object of the created record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
@@ -152,7 +152,7 @@ catch (ApiException e)
 # **DeleteAccessGroup**
 > AccessGroup DeleteAccessGroup (string id, string name = null)
 
-Use the query string resource to delete `AccessGroup` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id` field(s) value and use the `DELETE` method of the resource to delete a record.
+Use the query string resource to delete `AccessGroup` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id, Name, ExternalId` field(s) value and use the `DELETE` method of the resource to delete a record.
 
 Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
@@ -161,7 +161,7 @@ Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`
 ### Delete a record of AccessGroup
 * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
 * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
-* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+* If the `Id, Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
 The response body will contain the object of the deleted record if the call is successful.
 
@@ -186,7 +186,7 @@ namespace Example
 
             var apiInstance = new AccessGroupsApi(config);
             var id = "id_example";  // string | The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
-            var name = "name_example";  // string | The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional) 
+            var name = "name_example";  // string | The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name,ExternalId ``` (optional) 
 
             try
             {
@@ -240,7 +240,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **id** | **string** | The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
-| **name** | **string** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60;  &#x60;&#x60;&#x60; | [optional]  |
+| **name** | **string** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Name,ExternalId &#x60;&#x60;&#x60; | [optional]  |
 
 ### Return type
 
@@ -772,7 +772,7 @@ Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`
 ### Get a record of AccessGroup
 * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
 * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
-* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+* If the `Id, Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
 ### Example
 ```csharp
@@ -795,7 +795,7 @@ namespace Example
 
             var apiInstance = new AccessGroupsApi(config);
             var id = "id_example";  // string | The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
-            var name = "name_example";  // string | The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional) 
+            var name = "name_example";  // string | The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name,ExternalId ``` (optional) 
 
             try
             {
@@ -849,7 +849,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **id** | **string** | The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
-| **name** | **string** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60;  &#x60;&#x60;&#x60; | [optional]  |
+| **name** | **string** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Name,ExternalId &#x60;&#x60;&#x60; | [optional]  |
 
 ### Return type
 
@@ -2043,7 +2043,7 @@ catch (ApiException e)
 # **UpdateAccessGroup**
 > AccessGroup UpdateAccessGroup (string id, AccessGroupData accessGroupData, string name = null)
 
-Use the `AccessGroupData` object resource to update `AccessGroup` using `Id` field(s) value.
+Use the `AccessGroupData` object resource to update `AccessGroup` using `Id, Name, ExternalId` field(s) value.
 
 Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record. 
 
@@ -2054,7 +2054,7 @@ Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`
 ### Update a record of AccessGroup
 * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).
 * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
-* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+* If the `Id, Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
 The response body will contain the object of the updated record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
@@ -2080,7 +2080,7 @@ namespace Example
             var apiInstance = new AccessGroupsApi(config);
             var id = "id_example";  // string | The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
             var accessGroupData = new AccessGroupData(); // AccessGroupData | AccessGroup information to update.  The input parameter must be used in the `AccessGroupData` record structure inside the `FieldType` parameter in the foreign key fields.
-            var name = "name_example";  // string | The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional) 
+            var name = "name_example";  // string | The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name,ExternalId ``` (optional) 
 
             try
             {
@@ -2135,7 +2135,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **id** | **string** | The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
 | **accessGroupData** | [**AccessGroupData**](models/AccessGroupData.md) | AccessGroup information to update.  The input parameter must be used in the &#x60;AccessGroupData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
-| **name** | **string** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60;  &#x60;&#x60;&#x60; | [optional]  |
+| **name** | **string** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Name,ExternalId &#x60;&#x60;&#x60; | [optional]  |
 
 ### Return type
 
@@ -2166,7 +2166,7 @@ catch (ApiException e)
 # **UpsertAccessGroup**
 > AccessGroup UpsertAccessGroup (AccessGroupData accessGroupData)
 
-Use the `AccessGroupData` object resource to insert or update (Upsert) `AccessGroup` using `Id` field(s) value.
+Use the `AccessGroupData` object resource to insert or update (Upsert) `AccessGroup` using `Id, Name, ExternalId` field(s) value.
 
 You can supply the required field values in the request data, and then use the `POST` method of the resource.
 
@@ -2176,10 +2176,10 @@ Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`
 
 ### Update a record of AccessGroup
 * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).
-* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.
+* If the `Name,ExternalId` field value is not empty and `Id` field value is empty, action try insert record according `Name,ExternalId` field value (if set, the value is a unique identifier).
 
 ### Create a new record of AccessGroup
-* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`AccessGroupData`).
+* If the value in the `Name,ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupData`).
 
 The response body will contain the object of the updated or created record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 

@@ -1,25 +1,25 @@
 ﻿using System;
 
-namespace Agile.Now.AccessHub.Test.Api {
-    public class TestData<TEntity, TCreateData, TUpdateData, TUpsertData> {
-        public readonly Func<TCreateData> GetCreateData;
-        public readonly Func<TCreateData, TUpdateData> GetUpdateData;
-        public readonly Func<TCreateData, TUpsertData> GetUpsertData;
-        public readonly Action<TCreateData> Update;
-        public readonly Action<TCreateData, TEntity> AssertEqual;
+namespace Agile.Now.AccessHub.Test.Common {
+    public class TestData<TReadData, TInsertData, TUpdateData, TUpsertData> {
+        public readonly Func<TInsertData> GetInsertData;
+        public readonly Action<TInsertData, TReadData> AssertEqual;
+        public readonly Func<TInsertData, TUpdateData> ToUpdateData;
+        public readonly Func<TInsertData, TUpsertData> ToUpsertData;
+        public readonly Action<TInsertData> Update;
 
         public TestData(
-            Func<TCreateData> getCreateData,
-            Func<TCreateData, TUpdateData> getUpdateData,
-            Func<TCreateData, TUpsertData> getUpsertData,
-            Action<TCreateData> update,
-            Action<TCreateData, TEntity> assertEqual) {
+            Func<TInsertData> getInsertData,
+            Func<TInsertData, TUpdateData> toUpdateData,
+            Func<TInsertData, TUpsertData> toUpsertData,
+            Action<TInsertData, TReadData> assertEqual = null,
+            Action<TInsertData> update = null) {
 
-            GetCreateData = getCreateData;
-            GetUpdateData = getUpdateData;
-            GetUpsertData = getUpsertData;
-            Update = update;
+            GetInsertData = getInsertData;
             AssertEqual = assertEqual;
+            ToUpdateData = toUpdateData;
+            ToUpsertData = toUpsertData;
+            Update = update;
         }
     }
 }

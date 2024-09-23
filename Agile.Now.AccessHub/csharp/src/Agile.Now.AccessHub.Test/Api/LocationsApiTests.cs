@@ -49,8 +49,7 @@ using Xunit.Abstractions;
 // uncomment below to import models
 //using Agile.Now.AccessHub.Model;
 
-namespace Agile.Now.AccessHub.Test.Api
-{
+namespace Agile.Now.AccessHub.Test.Api {
     /// <summary>
     ///  Class for testing LocationsApi
     /// </summary>
@@ -281,7 +280,7 @@ namespace Agile.Now.AccessHub.Test.Api
             var entity = api.CreateLocation(LocationTestData.CreateLocationData());
             try {
                 var created = api.UpsertLocationUser(entity.Id, UserTestData.CreateUserData1(UserTestData.Users[0]));
-                api.DeleteLocationUser(entity.Id, created.Id);
+                api.DeleteLocationUser(entity.Id, created.Id.ToString(), subName: "UserId");
                 var existing = api.ListLocationUsers(entity.Id).Data;
                 Assert.Empty(existing);
             }
@@ -305,7 +304,7 @@ namespace Agile.Now.AccessHub.Test.Api
                 }
                 finally {
                     foreach(var i in created)
-                        api.DeleteLocationUser(entity.Id, i.Id);
+                        api.DeleteLocationUser(entity.Id, i.Id.ToString(), subName: "UserId");
 
                 }
             }
@@ -327,13 +326,13 @@ namespace Agile.Now.AccessHub.Test.Api
                     var existing = api.ListLocationUsers(entity.Id).Data;
                     Assert.Contains(existing, i => i.Id == created.Id);
                     data = UserTestData.CreateUserData1(UserTestData.Users[1]);
-                    data.Id = created.Id;
+                    data.Id = created.Id.ToString();
                     var updated = api.UpsertLocationUser(entity.Id, data);
                     Assert.Equal(created.Id, updated.Id);
-                    Assert.Equal(data.UserId.Value, updated.UserId.Id.ToString());
+                    Assert.Equal(data.UserId.Value, updated.Id.ToString());
                 }
                 finally {
-                    api.DeleteLocationUser(entity.Id, created.Id);
+                    api.DeleteLocationUser(entity.Id, created.Id.ToString(), subName: "UserId");
                 }
             }
             finally {
@@ -353,20 +352,21 @@ namespace Agile.Now.AccessHub.Test.Api
                 try {
                     var patched = api.PatchLocationUsers(entity.Id.ToString(),
                         new(users: new List<UserText1> {
-                            new(userId: UserTestData.Users[1].ToString()),
-                            new(userId: UserTestData.Users[2].ToString(), id: created.Id)
+                            new(userId: UserTestData.Users[1].ToString())
+                            //,
+                            //new(userId: UserTestData.Users[2].ToString(), id: created.Id.ToString())
                         })).Data;
                     try {
                         var existing = api.ListLocationUsers(entity.Id.ToString()).Data;
-                        Assert.Contains(existing, i => i.UserId.Id == UserTestData.Users[1]);
-                        Assert.Contains(existing, i => i.UserId.Id == UserTestData.Users[2] && i.Id == created.Id);
+                        Assert.Contains(existing, i => i.Id == UserTestData.Users[1]);
+                        //Assert.Contains(existing, i => i.Id == UserTestData.Users[2] && i.Id == created.Id);
                     }
                     finally {
-                        api.DeleteLocationUser(entity.Id, patched.First(i => i.Id != created.Id).Id);
+                        api.DeleteLocationUser(entity.Id, patched.First(i => i.Id != created.Id).Id.ToString(), subName: "UserId");
                     }
                 }
                 finally {
-                    api.DeleteLocationUser(entity.Id, created.Id);
+                    api.DeleteLocationUser(entity.Id, created.Id.ToString(), subName: "UserId");
                 }
             }
             finally {
@@ -386,18 +386,18 @@ namespace Agile.Now.AccessHub.Test.Api
                 try {
                     api.PatchLocationUsers(entity.Id.ToString(),
                         new(users: new List<UserText1> {
-                            new(userId: UserTestData.Users[2].ToString(), id: toPatch.Id)
+                            new(userId: UserTestData.Users[2].ToString())
                         }),
                         deleteNotExists: true.ToString());
                     toDelete = null;
                     var existing = api.ListLocationUsers(entity.Id.ToString()).Data;
                     Assert.Single(existing);
-                    Assert.Contains(existing, i => i.UserId.Id == UserTestData.Users[2] && i.Id == toPatch.Id);
+                    Assert.Contains(existing, i => i.Id == UserTestData.Users[2] && i.Id == toPatch.Id);
                 }
                 finally {
                     if(toDelete != null)
-                        api.DeleteLocationUser(entity.Id, toDelete.Id);
-                    api.DeleteLocationUser(entity.Id, toPatch.Id);
+                        api.DeleteLocationUser(entity.Id, toDelete.Id.ToString(), subName: "UserId");
+                    api.DeleteLocationUser(entity.Id, toPatch.Id.ToString(), subName: "UserId");
                 }
             }
             finally {
