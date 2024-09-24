@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.87"
+    "version": "3.0.88"
   },
   "servers": [
     {
@@ -3109,33 +3109,40 @@
       },
       "Permission": {
         "required": [
-          "Label",
-          "Short",
-          "Order",
-          "Is_Active"
+          "Id",
+          "PermissionId",
+          "CreatedOn"
         ],
         "type": "object",
         "properties": {
-          "Label": {
-            "type": "string",
-            "description": "The identifier of permission"
-          },
-          "Short": {
-            "type": "string",
-            "description": "Short label like 'C'"
-          },
-          "Order": {
+          "Id": {
             "type": "integer",
-            "description": "Order number of record",
-            "format": "int32",
+            "description": "The identifier of entity",
+            "format": "int64",
             "default": 0,
             "example": 0
+          },
+          "AccessRoleId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "RoleId": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "PermissionId": {
+            "$ref": "#/components/schemas/AbstractText"
           },
           "Is_Active": {
             "type": "boolean",
             "description": "Defines if record is active",
             "default": false,
             "example": false
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date when the record was created.",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
           }
         },
         "description": "The record of Permission information."
