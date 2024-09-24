@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.80"
+    "version": "3.0.81"
   },
   "servers": [
     {
@@ -2869,26 +2869,83 @@
       "Application": {
         "required": [
           "Id",
-          "ParentApplicationId",
-          "AccessApplicationId"
+          "Is_Active",
+          "Is_ReadOnly"
         ],
         "type": "object",
         "properties": {
           "Id": {
             "type": "string",
-            "description": "The identifier of  access group application"
+            "description": "The identifier of the access application"
           },
-          "ParentApplicationId": {
-            "$ref": "#/components/schemas/AbstractText"
+          "ApplicationId": {
+            "$ref": "#/components/schemas/AbstractLong"
           },
-          "AccessApplicationId": {
-            "$ref": "#/components/schemas/AbstractText"
+          "Name": {
+            "type": "string",
+            "description": "Name of application"
+          },
+          "ApplicationKey": {
+            "type": "string",
+            "description": "The key used to identify the application must be unique within each workspace."
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external system code of the application"
+          },
+          "Description": {
+            "type": "string",
+            "description": "The description of access group"
+          },
+          "WebSiteURL": {
+            "type": "string",
+            "description": "Web Site URL of application"
+          },
+          "Is_System": {
+            "type": "boolean",
+            "description": "Defines if application is system (setting menu)",
+            "default": false,
+            "example": false
+          },
+          "Is_EndUser": {
+            "type": "boolean",
+            "description": "Specifies whether the application is an end-user application",
+            "default": false,
+            "example": false
+          },
+          "Is_TestApp": {
+            "type": "boolean",
+            "description": "Specifies whether the application is a test application",
+            "default": false,
+            "example": false
           },
           "Is_Active": {
             "type": "boolean",
-            "description": "Defines if record is active",
+            "description": "Defines if the application is active and can be used",
             "default": false,
             "example": false
+          },
+          "Is_ReadOnly": {
+            "type": "boolean",
+            "description": "Determines whether the application is readonly and can be modified",
+            "default": false,
+            "example": false
+          },
+          "AuthenticationId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "ModifiedOn": {
+            "type": "string",
+            "description": "The date the record was updated",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          },
+          "ModifiedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
+          },
+          "CreatedBy": {
+            "$ref": "#/components/schemas/AbstractLong"
           },
           "CreatedOn": {
             "type": "string",
@@ -3052,40 +3109,33 @@
       },
       "Permission": {
         "required": [
-          "Id",
-          "PermissionId",
-          "CreatedOn"
+          "Label",
+          "Short",
+          "Order",
+          "Is_Active"
         ],
         "type": "object",
         "properties": {
-          "Id": {
+          "Label": {
+            "type": "string",
+            "description": "The identifier of permission"
+          },
+          "Short": {
+            "type": "string",
+            "description": "Short label like 'C'"
+          },
+          "Order": {
             "type": "integer",
-            "description": "The identifier of entity",
-            "format": "int64",
+            "description": "Order number of record",
+            "format": "int32",
             "default": 0,
             "example": 0
-          },
-          "AccessRoleId": {
-            "$ref": "#/components/schemas/AbstractText"
-          },
-          "RoleId": {
-            "$ref": "#/components/schemas/AbstractLong"
-          },
-          "PermissionId": {
-            "$ref": "#/components/schemas/AbstractText"
           },
           "Is_Active": {
             "type": "boolean",
             "description": "Defines if record is active",
             "default": false,
             "example": false
-          },
-          "CreatedOn": {
-            "type": "string",
-            "description": "The date when the record was created.",
-            "format": "date-time",
-            "default": "1900-01-01T00:00:00Z",
-            "example": "1900-01-01T00:00:00Z"
           }
         },
         "description": "The record of Permission information."
@@ -3257,28 +3307,35 @@
       },
       "Group": {
         "required": [
-          "Id",
-          "GroupId",
-          "CreatedOn"
+          "Id"
         ],
         "type": "object",
         "properties": {
           "Id": {
             "type": "integer",
-            "description": "The identifier of group access group",
-            "format": "int64",
+            "format": "int32",
             "default": 0,
             "example": 0
           },
-          "GroupId": {
+          "Name": {
+            "type": "string"
+          },
+          "Description": {
+            "type": "string"
+          },
+          "Created_By": {
             "$ref": "#/components/schemas/AbstractLong"
           },
-          "CreatedOn": {
+          "Created": {
             "type": "string",
-            "description": "The date when the record was created.",
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
+          },
+          "Has_Custom_Management": {
+            "type": "boolean",
+            "default": false,
+            "example": false
           }
         },
         "description": "The record of Group information."
@@ -3361,27 +3418,57 @@
       "User": {
         "required": [
           "Id",
-          "UserId",
-          "CreatedOn"
+          "Creation_Date",
+          "Is_Active"
         ],
         "type": "object",
         "properties": {
           "Id": {
             "type": "integer",
-            "description": "The identifier of user access group",
-            "format": "int64",
+            "description": "Unique identifier of the user.",
+            "format": "int32",
             "default": 0,
             "example": 0
           },
-          "UserId": {
-            "$ref": "#/components/schemas/AbstractLong"
-          },
-          "CreatedOn": {
+          "Name": {
             "type": "string",
-            "description": "The date when the record was created.",
+            "description": "Full name of the user."
+          },
+          "Username": {
+            "type": "string",
+            "description": "Login name of the user."
+          },
+          "Email": {
+            "type": "string",
+            "description": "Email contact of the user."
+          },
+          "MobilePhone": {
+            "type": "string",
+            "description": "Mobile phone number of the user."
+          },
+          "External_Id": {
+            "type": "string",
+            "description": "The user identifier in an external system to the Platform."
+          },
+          "Creation_Date": {
+            "type": "string",
+            "description": "The date the user was created.",
             "format": "date-time",
             "default": "1900-01-01T00:00:00Z",
             "example": "1900-01-01T00:00:00Z"
+          },
+          "Last_Login": {
+            "type": "string",
+            "description": "Last time the user logged in the application.",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Indicates if the user is still active.",
+            "default": false,
+            "example": false
           }
         },
         "description": "The record of User information."
@@ -3605,18 +3692,57 @@
       "UserExternal": {
         "required": [
           "Id",
-          "User_Id"
+          "Creation_Date",
+          "Is_Active"
         ],
         "type": "object",
         "properties": {
           "Id": {
             "type": "integer",
+            "description": "Unique identifier of the user.",
             "format": "int32",
             "default": 0,
             "example": 0
           },
-          "User_Id": {
-            "$ref": "#/components/schemas/AbstractLong"
+          "Name": {
+            "type": "string",
+            "description": "Full name of the user."
+          },
+          "Username": {
+            "type": "string",
+            "description": "Login name of the user."
+          },
+          "Email": {
+            "type": "string",
+            "description": "Email contact of the user."
+          },
+          "MobilePhone": {
+            "type": "string",
+            "description": "Mobile phone number of the user."
+          },
+          "External_Id": {
+            "type": "string",
+            "description": "The user identifier in an external system to the Platform."
+          },
+          "Creation_Date": {
+            "type": "string",
+            "description": "The date the user was created.",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          },
+          "Last_Login": {
+            "type": "string",
+            "description": "Last time the user logged in the application.",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Indicates if the user is still active.",
+            "default": false,
+            "example": false
           }
         },
         "description": "The record of UserExternal information."
