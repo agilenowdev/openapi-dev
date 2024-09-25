@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.111"
+    "version": "3.0.112"
   },
   "servers": [
     {
@@ -22,7 +22,7 @@
         "tags": [
           "Users"
         ],
-        "description": "The method returns one record of the `User`.\n\nMethod returns an extended `User` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: ``\n\n### Get a record of User\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.",
+        "description": "The method returns one record of the `User`.\n\nMethod returns an extended `User` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: ``\n\n### Get a record of User\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id, Username` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.",
         "operationId": "Get User",
         "parameters": [
           {
@@ -38,10 +38,10 @@
           {
             "name": "Name",
             "in": "query",
-            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\n\n```",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nUsername\n```",
             "schema": {
               "type": "string",
-              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\n\n```"
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nUsername\n```"
             }
           }
         ],
