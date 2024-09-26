@@ -257,7 +257,7 @@ catch (ApiException e)
 
 <a id="deletelocationuser"></a>
 # **DeleteLocationUser**
-> User1 DeleteLocationUser (string id, string subId, string name = null, string subName = null)
+> User DeleteLocationUser (string id, string subId, string name = null, string subName = null)
 
 Use the query string resource to delete `User` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `Id` field(s) value and use the `DELETE` method of the resource to delete a record.
 
@@ -299,7 +299,7 @@ namespace Example
 
             try
             {
-                User1 result = apiInstance.DeleteLocationUser(id, subId, name, subName);
+                User result = apiInstance.DeleteLocationUser(id, subId, name, subName);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -325,7 +325,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<User1> response = apiInstance.DeleteLocationUserWithHttpInfo(id, subId, name, subName);
+    ApiResponse<User> response = apiInstance.DeleteLocationUserWithHttpInfo(id, subId, name, subName);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -355,7 +355,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**User1**](models/User1.md)
+[**User**](models/User.md)
 
 ### Authorization
 
@@ -497,7 +497,7 @@ catch (ApiException e)
 
 <a id="listlocationusers"></a>
 # **ListLocationUsers**
-> Users1 ListLocationUsers (string id, string name = null, string fields = null, string filters = null, string orders = null, int? currentPage = null, int? pageSize = null)
+> Users ListLocationUsers (string id, string name = null, string fields = null, string filters = null, string orders = null, int? currentPage = null, int? pageSize = null)
 
 Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.
 
@@ -544,7 +544,7 @@ namespace Example
 
             try
             {
-                Users1 result = apiInstance.ListLocationUsers(id, name, fields, filters, orders, currentPage, pageSize);
+                Users result = apiInstance.ListLocationUsers(id, name, fields, filters, orders, currentPage, pageSize);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -570,7 +570,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<Users1> response = apiInstance.ListLocationUsersWithHttpInfo(id, name, fields, filters, orders, currentPage, pageSize);
+    ApiResponse<Users> response = apiInstance.ListLocationUsersWithHttpInfo(id, name, fields, filters, orders, currentPage, pageSize);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -603,7 +603,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**Users1**](models/Users1.md)
+[**Users**](models/Users.md)
 
 ### Authorization
 
@@ -755,7 +755,7 @@ catch (ApiException e)
 
 <a id="patchlocationusers"></a>
 # **PatchLocationUsers**
-> Users1 PatchLocationUsers (string id, UsersData1 usersData1, string name = null, string deleteNotExists = null)
+> Users PatchLocationUsers (string id, UsersData1 usersData1, string name = null, string deleteNotExists = null)
 
 Use the `UsersData` object resource to insert or update (Upsert) a list of `UserData` using `Id` field(s) value.
 
@@ -802,7 +802,7 @@ namespace Example
 
             try
             {
-                Users1 result = apiInstance.PatchLocationUsers(id, usersData1, name, deleteNotExists);
+                Users result = apiInstance.PatchLocationUsers(id, usersData1, name, deleteNotExists);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -828,7 +828,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<Users1> response = apiInstance.PatchLocationUsersWithHttpInfo(id, usersData1, name, deleteNotExists);
+    ApiResponse<Users> response = apiInstance.PatchLocationUsersWithHttpInfo(id, usersData1, name, deleteNotExists);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -858,7 +858,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**Users1**](models/Users1.md)
+[**Users**](models/Users.md)
 
 ### Authorization
 
@@ -1127,7 +1127,7 @@ catch (ApiException e)
 
 <a id="upsertlocationuser"></a>
 # **UpsertLocationUser**
-> User1 UpsertLocationUser (string id, UserData1 userData1, string name = null)
+> User UpsertLocationUser (string id, UserData1 userData1, string name = null)
 
 Use the `UserPost` object resource to insert or update (Upsert) `User` using `Id` field(s) value.
 
@@ -1172,7 +1172,7 @@ namespace Example
 
             try
             {
-                User1 result = apiInstance.UpsertLocationUser(id, userData1, name);
+                User result = apiInstance.UpsertLocationUser(id, userData1, name);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1198,7 +1198,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<User1> response = apiInstance.UpsertLocationUserWithHttpInfo(id, userData1, name);
+    ApiResponse<User> response = apiInstance.UpsertLocationUserWithHttpInfo(id, userData1, name);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -1227,7 +1227,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**User1**](models/User1.md)
+[**User**](models/User.md)
 
 ### Authorization
 

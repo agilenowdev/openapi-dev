@@ -60,52 +60,159 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Application" /> class.
         /// </summary>
-        /// <param name="id">The identifier of  access group application (required).</param>
-        /// <param name="parentApplicationId">parentApplicationId (required).</param>
-        /// <param name="accessApplicationId">accessApplicationId (required).</param>
-        /// <param name="isActive">Defines if record is active (default to false).</param>
+        /// <param name="id">The identifier of the access application (required).</param>
+        /// <param name="applicationId">applicationId.</param>
+        /// <param name="name">Name of application.</param>
+        /// <param name="applicationKey">The key used to identify the application must be unique within each workspace..</param>
+        /// <param name="externalId">The external system code of the application.</param>
+        /// <param name="description">The description of access group.</param>
+        /// <param name="webSiteURL">Web Site URL of application.</param>
+        /// <param name="isSystem">Defines if application is system (setting menu) (default to false).</param>
+        /// <param name="isEndUser">Specifies whether the application is an end-user application (default to false).</param>
+        /// <param name="isTestApp">Specifies whether the application is a test application (default to false).</param>
+        /// <param name="isActive">Defines if the application is active and can be used (required) (default to false).</param>
+        /// <param name="isReadOnly">Determines whether the application is readonly and can be modified (required) (default to false).</param>
+        /// <param name="authenticationId">authenticationId.</param>
+        /// <param name="modifiedOn">The date the record was updated (default to &quot;1900-01-01T00:00Z&quot;).</param>
+        /// <param name="modifiedBy">modifiedBy.</param>
+        /// <param name="createdBy">createdBy.</param>
         /// <param name="createdOn">The date the record was created (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public Application(string id = default, AbstractText parentApplicationId = default, AbstractText accessApplicationId = default, bool isActive = false, DateTime createdOn = default)
+        public Application(string id = default, AbstractLong applicationId = default, string name = default, string applicationKey = default, string externalId = default, string description = default, string webSiteURL = default, bool isSystem = false, bool isEndUser = false, bool isTestApp = false, bool isActive = false, bool isReadOnly = false, AbstractText authenticationId = default, DateTime modifiedOn = default, AbstractLong modifiedBy = default, AbstractLong createdBy = default, DateTime createdOn = default)
         {
             // to ensure "id" is required (not null)
             id = id ?? throw new ArgumentNullException("id is a required property for Application and cannot be null");
             Id = id;
-            // to ensure "parentApplicationId" is required (not null)
-            parentApplicationId = parentApplicationId ?? throw new ArgumentNullException("parentApplicationId is a required property for Application and cannot be null");
-            ParentApplicationId = parentApplicationId;
-            // to ensure "accessApplicationId" is required (not null)
-            accessApplicationId = accessApplicationId ?? throw new ArgumentNullException("accessApplicationId is a required property for Application and cannot be null");
-            AccessApplicationId = accessApplicationId;
             IsActive = isActive;
+            IsReadOnly = isReadOnly;
+            ApplicationId = applicationId;
+            Name = name;
+            ApplicationKey = applicationKey;
+            ExternalId = externalId;
+            Description = description;
+            WebSiteURL = webSiteURL;
+            IsSystem = isSystem;
+            IsEndUser = isEndUser;
+            IsTestApp = isTestApp;
+            AuthenticationId = authenticationId;
+            ModifiedOn = modifiedOn;
+            ModifiedBy = modifiedBy;
+            CreatedBy = createdBy;
             CreatedOn = createdOn;
         }
 
         /// <summary>
-        /// The identifier of  access group application
+        /// The identifier of the access application
         /// </summary>
-        /// <value>The identifier of  access group application</value>
+        /// <value>The identifier of the access application</value>
         [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets ParentApplicationId
+        /// Gets or Sets ApplicationId
         /// </summary>
-        [DataMember(Name = "ParentApplicationId", IsRequired = true, EmitDefaultValue = true)]
-        public AbstractText ParentApplicationId { get; set; }
+        [DataMember(Name = "ApplicationId", EmitDefaultValue = false)]
+        public AbstractLong ApplicationId { get; set; }
 
         /// <summary>
-        /// Gets or Sets AccessApplicationId
+        /// Name of application
         /// </summary>
-        [DataMember(Name = "AccessApplicationId", IsRequired = true, EmitDefaultValue = true)]
-        public AbstractText AccessApplicationId { get; set; }
+        /// <value>Name of application</value>
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
+        public string Name { get; set; }
 
         /// <summary>
-        /// Defines if record is active
+        /// The key used to identify the application must be unique within each workspace.
         /// </summary>
-        /// <value>Defines if record is active</value>
+        /// <value>The key used to identify the application must be unique within each workspace.</value>
+        [DataMember(Name = "ApplicationKey", EmitDefaultValue = false)]
+        public string ApplicationKey { get; set; }
+
+        /// <summary>
+        /// The external system code of the application
+        /// </summary>
+        /// <value>The external system code of the application</value>
+        [DataMember(Name = "ExternalId", EmitDefaultValue = false)]
+        public string ExternalId { get; set; }
+
+        /// <summary>
+        /// The description of access group
+        /// </summary>
+        /// <value>The description of access group</value>
+        [DataMember(Name = "Description", EmitDefaultValue = false)]
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Web Site URL of application
+        /// </summary>
+        /// <value>Web Site URL of application</value>
+        [DataMember(Name = "WebSiteURL", EmitDefaultValue = false)]
+        public string WebSiteURL { get; set; }
+
+        /// <summary>
+        /// Defines if application is system (setting menu)
+        /// </summary>
+        /// <value>Defines if application is system (setting menu)</value>
         /// <example>false</example>
-        [DataMember(Name = "Is_Active", EmitDefaultValue = true)]
+        [DataMember(Name = "Is_System", EmitDefaultValue = true)]
+        public bool IsSystem { get; set; }
+
+        /// <summary>
+        /// Specifies whether the application is an end-user application
+        /// </summary>
+        /// <value>Specifies whether the application is an end-user application</value>
+        /// <example>false</example>
+        [DataMember(Name = "Is_EndUser", EmitDefaultValue = true)]
+        public bool IsEndUser { get; set; }
+
+        /// <summary>
+        /// Specifies whether the application is a test application
+        /// </summary>
+        /// <value>Specifies whether the application is a test application</value>
+        /// <example>false</example>
+        [DataMember(Name = "Is_TestApp", EmitDefaultValue = true)]
+        public bool IsTestApp { get; set; }
+
+        /// <summary>
+        /// Defines if the application is active and can be used
+        /// </summary>
+        /// <value>Defines if the application is active and can be used</value>
+        /// <example>false</example>
+        [DataMember(Name = "Is_Active", IsRequired = true, EmitDefaultValue = true)]
         public bool IsActive { get; set; }
+
+        /// <summary>
+        /// Determines whether the application is readonly and can be modified
+        /// </summary>
+        /// <value>Determines whether the application is readonly and can be modified</value>
+        /// <example>false</example>
+        [DataMember(Name = "Is_ReadOnly", IsRequired = true, EmitDefaultValue = true)]
+        public bool IsReadOnly { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AuthenticationId
+        /// </summary>
+        [DataMember(Name = "AuthenticationId", EmitDefaultValue = false)]
+        public AbstractText AuthenticationId { get; set; }
+
+        /// <summary>
+        /// The date the record was updated
+        /// </summary>
+        /// <value>The date the record was updated</value>
+        /// <example>1900-01-01T00:00Z</example>
+        [DataMember(Name = "ModifiedOn", EmitDefaultValue = false)]
+        public DateTime ModifiedOn { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ModifiedBy
+        /// </summary>
+        [DataMember(Name = "ModifiedBy", EmitDefaultValue = false)]
+        public AbstractLong ModifiedBy { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CreatedBy
+        /// </summary>
+        [DataMember(Name = "CreatedBy", EmitDefaultValue = false)]
+        public AbstractLong CreatedBy { get; set; }
 
         /// <summary>
         /// The date the record was created
@@ -124,9 +231,21 @@ namespace Agile.Now.AccessHub.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class Application {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  ParentApplicationId: ").Append(ParentApplicationId).Append("\n");
-            sb.Append("  AccessApplicationId: ").Append(AccessApplicationId).Append("\n");
+            sb.Append("  ApplicationId: ").Append(ApplicationId).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  ApplicationKey: ").Append(ApplicationKey).Append("\n");
+            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  WebSiteURL: ").Append(WebSiteURL).Append("\n");
+            sb.Append("  IsSystem: ").Append(IsSystem).Append("\n");
+            sb.Append("  IsEndUser: ").Append(IsEndUser).Append("\n");
+            sb.Append("  IsTestApp: ").Append(IsTestApp).Append("\n");
             sb.Append("  IsActive: ").Append(IsActive).Append("\n");
+            sb.Append("  IsReadOnly: ").Append(IsReadOnly).Append("\n");
+            sb.Append("  AuthenticationId: ").Append(AuthenticationId).Append("\n");
+            sb.Append("  ModifiedOn: ").Append(ModifiedOn).Append("\n");
+            sb.Append("  ModifiedBy: ").Append(ModifiedBy).Append("\n");
+            sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

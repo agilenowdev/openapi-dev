@@ -1,4 +1,6 @@
-﻿using Agile.Now.AccessHub.Model;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Agile.Now.AccessHub.Model;
 using Agile.Now.AccessHub.Test.Data;
 using Xunit;
 
@@ -13,6 +15,9 @@ internal static class GroupExternalTestData {
             description: name
         );
     }
+
+    public static IEnumerable<GroupExternalData> CreateGroupExternalDatas() =>
+        Enumerable.Range(0, 4).Select(i => CreateGroupExternalData(i.ToString()));
 
     public static void Update(this GroupExternalData groupExternalData) {
         groupExternalData.Description = groupExternalData.Description.MarkUpdated();
@@ -33,4 +38,7 @@ internal static class GroupExternalTestData {
         groupExternalData.Description == groupExternal.Description;
 
     public static UserExternalData CreateUserExternalData(int id) => new(userId: new("Id", id.ToString()));
+
+    public static IEnumerable<UserExternalData> CreateUserExternalDatas() =>
+        UserTestData.Users.Select(i => CreateUserExternalData(i));
 }

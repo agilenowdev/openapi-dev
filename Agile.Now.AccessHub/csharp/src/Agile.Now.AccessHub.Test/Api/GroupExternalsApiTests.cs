@@ -318,7 +318,7 @@ namespace Agile.Now.AccessHub.Test.Api
                     data.Id = created.Id;
                     var updated = api.UpsertGroupExternalUserExternal(entity.Id.ToString(), data);
                     Assert.Equal(created.Id, updated.Id);
-                    Assert.Equal(data.UserId.Value, updated.UserId.Id.ToString());
+                    Assert.Equal(data.UserId.Value, updated.Id.ToString());
                 }
                 finally {
                     api.DeleteGroupExternalUserExternal(entity.Id.ToString(), created.Id.ToString());
@@ -346,8 +346,8 @@ namespace Agile.Now.AccessHub.Test.Api
                         })).Data;
                     try {
                         var existing = api.ListGroupExternalUserExternals(entity.Id.ToString()).Data;
-                        Assert.Contains(existing, i => i.UserId.Id == UserTestData.Users[1]);
-                        Assert.Contains(existing, i => i.UserId.Id == UserTestData.Users[2] && i.Id == created.Id);
+                        Assert.Contains(existing, i => i.Id == UserTestData.Users[1]);
+                        Assert.Contains(existing, i => i.Id == UserTestData.Users[2] && i.Id == created.Id);
                     }
                     finally {
                         api.DeleteGroupExternalUserExternal(entity.Id.ToString(),
@@ -384,7 +384,7 @@ namespace Agile.Now.AccessHub.Test.Api
                     var existing = api.ListGroupExternalUserExternals(entity.Id.ToString()).Data;
                     Assert.Single(existing);
                     Assert.Contains(existing,
-                        i => i.UserId.Id == UserTestData.Users[2] && i.Id == toPatch.Id);
+                        i => i.Id == UserTestData.Users[2] && i.Id == toPatch.Id);
                 }
                 finally {
                     if(toDelete != null)

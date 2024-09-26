@@ -60,39 +60,94 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="User" /> class.
         /// </summary>
-        /// <param name="id">The identifier of user access group (required) (default to 0).</param>
-        /// <param name="userId">userId (required).</param>
-        /// <param name="createdOn">The date when the record was created. (required) (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public User(long id = 0, AbstractLong userId = default, DateTime createdOn = default)
+        /// <param name="id">Unique identifier of the user. (required) (default to 0).</param>
+        /// <param name="name">Full name of the user..</param>
+        /// <param name="username">Login name of the user..</param>
+        /// <param name="email">Email contact of the user..</param>
+        /// <param name="mobilePhone">Mobile phone number of the user..</param>
+        /// <param name="externalId">The user identifier in an external system to the Platform..</param>
+        /// <param name="creationDate">The date the user was created. (required) (default to &quot;1900-01-01T00:00Z&quot;).</param>
+        /// <param name="lastLogin">Last time the user logged in the application. (default to &quot;1900-01-01T00:00Z&quot;).</param>
+        /// <param name="isActive">Indicates if the user is still active. (required) (default to false).</param>
+        public User(int id = 0, string name = default, string username = default, string email = default, string mobilePhone = default, string externalId = default, DateTime creationDate = default, DateTime lastLogin = default, bool isActive = false)
         {
             Id = id;
-            // to ensure "userId" is required (not null)
-            userId = userId ?? throw new ArgumentNullException("userId is a required property for User and cannot be null");
-            UserId = userId;
-            CreatedOn = createdOn;
+            CreationDate = creationDate;
+            IsActive = isActive;
+            Name = name;
+            Username = username;
+            Email = email;
+            MobilePhone = mobilePhone;
+            ExternalId = externalId;
+            LastLogin = lastLogin;
         }
 
         /// <summary>
-        /// The identifier of user access group
+        /// Unique identifier of the user.
         /// </summary>
-        /// <value>The identifier of user access group</value>
+        /// <value>Unique identifier of the user.</value>
         /// <example>0</example>
         [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets UserId
+        /// Full name of the user.
         /// </summary>
-        [DataMember(Name = "UserId", IsRequired = true, EmitDefaultValue = true)]
-        public AbstractLong UserId { get; set; }
+        /// <value>Full name of the user.</value>
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
+        public string Name { get; set; }
 
         /// <summary>
-        /// The date when the record was created.
+        /// Login name of the user.
         /// </summary>
-        /// <value>The date when the record was created.</value>
+        /// <value>Login name of the user.</value>
+        [DataMember(Name = "Username", EmitDefaultValue = false)]
+        public string Username { get; set; }
+
+        /// <summary>
+        /// Email contact of the user.
+        /// </summary>
+        /// <value>Email contact of the user.</value>
+        [DataMember(Name = "Email", EmitDefaultValue = false)]
+        public string Email { get; set; }
+
+        /// <summary>
+        /// Mobile phone number of the user.
+        /// </summary>
+        /// <value>Mobile phone number of the user.</value>
+        [DataMember(Name = "MobilePhone", EmitDefaultValue = false)]
+        public string MobilePhone { get; set; }
+
+        /// <summary>
+        /// The user identifier in an external system to the Platform.
+        /// </summary>
+        /// <value>The user identifier in an external system to the Platform.</value>
+        [DataMember(Name = "External_Id", EmitDefaultValue = false)]
+        public string ExternalId { get; set; }
+
+        /// <summary>
+        /// The date the user was created.
+        /// </summary>
+        /// <value>The date the user was created.</value>
         /// <example>1900-01-01T00:00Z</example>
-        [DataMember(Name = "CreatedOn", IsRequired = true, EmitDefaultValue = true)]
-        public DateTime CreatedOn { get; set; }
+        [DataMember(Name = "Creation_Date", IsRequired = true, EmitDefaultValue = true)]
+        public DateTime CreationDate { get; set; }
+
+        /// <summary>
+        /// Last time the user logged in the application.
+        /// </summary>
+        /// <value>Last time the user logged in the application.</value>
+        /// <example>1900-01-01T00:00Z</example>
+        [DataMember(Name = "Last_Login", EmitDefaultValue = false)]
+        public DateTime LastLogin { get; set; }
+
+        /// <summary>
+        /// Indicates if the user is still active.
+        /// </summary>
+        /// <value>Indicates if the user is still active.</value>
+        /// <example>false</example>
+        [DataMember(Name = "Is_Active", IsRequired = true, EmitDefaultValue = true)]
+        public bool IsActive { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -103,8 +158,14 @@ namespace Agile.Now.AccessHub.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class User {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  UserId: ").Append(UserId).Append("\n");
-            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Username: ").Append(Username).Append("\n");
+            sb.Append("  Email: ").Append(Email).Append("\n");
+            sb.Append("  MobilePhone: ").Append(MobilePhone).Append("\n");
+            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
+            sb.Append("  CreationDate: ").Append(CreationDate).Append("\n");
+            sb.Append("  LastLogin: ").Append(LastLogin).Append("\n");
+            sb.Append("  IsActive: ").Append(IsActive).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

@@ -8113,7 +8113,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Users1'
+                $ref: '#/components/schemas/Users'
           description: The list of Users
         "400":
           content:
@@ -8265,7 +8265,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Users1'
+                $ref: '#/components/schemas/Users'
           description: "Inserted or updated list of User information. \n"
         "400":
           content:
@@ -8401,7 +8401,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User1'
+                $ref: '#/components/schemas/User'
           description: Inserted or updated `User` information.
         "400":
           content:
@@ -8550,7 +8550,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User1'
+                $ref: '#/components/schemas/User'
           description: Deleted `User` information.
         "400":
           content:
@@ -9611,7 +9611,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Users1'
+                $ref: '#/components/schemas/Users'
           description: The list of Users
         "400":
           content:
@@ -9763,7 +9763,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Users1'
+                $ref: '#/components/schemas/Users'
           description: "Inserted or updated list of User information. \n"
         "400":
           content:
@@ -9899,7 +9899,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User1'
+                $ref: '#/components/schemas/User'
           description: Inserted or updated `User` information.
         "400":
           content:
@@ -10048,7 +10048,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User1'
+                $ref: '#/components/schemas/User'
           description: Deleted `User` information.
         "400":
           content:
@@ -13415,32 +13415,98 @@ components:
     Application:
       description: The record of Application information.
       example:
-        AccessApplicationId:
+        ApplicationKey: ApplicationKey
+        Description: Description
+        CreatedBy:
+          Type: User
+          ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+          Id: 1234567891234567
+          Name: Bob Normal
+        ModifiedOn: 1900-01-01T00:00:00Z
+        ExternalId: ExternalId
+        Is_ReadOnly: false
+        ModifiedBy:
+          Type: User
+          ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+          Id: 1234567891234567
+          Name: Bob Normal
+        AuthenticationId:
           Type: User
           ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
           Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
           Name: Bob Normal
+        Name: Name
         Is_Active: false
-        ParentApplicationId:
-          Type: User
-          ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-          Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-          Name: Bob Normal
+        Is_TestApp: false
+        WebSiteURL: WebSiteURL
+        Is_System: false
+        Is_EndUser: false
         Id: Id
         CreatedOn: 1900-01-01T00:00:00Z
+        ApplicationId:
+          Type: User
+          ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+          Id: 1234567891234567
+          Name: Bob Normal
       properties:
         Id:
-          description: The identifier of  access group application
+          description: The identifier of the access application
           type: string
-        ParentApplicationId:
-          $ref: '#/components/schemas/AbstractText'
-        AccessApplicationId:
-          $ref: '#/components/schemas/AbstractText'
-        Is_Active:
+        ApplicationId:
+          $ref: '#/components/schemas/AbstractLong'
+        Name:
+          description: Name of application
+          type: string
+        ApplicationKey:
+          description: The key used to identify the application must be unique within
+            each workspace.
+          type: string
+        ExternalId:
+          description: The external system code of the application
+          type: string
+        Description:
+          description: The description of access group
+          type: string
+        WebSiteURL:
+          description: Web Site URL of application
+          type: string
+        Is_System:
           default: false
-          description: Defines if record is active
+          description: Defines if application is system (setting menu)
           example: false
           type: boolean
+        Is_EndUser:
+          default: false
+          description: Specifies whether the application is an end-user application
+          example: false
+          type: boolean
+        Is_TestApp:
+          default: false
+          description: Specifies whether the application is a test application
+          example: false
+          type: boolean
+        Is_Active:
+          default: false
+          description: Defines if the application is active and can be used
+          example: false
+          type: boolean
+        Is_ReadOnly:
+          default: false
+          description: Determines whether the application is readonly and can be modified
+          example: false
+          type: boolean
+        AuthenticationId:
+          $ref: '#/components/schemas/AbstractText'
+        ModifiedOn:
+          default: 1900-01-01T00:00:00Z
+          description: The date the record was updated
+          example: 1900-01-01T00:00:00Z
+          format: date-time
+          type: string
+        ModifiedBy:
+          $ref: '#/components/schemas/AbstractLong'
+        CreatedBy:
+          $ref: '#/components/schemas/AbstractLong'
         CreatedOn:
           default: 1900-01-01T00:00:00Z
           description: The date the record was created
@@ -13448,9 +13514,9 @@ components:
           format: date-time
           type: string
       required:
-      - AccessApplicationId
       - Id
-      - ParentApplicationId
+      - Is_Active
+      - Is_ReadOnly
       type: object
     Applications:
       description: The list of `Application` records
@@ -13461,32 +13527,72 @@ components:
           CurrentPage: 50
           TotalItems: 1000
         Data:
-        - AccessApplicationId:
+        - ApplicationKey: ApplicationKey
+          Description: Description
+          CreatedBy:
+            Type: User
+            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Id: 1234567891234567
+            Name: Bob Normal
+          ModifiedOn: 1900-01-01T00:00:00Z
+          ExternalId: ExternalId
+          Is_ReadOnly: false
+          ModifiedBy:
+            Type: User
+            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Id: 1234567891234567
+            Name: Bob Normal
+          AuthenticationId:
             Type: User
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Name: Bob Normal
+          Name: Name
           Is_Active: false
-          ParentApplicationId:
-            Type: User
-            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-            Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-            Name: Bob Normal
+          Is_TestApp: false
+          WebSiteURL: WebSiteURL
+          Is_System: false
+          Is_EndUser: false
           Id: Id
           CreatedOn: 1900-01-01T00:00:00Z
-        - AccessApplicationId:
+          ApplicationId:
+            Type: User
+            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Id: 1234567891234567
+            Name: Bob Normal
+        - ApplicationKey: ApplicationKey
+          Description: Description
+          CreatedBy:
+            Type: User
+            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Id: 1234567891234567
+            Name: Bob Normal
+          ModifiedOn: 1900-01-01T00:00:00Z
+          ExternalId: ExternalId
+          Is_ReadOnly: false
+          ModifiedBy:
+            Type: User
+            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Id: 1234567891234567
+            Name: Bob Normal
+          AuthenticationId:
             Type: User
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Name: Bob Normal
+          Name: Name
           Is_Active: false
-          ParentApplicationId:
-            Type: User
-            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-            Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-            Name: Bob Normal
+          Is_TestApp: false
+          WebSiteURL: WebSiteURL
+          Is_System: false
+          Is_EndUser: false
           Id: Id
           CreatedOn: 1900-01-01T00:00:00Z
+          ApplicationId:
+            Type: User
+            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Id: 1234567891234567
+            Name: Bob Normal
       properties:
         Meta:
           $ref: '#/components/schemas/Meta'
@@ -13910,31 +14016,38 @@ components:
     Group:
       description: The record of Group information.
       example:
+        Has_Custom_Management: false
+        Description: Description
         Id: 0
-        CreatedOn: 1900-01-01T00:00:00Z
-        GroupId:
+        Created_By:
           Type: User
           ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
           Id: 1234567891234567
           Name: Bob Normal
+        Name: Name
+        Created: 1900-01-01T00:00:00Z
       properties:
         Id:
           default: 0
-          description: The identifier of group access group
           example: 0
-          format: int64
+          format: int32
           type: integer
-        GroupId:
+        Name:
+          type: string
+        Description:
+          type: string
+        Created_By:
           $ref: '#/components/schemas/AbstractLong'
-        CreatedOn:
+        Created:
           default: 1900-01-01T00:00:00Z
-          description: The date when the record was created.
           example: 1900-01-01T00:00:00Z
           format: date-time
           type: string
+        Has_Custom_Management:
+          default: false
+          example: false
+          type: boolean
       required:
-      - CreatedOn
-      - GroupId
       - Id
       type: object
     Groups:
@@ -13946,20 +14059,26 @@ components:
           CurrentPage: 50
           TotalItems: 1000
         Data:
-        - Id: 0
-          CreatedOn: 1900-01-01T00:00:00Z
-          GroupId:
+        - Has_Custom_Management: false
+          Description: Description
+          Id: 0
+          Created_By:
             Type: User
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Id: 1234567891234567
             Name: Bob Normal
-        - Id: 0
-          CreatedOn: 1900-01-01T00:00:00Z
-          GroupId:
+          Name: Name
+          Created: 1900-01-01T00:00:00Z
+        - Has_Custom_Management: false
+          Description: Description
+          Id: 0
+          Created_By:
             Type: User
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Id: 1234567891234567
             Name: Bob Normal
+          Name: Name
+          Created: 1900-01-01T00:00:00Z
       properties:
         Meta:
           $ref: '#/components/schemas/Meta'
@@ -14049,32 +14168,58 @@ components:
     User:
       description: The record of User information.
       example:
-        UserId:
-          Type: User
-          ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-          Id: 1234567891234567
-          Name: Bob Normal
+        External_Id: External_Id
+        Email: Email
+        Is_Active: false
+        Username: Username
+        Last_Login: 1900-01-01T00:00:00Z
+        Creation_Date: 1900-01-01T00:00:00Z
         Id: 0
-        CreatedOn: 1900-01-01T00:00:00Z
+        MobilePhone: MobilePhone
+        Name: Name
       properties:
         Id:
           default: 0
-          description: The identifier of user access group
+          description: Unique identifier of the user.
           example: 0
-          format: int64
+          format: int32
           type: integer
-        UserId:
-          $ref: '#/components/schemas/AbstractLong'
-        CreatedOn:
+        Name:
+          description: Full name of the user.
+          type: string
+        Username:
+          description: Login name of the user.
+          type: string
+        Email:
+          description: Email contact of the user.
+          type: string
+        MobilePhone:
+          description: Mobile phone number of the user.
+          type: string
+        External_Id:
+          description: The user identifier in an external system to the Platform.
+          type: string
+        Creation_Date:
           default: 1900-01-01T00:00:00Z
-          description: The date when the record was created.
+          description: The date the user was created.
           example: 1900-01-01T00:00:00Z
           format: date-time
           type: string
+        Last_Login:
+          default: 1900-01-01T00:00:00Z
+          description: Last time the user logged in the application.
+          example: 1900-01-01T00:00:00Z
+          format: date-time
+          type: string
+        Is_Active:
+          default: false
+          description: Indicates if the user is still active.
+          example: false
+          type: boolean
       required:
-      - CreatedOn
+      - Creation_Date
       - Id
-      - UserId
+      - Is_Active
       type: object
     Users:
       description: The list of `User` records
@@ -14085,20 +14230,24 @@ components:
           CurrentPage: 50
           TotalItems: 1000
         Data:
-        - UserId:
-            Type: User
-            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-            Id: 1234567891234567
-            Name: Bob Normal
+        - External_Id: External_Id
+          Email: Email
+          Is_Active: false
+          Username: Username
+          Last_Login: 1900-01-01T00:00:00Z
+          Creation_Date: 1900-01-01T00:00:00Z
           Id: 0
-          CreatedOn: 1900-01-01T00:00:00Z
-        - UserId:
-            Type: User
-            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-            Id: 1234567891234567
-            Name: Bob Normal
+          MobilePhone: MobilePhone
+          Name: Name
+        - External_Id: External_Id
+          Email: Email
+          Is_Active: false
+          Username: Username
+          Last_Login: 1900-01-01T00:00:00Z
+          Creation_Date: 1900-01-01T00:00:00Z
           Id: 0
-          CreatedOn: 1900-01-01T00:00:00Z
+          MobilePhone: MobilePhone
+          Name: Name
       properties:
         Meta:
           $ref: '#/components/schemas/Meta'
@@ -14379,23 +14528,58 @@ components:
     UserExternal:
       description: The record of UserExternal information.
       example:
+        External_Id: External_Id
+        Email: Email
+        Is_Active: false
+        Username: Username
+        Last_Login: 1900-01-01T00:00:00Z
+        Creation_Date: 1900-01-01T00:00:00Z
         Id: 0
-        User_Id:
-          Type: User
-          ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-          Id: 1234567891234567
-          Name: Bob Normal
+        MobilePhone: MobilePhone
+        Name: Name
       properties:
         Id:
           default: 0
+          description: Unique identifier of the user.
           example: 0
           format: int32
           type: integer
-        User_Id:
-          $ref: '#/components/schemas/AbstractLong'
+        Name:
+          description: Full name of the user.
+          type: string
+        Username:
+          description: Login name of the user.
+          type: string
+        Email:
+          description: Email contact of the user.
+          type: string
+        MobilePhone:
+          description: Mobile phone number of the user.
+          type: string
+        External_Id:
+          description: The user identifier in an external system to the Platform.
+          type: string
+        Creation_Date:
+          default: 1900-01-01T00:00:00Z
+          description: The date the user was created.
+          example: 1900-01-01T00:00:00Z
+          format: date-time
+          type: string
+        Last_Login:
+          default: 1900-01-01T00:00:00Z
+          description: Last time the user logged in the application.
+          example: 1900-01-01T00:00:00Z
+          format: date-time
+          type: string
+        Is_Active:
+          default: false
+          description: Indicates if the user is still active.
+          example: false
+          type: boolean
       required:
+      - Creation_Date
       - Id
-      - User_Id
+      - Is_Active
       type: object
     UserExternals:
       description: The list of `UserExternal` records
@@ -14406,18 +14590,24 @@ components:
           CurrentPage: 50
           TotalItems: 1000
         Data:
-        - Id: 0
-          User_Id:
-            Type: User
-            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-            Id: 1234567891234567
-            Name: Bob Normal
-        - Id: 0
-          User_Id:
-            Type: User
-            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-            Id: 1234567891234567
-            Name: Bob Normal
+        - External_Id: External_Id
+          Email: Email
+          Is_Active: false
+          Username: Username
+          Last_Login: 1900-01-01T00:00:00Z
+          Creation_Date: 1900-01-01T00:00:00Z
+          Id: 0
+          MobilePhone: MobilePhone
+          Name: Name
+        - External_Id: External_Id
+          Email: Email
+          Is_Active: false
+          Username: Username
+          Last_Login: 1900-01-01T00:00:00Z
+          Creation_Date: 1900-01-01T00:00:00Z
+          Id: 0
+          MobilePhone: MobilePhone
+          Name: Name
       properties:
         Meta:
           $ref: '#/components/schemas/Meta'
@@ -16113,98 +16303,6 @@ components:
           description: Defines if the department is active and can be used.
           example: false
           type: boolean
-      type: object
-    User1:
-      description: The record of User information.
-      example:
-        External_Id: External_Id
-        Email: Email
-        Is_Active: false
-        Username: Username
-        Last_Login: 1900-01-01T00:00:00Z
-        Creation_Date: 1900-01-01T00:00:00Z
-        Id: 0
-        MobilePhone: MobilePhone
-        Name: Name
-      properties:
-        Id:
-          default: 0
-          description: Unique identifier of the user.
-          example: 0
-          format: int32
-          type: integer
-        Name:
-          description: Full name of the user.
-          type: string
-        Username:
-          description: Login name of the user.
-          type: string
-        Email:
-          description: Email contact of the user.
-          type: string
-        MobilePhone:
-          description: Mobile phone number of the user.
-          type: string
-        External_Id:
-          description: The user identifier in an external system to the Platform.
-          type: string
-        Creation_Date:
-          default: 1900-01-01T00:00:00Z
-          description: The date the user was created.
-          example: 1900-01-01T00:00:00Z
-          format: date-time
-          type: string
-        Last_Login:
-          default: 1900-01-01T00:00:00Z
-          description: Last time the user logged in the application.
-          example: 1900-01-01T00:00:00Z
-          format: date-time
-          type: string
-        Is_Active:
-          default: false
-          description: Indicates if the user is still active.
-          example: false
-          type: boolean
-      required:
-      - Creation_Date
-      - Id
-      - Is_Active
-      type: object
-    Users1:
-      description: The list of `User` records
-      example:
-        Meta:
-          Type: User
-          PageSize: 50
-          CurrentPage: 50
-          TotalItems: 1000
-        Data:
-        - External_Id: External_Id
-          Email: Email
-          Is_Active: false
-          Username: Username
-          Last_Login: 1900-01-01T00:00:00Z
-          Creation_Date: 1900-01-01T00:00:00Z
-          Id: 0
-          MobilePhone: MobilePhone
-          Name: Name
-        - External_Id: External_Id
-          Email: Email
-          Is_Active: false
-          Username: Username
-          Last_Login: 1900-01-01T00:00:00Z
-          Creation_Date: 1900-01-01T00:00:00Z
-          Id: 0
-          MobilePhone: MobilePhone
-          Name: Name
-      properties:
-        Meta:
-          $ref: '#/components/schemas/Meta'
-        Data:
-          description: The list of `User records`
-          items:
-            $ref: '#/components/schemas/User1'
-          type: array
       type: object
     UserData1:
       description: The record of User information.

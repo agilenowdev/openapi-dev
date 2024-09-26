@@ -170,10 +170,9 @@ namespace Agile.Now.Runtime.Test.Api {
                 var existing = api.ListUserAccessGroups(entity.Id.ToString()).Data;
                 Assert.Contains(existing, i => i.Id == created.Id);
                 data = TestUserData.CreateAccessGroupData(TestUserData.AccessGroups[1]);
-                data.Id = created.Id;
                 var updated = api.UpsertUserAccessGroup(entity.Id.ToString(), data);
                 Assert.Equal(created.Id, updated.Id);
-                Assert.Equal(data.AccessGroupId.Value, updated.AccessGroupId.Id);
+                Assert.Equal(data.AccessGroupId.Value, updated.Id);
             }
             finally {
                 api.DeleteUserAccessGroup(entity.Id.ToString(), created.Id.ToString());

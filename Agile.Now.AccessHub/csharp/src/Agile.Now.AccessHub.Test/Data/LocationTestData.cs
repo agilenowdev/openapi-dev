@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Agile.Now.AccessHub.Model;
 using Agile.Now.AccessHub.Test.Data;
 using Xunit;
@@ -17,6 +19,9 @@ internal static class LocationTestData {
             currencyId: EnumCurrency.UnitedStatesDollar
         );
     }
+
+    public static IEnumerable<LocationInsertData> CreateLocationDatas() =>
+        Enumerable.Range(0, 4).Select(i => CreateLocationData(i.ToString()));
 
     public static void Update(this LocationInsertData locationInsertData) {
         locationInsertData.CountryId = locationInsertData.CountryId == EnumCountry.Finland ?

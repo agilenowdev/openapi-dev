@@ -308,7 +308,7 @@ namespace Agile.Now.AccessHub.Test.Api
                     data.Id = created.Id;
                     var updated = api.UpsertAccessGroupApplication(entity.Id, data);
                     Assert.Equal(created.Id, updated.Id);
-                    Assert.Equal(data.AccessApplicationId.Value, updated.AccessApplicationId.Id.ToString());
+                    Assert.Equal(data.AccessApplicationId.Value, updated.ApplicationId.Id.ToString());
                 }
                 finally {
                     api.DeleteAccessGroupApplication(entity.Id, created.Id);
@@ -339,9 +339,9 @@ namespace Agile.Now.AccessHub.Test.Api
                     try {
                         var existing = api.ListAccessGroupApplications(entity.Id.ToString()).Data;
                         Assert.Contains(existing,
-                            i => i.AccessApplicationId.Id == AccessGroupTestData.Applications[1]);
+                            i => i.ApplicationId.Id.ToString() == AccessGroupTestData.Applications[1]);
                         Assert.Contains(existing,
-                            i => i.AccessApplicationId.Id == AccessGroupTestData.Applications[2] && i.Id == created.Id);
+                            i => i.ApplicationId.Id.ToString() == AccessGroupTestData.Applications[2] && i.Id == created.Id);
                     }
                     finally {
                         api.DeleteAccessGroupApplication(entity.Id, patched.First(i => i.Id != created.Id).Id);
@@ -378,7 +378,7 @@ namespace Agile.Now.AccessHub.Test.Api
                     var existing = api.ListAccessGroupApplications(entity.Id.ToString()).Data;
                     Assert.Single(existing);
                     Assert.Contains(existing,
-                        i => i.AccessApplicationId.Id == AccessGroupTestData.Applications[2] && i.Id == toPatch.Id);
+                        i => i.ApplicationId.Id.ToString() == AccessGroupTestData.Applications[2] && i.Id == toPatch.Id);
                 }
                 finally {
                     if(toDelete != null)
@@ -574,7 +574,7 @@ namespace Agile.Now.AccessHub.Test.Api
                     data.Id = created.Id;
                     var updated = api.UpsertAccessGroupGroup(entity.Id, data);
                     Assert.Equal(created.Id, updated.Id);
-                    Assert.Equal(data.GroupId.Value, updated.GroupId.Id.ToString());
+                    Assert.Equal(data.GroupId.Value, updated.Id.ToString());
                 }
                 finally {
                     api.DeleteAccessGroupGroup(entity.Id, created.Id.ToString());
@@ -602,8 +602,8 @@ namespace Agile.Now.AccessHub.Test.Api
                         })).Data;
                     try {
                         var existing = api.ListAccessGroupGroups(entity.Id.ToString()).Data;
-                        Assert.Contains(existing, i => i.GroupId.Id == UserTestData.Groups[1]);
-                        Assert.Contains(existing, i => i.GroupId.Id == UserTestData.Groups[2] && i.Id == created.Id);
+                        Assert.Contains(existing, i => i.Id == UserTestData.Groups[1]);
+                        Assert.Contains(existing, i => i.Id == UserTestData.Groups[2] && i.Id == created.Id);
                     }
                     finally {
                         api.DeleteAccessGroupGroup(entity.Id, patched.First(i => i.Id != created.Id).Id.ToString());
@@ -636,7 +636,7 @@ namespace Agile.Now.AccessHub.Test.Api
                     toDelete = null;
                     var existing = api.ListAccessGroupGroups(entity.Id.ToString()).Data;
                     Assert.Single(existing);
-                    Assert.Contains(existing, i => i.GroupId.Id == UserTestData.Groups[2] && i.Id == toPatch.Id);
+                    Assert.Contains(existing, i => i.Id == UserTestData.Groups[2] && i.Id == toPatch.Id);
                 }
                 finally {
                     if(toDelete != null)
@@ -699,7 +699,7 @@ namespace Agile.Now.AccessHub.Test.Api
                     data.Id = created.Id;
                     var updated = api.UpsertAccessGroupUser(entity.Id, data);
                     Assert.Equal(created.Id, updated.Id);
-                    Assert.Equal(data.UserId.Value, updated.UserId.Id.ToString());
+                    Assert.Equal(data.UserId.Value, updated.Id.ToString());
                 }
                 finally {
                     api.DeleteAccessGroupUser(entity.Id, created.Id.ToString());
@@ -727,8 +727,8 @@ namespace Agile.Now.AccessHub.Test.Api
                         })).Data;
                     try {
                         var existing = api.ListAccessGroupUsers(entity.Id.ToString()).Data;
-                        Assert.Contains(existing, i => i.UserId.Id == UserTestData.Users[1]);
-                        Assert.Contains(existing, i => i.UserId.Id == UserTestData.Users[2] && i.Id == created.Id);
+                        Assert.Contains(existing, i => i.Id == UserTestData.Users[1]);
+                        Assert.Contains(existing, i => i.Id == UserTestData.Users[2] && i.Id == created.Id);
                     }
                     finally {
                         api.DeleteAccessGroupUser(entity.Id, patched.First(i => i.Id != created.Id).Id.ToString());
@@ -764,7 +764,7 @@ namespace Agile.Now.AccessHub.Test.Api
                     var existing = api.ListAccessGroupUsers(entity.Id.ToString()).Data;
                     Assert.Single(existing);
                     Assert.Contains(existing,
-                        i => i.UserId.Id == UserTestData.Users[2] && i.Id == toPatch.Id);
+                        i => i.Id == UserTestData.Users[2] && i.Id == toPatch.Id);
                 }
                 finally {
                     if(toDelete != null)

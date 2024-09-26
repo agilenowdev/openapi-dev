@@ -36,12 +36,10 @@
  */
 
 using System;
-using System.Collections.Generic;
 using Agile.Now.Runtime.Client;
 using Agile.Now.Runtime.Model;
 
-namespace Agile.Now.Runtime.Api
-{
+namespace Agile.Now.Runtime.Api {
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using Agile.Now.AccessHub.Model;
 using Agile.Now.AccessHub.Test.Data;
@@ -26,6 +28,9 @@ namespace Agile.Now.ApiAccounts.Test.Api {
                 languageId: EnumLanguage.Finnish
             );
         }
+
+        public static IEnumerable<AccountData> CreateAccountDatas() =>
+            Enumerable.Range(0, 4).Select(i => CreateAccountData(i.ToString()));
 
         public static void UpdateAccountData(AccountData accountData) {
             accountData.FirstName = accountData.FirstName.MarkUpdated();

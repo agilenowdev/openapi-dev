@@ -60,39 +60,60 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Group" /> class.
         /// </summary>
-        /// <param name="id">The identifier of group access group (required) (default to 0).</param>
-        /// <param name="groupId">groupId (required).</param>
-        /// <param name="createdOn">The date when the record was created. (required) (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public Group(long id = 0, AbstractLong groupId = default, DateTime createdOn = default)
+        /// <param name="id">id (required) (default to 0).</param>
+        /// <param name="name">name.</param>
+        /// <param name="description">description.</param>
+        /// <param name="createdBy">createdBy.</param>
+        /// <param name="created">created (default to &quot;1900-01-01T00:00Z&quot;).</param>
+        /// <param name="hasCustomManagement">hasCustomManagement (default to false).</param>
+        public Group(int id = 0, string name = default, string description = default, AbstractLong createdBy = default, DateTime created = default, bool hasCustomManagement = false)
         {
             Id = id;
-            // to ensure "groupId" is required (not null)
-            groupId = groupId ?? throw new ArgumentNullException("groupId is a required property for Group and cannot be null");
-            GroupId = groupId;
-            CreatedOn = createdOn;
+            Name = name;
+            Description = description;
+            CreatedBy = createdBy;
+            Created = created;
+            HasCustomManagement = hasCustomManagement;
         }
 
         /// <summary>
-        /// The identifier of group access group
+        /// Gets or Sets Id
         /// </summary>
-        /// <value>The identifier of group access group</value>
         /// <example>0</example>
         [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets GroupId
+        /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name = "GroupId", IsRequired = true, EmitDefaultValue = true)]
-        public AbstractLong GroupId { get; set; }
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
+        public string Name { get; set; }
 
         /// <summary>
-        /// The date when the record was created.
+        /// Gets or Sets Description
         /// </summary>
-        /// <value>The date when the record was created.</value>
+        [DataMember(Name = "Description", EmitDefaultValue = false)]
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CreatedBy
+        /// </summary>
+        [DataMember(Name = "Created_By", EmitDefaultValue = false)]
+        public AbstractLong CreatedBy { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Created
+        /// </summary>
         /// <example>1900-01-01T00:00Z</example>
-        [DataMember(Name = "CreatedOn", IsRequired = true, EmitDefaultValue = true)]
-        public DateTime CreatedOn { get; set; }
+        [DataMember(Name = "Created", EmitDefaultValue = false)]
+        public DateTime Created { get; set; }
+
+        /// <summary>
+        /// Gets or Sets HasCustomManagement
+        /// </summary>
+        /// <example>false</example>
+        [DataMember(Name = "Has_Custom_Management", EmitDefaultValue = true)]
+        public bool HasCustomManagement { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -103,8 +124,11 @@ namespace Agile.Now.AccessHub.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class Group {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  GroupId: ").Append(GroupId).Append("\n");
-            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
+            sb.Append("  Created: ").Append(Created).Append("\n");
+            sb.Append("  HasCustomManagement: ").Append(HasCustomManagement).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

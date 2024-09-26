@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Agile.Now.AccessHub.Model;
 using Agile.Now.AccessHub.Test.Data;
 using Xunit;
@@ -19,6 +21,9 @@ internal static class DepartmentTestData {
             countryId: EnumCountry.Finland
         );
     }
+
+    public static IEnumerable<DepartmentInsertData> CreateDepartmentDatas() =>
+        Enumerable.Range(0, 4).Select(i => CreateDepartmentData(i.ToString()));
 
     public static void Update(this DepartmentInsertData departmentInsertData) {
         departmentInsertData.ContactName = departmentInsertData.ContactName.MarkUpdated();

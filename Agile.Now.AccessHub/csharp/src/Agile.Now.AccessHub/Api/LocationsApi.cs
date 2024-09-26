@@ -109,8 +109,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="subName">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>User1</returns>
-        User1 DeleteLocationUser(string id, string subId, string name = default, string subName = default, int operationIndex = 0);
+        /// <returns>User</returns>
+        User DeleteLocationUser(string id, string subId, string name = default, string subName = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -124,8 +124,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="subName">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of User1</returns>
-        ApiResponse<User1> DeleteLocationUserWithHttpInfo(string id, string subId, string name = default, string subName = default, int operationIndex = 0);
+        /// <returns>ApiResponse of User</returns>
+        ApiResponse<User> DeleteLocationUserWithHttpInfo(string id, string subId, string name = default, string subName = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -166,8 +166,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="currentPage">This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)</param>
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>Users1</returns>
-        Users1 ListLocationUsers(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0);
+        /// <returns>Users</returns>
+        Users ListLocationUsers(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -184,8 +184,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="currentPage">This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)</param>
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Users1</returns>
-        ApiResponse<Users1> ListLocationUsersWithHttpInfo(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0);
+        /// <returns>ApiResponse of Users</returns>
+        ApiResponse<Users> ListLocationUsersWithHttpInfo(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -229,8 +229,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>Users1</returns>
-        Users1 PatchLocationUsers(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0);
+        /// <returns>Users</returns>
+        Users PatchLocationUsers(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -244,8 +244,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Users1</returns>
-        ApiResponse<Users1> PatchLocationUsersWithHttpInfo(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0);
+        /// <returns>ApiResponse of Users</returns>
+        ApiResponse<Users> PatchLocationUsersWithHttpInfo(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -307,8 +307,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="userData1">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>User1</returns>
-        User1 UpsertLocationUser(string id, UserData1 userData1, string name = default, int operationIndex = 0);
+        /// <returns>User</returns>
+        User UpsertLocationUser(string id, UserData1 userData1, string name = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -321,8 +321,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="userData1">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of User1</returns>
-        ApiResponse<User1> UpsertLocationUserWithHttpInfo(string id, UserData1 userData1, string name = default, int operationIndex = 0);
+        /// <returns>ApiResponse of User</returns>
+        ApiResponse<User> UpsertLocationUserWithHttpInfo(string id, UserData1 userData1, string name = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -397,8 +397,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="subName">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of User1</returns>
-        System.Threading.Tasks.Task<User1> DeleteLocationUserAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of User</returns>
+        System.Threading.Tasks.Task<User> DeleteLocationUserAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -413,8 +413,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="subName">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (User1)</returns>
-        System.Threading.Tasks.Task<ApiResponse<User1>> DeleteLocationUserWithHttpInfoAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (User)</returns>
+        System.Threading.Tasks.Task<ApiResponse<User>> DeleteLocationUserWithHttpInfoAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -458,8 +458,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Users1</returns>
-        System.Threading.Tasks.Task<Users1> ListLocationUsersAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of Users</returns>
+        System.Threading.Tasks.Task<Users> ListLocationUsersAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -477,8 +477,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Users1)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Users1>> ListLocationUsersWithHttpInfoAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (Users)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Users>> ListLocationUsersWithHttpInfoAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -525,8 +525,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Users1</returns>
-        System.Threading.Tasks.Task<Users1> PatchLocationUsersAsync(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of Users</returns>
+        System.Threading.Tasks.Task<Users> PatchLocationUsersAsync(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -541,8 +541,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Users1)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Users1>> PatchLocationUsersWithHttpInfoAsync(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (Users)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Users>> PatchLocationUsersWithHttpInfoAsync(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -609,8 +609,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of User1</returns>
-        System.Threading.Tasks.Task<User1> UpsertLocationUserAsync(string id, UserData1 userData1, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of User</returns>
+        System.Threading.Tasks.Task<User> UpsertLocationUserAsync(string id, UserData1 userData1, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -624,8 +624,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (User1)</returns>
-        System.Threading.Tasks.Task<ApiResponse<User1>> UpsertLocationUserWithHttpInfoAsync(string id, UserData1 userData1, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (User)</returns>
+        System.Threading.Tasks.Task<ApiResponse<User>> UpsertLocationUserWithHttpInfoAsync(string id, UserData1 userData1, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -1105,10 +1105,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="subName">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>User1</returns>
-        public User1 DeleteLocationUser(string id, string subId, string name = default, string subName = default, int operationIndex = 0)
+        /// <returns>User</returns>
+        public User DeleteLocationUser(string id, string subId, string name = default, string subName = default, int operationIndex = 0)
         {
-            ApiResponse<User1> localVarResponse = DeleteLocationUserWithHttpInfo(id, subId, name, subName);
+            ApiResponse<User> localVarResponse = DeleteLocationUserWithHttpInfo(id, subId, name, subName);
             return localVarResponse.Data;
         }
 
@@ -1121,8 +1121,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="subName">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of User1</returns>
-        public ApiResponse<User1> DeleteLocationUserWithHttpInfo(string id, string subId, string name = default, string subName = default, int operationIndex = 0)
+        /// <returns>ApiResponse of User</returns>
+        public ApiResponse<User> DeleteLocationUserWithHttpInfo(string id, string subId, string name = default, string subName = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->DeleteLocationUser");
@@ -1184,7 +1184,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = Client.Delete<User1>("/Endpoint/rest/api/v1/Location/{Id}/User/{SubId}", localVarRequestOptions, Configuration);
+            var localVarResponse = Client.Delete<User>("/Endpoint/rest/api/v1/Location/{Id}/User/{SubId}", localVarRequestOptions, Configuration);
             if (ExceptionFactory != null)
             {
                 Exception _exception = ExceptionFactory("DeleteLocationUser", localVarResponse);
@@ -1207,10 +1207,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="subName">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of User1</returns>
-        public async System.Threading.Tasks.Task<User1> DeleteLocationUserAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of User</returns>
+        public async System.Threading.Tasks.Task<User> DeleteLocationUserAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            ApiResponse<User1> localVarResponse = await DeleteLocationUserWithHttpInfoAsync(id, subId, name, subName, operationIndex, cancellationToken).ConfigureAwait(false);
+            ApiResponse<User> localVarResponse = await DeleteLocationUserWithHttpInfoAsync(id, subId, name, subName, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1224,8 +1224,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="subName">The name of the database field. If empty, the entity `Id` field is used.  Example:  ```  ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (User1)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<User1>> DeleteLocationUserWithHttpInfoAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (User)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<User>> DeleteLocationUserWithHttpInfoAsync(string id, string subId, string name = default, string subName = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->DeleteLocationUser");
@@ -1288,7 +1288,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await AsynchronousClient.DeleteAsync<User1>("/Endpoint/rest/api/v1/Location/{Id}/User/{SubId}", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await AsynchronousClient.DeleteAsync<User>("/Endpoint/rest/api/v1/Location/{Id}/User/{SubId}", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
             if (ExceptionFactory != null)
             {
@@ -1496,10 +1496,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="currentPage">This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)</param>
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>Users1</returns>
-        public Users1 ListLocationUsers(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0)
+        /// <returns>Users</returns>
+        public Users ListLocationUsers(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0)
         {
-            ApiResponse<Users1> localVarResponse = ListLocationUsersWithHttpInfo(id, name, fields, filters, orders, currentPage, pageSize);
+            ApiResponse<Users> localVarResponse = ListLocationUsersWithHttpInfo(id, name, fields, filters, orders, currentPage, pageSize);
             return localVarResponse.Data;
         }
 
@@ -1515,8 +1515,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="currentPage">This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)</param>
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Users1</returns>
-        public ApiResponse<Users1> ListLocationUsersWithHttpInfo(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0)
+        /// <returns>ApiResponse of Users</returns>
+        public ApiResponse<Users> ListLocationUsersWithHttpInfo(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->ListLocationUsers");
@@ -1590,7 +1590,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = Client.Get<Users1>("/Endpoint/rest/api/v1/Location/{Id}/Users", localVarRequestOptions, Configuration);
+            var localVarResponse = Client.Get<Users>("/Endpoint/rest/api/v1/Location/{Id}/Users", localVarRequestOptions, Configuration);
             if (ExceptionFactory != null)
             {
                 Exception _exception = ExceptionFactory("ListLocationUsers", localVarResponse);
@@ -1616,10 +1616,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Users1</returns>
-        public async System.Threading.Tasks.Task<Users1> ListLocationUsersAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of Users</returns>
+        public async System.Threading.Tasks.Task<Users> ListLocationUsersAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            ApiResponse<Users1> localVarResponse = await ListLocationUsersWithHttpInfoAsync(id, name, fields, filters, orders, currentPage, pageSize, operationIndex, cancellationToken).ConfigureAwait(false);
+            ApiResponse<Users> localVarResponse = await ListLocationUsersWithHttpInfoAsync(id, name, fields, filters, orders, currentPage, pageSize, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1636,8 +1636,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Users1)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Users1>> ListLocationUsersWithHttpInfoAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (Users)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Users>> ListLocationUsersWithHttpInfoAsync(string id, string name = default, string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->ListLocationUsers");
@@ -1712,7 +1712,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await AsynchronousClient.GetAsync<Users1>("/Endpoint/rest/api/v1/Location/{Id}/Users", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await AsynchronousClient.GetAsync<Users>("/Endpoint/rest/api/v1/Location/{Id}/Users", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
             if (ExceptionFactory != null)
             {
@@ -1953,10 +1953,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>Users1</returns>
-        public Users1 PatchLocationUsers(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0)
+        /// <returns>Users</returns>
+        public Users PatchLocationUsers(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0)
         {
-            ApiResponse<Users1> localVarResponse = PatchLocationUsersWithHttpInfo(id, usersData1, name, deleteNotExists);
+            ApiResponse<Users> localVarResponse = PatchLocationUsersWithHttpInfo(id, usersData1, name, deleteNotExists);
             return localVarResponse.Data;
         }
 
@@ -1969,8 +1969,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Users1</returns>
-        public ApiResponse<Users1> PatchLocationUsersWithHttpInfo(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0)
+        /// <returns>ApiResponse of Users</returns>
+        public ApiResponse<Users> PatchLocationUsersWithHttpInfo(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->PatchLocationUsers");
@@ -2033,7 +2033,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = Client.Patch<Users1>("/Endpoint/rest/api/v1/Location/{Id}/Users", localVarRequestOptions, Configuration);
+            var localVarResponse = Client.Patch<Users>("/Endpoint/rest/api/v1/Location/{Id}/Users", localVarRequestOptions, Configuration);
             if (ExceptionFactory != null)
             {
                 Exception _exception = ExceptionFactory("PatchLocationUsers", localVarResponse);
@@ -2056,10 +2056,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Users1</returns>
-        public async System.Threading.Tasks.Task<Users1> PatchLocationUsersAsync(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of Users</returns>
+        public async System.Threading.Tasks.Task<Users> PatchLocationUsersAsync(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            ApiResponse<Users1> localVarResponse = await PatchLocationUsersWithHttpInfoAsync(id, usersData1, name, deleteNotExists, operationIndex, cancellationToken).ConfigureAwait(false);
+            ApiResponse<Users> localVarResponse = await PatchLocationUsersWithHttpInfoAsync(id, usersData1, name, deleteNotExists, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2073,8 +2073,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="deleteNotExists">The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional, default to &quot;false&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Users1)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Users1>> PatchLocationUsersWithHttpInfoAsync(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (Users)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Users>> PatchLocationUsersWithHttpInfoAsync(string id, UsersData1 usersData1, string name = default, string deleteNotExists = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->PatchLocationUsers");
@@ -2138,7 +2138,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await AsynchronousClient.PatchAsync<Users1>("/Endpoint/rest/api/v1/Location/{Id}/Users", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await AsynchronousClient.PatchAsync<Users>("/Endpoint/rest/api/v1/Location/{Id}/Users", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
             if (ExceptionFactory != null)
             {
@@ -2528,10 +2528,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="userData1">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>User1</returns>
-        public User1 UpsertLocationUser(string id, UserData1 userData1, string name = default, int operationIndex = 0)
+        /// <returns>User</returns>
+        public User UpsertLocationUser(string id, UserData1 userData1, string name = default, int operationIndex = 0)
         {
-            ApiResponse<User1> localVarResponse = UpsertLocationUserWithHttpInfo(id, userData1, name);
+            ApiResponse<User> localVarResponse = UpsertLocationUserWithHttpInfo(id, userData1, name);
             return localVarResponse.Data;
         }
 
@@ -2543,8 +2543,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="userData1">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of User1</returns>
-        public ApiResponse<User1> UpsertLocationUserWithHttpInfo(string id, UserData1 userData1, string name = default, int operationIndex = 0)
+        /// <returns>ApiResponse of User</returns>
+        public ApiResponse<User> UpsertLocationUserWithHttpInfo(string id, UserData1 userData1, string name = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->UpsertLocationUser");
@@ -2603,7 +2603,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = Client.Post<User1>("/Endpoint/rest/api/v1/Location/{Id}/User", localVarRequestOptions, Configuration);
+            var localVarResponse = Client.Post<User>("/Endpoint/rest/api/v1/Location/{Id}/User", localVarRequestOptions, Configuration);
             if (ExceptionFactory != null)
             {
                 Exception _exception = ExceptionFactory("UpsertLocationUser", localVarResponse);
@@ -2625,10 +2625,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of User1</returns>
-        public async System.Threading.Tasks.Task<User1> UpsertLocationUserAsync(string id, UserData1 userData1, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of User</returns>
+        public async System.Threading.Tasks.Task<User> UpsertLocationUserAsync(string id, UserData1 userData1, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            ApiResponse<User1> localVarResponse = await UpsertLocationUserWithHttpInfoAsync(id, userData1, name, operationIndex, cancellationToken).ConfigureAwait(false);
+            ApiResponse<User> localVarResponse = await UpsertLocationUserWithHttpInfoAsync(id, userData1, name, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2641,8 +2641,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (User1)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<User1>> UpsertLocationUserWithHttpInfoAsync(string id, UserData1 userData1, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (User)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<User>> UpsertLocationUserWithHttpInfoAsync(string id, UserData1 userData1, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->UpsertLocationUser");
@@ -2702,7 +2702,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await AsynchronousClient.PostAsync<User1>("/Endpoint/rest/api/v1/Location/{Id}/User", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await AsynchronousClient.PostAsync<User>("/Endpoint/rest/api/v1/Location/{Id}/User", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
             if (ExceptionFactory != null)
             {

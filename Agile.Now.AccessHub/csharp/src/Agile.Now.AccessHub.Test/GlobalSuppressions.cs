@@ -6,3 +6,5 @@
 using System.Diagnostics.CodeAnalysis;
 
 [assembly: SuppressMessage("Assertions", "xUnit2013:Do not use equality check to check for collection size.", Justification = "<Pending>", Scope = "member", Target = "~M:Agile.Now.AccessHub.Test.Api.LocationsApiTests.Test_Location_List_WithPaging")]
+[assembly: SuppressMessage("Assertions", "xUnit2013:Do not use equality check to check for collection size.", Justification = "<Pending>", Scope = "member", Target = "~M:Agile.Now.AccessHub.Test.Common.EntityTests`5.Test_List_Paging")]
+[assembly: SuppressMessage("Assertions", "xUnit2013:Do not use equality check to check for collection size.", Justification = "<Pending>", Scope = "member", Target = "~M:Agile.Now.AccessHub.Test.Common.SubEntityTests`7.Test_Patch")]

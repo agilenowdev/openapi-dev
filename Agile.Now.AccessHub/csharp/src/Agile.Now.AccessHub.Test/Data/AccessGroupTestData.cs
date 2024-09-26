@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Agile.Now.AccessHub.Model;
 using Agile.Now.AccessHub.Test.Data;
 using Xunit;
@@ -18,6 +20,8 @@ internal static class AccessGroupTestData {
         EnumPermissionType.Delete
     };
 
+    public static readonly string AccessRole = "32E61509-0071-4001-BE32-9E9D0DB255CB";
+
     public static readonly string ParentApplication = "3B594DDA-3F5D-431A-A532-A3EDFFA9BD98";
 
     public static AccessGroupData CreateAccessGroupData(string suffix = null) {
@@ -31,6 +35,9 @@ internal static class AccessGroupTestData {
             accessGroupTypeId: EnumAccessGroupType.Departments
         );
     }
+
+    public static IEnumerable<AccessGroupData> CreateAccessGroupDatas() =>
+        Enumerable.Range(0, 4).Select(i => CreateAccessGroupData(i.ToString()));
 
     public static void Update(this AccessGroupData accessGroupInsertData) {
         accessGroupInsertData.Description = accessGroupInsertData.Description.MarkUpdated();
@@ -51,10 +58,28 @@ internal static class AccessGroupTestData {
         parentApplicationId: new("Id", ParentApplication),
         accessApplicationId: new("Id", id));
 
+    public static IEnumerable<ApplicationData> CreateApplicationDatas() =>
+        Applications.Select(i => CreateApplicationData(i));
+
     public static ApplicationText CreateApplicationText(string accessApplicationId, string id = default) => new(
         parentApplicationId: ParentApplication,
         accessApplicationId: accessApplicationId,
         id: id);
 
     public static PermissionData CreatePermissionData(EnumPermissionType id) => new(permissionId: id);
+
+    public static IEnumerable<PermissionData> CreatePermissionDatas() {
+        yield return new PermissionData(
+            accessRoleId: new("Id", AccessRole),
+            roleId: new("Id", "201"),
+            permissionId: EnumPermissionType.Create);
+        yield return new PermissionData(
+            accessRoleId: new("Id", AccessRole),
+            roleId: new("Id", "201"),
+            permissionId: EnumPermissionType.Generic);
+        yield return new PermissionData(
+            accessRoleId: new("Id", AccessRole),
+            roleId: new("Id", "201"),
+            permissionId: EnumPermissionType.Delete);
+    }
 }

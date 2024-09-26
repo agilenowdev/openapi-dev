@@ -11,5 +11,7 @@ namespace Agile.Now.AccessHub.Test.Common {
             Get = get;
             Set = set;
         }
+
+        public char GetSeparator() => typeof(TId) == typeof(int) ? ',' : ';';
     }
 }
