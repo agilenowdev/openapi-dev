@@ -1,6 +1,7 @@
 using Agile.Now.AccessHub.Api;
 using Agile.Now.AccessHub.Model;
 using Agile.Now.AccessHub.Test.Common;
+using Agile.Now.Api.Test;
 using Agile.Now.ApiAccounts.Test.Api;
 using Agile.Now.ApiOrganizations.Test.Api;
 using Xunit;
@@ -15,7 +16,7 @@ namespace Agile.Now.AccessHub.Test.ApiTestsWithHelper {
             account = new(
                 id: new("Id", entity => entity.Id, (entity, id) => entity.Id = id),
                 testData: new(
-                    getInsertData: () => AccountTestData.CreateAccountDatas(),
+                    generateInsertData: () => AccountTestData.CreateAccountDatas(),
                     assertEqual: (data, entity) => data.AssertEqual(entity),
                     update: data => AccountTestData.UpdateAccountData(data)),
                 uniqueAttributes: new Attribute<Account, string, AccountData>[] {

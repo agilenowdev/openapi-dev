@@ -2,6 +2,7 @@ using Agile.Now.AccessHub.Api;
 using Agile.Now.AccessHub.Model;
 using Agile.Now.AccessHub.Test.Common;
 using Agile.Now.AccessHub.Test.Data;
+using Agile.Now.Api.Test;
 using Agile.Now.ApiOrganizations.Test.Api;
 using Xunit;
 using Xunit.Abstractions;
@@ -17,7 +18,7 @@ namespace Agile.Now.AccessHub.Test.ApiTestsWithHelper {
             department = new(
                 id: new(nameof(Department.Id), entity => entity.Id, (entity, id) => entity.Id = id),
                 testData: new(
-                    getInsertData: () => DepartmentTestData.CreateDepartmentDatas(),
+                    generateInsertData: () => DepartmentTestData.CreateDepartmentDatas(),
                     toUpdateData: data => data.ToDepartmentUpdateData(),
                     toUpsertData: data => data.ToDepartmentData(),
                     assertEqual: (data, entity) => data.AssertEqual(entity),
@@ -37,7 +38,7 @@ namespace Agile.Now.AccessHub.Test.ApiTestsWithHelper {
             department_User = new(department,
                 id: new(nameof(User.Id), entity => entity.Id, (entity, id) => entity.Id = id.ToString()),
                 testData: new(
-                    getInsertData: () => UserTestData.CreateUserData1s(),
+                    generateInsertData: () => UserTestData.CreateUserData1s(),
                     assertEqual: (expected, actual) => { }),
                 list: (id) => api.ListDepartmentUsers(id).Data,
                 upsert: (id, data) => api.UpsertDepartmentUser(id, data),

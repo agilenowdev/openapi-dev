@@ -1,6 +1,7 @@
 using Agile.Now.AccessHub.Api;
 using Agile.Now.AccessHub.Model;
 using Agile.Now.AccessHub.Test.Common;
+using Agile.Now.Api.Test;
 using Agile.Now.ApiAccessGroups.Test.Api;
 using Agile.Now.ApiOrganizations.Test.Api;
 using Xunit;
@@ -17,7 +18,7 @@ namespace Agile.Now.AccessHub.Test.ApiTestsWithHelper {
             groupExternal = new(
                 id: new("Id", entity => entity.Id, (entity, id) => entity.Id = id),
                 testData: new(
-                    getInsertData: () => GroupExternalTestData.CreateGroupExternalDatas(),
+                    generateInsertData: () => GroupExternalTestData.CreateGroupExternalDatas(),
                     assertEqual: (data, entity) => data.AssertEqual(entity),
                     update: data => data.Update()),
                 uniqueAttributes: new Attribute<GroupExternal, string, GroupExternalData>[] {
@@ -35,7 +36,7 @@ namespace Agile.Now.AccessHub.Test.ApiTestsWithHelper {
             groupExternal_UsersExternals = new(groupExternal,
                 id: new(nameof(UserExternal.Id), entity => entity.Id, (entity, id) => entity.Id = id),
                 testData: new(
-                    getInsertData: () => GroupExternalTestData.CreateUserExternalDatas(),
+                    generateInsertData: () => GroupExternalTestData.CreateUserExternalDatas(),
                     assertEqual: (expected, actual) => { }),
                 list: (id) => api.ListGroupExternalUserExternals(id.ToString()).Data,
                 upsert: (id, data) => api.UpsertGroupExternalUserExternal(id.ToString(), data),

@@ -1,0 +1,15 @@
+C:\git\agilenowdev\openapi-dev\Agile.Now.Api.Test\Agile.Now.Api.Test\obj\Debug\net7.0\Agile.Now.Api.Test.GeneratedMSBuildEditorConfig.editorconfig
+C:\git\agilenowdev\openapi-dev\Agile.Now.Api.Test\Agile.Now.Api.Test\obj\Debug\net7.0\Agile.Now.Api.Test.AssemblyInfoInputs.cache
+C:\git\agilenowdev\openapi-dev\Agile.Now.Api.Test\Agile.Now.Api.Test\obj\Debug\net7.0\Agile.Now.Api.Test.AssemblyInfo.cs
+C:\git\agilenowdev\openapi-dev\Agile.Now.Api.Test\Agile.Now.Api.Test\obj\Debug\net7.0\Agile.Now.Api.Test.csproj.CoreCompileInputs.cache
+C:\git\agilenowdev\openapi-dev\Agile.Now.Api.Test\Agile.Now.Api.Test\obj\Debug\net7.0\Agile.Now.Api.Test.sourcelink.json
+C:\git\agilenowdev\openapi-dev\Agile.Now.Api.Test\Agile.Now.Api.Test\obj\Debug\net7.0\Agile.Now.Api.Test.csproj.AssemblyReference.cache
+C:\git\agilenowdev\openapi-dev\Agile.Now.Api.Test\Agile.Now.Api.Test\bin\Debug\net7.0\Agile.Now.Api.Test.deps.json
+C:\git\agilenowdev\openapi-dev\Agile.Now.Api.Test\Agile.Now.Api.Test\bin\Debug\net7.0\Agile.Now.Api.Test.runtimeconfig.json
+C:\git\agilenowdev\openapi-dev\Agile.Now.Api.Test\Agile.Now.Api.Test\bin\Debug\net7.0\Agile.Now.Api.Test.dll
+C:\git\agilenowdev\openapi-dev\Agile.Now.Api.Test\Agile.Now.Api.Test\bin\Debug\net7.0\Agile.Now.Api.Test.pdb
+C:\git\agilenowdev\openapi-dev\Agile.Now.Api.Test\Agile.Now.Api.Test\obj\Debug\net7.0\Agile.Now.Api.Test.dll
+C:\git\agilenowdev\openapi-dev\Agile.Now.Api.Test\Agile.Now.Api.Test\obj\Debug\net7.0\refint\Agile.Now.Api.Test.dll
+C:\git\agilenowdev\openapi-dev\Agile.Now.Api.Test\Agile.Now.Api.Test\obj\Debug\net7.0\Agile.Now.Api.Test.pdb
+C:\git\agilenowdev\openapi-dev\Agile.Now.Api.Test\Agile.Now.Api.Test\obj\Debug\net7.0\Agile.Now.Api.Test.genruntimeconfig.cache
+C:\git\agilenowdev\openapi-dev\Agile.Now.Api.Test\Agile.Now.Api.Test\obj\Debug\net7.0\ref\Agile.Now.Api.Test.dll

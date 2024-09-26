@@ -2,6 +2,7 @@ using Agile.Now.AccessHub.Api;
 using Agile.Now.AccessHub.Model;
 using Agile.Now.AccessHub.Test.Common;
 using Agile.Now.AccessHub.Test.Data;
+using Agile.Now.Api.Test;
 using Agile.Now.ApiAccessGroups.Test.Api;
 using Agile.Now.ApiOrganizations.Test.Api;
 using Xunit;
@@ -22,7 +23,7 @@ namespace Agile.Now.AccessHub.Test.ApiTestsWithHelper {
             accessGroup = new(
                 id: new(nameof(AccessGroup.Id), entity => entity.Id, (entity, id) => entity.Id = id),
                 testData: new(
-                    getInsertData: () => AccessGroupTestData.CreateAccessGroupDatas(),
+                    generateInsertData: () => AccessGroupTestData.CreateAccessGroupDatas(),
                     assertEqual: (data, entity) => data.AssertEqual(entity),
                     update: data => data.Update()),
                 uniqueAttributes: new Attribute<AccessGroup, string, AccessGroupData>[] {
@@ -40,7 +41,7 @@ namespace Agile.Now.AccessHub.Test.ApiTestsWithHelper {
             accessGroup_Application = new(accessGroup,
                 id: new(nameof(Application.Id), entity => entity.Id, (entity, id) => entity.Id = id),
                 testData: new(
-                    getInsertData: () => AccessGroupTestData.CreateApplicationDatas(),
+                    generateInsertData: () => AccessGroupTestData.CreateApplicationDatas(),
                     assertEqual: (expected, actual) => { }),
                 list: (id) => api.ListAccessGroupApplications(id).Data,
                 upsert: (id, data) => api.UpsertAccessGroupApplication(id, data),
@@ -49,7 +50,7 @@ namespace Agile.Now.AccessHub.Test.ApiTestsWithHelper {
             accessGroup_Permission = new(accessGroup,
                 id: new(nameof(Permission.Id), entity => entity.Id, (entity, id) => entity.Id = id),
                 testData: new(
-                    getInsertData: () => AccessGroupTestData.CreatePermissionDatas(),
+                    generateInsertData: () => AccessGroupTestData.CreatePermissionDatas(),
                     assertEqual: (expected, actual) => { }),
                 list: (id) => api.ListAccessGroupPermissions(id).Data,
                 upsert: (id, data) => api.UpsertAccessGroupPermission(id, data),
@@ -58,7 +59,7 @@ namespace Agile.Now.AccessHub.Test.ApiTestsWithHelper {
             accessGroup_Group = new(accessGroup,
                 id: new(nameof(Group.Id), entity => entity.Id, (entity, id) => entity.Id = id),
                 testData: new(
-                    getInsertData: () => UserTestData.CreateGroupDatas(),
+                    generateInsertData: () => UserTestData.CreateGroupDatas(),
                     assertEqual: (expected, actual) => { }),
                 list: (id) => api.ListAccessGroupGroups(id).Data,
                 upsert: (id, data) => api.UpsertAccessGroupGroup(id, data),
@@ -67,7 +68,7 @@ namespace Agile.Now.AccessHub.Test.ApiTestsWithHelper {
             accessGroup_User = new(accessGroup,
                 id: new(nameof(User.Id), entity => entity.Id, (entity, id) => entity.Id = id),
                 testData: new(
-                    getInsertData: () => UserTestData.CreateUserDatas(),
+                    generateInsertData: () => UserTestData.CreateUserDatas(),
                     assertEqual: (expected, actual) => { }),
                 list: (id) => api.ListAccessGroupUsers(id).Data,
                 upsert: (id, data) => api.UpsertAccessGroupUser(id, data),

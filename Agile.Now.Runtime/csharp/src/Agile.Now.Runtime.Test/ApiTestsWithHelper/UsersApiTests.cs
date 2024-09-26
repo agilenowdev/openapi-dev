@@ -1,4 +1,4 @@
-using Agile.Now.AccessHub.Test.Common;
+using Agile.Now.Api.Test;
 using Agile.Now.Runtime.Api;
 using Agile.Now.Runtime.Model;
 using Agile.Now.Runtime.Test.Data;
@@ -24,7 +24,7 @@ namespace Agile.Runtime.Runtime.ApiTestsWithHelper {
             user = new(
                 id: new(nameof(User.Id), entity => entity.Id, (entity, id) => entity.Id = id),
                 testData: new(
-                    getInsertData: () => TestUserData.CreateUserDatas(),
+                    generateInsertData: () => TestUserData.CreateUserDatas(),
                     assertEqual: (data, entity) => { }),
                 uniqueAttributes: new Attribute<User, string, User>[] {
                     new("External_Id", data => data.ExternalId, (data, value) => data.ExternalId = value),
@@ -39,7 +39,7 @@ namespace Agile.Runtime.Runtime.ApiTestsWithHelper {
             user_AccessGroup = new(user,
                 id: new(nameof(AccessGroup.Id), entity => entity.Id, null),
                 testData: new(
-                    getInsertData: () => TestUserData.CreateAccessGroupDatas(),
+                    generateInsertData: () => TestUserData.CreateAccessGroupDatas(),
                     assertEqual: (expected, actual) => { }),
                 list: (id) => api.ListUserAccessGroups(id.ToString()).Data,
                 upsert: (id, data) => api.UpsertUserAccessGroup(id.ToString(), data),
@@ -48,7 +48,7 @@ namespace Agile.Runtime.Runtime.ApiTestsWithHelper {
             user_Group = new(user,
                 id: new(nameof(Group.Id), entity => entity.Id, null),
                 testData: new(
-                    getInsertData: () => TestUserData.CreateGroupDatas(),
+                    generateInsertData: () => TestUserData.CreateGroupDatas(),
                     assertEqual: (expected, actual) => { }),
                 list: (id) => api.ListUserGroups(id.ToString()).Data,
                 upsert: (id, data) => api.UpsertUserGroup(id.ToString(), data),
@@ -57,7 +57,7 @@ namespace Agile.Runtime.Runtime.ApiTestsWithHelper {
             user_Department = new(user,
                 id: new(nameof(Department.Id), entity => entity.Id, null),
                 testData: new(
-                    getInsertData: () => TestUserData.CreateDepartmentDatas(),
+                    generateInsertData: () => TestUserData.CreateDepartmentDatas(),
                     assertEqual: (expected, actual) => { },
                     toPatchData: (data) => TestUserData.ToDepartmentPatchData(data)),
                 list: (id) => api.ListUserDepartments(id.ToString()).Data,
@@ -68,7 +68,7 @@ namespace Agile.Runtime.Runtime.ApiTestsWithHelper {
             user_Location = new(user,
                 id: new(nameof(Location.Id), entity => entity.Id, null),
                 testData: new(
-                    getInsertData: () => TestUserData.CreateLocationDatas(),
+                    generateInsertData: () => TestUserData.CreateLocationDatas(),
                     assertEqual: (expected, actual) => { },
                     toPatchData: (data) => TestUserData.ToLocationPatchData(data)),
                 list: (id) => api.ListUserLocations(id.ToString()).Data,
@@ -79,21 +79,21 @@ namespace Agile.Runtime.Runtime.ApiTestsWithHelper {
             user_Application = new(user,
                 id: new(nameof(Application.Id), entity => entity.Id, null),
                 testData: new(
-                    getInsertData: null,
+                    generateInsertData: null,
                     assertEqual: (expected, actual) => { }),
                 list: (id) => api.ListUserApplications(id.ToString()).Data);
 
             user_AccessRole = new(user,
                 id: new(nameof(AccessRole.Id), entity => entity.Id, null),
                 testData: new(
-                    getInsertData: null,
+                    generateInsertData: null,
                     assertEqual: (expected, actual) => { }),
                 list: (id) => api.ListUserAccessRoles(id.ToString()).Data);
 
             user_EffectivePermission = new(user,
                 id: new(nameof(EffectivePermission.Id), entity => entity.Id, null),
                 testData: new(
-                    getInsertData: null,
+                    generateInsertData: null,
                     assertEqual: (expected, actual) => { }),
                 list: (id) => api.ListUserEffectivePermissions(id.ToString()).Data);
         }
