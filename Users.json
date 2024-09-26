@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.116"
+    "version": "3.0.117"
   },
   "servers": [
     {
@@ -2114,16 +2114,61 @@
       },
       "Department": {
         "required": [
-          "Id"
+          "Id",
+          "Name",
+          "DepartmentTypeId",
+          "Is_Active"
         ],
         "type": "object",
         "properties": {
           "Id": {
             "type": "string",
-            "description": "The identifier of user department"
+            "description": "The guid to identify the department"
           },
-          "DepartmentId": {
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the department"
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the department"
+          },
+          "DepartmentTypeId": {
             "$ref": "#/components/schemas/AbstractText"
+          },
+          "ParentDepartmentId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "HierarchicalName": {
+            "type": "string",
+            "description": "The hierarchical name of the department"
+          },
+          "Level": {
+            "type": "integer",
+            "description": "The department level at the hierarchy",
+            "format": "int32",
+            "default": 0,
+            "example": 0
+          },
+          "ContactName": {
+            "type": "string",
+            "description": "The contact name of company or department"
+          },
+          "ContactEmail": {
+            "type": "string",
+            "description": "The contact email of external company or department"
+          },
+          "ContactPhone": {
+            "type": "string"
+          },
+          "CountryId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the department is active and can be used",
+            "default": false,
+            "example": false
           },
           "ModifiedOn": {
             "type": "string",
@@ -2258,16 +2303,38 @@
       },
       "Location": {
         "required": [
-          "Id"
+          "Id",
+          "Name",
+          "Is_Active"
         ],
         "type": "object",
         "properties": {
           "Id": {
             "type": "string",
-            "description": "The identifier of user location"
+            "description": "The guid to identify the location"
           },
-          "LocationId": {
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the location"
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the location"
+          },
+          "CountryId": {
             "$ref": "#/components/schemas/AbstractText"
+          },
+          "TimezoneId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "CurrencyId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the location is active and can be used",
+            "default": false,
+            "example": false
           },
           "ModifiedOn": {
             "type": "string",
