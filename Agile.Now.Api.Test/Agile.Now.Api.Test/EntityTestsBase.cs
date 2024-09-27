@@ -1,27 +1,23 @@
 ﻿namespace Agile.Now.Api.Test; 
 
-public abstract class EntityTestsBase<TReadDataId> {
-    public abstract TReadDataId CreateInternal();
+public abstract class EntityTestsBase<TId> {
+    public abstract TId CreateInternal();
     public abstract void DeleteInternal(string id);
 }
 
-public abstract class EntityTestsBase<TReadData, TReadDataId, TInsertData, TUpdateData, TUpsertData, TPatchData>
-    : EntityTestsBase<TReadDataId>
-
-    where TUpdateData : class
-    where TUpsertData : class {
-
-    protected readonly Attribute<TReadData, TReadDataId, TInsertData> id;
-    protected readonly TestData<TReadData, TInsertData, TUpdateData, TUpsertData, TPatchData> testData;
-    protected readonly Attribute<TReadData, string, TInsertData>[] uniqueAttributes;
+public abstract class EntityTestsBase<TResponseData, TId, TRequestData> : EntityTestsBase<TId> {
+    protected readonly Attribute<TResponseData, TId, TRequestData> id;
+    protected readonly TestData<TResponseData, TRequestData> testData;
+    protected readonly Attribute<TResponseData, string, TRequestData>[] uniqueAttributes;
 
     public EntityTestsBase(
-        Attribute<TReadData, TReadDataId, TInsertData> id,
-        TestData<TReadData, TInsertData, TUpdateData, TUpsertData, TPatchData> testData,
-        Attribute<TReadData, string, TInsertData>[] uniqueAttributes) {
+        Attribute<TResponseData, TId, TRequestData> id,
+        TestData<TResponseData, TRequestData> testData,
+        Attribute<TResponseData, string, TRequestData>[] uniqueAttributes) {
 
         this.id = id;
         this.testData = testData;
+        this.uniqueAttributes = uniqueAttributes;
     }
 
     public abstract void Test_List_ById();

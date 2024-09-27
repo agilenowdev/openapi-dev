@@ -9,8 +9,8 @@ using Xunit.Abstractions;
 
 namespace Agile.Now.AccessHub.Test.ApiTestsWithHelper {
     public class LocationsApiTests {
-        readonly EntityTests<Location, string, LocationInsertData, LocationUpdateData, LocationData, LocationData> location;
-        readonly SubEntityTests<string, User, int, UserData1, UserData1, UserData1, UserText1> location_User;
+        readonly EntityTests<Location, string, LocationInsertData> location;
+        readonly SubEntityTests<string, User, int, UserData1> location_User;
 
         public LocationsApiTests(ITestOutputHelper testOutputHelper) {
             var api = new LocationsApi(Settings.Connections[0]);
@@ -18,8 +18,6 @@ namespace Agile.Now.AccessHub.Test.ApiTestsWithHelper {
                 id: new(nameof(Location.Id), entity => entity.Id, (entity, id) => entity.Id = id),
                 testData: new(
                     generateInsertData: () => LocationTestData.CreateLocationDatas(),
-                    toUpdateData: data => data.ToLocationUpdateData(),
-                    toUpsertData: data => data.ToLocationData(),
                     assertEqual: (data, entity) => data.AssertEqual(entity),
                     update: data => data.Update()),
                 uniqueAttributes: new Attribute<Location, string, LocationInsertData>[] {
@@ -30,8 +28,8 @@ namespace Agile.Now.AccessHub.Test.ApiTestsWithHelper {
                     api.ListLocations(filters: filters, currentPage: currentPage, pageSize: pageSize).Data,
                 get: (id, name) => api.GetLocation(id, name),
                 create: data => api.CreateLocation(data),
-                update: (id, data, name) => api.UpdateLocation(id, data, name),
-                upsert: data => api.UpsertLocation(data),
+                update: (id, data, name) => api.UpdateLocation(id, LocationTestData.ToLocationUpdateData(data), name),
+                upsert: data => api.UpsertLocation(LocationTestData.ToLocationData(data)),
                 delete: (id, name) => api.DeleteLocation(id, name));
 
             location_User = new(location,
@@ -58,8 +56,8 @@ namespace Agile.Now.AccessHub.Test.ApiTestsWithHelper {
         [Fact] public void Test_Location_Delete_ById() => location.Test_Delete_ById();
         [Fact] public void Test_Location_Delete_ByUniqueAttributes() => location.Test_Delete_ByUniqueAttributes();
 
-        [Fact] public void Test_Location_User_Test_List_ById() => location_User.Test_List_ById();
-        [Fact] public void Test_Location_User_Test_Upsert() => location_User.Test_Upsert();
+        [Fact] public void Test_Location_User_List_ById() => location_User.Test_List_ById();
+        [Fact] public void Test_Location_User_Upsert() => location_User.Test_Upsert();
         [Fact] public void Test_Location_User_Delete() => location_User.Test_Delete_ById();
     }
 }

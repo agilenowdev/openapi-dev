@@ -2,29 +2,26 @@
 
 namespace Agile.Now.Api.Test;
 
-public class SubEntityTests<TParentId, TReadData, TReadDataId, TInsertData, TUpdateData, TUpsertData, TPatchData>
-    : EntityTestsBase<TReadData, TReadDataId, TInsertData, TUpdateData, TUpsertData, TPatchData>
-        where TInsertData : class
-        where TUpdateData : class
-        where TUpsertData : class {
+public class SubEntityTests<TParentId, TResponseData, TId, TRequestData>
+    : EntityTestsBase<TResponseData, TId, TRequestData> {
 
     readonly EntityTestsBase<TParentId> parent;
 
-    public readonly Action<TParentId, TReadDataId> Delete;
-    public readonly Func<TParentId, List<TReadData>> List;
-    public readonly Func<TParentId, TUpsertData, TReadData> Upsert;
-    public readonly Func<TParentId, List<TPatchData>, IEnumerable<TReadData>> Patch;
+    public readonly Action<TParentId, TId> Delete;
+    public readonly Func<TParentId, List<TResponseData>> List;
+    public readonly Func<TParentId, TRequestData, TResponseData> Upsert;
+    public readonly Func<TParentId, List<TRequestData>, IEnumerable<TResponseData>> Patch;
 
     public SubEntityTests(
         EntityTestsBase<TParentId> parent,
-        Attribute<TReadData, TReadDataId, TInsertData> id,
-        TestData<TReadData, TInsertData, TUpdateData, TUpsertData, TPatchData> testData,
-        Attribute<TReadData, string, TInsertData>[] uniqueAttributes = null,
+        Attribute<TResponseData, TId, TRequestData> id,
+        TestData<TResponseData, TRequestData> testData,
+        Attribute<TResponseData, string, TRequestData>[] uniqueAttributes = null,
 
-        Func<TParentId, List<TReadData>> list = null,
-        Func<TParentId, TUpsertData, TReadData> upsert = null,
-        Func<TParentId, List<TPatchData>, IEnumerable<TReadData>> patch = null,
-        Action<TParentId, TReadDataId> delete = null)
+        Func<TParentId, List<TResponseData>> list = null,
+        Func<TParentId, TRequestData, TResponseData> upsert = null,
+        Func<TParentId, List<TRequestData>, IEnumerable<TResponseData>> patch = null,
+        Action<TParentId, TId> delete = null)
 
         : base(id, testData, uniqueAttributes) {
 
@@ -36,13 +33,13 @@ public class SubEntityTests<TParentId, TReadData, TReadDataId, TInsertData, TUpd
         Delete = delete;
     }
 
-    public override TReadDataId CreateInternal() => default;
+    public override TId CreateInternal() => default;
     public override void DeleteInternal(string id) { }
 
     public override void Test_List_ById() {
         var entityId = parent.CreateInternal();
         try {
-            var created = testData.GenerateInsertData().Take(2).Select(i => Upsert(entityId, testData.ToUpsertData(i))).ToArray();
+            var created = testData.GenerateInsertData().Take(2).Select(i => Upsert(entityId, i)).ToArray();
             try {
                 var existing = List(entityId);
                 Assert.Equal(created.Length, existing.Count);
@@ -60,7 +57,7 @@ public class SubEntityTests<TParentId, TReadData, TReadDataId, TInsertData, TUpd
     public override void Test_Upsert() {
         var entityId = parent.CreateInternal();
         try {
-            var created = Upsert(entityId, testData.ToUpsertData(testData.GenerateInsertData().First()));
+            var created = Upsert(entityId, testData.GenerateInsertData().First());
             try {
                 var existing = List(entityId);
                 Assert.Contains(existing, i => id.Get(i).Equals(id.Get(created)));
@@ -78,9 +75,9 @@ public class SubEntityTests<TParentId, TReadData, TReadDataId, TInsertData, TUpd
         var entityId = parent.CreateInternal();
         try {
             var data = testData.GenerateInsertData().Take(2).ToArray();
-            var created = Upsert(entityId, testData.ToUpsertData(data[0]));
+            var created = Upsert(entityId, data[0]);
             try {
-                var patched = Patch(entityId, new[] { testData.ToPatchData(data[1]) }.ToList()).ToArray();
+                var patched = Patch(entityId, new[] { data[1] }.ToList()).ToArray();
                 try {
                     Assert.Equal(1, patched.Length);
                     var existing = List(entityId);
@@ -104,7 +101,7 @@ public class SubEntityTests<TParentId, TReadData, TReadDataId, TInsertData, TUpd
     public override void Test_Delete_ById() {
         var entity = parent.CreateInternal();
         try {
-            var created = Upsert(entity, testData.ToUpsertData(testData.GenerateInsertData().First()));
+            var created = Upsert(entity, testData.GenerateInsertData().First());
             Delete(entity, id.Get(created));
             var existing = List(entity);
             Assert.Empty(existing);

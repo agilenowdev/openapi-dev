@@ -9,9 +9,8 @@ using Xunit.Abstractions;
 
 namespace Agile.Now.AccessHub.Test.ApiTestsWithHelper {
     public class DepartmentsApiTests {
-        readonly EntityTests<Department, string, DepartmentInsertData, DepartmentUpdateData, DepartmentData, DepartmentData> 
-            department;
-        readonly SubEntityTests<string, User, int, UserData1, UserData1, UserData1, UserText1> department_User;
+        readonly EntityTests<Department, string, DepartmentInsertData> department;
+        readonly SubEntityTests<string, User, int, UserData1> department_User;
 
         public DepartmentsApiTests(ITestOutputHelper testOutputHelper) {
             var api = new DepartmentsApi(Settings.Connections[0]);
@@ -19,8 +18,6 @@ namespace Agile.Now.AccessHub.Test.ApiTestsWithHelper {
                 id: new(nameof(Department.Id), entity => entity.Id, (entity, id) => entity.Id = id),
                 testData: new(
                     generateInsertData: () => DepartmentTestData.CreateDepartmentDatas(),
-                    toUpdateData: data => data.ToDepartmentUpdateData(),
-                    toUpsertData: data => data.ToDepartmentData(),
                     assertEqual: (data, entity) => data.AssertEqual(entity),
                     update: data => data.Update()),
                 uniqueAttributes: new Attribute<Department, string, DepartmentInsertData>[] {
@@ -31,8 +28,8 @@ namespace Agile.Now.AccessHub.Test.ApiTestsWithHelper {
                     api.ListDepartments(filters: filters, currentPage: currentPage, pageSize: pageSize).Data,
                 get: (id, name) => api.GetDepartment(id, name),
                 create: data => api.CreateDepartment(data),
-                update: (id, data, name) => api.UpdateDepartment(id, data, name),
-                upsert: data => api.UpsertDepartment(data),
+                update: (id, data, name) => api.UpdateDepartment(id, DepartmentTestData.ToDepartmentUpdateData(data), name),
+                upsert: data => api.UpsertDepartment(DepartmentTestData.ToDepartmentData(data)),
                 delete: (id, name) => api.DeleteDepartment(id, name));
 
             department_User = new(department,
@@ -59,8 +56,8 @@ namespace Agile.Now.AccessHub.Test.ApiTestsWithHelper {
         [Fact] public void Test_Department_Delete_ById() => department.Test_Delete_ById();
         [Fact] public void Test_Department_Delete_ByUniqueAttributes() => department.Test_Delete_ByUniqueAttributes();
 
-        [Fact] public void Test_Department_User_Test_List_ById() => department_User.Test_List_ById();
-        [Fact] public void Test_Department_User_Test_Upsert() => department_User.Test_Upsert();
+        [Fact] public void Test_Department_User_List_ById() => department_User.Test_List_ById();
+        [Fact] public void Test_Department_User_Upsert() => department_User.Test_Upsert();
         [Fact] public void Test_Department_User_Delete() => department_User.Test_Delete_ById();
     }
 }

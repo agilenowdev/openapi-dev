@@ -9,9 +9,8 @@ using Xunit.Abstractions;
 
 namespace Agile.Now.AccessHub.Test.ApiTestsWithHelper {
     public class GroupExternalsApiTests {
-        readonly EntityTests<GroupExternal, int, GroupExternalData, GroupExternalData, GroupExternalData, GroupExternalData> 
-            groupExternal;
-        readonly SubEntityTests<int, UserExternal, int, UserExternalData, UserExternalData, UserExternalData, UserExternalText> groupExternal_UsersExternals;
+        readonly EntityTests<GroupExternal, int, GroupExternalData> groupExternal;
+        readonly SubEntityTests<int, UserExternal, int, UserExternalData> groupExternal_UsersExternals;
 
         public GroupExternalsApiTests(ITestOutputHelper testOutputHelper) {
             var api = new GroupExternalsApi(Settings.Connections[0]);
@@ -57,8 +56,8 @@ namespace Agile.Now.AccessHub.Test.ApiTestsWithHelper {
         [Fact] public void Test_GroupExternal_Delete_ById() => groupExternal.Test_Delete_ById();
         [Fact] public void Test_GroupExternal_Delete_ByUniqueAttributes() => groupExternal.Test_Delete_ByUniqueAttributes();
 
-        [Fact] public void Test_AccessGroup_User_Test_List_ById() => groupExternal_UsersExternals.Test_List_ById();
-        [Fact] public void Test_AccessGroup_User_Test_Upsert() => groupExternal_UsersExternals.Test_Upsert();
-        [Fact] public void Test_AccessGroup_User_Test_Delete_ById() => groupExternal_UsersExternals.Test_Delete_ById();
+        [Fact] public void Test_AccessGroup_User_List_ById() => groupExternal_UsersExternals.Test_List_ById();
+        [Fact] public void Test_AccessGroup_User_Upsert() => groupExternal_UsersExternals.Test_Upsert();
+        [Fact] public void Test_AccessGroup_User_Delete_ById() => groupExternal_UsersExternals.Test_Delete_ById();
     }
 }

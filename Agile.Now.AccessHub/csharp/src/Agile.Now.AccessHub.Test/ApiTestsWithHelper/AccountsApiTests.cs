@@ -9,7 +9,7 @@ using Xunit.Abstractions;
 
 namespace Agile.Now.AccessHub.Test.ApiTestsWithHelper {
     public class AccountsApiTests {
-        readonly EntityTests<Account, string, AccountData, AccountData, AccountData, AccountData> account;
+        readonly EntityTests<Account, string, AccountData> account;
 
         public AccountsApiTests(ITestOutputHelper testOutputHelper) {
             var api = new AccountsApi(Settings.Connections[0]);

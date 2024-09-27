@@ -10,13 +10,11 @@ using Xunit.Abstractions;
 
 namespace Agile.Now.AccessHub.Test.ApiTestsWithHelper {
     public class AccessGroupsApiTests {
-        readonly EntityTests<AccessGroup, string, AccessGroupData, AccessGroupData, AccessGroupData, AccessGroupData> accessGroup;
-        readonly SubEntityTests<string, Application, string, ApplicationData, ApplicationData, ApplicationData, ApplicationText>
-            accessGroup_Application;
-        readonly SubEntityTests<string, Permission, long, PermissionData, PermissionData, PermissionData, PermissionText>
-            accessGroup_Permission;
-        readonly SubEntityTests<string, Group, long, GroupData, GroupData, GroupData, GroupText> accessGroup_Group;
-        readonly SubEntityTests<string, User, long, UserData, UserData, UserData, UserText> accessGroup_User;
+        readonly EntityTests<AccessGroup, string, AccessGroupData> accessGroup;
+        readonly SubEntityTests<string, Application, string, ApplicationData> accessGroup_Application;
+        readonly SubEntityTests<string, Permission, long, PermissionData> accessGroup_Permission;
+        readonly SubEntityTests<string, Group, long, GroupData> accessGroup_Group;
+        readonly SubEntityTests<string, User, long, UserData> accessGroup_User;
 
         public AccessGroupsApiTests(ITestOutputHelper testOutputHelper) {
             var api = new AccessGroupsApi(Settings.Connections[0]);
@@ -89,13 +87,13 @@ namespace Agile.Now.AccessHub.Test.ApiTestsWithHelper {
         [Fact] public void Test_AccessGroup_Delete_ById() => accessGroup.Test_Delete_ById();
         [Fact] public void Test_AccessGroup_Delete_ByUniqueAttributes() => accessGroup.Test_Delete_ByUniqueAttributes();
 
-        [Fact] public void Test_AccessGroup_Application_Test_List_ById() => accessGroup_Application.Test_List_ById();
-        [Fact] public void Test_AccessGroup_Application_Test_Upsert() => accessGroup_Application.Test_Upsert();
-        [Fact] public void Test_AccessGroup_Application_Test_Delete_ById() => accessGroup_Application.Test_Delete_ById();
+        [Fact] public void Test_AccessGroup_Application_List_ById() => accessGroup_Application.Test_List_ById();
+        [Fact] public void Test_AccessGroup_Application_Upsert() => accessGroup_Application.Test_Upsert();
+        [Fact] public void Test_AccessGroup_Application_Delete_ById() => accessGroup_Application.Test_Delete_ById();
 
-        [Fact] public void Test_AccessGroup_Permission_Test_List_ById() => accessGroup_Permission.Test_List_ById();
-        [Fact] public void Test_AccessGroup_Permission_Test_Upsert() => accessGroup_Permission.Test_Upsert();
-        [Fact] public void Test_AccessGroup_Permission_Test_Delete_ById() => accessGroup_Permission.Test_Delete_ById();
+        [Fact] public void Test_AccessGroup_Permission_List_ById() => accessGroup_Permission.Test_List_ById();
+        [Fact] public void Test_AccessGroup_Permission_Upsert() => accessGroup_Permission.Test_Upsert();
+        [Fact] public void Test_AccessGroup_Permission_Delete_ById() => accessGroup_Permission.Test_Delete_ById();
 
         [Fact] public void Test_AccessGroup_Group_List_ById() => accessGroup_Group.Test_List_ById();
         [Fact] public void Test_AccessGroup_Group_Upsert() => accessGroup_Group.Test_Upsert();

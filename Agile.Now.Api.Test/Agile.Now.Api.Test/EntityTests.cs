@@ -2,31 +2,26 @@
 
 namespace Agile.Now.Api.Test;
 
-public class EntityTests<TReadData, TReadDataId, TInsertData, TUpdateData, TUpsertData, TPatchData>
-    : EntityTestsBase<TReadData, TReadDataId, TInsertData, TUpdateData, TUpsertData, TPatchData>
-
-    where TUpdateData : class
-    where TUpsertData : class {
-
-    public readonly Func<string, int, int, List<TReadData>> List;
-    public readonly Func<string, string, TReadData> Get;
-    public readonly Func<TInsertData, TReadData> Create;
-    public readonly Func<string, TUpdateData, string, TReadData> Update;
-    public readonly Func<TUpsertData, TReadData> Upsert;
-    public readonly Func<List<TPatchData>, IEnumerable<TReadData>> Patch;
+public class EntityTests<TResponseData, TId, TRequestData> : EntityTestsBase<TResponseData, TId, TRequestData> {
+    public readonly Func<string, int, int, List<TResponseData>> List;
+    public readonly Func<string, string, TResponseData> Get;
+    public readonly Func<TRequestData, TResponseData> Create;
+    public readonly Func<string, TRequestData, string, TResponseData> Update;
+    public readonly Func<TRequestData, TResponseData> Upsert;
+    public readonly Func<List<TRequestData>, IEnumerable<TResponseData>> Patch;
     public readonly Action<string, string> Delete;
 
     public EntityTests(
-        Attribute<TReadData, TReadDataId, TInsertData> id,
-        TestData<TReadData, TInsertData, TUpdateData, TUpsertData, TPatchData> testData,
-        Attribute<TReadData, string, TInsertData>[] uniqueAttributes = null,
+        Attribute<TResponseData, TId, TRequestData> id,
+        TestData<TResponseData, TRequestData> testData,
+        Attribute<TResponseData, string, TRequestData>[] uniqueAttributes = null,
 
-        Func<string, int, int, List<TReadData>> list = null,
-        Func<string, string, TReadData> get = null,
-        Func<TInsertData, TReadData> create = null,
-        Func<string, TUpdateData, string, TReadData> update = null,
-        Func<TUpsertData, TReadData> upsert = null,
-        Func<List<TPatchData>, IEnumerable<TReadData>> patch = null,
+        Func<string, int, int, List<TResponseData>> list = null,
+        Func<string, string, TResponseData> get = null,
+        Func<TRequestData, TResponseData> create = null,
+        Func<string, TRequestData, string, TResponseData> update = null,
+        Func<TRequestData, TResponseData> upsert = null,
+        Func<List<TRequestData>, IEnumerable<TResponseData>> patch = null,
         Action<string, string> delete = null)
 
         : base(id, testData, uniqueAttributes) {
@@ -40,7 +35,7 @@ public class EntityTests<TReadData, TReadDataId, TInsertData, TUpdateData, TUpse
         Delete = delete;
     }
 
-    public override TReadDataId CreateInternal() => id.Get(Create(testData.GenerateInsertData().First()));
+    public override TId CreateInternal() => id.Get(Create(testData.GenerateInsertData().First()));
 
     public override void DeleteInternal(string id) => Delete(id, this.id.Name);
 
@@ -152,7 +147,7 @@ public class EntityTests<TReadData, TReadDataId, TInsertData, TUpdateData, TUpse
         var created = Create(data);
         try {
             testData.Update(data);
-            var updated = Update(id.Get(created).ToString(), testData.ToUpdateData(data), id.Name);
+            var updated = Update(id.Get(created).ToString(), data, id.Name);
             Assert.Equal(id.Get(created), id.Get(updated));
             testData.AssertEqual(data, updated);
         }
@@ -171,7 +166,7 @@ public class EntityTests<TReadData, TReadDataId, TInsertData, TUpdateData, TUpse
                     data = testData.GenerateInsertData().First();
                     uniqueAttribute.Set(data, uniqueAttribute.Get(created));
                     Assert.Throws<Exception>(() =>
-                    Update(id.Get(toUpdate).ToString(), testData.ToUpdateData(data), id.Name));
+                    Update(id.Get(toUpdate).ToString(), data, id.Name));
                 }
             }
             finally {
@@ -190,7 +185,7 @@ public class EntityTests<TReadData, TReadDataId, TInsertData, TUpdateData, TUpse
             foreach(var uniqueAttribute in uniqueAttributes) {
                 testData.Update(data);
                 var updated = Update(
-                    uniqueAttribute.Get(created), testData.ToUpdateData(data), uniqueAttribute.Name);
+                    uniqueAttribute.Get(created), data, uniqueAttribute.Name);
                 Assert.Equal(id.Get(created), id.Get(updated));
                 testData.AssertEqual(data, updated);
             }
@@ -202,12 +197,12 @@ public class EntityTests<TReadData, TReadDataId, TInsertData, TUpdateData, TUpse
 
     public override void Test_Upsert() {
         var data = testData.GenerateInsertData().First();
-        var created = Upsert(testData.ToUpsertData(data));
+        var created = Upsert(data);
         try {
             testData.AssertEqual(data, created);
             testData.Update(data);
             id.Set(data, id.Get(created));
-            var updated = Upsert(testData.ToUpsertData(data));
+            var updated = Upsert(data);
             Assert.Equal(id.Get(created), id.Get(updated));
             testData.AssertEqual(data, updated);
         }

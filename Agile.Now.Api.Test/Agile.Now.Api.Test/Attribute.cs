@@ -1,11 +1,11 @@
 ﻿namespace Agile.Now.Api.Test;
 
-public class Attribute<TReadData, TId, TInsertData> {
+public class Attribute<TResponseData, TId, TRequestData> {
     public readonly string Name;
-    public readonly Func<TReadData, TId> Get;
-    public readonly Action<TInsertData, TId> Set;
+    public readonly Func<TResponseData, TId> Get;
+    public readonly Action<TRequestData, TId> Set;
 
-    public Attribute(string name, Func<TReadData, TId> get, Action<TInsertData, TId> set) {
+    public Attribute(string name, Func<TResponseData, TId> get, Action<TRequestData, TId> set) {
         Name = name;
         Get = get;
         Set = set;

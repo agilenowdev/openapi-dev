@@ -1,3 +1,4 @@
+using System.Linq;
 using Agile.Now.Api.Test;
 using Agile.Now.Runtime.Api;
 using Agile.Now.Runtime.Model;
@@ -7,17 +8,14 @@ using Xunit.Abstractions;
 
 namespace Agile.Runtime.Runtime.ApiTestsWithHelper {
     public class UsersApiTests {
-        readonly EntityTests<User, int, User, User, User, User> user;
-        readonly SubEntityTests<int, AccessGroup, string, AccessGroupData, AccessGroupData, AccessGroupData, AccessGroupData>
-            user_AccessGroup;
-        readonly SubEntityTests<int, Group, int, GroupData, GroupData, GroupData, GroupData> user_Group;
-        readonly SubEntityTests<int, Department, string, DepartmentData, DepartmentData, DepartmentData, DepartmentText>
-            user_Department;
-        readonly SubEntityTests<int, Location, string, LocationData, LocationData, LocationData, LocationText> user_Location;
-        readonly SubEntityTests<int, Application, string, Application, Application, Application, Application> user_Application;
-        readonly SubEntityTests<int, AccessRole, string, AccessRole, AccessRole, AccessRole, AccessRole> user_AccessRole;
-        readonly SubEntityTests<int, EffectivePermission, string,
-            EffectivePermission, EffectivePermission, EffectivePermission, EffectivePermission> user_EffectivePermission;
+        readonly EntityTests<User, int, User> user;
+        readonly SubEntityTests<int, AccessGroup, string, AccessGroupData> user_AccessGroup;
+        readonly SubEntityTests<int, Group, int, GroupData> user_Group;
+        readonly SubEntityTests<int, Department, string, DepartmentData> user_Department;
+        readonly SubEntityTests<int, Location, string, LocationData> user_Location;
+        readonly SubEntityTests<int, Application, string, Application> user_Application;
+        readonly SubEntityTests<int, AccessRole, string, AccessRole> user_AccessRole;
+        readonly SubEntityTests<int, EffectivePermission, string, EffectivePermission> user_EffectivePermission;
 
         public UsersApiTests(ITestOutputHelper testOutputHelper) {
             var api = new UsersApi(Agile.Now.Runtime.Test.Api.Settings.Connections[0]);
@@ -58,22 +56,22 @@ namespace Agile.Runtime.Runtime.ApiTestsWithHelper {
                 id: new(nameof(Department.Id), entity => entity.Id, null),
                 testData: new(
                     generateInsertData: () => TestUserData.CreateDepartmentDatas(),
-                    assertEqual: (expected, actual) => { },
-                    toPatchData: (data) => TestUserData.ToDepartmentPatchData(data)),
+                    assertEqual: (expected, actual) => { }),
                 list: (id) => api.ListUserDepartments(id.ToString()).Data,
                 upsert: (id, data) => api.UpsertUserDepartment(id.ToString(), data),
-                patch: (id, data) => api.PatchUserDepartments(id.ToString(), new(departments: data)).Data,
+                patch: (id, data) => api.PatchUserDepartments(id.ToString(),
+                    new(departments: data.Select(i => TestUserData.ToDepartmentPatchData(i)).ToList())).Data,
                 delete: (id, subId) => api.DeleteUserDepartment(id.ToString(), subId.ToString(), subName: "DepartmentId"));
 
             user_Location = new(user,
                 id: new(nameof(Location.Id), entity => entity.Id, null),
                 testData: new(
                     generateInsertData: () => TestUserData.CreateLocationDatas(),
-                    assertEqual: (expected, actual) => { },
-                    toPatchData: (data) => TestUserData.ToLocationPatchData(data)),
+                    assertEqual: (expected, actual) => { }),
                 list: (id) => api.ListUserLocations(id.ToString()).Data,
                 upsert: (id, data) => api.UpsertUserLocation(id.ToString(), data),
-                patch: (id, data) => api.PatchUserLocations(id.ToString(), new(locations: data)).Data,
+                patch: (id, data) => api.PatchUserLocations(id.ToString(),
+                    new(locations: data.Select(i => TestUserData.ToLocationPatchData(i)).ToList())).Data,
                 delete: (id, subId) => api.DeleteUserLocation(id.ToString(), subId.ToString(), subName: "LocationId"));
 
             user_Application = new(user,
