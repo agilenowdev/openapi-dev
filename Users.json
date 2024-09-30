@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.135"
+    "version": "3.0.136"
   },
   "servers": [
     {
@@ -2019,13 +2019,6 @@
       "AccessGroupData": {
         "type": "object",
         "properties": {
-          "Id": {
-            "type": "integer",
-            "description": "The identifier of user access group.",
-            "format": "int64",
-            "default": 0,
-            "example": 0
-          },
           "AccessGroupId": {
             "$ref": "#/components/schemas/FieldType"
           }
@@ -2100,12 +2093,6 @@
       "GroupData": {
         "type": "object",
         "properties": {
-          "Id": {
-            "type": "integer",
-            "format": "int32",
-            "default": 0,
-            "example": 0
-          },
           "Group_Id": {
             "$ref": "#/components/schemas/FieldType"
           }
@@ -2206,10 +2193,6 @@
       "DepartmentData": {
         "type": "object",
         "properties": {
-          "Id": {
-            "type": "string",
-            "description": "The identifier of user department."
-          },
           "DepartmentId": {
             "$ref": "#/components/schemas/FieldType"
           }
@@ -2219,10 +2202,6 @@
       "DepartmentText": {
         "type": "object",
         "properties": {
-          "Id": {
-            "type": "string",
-            "description": "The identifier of user department."
-          },
           "DepartmentId": {
             "type": "string",
             "description": "The identifier of the department."
