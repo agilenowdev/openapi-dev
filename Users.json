@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.126"
+    "version": "3.0.127"
   },
   "servers": [
     {
@@ -1917,12 +1917,6 @@
           "Is_Active": {
             "type": "boolean",
             "description": "Defines if record is active",
-            "default": false,
-            "example": false
-          },
-          "Is_System": {
-            "type": "boolean",
-            "description": "Defines if access group is system and end-user cannot change it general, permissions and applications.",
             "default": false,
             "example": false
           },
