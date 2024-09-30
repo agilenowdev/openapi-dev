@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "2.0.183"
+    "version": "2.0.184"
   },
   "servers": [
     {
@@ -3718,10 +3718,6 @@
       "UserData": {
         "type": "object",
         "properties": {
-          "Id": {
-            "type": "string",
-            "description": "The identifier of user department."
-          },
           "UserId": {
             "$ref": "#/components/schemas/FieldType"
           }
@@ -3731,10 +3727,6 @@
       "UserText": {
         "type": "object",
         "properties": {
-          "Id": {
-            "type": "string",
-            "description": "The identifier of user department."
-          },
           "UserId": {
             "type": "string",
             "description": "The identifier of the user who has link the department."
