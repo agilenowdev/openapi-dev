@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Buffers.Text;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -53,7 +54,18 @@ namespace Agile.Now.ApiAccounts.Test.Api {
             Assert.Equal(data.LanguageId, EnumLanguageValueConverter.FromString(account.LanguageId.Id));
         }
 
-        public static Stream ToStream(this string s) => new TestStream(Encoding.UTF8.GetBytes(s ?? ""));
+        public static IEnumerable<TenantData> CreateTenantDatas() {
+            yield return new(
+                userId: new("Id", UserTestData.Users[0].ToString()),
+                tenantId: new("Id", AnotherTenant.ToString()));
+        }
+
+        public static IEnumerable<PictureData> CreatePicturesDatas() {
+            yield return new("picture", PictureData.ToStream());
+        }
+
+        public static Stream ToStream(this string s) => 
+            new TestStream(Encoding.UTF8.GetBytes(Convert.ToBase64String(Encoding.UTF8.GetBytes(s ?? ""))));
     }
 
     public class TestStream : MemoryStream {
