@@ -1,3 +1,4 @@
+using System.Security.Principal;
 using Agile.Now.AccessHub.Api;
 using Agile.Now.AccessHub.Model;
 using Agile.Now.AccessHub.Test.Common;
@@ -18,14 +19,15 @@ namespace Agile.Now.AccessHub.Test.ApiTestsWithHelper {
                 id: new("Id", entity => entity.Id, (entity, id) => entity.Id = id),
                 testData: new(
                     generateInsertData: () => GroupExternalTestData.CreateGroupExternalDatas(),
-                    assertEqual: (data, entity) => data.AssertEqual(entity),
+                    assertEqualRequestResponse: (data, entity) => data.AssertEqual(entity),
+                    assertEqualResponses: (data, entity) => data.AssertEqual(entity),
                     update: data => data.Update()),
                 uniqueAttributes: new Attribute<GroupExternal, string, GroupExternalData>[] {
                     //new("ExternalId", data => data.ExternalId, (data, value) => data.ExternalId = value),
                     new("Name", data => data.Name, (data, value) => data.Name = value)
                 },
-                list: (filters, currentPage, pageSize) =>
-                    api.ListGroupExternals(filters: filters, currentPage: currentPage, pageSize: pageSize).Data,
+                list: (filters, orders, currentPage, pageSize) =>
+                    api.ListGroupExternals(filters: filters, orders: orders, currentPage: currentPage, pageSize: pageSize).Data,
                 get: (id, name) => api.GetGroupExternal(id.ToString(), name),
                 create: data => api.CreateGroupExternal(data),
                 update: (id, data, name) => api.UpdateGroupExternal(id.ToString(), data, name),
@@ -36,17 +38,23 @@ namespace Agile.Now.AccessHub.Test.ApiTestsWithHelper {
                 id: new(nameof(UserExternal.Id), entity => entity.Id, (entity, id) => entity.Id = id),
                 testData: new(
                     generateInsertData: () => GroupExternalTestData.CreateUserExternalDatas(),
-                    assertEqual: (expected, actual) => { }),
+                    assertEqualRequestResponse: (expected, actual) => { },
+                    assertEqualResponses: (expected, actual) => { }),
                 list: (id) => api.ListGroupExternalUserExternals(id.ToString()).Data,
                 upsert: (id, data) => api.UpsertGroupExternalUserExternal(id.ToString(), data),
                 delete: (id, subId) => api.DeleteGroupExternalUserExternal(id.ToString(), subId.ToString(), subName: "User_Id"));
         }
 
+
         [Fact] public void Test_GroupExternal_List_ById() => groupExternal.Test_List_ById();
         [Fact] public void Test_GroupExternal_List_ByUniqueAttributes() => groupExternal.Test_List_ByUniqueAttributes();
         [Fact] public void Test_GroupExternal_List_Paging() => groupExternal.Test_List_Paging();
+        [Fact] public void Test_GroupExternal_List_OrderAscending() => groupExternal.Test_List_OrderAscending();
+        [Fact] public void Test_GroupExternal_List_OrderDecending() => groupExternal.Test_List_OrderDecending();
+
         [Fact] public void Test_GroupExternal_Get_ById() => groupExternal.Test_Get_ById();
         [Fact] public void Test_GroupExternal_Get_ByUniqueAttributes() => groupExternal.Test_Get_ByUniqueAttributes();
+
         [Fact] public void Test_GroupExternal_Create() => groupExternal.Test_Create();
         [Fact] public void Test_GroupExternal_Create_WithUniqueAttributes() => groupExternal.Test_Create_WithUniqueAttributes();
         [Fact] public void Test_GroupExternal_Update() => groupExternal.Test_Update_ById();

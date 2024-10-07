@@ -1,3 +1,4 @@
+using System.Security.Principal;
 using Agile.Now.AccessHub.Api;
 using Agile.Now.AccessHub.Model;
 using Agile.Now.AccessHub.Test.Common;
@@ -18,14 +19,15 @@ namespace Agile.Now.AccessHub.Test.ApiTestsWithHelper {
                 id: new(nameof(Location.Id), entity => entity.Id, (entity, id) => entity.Id = id),
                 testData: new(
                     generateInsertData: () => LocationTestData.CreateLocationDatas(),
-                    assertEqual: (data, entity) => data.AssertEqual(entity),
+                    assertEqualRequestResponse: (data, entity) => data.AssertEqual(entity),
+                    assertEqualResponses: (data, entity) => data.AssertEqual(entity),
                     update: data => data.Update()),
                 uniqueAttributes: new Attribute<Location, string, LocationInsertData>[] {
                     new(nameof(Location.ExternalId), data => data.ExternalId, (data, value) => data.ExternalId = value),
                     new(nameof(Location.Name), data => data.Name, (data, value) => data.Name = value),
                 },
-                list: (filters, currentPage, pageSize) =>
-                    api.ListLocations(filters: filters, currentPage: currentPage, pageSize: pageSize).Data,
+                list: (filters, orders, currentPage, pageSize) =>
+                    api.ListLocations(filters: filters, orders: orders, currentPage: currentPage, pageSize: pageSize).Data,
                 get: (id, name) => api.GetLocation(id, name),
                 create: data => api.CreateLocation(data),
                 update: (id, data, name) => api.UpdateLocation(id, LocationTestData.ToLocationUpdateData(data), name),
@@ -36,17 +38,23 @@ namespace Agile.Now.AccessHub.Test.ApiTestsWithHelper {
                 id: new(nameof(User1.Id), entity => entity.Id, (entity, id) => entity.Id = id.ToString()),
                 testData: new(
                     generateInsertData: () => UserTestData.CreateUserData1s(),
-                    assertEqual: (expected, actual) => { }),
+                    assertEqualRequestResponse: (expected, actual) => { },
+                    assertEqualResponses: (expected, actual) => { }),
                 list: (id) => api.ListLocationUsers(id).Data,
                 upsert: (id, data) => api.UpsertLocationUser(id, data),
                 delete: (id, subId) => api.DeleteLocationUser(id, subId.ToString(), subName: "UserId"));
         }
 
+
         [Fact] public void Test_Location_List_ById() => location.Test_List_ById();
         [Fact] public void Test_Location_List_ByUniqueAttributes() => location.Test_List_ByUniqueAttributes();
         [Fact] public void Test_Location_List_Paging() => location.Test_List_Paging();
+        [Fact] public void Test_Location_List_OrderAscending() => location.Test_List_OrderAscending();
+        [Fact] public void Test_Location_List_OrderDecending() => location.Test_List_OrderDecending();
+
         [Fact] public void Test_Location_Get_ById() => location.Test_Get_ById();
         [Fact] public void Test_Location_Get_ByUniqueAttributes() => location.Test_Get_ByUniqueAttributes();
+
         [Fact] public void Test_Location_Create() => location.Test_Create();
         [Fact] public void Test_Location_Create_WithUniqueAttributes() => location.Test_Create_WithUniqueAttributes();
         [Fact] public void Test_Location_Update() => location.Test_Update_ById();

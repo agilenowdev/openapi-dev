@@ -54,6 +54,16 @@ namespace Agile.Now.ApiAccounts.Test.Api {
             Assert.Equal(data.LanguageId, EnumLanguageValueConverter.FromString(account.LanguageId.Id));
         }
 
+        public static void AssertEqual(this Account data, Account account) {
+            Assert.Equal(data.TenantId.Id, account.TenantId.Id);
+            Assert.Equal(data.LastName, account.LastName);
+            Assert.Equal(data.FirstName, account.FirstName);
+            Assert.Equal(data.Email, account.Email);
+            Assert.Equal(data.DateFormatId.Id, account.DateFormatId.Id);
+            Assert.Equal(data.TimezoneId.Id, account.TimezoneId.Id);
+            Assert.Equal(data.LanguageId.Id, account.LanguageId.Id);
+        }
+
         public static IEnumerable<TenantData> CreateTenantDatas() {
             yield return new(
                 userId: new("Id", UserTestData.Users[0].ToString()),

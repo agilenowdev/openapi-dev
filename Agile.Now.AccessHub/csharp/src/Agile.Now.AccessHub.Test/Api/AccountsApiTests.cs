@@ -36,8 +36,6 @@
  */
 
 using System;
-using System.Data;
-using System.Linq;
 using Agile.Now.AccessHub.Api;
 using Agile.Now.AccessHub.Client;
 using Agile.Now.AccessHub.Test.Common;
@@ -49,8 +47,7 @@ using Agile.Now.ApiAccounts.Test.Api;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Agile.Now.AccessHub.Test.Api
-{
+namespace Agile.Now.AccessHub.Test.Api {
     /// <summary>
     ///  Class for testing AccountsApi
     /// </summary>
@@ -139,102 +136,6 @@ namespace Agile.Now.AccessHub.Test.Api
             }
             finally {
                 api.DeleteAccount(created.Id);
-            }
-        }
-
-        /// <summary>
-        /// Test GetAccount by Id
-        /// </summary>
-        [Fact]
-        public void Test_Account_Get_ById() {
-            var created = api.CreateAccount(AccountTestData.CreateAccountData());
-            try {
-                Assert.Null(Record.Exception(() => {
-                    var existing = api.GetAccount(created.Id);
-                    Assert.Equal(created.Id, existing.Id);
-                    return existing;
-                }));
-            }
-            finally {
-                api.DeleteAccount(created.Id);
-            }
-        }
-
-        /// <summary>
-        /// Test GetAccount by UserName
-        /// </summary>
-        [Fact]
-        public void Test_Account_Get_ByUserName() {
-            var created = api.CreateAccount(AccountTestData.CreateAccountData());
-            try {
-                Assert.Null(Record.Exception(() => {
-                    var existing = api.GetAccount(created.Username, "Username");
-                    Assert.Equal(created.Username, existing.Username);
-                    return existing;
-                }));
-            }
-            finally {
-                api.DeleteAccount(created.Id);
-            }
-        }
-
-        /// <summary>
-        /// Test ListAccounts by Id
-        /// </summary>
-        [Fact]
-        public void Test_Account_List_ById() {
-            var created = CommonTestData.CreateTestDataList(2, AccountTestData.CreateAccountData).
-                Select(i => api.CreateAccount(i)).ToArray();
-            try {
-                var existing = api.ListAccounts(
-                    filters: $"Id In {string.Join("; ", created.Select(i => i.Id))}").Data;
-                Assert.Equal(created.Length, existing.Count);
-            }
-            finally {
-                foreach(var i in created)
-                    api.DeleteAccount(i.Id);
-            }
-        }
-
-        /// <summary>
-        /// Test ListAccounts by UserName
-        /// </summary>
-        [Fact]
-        public void Test_Account_List_ByUserName() {
-            var created = CommonTestData.CreateTestDataList(2, AccountTestData.CreateAccountData).
-                Select(i => api.CreateAccount(i)).ToArray();
-            try {
-                var existing = api.ListAccounts(
-                    filters: $"Username In {string.Join("; ", created.Select(i => i.Username))}").Data;
-                Assert.Equal(created.Length, existing.Count);
-            }
-            finally {
-                foreach(var i in created)
-                    api.DeleteAccount(i.Id);
-            }
-        }
-
-        /// <summary>
-        /// Test ListAccounts with paging
-        /// </summary>
-        [Fact]
-        public void Test_Account_List_Paging() {
-            var created = CommonTestData.CreateTestDataList(4, AccountTestData.CreateAccountData)
-                .Select(i => api.CreateAccount(i)).ToArray();
-            try {
-                var filters = $"Name In {string.Join("; ", created.Select(i => i.Name))}";
-                var pageSize = 2;
-                var pages = new[] {
-                    api.ListAccounts(filters: filters, currentPage: 0, pageSize: pageSize).Data,
-                    api.ListAccounts(filters: filters, currentPage: 1, pageSize: pageSize).Data,
-                };
-                Assert.Equal(pageSize, pages[0].Count);
-                Assert.Equal(pageSize, pages[1].Count);
-                Assert.Equal(created.Length, pages[0].Concat(pages[1]).GroupBy(i => i.Id).Count());
-            }
-            finally {
-                foreach(var i in created)
-                    api.DeleteAccount(i.Id.ToString());
             }
         }
 

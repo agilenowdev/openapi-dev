@@ -39,6 +39,13 @@ internal static class LocationTestData {
         Assert.Equal(locationInsertData.CurrencyId, EnumCurrencyValueConverter.FromString(location.CurrencyId.Id));
     }
 
+    public static void AssertEqual(this Location locationInsertData, Location location) {
+        Assert.Equal(locationInsertData.Name, location.Name);
+        Assert.Equal(locationInsertData.CountryId.Id, location.CountryId.Id);
+        Assert.Equal(locationInsertData.TimezoneId.Id, location.TimezoneId.Id);
+        Assert.Equal(locationInsertData.CurrencyId.Id, location.CurrencyId.Id);
+    }
+
     public static LocationUpdateData ToLocationUpdateData(this LocationInsertData locationInsertData) =>
         new
         (

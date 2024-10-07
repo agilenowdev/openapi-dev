@@ -22,14 +22,15 @@ namespace Agile.Now.AccessHub.Test.ApiTestsWithHelper {
                 id: new(nameof(AccessGroup.Id), entity => entity.Id, (entity, id) => entity.Id = id),
                 testData: new(
                     generateInsertData: () => AccessGroupTestData.CreateAccessGroupDatas(),
-                    assertEqual: (data, entity) => data.AssertEqual(entity),
+                    assertEqualRequestResponse: (data, entity) => data.AssertEqual(entity),
+                    assertEqualResponses: (data, entity) => data.AssertEqual(entity),
                     update: data => data.Update()),
                 uniqueAttributes: new Attribute<AccessGroup, string, AccessGroupData>[] {
                     //new(nameof(AccessGroup.ExternalId), data => data.ExternalId, (data, value) => data.ExternalId = value),
                     new(nameof(AccessGroup.Name), data => data.Name, (data, value) => data.Name = value),
                 },
-                list: (filters, currentPage, pageSize) =>
-                    api.ListAccessGroups(filters: filters, currentPage: currentPage, pageSize: pageSize).Data,
+                list: (filters, orders, currentPage, pageSize) =>
+                    api.ListAccessGroups(filters: filters, orders: orders, currentPage: currentPage, pageSize: pageSize).Data,
                 get: (id, name) => api.GetAccessGroup(id, name),
                 create: data => api.CreateAccessGroup(data),
                 update: (id, data, name) => api.UpdateAccessGroup(id, data, name),
@@ -40,7 +41,8 @@ namespace Agile.Now.AccessHub.Test.ApiTestsWithHelper {
                 id: new(nameof(Application.Id), entity => entity.Id, (entity, id) => entity.Id = id),
                 testData: new(
                     generateInsertData: () => AccessGroupTestData.CreateApplicationDatas(),
-                    assertEqual: (expected, actual) => { }),
+                    assertEqualRequestResponse: (expected, actual) => { },
+                    assertEqualResponses: (expected, actual) => { }),
                 list: (id) => api.ListAccessGroupApplications(id).Data,
                 upsert: (id, data) => api.UpsertAccessGroupApplication(id, data),
                 delete: (id, subId) => api.DeleteAccessGroupApplication(id, subId.ToString(), subName: "AccessApplicationId"));
@@ -49,7 +51,8 @@ namespace Agile.Now.AccessHub.Test.ApiTestsWithHelper {
                 id: new(nameof(Permission.Id), entity => entity.Id, (entity, id) => entity.Id = id),
                 testData: new(
                     generateInsertData: () => AccessGroupTestData.CreatePermissionDatas(),
-                    assertEqual: (expected, actual) => { }),
+                    assertEqualRequestResponse: (expected, actual) => { },
+                    assertEqualResponses: (expected, actual) => { }),
                 list: (id) => api.ListAccessGroupPermissions(id).Data,
                 upsert: (id, data) => api.UpsertAccessGroupPermission(id, data),
                 delete: (id, subId) => api.DeleteAccessGroupPermission(id, subId.ToString()));
@@ -58,7 +61,8 @@ namespace Agile.Now.AccessHub.Test.ApiTestsWithHelper {
                 id: new(nameof(Group.Id), entity => entity.Id, (entity, id) => entity.Id = id),
                 testData: new(
                     generateInsertData: () => UserTestData.CreateGroupDatas(),
-                    assertEqual: (expected, actual) => { }),
+                    assertEqualRequestResponse: (expected, actual) => { },
+                    assertEqualResponses: (expected, actual) => { }),
                 list: (id) => api.ListAccessGroupGroups(id).Data,
                 upsert: (id, data) => api.UpsertAccessGroupGroup(id, data),
                 delete: (id, subId) => api.DeleteAccessGroupGroup(id, subId.ToString(), subName: "GroupId"));
@@ -67,17 +71,23 @@ namespace Agile.Now.AccessHub.Test.ApiTestsWithHelper {
                 id: new(nameof(User.Id), entity => entity.Id, (entity, id) => entity.Id = id),
                 testData: new(
                     generateInsertData: () => UserTestData.CreateUserDatas(),
-                    assertEqual: (expected, actual) => { }),
+                    assertEqualRequestResponse: (expected, actual) => { },
+                    assertEqualResponses: (expected, actual) => { }),
                 list: (id) => api.ListAccessGroupUsers(id).Data,
                 upsert: (id, data) => api.UpsertAccessGroupUser(id, data),
                 delete: (id, subId) => api.DeleteAccessGroupUser(id, subId.ToString(), subName: "UserId"));
         }
 
+
         [Fact] public void Test_AccessGroup_List_ById() => accessGroup.Test_List_ById();
         [Fact] public void Test_AccessGroup_List_ByUniqueAttributes() => accessGroup.Test_List_ByUniqueAttributes();
         [Fact] public void Test_AccessGroup_List_Paging() => accessGroup.Test_List_Paging();
+        [Fact] public void Test_AccessGroup_List_OrderAscending() => accessGroup.Test_List_OrderAscending();
+        [Fact] public void Test_AccessGroup_List_OrderDecending() => accessGroup.Test_List_OrderDecending();
+
         [Fact] public void Test_AccessGroup_Get_ById() => accessGroup.Test_Get_ById();
         [Fact] public void Test_AccessGroup_Get_ByUniqueAttributes() => accessGroup.Test_Get_ByUniqueAttributes();
+
         [Fact] public void Test_AccessGroup_Create() => accessGroup.Test_Create();
         [Fact] public void Test_AccessGroup_Create_WithUniqueAttributes() => accessGroup.Test_Create_WithUniqueAttributes();
         [Fact] public void Test_AccessGroup_Update() => accessGroup.Test_Update_ById();

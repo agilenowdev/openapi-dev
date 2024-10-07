@@ -23,13 +23,14 @@ namespace Agile.Runtime.Runtime.ApiTestsWithHelper {
                 id: new(nameof(User.Id), entity => entity.Id, (entity, id) => entity.Id = id),
                 testData: new(
                     generateInsertData: () => TestUserData.CreateUserDatas(),
-                    assertEqual: (data, entity) => { }),
+                    assertEqualRequestResponse: (expected, actual) => { },
+                    assertEqualResponses: (expected, actual) => { }),
                 uniqueAttributes: new Attribute<User, string, User>[] {
                     new("External_Id", data => data.ExternalId, (data, value) => data.ExternalId = value),
                     new(nameof(User.Username), data => data.Username, (data, value) => data.Username = value),
                 },
-                list: (filters, currentPage, pageSize) =>
-                    api.ListUsers(filters: filters, currentPage: currentPage, pageSize: pageSize).Data,
+                list: (filters, orders, currentPage, pageSize) =>
+                    api.ListUsers(filters: filters, orders: orders, currentPage: currentPage, pageSize: pageSize).Data,
                 get: (id, name) => api.GetUser(id, name),
                 create: data => data,
                 delete: (id, name) => { });
@@ -38,7 +39,8 @@ namespace Agile.Runtime.Runtime.ApiTestsWithHelper {
                 id: new(nameof(AccessGroup.Id), entity => entity.Id, null),
                 testData: new(
                     generateInsertData: () => TestUserData.CreateAccessGroupDatas(),
-                    assertEqual: (expected, actual) => { }),
+                    assertEqualRequestResponse: (expected, actual) => { },
+                    assertEqualResponses: (expected, actual) => { }),
                 list: (id) => api.ListUserAccessGroups(id.ToString()).Data,
                 upsert: (id, data) => api.UpsertUserAccessGroup(id.ToString(), data),
                 delete: (id, subId) => api.DeleteUserAccessGroup(id.ToString(), subId.ToString(), subName: "AccessGroupId"));
@@ -47,7 +49,8 @@ namespace Agile.Runtime.Runtime.ApiTestsWithHelper {
                 id: new(nameof(Group.Id), entity => entity.Id, null),
                 testData: new(
                     generateInsertData: () => TestUserData.CreateGroupDatas(),
-                    assertEqual: (expected, actual) => { }),
+                    assertEqualRequestResponse: (expected, actual) => { },
+                    assertEqualResponses: (expected, actual) => { }),
                 list: (id) => api.ListUserGroups(id.ToString()).Data,
                 upsert: (id, data) => api.UpsertUserGroup(id.ToString(), data),
                 delete: (id, subId) => api.DeleteUserGroup(id.ToString(), subId.ToString(), subName: "Group_Id"));
@@ -56,7 +59,8 @@ namespace Agile.Runtime.Runtime.ApiTestsWithHelper {
                 id: new(nameof(Department.Id), entity => entity.Id, null),
                 testData: new(
                     generateInsertData: () => TestUserData.CreateDepartmentDatas(),
-                    assertEqual: (expected, actual) => { }),
+                    assertEqualRequestResponse: (expected, actual) => { },
+                    assertEqualResponses: (expected, actual) => { }),
                 list: (id) => api.ListUserDepartments(id.ToString()).Data,
                 upsert: (id, data) => api.UpsertUserDepartment(id.ToString(), data),
                 patch: (id, data) => api.PatchUserDepartments(id.ToString(),
@@ -67,7 +71,8 @@ namespace Agile.Runtime.Runtime.ApiTestsWithHelper {
                 id: new(nameof(Location.Id), entity => entity.Id, null),
                 testData: new(
                     generateInsertData: () => TestUserData.CreateLocationDatas(),
-                    assertEqual: (expected, actual) => { }),
+                    assertEqualRequestResponse: (expected, actual) => { },
+                    assertEqualResponses: (expected, actual) => { }),
                 list: (id) => api.ListUserLocations(id.ToString()).Data,
                 upsert: (id, data) => api.UpsertUserLocation(id.ToString(), data),
                 patch: (id, data) => api.PatchUserLocations(id.ToString(),
@@ -78,21 +83,24 @@ namespace Agile.Runtime.Runtime.ApiTestsWithHelper {
                 id: new(nameof(Application.Id), entity => entity.Id, null),
                 testData: new(
                     generateInsertData: null,
-                    assertEqual: (expected, actual) => { }),
+                    assertEqualRequestResponse: (expected, actual) => { },
+                    assertEqualResponses: (expected, actual) => { }),
                 list: (id) => api.ListUserApplications(id.ToString()).Data);
 
             user_AccessRole = new(user,
                 id: new(nameof(AccessRole.Id), entity => entity.Id, null),
                 testData: new(
                     generateInsertData: null,
-                    assertEqual: (expected, actual) => { }),
+                    assertEqualRequestResponse: (expected, actual) => { },
+                    assertEqualResponses: (expected, actual) => { }),
                 list: (id) => api.ListUserAccessRoles(id.ToString()).Data);
 
             user_EffectivePermission = new(user,
                 id: new(nameof(EffectivePermission.Id), entity => entity.Id, null),
                 testData: new(
                     generateInsertData: null,
-                    assertEqual: (expected, actual) => { }),
+                    assertEqualRequestResponse: (expected, actual) => { },
+                    assertEqualResponses: (expected, actual) => { }),
                 list: (id) => api.ListUserEffectivePermissions(id.ToString()).Data);
         }
 

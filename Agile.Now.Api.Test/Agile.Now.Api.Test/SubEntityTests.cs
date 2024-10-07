@@ -2,25 +2,25 @@
 
 namespace Agile.Now.Api.Test;
 
-public class SubEntityTests<TParentId, TResponseData, TId, TRequestData>
-    : EntityTestsBase<TResponseData, TId, TRequestData> {
+public class SubEntityTests<TParentId, TResponse, TId, TRequest>
+    : EntityTestsBase<TResponse, TId, TRequest> {
 
     readonly EntityTestsBase<TParentId> parent;
 
     public readonly Action<TParentId, TId> Delete;
-    public readonly Func<TParentId, List<TResponseData>> List;
-    public readonly Func<TParentId, TRequestData, TResponseData> Upsert;
-    public readonly Func<TParentId, List<TRequestData>, IEnumerable<TResponseData>> Patch;
+    public readonly Func<TParentId, List<TResponse>> List;
+    public readonly Func<TParentId, TRequest, TResponse> Upsert;
+    public readonly Func<TParentId, List<TRequest>, IEnumerable<TResponse>> Patch;
 
     public SubEntityTests(
         EntityTestsBase<TParentId> parent,
-        Attribute<TResponseData, TId, TRequestData> id,
-        TestData<TResponseData, TRequestData> testData,
-        Attribute<TResponseData, string, TRequestData>[] uniqueAttributes = null,
+        Attribute<TResponse, TId, TRequest> id,
+        TestData<TResponse, TRequest> testData,
+        Attribute<TResponse, string, TRequest>[] uniqueAttributes = null,
 
-        Func<TParentId, List<TResponseData>> list = null,
-        Func<TParentId, TRequestData, TResponseData> upsert = null,
-        Func<TParentId, List<TRequestData>, IEnumerable<TResponseData>> patch = null,
+        Func<TParentId, List<TResponse>> list = null,
+        Func<TParentId, TRequest, TResponse> upsert = null,
+        Func<TParentId, List<TRequest>, IEnumerable<TResponse>> patch = null,
         Action<TParentId, TId> delete = null)
 
         : base(id, testData, uniqueAttributes) {
@@ -36,7 +36,7 @@ public class SubEntityTests<TParentId, TResponseData, TId, TRequestData>
     public override TId CreateInternal() => default;
     public override void DeleteInternal(string id) { }
 
-    public override void Test_List_ById() {
+    public void Test_List_ById() {
         var entityId = parent.CreateInternal();
         try {
             var created = testData.GenerateInsertData().Take(2).Select(i => Upsert(entityId, i)).ToArray();
@@ -54,7 +54,7 @@ public class SubEntityTests<TParentId, TResponseData, TId, TRequestData>
         }
     }
 
-    public override void Test_Upsert() {
+    public void Test_Upsert() {
         var entityId = parent.CreateInternal();
         try {
             var created = Upsert(entityId, testData.GenerateInsertData().First());
@@ -71,7 +71,7 @@ public class SubEntityTests<TParentId, TResponseData, TId, TRequestData>
         }
     }
 
-    public override void Test_Patch() {
+    public void Test_Patch() {
         var entityId = parent.CreateInternal();
         try {
             var data = testData.GenerateInsertData().Take(2).ToArray();
@@ -98,7 +98,7 @@ public class SubEntityTests<TParentId, TResponseData, TId, TRequestData>
         }
     }
 
-    public override void Test_Delete_ById() {
+    public void Test_Delete_ById() {
         var entity = parent.CreateInternal();
         try {
             var created = Upsert(entity, testData.GenerateInsertData().First());
@@ -111,43 +111,43 @@ public class SubEntityTests<TParentId, TResponseData, TId, TRequestData>
         }
     }
 
-    public override void Test_Create() {
+    public void Test_Create() {
         throw new NotImplementedException();
     }
 
-    public override void Test_List_ByUniqueAttributes() {
+    public void Test_List_ByUniqueAttributes() {
         throw new NotImplementedException();
     }
 
-    public override void Test_Create_WithUniqueAttributes() {
+    public void Test_Create_WithUniqueAttributes() {
         throw new NotImplementedException();
     }
 
-    public override void Test_Delete_ByUniqueAttributes() {
+    public void Test_Delete_ByUniqueAttributes() {
         throw new NotImplementedException();
     }
 
-    public override void Test_Get_ById() {
+    public void Test_Get_ById() {
         throw new NotImplementedException();
     }
 
-    public override void Test_Get_ByUniqueAttributes() {
+    public void Test_Get_ByUniqueAttributes() {
         throw new NotImplementedException();
     }
 
-    public override void Test_Update_ById() {
+    public void Test_Update_ById() {
         throw new NotImplementedException();
     }
 
-    public override void Test_Update_ByUniqueAttributes() {
+    public void Test_Update_ByUniqueAttributes() {
         throw new NotImplementedException();
     }
 
-    public override void Test_Update_WithUniqueAttributes() {
+    public void Test_Update_WithUniqueAttributes() {
         throw new NotImplementedException();
     }
 
-    public override void Test_List_Paging() {
+    public void Test_List_Paging() {
         throw new NotImplementedException();
     }
 }

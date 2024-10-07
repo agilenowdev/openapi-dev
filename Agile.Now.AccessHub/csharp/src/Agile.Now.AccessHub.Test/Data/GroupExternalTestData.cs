@@ -28,6 +28,11 @@ internal static class GroupExternalTestData {
         Assert.Equal(data.Description, group.Description);
     }
 
+    public static void AssertEqual(this GroupExternal data, GroupExternal group) {
+        Assert.Equal(data.Name, group.Name);
+        Assert.Equal(data.Description, group.Description);
+    }
+
     public static GroupExternalText ToGroupExternalText(this GroupExternalData groupExternalData) => new(
         id: groupExternalData.Id,
         name: groupExternalData.Name,

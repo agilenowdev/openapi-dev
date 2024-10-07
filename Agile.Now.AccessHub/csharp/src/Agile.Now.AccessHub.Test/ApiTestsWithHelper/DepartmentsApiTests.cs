@@ -18,14 +18,15 @@ namespace Agile.Now.AccessHub.Test.ApiTestsWithHelper {
                 id: new(nameof(Department.Id), entity => entity.Id, (entity, id) => entity.Id = id),
                 testData: new(
                     generateInsertData: () => DepartmentTestData.CreateDepartmentDatas(),
-                    assertEqual: (data, entity) => data.AssertEqual(entity),
+                    assertEqualRequestResponse: (data, entity) => data.AssertEqual(entity),
+                    assertEqualResponses: (data, entity) => data.AssertEqual(entity),
                     update: data => data.Update()),
                 uniqueAttributes: new Attribute<Department, string, DepartmentInsertData>[] {
                     new(nameof(Department.ExternalId), data => data.ExternalId, (data, value) => data.ExternalId = value),
                     new(nameof(Department.Name), data => data.Name, (data, value) => data.Name = value),
                 },
-                list: (filters, currentPage, pageSize) =>
-                    api.ListDepartments(filters: filters, currentPage: currentPage, pageSize: pageSize).Data,
+                list: (filters, orders, currentPage, pageSize) =>
+                    api.ListDepartments(filters: filters, orders: orders, currentPage: currentPage, pageSize: pageSize).Data,
                 get: (id, name) => api.GetDepartment(id, name),
                 create: data => api.CreateDepartment(data),
                 update: (id, data, name) => api.UpdateDepartment(id, DepartmentTestData.ToDepartmentUpdateData(data), name),
@@ -36,17 +37,23 @@ namespace Agile.Now.AccessHub.Test.ApiTestsWithHelper {
                 id: new(nameof(User.Id), entity => entity.Id, (entity, id) => entity.Id = id.ToString()),
                 testData: new(
                     generateInsertData: () => UserTestData.CreateUserData1s(),
-                    assertEqual: (expected, actual) => { }),
+                    assertEqualRequestResponse: (expected, actual) => { },
+                    assertEqualResponses: (expected, actual) => { }),
                 list: (id) => api.ListDepartmentUsers(id).Data,
                 upsert: (id, data) => api.UpsertDepartmentUser(id, data),
                 delete: (id, subId) => api.DeleteDepartmentUser(id, subId.ToString(), subName: "UserId"));
         }
 
+
         [Fact] public void Test_Department_List_ById() => department.Test_List_ById();
         [Fact] public void Test_Department_List_ByUniqueAttributes() => department.Test_List_ByUniqueAttributes();
         [Fact] public void Test_Department_List_Paging() => department.Test_List_Paging();
+        [Fact] public void Test_Department_List_OrderAscending() => department.Test_List_OrderAscending();
+        [Fact] public void Test_Department_List_OrderDecending() => department.Test_List_OrderDecending();
+
         [Fact] public void Test_Department_Get_ById() => department.Test_Get_ById();
         [Fact] public void Test_Department_Get_ByUniqueAttributes() => department.Test_Get_ByUniqueAttributes();
+
         [Fact] public void Test_Department_Create() => department.Test_Create();
         [Fact] public void Test_Department_Create_WithUniqueAttributes() => department.Test_Create_WithUniqueAttributes();
         [Fact] public void Test_Department_Update() => department.Test_Update_ById();

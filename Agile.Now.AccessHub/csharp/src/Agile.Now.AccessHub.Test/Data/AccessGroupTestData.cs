@@ -46,12 +46,19 @@ internal static class AccessGroupTestData {
                 EnumAccessGroupType.Locations : EnumAccessGroupType.Departments;
     }
 
-    public static void AssertEqual(this AccessGroupData accessGroupInsertData, AccessGroup AccessGroup) {
-        Assert.Equal(accessGroupInsertData.Name, AccessGroup.Name);
-        Assert.Equal(accessGroupInsertData.Description, AccessGroup.Description);
-        Assert.Equal(accessGroupInsertData.IsActive, AccessGroup.IsActive);
+    public static void AssertEqual(this AccessGroupData accessGroupInsertData, AccessGroup accessGroup) {
+        Assert.Equal(accessGroupInsertData.Name, accessGroup.Name);
+        Assert.Equal(accessGroupInsertData.Description, accessGroup.Description);
+        Assert.Equal(accessGroupInsertData.IsActive, accessGroup.IsActive);
         Assert.Equal(accessGroupInsertData.AccessGroupTypeId,
-            EnumAccessGroupTypeValueConverter.FromString(AccessGroup.AccessGroupTypeId.Id));
+            EnumAccessGroupTypeValueConverter.FromString(accessGroup.AccessGroupTypeId.Id));
+    }
+
+    public static void AssertEqual(this AccessGroup accessGroupInsertData, AccessGroup accessGroup) {
+        Assert.Equal(accessGroupInsertData.Name, accessGroup.Name);
+        Assert.Equal(accessGroupInsertData.Description, accessGroup.Description);
+        Assert.Equal(accessGroupInsertData.IsActive, accessGroup.IsActive);
+        Assert.Equal(accessGroupInsertData.AccessGroupTypeId.Id, accessGroup.AccessGroupTypeId.Id);
     }
 
     public static ApplicationData CreateApplicationData(string id) => new(

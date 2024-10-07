@@ -41,6 +41,15 @@ internal static class DepartmentTestData {
         Assert.Equal(departmentInsertData.CountryId, EnumCountryValueConverter.FromString(department.CountryId.Id));
     }
 
+    public static void AssertEqual(this Department departmentInsertData, Department department) {
+        Assert.Equal(departmentInsertData.Name, department.Name);
+        Assert.Equal(departmentInsertData.DepartmentTypeId.ToString(), department.DepartmentTypeId.Id);
+        Assert.Equal(departmentInsertData.ParentDepartmentId.Id ?? "", department.ParentDepartmentId.Id ?? "");
+        Assert.Equal(departmentInsertData.ContactName, department.ContactName);
+        Assert.Equal(departmentInsertData.ContactEmail, department.ContactEmail);
+        Assert.Equal(departmentInsertData.CountryId.Id, department.CountryId.Id);
+    }
+
     public static DepartmentUpdateData ToDepartmentUpdateData(this DepartmentInsertData departmentInsertData) =>
         new DepartmentUpdateData
         (

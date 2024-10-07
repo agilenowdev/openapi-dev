@@ -1,17 +1,30 @@
-﻿namespace Agile.Now.Api.Test;
+﻿using Xunit;
 
-public class TestData<TResponseData, TRequestData> {
-    public readonly Func<IEnumerable<TRequestData>> GenerateInsertData;
-    public readonly Action<TRequestData, TResponseData> AssertEqual;
-    public readonly Action<TRequestData> Update;
+namespace Agile.Now.Api.Test;
+
+public class TestData<TResponse, TRequest> {
+    public readonly Func<IEnumerable<TRequest>> GenerateInsertData;
+    public readonly Action<TRequest, TResponse> AssertEqualRequestResponse;
+    public readonly Action<TResponse, TResponse> AssertEqualResponses;
+    public readonly Action<TRequest> Update;
 
     public TestData(
-        Func<IEnumerable<TRequestData>> generateInsertData,
-        Action<TRequestData, TResponseData> assertEqual,
-        Action<TRequestData> update = null) {
+        Func<IEnumerable<TRequest>> generateInsertData,
+        Action<TRequest, TResponse> assertEqualRequestResponse,
+        Action<TResponse, TResponse> assertEqualResponses,
+        Action<TRequest> update = null) {
 
         GenerateInsertData = generateInsertData;
-        AssertEqual = assertEqual;
+        AssertEqualRequestResponse = assertEqualRequestResponse;
+        AssertEqualResponses = assertEqualResponses;
         Update = update;
     }
+
+    public readonly int DefaultPageSize = 50;
+
+    public void AssertCollectionsEqual(IEnumerable<TResponse> expected, IEnumerable<TResponse> actual) =>
+        Assert.Collection(expected, actual
+            .Select(actualItem =>
+                new Action<TResponse>(expectedItem =>
+                    AssertEqualResponses(actualItem, expectedItem))).ToArray());
 }
