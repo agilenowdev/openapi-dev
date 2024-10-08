@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "2.0.185"
+    "version": "2.0.186"
   },
   "servers": [
     {
@@ -809,7 +809,7 @@
         "tags": [
           "Locations"
         ],
-        "description": "Use the `LocationData` object resource to update `Location` using `Id, Name, ExternalId` field(s) value.\n\nProvide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record. \n\nThe input parameter must be used in the `LocationData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `CountryId, TimezoneId, CurrencyId, ModifiedBy, CreatedBy`\n\n### Update a record of Location\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id, Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the updated record if the call is successful. Method returns an extended `Location` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "description": "Use the `LocationUpdateData` object resource to update `Location` using `Id, Name, ExternalId` field(s) value.\n\nProvide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record. \n\nThe input parameter must be used in the `LocationUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `CountryId, TimezoneId, CurrencyId, ModifiedBy, CreatedBy`\n\n### Update a record of Location\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id, Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the updated record if the call is successful. Method returns an extended `Location` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
         "operationId": "Update Location",
         "parameters": [
           {
@@ -833,11 +833,11 @@
           }
         ],
         "requestBody": {
-          "description": "Location information to update.\n\nThe input parameter must be used in the `LocationData` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "description": "Location information to update.\n\nThe input parameter must be used in the `LocationUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/LocationData"
+                "$ref": "#/components/schemas/LocationUpdateData"
               }
             }
           },
@@ -1082,14 +1082,14 @@
         "tags": [
           "Locations"
         ],
-        "description": "Use the `LocationData` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `LocationData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `CountryId, TimezoneId, CurrencyId, ModifiedBy, CreatedBy`\n\n### Create a new record of Location\n* If the value in the `Id, Name, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`LocationData`).\n* If the value in the `Name,ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`LocationData`).\n* If the `Id, Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the created record if the call is successful. Method returns an extended `Location` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\n",
+        "description": "Use the `LocationInsertData` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `LocationInsertData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `CountryId, TimezoneId, CurrencyId, ModifiedBy, CreatedBy`\n\n### Create a new record of Location\n* If the value in the `Id, Name, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`LocationInsertData`).\n* If the value in the `Name,ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`LocationInsertData`).\n* If the `Id, Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the created record if the call is successful. Method returns an extended `Location` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\n",
         "operationId": "Create Location",
         "requestBody": {
-          "description": "`Location` information to insert.\n\nThe input parameter must be used in the `LocationData` record structure inside the `FieldType` parameter in the foreign key fields.",
+          "description": "`Location` information to insert.\n\nThe input parameter must be used in the `LocationInsertData` record structure inside the `FieldType` parameter in the foreign key fields.",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/LocationData"
+                "$ref": "#/components/schemas/LocationInsertData"
               }
             }
           },
@@ -2318,7 +2318,7 @@
           {
             "value": "CIV",
             "name": "CTeDIvoire",
-            "description": "Cï¿½te d'Ivoire",
+            "description": "Côte d'Ivoire",
             "isString": true
           },
           {
@@ -3092,7 +3092,7 @@
           {
             "value": "REU",
             "name": "RUnion",
-            "description": "Rï¿½union",
+            "description": "Réunion",
             "isString": true
           },
           {
@@ -3146,7 +3146,7 @@
           {
             "value": "BLM",
             "name": "SaintBarthLemy",
-            "description": "Saint-Barthï¿½lemy",
+            "description": "Saint-Barthélemy",
             "isString": true
           },
           {
@@ -4694,6 +4694,66 @@
         ]
       },
       "LocationData": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The guid to identify the location."
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the location."
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the location."
+          },
+          "CountryId": {
+            "$ref": "#/components/schemas/EnumCountry"
+          },
+          "TimezoneId": {
+            "$ref": "#/components/schemas/EnumTimezone"
+          },
+          "CurrencyId": {
+            "$ref": "#/components/schemas/EnumCurrency"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the location is active and can be used.",
+            "default": false,
+            "example": false
+          }
+        },
+        "description": "The record of Location information."
+      },
+      "LocationInsertData": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The guid to identify the location."
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the location."
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the location."
+          },
+          "CountryId": {
+            "$ref": "#/components/schemas/EnumCountry"
+          },
+          "TimezoneId": {
+            "$ref": "#/components/schemas/EnumTimezone"
+          },
+          "CurrencyId": {
+            "$ref": "#/components/schemas/EnumCurrency"
+          }
+        },
+        "description": "The record of Location information."
+      },
+      "LocationUpdateData": {
         "type": "object",
         "properties": {
           "ExternalId": {
