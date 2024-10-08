@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | The identifier of entity | 
 **AccessRoleId** | [**AbstractText**](AbstractText.md) | The AbstractText object structure | 
-**RoleId** | [**AbstractLong**](AbstractLong.md) | The AbstractLong object structure | [optional] 
 **AccessGroupTypeId** | [**AbstractText**](AbstractText.md) | The AbstractText object structure | [optional] 
 **Create** | **bool** | Create access of role | [optional] [default to false]
 **Read** | **bool** | Read access of role | [optional] [default to false]

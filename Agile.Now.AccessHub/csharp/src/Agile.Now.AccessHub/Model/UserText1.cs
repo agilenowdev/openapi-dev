@@ -55,20 +55,11 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UserText1" /> class.
         /// </summary>
-        /// <param name="id">The identifier of user department..</param>
         /// <param name="userId">The identifier of the user who has link the department..</param>
-        public UserText1(string id = default, string userId = default)
+        public UserText1(string userId = default)
         {
-            Id = id;
             UserId = userId;
         }
-
-        /// <summary>
-        /// The identifier of user department.
-        /// </summary>
-        /// <value>The identifier of user department.</value>
-        [DataMember(Name = "Id", EmitDefaultValue = false)]
-        public string Id { get; set; }
 
         /// <summary>
         /// The identifier of the user who has link the department.
@@ -85,7 +76,6 @@ namespace Agile.Now.AccessHub.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class UserText1 {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

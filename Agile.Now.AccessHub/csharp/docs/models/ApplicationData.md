@@ -5,7 +5,6 @@ The record of Application information.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | The identifier of  access group application. | [optional] 
 **ParentApplicationId** | [**FieldType**](FieldType.md) | The FieldType object structure | [optional] 
 **AccessApplicationId** | [**FieldType**](FieldType.md) | The FieldType object structure | [optional] 
 **IsActive** | **bool** | Defines if record is active. | [optional] [default to false]

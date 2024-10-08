@@ -1,15 +1,18 @@
 ﻿namespace Agile.Now.Api.Test;
 
-public class Attribute<TResponseData, TId, TRequestData> {
+public class Attribute<TResponse, TId, TRequest> {
     public readonly string Name;
-    public readonly Func<TResponseData, TId> Get;
-    public readonly Action<TRequestData, TId> Set;
+    public readonly Func<TResponse, TId> Get;
+    public readonly Action<TRequest, TId> Set;
 
-    public Attribute(string name, Func<TResponseData, TId> get, Action<TRequestData, TId> set) {
+    public Attribute(string name, Func<TResponse, TId> get, Action<TRequest, TId> set) {
         Name = name;
         Get = get;
         Set = set;
     }
 
-    public char GetSeparator() => typeof(TId) == typeof(int) ? ',' : ';';
+    char GetSeparator() => typeof(TId) == typeof(int) ? ',' : ';';
+
+    public string CreateFilters(IEnumerable<TResponse> entities) =>
+        $"{Name} In {string.Join(GetSeparator(), entities.Select(i => Get(i)))}";
 }

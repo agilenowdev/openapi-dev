@@ -32,7 +32,7 @@
         "tags": [
           "Users"
         ],
-        "description": "The method returns one record of the `User`.\n\nMethod returns an extended `User` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: ``\n\n### Get a record of User\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.",
+        "description": "The method returns one record of the `User`.\n\nMethod returns an extended `User` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: ``\n\n### Get a record of User\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id, Username` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.",
         "operationId": "Get User",
         "parameters": [
           {
@@ -48,10 +48,10 @@
           {
             "name": "Name",
             "in": "query",
-            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\n\n```",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nUsername\n```",
             "schema": {
               "type": "string",
-              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\n\n```"
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nUsername\n```"
             }
           }
         ],
@@ -1661,10 +1661,10 @@
           {
             "name": "Fields",
             "in": "query",
-            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, UserId, AccessRoleId, RoleId, AccessGroupTypeId, Create, Read, Update, Delete, Details, Export, Import, Generic, CreatedOn\n```",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, UserId, AccessRoleId, AccessGroupTypeId, Create, Read, Update, Delete, Details, Export, Import, Generic, CreatedOn\n```",
             "schema": {
               "type": "string",
-              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, UserId, AccessRoleId, RoleId, AccessGroupTypeId, Create, Read, Update, Delete, Details, Export, Import, Generic, CreatedOn\n```"
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, UserId, AccessRoleId, AccessGroupTypeId, Create, Read, Update, Delete, Details, Export, Import, Generic, CreatedOn\n```"
             }
           },
           {
@@ -2029,13 +2029,6 @@
       "AccessGroupData": {
         "type": "object",
         "properties": {
-          "Id": {
-            "type": "integer",
-            "description": "The identifier of user access group.",
-            "format": "int64",
-            "default": 0,
-            "example": 0
-          },
           "AccessGroupId": {
             "$ref": "#/components/schemas/FieldType"
           }
@@ -2110,12 +2103,6 @@
       "GroupData": {
         "type": "object",
         "properties": {
-          "Id": {
-            "type": "integer",
-            "format": "int32",
-            "default": 0,
-            "example": 0
-          },
           "Group_Id": {
             "$ref": "#/components/schemas/FieldType"
           }
@@ -2124,16 +2111,61 @@
       },
       "Department": {
         "required": [
-          "Id"
+          "Id",
+          "Name",
+          "DepartmentTypeId",
+          "Is_Active"
         ],
         "type": "object",
         "properties": {
           "Id": {
             "type": "string",
-            "description": "The identifier of user department"
+            "description": "The guid to identify the department"
           },
-          "DepartmentId": {
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the department"
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the department"
+          },
+          "DepartmentTypeId": {
             "$ref": "#/components/schemas/AbstractText"
+          },
+          "ParentDepartmentId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "HierarchicalName": {
+            "type": "string",
+            "description": "The hierarchical name of the department"
+          },
+          "Level": {
+            "type": "integer",
+            "description": "The department level at the hierarchy",
+            "format": "int32",
+            "default": 0,
+            "example": 0
+          },
+          "ContactName": {
+            "type": "string",
+            "description": "The contact name of company or department"
+          },
+          "ContactEmail": {
+            "type": "string",
+            "description": "The contact email of external company or department"
+          },
+          "ContactPhone": {
+            "type": "string"
+          },
+          "CountryId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the department is active and can be used",
+            "default": false,
+            "example": false
           },
           "ModifiedOn": {
             "type": "string",
@@ -2171,10 +2203,6 @@
       "DepartmentData": {
         "type": "object",
         "properties": {
-          "Id": {
-            "type": "string",
-            "description": "The identifier of user department."
-          },
           "DepartmentId": {
             "$ref": "#/components/schemas/FieldType"
           }
@@ -2184,10 +2212,6 @@
       "DepartmentText": {
         "type": "object",
         "properties": {
-          "Id": {
-            "type": "string",
-            "description": "The identifier of user department."
-          },
           "DepartmentId": {
             "type": "string",
             "description": "The identifier of the department."
@@ -2268,16 +2292,38 @@
       },
       "Location": {
         "required": [
-          "Id"
+          "Id",
+          "Name",
+          "Is_Active"
         ],
         "type": "object",
         "properties": {
           "Id": {
             "type": "string",
-            "description": "The identifier of user location"
+            "description": "The guid to identify the location"
           },
-          "LocationId": {
+          "ExternalId": {
+            "type": "string",
+            "description": "The external identifier of the location"
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the location"
+          },
+          "CountryId": {
             "$ref": "#/components/schemas/AbstractText"
+          },
+          "TimezoneId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "CurrencyId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if the location is active and can be used",
+            "default": false,
+            "example": false
           },
           "ModifiedOn": {
             "type": "string",
@@ -2315,10 +2361,6 @@
       "LocationData": {
         "type": "object",
         "properties": {
-          "Id": {
-            "type": "string",
-            "description": "The identifier of user location."
-          },
           "LocationId": {
             "$ref": "#/components/schemas/FieldType"
           }
@@ -2328,10 +2370,6 @@
       "LocationText": {
         "type": "object",
         "properties": {
-          "Id": {
-            "type": "string",
-            "description": "The identifier of user location."
-          },
           "LocationId": {
             "type": "string",
             "description": "The identifier of the location."
@@ -2574,9 +2612,6 @@
           },
           "AccessRoleId": {
             "$ref": "#/components/schemas/AbstractText"
-          },
-          "RoleId": {
-            "$ref": "#/components/schemas/AbstractLong"
           },
           "AccessGroupTypeId": {
             "$ref": "#/components/schemas/AbstractText"

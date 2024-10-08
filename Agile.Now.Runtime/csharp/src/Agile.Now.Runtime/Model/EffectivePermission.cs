@@ -62,7 +62,6 @@ namespace Agile.Now.Runtime.Model
         /// </summary>
         /// <param name="id">The identifier of entity (required).</param>
         /// <param name="accessRoleId">accessRoleId (required).</param>
-        /// <param name="roleId">roleId.</param>
         /// <param name="accessGroupTypeId">accessGroupTypeId.</param>
         /// <param name="create">Create access of role (default to false).</param>
         /// <param name="read">Read access of role (default to false).</param>
@@ -73,7 +72,7 @@ namespace Agile.Now.Runtime.Model
         /// <param name="import">Import access of role (default to false).</param>
         /// <param name="generic">Generic access without CRUD of role (default to false).</param>
         /// <param name="createdOn">The date the record was created (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public EffectivePermission(string id = default, AbstractText accessRoleId = default, AbstractLong roleId = default, AbstractText accessGroupTypeId = default, bool create = false, bool read = false, bool update = false, bool delete = false, bool details = false, bool export = false, bool import = false, bool generic = false, DateTime createdOn = default)
+        public EffectivePermission(string id = default, AbstractText accessRoleId = default, AbstractText accessGroupTypeId = default, bool create = false, bool read = false, bool update = false, bool delete = false, bool details = false, bool export = false, bool import = false, bool generic = false, DateTime createdOn = default)
         {
             // to ensure "id" is required (not null)
             id = id ?? throw new ArgumentNullException("id is a required property for EffectivePermission and cannot be null");
@@ -81,7 +80,6 @@ namespace Agile.Now.Runtime.Model
             // to ensure "accessRoleId" is required (not null)
             accessRoleId = accessRoleId ?? throw new ArgumentNullException("accessRoleId is a required property for EffectivePermission and cannot be null");
             AccessRoleId = accessRoleId;
-            RoleId = roleId;
             AccessGroupTypeId = accessGroupTypeId;
             Create = create;
             Read = read;
@@ -106,12 +104,6 @@ namespace Agile.Now.Runtime.Model
         /// </summary>
         [DataMember(Name = "AccessRoleId", IsRequired = true, EmitDefaultValue = true)]
         public AbstractText AccessRoleId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets RoleId
-        /// </summary>
-        [DataMember(Name = "RoleId", EmitDefaultValue = false)]
-        public AbstractLong RoleId { get; set; }
 
         /// <summary>
         /// Gets or Sets AccessGroupTypeId
@@ -201,7 +193,6 @@ namespace Agile.Now.Runtime.Model
             sb.Append("class EffectivePermission {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  AccessRoleId: ").Append(AccessRoleId).Append("\n");
-            sb.Append("  RoleId: ").Append(RoleId).Append("\n");
             sb.Append("  AccessGroupTypeId: ").Append(AccessGroupTypeId).Append("\n");
             sb.Append("  Create: ").Append(Create).Append("\n");
             sb.Append("  Read: ").Append(Read).Append("\n");

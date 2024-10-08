@@ -8389,7 +8389,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UserData1'
+              $ref: '#/components/schemas/UserData'
         description: |-
           `User` information to insert or update.
 
@@ -9887,7 +9887,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UserData1'
+              $ref: '#/components/schemas/UserData'
         description: |-
           `User` information to insert or update.
 
@@ -13216,11 +13216,7 @@ components:
       description: The record of Picture information.
       example:
         Picture: ""
-        Filename: Filename
       properties:
-        Filename:
-          description: Filename of account picture.
-          type: string
         Picture:
           description: Picture of account.
           format: binary
@@ -13612,11 +13608,7 @@ components:
         ParentApplicationId:
           Field: Field
           Value: Value
-        Id: Id
       properties:
-        Id:
-          description: The identifier of  access group application.
-          type: string
         ParentApplicationId:
           $ref: '#/components/schemas/FieldType'
         AccessApplicationId:
@@ -13633,11 +13625,7 @@ components:
         AccessApplicationId: AccessApplicationId
         Is_Active: false
         ParentApplicationId: ParentApplicationId
-        Id: Id
       properties:
-        Id:
-          description: The identifier of  access group application.
-          type: string
         ParentApplicationId:
           description: The identifier of the parent access application.  You can assign
             a role to a different access application and this allows for a user-friendly
@@ -13679,11 +13667,9 @@ components:
         - AccessApplicationId: AccessApplicationId
           Is_Active: false
           ParentApplicationId: ParentApplicationId
-          Id: Id
         - AccessApplicationId: AccessApplicationId
           Is_Active: false
           ParentApplicationId: ParentApplicationId
-          Id: Id
       properties:
         Extra:
           description: List validation for entity attribute
@@ -13909,21 +13895,9 @@ components:
         AccessRoleId:
           Field: Field
           Value: Value
-        Id: 0
         PermissionId: Create
-        RoleId:
-          Field: Field
-          Value: Value
       properties:
-        Id:
-          default: 0
-          description: The identifier of entity.
-          example: 0
-          format: int64
-          type: integer
         AccessRoleId:
-          $ref: '#/components/schemas/FieldType'
-        RoleId:
           $ref: '#/components/schemas/FieldType'
         PermissionId:
           $ref: '#/components/schemas/EnumPermissionType'
@@ -13938,21 +13912,10 @@ components:
       example:
         Is_Active: false
         AccessRoleId: AccessRoleId
-        Id: 0
         PermissionId: PermissionId
-        RoleId: RoleId
       properties:
-        Id:
-          default: 0
-          description: The identifier of entity.
-          example: 0
-          format: int64
-          type: integer
         AccessRoleId:
           description: The identifier of access role.
-          type: string
-        RoleId:
-          description: The identifier of role.
           type: string
         PermissionId:
           description: The identifier of permission.
@@ -13987,14 +13950,10 @@ components:
         Permissions:
         - Is_Active: false
           AccessRoleId: AccessRoleId
-          Id: 0
           PermissionId: PermissionId
-          RoleId: RoleId
         - Is_Active: false
           AccessRoleId: AccessRoleId
-          Id: 0
           PermissionId: PermissionId
-          RoleId: RoleId
       properties:
         Extra:
           description: List validation for entity attribute
@@ -14091,32 +14050,18 @@ components:
     GroupData:
       description: The record of Group information.
       example:
-        Id: 0
         GroupId:
           Field: Field
           Value: Value
       properties:
-        Id:
-          default: 0
-          description: The identifier of group access group.
-          example: 0
-          format: int64
-          type: integer
         GroupId:
           $ref: '#/components/schemas/FieldType'
       type: object
     GroupText:
       description: The record of Group information.
       example:
-        Id: 0
         GroupId: GroupId
       properties:
-        Id:
-          default: 0
-          description: The identifier of group access group.
-          example: 0
-          format: int64
-          type: integer
         GroupId:
           description: The identifier of group.
           type: string
@@ -14143,10 +14088,8 @@ components:
           Name: Name
         IsFullValidation: false
         Groups:
-        - Id: 0
-          GroupId: GroupId
-        - Id: 0
-          GroupId: GroupId
+        - GroupId: GroupId
+        - GroupId: GroupId
       properties:
         Extra:
           description: List validation for entity attribute
@@ -14263,14 +14206,7 @@ components:
         UserId:
           Field: Field
           Value: Value
-        Id: 0
       properties:
-        Id:
-          default: 0
-          description: The identifier of user access group.
-          example: 0
-          format: int64
-          type: integer
         UserId:
           $ref: '#/components/schemas/FieldType'
       type: object
@@ -14278,14 +14214,7 @@ components:
       description: The record of User information.
       example:
         UserId: UserId
-        Id: 0
       properties:
-        Id:
-          default: 0
-          description: The identifier of user access group.
-          example: 0
-          format: int64
-          type: integer
         UserId:
           description: The identifier of user.
           type: string
@@ -14313,9 +14242,7 @@ components:
         IsFullValidation: false
         Users:
         - UserId: UserId
-          Id: 0
         - UserId: UserId
-          Id: 0
       properties:
         Extra:
           description: List validation for entity attribute
@@ -14620,30 +14547,18 @@ components:
     UserExternalData:
       description: The record of UserExternal information.
       example:
-        Id: 0
         User_Id:
           Field: Field
           Value: Value
       properties:
-        Id:
-          default: 0
-          example: 0
-          format: int32
-          type: integer
         User_Id:
           $ref: '#/components/schemas/FieldType'
       type: object
     UserExternalText:
       description: The record of UserExternal information.
       example:
-        Id: 0
         User_Id: User_Id
       properties:
-        Id:
-          default: 0
-          example: 0
-          format: int32
-          type: integer
         User_Id:
           type: string
       type: object
@@ -14669,10 +14584,8 @@ components:
           Name: Name
         IsFullValidation: false
         UserExternals:
-        - Id: 0
-          User_Id: User_Id
-        - Id: 0
-          User_Id: User_Id
+        - User_Id: User_Id
+        - User_Id: User_Id
       properties:
         Extra:
           description: List validation for entity attribute
@@ -16304,29 +16217,11 @@ components:
           example: false
           type: boolean
       type: object
-    UserData1:
-      description: The record of User information.
-      example:
-        UserId:
-          Field: Field
-          Value: Value
-        Id: Id
-      properties:
-        Id:
-          description: The identifier of user department.
-          type: string
-        UserId:
-          $ref: '#/components/schemas/FieldType'
-      type: object
     UserText1:
       description: The record of User information.
       example:
         UserId: UserId
-        Id: Id
       properties:
-        Id:
-          description: The identifier of user department.
-          type: string
         UserId:
           description: The identifier of the user who has link the department.
           type: string
@@ -16354,9 +16249,7 @@ components:
         IsFullValidation: false
         Users:
         - UserId: UserId
-          Id: Id
         - UserId: UserId
-          Id: Id
       properties:
         Extra:
           description: List validation for entity attribute

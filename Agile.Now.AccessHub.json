@@ -4154,7 +4154,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UserData1"
+                "$ref": "#/components/schemas/UserData"
               }
             }
           },
@@ -4882,7 +4882,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UserData1"
+                "$ref": "#/components/schemas/UserData"
               }
             }
           },
@@ -7147,10 +7147,6 @@
       "PictureData": {
         "type": "object",
         "properties": {
-          "Filename": {
-            "type": "string",
-            "description": "Filename of account picture."
-          },
           "Picture": {
             "type": "string",
             "description": "Picture of account.",
@@ -7406,10 +7402,6 @@
       "ApplicationData": {
         "type": "object",
         "properties": {
-          "Id": {
-            "type": "string",
-            "description": "The identifier of  access group application."
-          },
           "ParentApplicationId": {
             "$ref": "#/components/schemas/FieldType"
           },
@@ -7428,10 +7420,6 @@
       "ApplicationText": {
         "type": "object",
         "properties": {
-          "Id": {
-            "type": "string",
-            "description": "The identifier of  access group application."
-          },
           "ParentApplicationId": {
             "type": "string",
             "description": "The identifier of the parent access application.  You can assign a role to a different access application and this allows for a user-friendly application/role structure."
@@ -7643,17 +7631,7 @@
       "PermissionData": {
         "type": "object",
         "properties": {
-          "Id": {
-            "type": "integer",
-            "description": "The identifier of entity.",
-            "format": "int64",
-            "default": 0,
-            "example": 0
-          },
           "AccessRoleId": {
-            "$ref": "#/components/schemas/FieldType"
-          },
-          "RoleId": {
             "$ref": "#/components/schemas/FieldType"
           },
           "PermissionId": {
@@ -7671,20 +7649,9 @@
       "PermissionText": {
         "type": "object",
         "properties": {
-          "Id": {
-            "type": "integer",
-            "description": "The identifier of entity.",
-            "format": "int64",
-            "default": 0,
-            "example": 0
-          },
           "AccessRoleId": {
             "type": "string",
             "description": "The identifier of access role."
-          },
-          "RoleId": {
-            "type": "string",
-            "description": "The identifier of role."
           },
           "PermissionId": {
             "type": "string",
@@ -7779,13 +7746,6 @@
       "GroupData": {
         "type": "object",
         "properties": {
-          "Id": {
-            "type": "integer",
-            "description": "The identifier of group access group.",
-            "format": "int64",
-            "default": 0,
-            "example": 0
-          },
           "GroupId": {
             "$ref": "#/components/schemas/FieldType"
           }
@@ -7795,13 +7755,6 @@
       "GroupText": {
         "type": "object",
         "properties": {
-          "Id": {
-            "type": "integer",
-            "description": "The identifier of group access group.",
-            "format": "int64",
-            "default": 0,
-            "example": 0
-          },
           "GroupId": {
             "type": "string",
             "description": "The identifier of group."
@@ -7912,13 +7865,6 @@
       "UserData": {
         "type": "object",
         "properties": {
-          "Id": {
-            "type": "integer",
-            "description": "The identifier of user access group.",
-            "format": "int64",
-            "default": 0,
-            "example": 0
-          },
           "UserId": {
             "$ref": "#/components/schemas/FieldType"
           }
@@ -7928,13 +7874,6 @@
       "UserText": {
         "type": "object",
         "properties": {
-          "Id": {
-            "type": "integer",
-            "description": "The identifier of user access group.",
-            "format": "int64",
-            "default": 0,
-            "example": 0
-          },
           "UserId": {
             "type": "string",
             "description": "The identifier of user."
@@ -8186,12 +8125,6 @@
       "UserExternalData": {
         "type": "object",
         "properties": {
-          "Id": {
-            "type": "integer",
-            "format": "int32",
-            "default": 0,
-            "example": 0
-          },
           "User_Id": {
             "$ref": "#/components/schemas/FieldType"
           }
@@ -8201,12 +8134,6 @@
       "UserExternalText": {
         "type": "object",
         "properties": {
-          "Id": {
-            "type": "integer",
-            "format": "int32",
-            "default": 0,
-            "example": 0
-          },
           "User_Id": {
             "type": "string"
           }
@@ -10251,26 +10178,9 @@
         },
         "description": "The record of Department information."
       },
-      "UserData1": {
-        "type": "object",
-        "properties": {
-          "Id": {
-            "type": "string",
-            "description": "The identifier of user department."
-          },
-          "UserId": {
-            "$ref": "#/components/schemas/FieldType"
-          }
-        },
-        "description": "The record of User information."
-      },
       "UserText1": {
         "type": "object",
         "properties": {
-          "Id": {
-            "type": "string",
-            "description": "The identifier of user department."
-          },
           "UserId": {
             "type": "string",
             "description": "The identifier of the user who has link the department."

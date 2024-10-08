@@ -245,7 +245,7 @@ namespace Agile.Now.AccessHub.Test.Api {
             try {
                 var createdSubEntity = api.UpsertAccountPicture(
                     created.Id,
-                    new(created.Username + "_picture", AccountTestData.PictureData.ToStream()));
+                    new(AccountTestData.PictureData.ToStream()));
                 api.DeleteAccountPicture(created.Id, null);
             }
             finally {
@@ -261,7 +261,7 @@ namespace Agile.Now.AccessHub.Test.Api {
             var created = api.CreateAccount(AccountTestData.CreateAccountData());
             try {
                 var createdSubEntity = api.UpsertAccountPicture(created.Id,
-                    new(created.Username + "_picture", AccountTestData.PictureData.ToStream()), name: "AccountId");
+                    new(AccountTestData.PictureData.ToStream()), name: "AccountId");
                 try {
                     var existingSubEntities = api.ListAccountPictures(created.Id).Data;
                     Assert.Contains(existingSubEntities, i => i.Filename == createdSubEntity.Filename);
@@ -283,7 +283,7 @@ namespace Agile.Now.AccessHub.Test.Api {
             var created = api.CreateAccount(AccountTestData.CreateAccountData());
             try {
                 var createdSubEntity = api.UpsertAccountPicture(created.Id,
-                    new(created.Username + "_picture", AccountTestData.PictureData.ToStream()));
+                    new(AccountTestData.PictureData.ToStream()));
                 try {
                     var existingSubEntities = api.ListAccountPictures(created.Id).Data;
                     Assert.Single(existingSubEntities);

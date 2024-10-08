@@ -55,27 +55,15 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="PermissionText" /> class.
         /// </summary>
-        /// <param name="id">The identifier of entity. (default to 0).</param>
         /// <param name="accessRoleId">The identifier of access role..</param>
-        /// <param name="roleId">The identifier of role..</param>
         /// <param name="permissionId">The identifier of permission..</param>
         /// <param name="isActive">Defines if record is active. (default to false).</param>
-        public PermissionText(long id = 0, string accessRoleId = default, string roleId = default, string permissionId = default, bool isActive = false)
+        public PermissionText(string accessRoleId = default, string permissionId = default, bool isActive = false)
         {
-            Id = id;
             AccessRoleId = accessRoleId;
-            RoleId = roleId;
             PermissionId = permissionId;
             IsActive = isActive;
         }
-
-        /// <summary>
-        /// The identifier of entity.
-        /// </summary>
-        /// <value>The identifier of entity.</value>
-        /// <example>0</example>
-        [DataMember(Name = "Id", EmitDefaultValue = false)]
-        public long Id { get; set; }
 
         /// <summary>
         /// The identifier of access role.
@@ -83,13 +71,6 @@ namespace Agile.Now.AccessHub.Model
         /// <value>The identifier of access role.</value>
         [DataMember(Name = "AccessRoleId", EmitDefaultValue = false)]
         public string AccessRoleId { get; set; }
-
-        /// <summary>
-        /// The identifier of role.
-        /// </summary>
-        /// <value>The identifier of role.</value>
-        [DataMember(Name = "RoleId", EmitDefaultValue = false)]
-        public string RoleId { get; set; }
 
         /// <summary>
         /// The identifier of permission.
@@ -114,9 +95,7 @@ namespace Agile.Now.AccessHub.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class PermissionText {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  AccessRoleId: ").Append(AccessRoleId).Append("\n");
-            sb.Append("  RoleId: ").Append(RoleId).Append("\n");
             sb.Append("  PermissionId: ").Append(PermissionId).Append("\n");
             sb.Append("  IsActive: ").Append(IsActive).Append("\n");
             sb.Append("}\n");

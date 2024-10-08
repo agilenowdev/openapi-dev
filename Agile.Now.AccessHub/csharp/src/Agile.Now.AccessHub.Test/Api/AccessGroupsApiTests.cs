@@ -209,7 +209,7 @@ namespace Agile.Now.AccessHub.Test.Api
                     var existing = api.ListAccessGroupApplications(entity.Id).Data;
                     Assert.Contains(existing, i => i.Id == created.Id);
                     data = AccessGroupTestData.CreateApplicationData(AccessGroupTestData.Applications[1]);
-                    data.Id = created.Id;
+                    //data.Id = created.Id;
                     var updated = api.UpsertAccessGroupApplication(entity.Id, data);
                     Assert.Equal(created.Id, updated.Id);
                     Assert.Equal(data.AccessApplicationId.Value, updated.ApplicationId.Id.ToString());
@@ -238,7 +238,7 @@ namespace Agile.Now.AccessHub.Test.Api
                             AccessGroupTestData.CreateApplicationText(
                                 AccessGroupTestData.Applications[1].ToString()),
                             AccessGroupTestData.CreateApplicationText(
-                                AccessGroupTestData.Applications[2].ToString(), id: created.Id)
+                                AccessGroupTestData.Applications[2].ToString()/*, id: created.Id*/)
                         })).Data;
                     try {
                         var existing = api.ListAccessGroupApplications(entity.Id.ToString()).Data;
@@ -275,7 +275,7 @@ namespace Agile.Now.AccessHub.Test.Api
                     api.PatchAccessGroupApplications(entity.Id.ToString(),
                         new(applications: new List<ApplicationText> {
                             AccessGroupTestData.CreateApplicationText(
-                                AccessGroupTestData.Applications[2].ToString(), id: toPatch.Id)
+                                AccessGroupTestData.Applications[2].ToString()/*, id: toPatch.Id*/)
                         }),
                         deleteNotExists: true.ToString());
                     toDelete = null;
@@ -344,7 +344,7 @@ namespace Agile.Now.AccessHub.Test.Api
                     var existing = api.ListAccessGroupPermissions(entity.Id).Data;
                     Assert.Contains(existing, i => i.Id == created.Id);
                     data = AccessGroupTestData.CreatePermissionData(AccessGroupTestData.Permissions[1]);
-                    data.Id = created.Id;
+                    //data.Id = created.Id;
                     var updated = api.UpsertAccessGroupPermission(entity.Id, data);
                     Assert.Equal(created.Id, updated.Id);
                     Assert.Equal(data.PermissionId.ToString(), updated.PermissionId.Id.ToString());
@@ -371,7 +371,7 @@ namespace Agile.Now.AccessHub.Test.Api
                     var patched = api.PatchAccessGroupPermissions(entity.Id.ToString(),
                         new(permissions: new List<PermissionText> {
                             new(permissionId: AccessGroupTestData.Permissions[1].ToString()),
-                            new(permissionId: AccessGroupTestData.Permissions[2].ToString(), id: created.Id)
+                            new(permissionId: AccessGroupTestData.Permissions[2].ToString()/*, id: created.Id*/)
                         })).Data;
                     try {
                         var existing = api.ListAccessGroupPermissions(entity.Id.ToString()).Data;
@@ -407,7 +407,7 @@ namespace Agile.Now.AccessHub.Test.Api
                 try {
                     api.PatchAccessGroupPermissions(entity.Id.ToString(),
                         new(permissions: new List<PermissionText> {
-                            new(permissionId: AccessGroupTestData.Permissions[2].ToString(), id: toPatch.Id)
+                            new(permissionId: AccessGroupTestData.Permissions[2].ToString()/*, id: toPatch.Id*/)
                         }),
                         deleteNotExists: true.ToString());
                     toDelete = null;
@@ -475,7 +475,7 @@ namespace Agile.Now.AccessHub.Test.Api
                     var existing = api.ListAccessGroupGroups(entity.Id).Data;
                     Assert.Contains(existing, i => i.Id == created.Id);
                     data = UserTestData.CreateGroupData(UserTestData.Groups[1]);
-                    data.Id = created.Id;
+                    //data.Id = created.Id;
                     var updated = api.UpsertAccessGroupGroup(entity.Id, data);
                     Assert.Equal(created.Id, updated.Id);
                     Assert.Equal(data.GroupId.Value, updated.Id.ToString());
@@ -502,7 +502,7 @@ namespace Agile.Now.AccessHub.Test.Api
                     var patched = api.PatchAccessGroupGroups(entity.Id.ToString(),
                         new(groups: new List<GroupText> {
                             new(groupId: UserTestData.Groups[1].ToString()),
-                            new(groupId: UserTestData.Groups[2].ToString(), id: created.Id)
+                            new(groupId: UserTestData.Groups[2].ToString()/*, id: created.Id*/)
                         })).Data;
                     try {
                         var existing = api.ListAccessGroupGroups(entity.Id.ToString()).Data;
@@ -534,7 +534,7 @@ namespace Agile.Now.AccessHub.Test.Api
                 try {
                     api.PatchAccessGroupGroups(entity.Id.ToString(),
                         new(groups: new List<GroupText> {
-                            new(groupId: UserTestData.Groups[2].ToString(), id: toPatch.Id)
+                            new(groupId: UserTestData.Groups[2].ToString()/*, id: toPatch.Id*/)
                         }),
                         deleteNotExists: true.ToString());
                     toDelete = null;
@@ -600,7 +600,7 @@ namespace Agile.Now.AccessHub.Test.Api
                     var existing = api.ListAccessGroupUsers(entity.Id).Data;
                     Assert.Contains(existing, i => i.Id == created.Id);
                     data = UserTestData.CreateUserData(UserTestData.Users[1]);
-                    data.Id = created.Id;
+                    //data.Id = created.Id;
                     var updated = api.UpsertAccessGroupUser(entity.Id, data);
                     Assert.Equal(created.Id, updated.Id);
                     Assert.Equal(data.UserId.Value, updated.Id.ToString());
@@ -627,7 +627,7 @@ namespace Agile.Now.AccessHub.Test.Api
                     var patched = api.PatchAccessGroupUsers(entity.Id.ToString(),
                         new(users: new List<UserText> {
                             new(userId: UserTestData.Users[1].ToString()),
-                            new(userId: UserTestData.Users[2].ToString(), id: created.Id)
+                            new(userId: UserTestData.Users[2].ToString()/*, id: created.Id*/)
                         })).Data;
                     try {
                         var existing = api.ListAccessGroupUsers(entity.Id.ToString()).Data;
@@ -661,7 +661,7 @@ namespace Agile.Now.AccessHub.Test.Api
                 try {
                     api.PatchAccessGroupUsers(entity.Id.ToString(),
                         new(users: new List<UserText> {
-                            new(userId: UserTestData.Users[2].ToString(), id: toPatch.Id)
+                            new(userId: UserTestData.Users[2].ToString()/*, id: toPatch.Id*/)
                         }),
                         deleteNotExists: true.ToString());
                     toDelete = null;

@@ -5,9 +5,7 @@ The record of Permission information.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **long** | The identifier of entity. | [optional] [default to 0]
 **AccessRoleId** | [**FieldType**](FieldType.md) | The FieldType object structure | [optional] 
-**RoleId** | [**FieldType**](FieldType.md) | The FieldType object structure | [optional] 
 **PermissionId** | [**EnumPermissionType**](EnumPermissionType.md) | The EnumPermissionType enumeration | [optional] 
 **IsActive** | **bool** | Defines if record is active. | [optional] [default to false]
 

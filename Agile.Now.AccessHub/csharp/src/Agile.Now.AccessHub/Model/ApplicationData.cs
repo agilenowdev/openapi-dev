@@ -55,24 +55,15 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ApplicationData" /> class.
         /// </summary>
-        /// <param name="id">The identifier of  access group application..</param>
         /// <param name="parentApplicationId">parentApplicationId.</param>
         /// <param name="accessApplicationId">accessApplicationId.</param>
         /// <param name="isActive">Defines if record is active. (default to false).</param>
-        public ApplicationData(string id = default, FieldType parentApplicationId = default, FieldType accessApplicationId = default, bool isActive = false)
+        public ApplicationData(FieldType parentApplicationId = default, FieldType accessApplicationId = default, bool isActive = false)
         {
-            Id = id;
             ParentApplicationId = parentApplicationId;
             AccessApplicationId = accessApplicationId;
             IsActive = isActive;
         }
-
-        /// <summary>
-        /// The identifier of  access group application.
-        /// </summary>
-        /// <value>The identifier of  access group application.</value>
-        [DataMember(Name = "Id", EmitDefaultValue = false)]
-        public string Id { get; set; }
 
         /// <summary>
         /// Gets or Sets ParentApplicationId
@@ -102,7 +93,6 @@ namespace Agile.Now.AccessHub.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class ApplicationData {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  ParentApplicationId: ").Append(ParentApplicationId).Append("\n");
             sb.Append("  AccessApplicationId: ").Append(AccessApplicationId).Append("\n");
             sb.Append("  IsActive: ").Append(IsActive).Append("\n");

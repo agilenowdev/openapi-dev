@@ -5,7 +5,6 @@ The record of Application information.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | The identifier of  access group application. | [optional] 
 **ParentApplicationId** | **string** | The identifier of the parent access application.  You can assign a role to a different access application and this allows for a user-friendly application/role structure. | [optional] 
 **AccessApplicationId** | **string** | The identifier of the access application.  You can assign a role to a different access application and this allows for a user-friendly application/role structure. | [optional] 
 **IsActive** | **bool** | Defines if record is active. | [optional] [default to false]

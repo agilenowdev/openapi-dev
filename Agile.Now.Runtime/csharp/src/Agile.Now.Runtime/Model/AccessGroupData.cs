@@ -55,21 +55,11 @@ namespace Agile.Now.Runtime.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AccessGroupData" /> class.
         /// </summary>
-        /// <param name="id">The identifier of user access group. (default to 0).</param>
         /// <param name="accessGroupId">accessGroupId.</param>
-        public AccessGroupData(long id = 0, FieldType accessGroupId = default)
+        public AccessGroupData(FieldType accessGroupId = default)
         {
-            Id = id;
             AccessGroupId = accessGroupId;
         }
-
-        /// <summary>
-        /// The identifier of user access group.
-        /// </summary>
-        /// <value>The identifier of user access group.</value>
-        /// <example>0</example>
-        [DataMember(Name = "Id", EmitDefaultValue = false)]
-        public long Id { get; set; }
 
         /// <summary>
         /// Gets or Sets AccessGroupId
@@ -85,7 +75,6 @@ namespace Agile.Now.Runtime.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class AccessGroupData {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  AccessGroupId: ").Append(AccessGroupId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

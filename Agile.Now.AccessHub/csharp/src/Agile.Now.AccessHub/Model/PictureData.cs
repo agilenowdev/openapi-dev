@@ -55,20 +55,11 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="PictureData" /> class.
         /// </summary>
-        /// <param name="filename">Filename of account picture..</param>
         /// <param name="picture">Picture of account..</param>
-        public PictureData(string filename = default, System.IO.Stream picture = default)
+        public PictureData(System.IO.Stream picture = default)
         {
-            Filename = filename;
             Picture = picture;
         }
-
-        /// <summary>
-        /// Filename of account picture.
-        /// </summary>
-        /// <value>Filename of account picture.</value>
-        [DataMember(Name = "Filename", EmitDefaultValue = false)]
-        public string Filename { get; set; }
 
         /// <summary>
         /// Picture of account.
@@ -85,7 +76,6 @@ namespace Agile.Now.AccessHub.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class PictureData {\n");
-            sb.Append("  Filename: ").Append(Filename).Append("\n");
             sb.Append("  Picture: ").Append(Picture).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

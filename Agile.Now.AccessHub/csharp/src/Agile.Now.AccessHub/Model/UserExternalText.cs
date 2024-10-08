@@ -55,20 +55,11 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UserExternalText" /> class.
         /// </summary>
-        /// <param name="id">id (default to 0).</param>
         /// <param name="userId">userId.</param>
-        public UserExternalText(int id = 0, string userId = default)
+        public UserExternalText(string userId = default)
         {
-            Id = id;
             UserId = userId;
         }
-
-        /// <summary>
-        /// Gets or Sets Id
-        /// </summary>
-        /// <example>0</example>
-        [DataMember(Name = "Id", EmitDefaultValue = false)]
-        public int Id { get; set; }
 
         /// <summary>
         /// Gets or Sets UserId
@@ -84,7 +75,6 @@ namespace Agile.Now.AccessHub.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class UserExternalText {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

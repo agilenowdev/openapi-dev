@@ -60,32 +60,78 @@ namespace Agile.Now.Runtime.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Location" /> class.
         /// </summary>
-        /// <param name="id">The identifier of user location (required).</param>
-        /// <param name="locationId">locationId.</param>
+        /// <param name="id">The guid to identify the location (required).</param>
+        /// <param name="externalId">The external identifier of the location.</param>
+        /// <param name="name">The name of the location (required).</param>
+        /// <param name="countryId">countryId.</param>
+        /// <param name="timezoneId">timezoneId.</param>
+        /// <param name="currencyId">currencyId.</param>
+        /// <param name="isActive">Defines if the location is active and can be used (required) (default to false).</param>
         /// <param name="modifiedOn">The date the record was updated (default to &quot;1900-01-01T00:00Z&quot;).</param>
         /// <param name="createdOn">The date the record was created (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public Location(string id = default, AbstractText locationId = default, DateTime modifiedOn = default, DateTime createdOn = default)
+        public Location(string id = default, string externalId = default, string name = default, AbstractText countryId = default, AbstractText timezoneId = default, AbstractText currencyId = default, bool isActive = false, DateTime modifiedOn = default, DateTime createdOn = default)
         {
             // to ensure "id" is required (not null)
             id = id ?? throw new ArgumentNullException("id is a required property for Location and cannot be null");
             Id = id;
-            LocationId = locationId;
+            // to ensure "name" is required (not null)
+            name = name ?? throw new ArgumentNullException("name is a required property for Location and cannot be null");
+            Name = name;
+            IsActive = isActive;
+            ExternalId = externalId;
+            CountryId = countryId;
+            TimezoneId = timezoneId;
+            CurrencyId = currencyId;
             ModifiedOn = modifiedOn;
             CreatedOn = createdOn;
         }
 
         /// <summary>
-        /// The identifier of user location
+        /// The guid to identify the location
         /// </summary>
-        /// <value>The identifier of user location</value>
+        /// <value>The guid to identify the location</value>
         [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets LocationId
+        /// The external identifier of the location
         /// </summary>
-        [DataMember(Name = "LocationId", EmitDefaultValue = false)]
-        public AbstractText LocationId { get; set; }
+        /// <value>The external identifier of the location</value>
+        [DataMember(Name = "ExternalId", EmitDefaultValue = false)]
+        public string ExternalId { get; set; }
+
+        /// <summary>
+        /// The name of the location
+        /// </summary>
+        /// <value>The name of the location</value>
+        [DataMember(Name = "Name", IsRequired = true, EmitDefaultValue = true)]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CountryId
+        /// </summary>
+        [DataMember(Name = "CountryId", EmitDefaultValue = false)]
+        public AbstractText CountryId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TimezoneId
+        /// </summary>
+        [DataMember(Name = "TimezoneId", EmitDefaultValue = false)]
+        public AbstractText TimezoneId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CurrencyId
+        /// </summary>
+        [DataMember(Name = "CurrencyId", EmitDefaultValue = false)]
+        public AbstractText CurrencyId { get; set; }
+
+        /// <summary>
+        /// Defines if the location is active and can be used
+        /// </summary>
+        /// <value>Defines if the location is active and can be used</value>
+        /// <example>false</example>
+        [DataMember(Name = "Is_Active", IsRequired = true, EmitDefaultValue = true)]
+        public bool IsActive { get; set; }
 
         /// <summary>
         /// The date the record was updated
@@ -112,7 +158,12 @@ namespace Agile.Now.Runtime.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class Location {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  LocationId: ").Append(LocationId).Append("\n");
+            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  CountryId: ").Append(CountryId).Append("\n");
+            sb.Append("  TimezoneId: ").Append(TimezoneId).Append("\n");
+            sb.Append("  CurrencyId: ").Append(CurrencyId).Append("\n");
+            sb.Append("  IsActive: ").Append(IsActive).Append("\n");
             sb.Append("  ModifiedOn: ").Append(ModifiedOn).Append("\n");
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("}\n");

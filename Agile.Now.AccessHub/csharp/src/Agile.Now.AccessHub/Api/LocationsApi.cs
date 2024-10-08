@@ -304,11 +304,11 @@ namespace Agile.Now.AccessHub.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Location record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="userData1">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="userData">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>User</returns>
-        User UpsertLocationUser(string id, UserData1 userData1, string name = default, int operationIndex = 0);
+        User UpsertLocationUser(string id, UserData userData, string name = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -318,11 +318,11 @@ namespace Agile.Now.AccessHub.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Location record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="userData1">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="userData">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of User</returns>
-        ApiResponse<User> UpsertLocationUserWithHttpInfo(string id, UserData1 userData1, string name = default, int operationIndex = 0);
+        ApiResponse<User> UpsertLocationUserWithHttpInfo(string id, UserData userData, string name = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -605,12 +605,12 @@ namespace Agile.Now.AccessHub.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Location record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="userData1">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="userData">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of User</returns>
-        System.Threading.Tasks.Task<User> UpsertLocationUserAsync(string id, UserData1 userData1, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<User> UpsertLocationUserAsync(string id, UserData userData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -620,12 +620,12 @@ namespace Agile.Now.AccessHub.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Location record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="userData1">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="userData">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (User)</returns>
-        System.Threading.Tasks.Task<ApiResponse<User>> UpsertLocationUserWithHttpInfoAsync(string id, UserData1 userData1, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<User>> UpsertLocationUserWithHttpInfoAsync(string id, UserData userData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -2525,13 +2525,13 @@ namespace Agile.Now.AccessHub.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Location record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="userData1">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="userData">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>User</returns>
-        public User UpsertLocationUser(string id, UserData1 userData1, string name = default, int operationIndex = 0)
+        public User UpsertLocationUser(string id, UserData userData, string name = default, int operationIndex = 0)
         {
-            ApiResponse<User> localVarResponse = UpsertLocationUserWithHttpInfo(id, userData1, name);
+            ApiResponse<User> localVarResponse = UpsertLocationUserWithHttpInfo(id, userData, name);
             return localVarResponse.Data;
         }
 
@@ -2540,17 +2540,17 @@ namespace Agile.Now.AccessHub.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Location record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="userData1">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="userData">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of User</returns>
-        public ApiResponse<User> UpsertLocationUserWithHttpInfo(string id, UserData1 userData1, string name = default, int operationIndex = 0)
+        public ApiResponse<User> UpsertLocationUserWithHttpInfo(string id, UserData userData, string name = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->UpsertLocationUser");
 
-            // verify the required parameter 'userData1' is set
-            userData1 = userData1 ?? throw new ApiException(400, "Missing required parameter 'userData1' when calling LocationsApi->UpsertLocationUser");
+            // verify the required parameter 'userData' is set
+            userData = userData ?? throw new ApiException(400, "Missing required parameter 'userData' when calling LocationsApi->UpsertLocationUser");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -2580,7 +2580,7 @@ namespace Agile.Now.AccessHub.Api
             {
                 localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "Name", name));
             }
-            localVarRequestOptions.Data = userData1;
+            localVarRequestOptions.Data = userData;
 
             localVarRequestOptions.Operation = "LocationsApi.UpsertLocationUser";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -2621,14 +2621,14 @@ namespace Agile.Now.AccessHub.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Location record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="userData1">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="userData">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of User</returns>
-        public async System.Threading.Tasks.Task<User> UpsertLocationUserAsync(string id, UserData1 userData1, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<User> UpsertLocationUserAsync(string id, UserData userData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            ApiResponse<User> localVarResponse = await UpsertLocationUserWithHttpInfoAsync(id, userData1, name, operationIndex, cancellationToken).ConfigureAwait(false);
+            ApiResponse<User> localVarResponse = await UpsertLocationUserWithHttpInfoAsync(id, userData, name, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2637,18 +2637,18 @@ namespace Agile.Now.AccessHub.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Location record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="userData1">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="userData">`User` information to insert or update.  The input parameter must be used in the `UserData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (User)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<User>> UpsertLocationUserWithHttpInfoAsync(string id, UserData1 userData1, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ApiResponse<User>> UpsertLocationUserWithHttpInfoAsync(string id, UserData userData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling LocationsApi->UpsertLocationUser");
 
-            // verify the required parameter 'userData1' is set
-            userData1 = userData1 ?? throw new ApiException(400, "Missing required parameter 'userData1' when calling LocationsApi->UpsertLocationUser");
+            // verify the required parameter 'userData' is set
+            userData = userData ?? throw new ApiException(400, "Missing required parameter 'userData' when calling LocationsApi->UpsertLocationUser");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -2679,7 +2679,7 @@ namespace Agile.Now.AccessHub.Api
             {
                 localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "Name", name));
             }
-            localVarRequestOptions.Data = userData1;
+            localVarRequestOptions.Data = userData;
 
             localVarRequestOptions.Operation = "LocationsApi.UpsertLocationUser";
             localVarRequestOptions.OperationIndex = operationIndex;

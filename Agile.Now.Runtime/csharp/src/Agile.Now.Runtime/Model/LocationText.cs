@@ -55,20 +55,11 @@ namespace Agile.Now.Runtime.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="LocationText" /> class.
         /// </summary>
-        /// <param name="id">The identifier of user location..</param>
         /// <param name="locationId">The identifier of the location..</param>
-        public LocationText(string id = default, string locationId = default)
+        public LocationText(string locationId = default)
         {
-            Id = id;
             LocationId = locationId;
         }
-
-        /// <summary>
-        /// The identifier of user location.
-        /// </summary>
-        /// <value>The identifier of user location.</value>
-        [DataMember(Name = "Id", EmitDefaultValue = false)]
-        public string Id { get; set; }
 
         /// <summary>
         /// The identifier of the location.
@@ -85,7 +76,6 @@ namespace Agile.Now.Runtime.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class LocationText {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  LocationId: ").Append(LocationId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

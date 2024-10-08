@@ -2,9 +2,24 @@
 using System.Linq;
 using Agile.Now.AccessHub.Model;
 using Agile.Now.AccessHub.Test.Data;
+using Agile.Now.Api.Test;
 using Xunit;
 
 namespace Agile.Now.ApiAccessGroups.Test.Api;
+
+public class GroupExternalTestData2 : TestData<GroupExternal, GroupExternalData> {
+    public override void AssertEqual(GroupExternalData data0, GroupExternal data1) => data0.AssertEqual(data1);
+    public override void AssertEqual(GroupExternal data0, GroupExternal data1) => data0.AssertEqual(data1);
+    public override IEnumerable<GroupExternalData> GenerateRequestData() => GroupExternalTestData.CreateGroupExternalDatas();
+    public override void Update(GroupExternalData data) => data.Update();
+}
+
+public class GroupExternalUserExternalTestData : TestData<UserExternal, UserExternalData> {
+    public override void AssertEqual(UserExternalData data0, UserExternal data1) { }
+    public override void AssertEqual(UserExternal data0, UserExternal data1) { }
+    public override IEnumerable<UserExternalData> GenerateRequestData() => GroupExternalTestData.CreateUserExternalDatas();
+    public override void Update(UserExternalData data) { }
+}
 
 internal static class GroupExternalTestData {
     public static GroupExternalData CreateGroupExternalData(string suffix = null) {

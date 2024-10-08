@@ -1,8 +1,44 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Agile.Now.Api.Test;
 using Agile.Now.Runtime.Model;
 
 namespace Agile.Now.Runtime.Test.Data;
+
+public class UserTestData2 : TestData<User, object> {
+    public override void AssertEqual(object data0, User data1) { }
+    public override void AssertEqual(User data0, User data1) { }
+    public override IEnumerable<User> GenerateRequestData() => TestUserData.CreateUserDatas();
+    public override void Update(object data) { }
+}
+
+public class UserAccessGroupTestData : TestData<AccessGroup, AccessGroupData> {
+    public override void AssertEqual(AccessGroupData data0, AccessGroup data1) { }
+    public override void AssertEqual(AccessGroup data0, AccessGroup data1) { }
+    public override IEnumerable<AccessGroupData> GenerateRequestData() => TestUserData.CreateAccessGroupDatas();
+    public override void Update(AccessGroupData data) { }
+}
+
+public class UserGroupTestData : TestData<Group, GroupData> {
+    public override void AssertEqual(GroupData data0, Group data1) { }
+    public override void AssertEqual(Group data0, Group data1) { }
+    public override IEnumerable<GroupData> GenerateRequestData() => TestUserData.CreateGroupDatas();
+    public override void Update(GroupData data) { }
+}
+
+public class UserDepartmentTestData : TestData<Department, DepartmentData> {
+    public override void AssertEqual(DepartmentData data0, Department data1) { }
+    public override void AssertEqual(Department data0, Department data1) { }
+    public override IEnumerable<DepartmentData> GenerateRequestData() => TestUserData.CreateDepartmentDatas();
+    public override void Update(DepartmentData data) { }
+}
+
+public class UserLocationTestData : TestData<Location, LocationData> {
+    public override void AssertEqual(LocationData data0, Location data1) { }
+    public override void AssertEqual(Location data0, Location data1) { }
+    public override IEnumerable<LocationData> GenerateRequestData() => TestUserData.CreateLocationDatas();
+    public override void Update(LocationData data) { }
+}
 
 public class TestUserData {
     public static readonly (int Id, string Name)[] Users = new[] {
@@ -81,6 +117,6 @@ public class TestUserData {
     public static IEnumerable<LocationData> CreateLocationDatas() =>
         Locations.Select(i => CreateLocationData(i));
 
-    public static LocationText ToLocationPatchData(LocationData locationData) => 
+    public static LocationText ToLocationPatchData(LocationData locationData) =>
         new LocationText(locationId: locationData.LocationId.Value);
 }

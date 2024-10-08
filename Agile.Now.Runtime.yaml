@@ -35,7 +35,7 @@ paths:
         ### Get a record of User
         * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
         * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
-        * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+        * If the `Id, Username` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
       operationId: Get User
       parameters:
       - description: |-
@@ -56,14 +56,14 @@ paths:
           type: string
         style: simple
       - description: "The name of the database field. If empty, the entity `Id` field\
-          \ is used.\n\nExample: \n```\n\n```"
+          \ is used.\n\nExample: \n```\nUsername\n```"
         explode: true
         in: query
         name: Name
         required: false
         schema:
           description: "The name of the database field. If empty, the entity `Id`\
-            \ field is used.\n\nExample: \n```\n\n```"
+            \ field is used.\n\nExample: \n```\nUsername\n```"
           type: string
         style: form
       responses:
@@ -3379,9 +3379,9 @@ paths:
           \ and use the GET method of the resource.\n\nThe list of database column\
           \ attributes. If list is empty or &quot;*&quot; then all of fields will\
           \ be returned.\n\nThis method converts a string list to a string with a\
-          \ comma separator.\n\nExample: \n```\nId, UserId, AccessRoleId, RoleId,\
-          \ AccessGroupTypeId, Create, Read, Update, Delete, Details, Export, Import,\
-          \ Generic, CreatedOn\n```"
+          \ comma separator.\n\nExample: \n```\nId, UserId, AccessRoleId, AccessGroupTypeId,\
+          \ Create, Read, Update, Delete, Details, Export, Import, Generic, CreatedOn\n\
+          ```"
         explode: true
         in: query
         name: Fields
@@ -3391,9 +3391,9 @@ paths:
             \ and use the GET method of the resource.\n\nThe list of database column\
             \ attributes. If list is empty or &quot;*&quot; then all of fields will\
             \ be returned.\n\nThis method converts a string list to a string with\
-            \ a comma separator.\n\nExample: \n```\nId, UserId, AccessRoleId, RoleId,\
-            \ AccessGroupTypeId, Create, Read, Update, Delete, Details, Export, Import,\
-            \ Generic, CreatedOn\n```"
+            \ a comma separator.\n\nExample: \n```\nId, UserId, AccessRoleId, AccessGroupTypeId,\
+            \ Create, Read, Update, Delete, Details, Export, Import, Generic, CreatedOn\n\
+            ```"
           type: string
         style: form
       - description: |
@@ -4020,17 +4020,10 @@ components:
     AccessGroupData:
       description: The record of AccessGroup information.
       example:
-        Id: 0
         AccessGroupId:
           Field: Field
           Value: Value
       properties:
-        Id:
-          default: 0
-          description: The identifier of user access group.
-          example: 0
-          format: int64
-          type: integer
         AccessGroupId:
           $ref: '#/components/schemas/FieldType'
       type: object
@@ -4121,33 +4114,77 @@ components:
         Group_Id:
           Field: Field
           Value: Value
-        Id: 0
       properties:
-        Id:
-          default: 0
-          example: 0
-          format: int32
-          type: integer
         Group_Id:
           $ref: '#/components/schemas/FieldType'
       type: object
     Department:
       description: The record of Department information.
       example:
-        ModifiedOn: 1900-01-01T00:00:00Z
-        Id: Id
-        DepartmentId:
+        DepartmentTypeId:
           Type: User
           ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
           Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
           Name: Bob Normal
+        CountryId:
+          Type: User
+          ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+          Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+          Name: Bob Normal
+        ModifiedOn: 1900-01-01T00:00:00Z
+        ExternalId: ExternalId
+        ParentDepartmentId:
+          Type: User
+          ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+          Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+          Name: Bob Normal
+        HierarchicalName: HierarchicalName
+        Name: Name
+        ContactPhone: ContactPhone
+        Is_Active: false
+        ContactEmail: ContactEmail
+        Level: 0
+        Id: Id
         CreatedOn: 1900-01-01T00:00:00Z
+        ContactName: ContactName
       properties:
         Id:
-          description: The identifier of user department
+          description: The guid to identify the department
           type: string
-        DepartmentId:
+        ExternalId:
+          description: The external identifier of the department
+          type: string
+        Name:
+          description: The name of the department
+          type: string
+        DepartmentTypeId:
           $ref: '#/components/schemas/AbstractText'
+        ParentDepartmentId:
+          $ref: '#/components/schemas/AbstractText'
+        HierarchicalName:
+          description: The hierarchical name of the department
+          type: string
+        Level:
+          default: 0
+          description: The department level at the hierarchy
+          example: 0
+          format: int32
+          type: integer
+        ContactName:
+          description: The contact name of company or department
+          type: string
+        ContactEmail:
+          description: The contact email of external company or department
+          type: string
+        ContactPhone:
+          type: string
+        CountryId:
+          $ref: '#/components/schemas/AbstractText'
+        Is_Active:
+          default: false
+          description: Defines if the department is active and can be used
+          example: false
+          type: boolean
         ModifiedOn:
           default: 1900-01-01T00:00:00Z
           description: The date the record was updated
@@ -4161,7 +4198,10 @@ components:
           format: date-time
           type: string
       required:
+      - DepartmentTypeId
       - Id
+      - Is_Active
+      - Name
       type: object
     Departments:
       description: The list of `Department` records
@@ -4172,22 +4212,58 @@ components:
           CurrentPage: 50
           TotalItems: 1000
         Data:
-        - ModifiedOn: 1900-01-01T00:00:00Z
-          Id: Id
-          DepartmentId:
+        - DepartmentTypeId:
             Type: User
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Name: Bob Normal
-          CreatedOn: 1900-01-01T00:00:00Z
-        - ModifiedOn: 1900-01-01T00:00:00Z
-          Id: Id
-          DepartmentId:
+          CountryId:
             Type: User
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Name: Bob Normal
+          ModifiedOn: 1900-01-01T00:00:00Z
+          ExternalId: ExternalId
+          ParentDepartmentId:
+            Type: User
+            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Name: Bob Normal
+          HierarchicalName: HierarchicalName
+          Name: Name
+          ContactPhone: ContactPhone
+          Is_Active: false
+          ContactEmail: ContactEmail
+          Level: 0
+          Id: Id
           CreatedOn: 1900-01-01T00:00:00Z
+          ContactName: ContactName
+        - DepartmentTypeId:
+            Type: User
+            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Name: Bob Normal
+          CountryId:
+            Type: User
+            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Name: Bob Normal
+          ModifiedOn: 1900-01-01T00:00:00Z
+          ExternalId: ExternalId
+          ParentDepartmentId:
+            Type: User
+            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Name: Bob Normal
+          HierarchicalName: HierarchicalName
+          Name: Name
+          ContactPhone: ContactPhone
+          Is_Active: false
+          ContactEmail: ContactEmail
+          Level: 0
+          Id: Id
+          CreatedOn: 1900-01-01T00:00:00Z
+          ContactName: ContactName
       properties:
         Meta:
           $ref: '#/components/schemas/Meta'
@@ -4200,26 +4276,18 @@ components:
     DepartmentData:
       description: The record of Department information.
       example:
-        Id: Id
         DepartmentId:
           Field: Field
           Value: Value
       properties:
-        Id:
-          description: The identifier of user department.
-          type: string
         DepartmentId:
           $ref: '#/components/schemas/FieldType'
       type: object
     DepartmentText:
       description: The record of Department information.
       example:
-        Id: Id
         DepartmentId: DepartmentId
       properties:
-        Id:
-          description: The identifier of user department.
-          type: string
         DepartmentId:
           description: The identifier of the department.
           type: string
@@ -4228,10 +4296,8 @@ components:
       description: The data loading record of Department importing
       example:
         Departments:
-        - Id: Id
-          DepartmentId: DepartmentId
-        - Id: Id
-          DepartmentId: DepartmentId
+        - DepartmentId: DepartmentId
+        - DepartmentId: DepartmentId
         Extra:
         - Pattern: Pattern
           DefaultValue: DefaultValue
@@ -4322,20 +4388,48 @@ components:
     Location:
       description: The record of Location information.
       example:
-        ModifiedOn: 1900-01-01T00:00:00Z
-        LocationId:
+        CountryId:
           Type: User
           ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
           Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
           Name: Bob Normal
+        Is_Active: false
+        ModifiedOn: 1900-01-01T00:00:00Z
+        ExternalId: ExternalId
         Id: Id
+        TimezoneId:
+          Type: User
+          ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+          Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+          Name: Bob Normal
         CreatedOn: 1900-01-01T00:00:00Z
+        CurrencyId:
+          Type: User
+          ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+          Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+          Name: Bob Normal
+        Name: Name
       properties:
         Id:
-          description: The identifier of user location
+          description: The guid to identify the location
           type: string
-        LocationId:
+        ExternalId:
+          description: The external identifier of the location
+          type: string
+        Name:
+          description: The name of the location
+          type: string
+        CountryId:
           $ref: '#/components/schemas/AbstractText'
+        TimezoneId:
+          $ref: '#/components/schemas/AbstractText'
+        CurrencyId:
+          $ref: '#/components/schemas/AbstractText'
+        Is_Active:
+          default: false
+          description: Defines if the location is active and can be used
+          example: false
+          type: boolean
         ModifiedOn:
           default: 1900-01-01T00:00:00Z
           description: The date the record was updated
@@ -4350,6 +4444,8 @@ components:
           type: string
       required:
       - Id
+      - Is_Active
+      - Name
       type: object
     Locations:
       description: The list of `Location` records
@@ -4360,22 +4456,48 @@ components:
           CurrentPage: 50
           TotalItems: 1000
         Data:
-        - ModifiedOn: 1900-01-01T00:00:00Z
-          LocationId:
+        - CountryId:
             Type: User
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Name: Bob Normal
+          Is_Active: false
+          ModifiedOn: 1900-01-01T00:00:00Z
+          ExternalId: ExternalId
           Id: Id
-          CreatedOn: 1900-01-01T00:00:00Z
-        - ModifiedOn: 1900-01-01T00:00:00Z
-          LocationId:
+          TimezoneId:
             Type: User
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Name: Bob Normal
-          Id: Id
           CreatedOn: 1900-01-01T00:00:00Z
+          CurrencyId:
+            Type: User
+            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Name: Bob Normal
+          Name: Name
+        - CountryId:
+            Type: User
+            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Name: Bob Normal
+          Is_Active: false
+          ModifiedOn: 1900-01-01T00:00:00Z
+          ExternalId: ExternalId
+          Id: Id
+          TimezoneId:
+            Type: User
+            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Name: Bob Normal
+          CreatedOn: 1900-01-01T00:00:00Z
+          CurrencyId:
+            Type: User
+            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Name: Bob Normal
+          Name: Name
       properties:
         Meta:
           $ref: '#/components/schemas/Meta'
@@ -4391,11 +4513,7 @@ components:
         LocationId:
           Field: Field
           Value: Value
-        Id: Id
       properties:
-        Id:
-          description: The identifier of user location.
-          type: string
         LocationId:
           $ref: '#/components/schemas/FieldType'
       type: object
@@ -4403,11 +4521,7 @@ components:
       description: The record of Location information.
       example:
         LocationId: LocationId
-        Id: Id
       properties:
-        Id:
-          description: The identifier of user location.
-          type: string
         LocationId:
           description: The identifier of the location.
           type: string
@@ -4435,9 +4549,7 @@ components:
         IsFullValidation: false
         Locations:
         - LocationId: LocationId
-          Id: Id
         - LocationId: LocationId
-          Id: Id
       properties:
         Extra:
           description: List validation for entity attribute
@@ -4791,23 +4903,17 @@ components:
     EffectivePermission:
       description: The record of EffectivePermission information.
       example:
+        Read: false
         Delete: false
+        Details: false
         Import: false
         AccessGroupTypeId:
           Type: User
           ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
           Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
           Name: Bob Normal
-        Generic: false
-        Update: false
-        RoleId:
-          Type: User
-          ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-          Id: 1234567891234567
-          Name: Bob Normal
-        Read: false
-        Details: false
         Create: false
+        Generic: false
         AccessRoleId:
           Type: User
           ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
@@ -4816,14 +4922,13 @@ components:
         Export: false
         Id: Id
         CreatedOn: 1900-01-01T00:00:00Z
+        Update: false
       properties:
         Id:
           description: The identifier of entity
           type: string
         AccessRoleId:
           $ref: '#/components/schemas/AbstractText'
-        RoleId:
-          $ref: '#/components/schemas/AbstractLong'
         AccessGroupTypeId:
           $ref: '#/components/schemas/AbstractText'
         Create:
@@ -4885,23 +4990,17 @@ components:
           CurrentPage: 50
           TotalItems: 1000
         Data:
-        - Delete: false
+        - Read: false
+          Delete: false
+          Details: false
           Import: false
           AccessGroupTypeId:
             Type: User
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Name: Bob Normal
-          Generic: false
-          Update: false
-          RoleId:
-            Type: User
-            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-            Id: 1234567891234567
-            Name: Bob Normal
-          Read: false
-          Details: false
           Create: false
+          Generic: false
           AccessRoleId:
             Type: User
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
@@ -4910,23 +5009,18 @@ components:
           Export: false
           Id: Id
           CreatedOn: 1900-01-01T00:00:00Z
-        - Delete: false
+          Update: false
+        - Read: false
+          Delete: false
+          Details: false
           Import: false
           AccessGroupTypeId:
             Type: User
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Name: Bob Normal
-          Generic: false
-          Update: false
-          RoleId:
-            Type: User
-            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-            Id: 1234567891234567
-            Name: Bob Normal
-          Read: false
-          Details: false
           Create: false
+          Generic: false
           AccessRoleId:
             Type: User
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
@@ -4935,6 +5029,7 @@ components:
           Export: false
           Id: Id
           CreatedOn: 1900-01-01T00:00:00Z
+          Update: false
       properties:
         Meta:
           $ref: '#/components/schemas/Meta'

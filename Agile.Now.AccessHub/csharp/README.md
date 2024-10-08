@@ -257,7 +257,6 @@ Class | Method | HTTP request | Description
  - [Model.Tenants](docs/models/Tenants.md)
  - [Model.User](docs/models/User.md)
  - [Model.UserData](docs/models/UserData.md)
- - [Model.UserData1](docs/models/UserData1.md)
  - [Model.UserExternal](docs/models/UserExternal.md)
  - [Model.UserExternalData](docs/models/UserExternalData.md)
  - [Model.UserExternalText](docs/models/UserExternalText.md)

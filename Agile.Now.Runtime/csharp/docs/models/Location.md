@@ -5,8 +5,13 @@ The record of Location information.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | The identifier of user location | 
-**LocationId** | [**AbstractText**](AbstractText.md) | The AbstractText object structure | [optional] 
+**Id** | **string** | The guid to identify the location | 
+**ExternalId** | **string** | The external identifier of the location | [optional] 
+**Name** | **string** | The name of the location | 
+**CountryId** | [**AbstractText**](AbstractText.md) | The AbstractText object structure | [optional] 
+**TimezoneId** | [**AbstractText**](AbstractText.md) | The AbstractText object structure | [optional] 
+**CurrencyId** | [**AbstractText**](AbstractText.md) | The AbstractText object structure | [optional] 
+**IsActive** | **bool** | Defines if the location is active and can be used | [default to false]
 **ModifiedOn** | **DateTime** | The date the record was updated | [optional] [default to "1900-01-01T00:00Z"]
 **CreatedOn** | **DateTime** | The date the record was created | [optional] [default to "1900-01-01T00:00Z"]
 

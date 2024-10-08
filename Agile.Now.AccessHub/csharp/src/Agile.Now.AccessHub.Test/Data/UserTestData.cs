@@ -13,7 +13,7 @@ public class UserTestData {
 
     public static UserData1 CreateUserData1(int userId) => new(userId: new("Id", userId.ToString()));
 
-    public static IEnumerable<UserData1> CreateUserData1s() => Users.Select(i => CreateUserData1(i));
+    public static IEnumerable<UserData> CreateUserData1s() => Users.Select(i => CreateUserData(i));
 
     public static readonly int[] Groups = new[] { 6626, 6625, 6624 };
 

@@ -3,9 +3,65 @@ using System.Collections.Generic;
 using System.Linq;
 using Agile.Now.AccessHub.Model;
 using Agile.Now.AccessHub.Test.Data;
+using Agile.Now.Api.Test;
 using Xunit;
 
 namespace Agile.Now.ApiOrganizations.Test.Api;
+
+public class LocationTestData2 : TestData<Location, LocationInsertData> {
+    public override void AssertEqual(LocationInsertData expected, Location actual) {
+        Assert.Equal(expected.Name, actual.Name);
+        Assert.Equal(expected.CountryId, EnumCountryValueConverter.FromString(actual.CountryId.Id));
+        Assert.Equal(expected.TimezoneId, EnumTimezoneValueConverter.FromString(actual.TimezoneId.Id));
+        Assert.Equal(expected.CurrencyId, EnumCurrencyValueConverter.FromString(actual.CurrencyId.Id));
+    }
+
+    public override void AssertEqual(Location expected, Location actual) {
+        Assert.Equal(expected.Id, actual.Id);
+        Assert.Equal(expected.Name, actual.Name);
+        Assert.Equal(expected.CountryId.Id, actual.CountryId.Id);
+        Assert.Equal(expected.TimezoneId.Id, actual.TimezoneId.Id);
+        Assert.Equal(expected.CurrencyId.Id, actual.CurrencyId.Id);
+    }
+
+    public override IEnumerable<LocationInsertData> GenerateRequestData() =>
+        Enumerable.Range(0, 4).Select(i => LocationTestData.CreateLocationData(i.ToString()));
+
+    public override void Update(LocationInsertData data) {
+        data.CountryId = data.CountryId == EnumCountry.Finland ?
+            EnumCountry.UnitedStatesOfAmerica : EnumCountry.Finland;
+        data.TimezoneId = data.TimezoneId == EnumTimezone.Gmt0100WestCentralAfrica ?
+            EnumTimezone.Gmt0100Azores : EnumTimezone.Gmt0100WestCentralAfrica;
+        data.CurrencyId = data.CurrencyId == EnumCurrency.UnitedStatesDollar ?
+            EnumCurrency.Euro : EnumCurrency.UnitedStatesDollar;
+    }
+}
+
+public static class LocationTestData_extention {
+    public static LocationUpdateData ToLocationUpdateData(this LocationInsertData locationInsertData) =>
+        new(
+            name: locationInsertData.Name,
+            countryId: locationInsertData.CountryId,
+            timezoneId: locationInsertData.TimezoneId,
+            currencyId: locationInsertData.CurrencyId
+        );
+
+    public static LocationData ToLocationData(this LocationInsertData locationInsertData) =>
+        new(
+            id: locationInsertData.Id,
+            name: locationInsertData.Name,
+            countryId: locationInsertData.CountryId,
+            timezoneId: locationInsertData.TimezoneId,
+            currencyId: locationInsertData.CurrencyId
+        );
+}
+
+public class LocationUserTestData : TestData<User, UserData> {
+    public override void AssertEqual(UserData data0, User data1) { }
+    public override void AssertEqual(User data0, User data1) { }
+    public override IEnumerable<UserData> GenerateRequestData() => UserTestData.CreateUserData1s();
+    public override void Update(UserData data) { }
+}
 
 internal static class LocationTestData {
     public static LocationInsertData CreateLocationData(string suffix = null) {
@@ -19,49 +75,4 @@ internal static class LocationTestData {
             currencyId: EnumCurrency.UnitedStatesDollar
         );
     }
-
-    public static IEnumerable<LocationInsertData> CreateLocationDatas() =>
-        Enumerable.Range(0, 4).Select(i => CreateLocationData(i.ToString()));
-
-    public static void Update(this LocationInsertData locationInsertData) {
-        locationInsertData.CountryId = locationInsertData.CountryId == EnumCountry.Finland ?
-            EnumCountry.UnitedStatesOfAmerica : EnumCountry.Finland;
-        locationInsertData.TimezoneId = locationInsertData.TimezoneId == EnumTimezone.Gmt0100WestCentralAfrica ?
-            EnumTimezone.Gmt0100Azores : EnumTimezone.Gmt0100WestCentralAfrica;
-        locationInsertData.CurrencyId = locationInsertData.CurrencyId == EnumCurrency.UnitedStatesDollar ?
-            EnumCurrency.Euro : EnumCurrency.UnitedStatesDollar;
-    }
-
-    public static void AssertEqual(this LocationInsertData locationInsertData, Location location) {
-        Assert.Equal(locationInsertData.Name, location.Name);
-        Assert.Equal(locationInsertData.CountryId, EnumCountryValueConverter.FromString(location.CountryId.Id));
-        Assert.Equal(locationInsertData.TimezoneId, EnumTimezoneValueConverter.FromString(location.TimezoneId.Id));
-        Assert.Equal(locationInsertData.CurrencyId, EnumCurrencyValueConverter.FromString(location.CurrencyId.Id));
-    }
-
-    public static void AssertEqual(this Location locationInsertData, Location location) {
-        Assert.Equal(locationInsertData.Name, location.Name);
-        Assert.Equal(locationInsertData.CountryId.Id, location.CountryId.Id);
-        Assert.Equal(locationInsertData.TimezoneId.Id, location.TimezoneId.Id);
-        Assert.Equal(locationInsertData.CurrencyId.Id, location.CurrencyId.Id);
-    }
-
-    public static LocationUpdateData ToLocationUpdateData(this LocationInsertData locationInsertData) =>
-        new
-        (
-            name: locationInsertData.Name,
-            countryId: locationInsertData.CountryId,
-            timezoneId: locationInsertData.TimezoneId,
-            currencyId: locationInsertData.CurrencyId
-        );
-
-    public static LocationData ToLocationData(this LocationInsertData locationInsertData) =>
-        new
-        (
-            id: locationInsertData.Id,
-            name: locationInsertData.Name,
-            countryId: locationInsertData.CountryId,
-            timezoneId: locationInsertData.TimezoneId,
-            currencyId: locationInsertData.CurrencyId
-        );
 }

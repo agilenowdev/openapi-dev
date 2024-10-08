@@ -55,21 +55,11 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GroupData" /> class.
         /// </summary>
-        /// <param name="id">The identifier of group access group. (default to 0).</param>
         /// <param name="groupId">groupId.</param>
-        public GroupData(long id = 0, FieldType groupId = default)
+        public GroupData(FieldType groupId = default)
         {
-            Id = id;
             GroupId = groupId;
         }
-
-        /// <summary>
-        /// The identifier of group access group.
-        /// </summary>
-        /// <value>The identifier of group access group.</value>
-        /// <example>0</example>
-        [DataMember(Name = "Id", EmitDefaultValue = false)]
-        public long Id { get; set; }
 
         /// <summary>
         /// Gets or Sets GroupId
@@ -85,7 +75,6 @@ namespace Agile.Now.AccessHub.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GroupData {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  GroupId: ").Append(GroupId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

@@ -55,20 +55,11 @@ namespace Agile.Now.Runtime.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DepartmentText" /> class.
         /// </summary>
-        /// <param name="id">The identifier of user department..</param>
         /// <param name="departmentId">The identifier of the department..</param>
-        public DepartmentText(string id = default, string departmentId = default)
+        public DepartmentText(string departmentId = default)
         {
-            Id = id;
             DepartmentId = departmentId;
         }
-
-        /// <summary>
-        /// The identifier of user department.
-        /// </summary>
-        /// <value>The identifier of user department.</value>
-        [DataMember(Name = "Id", EmitDefaultValue = false)]
-        public string Id { get; set; }
 
         /// <summary>
         /// The identifier of the department.
@@ -85,7 +76,6 @@ namespace Agile.Now.Runtime.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class DepartmentText {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  DepartmentId: ").Append(DepartmentId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

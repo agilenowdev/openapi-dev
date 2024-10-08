@@ -55,24 +55,15 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ApplicationText" /> class.
         /// </summary>
-        /// <param name="id">The identifier of  access group application..</param>
         /// <param name="parentApplicationId">The identifier of the parent access application.  You can assign a role to a different access application and this allows for a user-friendly application/role structure..</param>
         /// <param name="accessApplicationId">The identifier of the access application.  You can assign a role to a different access application and this allows for a user-friendly application/role structure..</param>
         /// <param name="isActive">Defines if record is active. (default to false).</param>
-        public ApplicationText(string id = default, string parentApplicationId = default, string accessApplicationId = default, bool isActive = false)
+        public ApplicationText(string parentApplicationId = default, string accessApplicationId = default, bool isActive = false)
         {
-            Id = id;
             ParentApplicationId = parentApplicationId;
             AccessApplicationId = accessApplicationId;
             IsActive = isActive;
         }
-
-        /// <summary>
-        /// The identifier of  access group application.
-        /// </summary>
-        /// <value>The identifier of  access group application.</value>
-        [DataMember(Name = "Id", EmitDefaultValue = false)]
-        public string Id { get; set; }
 
         /// <summary>
         /// The identifier of the parent access application.  You can assign a role to a different access application and this allows for a user-friendly application/role structure.
@@ -104,7 +95,6 @@ namespace Agile.Now.AccessHub.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class ApplicationText {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  ParentApplicationId: ").Append(ParentApplicationId).Append("\n");
             sb.Append("  AccessApplicationId: ").Append(AccessApplicationId).Append("\n");
             sb.Append("  IsActive: ").Append(IsActive).Append("\n");

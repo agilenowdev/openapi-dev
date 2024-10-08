@@ -80,7 +80,6 @@ docs/TenantData.md
 docs/Tenants.md
 docs/User.md
 docs/UserData.md
-docs/UserData1.md
 docs/UserExternal.md
 docs/UserExternalData.md
 docs/UserExternalText.md
@@ -191,7 +190,6 @@ src/Agile.Now.AccessHub/Model/TenantData.cs
 src/Agile.Now.AccessHub/Model/Tenants.cs
 src/Agile.Now.AccessHub/Model/User.cs
 src/Agile.Now.AccessHub/Model/UserData.cs
-src/Agile.Now.AccessHub/Model/UserData1.cs
 src/Agile.Now.AccessHub/Model/UserExternal.cs
 src/Agile.Now.AccessHub/Model/UserExternalData.cs
 src/Agile.Now.AccessHub/Model/UserExternalText.cs

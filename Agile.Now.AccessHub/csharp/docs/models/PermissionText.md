@@ -5,9 +5,7 @@ The record of Permission information.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **long** | The identifier of entity. | [optional] [default to 0]
 **AccessRoleId** | **string** | The identifier of access role. | [optional] 
-**RoleId** | **string** | The identifier of role. | [optional] 
 **PermissionId** | **string** | The identifier of permission. | [optional] 
 **IsActive** | **bool** | Defines if record is active. | [optional] [default to false]
 

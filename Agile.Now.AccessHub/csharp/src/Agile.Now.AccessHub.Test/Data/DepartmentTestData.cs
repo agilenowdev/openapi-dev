@@ -3,9 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using Agile.Now.AccessHub.Model;
 using Agile.Now.AccessHub.Test.Data;
+using Agile.Now.Api.Test;
 using Xunit;
 
 namespace Agile.Now.ApiOrganizations.Test.Api;
+
+public class DepartmentTestData2 : TestData<Department, DepartmentInsertData> {
+    public override void AssertEqual(DepartmentInsertData data0, Department data1) => data0.AssertEqual(data1);
+    public override void AssertEqual(Department data0, Department data1) => data0.AssertEqual(data1);
+    public override IEnumerable<DepartmentInsertData> GenerateRequestData() => ApiOrganizations.Test.Api.DepartmentTestData.CreateDepartmentDatas();
+    public override void Update(DepartmentInsertData data) => data.Update();
+}
+
+public class DepartmentUserTestData : TestData<User, UserData> {
+    public override void AssertEqual(UserData data0, User data1) { }
+    public override void AssertEqual(User data0, User data1) { }
+    public override IEnumerable<UserData> GenerateRequestData() => UserTestData.CreateUserData1s();
+    public override void Update(UserData data) { }
+}
 
 internal static class DepartmentTestData {
     public static DepartmentInsertData CreateDepartmentData(string suffix = null) {

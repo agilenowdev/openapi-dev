@@ -3,9 +3,45 @@ using System.Collections.Generic;
 using System.Linq;
 using Agile.Now.AccessHub.Model;
 using Agile.Now.AccessHub.Test.Data;
+using Agile.Now.Api.Test;
 using Xunit;
 
 namespace Agile.Now.ApiAccessGroups.Test.Api;
+
+public class AccessGroupTestData2 : TestData<AccessGroup, AccessGroupData> {
+    public override void AssertEqual(AccessGroupData data0, AccessGroup data1) => data0.AssertEqual(data1);
+    public override void AssertEqual(AccessGroup data0, AccessGroup data1) => data0.AssertEqual(data1);
+    public override IEnumerable<AccessGroupData> GenerateRequestData() => AccessGroupTestData.CreateAccessGroupDatas();
+    public override void Update(AccessGroupData data) => data.Update();
+}
+
+public class AccessGroupApplicationTestData : TestData<Application, ApplicationData> {
+    public override void AssertEqual(ApplicationData data0, Application data1) { }
+    public override void AssertEqual(Application data0, Application data1) { }
+    public override IEnumerable<ApplicationData> GenerateRequestData() => AccessGroupTestData.CreateApplicationDatas();
+    public override void Update(ApplicationData data) { }
+}
+
+public class AccessGroupPermissionTestData : TestData<Permission, PermissionData> {
+    public override void AssertEqual(PermissionData data0, Permission data1) { }
+    public override void AssertEqual(Permission data0, Permission data1) { }
+    public override IEnumerable<PermissionData> GenerateRequestData() => AccessGroupTestData.CreatePermissionDatas();
+    public override void Update(PermissionData data) { }
+}
+
+public class AccessGroupGroupTestData : TestData<Group, GroupData> {
+    public override void AssertEqual(GroupData data0, Group data1) { }
+    public override void AssertEqual(Group data0, Group data1) { }
+    public override IEnumerable<GroupData> GenerateRequestData() => UserTestData.CreateGroupDatas();
+    public override void Update(GroupData data) { }
+}
+
+public class AccessGroupUserTestData : TestData<User, UserData> {
+    public override void AssertEqual(UserData data0, User data1) { }
+    public override void AssertEqual(User data0, User data1) { }
+    public override IEnumerable<UserData> GenerateRequestData() => UserTestData.CreateUserDatas();
+    public override void Update(UserData data) { }
+}
 
 internal static class AccessGroupTestData {
     public static readonly string[] Applications = new[] {
@@ -68,25 +104,21 @@ internal static class AccessGroupTestData {
     public static IEnumerable<ApplicationData> CreateApplicationDatas() =>
         Applications.Select(i => CreateApplicationData(i));
 
-    public static ApplicationText CreateApplicationText(string accessApplicationId, string id = default) => new(
+    public static ApplicationText CreateApplicationText(string accessApplicationId) => new(
         parentApplicationId: ParentApplication,
-        accessApplicationId: accessApplicationId,
-        id: id);
+        accessApplicationId: accessApplicationId);
 
     public static PermissionData CreatePermissionData(EnumPermissionType id) => new(permissionId: id);
 
     public static IEnumerable<PermissionData> CreatePermissionDatas() {
         yield return new PermissionData(
             accessRoleId: new("Id", AccessRole),
-            roleId: new("Id", "201"),
             permissionId: EnumPermissionType.Create);
         yield return new PermissionData(
             accessRoleId: new("Id", AccessRole),
-            roleId: new("Id", "201"),
             permissionId: EnumPermissionType.Generic);
         yield return new PermissionData(
             accessRoleId: new("Id", AccessRole),
-            roleId: new("Id", "201"),
             permissionId: EnumPermissionType.Delete);
     }
 }
