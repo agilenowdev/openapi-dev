@@ -1,13 +1,10 @@
-﻿namespace Agile.Now.Api.Test;
+﻿using Xunit;
 
-public abstract class EntityTestsBase<TId> {
-    public abstract TId CreateInternal();
-    public abstract void DeleteInternal(string id);
-}
+namespace Agile.Now.Api.Test;
 
-public abstract class EntityTestsBase<TResponse, TId, TRequest> : EntityTestsBase<TId> {
+public abstract class EntityTestsBase<TResponse, TId, TRequest> {
     protected readonly TestData<TResponse, TRequest> testData;
-    protected readonly Attribute<TResponse, TId, TRequest> id;
+    public readonly Attribute<TResponse, TId, TRequest> Id;
     protected readonly Attribute<TResponse, string, TRequest>[] uniqueAttributes;
 
     public EntityTestsBase(
@@ -16,7 +13,18 @@ public abstract class EntityTestsBase<TResponse, TId, TRequest> : EntityTestsBas
         Attribute<TResponse, string, TRequest>[] uniqueAttributes) {
 
         this.testData = testData;
-        this.id = id;
+        Id = id;
         this.uniqueAttributes = uniqueAttributes;
     }
+
+    protected const int DefaultPageSize = 50;
+
+    public void AssertCollectionsEqual(IEnumerable<TResponse> expected, IEnumerable<TResponse> actual) =>
+        Assert.Collection(
+            expected.OrderBy(i => Id.Get(i)),
+            actual.OrderBy(i => Id.Get(i))
+                .Select(actualItem =>
+                    new Action<TResponse>(expectedItem =>
+                        testData.AssertEqualToResponse(actualItem, expectedItem))).ToArray());
+
 }

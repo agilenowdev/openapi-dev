@@ -19,19 +19,19 @@ All URIs are relative to *https://dev.esystems.fi*
 
 <a id="createaccount"></a>
 # **CreateAccount**
-> Account CreateAccount (AccountData accountData)
+> Account CreateAccount (AccountInsertData accountInsertData)
 
-Use the `AccountData` object resource to create new records.
+Use the `AccountInsertData` object resource to create new records.
 
 You can supply the required field values in the request data, and then use the `POST` method of the resource.
 
-The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.
+The input parameter must be used in the `AccountInsertData` record structure inside the `FieldType` parameter in the foreign key fields.
 
 Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`
 
 ### Create a new record of Account
-* If the value in the `Id, Username, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`).
-* If the value in the `Username, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`).
+* If the value in the `Id, Username, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`AccountInsertData`).
+* If the value in the `Username, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccountInsertData`).
 * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
 The response body will contain the object of the created record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
@@ -58,11 +58,11 @@ namespace Example
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new AccountsApi(config);
-            var accountData = new AccountData(); // AccountData | `Account` information to insert.  The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.
+            var accountInsertData = new AccountInsertData(); // AccountInsertData | `Account` information to insert.  The input parameter must be used in the `AccountInsertData` record structure inside the `FieldType` parameter in the foreign key fields.
 
             try
             {
-                Account result = apiInstance.CreateAccount(accountData);
+                Account result = apiInstance.CreateAccount(accountInsertData);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -88,7 +88,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<Account> response = apiInstance.CreateAccountWithHttpInfo(accountData);
+    ApiResponse<Account> response = apiInstance.CreateAccountWithHttpInfo(accountInsertData);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -111,7 +111,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **accountData** | [**AccountData**](models/AccountData.md) | &#x60;Account&#x60; information to insert.  The input parameter must be used in the &#x60;AccountData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
+| **accountInsertData** | [**AccountInsertData**](models/AccountInsertData.md) | &#x60;Account&#x60; information to insert.  The input parameter must be used in the &#x60;AccountInsertData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
 
 ### Return type
 
@@ -1011,13 +1011,13 @@ catch (ApiException e)
 
 <a id="updateaccount"></a>
 # **UpdateAccount**
-> Account UpdateAccount (string id, AccountData accountData, string name = null)
+> Account UpdateAccount (string id, AccountUpdateData accountUpdateData, string name = null)
 
-Use the `AccountData` object resource to update `Account` using `Id, Username, ExternalId` field(s) value.
+Use the `AccountUpdateData` object resource to update `Account` using `Id, Username, ExternalId` field(s) value.
 
 Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record. 
 
-The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.
+The input parameter must be used in the `AccountUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.
 
 Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`
 
@@ -1049,12 +1049,12 @@ namespace Example
 
             var apiInstance = new AccountsApi(config);
             var id = "id_example";  // string | The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
-            var accountData = new AccountData(); // AccountData | Account information to update.  The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.
+            var accountUpdateData = new AccountUpdateData(); // AccountUpdateData | Account information to update.  The input parameter must be used in the `AccountUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.
             var name = "name_example";  // string | The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Username, ExternalId ``` (optional) 
 
             try
             {
-                Account result = apiInstance.UpdateAccount(id, accountData, name);
+                Account result = apiInstance.UpdateAccount(id, accountUpdateData, name);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1080,7 +1080,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<Account> response = apiInstance.UpdateAccountWithHttpInfo(id, accountData, name);
+    ApiResponse<Account> response = apiInstance.UpdateAccountWithHttpInfo(id, accountUpdateData, name);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -1104,7 +1104,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **id** | **string** | The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t |  |
-| **accountData** | [**AccountData**](models/AccountData.md) | Account information to update.  The input parameter must be used in the &#x60;AccountData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
+| **accountUpdateData** | [**AccountUpdateData**](models/AccountUpdateData.md) | Account information to update.  The input parameter must be used in the &#x60;AccountUpdateData&#x60; record structure inside the &#x60;FieldType&#x60; parameter in the foreign key fields. |  |
 | **name** | **string** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Username, ExternalId &#x60;&#x60;&#x60; | [optional]  |
 
 ### Return type

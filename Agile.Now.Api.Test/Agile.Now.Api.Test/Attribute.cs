@@ -13,6 +13,6 @@ public class Attribute<TResponse, TId, TRequest> {
 
     char GetSeparator() => typeof(TId) == typeof(int) ? ',' : ';';
 
-    public string CreateFilters(IEnumerable<TResponse> entities) =>
+    public string CreateFilters(params TResponse[] entities) =>
         $"{Name} In {string.Join(GetSeparator(), entities.Select(i => Get(i)))}";
 }

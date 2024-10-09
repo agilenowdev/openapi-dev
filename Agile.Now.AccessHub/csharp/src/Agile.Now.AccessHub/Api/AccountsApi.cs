@@ -53,25 +53,25 @@ namespace Agile.Now.AccessHub.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Use the `AccountData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Create a new record of Account * If the value in the `Id, Username, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`). * If the value in the `Username, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`). * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
+        /// Use the `AccountInsertData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `AccountInsertData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Create a new record of Account * If the value in the `Id, Username, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`AccountInsertData`). * If the value in the `Username, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccountInsertData`). * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountData">`Account` information to insert.  The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="accountInsertData">`Account` information to insert.  The input parameter must be used in the `AccountInsertData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Account</returns>
-        Account CreateAccount(AccountData accountData, int operationIndex = 0);
+        Account CreateAccount(AccountInsertData accountInsertData, int operationIndex = 0);
 
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Use the `AccountData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Create a new record of Account * If the value in the `Id, Username, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`). * If the value in the `Username, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`). * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
+        /// Use the `AccountInsertData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `AccountInsertData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Create a new record of Account * If the value in the `Id, Username, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`AccountInsertData`). * If the value in the `Username, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccountInsertData`). * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountData">`Account` information to insert.  The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="accountInsertData">`Account` information to insert.  The input parameter must be used in the `AccountInsertData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Account</returns>
-        ApiResponse<Account> CreateAccountWithHttpInfo(AccountData accountData, int operationIndex = 0);
+        ApiResponse<Account> CreateAccountWithHttpInfo(AccountInsertData accountInsertData, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -285,29 +285,29 @@ namespace Agile.Now.AccessHub.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Use the `AccountData` object resource to update `Account` using `Id, Username, ExternalId` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Update a record of Account * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+        /// Use the `AccountUpdateData` object resource to update `Account` using `Id, Username, ExternalId` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `AccountUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Update a record of Account * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="accountData">Account information to update.  The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="accountUpdateData">Account information to update.  The input parameter must be used in the `AccountUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Username, ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Account</returns>
-        Account UpdateAccount(string id, AccountData accountData, string name = default, int operationIndex = 0);
+        Account UpdateAccount(string id, AccountUpdateData accountUpdateData, string name = default, int operationIndex = 0);
 
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Use the `AccountData` object resource to update `Account` using `Id, Username, ExternalId` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Update a record of Account * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+        /// Use the `AccountUpdateData` object resource to update `Account` using `Id, Username, ExternalId` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `AccountUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Update a record of Account * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="accountData">Account information to update.  The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="accountUpdateData">Account information to update.  The input parameter must be used in the `AccountUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Username, ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Account</returns>
-        ApiResponse<Account> UpdateAccountWithHttpInfo(string id, AccountData accountData, string name = default, int operationIndex = 0);
+        ApiResponse<Account> UpdateAccountWithHttpInfo(string id, AccountUpdateData accountUpdateData, string name = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -398,27 +398,27 @@ namespace Agile.Now.AccessHub.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Use the `AccountData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Create a new record of Account * If the value in the `Id, Username, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`). * If the value in the `Username, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`). * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
+        /// Use the `AccountInsertData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `AccountInsertData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Create a new record of Account * If the value in the `Id, Username, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`AccountInsertData`). * If the value in the `Username, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccountInsertData`). * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountData">`Account` information to insert.  The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="accountInsertData">`Account` information to insert.  The input parameter must be used in the `AccountInsertData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Account</returns>
-        System.Threading.Tasks.Task<Account> CreateAccountAsync(AccountData accountData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Account> CreateAccountAsync(AccountInsertData accountInsertData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Use the `AccountData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Create a new record of Account * If the value in the `Id, Username, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`). * If the value in the `Username, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`). * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
+        /// Use the `AccountInsertData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `AccountInsertData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Create a new record of Account * If the value in the `Id, Username, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`AccountInsertData`). * If the value in the `Username, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccountInsertData`). * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountData">`Account` information to insert.  The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="accountInsertData">`Account` information to insert.  The input parameter must be used in the `AccountInsertData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Account)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Account>> CreateAccountWithHttpInfoAsync(AccountData accountData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Account>> CreateAccountWithHttpInfoAsync(AccountInsertData accountInsertData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -646,31 +646,31 @@ namespace Agile.Now.AccessHub.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Use the `AccountData` object resource to update `Account` using `Id, Username, ExternalId` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Update a record of Account * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+        /// Use the `AccountUpdateData` object resource to update `Account` using `Id, Username, ExternalId` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `AccountUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Update a record of Account * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="accountData">Account information to update.  The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="accountUpdateData">Account information to update.  The input parameter must be used in the `AccountUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Username, ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Account</returns>
-        System.Threading.Tasks.Task<Account> UpdateAccountAsync(string id, AccountData accountData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Account> UpdateAccountAsync(string id, AccountUpdateData accountUpdateData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Use the `AccountData` object resource to update `Account` using `Id, Username, ExternalId` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Update a record of Account * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+        /// Use the `AccountUpdateData` object resource to update `Account` using `Id, Username, ExternalId` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `AccountUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Update a record of Account * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="accountData">Account information to update.  The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="accountUpdateData">Account information to update.  The input parameter must be used in the `AccountUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Username, ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Account)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Account>> UpdateAccountWithHttpInfoAsync(string id, AccountData accountData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Account>> UpdateAccountWithHttpInfoAsync(string id, AccountUpdateData accountUpdateData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -871,29 +871,29 @@ namespace Agile.Now.AccessHub.Api
         }
 
         /// <summary>
-        /// Use the `AccountData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Create a new record of Account * If the value in the `Id, Username, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`). * If the value in the `Username, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`). * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
+        /// Use the `AccountInsertData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `AccountInsertData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Create a new record of Account * If the value in the `Id, Username, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`AccountInsertData`). * If the value in the `Username, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccountInsertData`). * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountData">`Account` information to insert.  The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="accountInsertData">`Account` information to insert.  The input parameter must be used in the `AccountInsertData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Account</returns>
-        public Account CreateAccount(AccountData accountData, int operationIndex = 0)
+        public Account CreateAccount(AccountInsertData accountInsertData, int operationIndex = 0)
         {
-            ApiResponse<Account> localVarResponse = CreateAccountWithHttpInfo(accountData);
+            ApiResponse<Account> localVarResponse = CreateAccountWithHttpInfo(accountInsertData);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Use the `AccountData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Create a new record of Account * If the value in the `Id, Username, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`). * If the value in the `Username, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`). * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
+        /// Use the `AccountInsertData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `AccountInsertData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Create a new record of Account * If the value in the `Id, Username, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`AccountInsertData`). * If the value in the `Username, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccountInsertData`). * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountData">`Account` information to insert.  The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="accountInsertData">`Account` information to insert.  The input parameter must be used in the `AccountInsertData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Account</returns>
-        public ApiResponse<Account> CreateAccountWithHttpInfo(AccountData accountData, int operationIndex = 0)
+        public ApiResponse<Account> CreateAccountWithHttpInfo(AccountInsertData accountInsertData, int operationIndex = 0)
         {
-            // verify the required parameter 'accountData' is set
-            accountData = accountData ?? throw new ApiException(400, "Missing required parameter 'accountData' when calling AccountsApi->CreateAccount");
+            // verify the required parameter 'accountInsertData' is set
+            accountInsertData = accountInsertData ?? throw new ApiException(400, "Missing required parameter 'accountInsertData' when calling AccountsApi->CreateAccount");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -918,7 +918,7 @@ namespace Agile.Now.AccessHub.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.Data = accountData;
+            localVarRequestOptions.Data = accountInsertData;
 
             localVarRequestOptions.Operation = "AccountsApi.CreateAccount";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -955,31 +955,31 @@ namespace Agile.Now.AccessHub.Api
         }
 
         /// <summary>
-        /// Use the `AccountData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Create a new record of Account * If the value in the `Id, Username, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`). * If the value in the `Username, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`). * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
+        /// Use the `AccountInsertData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `AccountInsertData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Create a new record of Account * If the value in the `Id, Username, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`AccountInsertData`). * If the value in the `Username, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccountInsertData`). * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountData">`Account` information to insert.  The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="accountInsertData">`Account` information to insert.  The input parameter must be used in the `AccountInsertData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Account</returns>
-        public async System.Threading.Tasks.Task<Account> CreateAccountAsync(AccountData accountData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Account> CreateAccountAsync(AccountInsertData accountInsertData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            ApiResponse<Account> localVarResponse = await CreateAccountWithHttpInfoAsync(accountData, operationIndex, cancellationToken).ConfigureAwait(false);
+            ApiResponse<Account> localVarResponse = await CreateAccountWithHttpInfoAsync(accountInsertData, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Use the `AccountData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Create a new record of Account * If the value in the `Id, Username, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`). * If the value in the `Username, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccountData`). * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
+        /// Use the `AccountInsertData` object resource to create new records.  You can supply the required field values in the request data, and then use the `POST` method of the resource.  The input parameter must be used in the `AccountInsertData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Create a new record of Account * If the value in the `Id, Username, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`AccountInsertData`). * If the value in the `Username, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccountInsertData`). * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the created record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.  
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountData">`Account` information to insert.  The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="accountInsertData">`Account` information to insert.  The input parameter must be used in the `AccountInsertData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Account)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Account>> CreateAccountWithHttpInfoAsync(AccountData accountData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ApiResponse<Account>> CreateAccountWithHttpInfoAsync(AccountInsertData accountInsertData, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            // verify the required parameter 'accountData' is set
-            accountData = accountData ?? throw new ApiException(400, "Missing required parameter 'accountData' when calling AccountsApi->CreateAccount");
+            // verify the required parameter 'accountInsertData' is set
+            accountInsertData = accountInsertData ?? throw new ApiException(400, "Missing required parameter 'accountInsertData' when calling AccountsApi->CreateAccount");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -1005,7 +1005,7 @@ namespace Agile.Now.AccessHub.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.Data = accountData;
+            localVarRequestOptions.Data = accountInsertData;
 
             localVarRequestOptions.Operation = "AccountsApi.CreateAccount";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -2521,36 +2521,36 @@ namespace Agile.Now.AccessHub.Api
         }
 
         /// <summary>
-        /// Use the `AccountData` object resource to update `Account` using `Id, Username, ExternalId` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Update a record of Account * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+        /// Use the `AccountUpdateData` object resource to update `Account` using `Id, Username, ExternalId` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `AccountUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Update a record of Account * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="accountData">Account information to update.  The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="accountUpdateData">Account information to update.  The input parameter must be used in the `AccountUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Username, ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Account</returns>
-        public Account UpdateAccount(string id, AccountData accountData, string name = default, int operationIndex = 0)
+        public Account UpdateAccount(string id, AccountUpdateData accountUpdateData, string name = default, int operationIndex = 0)
         {
-            ApiResponse<Account> localVarResponse = UpdateAccountWithHttpInfo(id, accountData, name);
+            ApiResponse<Account> localVarResponse = UpdateAccountWithHttpInfo(id, accountUpdateData, name);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Use the `AccountData` object resource to update `Account` using `Id, Username, ExternalId` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Update a record of Account * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+        /// Use the `AccountUpdateData` object resource to update `Account` using `Id, Username, ExternalId` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `AccountUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Update a record of Account * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="accountData">Account information to update.  The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="accountUpdateData">Account information to update.  The input parameter must be used in the `AccountUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Username, ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Account</returns>
-        public ApiResponse<Account> UpdateAccountWithHttpInfo(string id, AccountData accountData, string name = default, int operationIndex = 0)
+        public ApiResponse<Account> UpdateAccountWithHttpInfo(string id, AccountUpdateData accountUpdateData, string name = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->UpdateAccount");
 
-            // verify the required parameter 'accountData' is set
-            accountData = accountData ?? throw new ApiException(400, "Missing required parameter 'accountData' when calling AccountsApi->UpdateAccount");
+            // verify the required parameter 'accountUpdateData' is set
+            accountUpdateData = accountUpdateData ?? throw new ApiException(400, "Missing required parameter 'accountUpdateData' when calling AccountsApi->UpdateAccount");
 
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -2580,7 +2580,7 @@ namespace Agile.Now.AccessHub.Api
             {
                 localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "Name", name));
             }
-            localVarRequestOptions.Data = accountData;
+            localVarRequestOptions.Data = accountUpdateData;
 
             localVarRequestOptions.Operation = "AccountsApi.UpdateAccount";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -2617,38 +2617,38 @@ namespace Agile.Now.AccessHub.Api
         }
 
         /// <summary>
-        /// Use the `AccountData` object resource to update `Account` using `Id, Username, ExternalId` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Update a record of Account * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+        /// Use the `AccountUpdateData` object resource to update `Account` using `Id, Username, ExternalId` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `AccountUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Update a record of Account * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="accountData">Account information to update.  The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="accountUpdateData">Account information to update.  The input parameter must be used in the `AccountUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Username, ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Account</returns>
-        public async System.Threading.Tasks.Task<Account> UpdateAccountAsync(string id, AccountData accountData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Account> UpdateAccountAsync(string id, AccountUpdateData accountUpdateData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            ApiResponse<Account> localVarResponse = await UpdateAccountWithHttpInfoAsync(id, accountData, name, operationIndex, cancellationToken).ConfigureAwait(false);
+            ApiResponse<Account> localVarResponse = await UpdateAccountWithHttpInfoAsync(id, accountUpdateData, name, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Use the `AccountData` object resource to update `Account` using `Id, Username, ExternalId` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Update a record of Account * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+        /// Use the `AccountUpdateData` object resource to update `Account` using `Id, Username, ExternalId` field(s) value.  Provide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record.   The input parameter must be used in the `AccountUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.  Foreign key fields are: `TenantId, LanguageId, TimezoneId, DateFormatId`  ### Update a record of Account * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key). * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned. * If the `Id, Username, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.  The response body will contain the object of the updated record if the call is successful. Method returns an extended `Account` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Account record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t</param>
-        /// <param name="accountData">Account information to update.  The input parameter must be used in the `AccountData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
+        /// <param name="accountUpdateData">Account information to update.  The input parameter must be used in the `AccountUpdateData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Username, ExternalId ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Account)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Account>> UpdateAccountWithHttpInfoAsync(string id, AccountData accountData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ApiResponse<Account>> UpdateAccountWithHttpInfoAsync(string id, AccountUpdateData accountUpdateData, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->UpdateAccount");
 
-            // verify the required parameter 'accountData' is set
-            accountData = accountData ?? throw new ApiException(400, "Missing required parameter 'accountData' when calling AccountsApi->UpdateAccount");
+            // verify the required parameter 'accountUpdateData' is set
+            accountUpdateData = accountUpdateData ?? throw new ApiException(400, "Missing required parameter 'accountUpdateData' when calling AccountsApi->UpdateAccount");
 
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -2679,7 +2679,7 @@ namespace Agile.Now.AccessHub.Api
             {
                 localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "Name", name));
             }
-            localVarRequestOptions.Data = accountData;
+            localVarRequestOptions.Data = accountUpdateData;
 
             localVarRequestOptions.Operation = "AccountsApi.UpdateAccount";
             localVarRequestOptions.OperationIndex = operationIndex;

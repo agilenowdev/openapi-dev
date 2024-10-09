@@ -13,6 +13,8 @@ docs/AccessGroups.md
 docs/AccessGroupsApi.md
 docs/Account.md
 docs/AccountData.md
+docs/AccountInsertData.md
+docs/AccountUpdateData.md
 docs/Accounts.md
 docs/AccountsApi.md
 docs/Application.md
@@ -129,6 +131,8 @@ src/Agile.Now.AccessHub/Model/AccessGroupData.cs
 src/Agile.Now.AccessHub/Model/AccessGroups.cs
 src/Agile.Now.AccessHub/Model/Account.cs
 src/Agile.Now.AccessHub/Model/AccountData.cs
+src/Agile.Now.AccessHub/Model/AccountInsertData.cs
+src/Agile.Now.AccessHub/Model/AccountUpdateData.cs
 src/Agile.Now.AccessHub/Model/Accounts.cs
 src/Agile.Now.AccessHub/Model/Application.cs
 src/Agile.Now.AccessHub/Model/ApplicationData.cs

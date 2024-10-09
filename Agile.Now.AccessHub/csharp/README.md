@@ -196,6 +196,8 @@ Class | Method | HTTP request | Description
  - [Model.AccessGroups](docs/models/AccessGroups.md)
  - [Model.Account](docs/models/Account.md)
  - [Model.AccountData](docs/models/AccountData.md)
+ - [Model.AccountInsertData](docs/models/AccountInsertData.md)
+ - [Model.AccountUpdateData](docs/models/AccountUpdateData.md)
  - [Model.Accounts](docs/models/Accounts.md)
  - [Model.Application](docs/models/Application.md)
  - [Model.ApplicationData](docs/models/ApplicationData.md)
