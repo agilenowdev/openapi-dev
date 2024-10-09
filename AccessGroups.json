@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.124"
+    "version": "3.0.125"
   },
   "servers": [
     {
@@ -785,10 +785,10 @@
           {
             "name": "Fields",
             "in": "query",
-            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, AccessGroupId, AccessRoleId, RoleId, PermissionId, Is_Active, CreatedOn\n```",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, AccessGroupId, AccessRoleId, PermissionId, Is_Active, CreatedOn\n```",
             "schema": {
               "type": "string",
-              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, AccessGroupId, AccessRoleId, RoleId, PermissionId, Is_Active, CreatedOn\n```"
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, AccessGroupId, AccessRoleId, PermissionId, Is_Active, CreatedOn\n```"
             }
           },
           {
@@ -3158,10 +3158,38 @@
         "description": "List validation for entity attribute"
       },
       "Permission": {
+        "required": [
+          "Id",
+          "PermissionId",
+          "CreatedOn"
+        ],
         "type": "object",
         "properties": {
-          "RoleId": {
-            "$ref": "#/components/schemas/AbstractLong"
+          "Id": {
+            "type": "integer",
+            "description": "The identifier of entity",
+            "format": "int64",
+            "default": 0,
+            "example": 0
+          },
+          "AccessRoleId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "PermissionId": {
+            "$ref": "#/components/schemas/AbstractText"
+          },
+          "Is_Active": {
+            "type": "boolean",
+            "description": "Defines if record is active",
+            "default": false,
+            "example": false
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date when the record was created.",
+            "format": "date-time",
+            "default": "1900-01-01T00:00:00Z",
+            "example": "1900-01-01T00:00:00Z"
           }
         },
         "description": "The record of Permission information."
