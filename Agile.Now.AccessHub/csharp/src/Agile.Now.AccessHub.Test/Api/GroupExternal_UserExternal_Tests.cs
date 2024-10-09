@@ -25,7 +25,7 @@ public class GroupExternal_User_Tests
         api = new GroupExternalsApi(Settings.Connections[0]);
     }
 
-    public override string EntityName => "User_";
+    protected override string EntityName => "User_";
 
     protected override List<UserExternal> List(
         string id, string name, string filters, string orders, int currentPage, int pageSize) =>

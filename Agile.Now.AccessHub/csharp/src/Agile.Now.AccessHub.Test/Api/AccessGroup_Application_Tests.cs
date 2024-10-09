@@ -25,7 +25,7 @@ public class AccessGroup_Application_Tests
         api = new AccessGroupsApi(Settings.Connections[0]);
     }
 
-    public override string EntityName => "AccessApplication";
+    protected override string EntityName => "AccessApplication";
 
     protected override List<Application> List(
         string id, string name, string filters, string orders, int currentPage, int pageSize) =>

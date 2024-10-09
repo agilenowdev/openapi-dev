@@ -18,17 +18,20 @@ public class SubEntityTests<TParentResponse, TParentId, TParentRequest, TRespons
         Parent = parent;
     }
 
-    public virtual string EntityName => typeof(TResponse).Name;
+    protected virtual string EntityName => typeof(TResponse).Name;
+    protected bool NoCleanUp;
 
-    protected virtual List<TResponse> List(
-        string id, string name, string filters, string orders, int currentPage, int pageSize) => default;
+    protected virtual List<TResponse> List(string id, string name,
+        string filters, string orders = default, int currentPage = default, int pageSize = DefaultPageSize) => default;
 
     protected virtual TResponse Upsert(TParentId id, TRequest data) => default;
     protected virtual TResponse[] Patch(TParentId id, List<TRequest> data, string deleteNotExists) => default;
     protected virtual TResponse Delete(string id, string subId, string name, string subName) => default;
 
     public TResponse[] GenerateEntities(TParentId id, int count) =>
-        testData.GenerateRequestData().Take(count).Select(i => Upsert(id, i)).ToArray();
+        TestData.GenerateRequestData().Take(count).Select(i => Upsert(id, i)).ToArray();
+
+    public TResponse GenerateEntity(TParentId id) => GenerateEntities(id, 1).First();
 
     public void Delete(TParentResponse parentEntity, params TResponse[] entities) {
         foreach(var i in entities)
@@ -41,20 +44,21 @@ public class SubEntityTests<TParentResponse, TParentId, TParentRequest, TRespons
 
     public void Test_List<TValue>(params Attribute<TResponse, TValue, TRequest>[] attributes) {
         var parentEntity = Parent.GenerateEntity();
-        var id = Parent.Id.Get(parentEntity);
+        var parentId = Parent.Id.Get(parentEntity);
         try {
-            var created = GenerateEntities(id, 2);
+            var created = GenerateEntities(parentId, 2);
             try {
                 foreach(var i in attributes) {
                     var filters = i.CreateFilters(created);
                     if(i.Name == "Id")
                         filters = EntityName + filters;
-                    var existing = List(id.ToString(), Parent.Id.Name, filters, null, 0, DefaultPageSize);
+                    var existing = List(parentId.ToString(), Parent.Id.Name, filters);
                     AssertCollectionsEqual(created, existing);
                 }
             }
             finally {
-                Delete(parentEntity, created);
+                if(!NoCleanUp)
+                    Delete(parentEntity, created);
             }
         }
         finally {
@@ -63,7 +67,7 @@ public class SubEntityTests<TParentResponse, TParentId, TParentRequest, TRespons
     }
 
     public void Test_List_ById() => Test_List(Id);
-    public void Test_List_ByUniqueAttributes() => Test_List(uniqueAttributes);
+    public void Test_List_ByUniqueAttributes() => Test_List(UniqueAttributes);
 
     public void Test_List_Paging() {
         var parentEntity = Parent.GenerateEntity();
@@ -81,7 +85,8 @@ public class SubEntityTests<TParentResponse, TParentId, TParentRequest, TRespons
                 Assert.Equal(created.Length, pages[0].Concat(pages[1]).GroupBy(i => Id.Get(i)).Count());
             }
             finally {
-                Delete(parentEntity, created);
+                if(!NoCleanUp)
+                    Delete(parentEntity, created);
             }
         }
         finally {
@@ -105,7 +110,8 @@ public class SubEntityTests<TParentResponse, TParentId, TParentRequest, TRespons
                 Assert.True(actual.Select(i => Id.Get(i)).SequenceEqual(expected));
             }
             finally {
-                Delete(parentEntity, created);
+                if(!NoCleanUp)
+                    Delete(parentEntity, created);
             }
         }
         finally {
@@ -120,15 +126,16 @@ public class SubEntityTests<TParentResponse, TParentId, TParentRequest, TRespons
         var parentEntity = Parent.GenerateEntity();
         var id = Parent.Id.Get(parentEntity);
         try {
-            var data = testData.GenerateRequestData().First();
+            var data = TestData.GenerateRequestData().First();
             var created = Upsert(id, data);
             try {
-                testData.AssertEqualToRequest(data, created);
+                TestData.AssertEqualToRequest(data, created);
                 var upserted = Upsert(id, data);
                 Assert.Equal(Id.Get(created), Id.Get(upserted));
             }
             finally {
-                Delete(parentEntity, created);
+                if(!NoCleanUp)
+                    Delete(parentEntity, created);
             }
         }
         finally {
@@ -140,7 +147,7 @@ public class SubEntityTests<TParentResponse, TParentId, TParentRequest, TRespons
         var parentEntity = Parent.GenerateEntity();
         var id = Parent.Id.Get(parentEntity);
         try {
-            var data = testData.GenerateRequestData().Take(3).ToArray();
+            var data = TestData.GenerateRequestData().Take(3).ToArray();
             var created = data.Take(2).Select(i => Upsert(id, i)).ToArray();
             try {
                 var patched = Patch(id, data.Skip(1).Take(2).ToList(), null);
@@ -166,7 +173,7 @@ public class SubEntityTests<TParentResponse, TParentId, TParentRequest, TRespons
         var parentEntity = Parent.GenerateEntity();
         var id = Parent.Id.Get(parentEntity);
         try {
-            var data = testData.GenerateRequestData().Take(3).ToArray();
+            var data = TestData.GenerateRequestData().Take(3).ToArray();
             var created = data.Take(2).Select(i => Upsert(id, i)).ToArray();
             try {
                 var patched = Patch(id, data.Skip(1).Take(2).ToList(), true.ToString());
@@ -193,7 +200,7 @@ public class SubEntityTests<TParentResponse, TParentId, TParentRequest, TRespons
         try {
             var created = GenerateEntities(id, 1).First();
             var deleted = Delete(id.ToString(), Id.Get(created).ToString(), Parent.Id.Name, $"{EntityName}{Id.Name}");
-            testData.AssertEqualToResponse(created, deleted);
+            TestData.AssertEqualToResponse(created, deleted);
             var existing = List(id.ToString(), Parent.Id.Name, null, null, 0, DefaultPageSize);
             Assert.Empty(existing);
         }
@@ -206,7 +213,7 @@ public class SubEntityTests<TParentResponse, TParentId, TParentRequest, TRespons
         var parentEntity = Parent.GenerateEntity();
         var id = Parent.Id.Get(parentEntity);
         try {
-            foreach(var i in uniqueAttributes) {
+            foreach(var i in UniqueAttributes) {
                 var created = GenerateEntities(id, 1).First();
                 Delete(id.ToString(), i.Get(created), Parent.Id.Name, i.Name);
                 var existing = List(id.ToString(), Parent.Id.Name, null, null, 0, DefaultPageSize);

@@ -22,7 +22,7 @@ public class EntityTests<TResponse, TId, TRequest> : EntityTestsBase<TResponse, 
     protected virtual TResponse Delete(string id, string name) => default;
 
     public TResponse[] GenerateEntities(int count) =>
-        testData.GenerateRequestData().Take(count).Select(i => Create(i)).ToArray();
+        TestData.GenerateRequestData().Take(count).Select(i => Create(i)).ToArray();
 
     public TResponse GenerateEntity() => GenerateEntities(1).First();
 
@@ -45,7 +45,7 @@ public class EntityTests<TResponse, TId, TRequest> : EntityTestsBase<TResponse, 
     }
 
     public void Test_List_ById() => Test_List(Id);
-    public void Test_List_ByUniqueAttributes() => Test_List(uniqueAttributes);
+    public void Test_List_ByUniqueAttributes() => Test_List(UniqueAttributes);
 
     public void Test_List_Paging() {
         var created = GenerateEntities(3);
@@ -86,7 +86,7 @@ public class EntityTests<TResponse, TId, TRequest> : EntityTestsBase<TResponse, 
             foreach(var i in attributes) {
                 Assert.Null(Record.Exception(() => {
                     var existing = Get(i.Get(created).ToString(), i.Name);
-                    testData.AssertEqualToResponse(created, existing);
+                    TestData.AssertEqualToResponse(created, existing);
                 }));
             }
         }
@@ -96,13 +96,13 @@ public class EntityTests<TResponse, TId, TRequest> : EntityTestsBase<TResponse, 
     }
 
     public void Test_Get_ById() => Test_Get(Id);
-    public void Test_Get_ByUniqueAttributes() => Test_Get(uniqueAttributes);
+    public void Test_Get_ByUniqueAttributes() => Test_Get(UniqueAttributes);
 
     public void Test_Create() {
-        var data = testData.GenerateRequestData().First();
+        var data = TestData.GenerateRequestData().First();
         var created = Create(data);
         try {
-            testData.AssertEqualToRequest(data, created);
+            TestData.AssertEqualToRequest(data, created);
         }
         finally {
             Delete(created);
@@ -112,8 +112,8 @@ public class EntityTests<TResponse, TId, TRequest> : EntityTestsBase<TResponse, 
     public void Test_Create_WithUniqueAttributes() {
         var created = GenerateEntity();
         try {
-            foreach(var i in uniqueAttributes) {
-                var data = testData.GenerateRequestData().First();
+            foreach(var i in UniqueAttributes) {
+                var data = TestData.GenerateRequestData().First();
                 i.Set(data, i.Get(created));
                 Assert.ThrowsAny<Exception>(() => Create(data));
             }
@@ -124,13 +124,13 @@ public class EntityTests<TResponse, TId, TRequest> : EntityTestsBase<TResponse, 
     }
 
     public void Test_Update_ById() {
-        var data = testData.GenerateRequestData().First();
+        var data = TestData.GenerateRequestData().First();
         var created = Create(data);
         try {
-            testData.Update(data);
+            TestData.Update(data);
             var updated = Update(Id.Get(created).ToString(), data, Id.Name);
             Assert.Equal(Id.Get(created), Id.Get(updated));
-            testData.AssertEqualToRequest(data, updated);
+            TestData.AssertEqualToRequest(data, updated);
         }
         finally {
             Delete(created);
@@ -138,11 +138,11 @@ public class EntityTests<TResponse, TId, TRequest> : EntityTestsBase<TResponse, 
     }
 
     public void Test_Update_ByUniqueAttributes() {
-        var data = testData.GenerateRequestData().First();
+        var data = TestData.GenerateRequestData().First();
         var created = Create(data);
         try {
-            foreach(var i in uniqueAttributes) {
-                testData.Update(data);
+            foreach(var i in UniqueAttributes) {
+                TestData.Update(data);
                 Assert.ThrowsAny<Exception>(() => Update(i.Get(created), data, i.Name));
             }
         }
@@ -152,15 +152,15 @@ public class EntityTests<TResponse, TId, TRequest> : EntityTestsBase<TResponse, 
     }
 
     public void Test_Upsert() {
-        var data = testData.GenerateRequestData().First();
+        var data = TestData.GenerateRequestData().First();
         var created = Upsert(data);
         try {
-            testData.AssertEqualToRequest(data, created);
-            testData.Update(data);
+            TestData.AssertEqualToRequest(data, created);
+            TestData.Update(data);
             Id.Set(data, Id.Get(created));
             var updated = Upsert(data);
             Assert.Equal(Id.Get(created), Id.Get(updated));
-            testData.AssertEqualToRequest(data, updated);
+            TestData.AssertEqualToRequest(data, updated);
         }
         finally {
             Delete(created);
@@ -174,12 +174,12 @@ public class EntityTests<TResponse, TId, TRequest> : EntityTestsBase<TResponse, 
     public void Test_Delete_ById() {
         var created = GenerateEntity();
         var deleted = Delete(Id.Get(created).ToString(), Id.Name);
-        testData.AssertEqualToResponse(created, deleted);
+        TestData.AssertEqualToResponse(created, deleted);
         Assert.ThrowsAny<Exception>(() => Get(Id.Get(created).ToString(), Id.Name));
     }
 
     public void Test_Delete_ByUniqueAttributes() {
-        foreach(var i in uniqueAttributes) {
+        foreach(var i in UniqueAttributes) {
             var created = GenerateEntity();
             Delete(i.Get(created), i.Name);
             Assert.ThrowsAny<Exception>(() => Get(Id.Get(created).ToString(), Id.Name));

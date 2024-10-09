@@ -12,6 +12,7 @@ namespace Agile.Now.AccessHub.Test.Api;
 
 public class Account_Tests : EntityTests<Account, string, AccountInsertData> {
     readonly AccountsApi api;
+    readonly Account_Tenant_TestData account_Tenant_TestData = new Account_Tenant_TestData();
 
     public Account_Tests()
         : base(
@@ -62,9 +63,9 @@ public class Account_Tests : EntityTests<Account, string, AccountInsertData> {
 
     [Fact]
     public void Test_Account_List_ExternalUser() {
-        var account = GenerateEntities(1).First();
+        var account = GenerateEntity();
         try {
-            api.UpsertAccountTenant(account.Id, Account_Tenant_TestData.CreateTenantDatas().First());
+            api.UpsertAccountTenant(account.Id, account_Tenant_TestData.GenerateRequestData().First());
             var existing = List(Id.CreateFilters(account));
             Assert.NotEmpty(existing);
             api.DeleteAccountTenant(account.Id,
@@ -79,9 +80,9 @@ public class Account_Tests : EntityTests<Account, string, AccountInsertData> {
 
     [Fact]
     public void Test_Account_Get_ExternalUser() {
-        var account = GenerateEntities(1).First();
+        var account = GenerateEntity();
         try {
-            api.UpsertAccountTenant(account.Id, Account_Tenant_TestData.CreateTenantDatas().First());
+            api.UpsertAccountTenant(account.Id, account_Tenant_TestData.GenerateRequestData().First());
             Assert.Null(Record.Exception(() => Get(account.Id)));
             api.DeleteAccountTenant(account.Id,
                 Account_Tenant_TestData.DefaultTenant.ToString(), subName: nameof(TenantData.TenantId));
@@ -94,8 +95,8 @@ public class Account_Tests : EntityTests<Account, string, AccountInsertData> {
 
     [Fact]
     public void Test_Account_Delete_ExternalUser() {
-        var account = GenerateEntities(1).First();
-        api.UpsertAccountTenant(account.Id, Account_Tenant_TestData.CreateTenantDatas().First());
+        var account = GenerateEntity();
+        api.UpsertAccountTenant(account.Id, account_Tenant_TestData.GenerateRequestData().First());
         Delete(account);
         Assert.Null(Record.Exception(() => Get(account.Id)));
     }

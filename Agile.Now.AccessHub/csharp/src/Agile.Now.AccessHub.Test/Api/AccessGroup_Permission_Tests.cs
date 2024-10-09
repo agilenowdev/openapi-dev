@@ -25,7 +25,7 @@ public class AccessGroup_Permission_Tests
         api = new AccessGroupsApi(Settings.Connections[0]);
     }
 
-    public override string EntityName => "";
+    protected override string EntityName => "";
 
     protected override List<Permission> List(
         string id, string name, string filters, string orders, int currentPage, int pageSize) =>
