@@ -7,16 +7,14 @@ using Agile.Now.Api.Test;
 
 namespace Agile.Now.ApiAccounts.Test.Api;
 
-public class Account_Picture_TestData : TestData<Picture, PictureData> {
+public class Picture_TestData : TestData<Picture, PictureData> {
     public const string PictureData = "0123456789";
 
     public override void AssertEqualToRequest(PictureData data0, Picture data1) { }
     public override void AssertEqualToResponse(Picture data0, Picture data1) { }
-    public override IEnumerable<PictureData> GenerateRequestData() => CreatePicturesDatas();
-    public override void Update(PictureData data) { }
 
-    public static IEnumerable<PictureData> CreatePicturesDatas() {
-        yield return new(PictureData.ToStream());
+    public override IEnumerable<PictureData> GenerateRequestData() {
+        yield return new PictureData(PictureData.ToStream());
     }
 }
 

@@ -12,7 +12,7 @@ namespace Agile.Now.AccessHub.Test.Api;
 
 public class Account_Tests : EntityTests<Account, string, AccountInsertData> {
     readonly AccountsApi api;
-    readonly Account_Tenant_TestData account_Tenant_TestData = new Account_Tenant_TestData();
+    readonly Tenant_TestData account_Tenant_TestData = new Tenant_TestData();
 
     public Account_Tests()
         : base(
@@ -20,7 +20,7 @@ public class Account_Tests : EntityTests<Account, string, AccountInsertData> {
             id: new(nameof(Account.Id), entity => entity.Id, (entity, id) => entity.Id = id),
             uniqueAttributes: new Attribute<Account, string, AccountInsertData>[] {
                 new(nameof(Account.ExternalId), data => data.ExternalId, (data, value) => data.ExternalId = value),
-                new(nameof(Account.Name), data => data.Name, (data, value) => data.Name = value)
+                new(nameof(Account.Username), data => data.Username, (data, value) => data.Username = value)
             }) {
         api = new AccountsApi(Settings.Connections[0]);
     }
@@ -69,7 +69,7 @@ public class Account_Tests : EntityTests<Account, string, AccountInsertData> {
             var existing = List(Id.CreateFilters(account));
             Assert.NotEmpty(existing);
             api.DeleteAccountTenant(account.Id,
-                Account_Tenant_TestData.DefaultTenant.ToString(), subName: nameof(TenantData.TenantId));
+                Tenant_TestData.DefaultTenant.ToString(), subName: nameof(TenantData.TenantId));
             existing = List(Id.CreateFilters(account));
             Assert.Empty(existing);
         }
@@ -85,7 +85,7 @@ public class Account_Tests : EntityTests<Account, string, AccountInsertData> {
             api.UpsertAccountTenant(account.Id, account_Tenant_TestData.GenerateRequestData().First());
             Assert.Null(Record.Exception(() => Get(account.Id)));
             api.DeleteAccountTenant(account.Id,
-                Account_Tenant_TestData.DefaultTenant.ToString(), subName: nameof(TenantData.TenantId));
+                Tenant_TestData.DefaultTenant.ToString(), subName: nameof(TenantData.TenantId));
             Assert.ThrowsAny<Exception>(() => Get(account.Id));
         }
         finally {

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Agile.Now.AccessHub.Api;
 using Agile.Now.AccessHub.Model;
 using Agile.Now.AccessHub.Test.Common;
@@ -8,8 +9,7 @@ using Xunit;
 
 namespace Agile.Now.AccessHub.Test.Api;
 
-public class GroupExternal_Tests : EntityTests<GroupExternal, int, GroupExternalData>
-{
+public class GroupExternal_Tests : EntityTests<GroupExternal, int, GroupExternalData> {
     readonly GroupExternalsApi api;
 
     public GroupExternal_Tests()
@@ -19,8 +19,7 @@ public class GroupExternal_Tests : EntityTests<GroupExternal, int, GroupExternal
             uniqueAttributes: new Attribute<GroupExternal, string, GroupExternalData>[] {
                 //new(nameof(GroupExternal.ExternalId), data => data.ExternalId, (data, value) => data.ExternalId = value),
                 new(nameof(GroupExternal.Name), data => data.Name, (data, value) => data.Name = value),
-            })
-    {
+            }) {
 
         api = new GroupExternalsApi(Settings.Connections[0]);
     }
@@ -36,6 +35,10 @@ public class GroupExternal_Tests : EntityTests<GroupExternal, int, GroupExternal
 
     protected override GroupExternal Upsert(GroupExternalData data) =>
         api.UpsertGroupExternal(data);
+
+    protected override IEnumerable<GroupExternal> Patch(List<GroupExternalData> data, string deleteNotExists) =>
+        api.PatchGroupExternals(new GroupExternalsData(
+            groupExternals: data.Select(i => i.ToGroupExternalText()).ToList())).Data;
 
     protected override GroupExternal Delete(string id, string name) => api.DeleteGroupExternal(id, name);
 

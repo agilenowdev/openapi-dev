@@ -6,7 +6,7 @@ using Xunit;
 
 namespace Agile.Now.Runtime.Test.Data;
 
-public class User_Location_TestData : TestData<Location, LocationData> {
+public class Location_TestData : TestData<Location, LocationData> {
     public override void AssertEqualToRequest(LocationData expected, Location actual) {
         Assert.Equal(expected.LocationId.Value, actual.Id);
     }
@@ -25,15 +25,11 @@ public class User_Location_TestData : TestData<Location, LocationData> {
         "2107D0BF-1237-40CA-9FE3-27B4636D6E2B"
     };
 
-    public static LocationData CreateLocationData(string id) => new(locationId: new("Id", id));
-
-    public override IEnumerable<LocationData> GenerateRequestData() => CreateLocationDatas();
-
-    public static IEnumerable<LocationData> CreateLocationDatas() =>
-        Locations.Select(i => CreateLocationData(i));
+    public override IEnumerable<LocationData> GenerateRequestData() =>
+        Locations.Select(i => new LocationData(locationId: new("Id", i)));
 }
 
-public static class User_Location_TestData_Extensions {
-    public static LocationText ToLocationPatchData(this LocationData locationData) =>
+public static class Location_TestData_Extensions {
+    public static LocationText ToLocationData(this LocationData locationData) =>
         new LocationText(locationId: locationData.LocationId.Value);
 }

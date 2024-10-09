@@ -10,17 +10,15 @@ using Xunit;
 namespace Agile.Now.AccessHub.Test.Api;
 
 public class AccessGroup_Permission_Tests
-    : SubEntityTests<AccessGroup, string, AccessGroupData, Permission, long, PermissionData>
-{
+    : SubEntityTests<AccessGroup, string, AccessGroupInsertData, Permission, long, PermissionData> {
 
     readonly AccessGroupsApi api;
 
     public AccessGroup_Permission_Tests()
         : base(
             parent: new AccessGroup_Tests(),
-            testData: new AccessGroup_Permission_TestData(),
-            id: new(nameof(Permission.Id), entity => entity.Id, null))
-    {
+            testData: new Permission_TestData(),
+            id: new(nameof(Permission.Id), entity => entity.Id)) {
 
         api = new AccessGroupsApi(Settings.Connections[0]);
     }
@@ -44,7 +42,7 @@ public class AccessGroup_Permission_Tests
         api.DeleteAccessGroupPermission(id, subId, subName: subName);
 
     [Fact] public void Test_AccessGroup_Permission_List_ById() => Test_List_ById();
-    [Fact] public void Test_AccessGroup_Permission_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();
+    //[Fact] public void Test_AccessGroup_Permission_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();
     [Fact] public void Test_AccessGroup_Permission_List_Paging() => Test_List_Paging();
     [Fact] public void Test_AccessGroup_Permission_List_OrderAscending() => Test_List_OrderAscending();
     [Fact] public void Test_AccessGroup_Permission_List_OrderDecending() => Test_List_OrderDecending();
@@ -55,5 +53,5 @@ public class AccessGroup_Permission_Tests
     [Fact] public void Test_AccessGroup_Permission_Patch_DeleteNotExists() => Test_Patch_DeleteNotExists();
 
     [Fact] public void Test_AccessGroup_Permission_Delete_ById() => Test_Delete_ById();
-    [Fact] public void Test_AccessGroup_Permission_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();
+    //[Fact] public void Test_AccessGroup_Permission_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();
 }

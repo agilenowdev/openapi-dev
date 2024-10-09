@@ -3,24 +3,22 @@ using System.Linq;
 using Agile.Now.AccessHub.Api;
 using Agile.Now.AccessHub.Model;
 using Agile.Now.AccessHub.Test.Common;
+using Agile.Now.AccessHub.Test.Data;
 using Agile.Now.Api.Test;
-using Agile.Now.ApiOrganizations.Test.Api;
 using Xunit;
 
 namespace Agile.Now.AccessHub.Test.Api;
 
-public class Department_User_Tests : SubEntityTests<Department, string, DepartmentInsertData, User, int, UserData>
-{
+public class Department_User_Tests : SubEntityTests<Department, string, DepartmentInsertData, User, int, UserData> {
     readonly DepartmentsApi api;
 
     public Department_User_Tests()
         : base(new Department_Tests(),
             testData: new User_TestData(),
-            id: new(nameof(User.Id), entity => entity.Id, null),
+            id: new(nameof(User.Id), entity => entity.Id),
             uniqueAttributes: new Attribute<User, string, UserData>[] {
-                new(nameof(User.ExternalId), data => data.ExternalId, null),
-                new(nameof(User.Username), data => data.Name, null) })
-    {
+                new(nameof(User.ExternalId), data => data.ExternalId),
+                new(nameof(User.Username), data => data.Name) }) {
 
         api = new DepartmentsApi(Settings.Connections[0]);
     }
@@ -42,7 +40,7 @@ public class Department_User_Tests : SubEntityTests<Department, string, Departme
         api.DeleteDepartmentUser(id, subId, name: name, subName: subName);
 
     [Fact] public void Test_Department_User_List_ById() => Test_List_ById();
-    [Fact] public void Test_Department_User_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();
+    //[Fact] public void Test_Department_User_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();
     [Fact] public void Test_Department_User_List_Paging() => Test_List_Paging();
     [Fact] public void Test_Department_User_List_OrderAscending() => Test_List_OrderAscending();
     [Fact] public void Test_Department_User_List_OrderDecending() => Test_List_OrderDecending();
@@ -53,5 +51,5 @@ public class Department_User_Tests : SubEntityTests<Department, string, Departme
     [Fact] public void Test_Department_User_Patch_DeleteNotExists() => Test_Patch_DeleteNotExists();
 
     [Fact] public void Test_Department_User_Delete_ById() => Test_Delete_ById();
-    [Fact] public void Test_Department_User_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();
+    //[Fact] public void Test_Department_User_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();
 }

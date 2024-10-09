@@ -12,13 +12,14 @@ public class EntityTests<TResponse, TId, TRequest> : EntityTestsBase<TResponse, 
     }
 
     protected virtual List<TResponse> List(
-        string filters, string orders = default, int currentPage = default, int pageSize = DefaultPageSize) => default;
+        string filters = default, string orders = default,
+        int currentPage = default, int pageSize = DefaultPageSize) => default;
 
     protected virtual TResponse Get(string id, string name) => default;
     protected virtual TResponse Create(TRequest data) => default;
     protected virtual TResponse Update(string id, TRequest data, string name) => default;
     protected virtual TResponse Upsert(TRequest data) => default;
-    protected virtual IEnumerable<TResponse> Patch(List<TRequest> data) => default;
+    protected virtual IEnumerable<TResponse> Patch(List<TRequest> data, string deleteNotExists) => default;
     protected virtual TResponse Delete(string id, string name) => default;
 
     public TResponse[] GenerateEntities(int count) =>
@@ -143,7 +144,7 @@ public class EntityTests<TResponse, TId, TRequest> : EntityTestsBase<TResponse, 
         try {
             foreach(var i in UniqueAttributes) {
                 TestData.Update(data);
-                Assert.ThrowsAny<Exception>(() => Update(i.Get(created), data, i.Name));
+                Assert.Null(Record.Exception(() => Update(i.Get(created), data, i.Name)));
             }
         }
         finally {
@@ -168,7 +169,24 @@ public class EntityTests<TResponse, TId, TRequest> : EntityTestsBase<TResponse, 
     }
 
     public void Test_Patch() {
-        throw new NotImplementedException();
+        var data = TestData.GenerateRequestData().Take(3).ToArray();
+        var created = data.Take(2).Select(i => Upsert(i)).ToArray();
+        try {
+            var patched = Patch(data.Skip(1).Take(2).ToList(), null);
+            created = created.UnionBy(patched, i => Id.Get(i)).ToArray();
+            try {
+                var existing = List(Id.CreateFilters(created));
+                AssertCollectionsEqual(existing, created);
+            }
+            finally {
+                Delete(created);
+                created = null;
+            }
+        }
+        finally {
+            if(created != null)
+                Delete(created);
+        }
     }
 
     public void Test_Delete_ById() {

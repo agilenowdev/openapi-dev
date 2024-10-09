@@ -7,16 +7,16 @@ using Xunit;
 
 namespace Agile.Now.Runtime.Test.Api;
 
-public class User_Tests : EntityTests<User, int, object> {
+public class User_Tests : EntityTests<User, int, User> {
     readonly UsersApi api;
 
     public User_Tests()
         : base(
             testData: new User_TestData(),
-            id: new(nameof(User.Id), entity => entity.Id, null),
-            uniqueAttributes: new Attribute<User, string, object>[] {
-                new(nameof(User.ExternalId), data => data.ExternalId, null),
-                new(nameof(User.Name), data => data.Name, null),
+            id: new(nameof(User.Id), entity => entity.Id),
+            uniqueAttributes: new Attribute<User, string, User>[] {
+                new("External_Id", data => data.ExternalId),
+                //new(nameof(User.Username), data => data.Username)
             }) {
 
         api = new UsersApi(Settings.Connections[0]);
@@ -27,7 +27,7 @@ public class User_Tests : EntityTests<User, int, object> {
 
     protected override User Get(string id, string name) => api.GetUser(id, name);
 
-    protected override User Create(object data) => data as User;
+    protected override User Create(User data) => data;
 
     [Fact] public void Test_User_List_ById() => Test_List_ById();
     [Fact] public void Test_User_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();

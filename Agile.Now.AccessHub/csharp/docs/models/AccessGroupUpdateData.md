@@ -5,8 +5,7 @@ The record of AccessGroup information.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | The identifier of access group. | [optional] 
-**Name** | **string** | The name of access group. | 
+**Name** | **string** | The name of access group. | [optional] 
 **ExternalId** | **string** | The external system code of the access group. | [optional] 
 **Description** | **string** | The description of access group. | [optional] 
 **IsActive** | **bool** | Defines if record is active. | [optional] [default to false]

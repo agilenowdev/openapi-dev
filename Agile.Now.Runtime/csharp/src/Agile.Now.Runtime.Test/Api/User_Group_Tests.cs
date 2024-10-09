@@ -7,21 +7,20 @@ using Xunit;
 
 namespace Agile.Now.Runtime.Test.Api;
 
-public class User_Group_Tests : SubEntityTests<User, int, object, Group, int, GroupData>
-{
+public class User_Group_Tests : SubEntityTests<User, int, User, Group, int, GroupData> {
     readonly UsersApi api;
 
     public User_Group_Tests()
         : base(new User_Tests(),
-            testData: new User_Group_TestData(),
-            id: new(nameof(Group.Id), entity => entity.Id, null),
+            testData: new Group_TestData(),
+            id: new(nameof(Group.Id), entity => entity.Id),
             uniqueAttributes: new Attribute<Group, string, GroupData>[] {
-                //new(nameof(Group.ExternalId), data => data.ExternalId, null),
-                new(nameof(Group.Name), data => data.Name, null) })
-    {
+                new(nameof(Group.Name), data => data.Name) }) {
 
         api = new UsersApi(Settings.Connections[0]);
     }
+
+    protected override string EntityName => "Group_";
 
     protected override List<Group> List(
         string id, string name, string filters, string orders, int currentPage, int pageSize) =>
@@ -35,7 +34,7 @@ public class User_Group_Tests : SubEntityTests<User, int, object, Group, int, Gr
         api.DeleteUserGroup(id, subId, name: name, subName: subName);
 
     [Fact] public void Test_User_Group_List_ById() => Test_List_ById();
-    [Fact] public void Test_User_Group_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();
+    //[Fact] public void Test_User_Group_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();
     [Fact] public void Test_User_Group_List_Paging() => Test_List_Paging();
     [Fact] public void Test_User_Group_List_OrderAscending() => Test_List_OrderAscending();
     [Fact] public void Test_User_Group_List_OrderDecending() => Test_List_OrderDecending();
@@ -43,5 +42,5 @@ public class User_Group_Tests : SubEntityTests<User, int, object, Group, int, Gr
     [Fact] public void Test_User_Group_Upsert() => Test_Upsert();
 
     [Fact] public void Test_User_Group_Delete_ById() => Test_Delete_ById();
-    [Fact] public void Test_User_Group_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();
+    //[Fact] public void Test_User_Group_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();
 }

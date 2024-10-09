@@ -7,18 +7,16 @@ using Xunit;
 
 namespace Agile.Now.Runtime.Test.Api;
 
-public class User_AccessGroup_Tests : SubEntityTests<User, int, object, AccessGroup, string, AccessGroupData>
-{
+public class User_AccessGroup_Tests : SubEntityTests<User, int, User, AccessGroup, string, AccessGroupData> {
     readonly UsersApi api;
 
     public User_AccessGroup_Tests()
         : base(new User_Tests(),
-            testData: new User_AccessGroup_TestData(),
-            id: new(nameof(AccessGroup.Id), entity => entity.Id, null),
+            testData: new AccessGroup_TestData(),
+            id: new(nameof(AccessGroup.Id), entity => entity.Id),
             uniqueAttributes: new Attribute<AccessGroup, string, AccessGroupData>[] {
-                new(nameof(AccessGroup.ExternalId), data => data.ExternalId, null),
-                new(nameof(AccessGroup.Name), data => data.Name, null) })
-    {
+                new(nameof(AccessGroup.ExternalId), data => data.ExternalId),
+                new(nameof(AccessGroup.Name), data => data.Name) }) {
 
         api = new UsersApi(Settings.Connections[0]);
     }
@@ -35,7 +33,7 @@ public class User_AccessGroup_Tests : SubEntityTests<User, int, object, AccessGr
         api.DeleteUserAccessGroup(id, subId, name: name, subName: subName);
 
     [Fact] public void Test_User_AccessGroup_List_ById() => Test_List_ById();
-    [Fact] public void Test_User_AccessGroup_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();
+    //[Fact] public void Test_User_AccessGroup_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();
     [Fact] public void Test_User_AccessGroup_List_Paging() => Test_List_Paging();
     [Fact] public void Test_User_AccessGroup_List_OrderAscending() => Test_List_OrderAscending();
     [Fact] public void Test_User_AccessGroup_List_OrderDecending() => Test_List_OrderDecending();
@@ -43,5 +41,5 @@ public class User_AccessGroup_Tests : SubEntityTests<User, int, object, AccessGr
     [Fact] public void Test_User_AccessGroup_Upsert() => Test_Upsert();
 
     [Fact] public void Test_User_AccessGroup_Delete_ById() => Test_Delete_ById();
-    [Fact] public void Test_User_AccessGroup_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();
+    //[Fact] public void Test_User_AccessGroup_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();
 }

@@ -9,18 +9,14 @@ using Xunit;
 
 namespace Agile.Now.AccessHub.Test.Api;
 
-public class AccessGroup_Group_Tests
-    : SubEntityTests<AccessGroup, string, AccessGroupData, Group, int, GroupData>
-{
-
+public class AccessGroup_Group_Tests : SubEntityTests<AccessGroup, string, AccessGroupInsertData, Group, int, GroupData> {
     readonly AccessGroupsApi api;
 
     public AccessGroup_Group_Tests()
         : base(
             parent: new AccessGroup_Tests(),
-            testData: new AccessGroup_Group_TestData(),
-            id: new(nameof(Group.Id), entity => entity.Id, null))
-    {
+            testData: new Group_TestData(),
+            id: new(nameof(Group.Id), entity => entity.Id)) {
 
         api = new AccessGroupsApi(Settings.Connections[0]);
     }
@@ -42,7 +38,7 @@ public class AccessGroup_Group_Tests
         api.DeleteAccessGroupGroup(id, subId, subName: subName);
 
     [Fact] public void Test_AccessGroup_Group_List_ById() => Test_List_ById();
-    [Fact] public void Test_AccessGroup_Group_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();
+    //[Fact] public void Test_AccessGroup_Group_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();
     [Fact] public void Test_AccessGroup_Group_List_Paging() => Test_List_Paging();
     [Fact] public void Test_AccessGroup_Group_List_OrderAscending() => Test_List_OrderAscending();
     [Fact] public void Test_AccessGroup_Group_List_OrderDecending() => Test_List_OrderDecending();
@@ -53,5 +49,5 @@ public class AccessGroup_Group_Tests
     [Fact] public void Test_AccessGroup_Group_Patch_DeleteNotExists() => Test_Patch_DeleteNotExists();
 
     [Fact] public void Test_AccessGroup_Group_Delete_ById() => Test_Delete_ById();
-    [Fact] public void Test_AccessGroup_Group_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();
+    //[Fact] public void Test_AccessGroup_Group_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();
 }

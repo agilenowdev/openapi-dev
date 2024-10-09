@@ -13,8 +13,8 @@ public class Account_Tenant_Tests : SubEntityTests<Account, string, AccountInser
 
     public Account_Tenant_Tests()
         : base(new Account_Tests(),
-            testData: new Account_Tenant_TestData(),
-            id: new(nameof(Tenant.Id), entity => entity.Id, null)) {
+            testData: new Tenant_TestData(),
+            id: new(nameof(Tenant.Id), entity => entity.Id)) {
 
         api = new AccountsApi(Settings.Connections[0]);
         NoCleanUp = true;

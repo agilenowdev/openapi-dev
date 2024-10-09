@@ -2,14 +2,13 @@
 using Agile.Now.AccessHub.Api;
 using Agile.Now.AccessHub.Model;
 using Agile.Now.AccessHub.Test.Common;
+using Agile.Now.AccessHub.Test.Data;
 using Agile.Now.Api.Test;
-using Agile.Now.ApiOrganizations.Test.Api;
 using Xunit;
 
 namespace Agile.Now.AccessHub.Test.Api;
 
-public class Location_Tests : EntityTests<Location, string, LocationInsertData>
-{
+public class Location_Tests : EntityTests<Location, string, LocationInsertData> {
     readonly LocationsApi api;
 
     public Location_Tests()
@@ -19,8 +18,7 @@ public class Location_Tests : EntityTests<Location, string, LocationInsertData>
             uniqueAttributes: new Attribute<Location, string, LocationInsertData>[] {
                 new(nameof(Location.ExternalId), data => data.ExternalId, (data, value) => data.ExternalId = value),
                 new(nameof(Location.Name), data => data.Name, (data, value) => data.Name = value)
-            })
-    {
+            }) {
 
         api = new LocationsApi(Settings.Connections[0]);
     }
@@ -34,8 +32,7 @@ public class Location_Tests : EntityTests<Location, string, LocationInsertData>
     protected override Location Update(string id, LocationInsertData data, string name) =>
         api.UpdateLocation(id, data.ToLocationUpdateData(), name);
 
-    protected override Location Upsert(LocationInsertData data) =>
-        api.UpsertLocation(data.ToLocationData());
+    protected override Location Upsert(LocationInsertData data) => api.UpsertLocation(data.ToLocationData());
 
     protected override Location Delete(string id, string name) => api.DeleteLocation(id, name);
 

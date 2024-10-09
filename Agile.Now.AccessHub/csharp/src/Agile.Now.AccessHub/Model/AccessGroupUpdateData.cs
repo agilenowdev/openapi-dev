@@ -61,23 +61,14 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AccessGroupUpdateData" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected AccessGroupUpdateData() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AccessGroupUpdateData" /> class.
-        /// </summary>
-        /// <param name="id">The identifier of access group..</param>
-        /// <param name="name">The name of access group. (required).</param>
+        /// <param name="name">The name of access group..</param>
         /// <param name="externalId">The external system code of the access group..</param>
         /// <param name="description">The description of access group..</param>
         /// <param name="isActive">Defines if record is active. (default to false).</param>
         /// <param name="accessGroupTypeId">accessGroupTypeId.</param>
-        public AccessGroupUpdateData(string id = default, string name = default, string externalId = default, string description = default, bool isActive = false, EnumAccessGroupType? accessGroupTypeId = default)
+        public AccessGroupUpdateData(string name = default, string externalId = default, string description = default, bool isActive = false, EnumAccessGroupType? accessGroupTypeId = default)
         {
-            // to ensure "name" is required (not null)
-            name = name ?? throw new ArgumentNullException("name is a required property for AccessGroupUpdateData and cannot be null");
             Name = name;
-            Id = id;
             ExternalId = externalId;
             Description = description;
             IsActive = isActive;
@@ -85,17 +76,10 @@ namespace Agile.Now.AccessHub.Model
         }
 
         /// <summary>
-        /// The identifier of access group.
-        /// </summary>
-        /// <value>The identifier of access group.</value>
-        [DataMember(Name = "Id", EmitDefaultValue = false)]
-        public string Id { get; set; }
-
-        /// <summary>
         /// The name of access group.
         /// </summary>
         /// <value>The name of access group.</value>
-        [DataMember(Name = "Name", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
@@ -128,7 +112,6 @@ namespace Agile.Now.AccessHub.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class AccessGroupUpdateData {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");

@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using Agile.Now.AccessHub.Model;
-using Agile.Now.AccessHub.Test.Data;
 using Agile.Now.Api.Test;
 using Xunit;
 
-namespace Agile.Now.ApiOrganizations.Test.Api;
+namespace Agile.Now.AccessHub.Test.Data;
 
 public class Location_TestData : TestData<Location, LocationInsertData> {
     public override void AssertEqualToRequest(LocationInsertData expected, Location actual) {
@@ -61,6 +60,4 @@ public static class LocationTestData_Extention {
         timezoneId: locationInsertData.TimezoneId,
         currencyId: locationInsertData.CurrencyId
     );
-
-    public static UserText1 ToUserText1(this UserData userData) => new UserText1(userData.UserId.Value);
 }

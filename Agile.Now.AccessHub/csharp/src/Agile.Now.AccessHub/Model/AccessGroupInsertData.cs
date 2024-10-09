@@ -61,28 +61,19 @@ namespace Agile.Now.AccessHub.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AccessGroupInsertData" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected AccessGroupInsertData() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AccessGroupInsertData" /> class.
-        /// </summary>
-        /// <param name="id">The identifier of access group. (required).</param>
-        /// <param name="name">The name of access group. (required).</param>
+        /// <param name="id">The identifier of access group..</param>
+        /// <param name="name">The name of access group..</param>
         /// <param name="externalId">The external system code of the access group..</param>
         /// <param name="description">The description of access group..</param>
         /// <param name="isActive">Defines if record is active. (default to false).</param>
-        /// <param name="isSystem">Defines if access group is system and end-user cannot change it general, permissions and applications. (default to false).</param>
         /// <param name="accessGroupTypeId">accessGroupTypeId.</param>
-        public AccessGroupInsertData(string id = default, string name = default, string externalId = default, string description = default, bool isActive = false, bool isSystem = false, EnumAccessGroupType? accessGroupTypeId = default)
+        public AccessGroupInsertData(string id = default, string name = default, string externalId = default, string description = default, bool isActive = false, EnumAccessGroupType? accessGroupTypeId = default)
         {
             Id = id;
-            // to ensure "name" is required (not null)
-            name = name ?? throw new ArgumentNullException("name is a required property for AccessGroupInsertData and cannot be null");
             Name = name;
             ExternalId = externalId;
             Description = description;
             IsActive = isActive;
-            IsSystem = isSystem;
             AccessGroupTypeId = accessGroupTypeId;
         }
 
@@ -90,14 +81,14 @@ namespace Agile.Now.AccessHub.Model
         /// The identifier of access group.
         /// </summary>
         /// <value>The identifier of access group.</value>
-        [DataMember(Name = "Id", EmitDefaultValue = true)]
+        [DataMember(Name = "Id", EmitDefaultValue = false)]
         public string Id { get; set; }
 
         /// <summary>
         /// The name of access group.
         /// </summary>
         /// <value>The name of access group.</value>
-        [DataMember(Name = "Name", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
@@ -123,14 +114,6 @@ namespace Agile.Now.AccessHub.Model
         public bool IsActive { get; set; }
 
         /// <summary>
-        /// Defines if access group is system and end-user cannot change it general, permissions and applications.
-        /// </summary>
-        /// <value>Defines if access group is system and end-user cannot change it general, permissions and applications.</value>
-        /// <example>false</example>
-        [DataMember(Name = "Is_System", EmitDefaultValue = true)]
-        public bool IsSystem { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -143,7 +126,6 @@ namespace Agile.Now.AccessHub.Model
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  IsActive: ").Append(IsActive).Append("\n");
-            sb.Append("  IsSystem: ").Append(IsSystem).Append("\n");
             sb.Append("  AccessGroupTypeId: ").Append(AccessGroupTypeId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

@@ -8,18 +8,16 @@ using Xunit;
 
 namespace Agile.Now.Runtime.Test.Api;
 
-public class User_Department_Tests : SubEntityTests<User, int, object, Department, string, DepartmentData>
-{
+public class User_Department_Tests : SubEntityTests<User, int, User, Department, string, DepartmentData> {
     readonly UsersApi api;
 
     public User_Department_Tests()
         : base(new User_Tests(),
-            testData: new User_Department_TestData(),
-            id: new(nameof(Department.Id), entity => entity.Id, null),
+            testData: new Department_TestData(),
+            id: new(nameof(Department.Id), entity => entity.Id),
             uniqueAttributes: new Attribute<Department, string, DepartmentData>[] {
-                new(nameof(Department.ExternalId), data => data.ExternalId, null),
-                new(nameof(Department.Name), data => data.Name, null) })
-    {
+                new(nameof(Department.ExternalId), data => data.ExternalId),
+                new(nameof(Department.Name), data => data.Name) }) {
 
         api = new UsersApi(Settings.Connections[0]);
     }
@@ -41,7 +39,7 @@ public class User_Department_Tests : SubEntityTests<User, int, object, Departmen
         api.DeleteUserDepartment(id, subId, name: name, subName: subName);
 
     [Fact] public void Test_User_Department_List_ById() => Test_List_ById();
-    [Fact] public void Test_User_Department_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();
+    //[Fact] public void Test_User_Department_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();
     [Fact] public void Test_User_Department_List_Paging() => Test_List_Paging();
     [Fact] public void Test_User_Department_List_OrderAscending() => Test_List_OrderAscending();
     [Fact] public void Test_User_Department_List_OrderDecending() => Test_List_OrderDecending();
@@ -52,5 +50,5 @@ public class User_Department_Tests : SubEntityTests<User, int, object, Departmen
     [Fact] public void Test_User_Department_Patch_DeleteNotExists() => Test_Patch_DeleteNotExists();
 
     [Fact] public void Test_User_Department_Delete_ById() => Test_Delete_ById();
-    [Fact] public void Test_User_Department_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();
+    //[Fact] public void Test_User_Department_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();
 }

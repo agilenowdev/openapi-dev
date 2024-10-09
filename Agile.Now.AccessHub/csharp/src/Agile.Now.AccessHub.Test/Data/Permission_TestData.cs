@@ -5,14 +5,17 @@ using Xunit;
 
 namespace Agile.Now.AccessHub.Test.Data;
 
-public class AccessGroup_Permission_TestData : TestData<Permission, PermissionData> {
-    public override void AssertEqualToRequest(PermissionData data0, Permission data1) {
-        Assert.Equal((int)data0.PermissionId.Value, data1.Id);
+public class Permission_TestData : TestData<Permission, PermissionData> {
+    public override void AssertEqualToRequest(PermissionData expected, Permission actual) {
+        Assert.Equal(expected.AccessRoleId.Value, actual.AccessRoleId.Id);
+        Assert.Equal(expected.PermissionId.Value, EnumPermissionTypeValueConverter.FromString(actual.PermissionId.Id));
     }
 
-    public override void AssertEqualToResponse(Permission data0, Permission data1) { }
-
-    public override void Update(PermissionData data) { }
+    public override void AssertEqualToResponse(Permission expected, Permission actual) {
+        Assert.Equal(expected.Id, actual.Id);
+        Assert.Equal(expected.AccessRoleId.Id, actual.AccessRoleId.Id);
+        Assert.Equal(expected.PermissionId.Id, actual.PermissionId.Id);
+    }
 
     public static readonly string AccessRole = "32E61509-0071-4001-BE32-9E9D0DB255CB";
 
@@ -29,9 +32,9 @@ public class AccessGroup_Permission_TestData : TestData<Permission, PermissionDa
     }
 }
 
-public static class AccessGroup_Permission_TestData_Extensions {
+public static class Permission_TestData_Extensions {
     public static PermissionText ToPermissionText(this PermissionData permissionData) =>
         new PermissionText(
-            accessRoleId: AccessGroup_Permission_TestData.AccessRole,
+            accessRoleId: Permission_TestData.AccessRole,
             permissionData.PermissionId.Value.ToString());
 }

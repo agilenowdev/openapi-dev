@@ -62,11 +62,10 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         /// <param name="id">The identifier of entity (required) (default to 0).</param>
         /// <param name="accessRoleId">accessRoleId.</param>
-        /// <param name="roleId">roleId.</param>
         /// <param name="permissionId">permissionId (required).</param>
         /// <param name="isActive">Defines if record is active (default to false).</param>
         /// <param name="createdOn">The date when the record was created. (required) (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public Permission(long id = 0, AbstractText accessRoleId = default, AbstractLong roleId = default, AbstractText permissionId = default, bool isActive = false, DateTime createdOn = default)
+        public Permission(long id = 0, AbstractText accessRoleId = default, AbstractText permissionId = default, bool isActive = false, DateTime createdOn = default)
         {
             Id = id;
             // to ensure "permissionId" is required (not null)
@@ -74,7 +73,6 @@ namespace Agile.Now.AccessHub.Model
             PermissionId = permissionId;
             CreatedOn = createdOn;
             AccessRoleId = accessRoleId;
-            RoleId = roleId;
             IsActive = isActive;
         }
 
@@ -91,12 +89,6 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         [DataMember(Name = "AccessRoleId", EmitDefaultValue = false)]
         public AbstractText AccessRoleId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets RoleId
-        /// </summary>
-        [DataMember(Name = "RoleId", EmitDefaultValue = false)]
-        public AbstractLong RoleId { get; set; }
 
         /// <summary>
         /// Gets or Sets PermissionId
@@ -130,7 +122,6 @@ namespace Agile.Now.AccessHub.Model
             sb.Append("class Permission {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  AccessRoleId: ").Append(AccessRoleId).Append("\n");
-            sb.Append("  RoleId: ").Append(RoleId).Append("\n");
             sb.Append("  PermissionId: ").Append(PermissionId).Append("\n");
             sb.Append("  IsActive: ").Append(IsActive).Append("\n");
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");

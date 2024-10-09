@@ -6,12 +6,14 @@ using Xunit;
 
 namespace Agile.Now.Runtime.Test.Data;
 
-public class User_Department_TestData : TestData<Department, DepartmentData> {
+public class Department_TestData : TestData<Department, DepartmentData> {
     public override void AssertEqualToRequest(DepartmentData expected, Department actual) {
         Assert.Equal(expected.DepartmentId.Value, actual.Id);
     }
 
     public override void AssertEqualToResponse(Department expected, Department actual) {
+        Assert.Equal(expected.Id, actual.Id);
+        Assert.Equal(expected.ExternalId, actual.ExternalId);
         Assert.Equal(expected.Name, actual.Name);
         Assert.Equal(expected.DepartmentTypeId.Id, actual.DepartmentTypeId.Id);
         Assert.Equal(expected.ParentDepartmentId.Id ?? "", actual.ParentDepartmentId.Id ?? "");
@@ -26,16 +28,11 @@ public class User_Department_TestData : TestData<Department, DepartmentData> {
         "106BA31C-3924-456E-879F-1EDCE47A86BA"
     };
 
-    public static DepartmentData CreateDepartmentData(string id) => new(departmentId: new("Id", id));
-
-    public static IEnumerable<DepartmentData> CreateDepartmentDatas() =>
-        Departments.Select(i => CreateDepartmentData(i));
-
-    public override IEnumerable<DepartmentData> GenerateRequestData() => CreateDepartmentDatas();
-    public override void Update(DepartmentData data) { }
+    public override IEnumerable<DepartmentData> GenerateRequestData() =>
+        Departments.Select(i => new DepartmentData(departmentId: new("Id", i)));
 }
 
-public static class User_Department_TestData_Extension {
+public static class TestData_Extension {
     public static DepartmentText ToDepartmentPatchData(this DepartmentData departmentData) =>
         new DepartmentText(departmentId: departmentData.DepartmentId.Value);
 }

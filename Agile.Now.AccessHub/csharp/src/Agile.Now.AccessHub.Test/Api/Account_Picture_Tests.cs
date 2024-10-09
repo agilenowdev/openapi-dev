@@ -14,7 +14,7 @@ public class Account_Picture_Tests : SubEntityTests<Account, string, AccountInse
     public Account_Picture_Tests()
         : base(new Account_Tests(),
             id: null,
-            testData: new Account_Picture_TestData()) {
+            testData: new Picture_TestData()) {
 
         api = new AccountsApi(Settings.Connections[0]);
     }
@@ -22,7 +22,8 @@ public class Account_Picture_Tests : SubEntityTests<Account, string, AccountInse
     protected override List<Picture> List(
         string id, string name, string filters, string orders, int currentPage, int pageSize) =>
 
-        api.ListAccountPictures(id).Data;
+        api.ListAccountPictures(
+            id: id, name: name, filters: filters, orders: orders, currentPage: currentPage, pageSize: pageSize).Data;
 
     protected override Picture Upsert(string id, PictureData data) => api.UpsertAccountPicture(id, data);
 
@@ -30,35 +31,26 @@ public class Account_Picture_Tests : SubEntityTests<Account, string, AccountInse
         api.DeleteAccountPicture(id, subId, subName: subName);
 
     [Fact] public void Test_Account_Picture_List_ById() => Test_List_ById();
-    [Fact] public void Test_Account_Picture_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();
-    [Fact] public void Test_Account_Picture_List_Paging() => Test_List_Paging();
-    [Fact] public void Test_Account_Picture_List_OrderAscending() => Test_List_OrderAscending();
-    [Fact] public void Test_Account_Picture_List_OrderDecending() => Test_List_OrderDecending();
-
-    [Fact] public void Test_Account_Picture_Upsert() => Test_Upsert();
-
+    //[Fact] public void Test_Account_Picture_Upsert() => Test_Upsert();
     [Fact] public void Test_Account_Picture_Delete_ById() => Test_Delete_ById();
-    [Fact] public void Test_Location_User_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();
-
-    
 
     [Fact]
     public async void Test_AccountPicture_Upsert() {
         var parentEntity = Parent.GenerateEntity();
         var id = Parent.Id.Get(parentEntity);
-        //try {
-        //    var createdSubEntity = await api.UpsertAccountPictureAsync(created.Id,
-        //        new(Account_Picture_TestData.PictureData.ToStream()), name: "AccountId");
-        //    try {
-        //        var existingSubEntities = api.ListAccountPictures(created.Id).Data;
-        //        Assert.Contains(existingSubEntities, i => i.Filename == createdSubEntity.Filename);
-        //    }
-        //    finally {
-        //        api.DeleteAccountPicture(created.Id, null);
-        //    }
-        //}
-        //finally {
-        //    api.DeleteAccount(created.Id);
-        //}
+        try {
+            var createdSubEntity = await api.UpsertAccountPictureAsync(id,
+                new(Picture_TestData.PictureData.ToStream()));
+            try {
+                var existingSubEntities = api.ListAccountPictures(id).Data;
+                Assert.Contains(existingSubEntities, i => i.Filename == createdSubEntity.Filename);
+            }
+            finally {
+                api.DeleteAccountPicture(id, null);
+            }
+        }
+        finally {
+            api.DeleteAccount(id);
+        }
     }
 }

@@ -6,13 +6,13 @@ using Xunit;
 
 namespace Agile.Now.AccessHub.Test.Data;
 
-public class AccessGroup_Application_TestData : TestData<Application, ApplicationData> {
+public class Application_TestData : TestData<Application, ApplicationData> {
     public override void AssertEqualToRequest(ApplicationData data0, Application data1) =>
         Assert.Equal(data0.AccessApplicationId.Value, data1.Id);
 
     public override void AssertEqualToResponse(Application data0, Application data1) {
         Assert.Equal(data0.Id, data1.Id);
-        //Assert.Equal(data0.ApplicationId.Id, data1.ApplicationId.Id);
+        Assert.Equal(data0.ApplicationId.Id, data1.ApplicationId.Id);
         Assert.Equal(data0.Name, data1.Name);
         Assert.Equal(data0.ApplicationKey, data1.ApplicationKey);
         Assert.Equal(data0.ExternalId, data1.ExternalId);
@@ -27,7 +27,22 @@ public class AccessGroup_Application_TestData : TestData<Application, Applicatio
     }
 
     public override IEnumerable<ApplicationData> GenerateRequestData() =>
-        AccessGroupTestData.Applications.Select(i => new ApplicationData(
-            parentApplicationId: new("Id", AccessGroupTestData.ParentApplication),
+        Applications.Select(i => new ApplicationData(
+            parentApplicationId: new("Id", ParentApplication),
             accessApplicationId: new("Id", i)));
+
+    public static readonly string ParentApplication = "3B594DDA-3F5D-431A-A532-A3EDFFA9BD98";
+
+    public static readonly string[] Applications = new[] {
+        "15478BAE-C17D-4966-8288-F2F743A4B0EA",
+        "5BEE1686-32A5-4469-958C-EFF31CB9EC07",
+        "F32007E7-C34E-4043-8E6E-5EB75B7240FB"
+    };
+
+}
+
+public static class Application_TestData_Extension {
+    public static ApplicationText ToApplicationText(this ApplicationData applicationData) => new(
+        parentApplicationId: Application_TestData.ParentApplication,
+        accessApplicationId: applicationData.AccessApplicationId.Value);
 }

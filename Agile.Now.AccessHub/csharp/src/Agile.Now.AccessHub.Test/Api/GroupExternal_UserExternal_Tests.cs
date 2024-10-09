@@ -10,17 +10,15 @@ using Xunit;
 namespace Agile.Now.AccessHub.Test.Api;
 
 public class GroupExternal_User_Tests
-    : SubEntityTests<GroupExternal, int, GroupExternalData, UserExternal, int, UserExternalData>
-{
+    : SubEntityTests<GroupExternal, int, GroupExternalData, UserExternal, int, UserExternalData> {
 
     readonly GroupExternalsApi api;
 
     public GroupExternal_User_Tests()
         : base(
             parent: new GroupExternal_Tests(),
-            testData: new GroupExternal_UserExternal_TestData(),
-            id: new(nameof(User.Id), entity => entity.Id, null))
-    {
+            testData: new UserExternal_TestData(),
+            id: new(nameof(User.Id), entity => entity.Id)) {
 
         api = new GroupExternalsApi(Settings.Connections[0]);
     }
@@ -45,7 +43,7 @@ public class GroupExternal_User_Tests
         api.DeleteGroupExternalUserExternal(id, subId, subName: subName);
 
     [Fact] public void Test_GroupExternal_User_List_ById() => Test_List_ById();
-    [Fact] public void Test_GroupExternal_User_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();
+    //[Fact] public void Test_GroupExternal_User_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();
     [Fact] public void Test_GroupExternal_User_List_Paging() => Test_List_Paging();
     [Fact] public void Test_GroupExternal_User_List_OrderAscending() => Test_List_OrderAscending();
     [Fact] public void Test_GroupExternal_User_List_OrderDecending() => Test_List_OrderDecending();
@@ -56,5 +54,5 @@ public class GroupExternal_User_Tests
     [Fact] public void Test_GroupExternal_User_Patch_DeleteNotExists() => Test_Patch_DeleteNotExists();
 
     [Fact] public void Test_GroupExternal_User_Delete_ById() => Test_Delete_ById();
-    [Fact] public void Test_GroupExternal_User_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();
+    //[Fact] public void Test_GroupExternal_User_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();
 }

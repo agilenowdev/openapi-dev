@@ -8,8 +8,7 @@ using Xunit;
 
 namespace Agile.Now.AccessHub.Test.Api;
 
-public class Department_Tests : EntityTests<Department, string, DepartmentInsertData>
-{
+public class Department_Tests : EntityTests<Department, string, DepartmentInsertData> {
     readonly DepartmentsApi api;
 
     public Department_Tests()
@@ -19,8 +18,7 @@ public class Department_Tests : EntityTests<Department, string, DepartmentInsert
             uniqueAttributes: new Attribute<Department, string, DepartmentInsertData>[] {
                 new(nameof(Department.ExternalId), data => data.ExternalId, (data, value) => data.ExternalId = value),
                 new(nameof(Department.Name), data => data.Name, (data, value) => data.Name = value)
-            })
-    {
+            }) {
 
         api = new DepartmentsApi(Settings.Connections[0]);
     }

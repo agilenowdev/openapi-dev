@@ -8,9 +8,33 @@ using Xunit;
 namespace Agile.Now.AccessHub.Test.Data;
 
 public class Department_TestData : TestData<Department, DepartmentInsertData> {
-    public override void AssertEqualToRequest(DepartmentInsertData data0, Department data1) => data0.AssertEqualToRequest(data1);
-    public override void AssertEqualToResponse(Department data0, Department data1) => data0.AssertEqualToRequest(data1);
-    public override void Update(DepartmentInsertData data) => data.Update();
+    public override void AssertEqualToRequest(DepartmentInsertData expected, Department actual) {
+        Assert.Equal(expected.ExternalId, actual.ExternalId);
+        Assert.Equal(expected.Name, actual.Name);
+        Assert.Equal(expected.DepartmentTypeId, EnumDepartmentTypeValueConverter.FromString(actual.DepartmentTypeId.Id));
+        Assert.Equal(expected.ParentDepartmentId.Value ?? "", actual.ParentDepartmentId.Id ?? "");
+        Assert.Equal(expected.ContactName, actual.ContactName);
+        Assert.Equal(expected.ContactEmail, actual.ContactEmail);
+        Assert.Equal(expected.CountryId, EnumCountryValueConverter.FromString(actual.CountryId.Id));
+    }
+
+    public override void AssertEqualToResponse(Department expected, Department actual) {
+        Assert.Equal(expected.Id, actual.Id);
+        Assert.Equal(expected.ExternalId, actual.ExternalId);
+        Assert.Equal(expected.Name, actual.Name);
+        Assert.Equal(expected.DepartmentTypeId.Id, actual.DepartmentTypeId.Id);
+        Assert.Equal(expected.ParentDepartmentId.Id ?? "", actual.ParentDepartmentId.Id ?? "");
+        Assert.Equal(expected.ContactName, actual.ContactName);
+        Assert.Equal(expected.ContactEmail, actual.ContactEmail);
+        Assert.Equal(expected.CountryId.Id, actual.CountryId.Id);
+    }
+
+    public override void Update(DepartmentInsertData data) {
+        data.ContactName = data.ContactName.MarkUpdated();
+        data.ContactEmail = data.ContactEmail.MarkUpdated();
+        data.CountryId = data.CountryId ==
+            EnumCountry.Finland ? EnumCountry.UnitedStatesOfAmerica : EnumCountry.Finland;
+    }
 
     public override IEnumerable<DepartmentInsertData> GenerateRequestData() =>
         Enumerable.Range(0, 4).Select(i => {
@@ -28,32 +52,8 @@ public class Department_TestData : TestData<Department, DepartmentInsertData> {
 }
 
 public static class DepartmentTestData_Extention {
-    public static void Update(this DepartmentInsertData departmentInsertData) {
-        departmentInsertData.ContactName = departmentInsertData.ContactName.MarkUpdated();
-        departmentInsertData.ContactEmail = departmentInsertData.ContactEmail.MarkUpdated();
-        departmentInsertData.CountryId = departmentInsertData.CountryId ==
-            EnumCountry.Finland ? EnumCountry.UnitedStatesOfAmerica : EnumCountry.Finland;
-    }
-
-    public static void AssertEqualToRequest(this DepartmentInsertData departmentInsertData, Department department) {
-        Assert.Equal(departmentInsertData.Name, department.Name);
-        Assert.Equal(departmentInsertData.DepartmentTypeId.ToString(), department.DepartmentTypeId.Id);
-        Assert.Equal(departmentInsertData.ParentDepartmentId.Value ?? "", department.ParentDepartmentId.Id ?? "");
-        Assert.Equal(departmentInsertData.ContactName, department.ContactName);
-        Assert.Equal(departmentInsertData.ContactEmail, department.ContactEmail);
-        Assert.Equal(departmentInsertData.CountryId, EnumCountryValueConverter.FromString(department.CountryId.Id));
-    }
-
-    public static void AssertEqualToRequest(this Department departmentInsertData, Department department) {
-        Assert.Equal(departmentInsertData.Name, department.Name);
-        Assert.Equal(departmentInsertData.DepartmentTypeId.Id, department.DepartmentTypeId.Id);
-        Assert.Equal(departmentInsertData.ParentDepartmentId.Id ?? "", department.ParentDepartmentId.Id ?? "");
-        Assert.Equal(departmentInsertData.ContactName, department.ContactName);
-        Assert.Equal(departmentInsertData.ContactEmail, department.ContactEmail);
-        Assert.Equal(departmentInsertData.CountryId.Id, department.CountryId.Id);
-    }
-
     public static DepartmentUpdateData ToDepartmentUpdateData(this DepartmentInsertData departmentInsertData) => new(
+        externalId: departmentInsertData.ExternalId,
         name: departmentInsertData.Name,
         contactName: departmentInsertData.ContactName,
         contactEmail: departmentInsertData.ContactEmail,
@@ -61,7 +61,7 @@ public static class DepartmentTestData_Extention {
     );
 
     public static DepartmentData ToDepartmentData(this DepartmentInsertData departmentInsertData) => new(
-        id: departmentInsertData.Id,
+        externalId: departmentInsertData.ExternalId,
         name: departmentInsertData.Name,
         parentDepartmentId: departmentInsertData.ParentDepartmentId,
         departmentTypeId: departmentInsertData.DepartmentTypeId,
