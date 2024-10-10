@@ -6,7 +6,7 @@ public abstract class TestData<TResponse, TRequest> {
     public abstract void AssertEqualToResponse(TResponse expected, TResponse actual);
     public virtual void Update(TRequest data) { }
 
-    protected string CreateTestEntityName(string s, string suffix) => $"unit-test-{s}{suffix}";
+    protected string CreateTestEntityName(string s, string suffix = "") => $"unit-test-{s}{suffix}";
 }
 
 public static class TestData__Extension {

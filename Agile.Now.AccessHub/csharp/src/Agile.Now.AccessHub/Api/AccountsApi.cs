@@ -37,6 +37,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using Agile.Now.AccessHub.Client;
 using Agile.Now.AccessHub.Model;
 
@@ -343,7 +344,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Picture</returns>
-        Picture UpsertAccountPicture(string id, PictureData pictureData, string name = default, int operationIndex = 0);
+        Picture UpsertAccountPicture(string id, Stream pictureData, string name = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -357,7 +358,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Picture</returns>
-        ApiResponse<Picture> UpsertAccountPictureWithHttpInfo(string id, PictureData pictureData, string name = default, int operationIndex = 0);
+        ApiResponse<Picture> UpsertAccountPictureWithHttpInfo(string id, Stream pictureData, string name = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -2897,7 +2898,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Picture</returns>
-        public Picture UpsertAccountPicture(string id, PictureData pictureData, string name = default, int operationIndex = 0)
+        public Picture UpsertAccountPicture(string id, Stream pictureData, string name = default, int operationIndex = 0)
         {
             ApiResponse<Picture> localVarResponse = UpsertAccountPictureWithHttpInfo(id, pictureData, name);
             return localVarResponse.Data;
@@ -2912,7 +2913,7 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Picture</returns>
-        public ApiResponse<Picture> UpsertAccountPictureWithHttpInfo(string id, PictureData pictureData, string name = default, int operationIndex = 0)
+        public ApiResponse<Picture> UpsertAccountPictureWithHttpInfo(string id, Stream pictureData, string name = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling AccountsApi->UpsertAccountPicture");

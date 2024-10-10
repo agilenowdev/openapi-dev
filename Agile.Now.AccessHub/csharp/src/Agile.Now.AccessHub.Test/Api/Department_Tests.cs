@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Agile.Now.AccessHub.Api;
 using Agile.Now.AccessHub.Model;
 using Agile.Now.AccessHub.Test.Common;
@@ -29,7 +31,7 @@ public class Department_Tests : EntityTests<Department, string, DepartmentInsert
     protected override Department Get(string id, string name) => api.GetDepartment(id, name);
     protected override Department Create(DepartmentInsertData data) => api.CreateDepartment(data);
 
-    protected override Department Update(string id, DepartmentInsertData data, string name) =>
+    protected override Department Update(string id, DepartmentInsertData data, string name = default) =>
         api.UpdateDepartment(id, data.ToDepartmentUpdateData(), name);
 
     protected override Department Upsert(DepartmentInsertData data) =>
@@ -56,4 +58,29 @@ public class Department_Tests : EntityTests<Department, string, DepartmentInsert
 
     [Fact] public void Test_Department_Delete_ById() => Test_Delete_ById();
     [Fact] public void Test_Department_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();
+
+    [Fact]
+    public void Test_Department_Create_WithParentDepartment() {
+        var departmentWithoutParent = GenerateEntity();
+        try {
+            var data = TestData.GenerateRequestData().First();
+            data.ParentDepartmentId.Value = departmentWithoutParent.Id;
+            var departmentWithParent = Create(data);
+            try {
+                var updateData = data.ToDepartmentUpdateData();
+                updateData.IsActive = true;
+                api.UpdateDepartment(departmentWithParent.Id, updateData);
+                data = TestData.GenerateRequestData().First();
+                data.ParentDepartmentId.Value = departmentWithParent.Id;
+                Assert.ThrowsAny<Exception>(() => Create(data));
+            }
+            finally {
+                Delete(departmentWithParent);
+            }
+        }
+        finally {
+            Delete(departmentWithoutParent);
+        }
+    }
 }
+;
