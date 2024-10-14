@@ -80,7 +80,7 @@ namespace Example
 
             var apiInstance = new UsersApi(config);
             var id = "id_example";  // string | The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t
-            var subId = "subId_example";  // string | The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64\\|testbmFtZUBkb21haW4uY29t
+            var subId = "subId_example";  // string | The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t
             var name = "name_example";  // string | The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional) 
             var subName = "subName_example";  // string | The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` UserId.Email, UserId.Username ``` (optional) 
 
