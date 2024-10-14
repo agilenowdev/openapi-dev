@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.153"
+    "version": "3.0.154"
   },
   "servers": [
     {
@@ -72,7 +72,9 @@
         "security": [
           {
             "OAuth2": [
-              "AccessManager:Read"
+              "AccessManager:Read",
+              "AccessUser:Read",
+              "AccessUser:Read"
             ]
           }
         ]
@@ -163,7 +165,9 @@
         "security": [
           {
             "OAuth2": [
-              "AccessManager:Read"
+              "AccessManager:Read",
+              "AccessUser:Read",
+              "AccessUser:Read"
             ]
           }
         ]
@@ -273,7 +277,9 @@
         "security": [
           {
             "OAuth2": [
-              "AccessManager:Read"
+              "AccessManager:Read",
+              "AccessUser:Read",
+              "AccessUser:Read"
             ]
           }
         ]
@@ -346,7 +352,9 @@
         "security": [
           {
             "OAuth2": [
-              "AccessManager:Create, Update"
+              "AccessManager:Create, Update",
+              "AccessUser:Create, Update",
+              "AccessUser:Create, Update"
             ]
           }
         ]
@@ -426,7 +434,9 @@
         "security": [
           {
             "OAuth2": [
-              "AccessManager:Delete"
+              "AccessManager:Delete",
+              "AccessUser:Delete",
+              "AccessUser:Delete"
             ]
           }
         ]
@@ -536,7 +546,9 @@
         "security": [
           {
             "OAuth2": [
-              "AccessManager:Read"
+              "AccessManager:Read",
+              "AccessUser:Read",
+              "AccessUser:Read"
             ]
           }
         ]
@@ -609,7 +621,9 @@
         "security": [
           {
             "OAuth2": [
-              "AccessManager:Create, Update"
+              "AccessManager:Create, Update",
+              "AccessUser:Create, Update",
+              "AccessUser:Create, Update"
             ]
           }
         ]
@@ -689,7 +703,9 @@
         "security": [
           {
             "OAuth2": [
-              "AccessManager:Delete"
+              "AccessManager:Delete",
+              "AccessUser:Delete",
+              "AccessUser:Delete"
             ]
           }
         ]
@@ -799,7 +815,9 @@
         "security": [
           {
             "OAuth2": [
-              "AccessManager:Read"
+              "AccessManager:Read",
+              "AccessUser:Read",
+              "AccessUser:Read"
             ]
           }
         ]
@@ -880,7 +898,9 @@
         "security": [
           {
             "OAuth2": [
-              "AccessManager:Create, Update"
+              "AccessManager:Create, Update",
+              "AccessUser:Create, Update",
+              "AccessUser:Create, Update"
             ]
           }
         ]
@@ -953,7 +973,9 @@
         "security": [
           {
             "OAuth2": [
-              "AccessManager:Create, Update"
+              "AccessManager:Create, Update",
+              "AccessUser:Create, Update",
+              "AccessUser:Create, Update"
             ]
           }
         ]
@@ -1033,7 +1055,9 @@
         "security": [
           {
             "OAuth2": [
-              "AccessManager:Delete"
+              "AccessManager:Delete",
+              "AccessUser:Delete",
+              "AccessUser:Delete"
             ]
           }
         ]
@@ -1143,7 +1167,9 @@
         "security": [
           {
             "OAuth2": [
-              "AccessManager:Read"
+              "AccessManager:Read",
+              "AccessUser:Read",
+              "AccessUser:Read"
             ]
           }
         ]
@@ -1224,7 +1250,9 @@
         "security": [
           {
             "OAuth2": [
-              "AccessManager:Create, Update"
+              "AccessManager:Create, Update",
+              "AccessUser:Create, Update",
+              "AccessUser:Create, Update"
             ]
           }
         ]
@@ -1297,7 +1325,9 @@
         "security": [
           {
             "OAuth2": [
-              "AccessManager:Create, Update"
+              "AccessManager:Create, Update",
+              "AccessUser:Create, Update",
+              "AccessUser:Create, Update"
             ]
           }
         ]
@@ -1377,7 +1407,9 @@
         "security": [
           {
             "OAuth2": [
-              "AccessManager:Delete"
+              "AccessManager:Delete",
+              "AccessUser:Delete",
+              "AccessUser:Delete"
             ]
           }
         ]
@@ -1487,7 +1519,9 @@
         "security": [
           {
             "OAuth2": [
-              "AccessManager:Read"
+              "AccessManager:Read",
+              "AccessUser:Read",
+              "AccessUser:Read"
             ]
           }
         ]
@@ -1597,7 +1631,9 @@
         "security": [
           {
             "OAuth2": [
-              "AccessManager:Read"
+              "AccessManager:Read",
+              "AccessUser:Read",
+              "AccessUser:Read"
             ]
           }
         ]
@@ -1707,7 +1743,9 @@
         "security": [
           {
             "OAuth2": [
-              "AccessManager:Read"
+              "AccessManager:Read",
+              "AccessUser:Read",
+              "AccessUser:Read"
             ]
           }
         ]
@@ -2776,7 +2814,8 @@
             "tokenUrl": "https://dev.esystems.fi/oAuth/rest/v2/Token",
             "refreshUrl": "https://dev.esystems.fi/oAuth/rest/v2/Token",
             "scopes": {
-              "AccessManager:Read": "Allows to edit access groups and all related data. (ABAC) permissions required to perform a function."
+              "AccessManager:Read": "Allows to edit access groups and all related data. (ABAC) permissions required to perform a function.",
+              "AccessUser:Read": "Allows to review access groups and all related data. (ABAC) permissions required to perform a function."
             }
           }
         }
