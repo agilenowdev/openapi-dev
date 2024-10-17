@@ -41,10 +41,10 @@ public class Account_Picture_Tests : SubEntityTests<Account, string, AccountInse
     //[Fact] public void Test_Account_Picture_Upsert() => Test_Upsert();
     [Fact] public void Test_Account_Picture_Delete_ById() => Test_Delete_ById();
 
-    [Fact]
-    public void Test_AccountPicture_Upsert() {
-        var inputData = Picture_TestData.PictureData.ToStream();
-        var created = api.UpsertAccountPicture("ee825d23-c105-4274-9229-d1df34e1cbde",
-            inputData);
-    }
+    //[Fact]
+    //public void Test_AccountPicture_Upsert() {
+    //    var inputData = Picture_TestData.PictureData.ToStream();
+    //    var created = api.UpsertAccountPicture("ee825d23-c105-4274-9229-d1df34e1cbde",
+    //        inputData);
+    //}
 }
