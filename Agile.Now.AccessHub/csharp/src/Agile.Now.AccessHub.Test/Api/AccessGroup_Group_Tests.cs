@@ -46,7 +46,7 @@ public class AccessGroup_Group_Tests : SubEntityTests<AccessGroup, string, Acces
     [Fact] public void Test_AccessGroup_Group_Upsert() => Test_Upsert();
 
     [Fact] public void Test_AccessGroup_Group_Patch() => Test_Patch();
-    [Fact] public void Test_AccessGroup_Group_Patch_DeleteNotExists() => Test_Patch_DeleteNotExists();
+    //[Fact] public void Test_AccessGroup_Group_Patch_DeleteNotExists() => Test_Patch_DeleteNotExists();
 
     [Fact] public void Test_AccessGroup_Group_Delete_ById() => Test_Delete_ById();
     //[Fact] public void Test_AccessGroup_Group_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();

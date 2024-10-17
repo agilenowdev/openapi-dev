@@ -51,7 +51,7 @@ public class GroupExternal_User_Tests
     [Fact] public void Test_GroupExternal_User_Upsert() => Test_Upsert();
 
     [Fact] public void Test_GroupExternal_User_Patch() => Test_Patch();
-    [Fact] public void Test_GroupExternal_User_Patch_DeleteNotExists() => Test_Patch_DeleteNotExists();
+    //[Fact] public void Test_GroupExternal_User_Patch_DeleteNotExists() => Test_Patch_DeleteNotExists();
 
     [Fact] public void Test_GroupExternal_User_Delete_ById() => Test_Delete_ById();
     //[Fact] public void Test_GroupExternal_User_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();

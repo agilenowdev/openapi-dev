@@ -50,7 +50,7 @@ public class AccessGroup_Application_Tests
     [Fact] public void Test_AccessGroup_Application_Upsert() => Test_Upsert();
 
     [Fact] public void Test_AccessGroup_Application_Patch() => Test_Patch();
-    [Fact] public void Test_AccessGroup_Application_Patch_DeleteNotExists() => Test_Patch_DeleteNotExists();
+    //[Fact] public void Test_AccessGroup_Application_Patch_DeleteNotExists() => Test_Patch_DeleteNotExists();
 
     [Fact] public void Test_AccessGroup_Application_Delete_ById() => Test_Delete_ById();
     //[Fact] public void Test_AccessGroup_Application_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();

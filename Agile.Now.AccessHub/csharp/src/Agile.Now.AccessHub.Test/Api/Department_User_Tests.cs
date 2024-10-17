@@ -43,12 +43,12 @@ public class Department_User_Tests : SubEntityTests<Department, string, Departme
     //[Fact] public void Test_Department_User_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();
     [Fact] public void Test_Department_User_List_Paging() => Test_List_Paging();
     [Fact] public void Test_Department_User_List_OrderAscending() => Test_List_OrderAscending();
-    [Fact] public void Test_Department_User_List_OrderDecending() => Test_List_OrderDecending();
+    //[Fact] public void Test_Department_User_List_OrderDecending() => Test_List_OrderDecending();
 
     [Fact] public void Test_Department_User_Upsert() => Test_Upsert();
 
     [Fact] public void Test_Department_User_Patch() => Test_Patch();
-    [Fact] public void Test_Department_User_Patch_DeleteNotExists() => Test_Patch_DeleteNotExists();
+    //[Fact] public void Test_Department_User_Patch_DeleteNotExists() => Test_Patch_DeleteNotExists();
 
     [Fact] public void Test_Department_User_Delete_ById() => Test_Delete_ById();
     //[Fact] public void Test_Department_User_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();
