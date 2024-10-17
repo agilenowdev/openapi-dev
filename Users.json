@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.160"
+    "version": "3.0.164"
   },
   "servers": [
     {
@@ -73,8 +73,8 @@
           {
             "OAuth2": [
               "AccessManager:Read",
-              "AccessUser:Read",
-              "AccessUser:Read"
+              "Department:Read",
+              "Location:Read"
             ]
           }
         ]
@@ -166,8 +166,8 @@
           {
             "OAuth2": [
               "AccessManager:Read",
-              "AccessUser:Read",
-              "AccessUser:Read"
+              "Department:Read",
+              "Location:Read"
             ]
           }
         ]
@@ -278,8 +278,8 @@
           {
             "OAuth2": [
               "AccessManager:Read",
-              "AccessUser:Read",
-              "AccessUser:Read"
+              "Department:Read",
+              "Location:Read"
             ]
           }
         ]
@@ -353,8 +353,8 @@
           {
             "OAuth2": [
               "AccessManager:Create, Update",
-              "AccessUser:Create, Update",
-              "AccessUser:Create, Update"
+              "Department:Create, Update",
+              "Location:Create, Update"
             ]
           }
         ]
@@ -435,8 +435,8 @@
           {
             "OAuth2": [
               "AccessManager:Delete",
-              "AccessUser:Delete",
-              "AccessUser:Delete"
+              "Department:Delete",
+              "Location:Delete"
             ]
           }
         ]
@@ -547,8 +547,8 @@
           {
             "OAuth2": [
               "AccessManager:Read",
-              "AccessUser:Read",
-              "AccessUser:Read"
+              "Department:Read",
+              "Location:Read"
             ]
           }
         ]
@@ -622,8 +622,8 @@
           {
             "OAuth2": [
               "AccessManager:Create, Update",
-              "AccessUser:Create, Update",
-              "AccessUser:Create, Update"
+              "Department:Create, Update",
+              "Location:Create, Update"
             ]
           }
         ]
@@ -704,8 +704,8 @@
           {
             "OAuth2": [
               "AccessManager:Delete",
-              "AccessUser:Delete",
-              "AccessUser:Delete"
+              "Department:Delete",
+              "Location:Delete"
             ]
           }
         ]
@@ -816,8 +816,8 @@
           {
             "OAuth2": [
               "AccessManager:Read",
-              "AccessUser:Read",
-              "AccessUser:Read"
+              "Department:Read",
+              "Location:Read"
             ]
           }
         ]
@@ -899,8 +899,8 @@
           {
             "OAuth2": [
               "AccessManager:Create, Update",
-              "AccessUser:Create, Update",
-              "AccessUser:Create, Update"
+              "Department:Create, Update",
+              "Location:Create, Update"
             ]
           }
         ]
@@ -974,8 +974,8 @@
           {
             "OAuth2": [
               "AccessManager:Create, Update",
-              "AccessUser:Create, Update",
-              "AccessUser:Create, Update"
+              "Department:Create, Update",
+              "Location:Create, Update"
             ]
           }
         ]
@@ -1056,8 +1056,8 @@
           {
             "OAuth2": [
               "AccessManager:Delete",
-              "AccessUser:Delete",
-              "AccessUser:Delete"
+              "Department:Delete",
+              "Location:Delete"
             ]
           }
         ]
@@ -1168,8 +1168,8 @@
           {
             "OAuth2": [
               "AccessManager:Read",
-              "AccessUser:Read",
-              "AccessUser:Read"
+              "Department:Read",
+              "Location:Read"
             ]
           }
         ]
@@ -1251,8 +1251,8 @@
           {
             "OAuth2": [
               "AccessManager:Create, Update",
-              "AccessUser:Create, Update",
-              "AccessUser:Create, Update"
+              "Department:Create, Update",
+              "Location:Create, Update"
             ]
           }
         ]
@@ -1326,8 +1326,8 @@
           {
             "OAuth2": [
               "AccessManager:Create, Update",
-              "AccessUser:Create, Update",
-              "AccessUser:Create, Update"
+              "Department:Create, Update",
+              "Location:Create, Update"
             ]
           }
         ]
@@ -1408,8 +1408,8 @@
           {
             "OAuth2": [
               "AccessManager:Delete",
-              "AccessUser:Delete",
-              "AccessUser:Delete"
+              "Department:Delete",
+              "Location:Delete"
             ]
           }
         ]
@@ -1520,8 +1520,8 @@
           {
             "OAuth2": [
               "AccessManager:Read",
-              "AccessUser:Read",
-              "AccessUser:Read"
+              "Department:Read",
+              "Location:Read"
             ]
           }
         ]
@@ -1632,8 +1632,8 @@
           {
             "OAuth2": [
               "AccessManager:Read",
-              "AccessUser:Read",
-              "AccessUser:Read"
+              "Department:Read",
+              "Location:Read"
             ]
           }
         ]
@@ -1744,8 +1744,8 @@
           {
             "OAuth2": [
               "AccessManager:Read",
-              "AccessUser:Read",
-              "AccessUser:Read"
+              "Department:Read",
+              "Location:Read"
             ]
           }
         ]
@@ -2815,7 +2815,8 @@
             "refreshUrl": "https://dev.esystems.fi/oAuth/rest/v2/Token",
             "scopes": {
               "AccessManager:Read": "Allows to edit access groups and all related data. (ABAC) permissions required to perform a function.",
-              "AccessUser:Read": "Allows to review access groups and all related data. (ABAC) permissions required to perform a function."
+              "Department:Read": "The role of department concept. (ABAC) permissions required to perform a function.",
+              "Location:Read": "The role of location concept. (ABAC) permissions required to perform a function."
             }
           }
         }
