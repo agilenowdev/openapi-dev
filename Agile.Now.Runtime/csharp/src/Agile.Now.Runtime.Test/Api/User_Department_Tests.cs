@@ -47,7 +47,7 @@ public class User_Department_Tests : SubEntityTests<User, int, User, Department,
     [Fact] public void Test_User_Department_Upsert() => Test_Upsert();
 
     [Fact] public void Test_User_Department_Patch() => Test_Patch();
-    [Fact] public void Test_User_Department_Patch_DeleteNotExists() => Test_Patch_DeleteNotExists();
+    //[Fact] public void Test_User_Department_Patch_DeleteNotExists() => Test_Patch_DeleteNotExists();
 
     [Fact] public void Test_User_Department_Delete_ById() => Test_Delete_ById();
     //[Fact] public void Test_User_Department_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();

@@ -42,7 +42,7 @@ paths:
           The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
           You can extract any string to a base64 string.
-          E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+          E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
         explode: false
         in: path
         name: Id
@@ -52,7 +52,7 @@ paths:
             The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
             You can extract any string to a base64 string.
-            E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+            E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
           type: string
         style: simple
       - description: "The name of the database field. If empty, the entity `Id` field\
@@ -140,6 +140,7 @@ paths:
       security:
       - OAuth2:
         - AccessManager:Read
+        - AccessUser:Read
         - AccessUser:Read
       tags:
       - Users
@@ -364,6 +365,7 @@ paths:
       - OAuth2:
         - AccessManager:Read
         - AccessUser:Read
+        - AccessUser:Read
       tags:
       - Users
   /Endpoint/rest/api/v1/User/{Id}/AccessGroups:
@@ -389,7 +391,7 @@ paths:
           The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
           You can extract any string to a base64 string.
-          E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+          E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
         explode: false
         in: path
         name: Id
@@ -399,7 +401,7 @@ paths:
             The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
             You can extract any string to a base64 string.
-            E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+            E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
           type: string
         style: simple
       - description: "The name of the database field. If empty, the entity `Id` field\
@@ -615,6 +617,7 @@ paths:
       - OAuth2:
         - AccessManager:Read
         - AccessUser:Read
+        - AccessUser:Read
       tags:
       - Users
   /Endpoint/rest/api/v1/User/{Id}/AccessGroup:
@@ -642,7 +645,7 @@ paths:
           The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
           You can extract any string to a base64 string.
-          E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+          E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
         explode: false
         in: path
         name: Id
@@ -652,7 +655,7 @@ paths:
             The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
             You can extract any string to a base64 string.
-            E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+            E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
           type: string
         style: simple
       - description: "The name of the database field. If empty, the entity `Id` field\
@@ -752,6 +755,7 @@ paths:
       - OAuth2:
         - "AccessManager:Create, Update"
         - "AccessUser:Create, Update"
+        - "AccessUser:Create, Update"
       tags:
       - Users
   /Endpoint/rest/api/v1/User/{Id}/AccessGroup/{SubId}:
@@ -775,7 +779,7 @@ paths:
           The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
           You can extract any string to a base64 string.
-          E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+          E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
         explode: false
         in: path
         name: Id
@@ -785,7 +789,7 @@ paths:
             The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
             You can extract any string to a base64 string.
-            E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+            E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
           type: string
         style: simple
       - description: "The name of the database field. If empty, the entity `Id` field\
@@ -803,7 +807,7 @@ paths:
           The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.
 
           You can extract any string to a base64 string.
-          E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+          E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
         explode: false
         in: path
         name: SubId
@@ -813,7 +817,7 @@ paths:
             The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.
 
             You can extract any string to a base64 string.
-            E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+            E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
           type: string
         style: simple
       - description: "The name of the database field. If empty, the entity `Id` field\
@@ -902,6 +906,7 @@ paths:
       - OAuth2:
         - AccessManager:Delete
         - AccessUser:Delete
+        - AccessUser:Delete
       tags:
       - Users
   /Endpoint/rest/api/v1/User/{Id}/Groups:
@@ -927,7 +932,7 @@ paths:
           The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
           You can extract any string to a base64 string.
-          E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+          E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
         explode: false
         in: path
         name: Id
@@ -937,7 +942,7 @@ paths:
             The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
             You can extract any string to a base64 string.
-            E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+            E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
           type: string
         style: simple
       - description: "The name of the database field. If empty, the entity `Id` field\
@@ -1151,6 +1156,7 @@ paths:
       - OAuth2:
         - AccessManager:Read
         - AccessUser:Read
+        - AccessUser:Read
       tags:
       - Users
   /Endpoint/rest/api/v1/User/{Id}/Group:
@@ -1178,7 +1184,7 @@ paths:
           The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
           You can extract any string to a base64 string.
-          E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+          E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
         explode: false
         in: path
         name: Id
@@ -1188,7 +1194,7 @@ paths:
             The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
             You can extract any string to a base64 string.
-            E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+            E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
           type: string
         style: simple
       - description: "The name of the database field. If empty, the entity `Id` field\
@@ -1288,6 +1294,7 @@ paths:
       - OAuth2:
         - "AccessManager:Create, Update"
         - "AccessUser:Create, Update"
+        - "AccessUser:Create, Update"
       tags:
       - Users
   /Endpoint/rest/api/v1/User/{Id}/Group/{SubId}:
@@ -1311,7 +1318,7 @@ paths:
           The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
           You can extract any string to a base64 string.
-          E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+          E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
         explode: false
         in: path
         name: Id
@@ -1321,7 +1328,7 @@ paths:
             The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
             You can extract any string to a base64 string.
-            E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+            E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
           type: string
         style: simple
       - description: "The name of the database field. If empty, the entity `Id` field\
@@ -1339,7 +1346,7 @@ paths:
           The identifier of the Group record. The parameter is part of the url address and some special characters are forbidden.
 
           You can extract any string to a base64 string.
-          E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+          E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
         explode: false
         in: path
         name: SubId
@@ -1349,7 +1356,7 @@ paths:
             The identifier of the Group record. The parameter is part of the url address and some special characters are forbidden.
 
             You can extract any string to a base64 string.
-            E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+            E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
           type: string
         style: simple
       - description: "The name of the database field. If empty, the entity `Id` field\
@@ -1438,6 +1445,7 @@ paths:
       - OAuth2:
         - AccessManager:Delete
         - AccessUser:Delete
+        - AccessUser:Delete
       tags:
       - Users
   /Endpoint/rest/api/v1/User/{Id}/Departments:
@@ -1463,7 +1471,7 @@ paths:
           The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
           You can extract any string to a base64 string.
-          E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+          E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
         explode: false
         in: path
         name: Id
@@ -1473,7 +1481,7 @@ paths:
             The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
             You can extract any string to a base64 string.
-            E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+            E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
           type: string
         style: simple
       - description: "The name of the database field. If empty, the entity `Id` field\
@@ -1689,6 +1697,7 @@ paths:
       - OAuth2:
         - AccessManager:Read
         - AccessUser:Read
+        - AccessUser:Read
       tags:
       - Users
     patch:
@@ -1716,7 +1725,7 @@ paths:
           The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
           You can extract any string to a base64 string.
-          E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+          E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
         explode: false
         in: path
         name: Id
@@ -1726,7 +1735,7 @@ paths:
             The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
             You can extract any string to a base64 string.
-            E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+            E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
           type: string
         style: simple
       - description: "The name of the database field. If empty, the entity `Id` field\
@@ -1842,6 +1851,7 @@ paths:
       - OAuth2:
         - "AccessManager:Create, Update"
         - "AccessUser:Create, Update"
+        - "AccessUser:Create, Update"
       tags:
       - Users
   /Endpoint/rest/api/v1/User/{Id}/Department:
@@ -1869,7 +1879,7 @@ paths:
           The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
           You can extract any string to a base64 string.
-          E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+          E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
         explode: false
         in: path
         name: Id
@@ -1879,7 +1889,7 @@ paths:
             The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
             You can extract any string to a base64 string.
-            E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+            E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
           type: string
         style: simple
       - description: "The name of the database field. If empty, the entity `Id` field\
@@ -1979,6 +1989,7 @@ paths:
       - OAuth2:
         - "AccessManager:Create, Update"
         - "AccessUser:Create, Update"
+        - "AccessUser:Create, Update"
       tags:
       - Users
   /Endpoint/rest/api/v1/User/{Id}/Department/{SubId}:
@@ -2002,7 +2013,7 @@ paths:
           The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
           You can extract any string to a base64 string.
-          E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+          E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
         explode: false
         in: path
         name: Id
@@ -2012,7 +2023,7 @@ paths:
             The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
             You can extract any string to a base64 string.
-            E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+            E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
           type: string
         style: simple
       - description: "The name of the database field. If empty, the entity `Id` field\
@@ -2030,7 +2041,7 @@ paths:
           The identifier of the Department record. The parameter is part of the url address and some special characters are forbidden.
 
           You can extract any string to a base64 string.
-          E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+          E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
         explode: false
         in: path
         name: SubId
@@ -2040,7 +2051,7 @@ paths:
             The identifier of the Department record. The parameter is part of the url address and some special characters are forbidden.
 
             You can extract any string to a base64 string.
-            E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+            E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
           type: string
         style: simple
       - description: "The name of the database field. If empty, the entity `Id` field\
@@ -2129,6 +2140,7 @@ paths:
       - OAuth2:
         - AccessManager:Delete
         - AccessUser:Delete
+        - AccessUser:Delete
       tags:
       - Users
   /Endpoint/rest/api/v1/User/{Id}/Locations:
@@ -2154,7 +2166,7 @@ paths:
           The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
           You can extract any string to a base64 string.
-          E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+          E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
         explode: false
         in: path
         name: Id
@@ -2164,7 +2176,7 @@ paths:
             The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
             You can extract any string to a base64 string.
-            E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+            E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
           type: string
         style: simple
       - description: "The name of the database field. If empty, the entity `Id` field\
@@ -2380,6 +2392,7 @@ paths:
       - OAuth2:
         - AccessManager:Read
         - AccessUser:Read
+        - AccessUser:Read
       tags:
       - Users
     patch:
@@ -2407,7 +2420,7 @@ paths:
           The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
           You can extract any string to a base64 string.
-          E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+          E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
         explode: false
         in: path
         name: Id
@@ -2417,7 +2430,7 @@ paths:
             The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
             You can extract any string to a base64 string.
-            E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+            E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
           type: string
         style: simple
       - description: "The name of the database field. If empty, the entity `Id` field\
@@ -2533,6 +2546,7 @@ paths:
       - OAuth2:
         - "AccessManager:Create, Update"
         - "AccessUser:Create, Update"
+        - "AccessUser:Create, Update"
       tags:
       - Users
   /Endpoint/rest/api/v1/User/{Id}/Location:
@@ -2560,7 +2574,7 @@ paths:
           The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
           You can extract any string to a base64 string.
-          E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+          E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
         explode: false
         in: path
         name: Id
@@ -2570,7 +2584,7 @@ paths:
             The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
             You can extract any string to a base64 string.
-            E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+            E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
           type: string
         style: simple
       - description: "The name of the database field. If empty, the entity `Id` field\
@@ -2670,6 +2684,7 @@ paths:
       - OAuth2:
         - "AccessManager:Create, Update"
         - "AccessUser:Create, Update"
+        - "AccessUser:Create, Update"
       tags:
       - Users
   /Endpoint/rest/api/v1/User/{Id}/Location/{SubId}:
@@ -2693,7 +2708,7 @@ paths:
           The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
           You can extract any string to a base64 string.
-          E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+          E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
         explode: false
         in: path
         name: Id
@@ -2703,7 +2718,7 @@ paths:
             The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
             You can extract any string to a base64 string.
-            E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+            E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
           type: string
         style: simple
       - description: "The name of the database field. If empty, the entity `Id` field\
@@ -2721,7 +2736,7 @@ paths:
           The identifier of the Location record. The parameter is part of the url address and some special characters are forbidden.
 
           You can extract any string to a base64 string.
-          E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+          E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
         explode: false
         in: path
         name: SubId
@@ -2731,7 +2746,7 @@ paths:
             The identifier of the Location record. The parameter is part of the url address and some special characters are forbidden.
 
             You can extract any string to a base64 string.
-            E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+            E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
           type: string
         style: simple
       - description: "The name of the database field. If empty, the entity `Id` field\
@@ -2820,6 +2835,7 @@ paths:
       - OAuth2:
         - AccessManager:Delete
         - AccessUser:Delete
+        - AccessUser:Delete
       tags:
       - Users
   /Endpoint/rest/api/v1/User/{Id}/Applications:
@@ -2845,7 +2861,7 @@ paths:
           The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
           You can extract any string to a base64 string.
-          E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+          E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
         explode: false
         in: path
         name: Id
@@ -2855,7 +2871,7 @@ paths:
             The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
             You can extract any string to a base64 string.
-            E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+            E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
           type: string
         style: simple
       - description: "The name of the database field. If empty, the entity `Id` field\
@@ -3073,6 +3089,7 @@ paths:
       - OAuth2:
         - AccessManager:Read
         - AccessUser:Read
+        - AccessUser:Read
       tags:
       - Users
   /Endpoint/rest/api/v1/User/{Id}/AccessRoles:
@@ -3098,7 +3115,7 @@ paths:
           The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
           You can extract any string to a base64 string.
-          E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+          E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
         explode: false
         in: path
         name: Id
@@ -3108,7 +3125,7 @@ paths:
             The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
             You can extract any string to a base64 string.
-            E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+            E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
           type: string
         style: simple
       - description: "The name of the database field. If empty, the entity `Id` field\
@@ -3326,6 +3343,7 @@ paths:
       - OAuth2:
         - AccessManager:Read
         - AccessUser:Read
+        - AccessUser:Read
       tags:
       - Users
   /Endpoint/rest/api/v1/User/{Id}/EffectivePermissions:
@@ -3351,7 +3369,7 @@ paths:
           The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
           You can extract any string to a base64 string.
-          E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+          E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
         explode: false
         in: path
         name: Id
@@ -3361,7 +3379,7 @@ paths:
             The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
 
             You can extract any string to a base64 string.
-            E.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t
+            E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
           type: string
         style: simple
       - description: "The name of the database field. If empty, the entity `Id` field\
@@ -3578,6 +3596,7 @@ paths:
       security:
       - OAuth2:
         - AccessManager:Read
+        - AccessUser:Read
         - AccessUser:Read
       tags:
       - Users

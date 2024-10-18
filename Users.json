@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.145"
+    "version": "3.0.165"
   },
   "servers": [
     {
@@ -28,11 +28,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -73,7 +73,8 @@
           {
             "OAuth2": [
               "AccessManager:Read",
-              "AccessUser:Read"
+              "Department:Read",
+              "Location:Read"
             ]
           }
         ]
@@ -165,7 +166,8 @@
           {
             "OAuth2": [
               "AccessManager:Read",
-              "AccessUser:Read"
+              "Department:Read",
+              "Location:Read"
             ]
           }
         ]
@@ -182,11 +184,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -276,7 +278,8 @@
           {
             "OAuth2": [
               "AccessManager:Read",
-              "AccessUser:Read"
+              "Department:Read",
+              "Location:Read"
             ]
           }
         ]
@@ -293,11 +296,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -350,7 +353,8 @@
           {
             "OAuth2": [
               "AccessManager:Create, Update",
-              "AccessUser:Create, Update"
+              "Department:Create, Update",
+              "Location:Create, Update"
             ]
           }
         ]
@@ -367,11 +371,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -386,11 +390,11 @@
           {
             "name": "SubId",
             "in": "path",
-            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -431,7 +435,8 @@
           {
             "OAuth2": [
               "AccessManager:Delete",
-              "AccessUser:Delete"
+              "Department:Delete",
+              "Location:Delete"
             ]
           }
         ]
@@ -448,11 +453,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -542,7 +547,8 @@
           {
             "OAuth2": [
               "AccessManager:Read",
-              "AccessUser:Read"
+              "Department:Read",
+              "Location:Read"
             ]
           }
         ]
@@ -559,11 +565,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -616,7 +622,8 @@
           {
             "OAuth2": [
               "AccessManager:Create, Update",
-              "AccessUser:Create, Update"
+              "Department:Create, Update",
+              "Location:Create, Update"
             ]
           }
         ]
@@ -633,11 +640,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -652,11 +659,11 @@
           {
             "name": "SubId",
             "in": "path",
-            "description": "The identifier of the Group record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the Group record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the Group record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the Group record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -697,7 +704,8 @@
           {
             "OAuth2": [
               "AccessManager:Delete",
-              "AccessUser:Delete"
+              "Department:Delete",
+              "Location:Delete"
             ]
           }
         ]
@@ -714,11 +722,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -808,7 +816,8 @@
           {
             "OAuth2": [
               "AccessManager:Read",
-              "AccessUser:Read"
+              "Department:Read",
+              "Location:Read"
             ]
           }
         ]
@@ -823,11 +832,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -890,7 +899,8 @@
           {
             "OAuth2": [
               "AccessManager:Create, Update",
-              "AccessUser:Create, Update"
+              "Department:Create, Update",
+              "Location:Create, Update"
             ]
           }
         ]
@@ -907,11 +917,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -964,7 +974,8 @@
           {
             "OAuth2": [
               "AccessManager:Create, Update",
-              "AccessUser:Create, Update"
+              "Department:Create, Update",
+              "Location:Create, Update"
             ]
           }
         ]
@@ -981,11 +992,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -1000,11 +1011,11 @@
           {
             "name": "SubId",
             "in": "path",
-            "description": "The identifier of the Department record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the Department record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the Department record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the Department record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -1045,7 +1056,8 @@
           {
             "OAuth2": [
               "AccessManager:Delete",
-              "AccessUser:Delete"
+              "Department:Delete",
+              "Location:Delete"
             ]
           }
         ]
@@ -1062,11 +1074,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -1156,7 +1168,8 @@
           {
             "OAuth2": [
               "AccessManager:Read",
-              "AccessUser:Read"
+              "Department:Read",
+              "Location:Read"
             ]
           }
         ]
@@ -1171,11 +1184,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -1238,7 +1251,8 @@
           {
             "OAuth2": [
               "AccessManager:Create, Update",
-              "AccessUser:Create, Update"
+              "Department:Create, Update",
+              "Location:Create, Update"
             ]
           }
         ]
@@ -1255,11 +1269,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -1312,7 +1326,8 @@
           {
             "OAuth2": [
               "AccessManager:Create, Update",
-              "AccessUser:Create, Update"
+              "Department:Create, Update",
+              "Location:Create, Update"
             ]
           }
         ]
@@ -1329,11 +1344,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -1348,11 +1363,11 @@
           {
             "name": "SubId",
             "in": "path",
-            "description": "The identifier of the Location record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the Location record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the Location record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the Location record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -1393,7 +1408,8 @@
           {
             "OAuth2": [
               "AccessManager:Delete",
-              "AccessUser:Delete"
+              "Department:Delete",
+              "Location:Delete"
             ]
           }
         ]
@@ -1410,11 +1426,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -1504,7 +1520,8 @@
           {
             "OAuth2": [
               "AccessManager:Read",
-              "AccessUser:Read"
+              "Department:Read",
+              "Location:Read"
             ]
           }
         ]
@@ -1521,11 +1538,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -1615,7 +1632,8 @@
           {
             "OAuth2": [
               "AccessManager:Read",
-              "AccessUser:Read"
+              "Department:Read",
+              "Location:Read"
             ]
           }
         ]
@@ -1632,11 +1650,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -1726,7 +1744,8 @@
           {
             "OAuth2": [
               "AccessManager:Read",
-              "AccessUser:Read"
+              "Department:Read",
+              "Location:Read"
             ]
           }
         ]
@@ -2796,7 +2815,8 @@
             "refreshUrl": "https://dev.esystems.fi/oAuth/rest/v2/Token",
             "scopes": {
               "AccessManager:Read": "Allows to edit access groups and all related data. (ABAC) permissions required to perform a function.",
-              "AccessUser:Read": "Allows to review access groups and all related data. (ABAC) permissions required to perform a function."
+              "Department:Read": "The role of department concept. (ABAC) permissions required to perform a function.",
+              "Location:Read": "The role of location concept. (ABAC) permissions required to perform a function."
             }
           }
         }

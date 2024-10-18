@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.131"
+    "version": "3.0.138"
   },
   "servers": [
     {
@@ -28,11 +28,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -88,11 +88,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -160,11 +160,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -418,11 +418,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -527,11 +527,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -611,11 +611,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -685,11 +685,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -704,11 +704,11 @@
           {
             "name": "SubId",
             "in": "path",
-            "description": "The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -766,11 +766,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -875,11 +875,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -959,11 +959,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -1033,11 +1033,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -1052,11 +1052,11 @@
           {
             "name": "SubId",
             "in": "path",
-            "description": "The identifier of the Permission record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the Permission record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the Permission record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the Permission record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -1114,11 +1114,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -1223,11 +1223,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -1307,11 +1307,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -1381,11 +1381,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -1400,11 +1400,11 @@
           {
             "name": "SubId",
             "in": "path",
-            "description": "The identifier of the Group record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the Group record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the Group record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the Group record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -1462,11 +1462,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -1571,11 +1571,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -1655,11 +1655,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -1729,11 +1729,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the AccessGroup record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -1748,11 +1748,11 @@
           {
             "name": "SubId",
             "in": "path",
-            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -1810,11 +1810,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -1870,11 +1870,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -1942,11 +1942,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -2253,11 +2253,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -2362,11 +2362,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -2446,11 +2446,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -2520,11 +2520,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the GroupExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -2539,11 +2539,11 @@
           {
             "name": "SubId",
             "in": "path",
-            "description": "The identifier of the UserExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the UserExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the UserExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the UserExternal record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
