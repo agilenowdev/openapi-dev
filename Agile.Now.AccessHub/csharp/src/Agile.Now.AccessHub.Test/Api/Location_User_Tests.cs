@@ -43,7 +43,7 @@ public class Location_User_Tests : SubEntityTests<Location, string, LocationInse
     //[Fact] public void Test_Location_User_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();
     [Fact] public void Test_Location_User_List_Paging() => Test_List_Paging();
     [Fact] public void Test_Location_User_List_OrderAscending() => Test_List_OrderAscending();
-    //[Fact] public void Test_Location_User_List_OrderDecending() => Test_List_OrderDecending();
+    [Fact] public void Test_Location_User_List_OrderDecending() => Test_List_OrderDecending();
 
     [Fact] public void Test_Location_User_Upsert() => Test_Upsert();
 

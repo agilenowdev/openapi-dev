@@ -36,7 +36,7 @@ public class User_AccessGroup_Tests : SubEntityTests<User, int, User, AccessGrou
     //[Fact] public void Test_User_AccessGroup_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();
     [Fact] public void Test_User_AccessGroup_List_Paging() => Test_List_Paging();
     [Fact] public void Test_User_AccessGroup_List_OrderAscending() => Test_List_OrderAscending();
-    //[Fact] public void Test_User_AccessGroup_List_OrderDecending() => Test_List_OrderDecending();
+    [Fact] public void Test_User_AccessGroup_List_OrderDecending() => Test_List_OrderDecending();
 
     [Fact] public void Test_User_AccessGroup_Upsert() => Test_Upsert();
 

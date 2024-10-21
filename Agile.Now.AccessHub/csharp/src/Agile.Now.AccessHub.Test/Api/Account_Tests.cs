@@ -82,7 +82,7 @@ public class Account_Tests : EntityTests<Account, string, AccountInsertData> {
     public void Test_Account_Get_ExternalUser() {
         var account = GenerateEntity();
         try {
-            api.UpsertAccountTenant(account.Id, account_Tenant_TestData.GenerateRequestData().First());
+            api.UpsertAccountTenant(account.Id, account_Tenant_TestData.GenerateRequestData().Skip(1).First());
             Assert.Null(Record.Exception(() => Get(account.Id)));
             api.DeleteAccountTenant(account.Id,
                 Tenant_TestData.DefaultTenant.ToString(), subName: nameof(TenantData.TenantId));
@@ -96,7 +96,7 @@ public class Account_Tests : EntityTests<Account, string, AccountInsertData> {
     [Fact]
     public void Test_Account_Delete_ExternalUser() {
         var account = GenerateEntity();
-        api.UpsertAccountTenant(account.Id, account_Tenant_TestData.GenerateRequestData().First());
+        var externalTenant = api.UpsertAccountTenant(account.Id, account_Tenant_TestData.GenerateRequestData().Skip(1).First());
         Delete(account);
         Assert.Null(Record.Exception(() => Get(account.Id)));
     }
