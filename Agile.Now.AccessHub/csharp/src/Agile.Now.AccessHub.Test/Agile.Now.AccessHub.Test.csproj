@@ -16,4 +16,10 @@
   <ItemGroup>
     <ProjectReference Include="..\Agile.Now.AccessHub\Agile.Now.AccessHub.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Agile.Now.Api.Test">
+      <HintPath>..\..\..\..\Agile.Now.Api.Test\Agile.Now.Api.Test\bin\Debug\net7.0\Agile.Now.Api.Test.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>
