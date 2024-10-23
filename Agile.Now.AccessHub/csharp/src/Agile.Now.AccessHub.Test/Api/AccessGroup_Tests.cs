@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Agile.Now.AccessHub.Api;
 using Agile.Now.AccessHub.Model;
@@ -57,7 +58,6 @@ public class AccessGroup_Tests : EntityTests<AccessGroup, string, AccessGroupIns
 
     [Fact]
     public void Test_AccessGroup_Delete_IsSystem() {
-        var deleted = Delete(AccessGroup_TestData.SystemAccessGroup);
-        Assert.Null(deleted);
+        Assert.ThrowsAny<Exception>(() => Delete(AccessGroup_TestData.SystemAccessGroup));
     }
 }

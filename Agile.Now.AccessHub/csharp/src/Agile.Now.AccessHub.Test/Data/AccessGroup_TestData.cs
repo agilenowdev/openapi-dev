@@ -41,7 +41,7 @@ public class AccessGroup_TestData : TestData<AccessGroup, AccessGroupInsertData>
         Assert.Equal(expected.AccessGroupTypeId.Id, actual.AccessGroupTypeId.Id);
     }
 
-    public const string SystemAccessGroup = "4D261F73-BC4C-4DAA-93BB-5D9550C6AA36";
+    public const string SystemAccessGroup = "B776FDF5-9790-473D-A75B-2A1A3C44A13D";
 }
 
 public static class AccessGroup_TestData_Extension {
