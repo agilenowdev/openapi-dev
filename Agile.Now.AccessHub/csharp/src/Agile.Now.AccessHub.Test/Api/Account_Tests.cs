@@ -81,23 +81,18 @@ public class Account_Tests : EntityTests<Account, string, AccountInsertData> {
     [Fact]
     public void Test_Account_Get_ExternalUser() {
         var account = GenerateEntity();
-        try {
-            api.UpsertAccountTenant(account.Id, account_Tenant_TestData.GenerateRequestData().Skip(1).First());
-            Assert.Null(Record.Exception(() => Get(account.Id)));
-            api.DeleteAccountTenant(account.Id,
-                Tenant_TestData.DefaultTenant.ToString(), subName: nameof(TenantData.TenantId));
-            Assert.ThrowsAny<Exception>(() => Get(account.Id));
-        }
-        finally {
-            Delete(account);
-        }
+        api.UpsertAccountTenant(account.Id, account_Tenant_TestData.GenerateRequestData().Skip(1).First());
+        Assert.Null(Record.Exception(() => Get(account.Id)));
+        api.DeleteAccountTenant(account.Id,
+            Tenant_TestData.DefaultTenant.ToString(), subName: nameof(TenantData.TenantId));
+        Assert.ThrowsAny<Exception>(() => Get(account.Id));
     }
 
     [Fact]
     public void Test_Account_Delete_ExternalUser() {
         var account = GenerateEntity();
         var externalTenant = api.UpsertAccountTenant(account.Id, account_Tenant_TestData.GenerateRequestData().Skip(1).First());
-        Delete(account);
+        Assert.ThrowsAny<Exception>(() => Delete(account));
         Assert.Null(Record.Exception(() => Get(account.Id)));
     }
 }

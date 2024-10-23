@@ -53,6 +53,6 @@ public class Location_Tests : EntityTests<Location, string, LocationInsertData> 
 
     [Fact] public void Test_Location_Upsert() => Test_Upsert();
 
-    //[Fact] public void Test_Location_Delete_ById() => Test_Delete_ById();
+    [Fact] public void Test_Location_Delete_ById() => Test_Delete_ById();
     [Fact] public void Test_Location_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();
 }
