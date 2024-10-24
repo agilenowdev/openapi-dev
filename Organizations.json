@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "2.0.209"
+    "version": "2.0.210"
   },
   "servers": [
     {
@@ -810,6 +810,7 @@
         "security": [
           {
             "OAuth2": [
+              "Location:Read",
               "Location:Read"
             ]
           }
@@ -881,6 +882,7 @@
         "security": [
           {
             "OAuth2": [
+              "Location:Update",
               "Location:Update"
             ]
           }
@@ -940,6 +942,7 @@
         "security": [
           {
             "OAuth2": [
+              "Location:Delete",
               "Location:Delete"
             ]
           }
@@ -1031,6 +1034,7 @@
         "security": [
           {
             "OAuth2": [
+              "Location:Read",
               "Location:Read"
             ]
           }
@@ -1083,6 +1087,7 @@
         "security": [
           {
             "OAuth2": [
+              "Location:Create, Update",
               "Location:Create, Update"
             ]
           }
@@ -1133,6 +1138,7 @@
         "security": [
           {
             "OAuth2": [
+              "Location:Create",
               "Location:Create"
             ]
           }
@@ -1243,6 +1249,7 @@
         "security": [
           {
             "OAuth2": [
+              "Location:Read",
               "Location:Read"
             ]
           }
@@ -1324,6 +1331,7 @@
         "security": [
           {
             "OAuth2": [
+              "Location:Create, Update",
               "Location:Create, Update"
             ]
           }
@@ -1397,6 +1405,7 @@
         "security": [
           {
             "OAuth2": [
+              "Location:Create, Update",
               "Location:Create, Update"
             ]
           }
@@ -1477,6 +1486,7 @@
         "security": [
           {
             "OAuth2": [
+              "Location:Delete",
               "Location:Delete"
             ]
           }
