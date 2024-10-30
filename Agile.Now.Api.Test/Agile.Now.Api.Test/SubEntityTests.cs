@@ -179,19 +179,13 @@ public class SubEntityTests<TParentResponse, TParentId, TParentRequest, TRespons
             var data = TestData.GenerateRequestData().Take(3).ToArray();
             var created = data.Take(2).Select(i => Upsert(id, i)).ToArray();
             try {
-                var patched = Patch(id, data.Skip(1).Take(2).ToList(), true.ToString());
-                try {
-                    var existing = List(id.ToString(), Parent.Id.Name);
-                    AssertCollectionsEqual(existing, patched);
-                }
-                finally {
-                    Delete(parentEntity, created);
-                    created = null;
-                }
+                var patched = Patch(id, data.Skip(2).Take(1).ToList(), true.ToString());
+                var existing = List(id.ToString(), Parent.Id.Name);
+                AssertCollectionsEqual(existing, patched);
+                created = patched;
             }
             finally {
-                if(created != null)
-                    Delete(parentEntity, created);
+                Delete(parentEntity, created);
             }
         }
         finally {

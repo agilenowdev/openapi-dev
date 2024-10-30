@@ -48,7 +48,7 @@ public class Location_User_Tests : SubEntityTests<Location, string, LocationInse
     [Fact] public void Test_Location_User_Upsert() => Test_Upsert();
 
     [Fact] public void Test_Location_User_Patch() => Test_Patch();
-    //[Fact] public void Test_Location_User_Patch_DeleteNotExists() => Test_Patch_DeleteNotExists();
+    [Fact] public void Test_Location_User_Patch_DeleteNotExists() => Test_Patch_DeleteNotExists();
 
     [Fact] public void Test_Location_User_Delete_ById() => Test_Delete_ById();
     //[Fact] public void Test_Location_User_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();

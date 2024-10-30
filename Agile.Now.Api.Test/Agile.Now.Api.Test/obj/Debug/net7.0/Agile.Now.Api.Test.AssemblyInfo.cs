@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Agile.Now.Api.Test")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b018ad9a2e5b3c1ef50212478f13c9633a2377a0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+95d8e1626ea93eef976ea3ed15d413a230e27293")]
 [assembly: System.Reflection.AssemblyProductAttribute("Agile.Now.Api.Test")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Agile.Now.Api.Test")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

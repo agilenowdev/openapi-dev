@@ -47,7 +47,7 @@ public class User_Location_Tests : SubEntityTests<User, int, User, Location, str
     [Fact] public void Test_User_Location_Upsert() => Test_Upsert();
 
     [Fact] public void Test_User_Location_Patch() => Test_Patch();
-    //[Fact] public void Test_User_Location_Patch_DeleteNotExists() => Test_Patch_DeleteNotExists();
+    [Fact] public void Test_User_Location_Patch_DeleteNotExists() => Test_Patch_DeleteNotExists();
 
     [Fact] public void Test_User_Location_Delete_ById() => Test_Delete_ById();
     //[Fact] public void Test_User_Location_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();
