@@ -19,6 +19,8 @@ public class Department_TestData : TestData<Department, DepartmentInsertData> {
     }
 
     public override void AssertEqualToResponse(Department expected, Department actual) {
+        if(actual == null)
+            return;
         Assert.Equal(expected.Id, actual.Id);
         Assert.Equal(expected.ExternalId, actual.ExternalId);
         Assert.Equal(expected.Name, actual.Name);

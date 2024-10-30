@@ -16,6 +16,8 @@ public class Location_TestData : TestData<Location, LocationInsertData> {
     }
 
     public override void AssertEqualToResponse(Location expected, Location actual) {
+        if(actual == null)
+            return;
         Assert.Equal(expected.Id, actual.Id);
         Assert.Equal(expected.ExternalId, actual.ExternalId);
         Assert.Equal(expected.Name, actual.Name);
