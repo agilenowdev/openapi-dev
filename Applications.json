@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.2"
+    "version": "3.0.3"
   },
   "servers": [
     {
@@ -958,15 +958,15 @@
           },
           "Name": {
             "type": "string",
-            "description": "Name of application."
+            "description": "Name of application. The value must be unique in the system and you cannot add multiple values."
           },
           "ApplicationKey": {
             "type": "string",
-            "description": "The key used to identify the application must be unique within each workspace."
+            "description": "The key used to identify the application must be unique within each workspace. The value must be unique in the system and you cannot add multiple values."
           },
           "ExternalId": {
             "type": "string",
-            "description": "The external system code of the application."
+            "description": "The external system code of the application. The value must be unique in the system and you cannot add multiple values."
           },
           "Description": {
             "type": "string",
