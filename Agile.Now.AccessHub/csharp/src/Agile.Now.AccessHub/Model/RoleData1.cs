@@ -49,25 +49,26 @@ namespace Agile.Now.AccessHub.Model
     /// <summary>
     /// The record of Role information.
     /// </summary>
-    [DataContract(Name = "RoleData")]
-    public partial class RoleData : IValidatableObject
+    [DataContract(Name = "RoleData1")]
+    public partial class RoleData1 : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RoleData" /> class.
+        /// Initializes a new instance of the <see cref="RoleData1" /> class.
         /// </summary>
         /// <param name="id">The identifier of the role..</param>
         /// <param name="name">Name of role. The value must be unique in the system and you cannot add multiple values..</param>
         /// <param name="roleKey"> The key used to identify the role must be unique within each workspace. The value must be unique in the system and you cannot add multiple values..</param>
         /// <param name="fullName">Full name of role. Example Application 1 \\ Espace 1 \\ Role 1..</param>
         /// <param name="description">The description of access group..</param>
-        /// <param name="externalId">The external system code of the role. The value must be unique in the system and you cannot add multiple values..</param>
+        /// <param name="externalId">The external system code of the role..</param>
+        /// <param name="accessApplicationId">accessApplicationId.</param>
         /// <param name="roleId">roleId.</param>
         /// <param name="applicationId">applicationId.</param>
         /// <param name="espaceId">espaceId.</param>
         /// <param name="isActive">Defines if record is active. (default to false).</param>
         /// <param name="isCustom">Determines whether the role has been modified externally or whether it is synchronized from the OutSystems structure. (default to false).</param>
         /// <param name="isReadOnly">Determines whether the role is readonly and can be modified. (default to false).</param>
-        public RoleData(string id = default, string name = default, string roleKey = default, string fullName = default, string description = default, string externalId = default, FieldType roleId = default, FieldType applicationId = default, FieldType espaceId = default, bool isActive = false, bool isCustom = false, bool isReadOnly = false)
+        public RoleData1(string id = default, string name = default, string roleKey = default, string fullName = default, string description = default, string externalId = default, FieldType accessApplicationId = default, FieldType roleId = default, FieldType applicationId = default, FieldType espaceId = default, bool isActive = false, bool isCustom = false, bool isReadOnly = false)
         {
             Id = id;
             Name = name;
@@ -75,6 +76,7 @@ namespace Agile.Now.AccessHub.Model
             FullName = fullName;
             Description = description;
             ExternalId = externalId;
+            AccessApplicationId = accessApplicationId;
             RoleId = roleId;
             ApplicationId = applicationId;
             EspaceId = espaceId;
@@ -119,11 +121,17 @@ namespace Agile.Now.AccessHub.Model
         public string Description { get; set; }
 
         /// <summary>
-        /// The external system code of the role. The value must be unique in the system and you cannot add multiple values.
+        /// The external system code of the role.
         /// </summary>
-        /// <value>The external system code of the role. The value must be unique in the system and you cannot add multiple values.</value>
+        /// <value>The external system code of the role.</value>
         [DataMember(Name = "ExternalId", EmitDefaultValue = false)]
         public string ExternalId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AccessApplicationId
+        /// </summary>
+        [DataMember(Name = "AccessApplicationId", EmitDefaultValue = false)]
+        public FieldType AccessApplicationId { get; set; }
 
         /// <summary>
         /// Gets or Sets RoleId
@@ -174,13 +182,14 @@ namespace Agile.Now.AccessHub.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class RoleData {\n");
+            sb.Append("class RoleData1 {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  RoleKey: ").Append(RoleKey).Append("\n");
             sb.Append("  FullName: ").Append(FullName).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
+            sb.Append("  AccessApplicationId: ").Append(AccessApplicationId).Append("\n");
             sb.Append("  RoleId: ").Append(RoleId).Append("\n");
             sb.Append("  ApplicationId: ").Append(ApplicationId).Append("\n");
             sb.Append("  EspaceId: ").Append(EspaceId).Append("\n");

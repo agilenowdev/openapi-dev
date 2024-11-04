@@ -191,6 +191,16 @@ Class | Method | HTTP request | Description
 *LocationsApi* | [**UpdateLocation**](docs/LocationsApi.md#updatelocation) | **PUT** /Endpoint/rest/api/v1/Location/{Id} | 
 *LocationsApi* | [**UpsertLocation**](docs/LocationsApi.md#upsertlocation) | **PATCH** /Endpoint/rest/api/v1/Location | 
 *LocationsApi* | [**UpsertLocationUser**](docs/LocationsApi.md#upsertlocationuser) | **POST** /Endpoint/rest/api/v1/Location/{Id}/User | 
+*RolesApi* | [**CreateRole**](docs/RolesApi.md#createrole) | **POST** /Endpoint/rest/api/v1/Role | 
+*RolesApi* | [**DeleteRole**](docs/RolesApi.md#deleterole) | **DELETE** /Endpoint/rest/api/v1/Role/{Id} | 
+*RolesApi* | [**DeleteRolePermission**](docs/RolesApi.md#deleterolepermission) | **DELETE** /Endpoint/rest/api/v1/Role/{Id}/Permission/{SubId} | 
+*RolesApi* | [**GetRole**](docs/RolesApi.md#getrole) | **GET** /Endpoint/rest/api/v1/Role/{Id} | 
+*RolesApi* | [**ListRolePermissions**](docs/RolesApi.md#listrolepermissions) | **GET** /Endpoint/rest/api/v1/Role/{Id}/Permissions | 
+*RolesApi* | [**ListRoles**](docs/RolesApi.md#listroles) | **GET** /Endpoint/rest/api/v1/Roles | 
+*RolesApi* | [**PatchRolePermissions**](docs/RolesApi.md#patchrolepermissions) | **PATCH** /Endpoint/rest/api/v1/Role/{Id}/Permissions | 
+*RolesApi* | [**UpdateRole**](docs/RolesApi.md#updaterole) | **PUT** /Endpoint/rest/api/v1/Role/{Id} | 
+*RolesApi* | [**UpsertRole**](docs/RolesApi.md#upsertrole) | **PATCH** /Endpoint/rest/api/v1/Role | 
+*RolesApi* | [**UpsertRolePermission**](docs/RolesApi.md#upsertrolepermission) | **POST** /Endpoint/rest/api/v1/Role/{Id}/Permission | 
 
 
 <a id="documentation-for-models"></a>
@@ -260,16 +270,24 @@ Class | Method | HTTP request | Description
  - [Model.Locations](docs/models/Locations.md)
  - [Model.Meta](docs/models/Meta.md)
  - [Model.Permission](docs/models/Permission.md)
+ - [Model.Permission1](docs/models/Permission1.md)
  - [Model.PermissionData](docs/models/PermissionData.md)
+ - [Model.PermissionData1](docs/models/PermissionData1.md)
  - [Model.PermissionText](docs/models/PermissionText.md)
+ - [Model.PermissionText1](docs/models/PermissionText1.md)
  - [Model.Permissions](docs/models/Permissions.md)
+ - [Model.Permissions1](docs/models/Permissions1.md)
  - [Model.PermissionsData](docs/models/PermissionsData.md)
+ - [Model.PermissionsData1](docs/models/PermissionsData1.md)
  - [Model.Picture](docs/models/Picture.md)
  - [Model.PictureData](docs/models/PictureData.md)
  - [Model.Pictures](docs/models/Pictures.md)
  - [Model.Role](docs/models/Role.md)
+ - [Model.Role1](docs/models/Role1.md)
  - [Model.RoleData](docs/models/RoleData.md)
+ - [Model.RoleData1](docs/models/RoleData1.md)
  - [Model.Roles](docs/models/Roles.md)
+ - [Model.Roles1](docs/models/Roles1.md)
  - [Model.Tenant](docs/models/Tenant.md)
  - [Model.TenantData](docs/models/TenantData.md)
  - [Model.Tenants](docs/models/Tenants.md)

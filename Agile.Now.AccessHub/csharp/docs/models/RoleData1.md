@@ -1,4 +1,4 @@
-# Agile.Now.AccessHub.Model.RoleData
+# Agile.Now.AccessHub.Model.RoleData1
 The record of Role information.
 
 ## Properties
@@ -10,7 +10,8 @@ Name | Type | Description | Notes
 **RoleKey** | **string** |  The key used to identify the role must be unique within each workspace. The value must be unique in the system and you cannot add multiple values. | [optional] 
 **FullName** | **string** | Full name of role. Example Application 1 \\ Espace 1 \\ Role 1. | [optional] 
 **Description** | **string** | The description of access group. | [optional] 
-**ExternalId** | **string** | The external system code of the role. The value must be unique in the system and you cannot add multiple values. | [optional] 
+**ExternalId** | **string** | The external system code of the role. | [optional] 
+**AccessApplicationId** | [**FieldType**](FieldType.md) | The FieldType object structure | [optional] 
 **RoleId** | [**FieldType**](FieldType.md) | The FieldType object structure | [optional] 
 **ApplicationId** | [**FieldType**](FieldType.md) | The FieldType object structure | [optional] 
 **EspaceId** | [**FieldType**](FieldType.md) | The FieldType object structure | [optional] 
