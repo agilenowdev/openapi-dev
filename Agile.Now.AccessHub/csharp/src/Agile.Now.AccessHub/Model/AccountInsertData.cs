@@ -78,6 +78,7 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="firstName">Person's first name..</param>
         /// <param name="lastName">Person's last name..</param>
         /// <param name="phone">The phone number of account. The phone number is unique in the system..</param>
+        /// <param name="phoneVerified">Indicates whether the phone number has been verified. (default to false).</param>
         /// <param name="email">The e-mail of account. The email is unique in the system..</param>
         /// <param name="languageId">languageId.</param>
         /// <param name="timezoneId">timezoneId.</param>
@@ -87,13 +88,14 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="notifyByEmail">Defines if a person should get notifications via e-mail. (default to false).</param>
         /// <param name="notifyBySMS">Defines if a contact should get notifications via SMS. (default to false).</param>
         /// <param name="isActive">Defines if the account is active and can be used. (default to false).</param>
-        public AccountInsertData(string id = default, string name = default, string firstName = default, string lastName = default, string phone = default, string email = default, EnumLanguage? languageId = default, EnumTimezone? timezoneId = default, EnumDateFormat? dateFormatId = default, string username = default, string externalId = default, bool notifyByEmail = false, bool notifyBySMS = false, bool isActive = false)
+        public AccountInsertData(string id = default, string name = default, string firstName = default, string lastName = default, string phone = default, bool phoneVerified = false, string email = default, EnumLanguage? languageId = default, EnumTimezone? timezoneId = default, EnumDateFormat? dateFormatId = default, string username = default, string externalId = default, bool notifyByEmail = false, bool notifyBySMS = false, bool isActive = false)
         {
             Id = id;
             Name = name;
             FirstName = firstName;
             LastName = lastName;
             Phone = phone;
+            PhoneVerified = phoneVerified;
             Email = email;
             LanguageId = languageId;
             TimezoneId = timezoneId;
@@ -139,6 +141,14 @@ namespace Agile.Now.AccessHub.Model
         /// <value>The phone number of account. The phone number is unique in the system.</value>
         [DataMember(Name = "Phone", EmitDefaultValue = false)]
         public string Phone { get; set; }
+
+        /// <summary>
+        /// Indicates whether the phone number has been verified.
+        /// </summary>
+        /// <value>Indicates whether the phone number has been verified.</value>
+        /// <example>false</example>
+        [DataMember(Name = "PhoneVerified", EmitDefaultValue = true)]
+        public bool PhoneVerified { get; set; }
 
         /// <summary>
         /// The e-mail of account. The email is unique in the system.
@@ -198,6 +208,7 @@ namespace Agile.Now.AccessHub.Model
             sb.Append("  FirstName: ").Append(FirstName).Append("\n");
             sb.Append("  LastName: ").Append(LastName).Append("\n");
             sb.Append("  Phone: ").Append(Phone).Append("\n");
+            sb.Append("  PhoneVerified: ").Append(PhoneVerified).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
             sb.Append("  LanguageId: ").Append(LanguageId).Append("\n");
             sb.Append("  TimezoneId: ").Append(TimezoneId).Append("\n");

@@ -27,6 +27,8 @@ tags:
   name: Departments
 - description: Locations
   name: Locations
+- description: Applications
+  name: Applications
 - description: Connections
   name: Connections
 - description: Entities
@@ -7240,6 +7242,7 @@ paths:
       security:
       - OAuth2:
         - Department:Delete
+        - Department:Delete
       tags:
       - Departments
     get:
@@ -7357,6 +7360,7 @@ paths:
             on the web server you're trying to access.
       security:
       - OAuth2:
+        - Department:Read
         - Department:Read
       tags:
       - Departments
@@ -7493,6 +7497,7 @@ paths:
             on the web server you're trying to access.
       security:
       - OAuth2:
+        - Department:Update
         - Department:Update
       tags:
       - Departments
@@ -7720,6 +7725,7 @@ paths:
       security:
       - OAuth2:
         - Department:Read
+        - Department:Read
       tags:
       - Departments
   /Endpoint/rest/api/v1/Department:
@@ -7827,6 +7833,7 @@ paths:
       security:
       - OAuth2:
         - "Department:Create, Update"
+        - "Department:Create, Update"
       tags:
       - Departments
     post:
@@ -7931,6 +7938,7 @@ paths:
             on the web server you're trying to access.
       security:
       - OAuth2:
+        - Department:Create
         - Department:Create
       tags:
       - Departments
@@ -8182,6 +8190,7 @@ paths:
       security:
       - OAuth2:
         - Department:Read
+        - Department:Read
       tags:
       - Departments
     patch:
@@ -8334,6 +8343,7 @@ paths:
       security:
       - OAuth2:
         - "Department:Create, Update"
+        - "Department:Create, Update"
       tags:
       - Departments
   /Endpoint/rest/api/v1/Department/{Id}/User:
@@ -8469,6 +8479,7 @@ paths:
             on the web server you're trying to access.
       security:
       - OAuth2:
+        - "Department:Create, Update"
         - "Department:Create, Update"
       tags:
       - Departments
@@ -8619,6 +8630,7 @@ paths:
       security:
       - OAuth2:
         - Department:Delete
+        - Department:Delete
       tags:
       - Departments
   /Endpoint/rest/api/v1/Location/{Id}:
@@ -8740,6 +8752,7 @@ paths:
       security:
       - OAuth2:
         - Location:Delete
+        - Location:Delete
       tags:
       - Locations
     get:
@@ -8857,6 +8870,7 @@ paths:
             on the web server you're trying to access.
       security:
       - OAuth2:
+        - Location:Read
         - Location:Read
       tags:
       - Locations
@@ -8993,6 +9007,7 @@ paths:
             on the web server you're trying to access.
       security:
       - OAuth2:
+        - Location:Update
         - Location:Update
       tags:
       - Locations
@@ -9218,6 +9233,7 @@ paths:
       security:
       - OAuth2:
         - Location:Read
+        - Location:Read
       tags:
       - Locations
   /Endpoint/rest/api/v1/Location:
@@ -9325,6 +9341,7 @@ paths:
       security:
       - OAuth2:
         - "Location:Create, Update"
+        - "Location:Create, Update"
       tags:
       - Locations
     post:
@@ -9429,6 +9446,7 @@ paths:
             on the web server you're trying to access.
       security:
       - OAuth2:
+        - Location:Create
         - Location:Create
       tags:
       - Locations
@@ -9680,6 +9698,7 @@ paths:
       security:
       - OAuth2:
         - Location:Read
+        - Location:Read
       tags:
       - Locations
     patch:
@@ -9832,6 +9851,7 @@ paths:
       security:
       - OAuth2:
         - "Location:Create, Update"
+        - "Location:Create, Update"
       tags:
       - Locations
   /Endpoint/rest/api/v1/Location/{Id}/User:
@@ -9967,6 +9987,7 @@ paths:
             on the web server you're trying to access.
       security:
       - OAuth2:
+        - "Location:Create, Update"
         - "Location:Create, Update"
       tags:
       - Locations
@@ -10117,8 +10138,1365 @@ paths:
       security:
       - OAuth2:
         - Location:Delete
+        - Location:Delete
       tags:
       - Locations
+  /Endpoint/rest/api/v1/Application/{Id}:
+    delete:
+      description: |-
+        Use the query string resource to delete `Application` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id, Name, ExternalId, ApplicationKey` field(s) value and use the `DELETE` method of the resource to delete a record.
+
+        Method returns an extended `Application` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+
+        Foreign key fields are: `ApplicationId, AuthenticationId, ModifiedBy, CreatedBy`
+
+        ### Delete a record of Application
+        * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
+        * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+        * If the `Id, Name, ExternalId, ApplicationKey` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+
+        The response body will contain the object of the deleted record if the call is successful.
+      operationId: Delete Application
+      parameters:
+      - description: |-
+          The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.
+
+          You can extract any string to a base64 string.
+          E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
+        explode: false
+        in: path
+        name: Id
+        required: true
+        schema:
+          description: |-
+            The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.
+
+            You can extract any string to a base64 string.
+            E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
+          type: string
+        style: simple
+      - description: "The name of the database field. If empty, the entity `Id` field\
+          \ is used.\n\nExample: \n```\nName, ExternalId, ApplicationKey\n```"
+        explode: true
+        in: query
+        name: Name
+        required: false
+        schema:
+          description: "The name of the database field. If empty, the entity `Id`\
+            \ field is used.\n\nExample: \n```\nName, ExternalId, ApplicationKey\n\
+            ```"
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Application'
+          description: Deleted `Application` information.
+        "400":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The user has provided input that the browser is unable to convert.
+                - There are multiple rows in the database for the same value
+                - The value does not match the specified entity structure
+                - '...'
+                Type: /Errors/Bad Input
+                Title: Bad Request
+                StatusCode: 400
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request - The user has provided input that the browser
+            is unable to convert.
+        "401":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The session Id or OAuth token used has expired or is invalid.
+                Type: /Errors/Unauthorized
+                Title: Unauthorized
+                StatusCode: 401
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized - The response status code indicates that the
+            client request has not been completed because it lacks valid authentication
+            credentials for the requested resource.
+        "403":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The user does not have access to execute operation
+                Type: /Errors/Permission
+                Title: Bad Request
+                StatusCode: 403
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden - The user does not have access to execute operation
+        "500":
+          content:
+            application/json:
+              example:
+                Errors:
+                - An internal server error is an error on the web server you're trying
+                  to access.
+                Type: /Errors/Internal Server Error
+                Title: Internal Server Error
+                StatusCode: 500
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error - An internal server error is an error
+            on the web server you're trying to access.
+      security:
+      - OAuth2:
+        - AccessManager:Delete
+      tags:
+      - Applications
+    get:
+      description: |-
+        The method returns one record of the `Application`.
+
+        Method returns an extended `Application` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+
+        Foreign key fields are: `ApplicationId, AuthenticationId, ModifiedBy, CreatedBy`
+
+        ### Get a record of Application
+        * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
+        * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+        * If the `Id, Name, ExternalId, ApplicationKey` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+      operationId: Get Application
+      parameters:
+      - description: |-
+          The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.
+
+          You can extract any string to a base64 string.
+          E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
+        explode: false
+        in: path
+        name: Id
+        required: true
+        schema:
+          description: |-
+            The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.
+
+            You can extract any string to a base64 string.
+            E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
+          type: string
+        style: simple
+      - description: "The name of the database field. If empty, the entity `Id` field\
+          \ is used.\n\nExample: \n```\nName, ExternalId, ApplicationKey\n```"
+        explode: true
+        in: query
+        name: Name
+        required: false
+        schema:
+          description: "The name of the database field. If empty, the entity `Id`\
+            \ field is used.\n\nExample: \n```\nName, ExternalId, ApplicationKey\n\
+            ```"
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Application'
+          description: The record of `Application` information
+        "400":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The user has provided input that the browser is unable to convert.
+                - There are multiple rows in the database for the same value
+                - The value does not match the specified entity structure
+                - '...'
+                Type: /Errors/Bad Input
+                Title: Bad Request
+                StatusCode: 400
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request - The user has provided input that the browser
+            is unable to convert.
+        "401":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The session Id or OAuth token used has expired or is invalid.
+                Type: /Errors/Unauthorized
+                Title: Unauthorized
+                StatusCode: 401
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized - The response status code indicates that the
+            client request has not been completed because it lacks valid authentication
+            credentials for the requested resource.
+        "403":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The user does not have access to execute operation
+                Type: /Errors/Permission
+                Title: Bad Request
+                StatusCode: 403
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden - The user does not have access to execute operation
+        "500":
+          content:
+            application/json:
+              example:
+                Errors:
+                - An internal server error is an error on the web server you're trying
+                  to access.
+                Type: /Errors/Internal Server Error
+                Title: Internal Server Error
+                StatusCode: 500
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error - An internal server error is an error
+            on the web server you're trying to access.
+      security:
+      - OAuth2:
+        - AccessManager:Read
+      tags:
+      - Applications
+    put:
+      description: "Use the `ApplicationData` object resource to update `Application`\
+        \ using `Id, Name, ExternalId, ApplicationKey` field(s) value.\n\nProvide\
+        \ the updated record information in your request data and use the `PUT` method\
+        \ of the resource with a specific record ID to update that record. \n\nThe\
+        \ input parameter must be used in the `ApplicationData` record structure inside\
+        \ the `FieldType` parameter in the foreign key fields.\n\nForeign key fields\
+        \ are: `ApplicationId, AuthenticationId, ModifiedBy, CreatedBy`\n\n### Update\
+        \ a record of Application\n* If the `Id` field value is not matched, then\
+        \ a `404` error is reported (`Errors/Not Found`), and the error record is\
+        \ returned.. You cannot change `Id` field value (primary key).\n* If the `Id`\
+        \ field value is matched multiple times, then a `400` error is reported (`Errors/Multible\
+        \ Rows`), and the error record is returned.\n* If the `Id, Name, ExternalId,\
+        \ ApplicationKey` field value is matched multiple times, then a `400` error\
+        \ is reported (`Errors/Multible Rows`), and the error record is returned.\n\
+        \nThe response body will contain the object of the updated record if the call\
+        \ is successful. Method returns an extended `Application` structure. Here,\
+        \ all foreign key fields are abstract object structures, utilizing `AbstractText`\
+        \ or `AbstractLong` data types, offering a detailed view of the data and related\
+        \ entities."
+      operationId: Update Application
+      parameters:
+      - description: |-
+          The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.
+
+          You can extract any string to a base64 string.
+          E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
+        explode: false
+        in: path
+        name: Id
+        required: true
+        schema:
+          description: |-
+            The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.
+
+            You can extract any string to a base64 string.
+            E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
+          type: string
+        style: simple
+      - description: "The name of the database field. If empty, the entity `Id` field\
+          \ is used.\n\nExample: \n```\nName, ExternalId, ApplicationKey\n```"
+        explode: true
+        in: query
+        name: Name
+        required: false
+        schema:
+          description: "The name of the database field. If empty, the entity `Id`\
+            \ field is used.\n\nExample: \n```\nName, ExternalId, ApplicationKey\n\
+            ```"
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationData1'
+        description: |-
+          Application information to update.
+
+          The input parameter must be used in the `ApplicationData` record structure inside the `FieldType` parameter in the foreign key fields.
+        required: true
+        x-bodyName: Record
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Application'
+          description: Updated `Application` information.
+        "400":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The user has provided input that the browser is unable to convert.
+                - There are multiple rows in the database for the same value
+                - The value does not match the specified entity structure
+                - '...'
+                Type: /Errors/Bad Input
+                Title: Bad Request
+                StatusCode: 400
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request - The user has provided input that the browser
+            is unable to convert.
+        "401":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The session Id or OAuth token used has expired or is invalid.
+                Type: /Errors/Unauthorized
+                Title: Unauthorized
+                StatusCode: 401
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized - The response status code indicates that the
+            client request has not been completed because it lacks valid authentication
+            credentials for the requested resource.
+        "403":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The user does not have access to execute operation
+                Type: /Errors/Permission
+                Title: Bad Request
+                StatusCode: 403
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden - The user does not have access to execute operation
+        "500":
+          content:
+            application/json:
+              example:
+                Errors:
+                - An internal server error is an error on the web server you're trying
+                  to access.
+                Type: /Errors/Internal Server Error
+                Title: Internal Server Error
+                StatusCode: 500
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error - An internal server error is an error
+            on the web server you're trying to access.
+      security:
+      - OAuth2:
+        - AccessManager:Update
+      tags:
+      - Applications
+  /Endpoint/rest/api/v1/Applications:
+    get:
+      description: |-
+        Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.
+
+        Leverage the search service to extract the requisite information from the system effectively.
+
+        The method returns a list structured with an extended `Application` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.
+
+        The foreign key fields involved are: `ApplicationId, AuthenticationId, ModifiedBy, CreatedBy`
+
+        ### Example
+        It searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.
+
+        ```http
+        fields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000
+        ```
+      operationId: List Applications
+      parameters:
+      - description: "Specify the fields you want to retrieve in the fields parameter\
+          \ and use the GET method of the resource.\n\nThe list of database column\
+          \ attributes. If list is empty or &quot;*&quot; then all of fields will\
+          \ be returned.\n\nThis method converts a string list to a string with a\
+          \ comma separator.\n\nExample: \n```\nId, ApplicationId, Name, ApplicationKey,\
+          \ ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_TestApp,\
+          \ Is_Active, Is_ReadOnly, AuthenticationId, ModifiedOn, ModifiedBy, CreatedBy,\
+          \ CreatedOn\n```"
+        explode: true
+        in: query
+        name: Fields
+        required: false
+        schema:
+          description: "Specify the fields you want to retrieve in the fields parameter\
+            \ and use the GET method of the resource.\n\nThe list of database column\
+            \ attributes. If list is empty or &quot;*&quot; then all of fields will\
+            \ be returned.\n\nThis method converts a string list to a string with\
+            \ a comma separator.\n\nExample: \n```\nId, ApplicationId, Name, ApplicationKey,\
+            \ ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_TestApp,\
+            \ Is_Active, Is_ReadOnly, AuthenticationId, ModifiedOn, ModifiedBy, CreatedBy,\
+            \ CreatedOn\n```"
+          type: string
+        style: form
+      - description: |
+          In the List methods, filtering of resources can be performed using filter parameters.
+
+          You can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.
+
+          The name of the entity field. Example: `Name` or relation field `OwnerId.Name`
+
+          Please refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.
+
+          The operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn
+
+          You can add multiple values separated by comma when using the `In`, `NotIn` operators.
+          Example of text field; `USA; FIN; ARE`
+          Example of numeric field; `1, 2, 3`
+
+          Example of filters:
+          ```sql
+          Filters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)
+
+          Filters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)
+
+          Filters=ExternalId In S100;S101;S120;100
+
+          Filters=Id = 100
+
+          ```
+        explode: true
+        in: query
+        name: Filters
+        required: false
+        schema:
+          description: |
+            In the List methods, filtering of resources can be performed using filter parameters.
+
+            You can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.
+
+            The name of the entity field. Example: `Name` or relation field `OwnerId.Name`
+
+            Please refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.
+
+            The operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn
+
+            You can add multiple values separated by comma when using the `In`, `NotIn` operators.
+            Example of text field; `USA; FIN; ARE`
+            Example of numeric field; `1, 2, 3`
+
+            Example of filters:
+            ```sql
+            Filters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)
+
+            Filters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)
+
+            Filters=ExternalId In S100;S101;S120;100
+
+            Filters=Id = 100
+
+            ```
+          type: string
+        style: form
+      - description: "The `Orders` parameter is provided for sorting the result in\
+          \ the desired order. Both the attribute based on which sorting needs to\
+          \ be done, and the order of sorting (ascending or descending) can be specified.\
+          \ This method converts a string list to a string with a comma separator.\n\
+          \nExample: \n```\nName DESC, CreatedOn ASC\n```"
+        explode: true
+        in: query
+        name: Orders
+        required: false
+        schema:
+          description: "The `Orders` parameter is provided for sorting the result\
+            \ in the desired order. Both the attribute based on which sorting needs\
+            \ to be done, and the order of sorting (ascending or descending) can be\
+            \ specified. This method converts a string list to a string with a comma\
+            \ separator.\n\nExample: \n```\nName DESC, CreatedOn ASC\n```"
+          type: string
+        style: form
+      - description: This field specifies the current page of results being returned.
+          It&#39;s often used in conjunction with `PageSize` to manage pagination
+          by indicating which subset of the total data is currently being retrieved.
+        explode: true
+        in: query
+        name: CurrentPage
+        required: false
+        schema:
+          default: 0
+          description: This field specifies the current page of results being returned.
+            It&#39;s often used in conjunction with `PageSize` to manage pagination
+            by indicating which subset of the total data is currently being retrieved.
+          format: int32
+          type: integer
+        style: form
+      - description: |-
+          The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.
+
+          The value ranges from `1` to `1000` and defaults to `50`.
+        explode: true
+        in: query
+        name: PageSize
+        required: false
+        schema:
+          default: 0
+          description: |-
+            The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.
+
+            The value ranges from `1` to `1000` and defaults to `50`.
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Applications'
+          description: The list of Applications
+        "400":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The user has provided input that the browser is unable to convert.
+                - There are multiple rows in the database for the same value
+                - The value does not match the specified entity structure
+                - '...'
+                Type: /Errors/Bad Input
+                Title: Bad Request
+                StatusCode: 400
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request - The user has provided input that the browser
+            is unable to convert.
+        "401":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The session Id or OAuth token used has expired or is invalid.
+                Type: /Errors/Unauthorized
+                Title: Unauthorized
+                StatusCode: 401
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized - The response status code indicates that the
+            client request has not been completed because it lacks valid authentication
+            credentials for the requested resource.
+        "403":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The user does not have access to execute operation
+                Type: /Errors/Permission
+                Title: Bad Request
+                StatusCode: 403
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden - The user does not have access to execute operation
+        "500":
+          content:
+            application/json:
+              example:
+                Errors:
+                - An internal server error is an error on the web server you're trying
+                  to access.
+                Type: /Errors/Internal Server Error
+                Title: Internal Server Error
+                StatusCode: 500
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error - An internal server error is an error
+            on the web server you're trying to access.
+      security:
+      - OAuth2:
+        - AccessManager:Read
+      tags:
+      - Applications
+  /Endpoint/rest/api/v1/Application:
+    patch:
+      description: |-
+        Use the `ApplicationData` object resource to insert or update (Upsert) `Application` using `Id, Name, ExternalId, ApplicationKey` field(s) value.
+
+        You can supply the required field values in the request data, and then use the `POST` method of the resource.
+
+        The input parameter must be used in the `ApplicationData` record structure inside the `FieldType` parameter in the foreign key fields.
+
+        Foreign key fields are: `ApplicationId, AuthenticationId, ModifiedBy, CreatedBy`
+
+        ### Update a record of Application
+        * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).
+        * If the `Name, ExternalId, ApplicationKey` field value is not empty and `Id` field value is empty, action try insert record according `Name, ExternalId, ApplicationKey` field value (if set, the value is a unique identifier).
+
+        ### Create a new record of Application
+        * If the value in the `Name, ExternalId, ApplicationKey` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`ApplicationData`).
+
+        The response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Application` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+      operationId: Upsert Application
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationData1'
+        description: |-
+          `Application` information to insert or update.
+
+          The input parameter must be used in the `ApplicationData` record structure inside the `FieldType` parameter in the foreign key fields.
+        required: true
+        x-bodyName: Record
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Application'
+          description: Inserted or updated `Application` information.
+        "400":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The user has provided input that the browser is unable to convert.
+                - There are multiple rows in the database for the same value
+                - The value does not match the specified entity structure
+                - '...'
+                Type: /Errors/Bad Input
+                Title: Bad Request
+                StatusCode: 400
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request - The user has provided input that the browser
+            is unable to convert.
+        "401":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The session Id or OAuth token used has expired or is invalid.
+                Type: /Errors/Unauthorized
+                Title: Unauthorized
+                StatusCode: 401
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized - The response status code indicates that the
+            client request has not been completed because it lacks valid authentication
+            credentials for the requested resource.
+        "403":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The user does not have access to execute operation
+                Type: /Errors/Permission
+                Title: Bad Request
+                StatusCode: 403
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden - The user does not have access to execute operation
+        "500":
+          content:
+            application/json:
+              example:
+                Errors:
+                - An internal server error is an error on the web server you're trying
+                  to access.
+                Type: /Errors/Internal Server Error
+                Title: Internal Server Error
+                StatusCode: 500
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error - An internal server error is an error
+            on the web server you're trying to access.
+      security:
+      - OAuth2:
+        - "AccessManager:Create, Update"
+      tags:
+      - Applications
+    post:
+      description: |+
+        Use the `ApplicationData` object resource to create new records.
+
+        You can supply the required field values in the request data, and then use the `POST` method of the resource.
+
+        The input parameter must be used in the `ApplicationData` record structure inside the `FieldType` parameter in the foreign key fields.
+
+        Foreign key fields are: `ApplicationId, AuthenticationId, ModifiedBy, CreatedBy`
+
+        ### Create a new record of Application
+        * If the value in the `Id, Name, ExternalId, ApplicationKey` fields are empty then action insert a new record according input parameter entity record structure (`ApplicationData`).
+        * If the value in the `Name, ExternalId, ApplicationKey` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`ApplicationData`).
+        * If the `Id, Name, ExternalId, ApplicationKey` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+
+        The response body will contain the object of the created record if the call is successful. Method returns an extended `Application` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+
+      operationId: Create Application
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationData1'
+        description: |-
+          `Application` information to insert.
+
+          The input parameter must be used in the `ApplicationData` record structure inside the `FieldType` parameter in the foreign key fields.
+        required: true
+        x-bodyName: Record
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Application'
+          description: Inserted `Application` information.
+        "400":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The user has provided input that the browser is unable to convert.
+                - There are multiple rows in the database for the same value
+                - The value does not match the specified entity structure
+                - '...'
+                Type: /Errors/Bad Input
+                Title: Bad Request
+                StatusCode: 400
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request - The user has provided input that the browser
+            is unable to convert.
+        "401":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The session Id or OAuth token used has expired or is invalid.
+                Type: /Errors/Unauthorized
+                Title: Unauthorized
+                StatusCode: 401
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized - The response status code indicates that the
+            client request has not been completed because it lacks valid authentication
+            credentials for the requested resource.
+        "403":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The user does not have access to execute operation
+                Type: /Errors/Permission
+                Title: Bad Request
+                StatusCode: 403
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden - The user does not have access to execute operation
+        "500":
+          content:
+            application/json:
+              example:
+                Errors:
+                - An internal server error is an error on the web server you're trying
+                  to access.
+                Type: /Errors/Internal Server Error
+                Title: Internal Server Error
+                StatusCode: 500
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error - An internal server error is an error
+            on the web server you're trying to access.
+      security:
+      - OAuth2:
+        - AccessManager:Create
+      tags:
+      - Applications
+  /Endpoint/rest/api/v1/Application/{Id}/Roles:
+    get:
+      description: |-
+        Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.
+
+        Leverage the search service to extract the requisite information from the system effectively.
+
+        The method returns a list structured with an extended `Role` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.
+
+        The foreign key fields involved are: `AccessApplicationId, RoleId, ApplicationId, EspaceId, ModifiedBy, CreatedBy`
+
+        ### Example
+        It searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.
+
+        ```http
+        fields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000
+        ```
+      operationId: List Application Roles
+      parameters:
+      - description: |-
+          The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.
+
+          You can extract any string to a base64 string.
+          E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
+        explode: false
+        in: path
+        name: Id
+        required: true
+        schema:
+          description: |-
+            The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.
+
+            You can extract any string to a base64 string.
+            E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
+          type: string
+        style: simple
+      - description: "The name of the database field. If empty, the entity `Id` field\
+          \ is used.\n\nExample: \n```\nId\n```"
+        explode: true
+        in: query
+        name: Name
+        required: false
+        schema:
+          description: "The name of the database field. If empty, the entity `Id`\
+            \ field is used.\n\nExample: \n```\nId\n```"
+          type: string
+        style: form
+      - description: "Specify the fields you want to retrieve in the fields parameter\
+          \ and use the GET method of the resource.\n\nThe list of database column\
+          \ attributes. If list is empty or &quot;*&quot; then all of fields will\
+          \ be returned.\n\nThis method converts a string list to a string with a\
+          \ comma separator.\n\nExample: \n```\nId, Name, RoleKey, FullName, Description,\
+          \ ExternalId, AccessApplicationId, RoleId, ApplicationId, EspaceId, Is_Active,\
+          \ Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n\
+          ```"
+        explode: true
+        in: query
+        name: Fields
+        required: false
+        schema:
+          description: "Specify the fields you want to retrieve in the fields parameter\
+            \ and use the GET method of the resource.\n\nThe list of database column\
+            \ attributes. If list is empty or &quot;*&quot; then all of fields will\
+            \ be returned.\n\nThis method converts a string list to a string with\
+            \ a comma separator.\n\nExample: \n```\nId, Name, RoleKey, FullName, Description,\
+            \ ExternalId, AccessApplicationId, RoleId, ApplicationId, EspaceId, Is_Active,\
+            \ Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n\
+            ```"
+          type: string
+        style: form
+      - description: |
+          In the List methods, filtering of resources can be performed using filter parameters.
+
+          You can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.
+
+          The name of the entity field. Example: `Name` or relation field `OwnerId.Name`
+
+          Please refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.
+
+          The operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn
+
+          You can add multiple values separated by comma when using the `In`, `NotIn` operators.
+          Example of text field; `USA; FIN; ARE`
+          Example of numeric field; `1, 2, 3`
+
+          Example of filters:
+          ```sql
+          Filters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)
+
+          Filters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)
+
+          Filters=ExternalId In S100;S101;S120;100
+
+          Filters=Id = 100
+
+          ```
+        explode: true
+        in: query
+        name: Filters
+        required: false
+        schema:
+          description: |
+            In the List methods, filtering of resources can be performed using filter parameters.
+
+            You can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.
+
+            The name of the entity field. Example: `Name` or relation field `OwnerId.Name`
+
+            Please refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.
+
+            The operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn
+
+            You can add multiple values separated by comma when using the `In`, `NotIn` operators.
+            Example of text field; `USA; FIN; ARE`
+            Example of numeric field; `1, 2, 3`
+
+            Example of filters:
+            ```sql
+            Filters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)
+
+            Filters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)
+
+            Filters=ExternalId In S100;S101;S120;100
+
+            Filters=Id = 100
+
+            ```
+          type: string
+        style: form
+      - description: "The `Orders` parameter is provided for sorting the result in\
+          \ the desired order. Both the attribute based on which sorting needs to\
+          \ be done, and the order of sorting (ascending or descending) can be specified.\
+          \ This method converts a string list to a string with a comma separator.\n\
+          \nExample: \n```\nName DESC, CreatedOn ASC\n```"
+        explode: true
+        in: query
+        name: Orders
+        required: false
+        schema:
+          description: "The `Orders` parameter is provided for sorting the result\
+            \ in the desired order. Both the attribute based on which sorting needs\
+            \ to be done, and the order of sorting (ascending or descending) can be\
+            \ specified. This method converts a string list to a string with a comma\
+            \ separator.\n\nExample: \n```\nName DESC, CreatedOn ASC\n```"
+          type: string
+        style: form
+      - description: This field specifies the current page of results being returned.
+          It&#39;s often used in conjunction with `PageSize` to manage pagination
+          by indicating which subset of the total data is currently being retrieved.
+        explode: true
+        in: query
+        name: CurrentPage
+        required: false
+        schema:
+          default: 0
+          description: This field specifies the current page of results being returned.
+            It&#39;s often used in conjunction with `PageSize` to manage pagination
+            by indicating which subset of the total data is currently being retrieved.
+          format: int32
+          type: integer
+        style: form
+      - description: |-
+          The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.
+
+          The value ranges from `1` to `1000` and defaults to `50`.
+        explode: true
+        in: query
+        name: PageSize
+        required: false
+        schema:
+          default: 0
+          description: |-
+            The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.
+
+            The value ranges from `1` to `1000` and defaults to `50`.
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Roles'
+          description: The list of Roles
+        "400":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The user has provided input that the browser is unable to convert.
+                - There are multiple rows in the database for the same value
+                - The value does not match the specified entity structure
+                - '...'
+                Type: /Errors/Bad Input
+                Title: Bad Request
+                StatusCode: 400
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request - The user has provided input that the browser
+            is unable to convert.
+        "401":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The session Id or OAuth token used has expired or is invalid.
+                Type: /Errors/Unauthorized
+                Title: Unauthorized
+                StatusCode: 401
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized - The response status code indicates that the
+            client request has not been completed because it lacks valid authentication
+            credentials for the requested resource.
+        "403":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The user does not have access to execute operation
+                Type: /Errors/Permission
+                Title: Bad Request
+                StatusCode: 403
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden - The user does not have access to execute operation
+        "500":
+          content:
+            application/json:
+              example:
+                Errors:
+                - An internal server error is an error on the web server you're trying
+                  to access.
+                Type: /Errors/Internal Server Error
+                Title: Internal Server Error
+                StatusCode: 500
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error - An internal server error is an error
+            on the web server you're trying to access.
+      security:
+      - OAuth2:
+        - AccessManager:Read
+      tags:
+      - Applications
+  /Endpoint/rest/api/v1/Application/{Id}/Role:
+    post:
+      description: |-
+        Use the `RolePost` object resource to insert or update (Upsert) `Role` using `Id, Name, RoleKey, ExternalId` field(s) value.
+
+        You can supply the required field values in the request data, and then use the `POST` method of the resource.
+
+        The input parameter must be used in the `RoleData` record structure inside the `FieldType` parameter in the foreign key fields.
+
+        Foreign key fields are: `AccessApplicationId, RoleId, ApplicationId, EspaceId, ModifiedBy, CreatedBy`
+
+        ### Update a record of Role
+        * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).
+        * If the `Name, RoleKey, ExternalId` field value is not empty and `Id` field value is empty, action try insert record according `Name, RoleKey, ExternalId` field value (if set, the value is a unique identifier).
+
+        ### Create a new record of Role
+        * If the value in the `Name, RoleKey, ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`RoleData`).
+
+        The response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Role` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+      operationId: Upsert Application Role
+      parameters:
+      - description: |-
+          The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.
+
+          You can extract any string to a base64 string.
+          E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
+        explode: false
+        in: path
+        name: Id
+        required: true
+        schema:
+          description: |-
+            The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.
+
+            You can extract any string to a base64 string.
+            E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
+          type: string
+        style: simple
+      - description: "The name of the database field. If empty, the entity `Id` field\
+          \ is used.\n\nExample: \n```\nId\n```"
+        explode: true
+        in: query
+        name: Name
+        required: false
+        schema:
+          description: "The name of the database field. If empty, the entity `Id`\
+            \ field is used.\n\nExample: \n```\nId\n```"
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoleData'
+        description: |-
+          `Role` information to insert or update.
+
+          The input parameter must be used in the `RoleData` record structure inside the `FieldType` parameter in the foreign key fields.
+        required: true
+        x-bodyName: Record
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Role'
+          description: Inserted or updated `Role` information.
+        "400":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The user has provided input that the browser is unable to convert.
+                - There are multiple rows in the database for the same value
+                - The value does not match the specified entity structure
+                - '...'
+                Type: /Errors/Bad Input
+                Title: Bad Request
+                StatusCode: 400
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request - The user has provided input that the browser
+            is unable to convert.
+        "401":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The session Id or OAuth token used has expired or is invalid.
+                Type: /Errors/Unauthorized
+                Title: Unauthorized
+                StatusCode: 401
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized - The response status code indicates that the
+            client request has not been completed because it lacks valid authentication
+            credentials for the requested resource.
+        "403":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The user does not have access to execute operation
+                Type: /Errors/Permission
+                Title: Bad Request
+                StatusCode: 403
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden - The user does not have access to execute operation
+        "500":
+          content:
+            application/json:
+              example:
+                Errors:
+                - An internal server error is an error on the web server you're trying
+                  to access.
+                Type: /Errors/Internal Server Error
+                Title: Internal Server Error
+                StatusCode: 500
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error - An internal server error is an error
+            on the web server you're trying to access.
+      security:
+      - OAuth2:
+        - "AccessManager:Create, Update"
+      tags:
+      - Applications
+  /Endpoint/rest/api/v1/Application/{Id}/Role/{SubId}:
+    delete:
+      description: |-
+        Use the query string resource to delete `Role` record. The method contains two parameters `SubId` and `SubName`. Specify the record `SubId`, `SubName` using `Id, Name, RoleKey, ExternalId` field(s) value and use the `DELETE` method of the resource to delete a record.
+
+        Method returns an extended `Role` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
+
+        Foreign key fields are: `AccessApplicationId, RoleId, ApplicationId, EspaceId, ModifiedBy, CreatedBy`
+
+        ### Delete a record of Role
+        * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
+        * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+        * If the `Id, Name, RoleKey, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+
+        The response body will contain the object of the deleted record if the call is successful.
+      operationId: Delete Application Role
+      parameters:
+      - description: |-
+          The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.
+
+          You can extract any string to a base64 string.
+          E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
+        explode: false
+        in: path
+        name: Id
+        required: true
+        schema:
+          description: |-
+            The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.
+
+            You can extract any string to a base64 string.
+            E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
+          type: string
+        style: simple
+      - description: "The name of the database field. If empty, the entity `Id` field\
+          \ is used.\n\nExample: \n```\nId\n```"
+        explode: true
+        in: query
+        name: Name
+        required: false
+        schema:
+          description: "The name of the database field. If empty, the entity `Id`\
+            \ field is used.\n\nExample: \n```\nId\n```"
+          type: string
+        style: form
+      - description: |-
+          The identifier of the Role record. The parameter is part of the url address and some special characters are forbidden.
+
+          You can extract any string to a base64 string.
+          E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
+        explode: false
+        in: path
+        name: SubId
+        required: true
+        schema:
+          description: |-
+            The identifier of the Role record. The parameter is part of the url address and some special characters are forbidden.
+
+            You can extract any string to a base64 string.
+            E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
+          type: string
+        style: simple
+      - description: "The name of the database field. If empty, the entity `Id` field\
+          \ is used.\n\nExample: \n```\nName, RoleKey, ExternalId\n```"
+        explode: true
+        in: query
+        name: SubName
+        required: false
+        schema:
+          description: "The name of the database field. If empty, the entity `Id`\
+            \ field is used.\n\nExample: \n```\nName, RoleKey, ExternalId\n```"
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Role'
+          description: Deleted `Role` information.
+        "400":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The user has provided input that the browser is unable to convert.
+                - There are multiple rows in the database for the same value
+                - The value does not match the specified entity structure
+                - '...'
+                Type: /Errors/Bad Input
+                Title: Bad Request
+                StatusCode: 400
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request - The user has provided input that the browser
+            is unable to convert.
+        "401":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The session Id or OAuth token used has expired or is invalid.
+                Type: /Errors/Unauthorized
+                Title: Unauthorized
+                StatusCode: 401
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized - The response status code indicates that the
+            client request has not been completed because it lacks valid authentication
+            credentials for the requested resource.
+        "403":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The user does not have access to execute operation
+                Type: /Errors/Permission
+                Title: Bad Request
+                StatusCode: 403
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden - The user does not have access to execute operation
+        "500":
+          content:
+            application/json:
+              example:
+                Errors:
+                - An internal server error is an error on the web server you're trying
+                  to access.
+                Type: /Errors/Internal Server Error
+                Title: Internal Server Error
+                StatusCode: 500
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error - An internal server error is an error
+            on the web server you're trying to access.
+      security:
+      - OAuth2:
+        - AccessManager:Delete
+      tags:
+      - Applications
   /Endpoint/rest/api/v1/Connection/{Id}:
     delete:
       description: |-
@@ -13009,6 +14387,7 @@ components:
         Is_Active: false
         Username: Username
         Phone: Phone
+        PhoneVerified: false
         DateFormatId: DD-MM-YYYY
         Id: Id
         LastName: LastName
@@ -13030,6 +14409,11 @@ components:
           description: The phone number of account. The phone number is unique in
             the system.
           type: string
+        PhoneVerified:
+          default: false
+          description: Indicates whether the phone number has been verified.
+          example: false
+          type: boolean
         Email:
           description: The e-mail of account. The email is unique in the system.
           type: string
@@ -13077,6 +14461,7 @@ components:
         Is_Active: false
         Username: Username
         Phone: Phone
+        PhoneVerified: false
         DateFormatId: DD-MM-YYYY
         Id: Id
         LastName: LastName
@@ -13098,6 +14483,11 @@ components:
           description: The phone number of account. The phone number is unique in
             the system.
           type: string
+        PhoneVerified:
+          default: false
+          description: Indicates whether the phone number has been verified.
+          example: false
+          type: boolean
         Email:
           description: The e-mail of account. The email is unique in the system.
           type: string
@@ -16808,6 +18198,360 @@ components:
         Is_Active:
           default: false
           description: Defines if the location is active and can be used.
+          example: false
+          type: boolean
+      type: object
+    EnumAuthentication:
+      description: The enum of Authentication.
+      enum:
+      - PWD
+      - OTP
+      - MFA
+      - SSO
+      type: string
+      x-enums:
+      - value: PWD
+        name: UsernameAndPassword
+        description: Username and password
+        isString: true
+      - value: OTP
+        name: OneTimePassword
+        description: One-time password
+        isString: true
+      - value: MFA
+        name: MultiFactorAuthentication
+        description: Multi-factor authentication
+        isString: true
+      - value: SSO
+        name: SingleSignOn
+        description: Single sign-on
+        isString: true
+    ApplicationData1:
+      description: The record of Application information.
+      example:
+        ApplicationKey: ApplicationKey
+        Description: Description
+        ExternalId: ExternalId
+        Is_ReadOnly: false
+        AuthenticationId: PWD
+        Name: Name
+        Is_Active: false
+        Is_TestApp: false
+        WebSiteURL: WebSiteURL
+        Is_System: false
+        Is_EndUser: false
+        Id: Id
+        ApplicationId:
+          Field: Field
+          Value: Value
+      properties:
+        Id:
+          description: The identifier of the access application.
+          type: string
+        ApplicationId:
+          $ref: '#/components/schemas/FieldType'
+        Name:
+          description: Name of application. The value must be unique in the system
+            and you cannot add multiple values.
+          type: string
+        ApplicationKey:
+          description: The key used to identify the application must be unique within
+            each workspace. The value must be unique in the system and you cannot
+            add multiple values.
+          type: string
+        ExternalId:
+          description: The external system code of the application. The value must
+            be unique in the system and you cannot add multiple values.
+          type: string
+        Description:
+          description: The description of access group.
+          type: string
+        WebSiteURL:
+          description: Web Site URL of application.
+          type: string
+        Is_System:
+          default: false
+          description: Defines if application is system (setting menu).
+          example: false
+          type: boolean
+        Is_EndUser:
+          default: false
+          description: Specifies whether the application is an end-user application.
+          example: false
+          type: boolean
+        Is_TestApp:
+          default: false
+          description: Specifies whether the application is a test application.
+          example: false
+          type: boolean
+        Is_Active:
+          default: false
+          description: Defines if the application is active and can be used.
+          example: false
+          type: boolean
+        Is_ReadOnly:
+          default: false
+          description: Determines whether the application is readonly and can be modified.
+          example: false
+          type: boolean
+        AuthenticationId:
+          $ref: '#/components/schemas/EnumAuthentication'
+      type: object
+    Role:
+      description: The record of Role information.
+      example:
+        RoleKey: RoleKey
+        Description: Description
+        CreatedBy:
+          Type: User
+          ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+          Id: 1234567891234567
+          Name: Bob Normal
+        ModifiedOn: 1900-01-01T00:00:00Z
+        ExternalId: ExternalId
+        Is_ReadOnly: false
+        ModifiedBy:
+          Type: User
+          ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+          Id: 1234567891234567
+          Name: Bob Normal
+        RoleId:
+          Type: User
+          ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+          Id: 1234567891234567
+          Name: Bob Normal
+        Name: Name
+        Is_Custom: false
+        Is_Active: false
+        FullName: FullName
+        Id: Id
+        CreatedOn: 1900-01-01T00:00:00Z
+        ApplicationId:
+          Type: User
+          ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+          Id: 1234567891234567
+          Name: Bob Normal
+        EspaceId:
+          Type: User
+          ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+          Id: 1234567891234567
+          Name: Bob Normal
+      properties:
+        Id:
+          description: The identifier of the role
+          type: string
+        Name:
+          description: Name of role
+          type: string
+        RoleKey:
+          description: ' The key used to identify the role must be unique within each
+            workspace.'
+          type: string
+        FullName:
+          description: Full name of role. Example Application 1 \ Espace 1 \ Role
+            1
+          type: string
+        Description:
+          description: The description of access group
+          type: string
+        ExternalId:
+          description: The external system code of the role
+          type: string
+        RoleId:
+          $ref: '#/components/schemas/AbstractLong'
+        ApplicationId:
+          $ref: '#/components/schemas/AbstractLong'
+        EspaceId:
+          $ref: '#/components/schemas/AbstractLong'
+        Is_Active:
+          default: false
+          description: Defines if record is active
+          example: false
+          type: boolean
+        Is_Custom:
+          default: false
+          description: Determines whether the role has been modified externally or
+            whether it is synchronized from the OutSystems structure
+          example: false
+          type: boolean
+        Is_ReadOnly:
+          default: false
+          description: Determines whether the role is readonly and can be modified
+          example: false
+          type: boolean
+        ModifiedOn:
+          default: 1900-01-01T00:00:00Z
+          description: The date the record was updated
+          example: 1900-01-01T00:00:00Z
+          format: date-time
+          type: string
+        ModifiedBy:
+          $ref: '#/components/schemas/AbstractLong'
+        CreatedBy:
+          $ref: '#/components/schemas/AbstractLong'
+        CreatedOn:
+          default: 1900-01-01T00:00:00Z
+          description: The date the record was created
+          example: 1900-01-01T00:00:00Z
+          format: date-time
+          type: string
+      required:
+      - Id
+      - Is_ReadOnly
+      - RoleKey
+      type: object
+    Roles:
+      description: The list of `Role` records
+      example:
+        Meta:
+          Type: User
+          PageSize: 50
+          CurrentPage: 50
+          TotalItems: 1000
+        Data:
+        - RoleKey: RoleKey
+          Description: Description
+          CreatedBy:
+            Type: User
+            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Id: 1234567891234567
+            Name: Bob Normal
+          ModifiedOn: 1900-01-01T00:00:00Z
+          ExternalId: ExternalId
+          Is_ReadOnly: false
+          ModifiedBy:
+            Type: User
+            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Id: 1234567891234567
+            Name: Bob Normal
+          RoleId:
+            Type: User
+            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Id: 1234567891234567
+            Name: Bob Normal
+          Name: Name
+          Is_Custom: false
+          Is_Active: false
+          FullName: FullName
+          Id: Id
+          CreatedOn: 1900-01-01T00:00:00Z
+          ApplicationId:
+            Type: User
+            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Id: 1234567891234567
+            Name: Bob Normal
+          EspaceId:
+            Type: User
+            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Id: 1234567891234567
+            Name: Bob Normal
+        - RoleKey: RoleKey
+          Description: Description
+          CreatedBy:
+            Type: User
+            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Id: 1234567891234567
+            Name: Bob Normal
+          ModifiedOn: 1900-01-01T00:00:00Z
+          ExternalId: ExternalId
+          Is_ReadOnly: false
+          ModifiedBy:
+            Type: User
+            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Id: 1234567891234567
+            Name: Bob Normal
+          RoleId:
+            Type: User
+            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Id: 1234567891234567
+            Name: Bob Normal
+          Name: Name
+          Is_Custom: false
+          Is_Active: false
+          FullName: FullName
+          Id: Id
+          CreatedOn: 1900-01-01T00:00:00Z
+          ApplicationId:
+            Type: User
+            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Id: 1234567891234567
+            Name: Bob Normal
+          EspaceId:
+            Type: User
+            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Id: 1234567891234567
+            Name: Bob Normal
+      properties:
+        Meta:
+          $ref: '#/components/schemas/Meta'
+        Data:
+          description: The list of `Role records`
+          items:
+            $ref: '#/components/schemas/Role'
+          type: array
+      type: object
+    RoleData:
+      description: The record of Role information.
+      example:
+        RoleKey: RoleKey
+        Is_Custom: false
+        Description: Description
+        Is_Active: false
+        FullName: FullName
+        ExternalId: ExternalId
+        Id: Id
+        Is_ReadOnly: false
+        ApplicationId:
+          Field: Field
+          Value: Value
+        RoleId:
+          Field: Field
+          Value: Value
+        EspaceId:
+          Field: Field
+          Value: Value
+        Name: Name
+      properties:
+        Id:
+          description: The identifier of the role.
+          type: string
+        Name:
+          description: Name of role.
+          type: string
+        RoleKey:
+          description: ' The key used to identify the role must be unique within each
+            workspace.'
+          type: string
+        FullName:
+          description: Full name of role. Example Application 1 \ Espace 1 \ Role
+            1.
+          type: string
+        Description:
+          description: The description of access group.
+          type: string
+        ExternalId:
+          description: The external system code of the role.
+          type: string
+        RoleId:
+          $ref: '#/components/schemas/FieldType'
+        ApplicationId:
+          $ref: '#/components/schemas/FieldType'
+        EspaceId:
+          $ref: '#/components/schemas/FieldType'
+        Is_Active:
+          default: false
+          description: Defines if record is active.
+          example: false
+          type: boolean
+        Is_Custom:
+          default: false
+          description: Determines whether the role has been modified externally or
+            whether it is synchronized from the OutSystems structure.
+          example: false
+          type: boolean
+        Is_ReadOnly:
+          default: false
+          description: Determines whether the role is readonly and can be modified.
           example: false
           type: boolean
       type: object

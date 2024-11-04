@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **FirstName** | **string** | Person&#39;s first name. | [optional] 
 **LastName** | **string** | Person&#39;s last name. | [optional] 
 **Phone** | **string** | The phone number of account. The phone number is unique in the system. | [optional] 
+**PhoneVerified** | **bool** | Indicates whether the phone number has been verified. | [optional] [default to false]
 **Email** | **string** | The e-mail of account. The email is unique in the system. | [optional] 
 **LanguageId** | [**EnumLanguage**](EnumLanguage.md) | The EnumLanguage enumeration | [optional] 
 **TimezoneId** | [**EnumTimezone**](EnumTimezone.md) | The EnumTimezone enumeration | [optional] 

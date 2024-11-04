@@ -139,6 +139,15 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**UpsertAccount**](docs/AccountsApi.md#upsertaccount) | **PATCH** /Endpoint/rest/api/v1/Account | 
 *AccountsApi* | [**UpsertAccountPicture**](docs/AccountsApi.md#upsertaccountpicture) | **POST** /Endpoint/rest/api/v1/Account/{Id}/Picture | 
 *AccountsApi* | [**UpsertAccountTenant**](docs/AccountsApi.md#upsertaccounttenant) | **POST** /Endpoint/rest/api/v1/Account/{Id}/Tenant | 
+*ApplicationsApi* | [**CreateApplication**](docs/ApplicationsApi.md#createapplication) | **POST** /Endpoint/rest/api/v1/Application | 
+*ApplicationsApi* | [**DeleteApplication**](docs/ApplicationsApi.md#deleteapplication) | **DELETE** /Endpoint/rest/api/v1/Application/{Id} | 
+*ApplicationsApi* | [**DeleteApplicationRole**](docs/ApplicationsApi.md#deleteapplicationrole) | **DELETE** /Endpoint/rest/api/v1/Application/{Id}/Role/{SubId} | 
+*ApplicationsApi* | [**GetApplication**](docs/ApplicationsApi.md#getapplication) | **GET** /Endpoint/rest/api/v1/Application/{Id} | 
+*ApplicationsApi* | [**ListApplicationRoles**](docs/ApplicationsApi.md#listapplicationroles) | **GET** /Endpoint/rest/api/v1/Application/{Id}/Roles | 
+*ApplicationsApi* | [**ListApplications**](docs/ApplicationsApi.md#listapplications) | **GET** /Endpoint/rest/api/v1/Applications | 
+*ApplicationsApi* | [**UpdateApplication**](docs/ApplicationsApi.md#updateapplication) | **PUT** /Endpoint/rest/api/v1/Application/{Id} | 
+*ApplicationsApi* | [**UpsertApplication**](docs/ApplicationsApi.md#upsertapplication) | **PATCH** /Endpoint/rest/api/v1/Application | 
+*ApplicationsApi* | [**UpsertApplicationRole**](docs/ApplicationsApi.md#upsertapplicationrole) | **POST** /Endpoint/rest/api/v1/Application/{Id}/Role | 
 *ConnectionsApi* | [**CreateConnection**](docs/ConnectionsApi.md#createconnection) | **POST** /Endpoint/rest/api/v1/Connection | 
 *ConnectionsApi* | [**DeleteConnection**](docs/ConnectionsApi.md#deleteconnection) | **DELETE** /Endpoint/rest/api/v1/Connection/{Id} | 
 *ConnectionsApi* | [**DeleteConnectionConfig**](docs/ConnectionsApi.md#deleteconnectionconfig) | **DELETE** /Endpoint/rest/api/v1/Connection/{Id}/Config/{SubId} | 
@@ -203,6 +212,7 @@ Class | Method | HTTP request | Description
  - [Model.Accounts](docs/models/Accounts.md)
  - [Model.Application](docs/models/Application.md)
  - [Model.ApplicationData](docs/models/ApplicationData.md)
+ - [Model.ApplicationData1](docs/models/ApplicationData1.md)
  - [Model.ApplicationText](docs/models/ApplicationText.md)
  - [Model.Applications](docs/models/Applications.md)
  - [Model.ApplicationsData](docs/models/ApplicationsData.md)
@@ -222,6 +232,7 @@ Class | Method | HTTP request | Description
  - [Model.Entities](docs/models/Entities.md)
  - [Model.Entity](docs/models/Entity.md)
  - [Model.EnumAccessGroupType](docs/models/EnumAccessGroupType.md)
+ - [Model.EnumAuthentication](docs/models/EnumAuthentication.md)
  - [Model.EnumCountry](docs/models/EnumCountry.md)
  - [Model.EnumCurrency](docs/models/EnumCurrency.md)
  - [Model.EnumDateFormat](docs/models/EnumDateFormat.md)
@@ -256,6 +267,9 @@ Class | Method | HTTP request | Description
  - [Model.Picture](docs/models/Picture.md)
  - [Model.PictureData](docs/models/PictureData.md)
  - [Model.Pictures](docs/models/Pictures.md)
+ - [Model.Role](docs/models/Role.md)
+ - [Model.RoleData](docs/models/RoleData.md)
+ - [Model.Roles](docs/models/Roles.md)
  - [Model.Tenant](docs/models/Tenant.md)
  - [Model.TenantData](docs/models/TenantData.md)
  - [Model.Tenants](docs/models/Tenants.md)
