@@ -29,6 +29,6 @@ public class Permission1_TestData : TestData<Permission1, PermissionData1> {
 }
 
 public static class Permission1_TestData_Extensions {
-    public static PermissionText1 ToPermissionText(this PermissionData1 permissionData) =>
+    public static PermissionText1 ToPermissionText1(this PermissionData1 permissionData) =>
         new PermissionText1(permissionId: permissionData.PermissionId.ToString());
 }
