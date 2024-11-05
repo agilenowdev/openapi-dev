@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.6"
+    "version": "3.0.7"
   },
   "servers": [
     {
@@ -431,10 +431,10 @@
           {
             "name": "Fields",
             "in": "query",
-            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, RoleId, ApplicationId, EspaceId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, EspaceId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```",
             "schema": {
               "type": "string",
-              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, RoleId, ApplicationId, EspaceId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```"
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, EspaceId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```"
             }
           },
           {
@@ -1057,12 +1057,6 @@
           "ExternalId": {
             "type": "string",
             "description": "The external system code of the role"
-          },
-          "RoleId": {
-            "$ref": "#/components/schemas/AbstractLong"
-          },
-          "ApplicationId": {
-            "$ref": "#/components/schemas/AbstractLong"
           },
           "EspaceId": {
             "$ref": "#/components/schemas/AbstractLong"
