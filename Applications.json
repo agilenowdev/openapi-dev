@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.15"
+    "version": "3.0.16"
   },
   "servers": [
     {
@@ -219,10 +219,10 @@
           {
             "name": "Fields",
             "in": "query",
-            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_TestApp, Is_Active, Is_ReadOnly, AuthenticationId, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_Active, AuthenticationId, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```",
             "schema": {
               "type": "string",
-              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_TestApp, Is_Active, Is_ReadOnly, AuthenticationId, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```"
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_Active, AuthenticationId, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```"
             }
           },
           {
@@ -752,8 +752,7 @@
       "Application": {
         "required": [
           "Id",
-          "Is_Active",
-          "Is_ReadOnly"
+          "Is_Active"
         ],
         "type": "object",
         "properties": {
@@ -793,21 +792,9 @@
             "default": false,
             "example": false
           },
-          "Is_TestApp": {
-            "type": "boolean",
-            "description": "Specifies whether the application is a test application",
-            "default": false,
-            "example": false
-          },
           "Is_Active": {
             "type": "boolean",
             "description": "Defines if the application is active and can be used",
-            "default": false,
-            "example": false
-          },
-          "Is_ReadOnly": {
-            "type": "boolean",
-            "description": "Determines whether the application is readonly and can be modified",
             "default": false,
             "example": false
           },
@@ -950,9 +937,6 @@
             "type": "string",
             "description": "The identifier of the access application."
           },
-          "ApplicationId": {
-            "$ref": "#/components/schemas/FieldType"
-          },
           "Name": {
             "type": "string",
             "description": "Name of application. The value must be unique in the system and you cannot add multiple values."
@@ -985,21 +969,9 @@
             "default": false,
             "example": false
           },
-          "Is_TestApp": {
-            "type": "boolean",
-            "description": "Specifies whether the application is a test application.",
-            "default": false,
-            "example": false
-          },
           "Is_Active": {
             "type": "boolean",
             "description": "Defines if the application is active and can be used.",
-            "default": false,
-            "example": false
-          },
-          "Is_ReadOnly": {
-            "type": "boolean",
-            "description": "Determines whether the application is readonly and can be modified.",
             "default": false,
             "example": false
           },
@@ -1008,23 +980,6 @@
           }
         },
         "description": "The record of Application information."
-      },
-      "FieldType": {
-        "required": [
-          "Value"
-        ],
-        "type": "object",
-        "properties": {
-          "Field": {
-            "type": "string",
-            "description": "The name of the data field. This can be any field name from the related database table, such as 'Email' from the User table or 'Name' from the Department table."
-          },
-          "Value": {
-            "type": "string",
-            "description": "The value corresponding to the specified data field. This value is used to identify the record in the related database table. For example, it could be an email address, a department name, or an external system's identifier."
-          }
-        },
-        "description": "The field object structure. This structure allows users to specify any related entity field and its corresponding value. When saving data, the system automatically retrieves and assigns the primary key value from the system database table based on the provided field name and value."
       },
       "Role": {
         "required": [
@@ -1171,6 +1126,23 @@
           }
         },
         "description": "The record of Role information."
+      },
+      "FieldType": {
+        "required": [
+          "Value"
+        ],
+        "type": "object",
+        "properties": {
+          "Field": {
+            "type": "string",
+            "description": "The name of the data field. This can be any field name from the related database table, such as 'Email' from the User table or 'Name' from the Department table."
+          },
+          "Value": {
+            "type": "string",
+            "description": "The value corresponding to the specified data field. This value is used to identify the record in the related database table. For example, it could be an email address, a department name, or an external system's identifier."
+          }
+        },
+        "description": "The field object structure. This structure allows users to specify any related entity field and its corresponding value. When saving data, the system automatically retrieves and assigns the primary key value from the system database table based on the provided field name and value."
       }
     },
     "responses": {
