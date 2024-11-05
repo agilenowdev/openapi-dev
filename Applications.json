@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.9"
+    "version": "3.0.11"
   },
   "servers": [
     {
@@ -955,7 +955,7 @@
           },
           "Name": {
             "type": "string",
-            "description": "Name of application. The value must be unique in the system and you cannot add multiple values. The pattern of the value (About)."
+            "description": "Name of application. The value must be unique in the system and you cannot add multiple values."
           },
           "ApplicationKey": {
             "type": "string",
