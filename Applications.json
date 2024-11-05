@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.19"
+    "version": "3.0.20"
   },
   "servers": [
     {
@@ -219,10 +219,10 @@
           {
             "name": "Fields",
             "in": "query",
-            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_Active, AuthenticationId, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_Active, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```",
             "schema": {
               "type": "string",
-              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_Active, AuthenticationId, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```"
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_Active, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```"
             }
           },
           {
@@ -798,9 +798,6 @@
             "default": false,
             "example": false
           },
-          "AuthenticationId": {
-            "$ref": "#/components/schemas/AbstractText"
-          },
           "ModifiedOn": {
             "type": "string",
             "description": "The date the record was updated",
@@ -823,32 +820,6 @@
           }
         },
         "description": "The record of Application information."
-      },
-      "AbstractText": {
-        "type": "object",
-        "properties": {
-          "Id": {
-            "type": "string",
-            "description": "The primary key of the record. It uniquely identifies each record within the dataset. This attribute is required and must be unique across all records.",
-            "example": "3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5"
-          },
-          "ExternalId": {
-            "type": "string",
-            "description": "An external identifier for the record, which can be used to link the record to external systems or datasets. This attribute is optional but should be unique if provided.",
-            "example": "3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5"
-          },
-          "Name": {
-            "type": "string",
-            "description": "The name of the record. This attribute provides a human-readable identifier for the record, making it easier to recognize and differentiate records in lists or other displays. This attribute is optional.",
-            "example": "Bob Normal"
-          },
-          "Type": {
-            "type": "string",
-            "description": "The type of the record object. This attribute is used to classify the record into specific categories or types, helping to organize and manage different kinds of records. This attribute is optional.",
-            "example": "User"
-          }
-        },
-        "description": "This structure represents an abstract object with a primary key of type Text. It is used to encapsulate detailed information about related entities."
       },
       "AbstractLong": {
         "type": "object",
@@ -894,42 +865,6 @@
         },
         "description": "The list of `Application` records"
       },
-      "EnumAuthentication": {
-        "enum": [
-          "PWD",
-          "OTP",
-          "MFA",
-          "SSO"
-        ],
-        "type": "string",
-        "description": "The enum of Authentication.",
-        "x-enums": [
-          {
-            "value": "PWD",
-            "name": "UsernameAndPassword",
-            "description": "Username and password",
-            "isString": true
-          },
-          {
-            "value": "OTP",
-            "name": "OneTimePassword",
-            "description": "One-time password",
-            "isString": true
-          },
-          {
-            "value": "MFA",
-            "name": "MultiFactorAuthentication",
-            "description": "Multi-factor authentication",
-            "isString": true
-          },
-          {
-            "value": "SSO",
-            "name": "SingleSignOn",
-            "description": "Single sign-on",
-            "isString": true
-          }
-        ]
-      },
       "ApplicationData": {
         "type": "object",
         "properties": {
@@ -974,9 +909,6 @@
             "description": "Defines if the application is active and can be used.",
             "default": false,
             "example": false
-          },
-          "AuthenticationId": {
-            "$ref": "#/components/schemas/EnumAuthentication"
           }
         },
         "description": "The record of Application information."
@@ -1069,6 +1001,32 @@
           }
         },
         "description": "The list of `Role` records"
+      },
+      "AbstractText": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "The primary key of the record. It uniquely identifies each record within the dataset. This attribute is required and must be unique across all records.",
+            "example": "3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5"
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "An external identifier for the record, which can be used to link the record to external systems or datasets. This attribute is optional but should be unique if provided.",
+            "example": "3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5"
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the record. This attribute provides a human-readable identifier for the record, making it easier to recognize and differentiate records in lists or other displays. This attribute is optional.",
+            "example": "Bob Normal"
+          },
+          "Type": {
+            "type": "string",
+            "description": "The type of the record object. This attribute is used to classify the record into specific categories or types, helping to organize and manage different kinds of records. This attribute is optional.",
+            "example": "User"
+          }
+        },
+        "description": "This structure represents an abstract object with a primary key of type Text. It is used to encapsulate detailed information about related entities."
       },
       "RoleData": {
         "type": "object",
