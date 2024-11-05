@@ -56,7 +56,7 @@ namespace Agile.Now.AccessHub.Model
         /// Initializes a new instance of the <see cref="RoleData" /> class.
         /// </summary>
         /// <param name="id">The identifier of the role..</param>
-        /// <param name="name">Name of role. The value must be unique in the system and you cannot add multiple values..</param>
+        /// <param name="name">Name of role. The value must be unique in the system and you cannot add multiple values. The pattern of the value (/test/)..</param>
         /// <param name="roleKey"> The key used to identify the role must be unique within each workspace. The value must be unique in the system and you cannot add multiple values..</param>
         /// <param name="fullName">Full name of role. Example Application 1 \\ Espace 1 \\ Role 1..</param>
         /// <param name="description">The description of access group..</param>
@@ -91,9 +91,9 @@ namespace Agile.Now.AccessHub.Model
         public string Id { get; set; }
 
         /// <summary>
-        /// Name of role. The value must be unique in the system and you cannot add multiple values.
+        /// Name of role. The value must be unique in the system and you cannot add multiple values. The pattern of the value (/test/).
         /// </summary>
-        /// <value>Name of role. The value must be unique in the system and you cannot add multiple values.</value>
+        /// <value>Name of role. The value must be unique in the system and you cannot add multiple values. The pattern of the value (/test/).</value>
         [DataMember(Name = "Name", EmitDefaultValue = false)]
         public string Name { get; set; }
 

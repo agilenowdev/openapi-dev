@@ -47,52 +47,34 @@ using OpenAPIDateConverter = Agile.Now.AccessHub.Client.OpenAPIDateConverter;
 namespace Agile.Now.AccessHub.Model
 {
     /// <summary>
-    /// The record of Permission information.
+    /// The list of `Application` records
     /// </summary>
-    [DataContract(Name = "Permission1")]
-    public partial class Permission1 : IValidatableObject
+    [DataContract(Name = "Applications1")]
+    public partial class Applications1 : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Permission1" /> class.
+        /// Initializes a new instance of the <see cref="Applications1" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected Permission1() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Permission1" /> class.
-        /// </summary>
-        /// <param name="id">The identifier of entity (required) (default to 0).</param>
-        /// <param name="permissionId">permissionId (required).</param>
-        /// <param name="createdOn">The date when the record was created. (required) (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public Permission1(long id = 0, AbstractText permissionId = default, DateTime createdOn = default)
+        /// <param name="meta">meta.</param>
+        /// <param name="data">The list of `Application records`.</param>
+        public Applications1(Meta meta = default, List<Application1> data = default)
         {
-            Id = id;
-            // to ensure "permissionId" is required (not null)
-            permissionId = permissionId ?? throw new ArgumentNullException("permissionId is a required property for Permission1 and cannot be null");
-            PermissionId = permissionId;
-            CreatedOn = createdOn;
+            Meta = meta;
+            Data = data;
         }
 
         /// <summary>
-        /// The identifier of entity
+        /// Gets or Sets Meta
         /// </summary>
-        /// <value>The identifier of entity</value>
-        /// <example>0</example>
-        [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
-        public long Id { get; set; }
+        [DataMember(Name = "Meta", EmitDefaultValue = false)]
+        public Meta Meta { get; set; }
 
         /// <summary>
-        /// Gets or Sets PermissionId
+        /// The list of `Application records`
         /// </summary>
-        [DataMember(Name = "PermissionId", IsRequired = true, EmitDefaultValue = true)]
-        public AbstractText PermissionId { get; set; }
-
-        /// <summary>
-        /// The date when the record was created.
-        /// </summary>
-        /// <value>The date when the record was created.</value>
-        /// <example>1900-01-01T00:00Z</example>
-        [DataMember(Name = "CreatedOn", IsRequired = true, EmitDefaultValue = true)]
-        public DateTime CreatedOn { get; set; }
+        /// <value>The list of &#x60;Application records&#x60;</value>
+        [DataMember(Name = "Data", EmitDefaultValue = false)]
+        public List<Application1> Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -101,10 +83,9 @@ namespace Agile.Now.AccessHub.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class Permission1 {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  PermissionId: ").Append(PermissionId).Append("\n");
-            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
+            sb.Append("class Applications1 {\n");
+            sb.Append("  Meta: ").Append(Meta).Append("\n");
+            sb.Append("  Data: ").Append(Data).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

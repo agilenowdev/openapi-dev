@@ -8,14 +8,14 @@ using Xunit;
 
 namespace Agile.Now.AccessHub.Test.Api;
 
-public class Application_Tests : EntityTests<Application, string, ApplicationData1> {
+public class Application_Tests : EntityTests<Application1, string, ApplicationData1> {
     readonly ApplicationsApi api;
 
     public Application_Tests()
         : base(
             testData: new Application1_TestData(),
             id: new(nameof(Application.Id), entity => entity.Id, (entity, id) => entity.Id = id),
-            uniqueAttributes: new Attribute<Application, string, ApplicationData1>[] {
+            uniqueAttributes: new Attribute<Application1, string, ApplicationData1>[] {
                 new(nameof(Application.Name), data => data.Name, (data, value) => data.Name = value),
                 new(nameof(Application.ExternalId), data => data.ExternalId, (data, value) => data.ExternalId = value),
                 new(nameof(Application.ApplicationKey),
@@ -25,17 +25,17 @@ public class Application_Tests : EntityTests<Application, string, ApplicationDat
         api = new ApplicationsApi(Settings.Connections[0]);
     }
 
-    protected override List<Application> List(string filters, string orders, int currentPage, int pageSize) =>
+    protected override List<Application1> List(string filters, string orders, int currentPage, int pageSize) =>
         api.ListApplications(filters: filters, orders: orders, currentPage: currentPage, pageSize: pageSize).Data;
 
-    protected override Application Get(string id, string name) => api.GetApplication(id, name);
-    protected override Application Create(ApplicationData1 data) => api.CreateApplication(data);
+    protected override Application1 Get(string id, string name) => api.GetApplication(id, name);
+    protected override Application1 Create(ApplicationData1 data) => api.CreateApplication(data);
 
-    protected override Application Update(string id, ApplicationData1 data, string name) =>
+    protected override Application1 Update(string id, ApplicationData1 data, string name) =>
         api.UpdateApplication(id, data, name);
 
-    protected override Application Upsert(ApplicationData1 data) => api.UpsertApplication(data);
-    protected override Application Delete(string id, string name) => api.DeleteApplication(id, name);
+    protected override Application1 Upsert(ApplicationData1 data) => api.UpsertApplication(data);
+    protected override Application1 Delete(string id, string name) => api.DeleteApplication(id, name);
 
     [Fact] public void Test_Application_List_ById() => Test_List_ById();
     [Fact] public void Test_Application_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();

@@ -67,9 +67,6 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="description">The description of access group.</param>
         /// <param name="externalId">The external system code of the role.</param>
         /// <param name="accessApplicationId">accessApplicationId.</param>
-        /// <param name="roleId">roleId.</param>
-        /// <param name="applicationId">applicationId.</param>
-        /// <param name="espaceId">espaceId.</param>
         /// <param name="isActive">Defines if record is active (default to false).</param>
         /// <param name="isCustom">Determines whether the role has been modified externally or whether it is synchronized from the OutSystems structure (default to false).</param>
         /// <param name="isReadOnly">Determines whether the role is readonly and can be modified (required) (default to false).</param>
@@ -77,7 +74,7 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="modifiedBy">modifiedBy.</param>
         /// <param name="createdBy">createdBy.</param>
         /// <param name="createdOn">The date the record was created (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public Role1(string id = default, string name = default, string roleKey = default, string fullName = default, string description = default, string externalId = default, AbstractText accessApplicationId = default, AbstractLong roleId = default, AbstractLong applicationId = default, AbstractLong espaceId = default, bool isActive = false, bool isCustom = false, bool isReadOnly = false, DateTime modifiedOn = default, AbstractLong modifiedBy = default, AbstractLong createdBy = default, DateTime createdOn = default)
+        public Role1(string id = default, string name = default, string roleKey = default, string fullName = default, string description = default, string externalId = default, AbstractText accessApplicationId = default, bool isActive = false, bool isCustom = false, bool isReadOnly = false, DateTime modifiedOn = default, AbstractLong modifiedBy = default, AbstractLong createdBy = default, DateTime createdOn = default)
         {
             // to ensure "id" is required (not null)
             id = id ?? throw new ArgumentNullException("id is a required property for Role1 and cannot be null");
@@ -91,9 +88,6 @@ namespace Agile.Now.AccessHub.Model
             Description = description;
             ExternalId = externalId;
             AccessApplicationId = accessApplicationId;
-            RoleId = roleId;
-            ApplicationId = applicationId;
-            EspaceId = espaceId;
             IsActive = isActive;
             IsCustom = isCustom;
             ModifiedOn = modifiedOn;
@@ -149,24 +143,6 @@ namespace Agile.Now.AccessHub.Model
         /// </summary>
         [DataMember(Name = "AccessApplicationId", EmitDefaultValue = false)]
         public AbstractText AccessApplicationId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets RoleId
-        /// </summary>
-        [DataMember(Name = "RoleId", EmitDefaultValue = false)]
-        public AbstractLong RoleId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ApplicationId
-        /// </summary>
-        [DataMember(Name = "ApplicationId", EmitDefaultValue = false)]
-        public AbstractLong ApplicationId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets EspaceId
-        /// </summary>
-        [DataMember(Name = "EspaceId", EmitDefaultValue = false)]
-        public AbstractLong EspaceId { get; set; }
 
         /// <summary>
         /// Defines if record is active
@@ -235,9 +211,6 @@ namespace Agile.Now.AccessHub.Model
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  AccessApplicationId: ").Append(AccessApplicationId).Append("\n");
-            sb.Append("  RoleId: ").Append(RoleId).Append("\n");
-            sb.Append("  ApplicationId: ").Append(ApplicationId).Append("\n");
-            sb.Append("  EspaceId: ").Append(EspaceId).Append("\n");
             sb.Append("  IsActive: ").Append(IsActive).Append("\n");
             sb.Append("  IsCustom: ").Append(IsCustom).Append("\n");
             sb.Append("  IsReadOnly: ").Append(IsReadOnly).Append("\n");

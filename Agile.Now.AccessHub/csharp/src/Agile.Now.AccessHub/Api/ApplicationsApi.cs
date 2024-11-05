@@ -58,8 +58,8 @@ namespace Agile.Now.AccessHub.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="applicationData1">`Application` information to insert.  The input parameter must be used in the `ApplicationData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>Application</returns>
-        Application CreateApplication(ApplicationData1 applicationData1, int operationIndex = 0);
+        /// <returns>Application1</returns>
+        Application1 CreateApplication(ApplicationData1 applicationData1, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -70,8 +70,8 @@ namespace Agile.Now.AccessHub.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="applicationData1">`Application` information to insert.  The input parameter must be used in the `ApplicationData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Application</returns>
-        ApiResponse<Application> CreateApplicationWithHttpInfo(ApplicationData1 applicationData1, int operationIndex = 0);
+        /// <returns>ApiResponse of Application1</returns>
+        ApiResponse<Application1> CreateApplicationWithHttpInfo(ApplicationData1 applicationData1, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -82,8 +82,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="id">The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId, ApplicationKey ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>Application</returns>
-        Application DeleteApplication(string id, string name = default, int operationIndex = 0);
+        /// <returns>Application1</returns>
+        Application1 DeleteApplication(string id, string name = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -95,8 +95,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="id">The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId, ApplicationKey ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Application</returns>
-        ApiResponse<Application> DeleteApplicationWithHttpInfo(string id, string name = default, int operationIndex = 0);
+        /// <returns>ApiResponse of Application1</returns>
+        ApiResponse<Application1> DeleteApplicationWithHttpInfo(string id, string name = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -136,8 +136,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="id">The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId, ApplicationKey ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>Application</returns>
-        Application GetApplication(string id, string name = default, int operationIndex = 0);
+        /// <returns>Application1</returns>
+        Application1 GetApplication(string id, string name = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -149,8 +149,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="id">The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId, ApplicationKey ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Application</returns>
-        ApiResponse<Application> GetApplicationWithHttpInfo(string id, string name = default, int operationIndex = 0);
+        /// <returns>ApiResponse of Application1</returns>
+        ApiResponse<Application1> GetApplicationWithHttpInfo(string id, string name = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -160,7 +160,7 @@ namespace Agile.Now.AccessHub.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
-        /// <param name="fields">Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, RoleId, ApplicationId, EspaceId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional)</param>
+        /// <param name="fields">Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional)</param>
         /// <param name="filters">In the List methods, filtering of resources can be performed using filter parameters.  You can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.  The name of the entity field. Example: `Name` or relation field `OwnerId.Name`  Please refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.  The operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn  You can add multiple values separated by comma when using the `In`, `NotIn` operators. Example of text field; `USA; FIN; ARE` Example of numeric field; `1, 2, 3`  Example of filters: ```sql Filters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)  Filters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)  Filters=ExternalId In S100;S101;S120;100  Filters=Id = 100  ```  (optional)</param>
         /// <param name="orders">The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  ``` Name DESC, CreatedOn ASC ``` (optional)</param>
         /// <param name="currentPage">This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)</param>
@@ -178,7 +178,7 @@ namespace Agile.Now.AccessHub.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
-        /// <param name="fields">Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, RoleId, ApplicationId, EspaceId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional)</param>
+        /// <param name="fields">Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional)</param>
         /// <param name="filters">In the List methods, filtering of resources can be performed using filter parameters.  You can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.  The name of the entity field. Example: `Name` or relation field `OwnerId.Name`  Please refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.  The operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn  You can add multiple values separated by comma when using the `In`, `NotIn` operators. Example of text field; `USA; FIN; ARE` Example of numeric field; `1, 2, 3`  Example of filters: ```sql Filters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)  Filters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)  Filters=ExternalId In S100;S101;S120;100  Filters=Id = 100  ```  (optional)</param>
         /// <param name="orders">The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  ``` Name DESC, CreatedOn ASC ``` (optional)</param>
         /// <param name="currentPage">This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)</param>
@@ -193,14 +193,14 @@ namespace Agile.Now.AccessHub.Api
         /// Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.  Leverage the search service to extract the requisite information from the system effectively.  The method returns a list structured with an extended `Application` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.  The foreign key fields involved are: `ApplicationId, AuthenticationId, ModifiedBy, CreatedBy`  ### Example It searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.  ```http fields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000 ```
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="fields">Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, ApplicationId, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_TestApp, Is_Active, Is_ReadOnly, AuthenticationId, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional)</param>
+        /// <param name="fields">Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_Active, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional)</param>
         /// <param name="filters">In the List methods, filtering of resources can be performed using filter parameters.  You can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.  The name of the entity field. Example: `Name` or relation field `OwnerId.Name`  Please refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.  The operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn  You can add multiple values separated by comma when using the `In`, `NotIn` operators. Example of text field; `USA; FIN; ARE` Example of numeric field; `1, 2, 3`  Example of filters: ```sql Filters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)  Filters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)  Filters=ExternalId In S100;S101;S120;100  Filters=Id = 100  ```  (optional)</param>
         /// <param name="orders">The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  ``` Name DESC, CreatedOn ASC ``` (optional)</param>
         /// <param name="currentPage">This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)</param>
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>Applications</returns>
-        Applications ListApplications(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0);
+        /// <returns>Applications1</returns>
+        Applications1 ListApplications(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -209,14 +209,14 @@ namespace Agile.Now.AccessHub.Api
         /// Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.  Leverage the search service to extract the requisite information from the system effectively.  The method returns a list structured with an extended `Application` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.  The foreign key fields involved are: `ApplicationId, AuthenticationId, ModifiedBy, CreatedBy`  ### Example It searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.  ```http fields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000 ```
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="fields">Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, ApplicationId, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_TestApp, Is_Active, Is_ReadOnly, AuthenticationId, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional)</param>
+        /// <param name="fields">Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_Active, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional)</param>
         /// <param name="filters">In the List methods, filtering of resources can be performed using filter parameters.  You can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.  The name of the entity field. Example: `Name` or relation field `OwnerId.Name`  Please refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.  The operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn  You can add multiple values separated by comma when using the `In`, `NotIn` operators. Example of text field; `USA; FIN; ARE` Example of numeric field; `1, 2, 3`  Example of filters: ```sql Filters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)  Filters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)  Filters=ExternalId In S100;S101;S120;100  Filters=Id = 100  ```  (optional)</param>
         /// <param name="orders">The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  ``` Name DESC, CreatedOn ASC ``` (optional)</param>
         /// <param name="currentPage">This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)</param>
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Applications</returns>
-        ApiResponse<Applications> ListApplicationsWithHttpInfo(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0);
+        /// <returns>ApiResponse of Applications1</returns>
+        ApiResponse<Applications1> ListApplicationsWithHttpInfo(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -228,8 +228,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="applicationData1">Application information to update.  The input parameter must be used in the `ApplicationData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId, ApplicationKey ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>Application</returns>
-        Application UpdateApplication(string id, ApplicationData1 applicationData1, string name = default, int operationIndex = 0);
+        /// <returns>Application1</returns>
+        Application1 UpdateApplication(string id, ApplicationData1 applicationData1, string name = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -242,8 +242,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="applicationData1">Application information to update.  The input parameter must be used in the `ApplicationData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId, ApplicationKey ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Application</returns>
-        ApiResponse<Application> UpdateApplicationWithHttpInfo(string id, ApplicationData1 applicationData1, string name = default, int operationIndex = 0);
+        /// <returns>ApiResponse of Application1</returns>
+        ApiResponse<Application1> UpdateApplicationWithHttpInfo(string id, ApplicationData1 applicationData1, string name = default, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -253,8 +253,8 @@ namespace Agile.Now.AccessHub.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="applicationData1">`Application` information to insert or update.  The input parameter must be used in the `ApplicationData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>Application</returns>
-        Application UpsertApplication(ApplicationData1 applicationData1, int operationIndex = 0);
+        /// <returns>Application1</returns>
+        Application1 UpsertApplication(ApplicationData1 applicationData1, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -265,8 +265,8 @@ namespace Agile.Now.AccessHub.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="applicationData1">`Application` information to insert or update.  The input parameter must be used in the `ApplicationData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Application</returns>
-        ApiResponse<Application> UpsertApplicationWithHttpInfo(ApplicationData1 applicationData1, int operationIndex = 0);
+        /// <returns>ApiResponse of Application1</returns>
+        ApiResponse<Application1> UpsertApplicationWithHttpInfo(ApplicationData1 applicationData1, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -313,8 +313,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="applicationData1">`Application` information to insert.  The input parameter must be used in the `ApplicationData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Application</returns>
-        System.Threading.Tasks.Task<Application> CreateApplicationAsync(ApplicationData1 applicationData1, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of Application1</returns>
+        System.Threading.Tasks.Task<Application1> CreateApplicationAsync(ApplicationData1 applicationData1, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -326,8 +326,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="applicationData1">`Application` information to insert.  The input parameter must be used in the `ApplicationData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Application)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Application>> CreateApplicationWithHttpInfoAsync(ApplicationData1 applicationData1, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (Application1)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Application1>> CreateApplicationWithHttpInfoAsync(ApplicationData1 applicationData1, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -339,8 +339,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId, ApplicationKey ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Application</returns>
-        System.Threading.Tasks.Task<Application> DeleteApplicationAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of Application1</returns>
+        System.Threading.Tasks.Task<Application1> DeleteApplicationAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -353,8 +353,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId, ApplicationKey ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Application)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Application>> DeleteApplicationWithHttpInfoAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (Application1)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Application1>> DeleteApplicationWithHttpInfoAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -397,8 +397,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId, ApplicationKey ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Application</returns>
-        System.Threading.Tasks.Task<Application> GetApplicationAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of Application1</returns>
+        System.Threading.Tasks.Task<Application1> GetApplicationAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -411,8 +411,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId, ApplicationKey ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Application)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Application>> GetApplicationWithHttpInfoAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (Application1)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Application1>> GetApplicationWithHttpInfoAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -422,7 +422,7 @@ namespace Agile.Now.AccessHub.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
-        /// <param name="fields">Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, RoleId, ApplicationId, EspaceId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional)</param>
+        /// <param name="fields">Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional)</param>
         /// <param name="filters">In the List methods, filtering of resources can be performed using filter parameters.  You can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.  The name of the entity field. Example: `Name` or relation field `OwnerId.Name`  Please refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.  The operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn  You can add multiple values separated by comma when using the `In`, `NotIn` operators. Example of text field; `USA; FIN; ARE` Example of numeric field; `1, 2, 3`  Example of filters: ```sql Filters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)  Filters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)  Filters=ExternalId In S100;S101;S120;100  Filters=Id = 100  ```  (optional)</param>
         /// <param name="orders">The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  ``` Name DESC, CreatedOn ASC ``` (optional)</param>
         /// <param name="currentPage">This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)</param>
@@ -441,7 +441,7 @@ namespace Agile.Now.AccessHub.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
-        /// <param name="fields">Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, RoleId, ApplicationId, EspaceId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional)</param>
+        /// <param name="fields">Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional)</param>
         /// <param name="filters">In the List methods, filtering of resources can be performed using filter parameters.  You can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.  The name of the entity field. Example: `Name` or relation field `OwnerId.Name`  Please refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.  The operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn  You can add multiple values separated by comma when using the `In`, `NotIn` operators. Example of text field; `USA; FIN; ARE` Example of numeric field; `1, 2, 3`  Example of filters: ```sql Filters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)  Filters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)  Filters=ExternalId In S100;S101;S120;100  Filters=Id = 100  ```  (optional)</param>
         /// <param name="orders">The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  ``` Name DESC, CreatedOn ASC ``` (optional)</param>
         /// <param name="currentPage">This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)</param>
@@ -457,15 +457,15 @@ namespace Agile.Now.AccessHub.Api
         /// Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.  Leverage the search service to extract the requisite information from the system effectively.  The method returns a list structured with an extended `Application` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.  The foreign key fields involved are: `ApplicationId, AuthenticationId, ModifiedBy, CreatedBy`  ### Example It searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.  ```http fields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000 ```
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="fields">Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, ApplicationId, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_TestApp, Is_Active, Is_ReadOnly, AuthenticationId, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional)</param>
+        /// <param name="fields">Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_Active, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional)</param>
         /// <param name="filters">In the List methods, filtering of resources can be performed using filter parameters.  You can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.  The name of the entity field. Example: `Name` or relation field `OwnerId.Name`  Please refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.  The operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn  You can add multiple values separated by comma when using the `In`, `NotIn` operators. Example of text field; `USA; FIN; ARE` Example of numeric field; `1, 2, 3`  Example of filters: ```sql Filters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)  Filters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)  Filters=ExternalId In S100;S101;S120;100  Filters=Id = 100  ```  (optional)</param>
         /// <param name="orders">The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  ``` Name DESC, CreatedOn ASC ``` (optional)</param>
         /// <param name="currentPage">This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)</param>
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Applications</returns>
-        System.Threading.Tasks.Task<Applications> ListApplicationsAsync(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of Applications1</returns>
+        System.Threading.Tasks.Task<Applications1> ListApplicationsAsync(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -474,15 +474,15 @@ namespace Agile.Now.AccessHub.Api
         /// Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.  Leverage the search service to extract the requisite information from the system effectively.  The method returns a list structured with an extended `Application` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.  The foreign key fields involved are: `ApplicationId, AuthenticationId, ModifiedBy, CreatedBy`  ### Example It searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.  ```http fields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000 ```
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="fields">Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, ApplicationId, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_TestApp, Is_Active, Is_ReadOnly, AuthenticationId, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional)</param>
+        /// <param name="fields">Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_Active, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional)</param>
         /// <param name="filters">In the List methods, filtering of resources can be performed using filter parameters.  You can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.  The name of the entity field. Example: `Name` or relation field `OwnerId.Name`  Please refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.  The operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn  You can add multiple values separated by comma when using the `In`, `NotIn` operators. Example of text field; `USA; FIN; ARE` Example of numeric field; `1, 2, 3`  Example of filters: ```sql Filters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)  Filters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)  Filters=ExternalId In S100;S101;S120;100  Filters=Id = 100  ```  (optional)</param>
         /// <param name="orders">The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  ``` Name DESC, CreatedOn ASC ``` (optional)</param>
         /// <param name="currentPage">This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)</param>
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Applications)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Applications>> ListApplicationsWithHttpInfoAsync(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (Applications1)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Applications1>> ListApplicationsWithHttpInfoAsync(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -495,8 +495,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId, ApplicationKey ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Application</returns>
-        System.Threading.Tasks.Task<Application> UpdateApplicationAsync(string id, ApplicationData1 applicationData1, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of Application1</returns>
+        System.Threading.Tasks.Task<Application1> UpdateApplicationAsync(string id, ApplicationData1 applicationData1, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -510,8 +510,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId, ApplicationKey ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Application)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Application>> UpdateApplicationWithHttpInfoAsync(string id, ApplicationData1 applicationData1, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (Application1)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Application1>> UpdateApplicationWithHttpInfoAsync(string id, ApplicationData1 applicationData1, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -522,8 +522,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="applicationData1">`Application` information to insert or update.  The input parameter must be used in the `ApplicationData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Application</returns>
-        System.Threading.Tasks.Task<Application> UpsertApplicationAsync(ApplicationData1 applicationData1, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of Application1</returns>
+        System.Threading.Tasks.Task<Application1> UpsertApplicationAsync(ApplicationData1 applicationData1, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -535,8 +535,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="applicationData1">`Application` information to insert or update.  The input parameter must be used in the `ApplicationData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Application)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Application>> UpsertApplicationWithHttpInfoAsync(ApplicationData1 applicationData1, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (Application1)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Application1>> UpsertApplicationWithHttpInfoAsync(ApplicationData1 applicationData1, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -688,10 +688,10 @@ namespace Agile.Now.AccessHub.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="applicationData1">`Application` information to insert.  The input parameter must be used in the `ApplicationData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>Application</returns>
-        public Application CreateApplication(ApplicationData1 applicationData1, int operationIndex = 0)
+        /// <returns>Application1</returns>
+        public Application1 CreateApplication(ApplicationData1 applicationData1, int operationIndex = 0)
         {
-            ApiResponse<Application> localVarResponse = CreateApplicationWithHttpInfo(applicationData1);
+            ApiResponse<Application1> localVarResponse = CreateApplicationWithHttpInfo(applicationData1);
             return localVarResponse.Data;
         }
 
@@ -701,8 +701,8 @@ namespace Agile.Now.AccessHub.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="applicationData1">`Application` information to insert.  The input parameter must be used in the `ApplicationData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Application</returns>
-        public ApiResponse<Application> CreateApplicationWithHttpInfo(ApplicationData1 applicationData1, int operationIndex = 0)
+        /// <returns>ApiResponse of Application1</returns>
+        public ApiResponse<Application1> CreateApplicationWithHttpInfo(ApplicationData1 applicationData1, int operationIndex = 0)
         {
             // verify the required parameter 'applicationData1' is set
             applicationData1 = applicationData1 ?? throw new ApiException(400, "Missing required parameter 'applicationData1' when calling ApplicationsApi->CreateApplication");
@@ -753,7 +753,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = Client.Post<Application>("/Endpoint/rest/api/v1/Application", localVarRequestOptions, Configuration);
+            var localVarResponse = Client.Post<Application1>("/Endpoint/rest/api/v1/Application", localVarRequestOptions, Configuration);
             if (ExceptionFactory != null)
             {
                 Exception _exception = ExceptionFactory("CreateApplication", localVarResponse);
@@ -773,10 +773,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="applicationData1">`Application` information to insert.  The input parameter must be used in the `ApplicationData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Application</returns>
-        public async System.Threading.Tasks.Task<Application> CreateApplicationAsync(ApplicationData1 applicationData1, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of Application1</returns>
+        public async System.Threading.Tasks.Task<Application1> CreateApplicationAsync(ApplicationData1 applicationData1, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            ApiResponse<Application> localVarResponse = await CreateApplicationWithHttpInfoAsync(applicationData1, operationIndex, cancellationToken).ConfigureAwait(false);
+            ApiResponse<Application1> localVarResponse = await CreateApplicationWithHttpInfoAsync(applicationData1, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -787,8 +787,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="applicationData1">`Application` information to insert.  The input parameter must be used in the `ApplicationData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Application)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Application>> CreateApplicationWithHttpInfoAsync(ApplicationData1 applicationData1, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (Application1)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Application1>> CreateApplicationWithHttpInfoAsync(ApplicationData1 applicationData1, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'applicationData1' is set
             applicationData1 = applicationData1 ?? throw new ApiException(400, "Missing required parameter 'applicationData1' when calling ApplicationsApi->CreateApplication");
@@ -840,7 +840,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await AsynchronousClient.PostAsync<Application>("/Endpoint/rest/api/v1/Application", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await AsynchronousClient.PostAsync<Application1>("/Endpoint/rest/api/v1/Application", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
             if (ExceptionFactory != null)
             {
@@ -861,10 +861,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="id">The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId, ApplicationKey ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>Application</returns>
-        public Application DeleteApplication(string id, string name = default, int operationIndex = 0)
+        /// <returns>Application1</returns>
+        public Application1 DeleteApplication(string id, string name = default, int operationIndex = 0)
         {
-            ApiResponse<Application> localVarResponse = DeleteApplicationWithHttpInfo(id, name);
+            ApiResponse<Application1> localVarResponse = DeleteApplicationWithHttpInfo(id, name);
             return localVarResponse.Data;
         }
 
@@ -875,8 +875,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="id">The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId, ApplicationKey ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Application</returns>
-        public ApiResponse<Application> DeleteApplicationWithHttpInfo(string id, string name = default, int operationIndex = 0)
+        /// <returns>ApiResponse of Application1</returns>
+        public ApiResponse<Application1> DeleteApplicationWithHttpInfo(string id, string name = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling ApplicationsApi->DeleteApplication");
@@ -930,7 +930,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = Client.Delete<Application>("/Endpoint/rest/api/v1/Application/{Id}", localVarRequestOptions, Configuration);
+            var localVarResponse = Client.Delete<Application1>("/Endpoint/rest/api/v1/Application/{Id}", localVarRequestOptions, Configuration);
             if (ExceptionFactory != null)
             {
                 Exception _exception = ExceptionFactory("DeleteApplication", localVarResponse);
@@ -951,10 +951,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId, ApplicationKey ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Application</returns>
-        public async System.Threading.Tasks.Task<Application> DeleteApplicationAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of Application1</returns>
+        public async System.Threading.Tasks.Task<Application1> DeleteApplicationAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            ApiResponse<Application> localVarResponse = await DeleteApplicationWithHttpInfoAsync(id, name, operationIndex, cancellationToken).ConfigureAwait(false);
+            ApiResponse<Application1> localVarResponse = await DeleteApplicationWithHttpInfoAsync(id, name, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -966,8 +966,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId, ApplicationKey ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Application)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Application>> DeleteApplicationWithHttpInfoAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (Application1)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Application1>> DeleteApplicationWithHttpInfoAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling ApplicationsApi->DeleteApplication");
@@ -1022,7 +1022,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await AsynchronousClient.DeleteAsync<Application>("/Endpoint/rest/api/v1/Application/{Id}", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await AsynchronousClient.DeleteAsync<Application1>("/Endpoint/rest/api/v1/Application/{Id}", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
             if (ExceptionFactory != null)
             {
@@ -1249,10 +1249,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="id">The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId, ApplicationKey ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>Application</returns>
-        public Application GetApplication(string id, string name = default, int operationIndex = 0)
+        /// <returns>Application1</returns>
+        public Application1 GetApplication(string id, string name = default, int operationIndex = 0)
         {
-            ApiResponse<Application> localVarResponse = GetApplicationWithHttpInfo(id, name);
+            ApiResponse<Application1> localVarResponse = GetApplicationWithHttpInfo(id, name);
             return localVarResponse.Data;
         }
 
@@ -1263,8 +1263,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="id">The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId, ApplicationKey ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Application</returns>
-        public ApiResponse<Application> GetApplicationWithHttpInfo(string id, string name = default, int operationIndex = 0)
+        /// <returns>ApiResponse of Application1</returns>
+        public ApiResponse<Application1> GetApplicationWithHttpInfo(string id, string name = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling ApplicationsApi->GetApplication");
@@ -1318,7 +1318,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = Client.Get<Application>("/Endpoint/rest/api/v1/Application/{Id}", localVarRequestOptions, Configuration);
+            var localVarResponse = Client.Get<Application1>("/Endpoint/rest/api/v1/Application/{Id}", localVarRequestOptions, Configuration);
             if (ExceptionFactory != null)
             {
                 Exception _exception = ExceptionFactory("GetApplication", localVarResponse);
@@ -1339,10 +1339,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId, ApplicationKey ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Application</returns>
-        public async System.Threading.Tasks.Task<Application> GetApplicationAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of Application1</returns>
+        public async System.Threading.Tasks.Task<Application1> GetApplicationAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            ApiResponse<Application> localVarResponse = await GetApplicationWithHttpInfoAsync(id, name, operationIndex, cancellationToken).ConfigureAwait(false);
+            ApiResponse<Application1> localVarResponse = await GetApplicationWithHttpInfoAsync(id, name, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1354,8 +1354,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId, ApplicationKey ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Application)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Application>> GetApplicationWithHttpInfoAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (Application1)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Application1>> GetApplicationWithHttpInfoAsync(string id, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling ApplicationsApi->GetApplication");
@@ -1410,7 +1410,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await AsynchronousClient.GetAsync<Application>("/Endpoint/rest/api/v1/Application/{Id}", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await AsynchronousClient.GetAsync<Application1>("/Endpoint/rest/api/v1/Application/{Id}", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
             if (ExceptionFactory != null)
             {
@@ -1430,7 +1430,7 @@ namespace Agile.Now.AccessHub.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
-        /// <param name="fields">Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, RoleId, ApplicationId, EspaceId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional)</param>
+        /// <param name="fields">Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional)</param>
         /// <param name="filters">In the List methods, filtering of resources can be performed using filter parameters.  You can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.  The name of the entity field. Example: `Name` or relation field `OwnerId.Name`  Please refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.  The operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn  You can add multiple values separated by comma when using the `In`, `NotIn` operators. Example of text field; `USA; FIN; ARE` Example of numeric field; `1, 2, 3`  Example of filters: ```sql Filters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)  Filters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)  Filters=ExternalId In S100;S101;S120;100  Filters=Id = 100  ```  (optional)</param>
         /// <param name="orders">The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  ``` Name DESC, CreatedOn ASC ``` (optional)</param>
         /// <param name="currentPage">This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)</param>
@@ -1449,7 +1449,7 @@ namespace Agile.Now.AccessHub.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
-        /// <param name="fields">Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, RoleId, ApplicationId, EspaceId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional)</param>
+        /// <param name="fields">Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional)</param>
         /// <param name="filters">In the List methods, filtering of resources can be performed using filter parameters.  You can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.  The name of the entity field. Example: `Name` or relation field `OwnerId.Name`  Please refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.  The operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn  You can add multiple values separated by comma when using the `In`, `NotIn` operators. Example of text field; `USA; FIN; ARE` Example of numeric field; `1, 2, 3`  Example of filters: ```sql Filters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)  Filters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)  Filters=ExternalId In S100;S101;S120;100  Filters=Id = 100  ```  (optional)</param>
         /// <param name="orders">The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  ``` Name DESC, CreatedOn ASC ``` (optional)</param>
         /// <param name="currentPage">This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)</param>
@@ -1549,7 +1549,7 @@ namespace Agile.Now.AccessHub.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
-        /// <param name="fields">Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, RoleId, ApplicationId, EspaceId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional)</param>
+        /// <param name="fields">Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional)</param>
         /// <param name="filters">In the List methods, filtering of resources can be performed using filter parameters.  You can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.  The name of the entity field. Example: `Name` or relation field `OwnerId.Name`  Please refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.  The operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn  You can add multiple values separated by comma when using the `In`, `NotIn` operators. Example of text field; `USA; FIN; ARE` Example of numeric field; `1, 2, 3`  Example of filters: ```sql Filters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)  Filters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)  Filters=ExternalId In S100;S101;S120;100  Filters=Id = 100  ```  (optional)</param>
         /// <param name="orders">The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  ``` Name DESC, CreatedOn ASC ``` (optional)</param>
         /// <param name="currentPage">This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)</param>
@@ -1569,7 +1569,7 @@ namespace Agile.Now.AccessHub.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional)</param>
-        /// <param name="fields">Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, RoleId, ApplicationId, EspaceId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional)</param>
+        /// <param name="fields">Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional)</param>
         /// <param name="filters">In the List methods, filtering of resources can be performed using filter parameters.  You can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.  The name of the entity field. Example: `Name` or relation field `OwnerId.Name`  Please refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.  The operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn  You can add multiple values separated by comma when using the `In`, `NotIn` operators. Example of text field; `USA; FIN; ARE` Example of numeric field; `1, 2, 3`  Example of filters: ```sql Filters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)  Filters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)  Filters=ExternalId In S100;S101;S120;100  Filters=Id = 100  ```  (optional)</param>
         /// <param name="orders">The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  ``` Name DESC, CreatedOn ASC ``` (optional)</param>
         /// <param name="currentPage">This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)</param>
@@ -1670,16 +1670,16 @@ namespace Agile.Now.AccessHub.Api
         /// Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.  Leverage the search service to extract the requisite information from the system effectively.  The method returns a list structured with an extended `Application` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.  The foreign key fields involved are: `ApplicationId, AuthenticationId, ModifiedBy, CreatedBy`  ### Example It searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.  ```http fields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000 ```
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="fields">Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, ApplicationId, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_TestApp, Is_Active, Is_ReadOnly, AuthenticationId, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional)</param>
+        /// <param name="fields">Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_Active, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional)</param>
         /// <param name="filters">In the List methods, filtering of resources can be performed using filter parameters.  You can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.  The name of the entity field. Example: `Name` or relation field `OwnerId.Name`  Please refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.  The operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn  You can add multiple values separated by comma when using the `In`, `NotIn` operators. Example of text field; `USA; FIN; ARE` Example of numeric field; `1, 2, 3`  Example of filters: ```sql Filters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)  Filters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)  Filters=ExternalId In S100;S101;S120;100  Filters=Id = 100  ```  (optional)</param>
         /// <param name="orders">The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  ``` Name DESC, CreatedOn ASC ``` (optional)</param>
         /// <param name="currentPage">This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)</param>
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>Applications</returns>
-        public Applications ListApplications(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0)
+        /// <returns>Applications1</returns>
+        public Applications1 ListApplications(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0)
         {
-            ApiResponse<Applications> localVarResponse = ListApplicationsWithHttpInfo(fields, filters, orders, currentPage, pageSize);
+            ApiResponse<Applications1> localVarResponse = ListApplicationsWithHttpInfo(fields, filters, orders, currentPage, pageSize);
             return localVarResponse.Data;
         }
 
@@ -1687,14 +1687,14 @@ namespace Agile.Now.AccessHub.Api
         /// Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.  Leverage the search service to extract the requisite information from the system effectively.  The method returns a list structured with an extended `Application` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.  The foreign key fields involved are: `ApplicationId, AuthenticationId, ModifiedBy, CreatedBy`  ### Example It searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.  ```http fields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000 ```
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="fields">Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, ApplicationId, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_TestApp, Is_Active, Is_ReadOnly, AuthenticationId, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional)</param>
+        /// <param name="fields">Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_Active, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional)</param>
         /// <param name="filters">In the List methods, filtering of resources can be performed using filter parameters.  You can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.  The name of the entity field. Example: `Name` or relation field `OwnerId.Name`  Please refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.  The operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn  You can add multiple values separated by comma when using the `In`, `NotIn` operators. Example of text field; `USA; FIN; ARE` Example of numeric field; `1, 2, 3`  Example of filters: ```sql Filters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)  Filters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)  Filters=ExternalId In S100;S101;S120;100  Filters=Id = 100  ```  (optional)</param>
         /// <param name="orders">The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  ``` Name DESC, CreatedOn ASC ``` (optional)</param>
         /// <param name="currentPage">This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)</param>
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Applications</returns>
-        public ApiResponse<Applications> ListApplicationsWithHttpInfo(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0)
+        /// <returns>ApiResponse of Applications1</returns>
+        public ApiResponse<Applications1> ListApplicationsWithHttpInfo(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0)
         {
             RequestOptions localVarRequestOptions = new RequestOptions();
 
@@ -1760,7 +1760,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = Client.Get<Applications>("/Endpoint/rest/api/v1/Applications", localVarRequestOptions, Configuration);
+            var localVarResponse = Client.Get<Applications1>("/Endpoint/rest/api/v1/Applications", localVarRequestOptions, Configuration);
             if (ExceptionFactory != null)
             {
                 Exception _exception = ExceptionFactory("ListApplications", localVarResponse);
@@ -1777,17 +1777,17 @@ namespace Agile.Now.AccessHub.Api
         /// Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.  Leverage the search service to extract the requisite information from the system effectively.  The method returns a list structured with an extended `Application` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.  The foreign key fields involved are: `ApplicationId, AuthenticationId, ModifiedBy, CreatedBy`  ### Example It searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.  ```http fields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000 ```
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="fields">Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, ApplicationId, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_TestApp, Is_Active, Is_ReadOnly, AuthenticationId, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional)</param>
+        /// <param name="fields">Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_Active, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional)</param>
         /// <param name="filters">In the List methods, filtering of resources can be performed using filter parameters.  You can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.  The name of the entity field. Example: `Name` or relation field `OwnerId.Name`  Please refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.  The operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn  You can add multiple values separated by comma when using the `In`, `NotIn` operators. Example of text field; `USA; FIN; ARE` Example of numeric field; `1, 2, 3`  Example of filters: ```sql Filters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)  Filters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)  Filters=ExternalId In S100;S101;S120;100  Filters=Id = 100  ```  (optional)</param>
         /// <param name="orders">The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  ``` Name DESC, CreatedOn ASC ``` (optional)</param>
         /// <param name="currentPage">This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)</param>
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Applications</returns>
-        public async System.Threading.Tasks.Task<Applications> ListApplicationsAsync(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of Applications1</returns>
+        public async System.Threading.Tasks.Task<Applications1> ListApplicationsAsync(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            ApiResponse<Applications> localVarResponse = await ListApplicationsWithHttpInfoAsync(fields, filters, orders, currentPage, pageSize, operationIndex, cancellationToken).ConfigureAwait(false);
+            ApiResponse<Applications1> localVarResponse = await ListApplicationsWithHttpInfoAsync(fields, filters, orders, currentPage, pageSize, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1795,15 +1795,15 @@ namespace Agile.Now.AccessHub.Api
         /// Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.  Leverage the search service to extract the requisite information from the system effectively.  The method returns a list structured with an extended `Application` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.  The foreign key fields involved are: `ApplicationId, AuthenticationId, ModifiedBy, CreatedBy`  ### Example It searches for employees whose data has been modified since January 1, 2022, and belong to departments with external system identifiers DE001 and DE002. The system responds by returning the name, external identifier, and email address of the relevant employees. The retrieved information is organized in ascending order by the person&#39;s name, and a limit is set to return a maximum of 1000 rows.  ```http fields=Name,ExternalId,Email&amp;Filters=(DepartmentId.ExternalId In DE001;DE002) AND (ModifiedOn &gt; 2022-01-01)&amp;Orders=Name ASC&amp;PageSize=1000 ```
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="fields">Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, ApplicationId, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_TestApp, Is_Active, Is_ReadOnly, AuthenticationId, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional)</param>
+        /// <param name="fields">Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_Active, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional)</param>
         /// <param name="filters">In the List methods, filtering of resources can be performed using filter parameters.  You can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.  The name of the entity field. Example: `Name` or relation field `OwnerId.Name`  Please refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.  The operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn  You can add multiple values separated by comma when using the `In`, `NotIn` operators. Example of text field; `USA; FIN; ARE` Example of numeric field; `1, 2, 3`  Example of filters: ```sql Filters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)  Filters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)  Filters=ExternalId In S100;S101;S120;100  Filters=Id = 100  ```  (optional)</param>
         /// <param name="orders">The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  ``` Name DESC, CreatedOn ASC ``` (optional)</param>
         /// <param name="currentPage">This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved. (optional, default to 0)</param>
         /// <param name="pageSize">The field indicates the number of items returned in a single page or response. It helps clients determine how many items to display per page and how to request additional pages if needed.  The value ranges from `1` to `1000` and defaults to `50`. (optional, default to 0)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Applications)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Applications>> ListApplicationsWithHttpInfoAsync(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (Applications1)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Applications1>> ListApplicationsWithHttpInfoAsync(string fields = default, string filters = default, string orders = default, int? currentPage = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
 
             RequestOptions localVarRequestOptions = new RequestOptions();
@@ -1870,7 +1870,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await AsynchronousClient.GetAsync<Applications>("/Endpoint/rest/api/v1/Applications", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await AsynchronousClient.GetAsync<Applications1>("/Endpoint/rest/api/v1/Applications", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
             if (ExceptionFactory != null)
             {
@@ -1892,10 +1892,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="applicationData1">Application information to update.  The input parameter must be used in the `ApplicationData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId, ApplicationKey ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>Application</returns>
-        public Application UpdateApplication(string id, ApplicationData1 applicationData1, string name = default, int operationIndex = 0)
+        /// <returns>Application1</returns>
+        public Application1 UpdateApplication(string id, ApplicationData1 applicationData1, string name = default, int operationIndex = 0)
         {
-            ApiResponse<Application> localVarResponse = UpdateApplicationWithHttpInfo(id, applicationData1, name);
+            ApiResponse<Application1> localVarResponse = UpdateApplicationWithHttpInfo(id, applicationData1, name);
             return localVarResponse.Data;
         }
 
@@ -1907,8 +1907,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="applicationData1">Application information to update.  The input parameter must be used in the `ApplicationData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId, ApplicationKey ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Application</returns>
-        public ApiResponse<Application> UpdateApplicationWithHttpInfo(string id, ApplicationData1 applicationData1, string name = default, int operationIndex = 0)
+        /// <returns>ApiResponse of Application1</returns>
+        public ApiResponse<Application1> UpdateApplicationWithHttpInfo(string id, ApplicationData1 applicationData1, string name = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling ApplicationsApi->UpdateApplication");
@@ -1967,7 +1967,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = Client.Put<Application>("/Endpoint/rest/api/v1/Application/{Id}", localVarRequestOptions, Configuration);
+            var localVarResponse = Client.Put<Application1>("/Endpoint/rest/api/v1/Application/{Id}", localVarRequestOptions, Configuration);
             if (ExceptionFactory != null)
             {
                 Exception _exception = ExceptionFactory("UpdateApplication", localVarResponse);
@@ -1989,10 +1989,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId, ApplicationKey ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Application</returns>
-        public async System.Threading.Tasks.Task<Application> UpdateApplicationAsync(string id, ApplicationData1 applicationData1, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of Application1</returns>
+        public async System.Threading.Tasks.Task<Application1> UpdateApplicationAsync(string id, ApplicationData1 applicationData1, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            ApiResponse<Application> localVarResponse = await UpdateApplicationWithHttpInfoAsync(id, applicationData1, name, operationIndex, cancellationToken).ConfigureAwait(false);
+            ApiResponse<Application1> localVarResponse = await UpdateApplicationWithHttpInfoAsync(id, applicationData1, name, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2005,8 +2005,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="name">The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Name, ExternalId, ApplicationKey ``` (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Application)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Application>> UpdateApplicationWithHttpInfoAsync(string id, ApplicationData1 applicationData1, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (Application1)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Application1>> UpdateApplicationWithHttpInfoAsync(string id, ApplicationData1 applicationData1, string name = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             id = id ?? throw new ApiException(400, "Missing required parameter 'id' when calling ApplicationsApi->UpdateApplication");
@@ -2066,7 +2066,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await AsynchronousClient.PutAsync<Application>("/Endpoint/rest/api/v1/Application/{Id}", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await AsynchronousClient.PutAsync<Application1>("/Endpoint/rest/api/v1/Application/{Id}", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
             if (ExceptionFactory != null)
             {
@@ -2086,10 +2086,10 @@ namespace Agile.Now.AccessHub.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="applicationData1">`Application` information to insert or update.  The input parameter must be used in the `ApplicationData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>Application</returns>
-        public Application UpsertApplication(ApplicationData1 applicationData1, int operationIndex = 0)
+        /// <returns>Application1</returns>
+        public Application1 UpsertApplication(ApplicationData1 applicationData1, int operationIndex = 0)
         {
-            ApiResponse<Application> localVarResponse = UpsertApplicationWithHttpInfo(applicationData1);
+            ApiResponse<Application1> localVarResponse = UpsertApplicationWithHttpInfo(applicationData1);
             return localVarResponse.Data;
         }
 
@@ -2099,8 +2099,8 @@ namespace Agile.Now.AccessHub.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="applicationData1">`Application` information to insert or update.  The input parameter must be used in the `ApplicationData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Application</returns>
-        public ApiResponse<Application> UpsertApplicationWithHttpInfo(ApplicationData1 applicationData1, int operationIndex = 0)
+        /// <returns>ApiResponse of Application1</returns>
+        public ApiResponse<Application1> UpsertApplicationWithHttpInfo(ApplicationData1 applicationData1, int operationIndex = 0)
         {
             // verify the required parameter 'applicationData1' is set
             applicationData1 = applicationData1 ?? throw new ApiException(400, "Missing required parameter 'applicationData1' when calling ApplicationsApi->UpsertApplication");
@@ -2151,7 +2151,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = Client.Patch<Application>("/Endpoint/rest/api/v1/Application", localVarRequestOptions, Configuration);
+            var localVarResponse = Client.Patch<Application1>("/Endpoint/rest/api/v1/Application", localVarRequestOptions, Configuration);
             if (ExceptionFactory != null)
             {
                 Exception _exception = ExceptionFactory("UpsertApplication", localVarResponse);
@@ -2171,10 +2171,10 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="applicationData1">`Application` information to insert or update.  The input parameter must be used in the `ApplicationData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Application</returns>
-        public async System.Threading.Tasks.Task<Application> UpsertApplicationAsync(ApplicationData1 applicationData1, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of Application1</returns>
+        public async System.Threading.Tasks.Task<Application1> UpsertApplicationAsync(ApplicationData1 applicationData1, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            ApiResponse<Application> localVarResponse = await UpsertApplicationWithHttpInfoAsync(applicationData1, operationIndex, cancellationToken).ConfigureAwait(false);
+            ApiResponse<Application1> localVarResponse = await UpsertApplicationWithHttpInfoAsync(applicationData1, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2185,8 +2185,8 @@ namespace Agile.Now.AccessHub.Api
         /// <param name="applicationData1">`Application` information to insert or update.  The input parameter must be used in the `ApplicationData` record structure inside the `FieldType` parameter in the foreign key fields.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Application)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Application>> UpsertApplicationWithHttpInfoAsync(ApplicationData1 applicationData1, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (Application1)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Application1>> UpsertApplicationWithHttpInfoAsync(ApplicationData1 applicationData1, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'applicationData1' is set
             applicationData1 = applicationData1 ?? throw new ApiException(400, "Missing required parameter 'applicationData1' when calling ApplicationsApi->UpsertApplication");
@@ -2238,7 +2238,7 @@ namespace Agile.Now.AccessHub.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await AsynchronousClient.PatchAsync<Application>("/Endpoint/rest/api/v1/Application", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await AsynchronousClient.PatchAsync<Application1>("/Endpoint/rest/api/v1/Application", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
             if (ExceptionFactory != null)
             {

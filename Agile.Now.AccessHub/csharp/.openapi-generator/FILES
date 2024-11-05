@@ -20,10 +20,12 @@ docs/AccountUpdateData.md
 docs/Accounts.md
 docs/AccountsApi.md
 docs/Application.md
+docs/Application1.md
 docs/ApplicationData.md
 docs/ApplicationData1.md
 docs/ApplicationText.md
 docs/Applications.md
+docs/Applications1.md
 docs/ApplicationsApi.md
 docs/ApplicationsData.md
 docs/Config.md
@@ -45,7 +47,6 @@ docs/Entities.md
 docs/EntitiesApi.md
 docs/Entity.md
 docs/EnumAccessGroupType.md
-docs/EnumAuthentication.md
 docs/EnumCountry.md
 docs/EnumCurrency.md
 docs/EnumDateFormat.md
@@ -111,9 +112,6 @@ docs/UsersData.md
 docs/UsersData1.md
 git_push.sh
 src/Agile.Now.AccessHub.Test/Agile.Now.AccessHub.Test.csproj
-src/Agile.Now.AccessHub.Test/Api/AccountsApiTests.cs
-src/Agile.Now.AccessHub.Test/Api/ApplicationsApiTests.cs
-src/Agile.Now.AccessHub.Test/Api/RolesApiTests.cs
 src/Agile.Now.AccessHub/Agile.Now.AccessHub.csproj
 src/Agile.Now.AccessHub/Api/AccessGroupsApi.cs
 src/Agile.Now.AccessHub/Api/AccountsApi.cs
@@ -159,10 +157,12 @@ src/Agile.Now.AccessHub/Model/AccountInsertData.cs
 src/Agile.Now.AccessHub/Model/AccountUpdateData.cs
 src/Agile.Now.AccessHub/Model/Accounts.cs
 src/Agile.Now.AccessHub/Model/Application.cs
+src/Agile.Now.AccessHub/Model/Application1.cs
 src/Agile.Now.AccessHub/Model/ApplicationData.cs
 src/Agile.Now.AccessHub/Model/ApplicationData1.cs
 src/Agile.Now.AccessHub/Model/ApplicationText.cs
 src/Agile.Now.AccessHub/Model/Applications.cs
+src/Agile.Now.AccessHub/Model/Applications1.cs
 src/Agile.Now.AccessHub/Model/ApplicationsData.cs
 src/Agile.Now.AccessHub/Model/Config.cs
 src/Agile.Now.AccessHub/Model/ConfigData.cs
@@ -180,7 +180,6 @@ src/Agile.Now.AccessHub/Model/Departments.cs
 src/Agile.Now.AccessHub/Model/Entities.cs
 src/Agile.Now.AccessHub/Model/Entity.cs
 src/Agile.Now.AccessHub/Model/EnumAccessGroupType.cs
-src/Agile.Now.AccessHub/Model/EnumAuthentication.cs
 src/Agile.Now.AccessHub/Model/EnumCountry.cs
 src/Agile.Now.AccessHub/Model/EnumCurrency.cs
 src/Agile.Now.AccessHub/Model/EnumDateFormat.cs

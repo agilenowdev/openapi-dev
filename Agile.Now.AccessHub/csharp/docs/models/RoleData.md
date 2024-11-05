@@ -6,7 +6,7 @@ The record of Role information.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | The identifier of the role. | [optional] 
-**Name** | **string** | Name of role. The value must be unique in the system and you cannot add multiple values. | [optional] 
+**Name** | **string** | Name of role. The value must be unique in the system and you cannot add multiple values. The pattern of the value (/test/). | [optional] 
 **RoleKey** | **string** |  The key used to identify the role must be unique within each workspace. The value must be unique in the system and you cannot add multiple values. | [optional] 
 **FullName** | **string** | Full name of role. Example Application 1 \\ Espace 1 \\ Role 1. | [optional] 
 **Description** | **string** | The description of access group. | [optional] 

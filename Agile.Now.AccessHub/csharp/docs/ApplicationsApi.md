@@ -16,7 +16,7 @@ All URIs are relative to *https://dev.esystems.fi*
 
 <a id="createapplication"></a>
 # **CreateApplication**
-> Application CreateApplication (ApplicationData1 applicationData1)
+> Application1 CreateApplication (ApplicationData1 applicationData1)
 
 Use the `ApplicationData` object resource to create new records.
 
@@ -59,7 +59,7 @@ namespace Example
 
             try
             {
-                Application result = apiInstance.CreateApplication(applicationData1);
+                Application1 result = apiInstance.CreateApplication(applicationData1);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -85,7 +85,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<Application> response = apiInstance.CreateApplicationWithHttpInfo(applicationData1);
+    ApiResponse<Application1> response = apiInstance.CreateApplicationWithHttpInfo(applicationData1);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -112,7 +112,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**Application**](models/Application.md)
+[**Application1**](models/Application1.md)
 
 ### Authorization
 
@@ -137,7 +137,7 @@ catch (ApiException e)
 
 <a id="deleteapplication"></a>
 # **DeleteApplication**
-> Application DeleteApplication (string id, string name = null)
+> Application1 DeleteApplication (string id, string name = null)
 
 Use the query string resource to delete `Application` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id, Name, ExternalId, ApplicationKey` field(s) value and use the `DELETE` method of the resource to delete a record.
 
@@ -177,7 +177,7 @@ namespace Example
 
             try
             {
-                Application result = apiInstance.DeleteApplication(id, name);
+                Application1 result = apiInstance.DeleteApplication(id, name);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -203,7 +203,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<Application> response = apiInstance.DeleteApplicationWithHttpInfo(id, name);
+    ApiResponse<Application1> response = apiInstance.DeleteApplicationWithHttpInfo(id, name);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -231,7 +231,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**Application**](models/Application.md)
+[**Application1**](models/Application1.md)
 
 ### Authorization
 
@@ -379,7 +379,7 @@ catch (ApiException e)
 
 <a id="getapplication"></a>
 # **GetApplication**
-> Application GetApplication (string id, string name = null)
+> Application1 GetApplication (string id, string name = null)
 
 The method returns one record of the `Application`.
 
@@ -417,7 +417,7 @@ namespace Example
 
             try
             {
-                Application result = apiInstance.GetApplication(id, name);
+                Application1 result = apiInstance.GetApplication(id, name);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -443,7 +443,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<Application> response = apiInstance.GetApplicationWithHttpInfo(id, name);
+    ApiResponse<Application1> response = apiInstance.GetApplicationWithHttpInfo(id, name);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -471,7 +471,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**Application**](models/Application.md)
+[**Application1**](models/Application1.md)
 
 ### Authorization
 
@@ -535,7 +535,7 @@ namespace Example
             var apiInstance = new ApplicationsApi(config);
             var id = "id_example";  // string | The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t
             var name = "name_example";  // string | The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional) 
-            var fields = "fields_example";  // string | Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, RoleId, ApplicationId, EspaceId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional) 
+            var fields = "fields_example";  // string | Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional) 
             var filters = "filters_example";  // string | In the List methods, filtering of resources can be performed using filter parameters.  You can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.  The name of the entity field. Example: `Name` or relation field `OwnerId.Name`  Please refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.  The operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn  You can add multiple values separated by comma when using the `In`, `NotIn` operators. Example of text field; `USA; FIN; ARE` Example of numeric field; `1, 2, 3`  Example of filters: ```sql Filters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)  Filters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)  Filters=ExternalId In S100;S101;S120;100  Filters=Id = 100  ```  (optional) 
             var orders = "orders_example";  // string | The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  ``` Name DESC, CreatedOn ASC ``` (optional) 
             var currentPage = 0;  // int? | This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved. (optional)  (default to 0)
@@ -594,7 +594,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **id** | **string** | The identifier of the Application record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t |  |
 | **name** | **string** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Id &#x60;&#x60;&#x60; | [optional]  |
-| **fields** | **string** | Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &amp;quot;*&amp;quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  &#x60;&#x60;&#x60; Id, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, RoleId, ApplicationId, EspaceId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn &#x60;&#x60;&#x60; | [optional]  |
+| **fields** | **string** | Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &amp;quot;*&amp;quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  &#x60;&#x60;&#x60; Id, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn &#x60;&#x60;&#x60; | [optional]  |
 | **filters** | **string** | In the List methods, filtering of resources can be performed using filter parameters.  You can also use parent tables as a search filter. For example, the &#x60;Employee&#x60; table has a &#x60;DepartmentId&#x60; field, so you can search for a department name using the &#x60;DepartmentId.Name&#x60; field name. All fields in the parent table are available.  The name of the entity field. Example: &#x60;Name&#x60; or relation field &#x60;OwnerId.Name&#x60;  Please refer to the corresponding method&amp;#39;s documentation for the complete list of supported filter parameters by record.  The operator must be a standard comparison operator &#x3D;, &amp;lt;&amp;gt;, &amp;gt;, &amp;gt;&#x3D;, &amp;lt;, &amp;lt;&#x3D;, In, Like, NotIn  You can add multiple values separated by comma when using the &#x60;In&#x60;, &#x60;NotIn&#x60; operators. Example of text field; &#x60;USA; FIN; ARE&#x60; Example of numeric field; &#x60;1, 2, 3&#x60;  Example of filters: &#x60;&#x60;&#x60;sql Filters&#x3D;(DepartmentId.Name &#x3D; My Department) AND (DepartmentId.CreatedOn &#x3D; 2021-01-01)  Filters&#x3D;(DepartmentId.Name &#x3D; My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)  Filters&#x3D;ExternalId In S100;S101;S120;100  Filters&#x3D;Id &#x3D; 100  &#x60;&#x60;&#x60;  | [optional]  |
 | **orders** | **string** | The &#x60;Orders&#x60; parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  &#x60;&#x60;&#x60; Name DESC, CreatedOn ASC &#x60;&#x60;&#x60; | [optional]  |
 | **currentPage** | **int?** | This field specifies the current page of results being returned. It&amp;#39;s often used in conjunction with &#x60;PageSize&#x60; to manage pagination by indicating which subset of the total data is currently being retrieved. | [optional] [default to 0] |
@@ -627,7 +627,7 @@ catch (ApiException e)
 
 <a id="listapplications"></a>
 # **ListApplications**
-> Applications ListApplications (string fields = null, string filters = null, string orders = null, int? currentPage = null, int? pageSize = null)
+> Applications1 ListApplications (string fields = null, string filters = null, string orders = null, int? currentPage = null, int? pageSize = null)
 
 Utilize this method to execute a query designed to fetch comprehensive information, delivering all results in a singular response. If necessary, the method returns a portion of the results along with an identifier to retrieve the remaining data.
 
@@ -664,7 +664,7 @@ namespace Example
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new ApplicationsApi(config);
-            var fields = "fields_example";  // string | Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, ApplicationId, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_TestApp, Is_Active, Is_ReadOnly, AuthenticationId, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional) 
+            var fields = "fields_example";  // string | Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  ``` Id, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_Active, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn ``` (optional) 
             var filters = "filters_example";  // string | In the List methods, filtering of resources can be performed using filter parameters.  You can also use parent tables as a search filter. For example, the `Employee` table has a `DepartmentId` field, so you can search for a department name using the `DepartmentId.Name` field name. All fields in the parent table are available.  The name of the entity field. Example: `Name` or relation field `OwnerId.Name`  Please refer to the corresponding method&#39;s documentation for the complete list of supported filter parameters by record.  The operator must be a standard comparison operator =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, In, Like, NotIn  You can add multiple values separated by comma when using the `In`, `NotIn` operators. Example of text field; `USA; FIN; ARE` Example of numeric field; `1, 2, 3`  Example of filters: ```sql Filters=(DepartmentId.Name = My Department) AND (DepartmentId.CreatedOn = 2021-01-01)  Filters=(DepartmentId.Name = My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)  Filters=ExternalId In S100;S101;S120;100  Filters=Id = 100  ```  (optional) 
             var orders = "orders_example";  // string | The `Orders` parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  ``` Name DESC, CreatedOn ASC ``` (optional) 
             var currentPage = 0;  // int? | This field specifies the current page of results being returned. It&#39;s often used in conjunction with `PageSize` to manage pagination by indicating which subset of the total data is currently being retrieved. (optional)  (default to 0)
@@ -672,7 +672,7 @@ namespace Example
 
             try
             {
-                Applications result = apiInstance.ListApplications(fields, filters, orders, currentPage, pageSize);
+                Applications1 result = apiInstance.ListApplications(fields, filters, orders, currentPage, pageSize);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -698,7 +698,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<Applications> response = apiInstance.ListApplicationsWithHttpInfo(fields, filters, orders, currentPage, pageSize);
+    ApiResponse<Applications1> response = apiInstance.ListApplicationsWithHttpInfo(fields, filters, orders, currentPage, pageSize);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -721,7 +721,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **fields** | **string** | Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &amp;quot;*&amp;quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  &#x60;&#x60;&#x60; Id, ApplicationId, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_TestApp, Is_Active, Is_ReadOnly, AuthenticationId, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn &#x60;&#x60;&#x60; | [optional]  |
+| **fields** | **string** | Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.  The list of database column attributes. If list is empty or &amp;quot;*&amp;quot; then all of fields will be returned.  This method converts a string list to a string with a comma separator.  Example:  &#x60;&#x60;&#x60; Id, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_Active, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn &#x60;&#x60;&#x60; | [optional]  |
 | **filters** | **string** | In the List methods, filtering of resources can be performed using filter parameters.  You can also use parent tables as a search filter. For example, the &#x60;Employee&#x60; table has a &#x60;DepartmentId&#x60; field, so you can search for a department name using the &#x60;DepartmentId.Name&#x60; field name. All fields in the parent table are available.  The name of the entity field. Example: &#x60;Name&#x60; or relation field &#x60;OwnerId.Name&#x60;  Please refer to the corresponding method&amp;#39;s documentation for the complete list of supported filter parameters by record.  The operator must be a standard comparison operator &#x3D;, &amp;lt;&amp;gt;, &amp;gt;, &amp;gt;&#x3D;, &amp;lt;, &amp;lt;&#x3D;, In, Like, NotIn  You can add multiple values separated by comma when using the &#x60;In&#x60;, &#x60;NotIn&#x60; operators. Example of text field; &#x60;USA; FIN; ARE&#x60; Example of numeric field; &#x60;1, 2, 3&#x60;  Example of filters: &#x60;&#x60;&#x60;sql Filters&#x3D;(DepartmentId.Name &#x3D; My Department) AND (DepartmentId.CreatedOn &#x3D; 2021-01-01)  Filters&#x3D;(DepartmentId.Name &#x3D; My Department 1) OR (DepartmentId.ExternalId In DE001;DE002)  Filters&#x3D;ExternalId In S100;S101;S120;100  Filters&#x3D;Id &#x3D; 100  &#x60;&#x60;&#x60;  | [optional]  |
 | **orders** | **string** | The &#x60;Orders&#x60; parameter is provided for sorting the result in the desired order. Both the attribute based on which sorting needs to be done, and the order of sorting (ascending or descending) can be specified. This method converts a string list to a string with a comma separator.  Example:  &#x60;&#x60;&#x60; Name DESC, CreatedOn ASC &#x60;&#x60;&#x60; | [optional]  |
 | **currentPage** | **int?** | This field specifies the current page of results being returned. It&amp;#39;s often used in conjunction with &#x60;PageSize&#x60; to manage pagination by indicating which subset of the total data is currently being retrieved. | [optional] [default to 0] |
@@ -729,7 +729,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**Applications**](models/Applications.md)
+[**Applications1**](models/Applications1.md)
 
 ### Authorization
 
@@ -754,7 +754,7 @@ catch (ApiException e)
 
 <a id="updateapplication"></a>
 # **UpdateApplication**
-> Application UpdateApplication (string id, ApplicationData1 applicationData1, string name = null)
+> Application1 UpdateApplication (string id, ApplicationData1 applicationData1, string name = null)
 
 Use the `ApplicationData` object resource to update `Application` using `Id, Name, ExternalId, ApplicationKey` field(s) value.
 
@@ -797,7 +797,7 @@ namespace Example
 
             try
             {
-                Application result = apiInstance.UpdateApplication(id, applicationData1, name);
+                Application1 result = apiInstance.UpdateApplication(id, applicationData1, name);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -823,7 +823,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<Application> response = apiInstance.UpdateApplicationWithHttpInfo(id, applicationData1, name);
+    ApiResponse<Application1> response = apiInstance.UpdateApplicationWithHttpInfo(id, applicationData1, name);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -852,7 +852,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**Application**](models/Application.md)
+[**Application1**](models/Application1.md)
 
 ### Authorization
 
@@ -877,7 +877,7 @@ catch (ApiException e)
 
 <a id="upsertapplication"></a>
 # **UpsertApplication**
-> Application UpsertApplication (ApplicationData1 applicationData1)
+> Application1 UpsertApplication (ApplicationData1 applicationData1)
 
 Use the `ApplicationData` object resource to insert or update (Upsert) `Application` using `Id, Name, ExternalId, ApplicationKey` field(s) value.
 
@@ -920,7 +920,7 @@ namespace Example
 
             try
             {
-                Application result = apiInstance.UpsertApplication(applicationData1);
+                Application1 result = apiInstance.UpsertApplication(applicationData1);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -946,7 +946,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<Application> response = apiInstance.UpsertApplicationWithHttpInfo(applicationData1);
+    ApiResponse<Application1> response = apiInstance.UpsertApplicationWithHttpInfo(applicationData1);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -973,7 +973,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**Application**](models/Application.md)
+[**Application1**](models/Application1.md)
 
 ### Authorization
 

@@ -49,24 +49,36 @@ namespace Agile.Now.AccessHub.Model
     /// <summary>
     /// The record of Application information.
     /// </summary>
-    [DataContract(Name = "ApplicationData1")]
-    public partial class ApplicationData1 : IValidatableObject
+    [DataContract(Name = "Application1")]
+    public partial class Application1 : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ApplicationData1" /> class.
+        /// Initializes a new instance of the <see cref="Application1" /> class.
         /// </summary>
-        /// <param name="id">The identifier of the access application..</param>
-        /// <param name="name">Name of application. The value must be unique in the system and you cannot add multiple values..</param>
-        /// <param name="applicationKey">The key used to identify the application must be unique within each workspace. The value must be unique in the system and you cannot add multiple values..</param>
-        /// <param name="externalId">The external system code of the application. The value must be unique in the system and you cannot add multiple values..</param>
-        /// <param name="description">The description of access group..</param>
-        /// <param name="webSiteURL">Web Site URL of application..</param>
-        /// <param name="isSystem">Defines if application is system (setting menu). (default to false).</param>
-        /// <param name="isEndUser">Specifies whether the application is an end-user application. (default to false).</param>
-        /// <param name="isActive">Defines if the application is active and can be used. (default to false).</param>
-        public ApplicationData1(string id = default, string name = default, string applicationKey = default, string externalId = default, string description = default, string webSiteURL = default, bool isSystem = false, bool isEndUser = false, bool isActive = false)
+        [JsonConstructorAttribute]
+        protected Application1() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Application1" /> class.
+        /// </summary>
+        /// <param name="id">The identifier of the access application (required).</param>
+        /// <param name="name">Name of application.</param>
+        /// <param name="applicationKey">The key used to identify the application must be unique within each workspace..</param>
+        /// <param name="externalId">The external system code of the application.</param>
+        /// <param name="description">The description of access group.</param>
+        /// <param name="webSiteURL">Web Site URL of application.</param>
+        /// <param name="isSystem">Defines if application is system (setting menu) (default to false).</param>
+        /// <param name="isEndUser">Specifies whether the application is an end-user application (default to false).</param>
+        /// <param name="isActive">Defines if the application is active and can be used (required) (default to false).</param>
+        /// <param name="modifiedOn">The date the record was updated (default to &quot;1900-01-01T00:00Z&quot;).</param>
+        /// <param name="modifiedBy">modifiedBy.</param>
+        /// <param name="createdBy">createdBy.</param>
+        /// <param name="createdOn">The date the record was created (default to &quot;1900-01-01T00:00Z&quot;).</param>
+        public Application1(string id = default, string name = default, string applicationKey = default, string externalId = default, string description = default, string webSiteURL = default, bool isSystem = false, bool isEndUser = false, bool isActive = false, DateTime modifiedOn = default, AbstractLong modifiedBy = default, AbstractLong createdBy = default, DateTime createdOn = default)
         {
+            // to ensure "id" is required (not null)
+            id = id ?? throw new ArgumentNullException("id is a required property for Application1 and cannot be null");
             Id = id;
+            IsActive = isActive;
             Name = name;
             ApplicationKey = applicationKey;
             ExternalId = externalId;
@@ -74,74 +86,105 @@ namespace Agile.Now.AccessHub.Model
             WebSiteURL = webSiteURL;
             IsSystem = isSystem;
             IsEndUser = isEndUser;
-            IsActive = isActive;
+            ModifiedOn = modifiedOn;
+            ModifiedBy = modifiedBy;
+            CreatedBy = createdBy;
+            CreatedOn = createdOn;
         }
 
         /// <summary>
-        /// The identifier of the access application.
+        /// The identifier of the access application
         /// </summary>
-        /// <value>The identifier of the access application.</value>
-        [DataMember(Name = "Id", EmitDefaultValue = false)]
+        /// <value>The identifier of the access application</value>
+        [DataMember(Name = "Id", IsRequired = true, EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>
-        /// Name of application. The value must be unique in the system and you cannot add multiple values.
+        /// Name of application
         /// </summary>
-        /// <value>Name of application. The value must be unique in the system and you cannot add multiple values.</value>
+        /// <value>Name of application</value>
         [DataMember(Name = "Name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
-        /// The key used to identify the application must be unique within each workspace. The value must be unique in the system and you cannot add multiple values.
+        /// The key used to identify the application must be unique within each workspace.
         /// </summary>
-        /// <value>The key used to identify the application must be unique within each workspace. The value must be unique in the system and you cannot add multiple values.</value>
+        /// <value>The key used to identify the application must be unique within each workspace.</value>
         [DataMember(Name = "ApplicationKey", EmitDefaultValue = false)]
         public string ApplicationKey { get; set; }
 
         /// <summary>
-        /// The external system code of the application. The value must be unique in the system and you cannot add multiple values.
+        /// The external system code of the application
         /// </summary>
-        /// <value>The external system code of the application. The value must be unique in the system and you cannot add multiple values.</value>
+        /// <value>The external system code of the application</value>
         [DataMember(Name = "ExternalId", EmitDefaultValue = false)]
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// The description of access group.
+        /// The description of access group
         /// </summary>
-        /// <value>The description of access group.</value>
+        /// <value>The description of access group</value>
         [DataMember(Name = "Description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
         /// <summary>
-        /// Web Site URL of application.
+        /// Web Site URL of application
         /// </summary>
-        /// <value>Web Site URL of application.</value>
+        /// <value>Web Site URL of application</value>
         [DataMember(Name = "WebSiteURL", EmitDefaultValue = false)]
         public string WebSiteURL { get; set; }
 
         /// <summary>
-        /// Defines if application is system (setting menu).
+        /// Defines if application is system (setting menu)
         /// </summary>
-        /// <value>Defines if application is system (setting menu).</value>
+        /// <value>Defines if application is system (setting menu)</value>
         /// <example>false</example>
         [DataMember(Name = "Is_System", EmitDefaultValue = true)]
         public bool IsSystem { get; set; }
 
         /// <summary>
-        /// Specifies whether the application is an end-user application.
+        /// Specifies whether the application is an end-user application
         /// </summary>
-        /// <value>Specifies whether the application is an end-user application.</value>
+        /// <value>Specifies whether the application is an end-user application</value>
         /// <example>false</example>
         [DataMember(Name = "Is_EndUser", EmitDefaultValue = true)]
         public bool IsEndUser { get; set; }
 
         /// <summary>
-        /// Defines if the application is active and can be used.
+        /// Defines if the application is active and can be used
         /// </summary>
-        /// <value>Defines if the application is active and can be used.</value>
+        /// <value>Defines if the application is active and can be used</value>
         /// <example>false</example>
-        [DataMember(Name = "Is_Active", EmitDefaultValue = true)]
+        [DataMember(Name = "Is_Active", IsRequired = true, EmitDefaultValue = true)]
         public bool IsActive { get; set; }
+
+        /// <summary>
+        /// The date the record was updated
+        /// </summary>
+        /// <value>The date the record was updated</value>
+        /// <example>1900-01-01T00:00Z</example>
+        [DataMember(Name = "ModifiedOn", EmitDefaultValue = false)]
+        public DateTime ModifiedOn { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ModifiedBy
+        /// </summary>
+        [DataMember(Name = "ModifiedBy", EmitDefaultValue = false)]
+        public AbstractLong ModifiedBy { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CreatedBy
+        /// </summary>
+        [DataMember(Name = "CreatedBy", EmitDefaultValue = false)]
+        public AbstractLong CreatedBy { get; set; }
+
+        /// <summary>
+        /// The date the record was created
+        /// </summary>
+        /// <value>The date the record was created</value>
+        /// <example>1900-01-01T00:00Z</example>
+        [DataMember(Name = "CreatedOn", EmitDefaultValue = false)]
+        public DateTime CreatedOn { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -150,7 +193,7 @@ namespace Agile.Now.AccessHub.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class ApplicationData1 {\n");
+            sb.Append("class Application1 {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ApplicationKey: ").Append(ApplicationKey).Append("\n");
@@ -160,6 +203,10 @@ namespace Agile.Now.AccessHub.Model
             sb.Append("  IsSystem: ").Append(IsSystem).Append("\n");
             sb.Append("  IsEndUser: ").Append(IsEndUser).Append("\n");
             sb.Append("  IsActive: ").Append(IsActive).Append("\n");
+            sb.Append("  ModifiedOn: ").Append(ModifiedOn).Append("\n");
+            sb.Append("  ModifiedBy: ").Append(ModifiedBy).Append("\n");
+            sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
+            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

@@ -7,8 +7,8 @@ using Xunit;
 
 namespace Agile.Now.AccessHub.Test.Data;
 
-public class Application1_TestData : TestData<Application, ApplicationData1> {
-    public override void AssertEqualToRequest(ApplicationData1 data0, Application data1) {
+public class Application1_TestData : TestData<Application1, ApplicationData1> {
+    public override void AssertEqualToRequest(ApplicationData1 data0, Application1 data1) {
         Assert.Equal(data0.Name, data1.Name);
         Assert.Equal(data0.ApplicationKey, data1.ApplicationKey);
         Assert.Equal(data0.ExternalId, data1.ExternalId);
@@ -16,7 +16,7 @@ public class Application1_TestData : TestData<Application, ApplicationData1> {
         Assert.Equal(data0.WebSiteURL, data1.WebSiteURL);
     }
 
-    public override void AssertEqualToResponse(Application data0, Application data1) {
+    public override void AssertEqualToResponse(Application1 data0, Application1 data1) {
         Assert.Equal(data0.Id, data1.Id);
         Assert.Equal(data0.Name, data1.Name);
         Assert.Equal(data0.ApplicationKey, data1.ApplicationKey);

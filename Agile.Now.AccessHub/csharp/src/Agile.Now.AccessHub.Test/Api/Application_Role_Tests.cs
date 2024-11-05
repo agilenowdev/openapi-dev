@@ -9,7 +9,7 @@ using Xunit;
 
 namespace Agile.Now.AccessHub.Test.Api;
 
-public class Application_Role_Tests : SubEntityTests<Application, string, ApplicationData1, Role, string, RoleData> {
+public class Application_Role_Tests : SubEntityTests<Application1, string, ApplicationData1, Role, string, RoleData> {
     readonly ApplicationsApi api;
 
     public Application_Role_Tests()
