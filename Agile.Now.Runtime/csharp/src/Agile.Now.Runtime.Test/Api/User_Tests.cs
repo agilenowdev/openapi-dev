@@ -7,14 +7,14 @@ using Xunit;
 
 namespace Agile.Now.Runtime.Test.Api;
 
-public class User_Tests : EntityTests<User, int, User> {
+public class User_Tests : EntityTests<User, User> {
     readonly UsersApi api;
 
     public User_Tests()
         : base(
             testData: new User_TestData(),
-            id: new(nameof(User.Id), entity => entity.Id),
-            uniqueAttributes: new Attribute<User, string, User>[] {
+            id: new(nameof(User.Id), entity => entity.Id.ToString(), isString: false),
+            uniqueAttributes: new Attribute<User, User>[] {
                 new("External_Id", data => data.ExternalId),
                 //new(nameof(User.Username), data => data.Username)
             }) {
@@ -22,12 +22,15 @@ public class User_Tests : EntityTests<User, int, User> {
         api = new UsersApi(Settings.Connections[0]);
     }
 
-    protected override List<User> List(string filters, string orders, int currentPage, int pageSize) =>
+    protected override List<User> List(Context<User, User> context,
+        string filters, string orders, int currentPage, int pageSize) =>
+
         api.ListUsers(filters: filters, orders: orders, currentPage: currentPage, pageSize: pageSize).Data;
 
-    protected override User Get(string id, string name) => api.GetUser(id, name);
+    protected override User Get(Context<User, User> context, string id, string name) =>
+        api.GetUser(id, name);
 
-    protected override User Create(User data) => data;
+    protected override User Create(Context<User, User> context, User data) => data;
 
     [Fact] public void Test_User_List_ById() => Test_List_ById();
     [Fact] public void Test_User_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();

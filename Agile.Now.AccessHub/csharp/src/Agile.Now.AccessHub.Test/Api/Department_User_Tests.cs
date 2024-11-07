@@ -9,35 +9,36 @@ using Xunit;
 
 namespace Agile.Now.AccessHub.Test.Api;
 
-public class Department_User_Tests : SubEntityTests<Department, string, DepartmentInsertData, User, int, UserData> {
+public class Department_User_Tests : SubEntityTests<Department, DepartmentInsertData, User, UserData> {
     readonly DepartmentsApi api;
 
     public Department_User_Tests()
         : base(new Department_Tests(),
             testData: new User_TestData(),
-            id: new(nameof(User.Id), entity => entity.Id),
-            uniqueAttributes: new Attribute<User, string, UserData>[] {
+            id: new(nameof(User.Id), entity => entity.Id.ToString(), isString: false),
+            uniqueAttributes: new Attribute<User, UserData>[] {
                 new(nameof(User.ExternalId), data => data.ExternalId),
                 new(nameof(User.Username), data => data.Name) }) {
 
         api = new DepartmentsApi(Settings.Connections[0]);
     }
 
-    protected override List<User> List(
-        string id, string name, string filters, string orders, int currentPage, int pageSize) =>
+    protected override List<User> List(Context<Department, DepartmentInsertData> context,
+        string filters, string orders, int currentPage, int pageSize) =>
 
-        api.ListDepartmentUsers(
-            id: id, name: name, filters: filters, orders: orders, currentPage: currentPage, pageSize: pageSize).Data;
+        api.ListDepartmentUsers(id: context.ParentId, name: context.Parent.Id.Name,
+            filters: filters, orders: orders, currentPage: currentPage, pageSize: pageSize).Data;
 
-    protected override User Upsert(string id, UserData data) => api.UpsertDepartmentUser(id, data);
+    protected override User Upsert(Context<Department, DepartmentInsertData> context, UserData data) =>
+        api.UpsertDepartmentUser(context.ParentId, data);
 
     protected override User[] Patch(string id, List<UserData> data, string deleteNotExists) =>
         api.PatchDepartmentUsers(id: id,
             usersData1: new UsersData1(users: data.Select(i => i.ToUserText1()).ToList()),
             deleteNotExists: deleteNotExists).Data.ToArray();
 
-    protected override User Delete(string id, string subId, string name, string subName) =>
-        api.DeleteDepartmentUser(id, subId, name: name, subName: subName);
+    protected override User Delete(Context<Department, DepartmentInsertData> context, string id, string name) =>
+        api.DeleteDepartmentUser(context.ParentId, id, context.Parent.Id.Name, name);
 
     [Fact] public void Test_Department_User_List_ById() => Test_List_ById();
     //[Fact] public void Test_Department_User_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();

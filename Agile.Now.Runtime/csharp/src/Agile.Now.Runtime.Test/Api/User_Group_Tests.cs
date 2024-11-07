@@ -7,14 +7,14 @@ using Xunit;
 
 namespace Agile.Now.Runtime.Test.Api;
 
-public class User_Group_Tests : SubEntityTests<User, int, User, Group, int, GroupData> {
+public class User_Group_Tests : SubEntityTests<User, User, Group, GroupData> {
     readonly UsersApi api;
 
     public User_Group_Tests()
         : base(new User_Tests(),
             testData: new Group_TestData(),
-            id: new(nameof(Group.Id), entity => entity.Id),
-            uniqueAttributes: new Attribute<Group, string, GroupData>[] {
+            id: new(nameof(Group.Id), entity => entity.Id.ToString(), isString: false),
+            uniqueAttributes: new Attribute<Group, GroupData>[] {
                 new(nameof(Group.Name), data => data.Name) }) {
 
         api = new UsersApi(Settings.Connections[0]);
@@ -22,16 +22,17 @@ public class User_Group_Tests : SubEntityTests<User, int, User, Group, int, Grou
 
     protected override string EntityName => "Group_";
 
-    protected override List<Group> List(
-        string id, string name, string filters, string orders, int currentPage, int pageSize) =>
+    protected override List<Group> List(Context<User, User> context, 
+        string filters, string orders, int currentPage, int pageSize) =>
 
-        api.ListUserGroups(
-            id: id, name: name, filters: filters, orders: orders, currentPage: currentPage, pageSize: pageSize).Data;
+        api.ListUserGroups(id: context.ParentId, name: context.Parent.Id.Name,
+            filters: filters, orders: orders, currentPage: currentPage, pageSize: pageSize).Data;
 
-    protected override Group Upsert(int id, GroupData data) => api.UpsertUserGroup(id.ToString(), data);
+    protected override Group Upsert(Context<User, User> context, GroupData data) =>
+        api.UpsertUserGroup(context.ParentId, data);
 
-    protected override Group Delete(string id, string subId, string name, string subName) =>
-        api.DeleteUserGroup(id, subId, name: name, subName: subName);
+    protected override Group Delete(Context<User, User> context, string id, string name) =>
+        api.DeleteUserGroup(context.ParentId, id, context.Parent.Id.Name, name);
 
     [Fact] public void Test_User_Group_List_ById() => Test_List_ById();
     //[Fact] public void Test_User_Group_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();

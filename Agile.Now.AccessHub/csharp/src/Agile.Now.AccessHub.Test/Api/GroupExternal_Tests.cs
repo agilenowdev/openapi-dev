@@ -9,14 +9,15 @@ using Xunit;
 
 namespace Agile.Now.AccessHub.Test.Api;
 
-public class GroupExternal_Tests : EntityTests<GroupExternal, int, GroupExternalData> {
+public class GroupExternal_Tests : EntityTests<GroupExternal, GroupExternalData> {
     readonly GroupExternalsApi api;
 
     public GroupExternal_Tests()
         : base(
             testData: new GroupExternal_TestData(),
-            id: new(nameof(GroupExternal.Id), entity => entity.Id, (entity, id) => entity.Id = id),
-            uniqueAttributes: new Attribute<GroupExternal, string, GroupExternalData>[] {
+            id: new(nameof(GroupExternal.Id),
+                entity => entity.Id.ToString(), (entity, id) => entity.Id = int.Parse(id), isString: false),
+            uniqueAttributes: new Attribute<GroupExternal, GroupExternalData>[] {
                 //new(nameof(GroupExternal.ExternalId), data => data.ExternalId, (data, value) => data.ExternalId = value),
                 new(nameof(GroupExternal.Name), data => data.Name, (data, value) => data.Name = value),
             }) {
@@ -24,13 +25,20 @@ public class GroupExternal_Tests : EntityTests<GroupExternal, int, GroupExternal
         api = new GroupExternalsApi(Settings.Connections[0]);
     }
 
-    protected override List<GroupExternal> List(string filters, string orders, int currentPage, int pageSize) =>
+    protected override List<GroupExternal> List(Context<GroupExternal, GroupExternalData> context,
+        string filters, string orders, int currentPage, int pageSize) =>
+
         api.ListGroupExternals(filters: filters, orders: orders, currentPage: currentPage, pageSize: pageSize).Data;
 
-    protected override GroupExternal Get(string id, string name) => api.GetGroupExternal(id, name);
-    protected override GroupExternal Create(GroupExternalData data) => api.CreateGroupExternal(data);
+    protected override GroupExternal Get(Context<GroupExternal, GroupExternalData> context, string id, string name) =>
+        api.GetGroupExternal(id, name);
 
-    protected override GroupExternal Update(string id, GroupExternalData data, string name) =>
+    protected override GroupExternal Create(Context<GroupExternal, GroupExternalData> context, GroupExternalData data) =>
+        api.CreateGroupExternal(data);
+
+    protected override GroupExternal Update(Context<GroupExternal, GroupExternalData> context, 
+        string id, GroupExternalData data, string name)  =>
+
         api.UpdateGroupExternal(id, data, name);
 
     protected override GroupExternal Upsert(GroupExternalData data) =>
@@ -40,7 +48,8 @@ public class GroupExternal_Tests : EntityTests<GroupExternal, int, GroupExternal
         api.PatchGroupExternals(new GroupExternalsData(
             groupExternals: data.Select(i => i.ToGroupExternalText()).ToList())).Data;
 
-    protected override GroupExternal Delete(string id, string name) => api.DeleteGroupExternal(id, name);
+    protected override GroupExternal Delete(Context<GroupExternal, GroupExternalData> context, string id, string name) =>
+        api.DeleteGroupExternal(id, name);
 
     [Fact] public void Test_GroupExternal_List_ById() => Test_List_ById();
     [Fact] public void Test_GroupExternal_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();

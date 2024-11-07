@@ -10,7 +10,7 @@ using Xunit;
 namespace Agile.Now.AccessHub.Test.Api;
 
 public class AccessGroup_Application_Tests
-    : SubEntityTests<AccessGroup, string, AccessGroupInsertData, Application, string, ApplicationData> {
+    : SubEntityTests<AccessGroup, AccessGroupInsertData, Application, ApplicationData> {
 
     readonly AccessGroupsApi api;
 
@@ -25,21 +25,22 @@ public class AccessGroup_Application_Tests
 
     protected override string EntityName => "AccessApplication";
 
-    protected override List<Application> List(
-        string id, string name, string filters, string orders, int currentPage, int pageSize) =>
+    protected override List<Application> List(Context<AccessGroup, AccessGroupInsertData> context,
+        string filters, string orders, int currentPage, int pageSize) =>
 
-        api.ListAccessGroupApplications(
-            id: id, name: name, filters: filters, orders: orders, currentPage: currentPage, pageSize: pageSize).Data;
+        api.ListAccessGroupApplications(id: context.ParentId, name: context.Parent.Id.Name,
+            filters: filters, orders: orders, currentPage: currentPage, pageSize: pageSize).Data;
 
-    protected override Application Upsert(string id, ApplicationData data) => api.UpsertAccessGroupApplication(id, data);
+    protected override Application Upsert(Context<AccessGroup, AccessGroupInsertData> context, ApplicationData data) =>
+        api.UpsertAccessGroupApplication(context.ParentId, data);
 
     protected override Application[] Patch(string id, List<ApplicationData> data, string deleteNotExists) =>
         api.PatchAccessGroupApplications(id: id,
             applicationsData: new(applications: data.Select(i => i.ToApplicationText()).ToList()),
             deleteNotExists: deleteNotExists).Data.ToArray();
 
-    protected override Application Delete(string id, string subId, string name, string subName) =>
-        api.DeleteAccessGroupApplication(id, subId, subName: subName);
+    protected override Application Delete(Context<AccessGroup, AccessGroupInsertData> context, string id, string name) =>
+        api.DeleteAccessGroupApplication(context.ParentId, id, context.Parent.Id.Name, name);
 
     [Fact] public void Test_AccessGroup_Application_List_ById() => Test_List_ById();
     //[Fact] public void Test_AccessGroup_Application_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();

@@ -8,28 +8,29 @@ using Xunit;
 
 namespace Agile.Now.AccessHub.Test.Api;
 
-public class Account_Tenant_Tests : SubEntityTests<Account, string, AccountInsertData, Tenant, int, TenantData> {
+public class Account_Tenant_Tests : SubEntityTests<Account, AccountInsertData, Tenant, TenantData> {
     readonly AccountsApi api;
 
     public Account_Tenant_Tests()
         : base(new Account_Tests(),
             testData: new Tenant_TestData(),
-            id: new(nameof(Tenant.Id), entity => entity.Id)) {
+            id: new(nameof(Tenant.Id), entity => entity.Id.ToString(), isString: false)) {
 
         api = new AccountsApi(Settings.Connections[0]);
         NoCleanUp = true;
     }
 
-    protected override List<Tenant> List(string id, string name,
+    protected override List<Tenant> List(Context<Account, AccountInsertData> context, 
         string filters, string orders = default, int currentPage = default, int pageSize = DefaultPageSize) =>
 
-        api.ListAccountTenants(
-            id: id, name: name, filters: filters, orders: orders, currentPage: currentPage, pageSize: pageSize).Data;
+        api.ListAccountTenants(id: context.ParentId, name: context.Parent.Id.Name,
+            filters: filters, orders: orders, currentPage: currentPage, pageSize: pageSize).Data;
 
-    protected override Tenant Upsert(string id, TenantData data) => api.UpsertAccountTenant(id, data);
+    protected override Tenant Upsert(Context<Account, AccountInsertData> context, TenantData data) =>
+        api.UpsertAccountTenant(context.ParentId, data);
 
-    protected override Tenant Delete(string id, string subId, string name, string subName) =>
-        api.DeleteAccountTenant(id, subId, subName: subName);
+    protected override Tenant Delete(Context<Account, AccountInsertData> context, string id, string name) =>
+        api.DeleteAccountTenant(context.ParentId, id, context.Parent.Id.Name, name);
 
     //[Fact] public void Test_Account_Tenant_List_ById() => Test_List_ById();
     //[Fact] public void Test_Account_Tenant_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();

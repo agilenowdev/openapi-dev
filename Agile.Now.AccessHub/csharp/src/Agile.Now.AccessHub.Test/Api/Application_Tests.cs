@@ -10,14 +10,14 @@ using Xunit;
 
 namespace Agile.Now.AccessHub.Test.Api;
 
-public class Application_Tests : EntityTests<Application1, string, ApplicationData1> {
+public class Application_Tests : EntityTests<Application1, ApplicationData1> {
     readonly ApplicationsApi api;
 
     public Application_Tests()
         : base(
             testData: new Application1_TestData(),
             id: new(nameof(Application.Id), entity => entity.Id, (entity, id) => entity.Id = id),
-            uniqueAttributes: new Attribute<Application1, string, ApplicationData1>[] {
+            uniqueAttributes: new Attribute<Application1, ApplicationData1>[] {
                 new(nameof(Application.Name), data => data.Name, (data, value) => data.Name = value),
                 new(nameof(Application.ExternalId), data => data.ExternalId, (data, value) => data.ExternalId = value),
                 new(nameof(Application.ApplicationKey),
@@ -27,41 +27,36 @@ public class Application_Tests : EntityTests<Application1, string, ApplicationDa
         api = new ApplicationsApi(Settings.Connections[0]);
     }
 
-    protected override List<Application1> List(
+    protected override List<Application1> List(Context<Application1, ApplicationData1> context,
         string filters = default, string orders = default, int currentPage = default, int pageSize = DefaultPageSize) =>
+
         api.ListApplications(filters: filters, orders: orders, currentPage: currentPage, pageSize: pageSize).Data;
 
-    protected override Application1 Get(string id, string name = "Id") => api.GetApplication(id, name);
-    protected override Application1 Create(ApplicationData1 data) => api.CreateApplication(data);
+    protected override Application1 Get(Context<Application1, ApplicationData1> context, string id, string name) =>
+        api.GetApplication(id, name);
 
-    protected override Application1 Update(string id, ApplicationData1 data, string name = "Id") =>
+    protected override Application1 Create(Context<Application1, ApplicationData1> context, ApplicationData1 data) =>
+        api.CreateApplication(data);
+
+    protected override Application1 Update(Context<Application1, ApplicationData1> context,
+        string id, ApplicationData1 data, string name) =>
+
         api.UpdateApplication(id, data, name);
 
     protected override Application1 Upsert(ApplicationData1 data) => api.UpsertApplication(data);
-    protected override Application1 Delete(string id, string name = "Id") => api.DeleteApplication(id, name);
+    protected override Application1 Delete(Context<Application1, ApplicationData1> context, string id, string name) =>
+        api.DeleteApplication(id, name);
 
     [Fact] public void Test_Application_List_ById() => Test_List_ById();
     [Fact] public void Test_Application_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();
     [Fact] public void Test_Application_List_Paging() => Test_List_Paging();
     [Fact] public void Test_Application_List_OrderAscending() => Test_List_OrderAscending();
     [Fact] public void Test_Application_List_OrderDecending() => Test_List_OrderDecending();
-
-    [Fact]
-    public void Test_Application_List_ReadOnly_TestApp() {
-        var existing = List(filters: Id.CreateFilters(
-            Application1_TestData.ReadOnlyApplication,
-            Application1_TestData.TestAppApplication));
-        Assert.Empty(existing);
-    }
+    [Fact] public void Test_Application_List_NoAccess() => Test_List_NoAccess(Application1_TestData.ApplicationsWithNoAccess);
 
     [Fact] public void Test_Application_Get_ById() => Test_Get_ById();
     [Fact] public void Test_Application_Get_ByUniqueAttributes() => Test_Get_ByUniqueAttributes();
-
-    [Fact]
-    public void Test_Application_Get_ReadOnly_TestApp() {
-        Assert.ThrowsAny<Exception>(() => Get(Application1_TestData.ReadOnlyApplication));
-        Assert.ThrowsAny<Exception>(() => Get(Application1_TestData.TestAppApplication));
-    }
+    [Fact] public void Test_Application_Get_NoAccess() => Test_Get_NoAccess(Application1_TestData.ApplicationsWithNoAccess);
 
     [Fact] public void Test_Application_Create() => Test_Create();
     [Fact] public void Test_Application_Create_WithUniqueAttributes() => Test_Create_WithUniqueAttributes();
@@ -71,12 +66,13 @@ public class Application_Tests : EntityTests<Application1, string, ApplicationDa
 
     [Fact]
     public void Test_Application_Update_ReadOnly_TestApp_System() {
+        using var context = CreateContext();
         foreach(var i in new[] {
             Application1_TestData.ReadOnlyApplication,
             Application1_TestData.TestAppApplication,
             Application1_TestData.SystemApplication
         })
-            Assert.ThrowsAny<Exception>(() => Update(i, TestData.GenerateRequestData().First()));
+            Assert.ThrowsAny<Exception>(() => Update(context, i, TestData.GenerateRequestData().First(), Id.Name));
     }
 
     [Fact] public void Test_Application_Upsert() => Test_Upsert();
@@ -86,11 +82,12 @@ public class Application_Tests : EntityTests<Application1, string, ApplicationDa
 
     [Fact]
     public void Test_Application_Delete_ReadOnly_TestApp_System() {
+        using var context = CreateContext();
         foreach(var i in new[] {
             Application1_TestData.ReadOnlyApplication,
             Application1_TestData.TestAppApplication,
             Application1_TestData.SystemApplication
         })
-            Assert.ThrowsAny<Exception>(() => Delete(i));
+            Assert.ThrowsAny<Exception>(() => Delete(context, i));
     }
 }

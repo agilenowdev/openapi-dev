@@ -7,7 +7,7 @@ using Xunit;
 
 namespace Agile.Now.Runtime.Test.Api;
 
-public class User_Application_Tests : SubEntityTests<User, int, User, Application, string, object> {
+public class User_Application_Tests : SubEntityTests<User, User, Application, object> {
     readonly UsersApi api;
 
     public User_Application_Tests()
@@ -18,14 +18,16 @@ public class User_Application_Tests : SubEntityTests<User, int, User, Applicatio
         api = new UsersApi(Settings.Connections[0]);
     }
 
-    protected override List<Application> List(string id, string name,
+    protected override List<Application> List(Context<User, User> context, 
         string filters = default, string orders = default, int currentPage = default, int pageSize = DefaultPageSize) =>
 
-        api.ListUserApplications(id.ToString()).Data;
+        api.ListUserApplications(id: context.ParentId, name: context.Parent.Id.Name,
+            filters: filters, orders: orders, currentPage: currentPage, pageSize: pageSize).Data;
 
     [Fact]
     public void Test_User_Application_Test_List_ById() {
-        var existing = List(User_TestData.UserWithApplications.ToString(), Parent.Id.Name);
+        using var context = CreateContext();
+        var existing = List(context, User_TestData.UserWithApplications.ToString(), Parent.Id.Name);
         Assert.NotEmpty(existing);
     }
 }

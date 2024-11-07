@@ -7,30 +7,31 @@ using Xunit;
 
 namespace Agile.Now.Runtime.Test.Api;
 
-public class User_AccessGroup_Tests : SubEntityTests<User, int, User, AccessGroup, string, AccessGroupData> {
+public class User_AccessGroup_Tests : SubEntityTests<User, User, AccessGroup, AccessGroupData> {
     readonly UsersApi api;
 
     public User_AccessGroup_Tests()
         : base(new User_Tests(),
             testData: new AccessGroup_TestData(),
             id: new(nameof(AccessGroup.Id), entity => entity.Id),
-            uniqueAttributes: new Attribute<AccessGroup, string, AccessGroupData>[] {
+            uniqueAttributes: new Attribute<AccessGroup, AccessGroupData>[] {
                 new(nameof(AccessGroup.ExternalId), data => data.ExternalId),
                 new(nameof(AccessGroup.Name), data => data.Name) }) {
 
         api = new UsersApi(Settings.Connections[0]);
     }
 
-    protected override List<AccessGroup> List(
-        string id, string name, string filters, string orders, int currentPage, int pageSize) =>
+    protected override List<AccessGroup> List(Context<User, User> context, 
+        string filters, string orders, int currentPage, int pageSize) =>
 
-        api.ListUserAccessGroups(
-            id: id, name: name, filters: filters, orders: orders, currentPage: currentPage, pageSize: pageSize).Data;
+        api.ListUserAccessGroups(id: context.ParentId, name: context.Parent.Id.Name,
+            filters: filters, orders: orders, currentPage: currentPage, pageSize: pageSize).Data;
 
-    protected override AccessGroup Upsert(int id, AccessGroupData data) => api.UpsertUserAccessGroup(id.ToString(), data);
+    protected override AccessGroup Upsert(Context<User, User> context, AccessGroupData data) =>
+        api.UpsertUserAccessGroup(context.ParentId, data);
 
-    protected override AccessGroup Delete(string id, string subId, string name, string subName) =>
-        api.DeleteUserAccessGroup(id, subId, name: name, subName: subName);
+    protected override AccessGroup Delete(Context<User, User> context, string id, string name) =>
+        api.DeleteUserAccessGroup(context.ParentId, id, context.Parent.Id.Name, name);
 
     [Fact] public void Test_User_AccessGroup_List_ById() => Test_List_ById();
     //[Fact] public void Test_User_AccessGroup_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();

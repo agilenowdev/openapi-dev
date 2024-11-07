@@ -9,36 +9,37 @@ using Xunit;
 
 namespace Agile.Now.AccessHub.Test.Api;
 
-public class AccessGroup_User_Tests : SubEntityTests<AccessGroup, string, AccessGroupInsertData, User, int, UserData> {
+public class AccessGroup_User_Tests : SubEntityTests<AccessGroup, AccessGroupInsertData, User, UserData> {
     readonly AccessGroupsApi api;
 
     public AccessGroup_User_Tests()
         : base(
             parent: new AccessGroup_Tests(),
             testData: new User_TestData(),
-            id: new(nameof(User.Id), entity => entity.Id),
-            uniqueAttributes: new Attribute<User, string, UserData>[] {
+            id: new(nameof(User.Id), entity => entity.Id.ToString(), isString: false),
+            uniqueAttributes: new Attribute<User, UserData>[] {
                 new(nameof(User.Username), data => data.Username)
             }) {
 
         api = new AccessGroupsApi(Settings.Connections[0]);
     }
 
-    protected override List<User> List(string id, string name,
+    protected override List<User> List(Context<AccessGroup, AccessGroupInsertData> context, 
         string filters, string orders = default, int currentPage = default, int pageSize = DefaultPageSize) =>
 
-        api.ListAccessGroupUsers(
-            id: id, name: name, filters: filters, orders: orders, currentPage: currentPage, pageSize: pageSize).Data;
+        api.ListAccessGroupUsers(id: context.ParentId, name: context.Parent.Id.Name,
+            filters: filters, orders: orders, currentPage: currentPage, pageSize: pageSize).Data;
 
-    protected override User Upsert(string id, UserData data) => api.UpsertAccessGroupUser(id, data);
+    protected override User Upsert(Context<AccessGroup, AccessGroupInsertData> context, UserData data) =>
+        api.UpsertAccessGroupUser(context.ParentId, data);
 
     protected override User[] Patch(string id, List<UserData> data, string deleteNotExists) =>
         api.PatchAccessGroupUsers(id: id,
             usersData: new UsersData(users: data.Select(i => i.ToUserText()).ToList()),
             deleteNotExists: deleteNotExists).Data.ToArray();
 
-    protected override User Delete(string id, string subId, string name, string subName) =>
-        api.DeleteAccessGroupUser(id, subId, subName: subName);
+    protected override User Delete(Context<AccessGroup, AccessGroupInsertData> context, string id, string name) =>
+        api.DeleteAccessGroupUser(context.ParentId, id, context.Parent.Id.Name, name);
 
     [Fact] public void Test_AccessGroup_User_List_ById() => Test_List_ById();
     //[Fact] public void Test_AccessGroup_User_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();

@@ -8,35 +8,36 @@ using Xunit;
 
 namespace Agile.Now.Runtime.Test.Api;
 
-public class User_Department_Tests : SubEntityTests<User, int, User, Department, string, DepartmentData> {
+public class User_Department_Tests : SubEntityTests<User, User, Department, DepartmentData> {
     readonly UsersApi api;
 
     public User_Department_Tests()
         : base(new User_Tests(),
             testData: new Department_TestData(),
             id: new(nameof(Department.Id), entity => entity.Id),
-            uniqueAttributes: new Attribute<Department, string, DepartmentData>[] {
+            uniqueAttributes: new Attribute<Department, DepartmentData>[] {
                 new(nameof(Department.ExternalId), data => data.ExternalId),
                 new(nameof(Department.Name), data => data.Name) }) {
 
         api = new UsersApi(Settings.Connections[0]);
     }
 
-    protected override List<Department> List(
-        string id, string name, string filters, string orders, int currentPage, int pageSize) =>
+    protected override List<Department> List(Context<User, User> context,
+        string filters, string orders, int currentPage, int pageSize) =>
 
-        api.ListUserDepartments(
-            id: id, name: name, filters: filters, orders: orders, currentPage: currentPage, pageSize: pageSize).Data;
+        api.ListUserDepartments(id: context.ParentId, name: context.Parent.Id.Name,
+            filters: filters, orders: orders, currentPage: currentPage, pageSize: pageSize).Data;
 
-    protected override Department Upsert(int id, DepartmentData data) => api.UpsertUserDepartment(id.ToString(), data);
+    protected override Department Upsert(Context<User, User> context, DepartmentData data) =>
+        api.UpsertUserDepartment(context.ParentId, data);
 
-    protected override Department[] Patch(int id, List<DepartmentData> data, string deleteNotExists) =>
-        api.PatchUserDepartments(id: id.ToString(),
+    protected override Department[] Patch(string id, List<DepartmentData> data, string deleteNotExists) =>
+        api.PatchUserDepartments(id: id,
             departmentsData: new DepartmentsData(departments: data.Select(i => i.ToDepartmentPatchData()).ToList()),
             deleteNotExists: deleteNotExists).Data.ToArray();
 
-    protected override Department Delete(string id, string subId, string name, string subName) =>
-        api.DeleteUserDepartment(id, subId, name: name, subName: subName);
+    protected override Department Delete(Context<User, User> context, string id, string name) =>
+        api.DeleteUserDepartment(context.ParentId, id, context.Parent.Id.Name, name);
 
     [Fact] public void Test_User_Department_List_ById() => Test_List_ById();
     //[Fact] public void Test_User_Department_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();

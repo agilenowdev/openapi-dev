@@ -41,4 +41,6 @@ public class Application1_TestData : TestData<Application1, ApplicationData1> {
     public static readonly string SystemApplication = "1A5219DA-27FB-4956-AAB1-D26A042DB9E0";
     public static readonly string ReadOnlyApplication = "780BCB73-1A61-4B18-BB36-6DACF32DBE1F";
     public static readonly string TestAppApplication = "46780811-3B6A-448B-9B6C-90794801B90F";
+
+    public static readonly string[] ApplicationsWithNoAccess = new[] { ReadOnlyApplication, TestAppApplication };
 }

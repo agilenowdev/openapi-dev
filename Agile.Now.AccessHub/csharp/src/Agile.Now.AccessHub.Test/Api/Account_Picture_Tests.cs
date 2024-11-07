@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using Agile.Now.AccessHub.Api;
 using Agile.Now.AccessHub.Model;
@@ -9,7 +10,7 @@ using Xunit;
 
 namespace Agile.Now.AccessHub.Test.Api;
 
-public class Account_Picture_Tests : SubEntityTests<Account, string, AccountInsertData, Picture, int, PictureData> {
+public class Account_Picture_Tests : SubEntityTests<Account, AccountInsertData, Picture, PictureData> {
     readonly AccountsApi api;
 
     public Account_Picture_Tests()
@@ -20,16 +21,16 @@ public class Account_Picture_Tests : SubEntityTests<Account, string, AccountInse
         api = new AccountsApi(Settings.Connections[0]);
     }
 
-    protected override List<Picture> List(
-        string id, string name, string filters, string orders, int currentPage, int pageSize) =>
+    protected override List<Picture> List(Context<Account, AccountInsertData> context, 
+        string filters, string orders, int currentPage, int pageSize) =>
 
-        api.ListAccountPictures(
-            id: id, name: name, filters: filters, orders: orders, currentPage: currentPage, pageSize: pageSize).Data;
+        api.ListAccountPictures(id: context.ParentId, name: context.Parent.Id.Name, 
+            filters: filters, orders: orders, currentPage: currentPage, pageSize: pageSize).Data;
 
     //protected override Picture Upsert(string id, PictureData data) => api.UpsertAccountPicture(id, data);
 
-    protected override Picture Delete(string id, string subId, string name, string subName) =>
-        api.DeleteAccountPicture(id, subId, subName: subName);
+    protected override Picture Delete(Context<Account, AccountInsertData> context, string id, string name) =>
+        api.DeleteAccountPicture(context.ParentId, id, context.Parent.Id.Name, name);
 
     //[Fact] public void Test_Account_Picture_List_ById() => Test_List_ById();
 

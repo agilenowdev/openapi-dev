@@ -9,14 +9,14 @@ using Xunit;
 
 namespace Agile.Now.AccessHub.Test.Api;
 
-public class AccessGroup_Tests : EntityTests<AccessGroup, string, AccessGroupInsertData> {
+public class AccessGroup_Tests : EntityTests<AccessGroup, AccessGroupInsertData> {
     readonly AccessGroupsApi api;
 
     public AccessGroup_Tests()
         : base(
             testData: new AccessGroup_TestData(),
             id: new(nameof(AccessGroup.Id), entity => entity.Id, (entity, id) => entity.Id = id),
-            uniqueAttributes: new Attribute<AccessGroup, string, AccessGroupInsertData>[] {
+            uniqueAttributes: new Attribute<AccessGroup, AccessGroupInsertData>[] {
                 new(nameof(AccessGroup.ExternalId), data => data.ExternalId, (data, value) => data.ExternalId = value),
                 new(nameof(AccessGroup.Name), data => data.Name, (data, value) => data.Name = value),
             }) {
@@ -24,17 +24,27 @@ public class AccessGroup_Tests : EntityTests<AccessGroup, string, AccessGroupIns
         api = new AccessGroupsApi(Settings.Connections[0]);
     }
 
-    protected override List<AccessGroup> List(string filters, string orders, int currentPage, int pageSize) =>
+    protected override List<AccessGroup> List(Context<AccessGroup, AccessGroupInsertData> context,
+        string filters, string orders, int currentPage, int pageSize) =>
+
         api.ListAccessGroups(filters: filters, orders: orders, currentPage: currentPage, pageSize: pageSize).Data;
 
-    protected override AccessGroup Get(string id, string name = default) => api.GetAccessGroup(id, name);
-    protected override AccessGroup Create(AccessGroupInsertData data) => api.CreateAccessGroup(data);
+    protected override AccessGroup Get(Context<AccessGroup, AccessGroupInsertData> context, string id, string name) =>
+        api.GetAccessGroup(id, name);
 
-    protected override AccessGroup Update(string id, AccessGroupInsertData data, string name) =>
+    protected override AccessGroup Create(Context<AccessGroup, AccessGroupInsertData> context, AccessGroupInsertData data) =>
+        api.CreateAccessGroup(data);
+
+    protected override AccessGroup Update(Context<AccessGroup, AccessGroupInsertData> context, 
+        string id, AccessGroupInsertData data, string name) =>
+
         api.UpdateAccessGroup(id, data.ToAccessGroupUpdateData(), name);
 
-    protected override AccessGroup Upsert(AccessGroupInsertData data) => api.UpsertAccessGroup(data.ToAccessGroupData());
-    protected override AccessGroup Delete(string id, string name = default) => api.DeleteAccessGroup(id, name);
+    protected override AccessGroup Upsert(Context<AccessGroup, AccessGroupInsertData> context, AccessGroupInsertData data) =>
+        api.UpsertAccessGroup(data.ToAccessGroupData());
+
+    protected override AccessGroup Delete(Context<AccessGroup, AccessGroupInsertData> context, string id, string name) =>
+        api.DeleteAccessGroup(id, name);
 
     [Fact] public void Test_AccessGroup_List_ById() => Test_List_ById();
     [Fact] public void Test_AccessGroup_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();
@@ -58,6 +68,7 @@ public class AccessGroup_Tests : EntityTests<AccessGroup, string, AccessGroupIns
 
     [Fact]
     public void Test_AccessGroup_Delete_IsSystem() {
-        Assert.ThrowsAny<Exception>(() => Delete(AccessGroup_TestData.SystemAccessGroup));
+        using var context = CreateContext();
+        Assert.ThrowsAny<Exception>(() => Delete(context, AccessGroup_TestData.SystemAccessGroup));
     }
 }

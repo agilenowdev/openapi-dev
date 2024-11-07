@@ -6,11 +6,12 @@ using Agile.Now.AccessHub.Model;
 using Agile.Now.AccessHub.Test.Common;
 using Agile.Now.Api.Test;
 using Agile.Now.ApiAccounts.Test.Api;
+using Polly;
 using Xunit;
 
 namespace Agile.Now.AccessHub.Test.Api;
 
-public class Account_Tests : EntityTests<Account, string, AccountInsertData> {
+public class Account_Tests : EntityTests<Account, AccountInsertData> {
     readonly AccountsApi api;
     readonly Tenant_TestData account_Tenant_TestData = new Tenant_TestData();
 
@@ -18,28 +19,34 @@ public class Account_Tests : EntityTests<Account, string, AccountInsertData> {
         : base(
             testData: new Account_TestData(),
             id: new(nameof(Account.Id), entity => entity.Id, (entity, id) => entity.Id = id),
-            uniqueAttributes: new Attribute<Account, string, AccountInsertData>[] {
+            uniqueAttributes: new Attribute<Account, AccountInsertData>[] {
                 new(nameof(Account.ExternalId), data => data.ExternalId, (data, value) => data.ExternalId = value),
                 new(nameof(Account.Username), data => data.Username, (data, value) => data.Username = value)
             }) {
         api = new AccountsApi(Settings.Connections[0]);
     }
 
-    protected override List<Account> List(
+    protected override List<Account> List(Context<Account, AccountInsertData> context,
         string filters, string orders = default, int currentPage = default, int pageSize = DefaultPageSize) =>
 
         api.ListAccounts(filters: filters, orders: orders, currentPage: currentPage, pageSize: pageSize).Data;
 
-    protected override Account Get(string id, string name = default) => api.GetAccount(id, name);
-    protected override Account Create(AccountInsertData data) => api.CreateAccount(data);
+    protected override Account Get(Context<Account, AccountInsertData> context, string id, string name) =>
+        api.GetAccount(id, name);
 
-    protected override Account Update(string id, AccountInsertData data, string name = default) =>
+    protected override Account Create(Context<Account, AccountInsertData> context, AccountInsertData data) => 
+        api.CreateAccount(data);
+
+    protected override Account Update(Context<Account, AccountInsertData> context, 
+        string id, AccountInsertData data, string name = default) =>
+
         api.UpdateAccount(id, data.ToAccountUpdateData(), name);
 
     protected override Account Upsert(AccountInsertData data) =>
         api.UpsertAccount(data.ToAccountData());
 
-    protected override Account Delete(string id, string name) => api.DeleteAccount(id, name);
+    protected override Account Delete(Context<Account, AccountInsertData> context, string id, string name) =>
+        api.DeleteAccount(id, name);
 
     [Fact] public void Test_Account_List_ById() => Test_List_ById();
     [Fact] public void Test_Account_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();
@@ -63,36 +70,40 @@ public class Account_Tests : EntityTests<Account, string, AccountInsertData> {
 
     [Fact]
     public void Test_Account_List_ExternalUser() {
-        var account = GenerateEntity();
+        using var context = CreateContext();
+        var account = GenerateEntity(context);
         try {
             api.UpsertAccountTenant(account.Id, account_Tenant_TestData.GenerateRequestData().First());
-            var existing = List(Id.CreateFilters(account));
+            var filters = CreateFilters(context, Id, account);
+            var existing = List(context, filters);
             Assert.NotEmpty(existing);
             api.DeleteAccountTenant(account.Id,
                 Tenant_TestData.DefaultTenant.ToString(), subName: nameof(TenantData.TenantId));
-            existing = List(Id.CreateFilters(account));
+            existing = List(context, filters);
             Assert.Empty(existing);
         }
         finally {
-            Delete(account);
+            Delete(context, account);
         }
     }
 
     [Fact]
     public void Test_Account_Get_ExternalUser() {
-        var account = GenerateEntity();
+        using var context = CreateContext();
+        var account = GenerateEntity(context);
         api.UpsertAccountTenant(account.Id, account_Tenant_TestData.GenerateRequestData().Skip(1).First());
-        Assert.Null(Record.Exception(() => Get(account.Id)));
+        Assert.Null(Record.Exception(() => Get(context, account.Id, Id.Name)));
         api.DeleteAccountTenant(account.Id,
             Tenant_TestData.DefaultTenant.ToString(), subName: nameof(TenantData.TenantId));
-        Assert.ThrowsAny<Exception>(() => Get(account.Id));
+        Assert.ThrowsAny<Exception>(() => Get(context, account.Id, Id.Name));
     }
 
     [Fact]
     public void Test_Account_Delete_ExternalUser() {
-        var account = GenerateEntity();
+        using var context = CreateContext();
+        var account = GenerateEntity(context);
         var externalTenant = api.UpsertAccountTenant(account.Id, account_Tenant_TestData.GenerateRequestData().Skip(1).First());
-        Assert.ThrowsAny<Exception>(() => Delete(account));
-        Assert.Null(Record.Exception(() => Get(account.Id)));
+        Assert.ThrowsAny<Exception>(() => Delete(null, account));
+        Assert.Null(Record.Exception(() => Get(context, account.Id, Id.Name)));
     }
 }

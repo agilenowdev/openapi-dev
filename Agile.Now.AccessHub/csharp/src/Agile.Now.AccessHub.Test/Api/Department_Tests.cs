@@ -10,14 +10,14 @@ using Xunit;
 
 namespace Agile.Now.AccessHub.Test.Api;
 
-public class Department_Tests : EntityTests<Department, string, DepartmentInsertData> {
+public class Department_Tests : EntityTests<Department, DepartmentInsertData> {
     readonly DepartmentsApi api;
 
     public Department_Tests()
         : base(
             testData: new Department_TestData(),
             id: new(nameof(Department.Id), entity => entity.Id, (entity, id) => entity.Id = id),
-            uniqueAttributes: new Attribute<Department, string, DepartmentInsertData>[] {
+            uniqueAttributes: new Attribute<Department, DepartmentInsertData>[] {
                 new(nameof(Department.ExternalId), data => data.ExternalId, (data, value) => data.ExternalId = value),
                 new(nameof(Department.Name), data => data.Name, (data, value) => data.Name = value)
             }) {
@@ -25,19 +25,27 @@ public class Department_Tests : EntityTests<Department, string, DepartmentInsert
         api = new DepartmentsApi(Settings.Connections[0]);
     }
 
-    protected override List<Department> List(string filters, string orders, int currentPage, int pageSize) =>
+    protected override List<Department> List(
+        Context<Department, DepartmentInsertData> context, string filters, string orders, int currentPage, int pageSize) =>
+
         api.ListDepartments(filters: filters, orders: orders, currentPage: currentPage, pageSize: pageSize).Data;
 
-    protected override Department Get(string id, string name) => api.GetDepartment(id, name);
-    protected override Department Create(DepartmentInsertData data) => api.CreateDepartment(data);
+    protected override Department Get(Context<Department, DepartmentInsertData> context, string id, string name) =>
+        api.GetDepartment(id, name);
 
-    protected override Department Update(string id, DepartmentInsertData data, string name = default) =>
+    protected override Department Create(Context<Department, DepartmentInsertData> context, DepartmentInsertData data) =>
+        api.CreateDepartment(data);
+
+    protected override Department Update(Context<Department, DepartmentInsertData> context, 
+        string id, DepartmentInsertData data, string name) =>
+
         api.UpdateDepartment(id, data.ToDepartmentUpdateData(), name);
 
     protected override Department Upsert(DepartmentInsertData data) =>
         api.UpsertDepartment(data.ToDepartmentData());
 
-    protected override Department Delete(string id, string name) => api.DeleteDepartment(id, name);
+    protected override Department Delete(Context<Department, DepartmentInsertData> context, string id, string name) =>
+        api.DeleteDepartment(id, name);
 
     [Fact] public void Test_Department_List_ById() => Test_List_ById();
     [Fact] public void Test_Department_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();
@@ -61,25 +69,26 @@ public class Department_Tests : EntityTests<Department, string, DepartmentInsert
 
     [Fact]
     public void Test_Department_Create_WithParentDepartment() {
-        var departmentWithoutParent = GenerateEntity();
+        using var context = CreateContext();
+        var departmentWithoutParent = GenerateEntity(context);
         try {
             var data = TestData.GenerateRequestData().First();
             data.ParentDepartmentId.Value = departmentWithoutParent.Id;
-            var departmentWithParent = Create(data);
+            var departmentWithParent = Create(context, data);
             try {
                 var updateData = data.ToDepartmentUpdateData();
                 updateData.IsActive = true;
                 api.UpdateDepartment(departmentWithParent.Id, updateData);
                 data = TestData.GenerateRequestData().First();
                 data.ParentDepartmentId.Value = departmentWithParent.Id;
-                Assert.ThrowsAny<Exception>(() => Create(data));
+                Assert.ThrowsAny<Exception>(() => Create(context, data));
             }
             finally {
-                Delete(departmentWithParent);
+                Delete(null, departmentWithParent);
             }
         }
         finally {
-            Delete(departmentWithoutParent);
+            Delete(null, departmentWithoutParent);
         }
     }
 }

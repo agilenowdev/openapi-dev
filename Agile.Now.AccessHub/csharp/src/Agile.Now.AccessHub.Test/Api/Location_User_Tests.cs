@@ -9,35 +9,36 @@ using Xunit;
 
 namespace Agile.Now.AccessHub.Test.Api;
 
-public class Location_User_Tests : SubEntityTests<Location, string, LocationInsertData, User, int, UserData> {
+public class Location_User_Tests : SubEntityTests<Location, LocationInsertData, User, UserData> {
     readonly LocationsApi api;
 
     public Location_User_Tests()
         : base(new Location_Tests(),
             testData: new User_TestData(),
-            id: new(nameof(User.Id), entity => entity.Id),
-            uniqueAttributes: new Attribute<User, string, UserData>[] {
+            id: new(nameof(User.Id), entity => entity.Id.ToString(), isString: false),
+            uniqueAttributes: new Attribute<User, UserData>[] {
                 new(nameof(User.ExternalId), data => data.ExternalId),
                 new(nameof(User.Username), data => data.Name) }) {
 
         api = new LocationsApi(Settings.Connections[0]);
     }
 
-    protected override List<User> List(
-        string id, string name, string filters, string orders, int currentPage, int pageSize) =>
+    protected override List<User> List(Context<Location, LocationInsertData> context, 
+        string filters, string orders, int currentPage, int pageSize) =>
 
-        api.ListLocationUsers(
-            id: id, name: name, filters: filters, orders: orders, currentPage: currentPage, pageSize: pageSize).Data;
+        api.ListLocationUsers(id: context.ParentId, name: context.Parent.Id.Name,
+            filters: filters, orders: orders, currentPage: currentPage, pageSize: pageSize).Data;
 
-    protected override User Upsert(string id, UserData data) => api.UpsertLocationUser(id, data);
+    protected override User Upsert(Context<Location, LocationInsertData> context, UserData data) =>
+        api.UpsertLocationUser(context.ParentId, data);
 
     protected override User[] Patch(string id, List<UserData> data, string deleteNotExists) =>
         api.PatchLocationUsers(id: id,
             usersData1: new UsersData1(users: data.Select(i => i.ToUserText1()).ToList()),
             deleteNotExists: deleteNotExists).Data.ToArray();
 
-    protected override User Delete(string id, string subId, string name, string subName) =>
-        api.DeleteLocationUser(id, subId, name: name, subName: subName);
+    protected override User Delete(Context<Location, LocationInsertData> context, string id, string name) =>
+        api.DeleteLocationUser(context.ParentId, id, context.Parent.Id.Name, name);
 
     [Fact] public void Test_Location_User_List_ById() => Test_List_ById();
     //[Fact] public void Test_Location_User_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();

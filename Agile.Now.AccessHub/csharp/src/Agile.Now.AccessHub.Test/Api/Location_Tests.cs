@@ -8,14 +8,14 @@ using Xunit;
 
 namespace Agile.Now.AccessHub.Test.Api;
 
-public class Location_Tests : EntityTests<Location, string, LocationInsertData> {
+public class Location_Tests : EntityTests<Location, LocationInsertData> {
     readonly LocationsApi api;
 
     public Location_Tests()
         : base(
             testData: new Location_TestData(),
             id: new(nameof(Location.Id), entity => entity.Id, (entity, id) => entity.Id = id),
-            uniqueAttributes: new Attribute<Location, string, LocationInsertData>[] {
+            uniqueAttributes: new Attribute<Location, LocationInsertData>[] {
                 new(nameof(Location.ExternalId), data => data.ExternalId, (data, value) => data.ExternalId = value),
                 new(nameof(Location.Name), data => data.Name, (data, value) => data.Name = value)
             }) {
@@ -23,18 +23,26 @@ public class Location_Tests : EntityTests<Location, string, LocationInsertData> 
         api = new LocationsApi(Settings.Connections[0]);
     }
 
-    protected override List<Location> List(string filters, string orders, int currentPage, int pageSize) =>
+    protected override List<Location> List(Context<Location, LocationInsertData> context,
+        string filters, string orders, int currentPage, int pageSize) =>
+
         api.ListLocations(filters: filters, orders: orders, currentPage: currentPage, pageSize: pageSize).Data;
 
-    protected override Location Get(string id, string name) => api.GetLocation(id, name);
-    protected override Location Create(LocationInsertData data) => api.CreateLocation(data);
+    protected override Location Get(Context<Location, LocationInsertData> context, string id, string name) =>
+        api.GetLocation(id, name);
 
-    protected override Location Update(string id, LocationInsertData data, string name) =>
+    protected override Location Create(Context<Location, LocationInsertData> context, LocationInsertData data) =>
+        api.CreateLocation(data);
+
+    protected override Location Update(Context<Location, LocationInsertData> context, 
+        string id, LocationInsertData data, string name)  =>
+
         api.UpdateLocation(id, data.ToLocationUpdateData(), name);
 
     protected override Location Upsert(LocationInsertData data) => api.UpsertLocation(data.ToLocationData());
 
-    protected override Location Delete(string id, string name) => api.DeleteLocation(id, name);
+    protected override Location Delete(Context<Location, LocationInsertData> context, string id, string name) =>
+        api.DeleteLocation(id, name);
 
     [Fact] public void Test_Location_List_ById() => Test_List_ById();
     [Fact] public void Test_Location_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();

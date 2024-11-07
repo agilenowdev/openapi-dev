@@ -7,7 +7,7 @@ using Xunit;
 
 namespace Agile.Now.Runtime.Test.Api;
 
-public class User_AccessRole_Tests : SubEntityTests<User, int, User, AccessRole, string, object> {
+public class User_AccessRole_Tests : SubEntityTests<User, User, AccessRole, object> {
     readonly UsersApi api;
 
     public User_AccessRole_Tests()
@@ -18,14 +18,16 @@ public class User_AccessRole_Tests : SubEntityTests<User, int, User, AccessRole,
         api = new UsersApi(Settings.Connections[0]);
     }
 
-    protected override List<AccessRole> List(string id, string name,
+    protected override List<AccessRole> List(Context<User, User> context,         
         string filters = default, string orders = default, int currentPage = default, int pageSize = DefaultPageSize) =>
 
-        api.ListUserAccessRoles(id.ToString()).Data;
+        api.ListUserAccessRoles(id: context.ParentId, name: context.Parent.Id.Name,
+            filters: filters, orders: orders, currentPage: currentPage, pageSize: pageSize).Data;
 
     [Fact]
     public void Test_User_AccessRole_Test_List_ById() {
-        var existing = List(User_TestData.UserWithAccessRoles.ToString(), Parent.Id.Name);
+        using var context = CreateContext();
+        var existing = List(context, User_TestData.UserWithAccessRoles.ToString(), Parent.Id.Name);
         Assert.NotEmpty(existing);
     }
 }
