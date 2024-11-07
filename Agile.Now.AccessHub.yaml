@@ -11010,8 +11010,8 @@ paths:
           \ attributes. If list is empty or &quot;*&quot; then all of fields will\
           \ be returned.\n\nThis method converts a string list to a string with a\
           \ comma separator.\n\nExample: \n```\nId, Name, RoleKey, FullName, Description,\
-          \ ExternalId, AccessApplicationId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn,\
-          \ ModifiedBy, CreatedBy, CreatedOn\n```"
+          \ ExternalId, AccessApplicationId, Is_Active, ModifiedOn, ModifiedBy, CreatedBy,\
+          \ CreatedOn\n```"
         explode: true
         in: query
         name: Fields
@@ -11022,8 +11022,8 @@ paths:
             \ attributes. If list is empty or &quot;*&quot; then all of fields will\
             \ be returned.\n\nThis method converts a string list to a string with\
             \ a comma separator.\n\nExample: \n```\nId, Name, RoleKey, FullName, Description,\
-            \ ExternalId, AccessApplicationId, Is_Active, Is_Custom, Is_ReadOnly,\
-            \ ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```"
+            \ ExternalId, AccessApplicationId, Is_Active, ModifiedOn, ModifiedBy,\
+            \ CreatedBy, CreatedOn\n```"
           type: string
         style: form
       - description: |
@@ -11894,8 +11894,8 @@ paths:
           \ attributes. If list is empty or &quot;*&quot; then all of fields will\
           \ be returned.\n\nThis method converts a string list to a string with a\
           \ comma separator.\n\nExample: \n```\nId, Name, RoleKey, FullName, Description,\
-          \ ExternalId, AccessApplicationId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn,\
-          \ ModifiedBy, CreatedBy, CreatedOn\n```"
+          \ ExternalId, AccessApplicationId, Is_Active, ModifiedOn, ModifiedBy, CreatedBy,\
+          \ CreatedOn\n```"
         explode: true
         in: query
         name: Fields
@@ -11906,8 +11906,8 @@ paths:
             \ attributes. If list is empty or &quot;*&quot; then all of fields will\
             \ be returned.\n\nThis method converts a string list to a string with\
             \ a comma separator.\n\nExample: \n```\nId, Name, RoleKey, FullName, Description,\
-            \ ExternalId, AccessApplicationId, Is_Active, Is_Custom, Is_ReadOnly,\
-            \ ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```"
+            \ ExternalId, AccessApplicationId, Is_Active, ModifiedOn, ModifiedBy,\
+            \ CreatedBy, CreatedOn\n```"
           type: string
         style: form
       - description: |
@@ -19897,20 +19897,18 @@ components:
           ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
           Id: 1234567891234567
           Name: Bob Normal
+        Is_Active: false
         ModifiedOn: 1900-01-01T00:00:00Z
+        FullName: FullName
         ExternalId: ExternalId
-        Is_ReadOnly: false
+        Id: Id
+        CreatedOn: 1900-01-01T00:00:00Z
         ModifiedBy:
           Type: User
           ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
           Id: 1234567891234567
           Name: Bob Normal
         Name: Name
-        Is_Custom: false
-        Is_Active: false
-        FullName: FullName
-        Id: Id
-        CreatedOn: 1900-01-01T00:00:00Z
       properties:
         Id:
           description: The identifier of the role
@@ -19937,17 +19935,6 @@ components:
           description: Defines if record is active
           example: false
           type: boolean
-        Is_Custom:
-          default: false
-          description: Determines whether the role has been modified externally or
-            whether it is synchronized from the OutSystems structure
-          example: false
-          type: boolean
-        Is_ReadOnly:
-          default: false
-          description: Determines whether the role is readonly and can be modified
-          example: false
-          type: boolean
         ModifiedOn:
           default: 1900-01-01T00:00:00Z
           description: The date the record was updated
@@ -19966,7 +19953,6 @@ components:
           type: string
       required:
       - Id
-      - Is_ReadOnly
       - RoleKey
       type: object
     Roles:
@@ -19985,20 +19971,18 @@ components:
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Id: 1234567891234567
             Name: Bob Normal
+          Is_Active: false
           ModifiedOn: 1900-01-01T00:00:00Z
+          FullName: FullName
           ExternalId: ExternalId
-          Is_ReadOnly: false
+          Id: Id
+          CreatedOn: 1900-01-01T00:00:00Z
           ModifiedBy:
             Type: User
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Id: 1234567891234567
             Name: Bob Normal
           Name: Name
-          Is_Custom: false
-          Is_Active: false
-          FullName: FullName
-          Id: Id
-          CreatedOn: 1900-01-01T00:00:00Z
         - RoleKey: RoleKey
           Description: Description
           CreatedBy:
@@ -20006,20 +19990,18 @@ components:
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Id: 1234567891234567
             Name: Bob Normal
+          Is_Active: false
           ModifiedOn: 1900-01-01T00:00:00Z
+          FullName: FullName
           ExternalId: ExternalId
-          Is_ReadOnly: false
+          Id: Id
+          CreatedOn: 1900-01-01T00:00:00Z
           ModifiedBy:
             Type: User
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Id: 1234567891234567
             Name: Bob Normal
           Name: Name
-          Is_Custom: false
-          Is_Active: false
-          FullName: FullName
-          Id: Id
-          CreatedOn: 1900-01-01T00:00:00Z
       properties:
         Meta:
           $ref: '#/components/schemas/Meta'
@@ -20033,22 +20015,11 @@ components:
       description: The record of Role information.
       example:
         RoleKey: RoleKey
-        Is_Custom: false
         Description: Description
         Is_Active: false
         FullName: FullName
         ExternalId: ExternalId
         Id: Id
-        Is_ReadOnly: false
-        ApplicationId:
-          Field: Field
-          Value: Value
-        RoleId:
-          Field: Field
-          Value: Value
-        EspaceId:
-          Field: Field
-          Value: Value
         Name: Name
       properties:
         Id:
@@ -20056,7 +20027,7 @@ components:
           type: string
         Name:
           description: Name of role. The value must be unique in the system and you
-            cannot add multiple values. The pattern of the value (/test/).
+            cannot add multiple values.
           type: string
         RoleKey:
           description: ' The key used to identify the role must be unique within each
@@ -20074,26 +20045,9 @@ components:
           description: The external system code of the role. The value must be unique
             in the system and you cannot add multiple values.
           type: string
-        RoleId:
-          $ref: '#/components/schemas/FieldType'
-        ApplicationId:
-          $ref: '#/components/schemas/FieldType'
-        EspaceId:
-          $ref: '#/components/schemas/FieldType'
         Is_Active:
           default: false
           description: Defines if record is active.
-          example: false
-          type: boolean
-        Is_Custom:
-          default: false
-          description: Determines whether the role has been modified externally or
-            whether it is synchronized from the OutSystems structure.
-          example: false
-          type: boolean
-        Is_ReadOnly:
-          default: false
-          description: Determines whether the role is readonly and can be modified.
           example: false
           type: boolean
       type: object
@@ -20102,30 +20056,28 @@ components:
       example:
         RoleKey: RoleKey
         Description: Description
+        AccessApplicationId:
+          Type: User
+          ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+          Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+          Name: Bob Normal
         CreatedBy:
           Type: User
           ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
           Id: 1234567891234567
           Name: Bob Normal
+        Is_Active: false
         ModifiedOn: 1900-01-01T00:00:00Z
+        FullName: FullName
         ExternalId: ExternalId
-        Is_ReadOnly: false
+        Id: Id
+        CreatedOn: 1900-01-01T00:00:00Z
         ModifiedBy:
           Type: User
           ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
           Id: 1234567891234567
           Name: Bob Normal
         Name: Name
-        Is_Custom: false
-        AccessApplicationId:
-          Type: User
-          ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-          Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-          Name: Bob Normal
-        Is_Active: false
-        FullName: FullName
-        Id: Id
-        CreatedOn: 1900-01-01T00:00:00Z
       properties:
         Id:
           description: The identifier of the role
@@ -20154,17 +20106,6 @@ components:
           description: Defines if record is active
           example: false
           type: boolean
-        Is_Custom:
-          default: false
-          description: Determines whether the role has been modified externally or
-            whether it is synchronized from the OutSystems structure
-          example: false
-          type: boolean
-        Is_ReadOnly:
-          default: false
-          description: Determines whether the role is readonly and can be modified
-          example: false
-          type: boolean
         ModifiedOn:
           default: 1900-01-01T00:00:00Z
           description: The date the record was updated
@@ -20183,7 +20124,6 @@ components:
           type: string
       required:
       - Id
-      - Is_ReadOnly
       - RoleKey
       type: object
     Roles1:
@@ -20197,56 +20137,52 @@ components:
         Data:
         - RoleKey: RoleKey
           Description: Description
+          AccessApplicationId:
+            Type: User
+            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Name: Bob Normal
           CreatedBy:
             Type: User
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Id: 1234567891234567
             Name: Bob Normal
+          Is_Active: false
           ModifiedOn: 1900-01-01T00:00:00Z
+          FullName: FullName
           ExternalId: ExternalId
-          Is_ReadOnly: false
+          Id: Id
+          CreatedOn: 1900-01-01T00:00:00Z
           ModifiedBy:
             Type: User
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Id: 1234567891234567
             Name: Bob Normal
           Name: Name
-          Is_Custom: false
-          AccessApplicationId:
-            Type: User
-            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-            Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-            Name: Bob Normal
-          Is_Active: false
-          FullName: FullName
-          Id: Id
-          CreatedOn: 1900-01-01T00:00:00Z
         - RoleKey: RoleKey
           Description: Description
+          AccessApplicationId:
+            Type: User
+            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
+            Name: Bob Normal
           CreatedBy:
             Type: User
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Id: 1234567891234567
             Name: Bob Normal
+          Is_Active: false
           ModifiedOn: 1900-01-01T00:00:00Z
+          FullName: FullName
           ExternalId: ExternalId
-          Is_ReadOnly: false
+          Id: Id
+          CreatedOn: 1900-01-01T00:00:00Z
           ModifiedBy:
             Type: User
             ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
             Id: 1234567891234567
             Name: Bob Normal
           Name: Name
-          Is_Custom: false
-          AccessApplicationId:
-            Type: User
-            ExternalId: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-            Id: 3ad64ab3-bd04-46c5-b1d7-c0b34be9e5b5
-            Name: Bob Normal
-          Is_Active: false
-          FullName: FullName
-          Id: Id
-          CreatedOn: 1900-01-01T00:00:00Z
       properties:
         Meta:
           $ref: '#/components/schemas/Meta'
@@ -20261,25 +20197,14 @@ components:
       example:
         RoleKey: RoleKey
         Description: Description
-        ExternalId: ExternalId
-        Is_ReadOnly: false
-        RoleId:
-          Field: Field
-          Value: Value
-        Name: Name
-        Is_Custom: false
         AccessApplicationId:
           Field: Field
           Value: Value
         Is_Active: false
         FullName: FullName
+        ExternalId: ExternalId
         Id: Id
-        ApplicationId:
-          Field: Field
-          Value: Value
-        EspaceId:
-          Field: Field
-          Value: Value
+        Name: Name
       properties:
         Id:
           description: The identifier of the role.
@@ -20305,26 +20230,9 @@ components:
           type: string
         AccessApplicationId:
           $ref: '#/components/schemas/FieldType'
-        RoleId:
-          $ref: '#/components/schemas/FieldType'
-        ApplicationId:
-          $ref: '#/components/schemas/FieldType'
-        EspaceId:
-          $ref: '#/components/schemas/FieldType'
         Is_Active:
           default: false
           description: Defines if record is active.
-          example: false
-          type: boolean
-        Is_Custom:
-          default: false
-          description: Determines whether the role has been modified externally or
-            whether it is synchronized from the OutSystems structure.
-          example: false
-          type: boolean
-        Is_ReadOnly:
-          default: false
-          description: Determines whether the role is readonly and can be modified.
           example: false
           type: boolean
       type: object

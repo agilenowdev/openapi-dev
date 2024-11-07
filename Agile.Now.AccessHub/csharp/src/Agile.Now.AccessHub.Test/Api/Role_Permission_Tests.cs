@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Agile.Now.AccessHub.Api;
 using Agile.Now.AccessHub.Model;
@@ -38,16 +39,24 @@ public class Role_Permission_Tests : SubEntityTests<Role1, string, RoleData1, Pe
     protected override Permission1 Delete(string id, string subId, string name, string subName) =>
         api.DeleteRolePermission(id, subId, name: name, subName: subName);
 
-    [Fact] public void Test_Role1_Permission_List_ById() => Test_List_ById();
-    //[Fact] public void Test_Role1_Permission_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();
-    [Fact] public void Test_Role1_Permission_List_Paging() => Test_List_Paging();
-    [Fact] public void Test_Role1_Permission_List_OrderAscending() => Test_List_OrderAscending();
-    [Fact] public void Test_Role1_Permission_List_OrderDecending() => Test_List_OrderDecending();
-
-    [Fact] public void Test_Role1_Permission_Upsert() => Test_Upsert();
+    [Fact] public void Test_Role_Permission_List_ById() => Test_List_ById();
+    //[Fact] public void Test_Role_Permission_List_ByUniqueAttributes() => Test_List_ByUniqueAttributes();
+    [Fact] public void Test_Role_Permission_List_Paging() => Test_List_Paging();
+    [Fact] public void Test_Role_Permission_List_OrderAscending() => Test_List_OrderAscending();
+    [Fact] public void Test_Role_Permission_List_OrderDecending() => Test_List_OrderDecending();
+    [Fact] public void Test_Role_Permission_Upsert() => Test_Upsert();
 
     [Fact]
-    public void Test_Role1_Permission_Patch() {
+    public void Test_Role_Permission_Upsert_ReadOnly_Custom() {
+        foreach(var i in new[] {
+            Role1_TestData.ReadOnlyRole,
+            Role1_TestData.CustomRole
+        })
+            Assert.ThrowsAny<Exception>(() => Upsert(i, TestData.GenerateRequestData().First()));
+    }
+
+    [Fact]
+    public void Test_Role_Permission_Patch() {
         var parentEntity = Parent.GenerateEntity();
         var id = Parent.Id.Get(parentEntity);
         try {
@@ -76,7 +85,7 @@ public class Role_Permission_Tests : SubEntityTests<Role1, string, RoleData1, Pe
     }
 
     //[Fact]
-    //public void Test_Role1_Permission_Patch_DeleteNotExists() {
+    //public void Test_Role_Permission_Patch_DeleteNotExists() {
     //    var parentEntity = Parent.GenerateEntity();
     //    var id = Parent.Id.Get(parentEntity);
     //    try {
@@ -97,6 +106,6 @@ public class Role_Permission_Tests : SubEntityTests<Role1, string, RoleData1, Pe
     //    }
     //}
 
-    [Fact] public void Test_Role1_Permission_Delete_ById() => Test_Delete_ById();
-    //[Fact] public void Test_Role1_Permission_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();
+    [Fact] public void Test_Role_Permission_Delete_ById() => Test_Delete_ById();
+    //[Fact] public void Test_Role_Permission_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();
 }

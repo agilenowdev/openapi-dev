@@ -56,18 +56,13 @@ namespace Agile.Now.AccessHub.Model
         /// Initializes a new instance of the <see cref="RoleData" /> class.
         /// </summary>
         /// <param name="id">The identifier of the role..</param>
-        /// <param name="name">Name of role. The value must be unique in the system and you cannot add multiple values. The pattern of the value (/test/)..</param>
+        /// <param name="name">Name of role. The value must be unique in the system and you cannot add multiple values..</param>
         /// <param name="roleKey"> The key used to identify the role must be unique within each workspace. The value must be unique in the system and you cannot add multiple values..</param>
         /// <param name="fullName">Full name of role. Example Application 1 \\ Espace 1 \\ Role 1..</param>
         /// <param name="description">The description of access group..</param>
         /// <param name="externalId">The external system code of the role. The value must be unique in the system and you cannot add multiple values..</param>
-        /// <param name="roleId">roleId.</param>
-        /// <param name="applicationId">applicationId.</param>
-        /// <param name="espaceId">espaceId.</param>
         /// <param name="isActive">Defines if record is active. (default to false).</param>
-        /// <param name="isCustom">Determines whether the role has been modified externally or whether it is synchronized from the OutSystems structure. (default to false).</param>
-        /// <param name="isReadOnly">Determines whether the role is readonly and can be modified. (default to false).</param>
-        public RoleData(string id = default, string name = default, string roleKey = default, string fullName = default, string description = default, string externalId = default, FieldType roleId = default, FieldType applicationId = default, FieldType espaceId = default, bool isActive = false, bool isCustom = false, bool isReadOnly = false)
+        public RoleData(string id = default, string name = default, string roleKey = default, string fullName = default, string description = default, string externalId = default, bool isActive = false)
         {
             Id = id;
             Name = name;
@@ -75,12 +70,7 @@ namespace Agile.Now.AccessHub.Model
             FullName = fullName;
             Description = description;
             ExternalId = externalId;
-            RoleId = roleId;
-            ApplicationId = applicationId;
-            EspaceId = espaceId;
             IsActive = isActive;
-            IsCustom = isCustom;
-            IsReadOnly = isReadOnly;
         }
 
         /// <summary>
@@ -91,9 +81,9 @@ namespace Agile.Now.AccessHub.Model
         public string Id { get; set; }
 
         /// <summary>
-        /// Name of role. The value must be unique in the system and you cannot add multiple values. The pattern of the value (/test/).
+        /// Name of role. The value must be unique in the system and you cannot add multiple values.
         /// </summary>
-        /// <value>Name of role. The value must be unique in the system and you cannot add multiple values. The pattern of the value (/test/).</value>
+        /// <value>Name of role. The value must be unique in the system and you cannot add multiple values.</value>
         [DataMember(Name = "Name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
@@ -126,46 +116,12 @@ namespace Agile.Now.AccessHub.Model
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// Gets or Sets RoleId
-        /// </summary>
-        [DataMember(Name = "RoleId", EmitDefaultValue = false)]
-        public FieldType RoleId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ApplicationId
-        /// </summary>
-        [DataMember(Name = "ApplicationId", EmitDefaultValue = false)]
-        public FieldType ApplicationId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets EspaceId
-        /// </summary>
-        [DataMember(Name = "EspaceId", EmitDefaultValue = false)]
-        public FieldType EspaceId { get; set; }
-
-        /// <summary>
         /// Defines if record is active.
         /// </summary>
         /// <value>Defines if record is active.</value>
         /// <example>false</example>
         [DataMember(Name = "Is_Active", EmitDefaultValue = true)]
         public bool IsActive { get; set; }
-
-        /// <summary>
-        /// Determines whether the role has been modified externally or whether it is synchronized from the OutSystems structure.
-        /// </summary>
-        /// <value>Determines whether the role has been modified externally or whether it is synchronized from the OutSystems structure.</value>
-        /// <example>false</example>
-        [DataMember(Name = "Is_Custom", EmitDefaultValue = true)]
-        public bool IsCustom { get; set; }
-
-        /// <summary>
-        /// Determines whether the role is readonly and can be modified.
-        /// </summary>
-        /// <value>Determines whether the role is readonly and can be modified.</value>
-        /// <example>false</example>
-        [DataMember(Name = "Is_ReadOnly", EmitDefaultValue = true)]
-        public bool IsReadOnly { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -181,12 +137,7 @@ namespace Agile.Now.AccessHub.Model
             sb.Append("  FullName: ").Append(FullName).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
-            sb.Append("  RoleId: ").Append(RoleId).Append("\n");
-            sb.Append("  ApplicationId: ").Append(ApplicationId).Append("\n");
-            sb.Append("  EspaceId: ").Append(EspaceId).Append("\n");
             sb.Append("  IsActive: ").Append(IsActive).Append("\n");
-            sb.Append("  IsCustom: ").Append(IsCustom).Append("\n");
-            sb.Append("  IsReadOnly: ").Append(IsReadOnly).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

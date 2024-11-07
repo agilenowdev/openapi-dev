@@ -67,13 +67,11 @@ namespace Agile.Now.AccessHub.Model
         /// <param name="description">The description of access group.</param>
         /// <param name="externalId">The external system code of the role.</param>
         /// <param name="isActive">Defines if record is active (default to false).</param>
-        /// <param name="isCustom">Determines whether the role has been modified externally or whether it is synchronized from the OutSystems structure (default to false).</param>
-        /// <param name="isReadOnly">Determines whether the role is readonly and can be modified (required) (default to false).</param>
         /// <param name="modifiedOn">The date the record was updated (default to &quot;1900-01-01T00:00Z&quot;).</param>
         /// <param name="modifiedBy">modifiedBy.</param>
         /// <param name="createdBy">createdBy.</param>
         /// <param name="createdOn">The date the record was created (default to &quot;1900-01-01T00:00Z&quot;).</param>
-        public Role(string id = default, string name = default, string roleKey = default, string fullName = default, string description = default, string externalId = default, bool isActive = false, bool isCustom = false, bool isReadOnly = false, DateTime modifiedOn = default, AbstractLong modifiedBy = default, AbstractLong createdBy = default, DateTime createdOn = default)
+        public Role(string id = default, string name = default, string roleKey = default, string fullName = default, string description = default, string externalId = default, bool isActive = false, DateTime modifiedOn = default, AbstractLong modifiedBy = default, AbstractLong createdBy = default, DateTime createdOn = default)
         {
             // to ensure "id" is required (not null)
             id = id ?? throw new ArgumentNullException("id is a required property for Role and cannot be null");
@@ -81,13 +79,11 @@ namespace Agile.Now.AccessHub.Model
             // to ensure "roleKey" is required (not null)
             roleKey = roleKey ?? throw new ArgumentNullException("roleKey is a required property for Role and cannot be null");
             RoleKey = roleKey;
-            IsReadOnly = isReadOnly;
             Name = name;
             FullName = fullName;
             Description = description;
             ExternalId = externalId;
             IsActive = isActive;
-            IsCustom = isCustom;
             ModifiedOn = modifiedOn;
             ModifiedBy = modifiedBy;
             CreatedBy = createdBy;
@@ -145,22 +141,6 @@ namespace Agile.Now.AccessHub.Model
         public bool IsActive { get; set; }
 
         /// <summary>
-        /// Determines whether the role has been modified externally or whether it is synchronized from the OutSystems structure
-        /// </summary>
-        /// <value>Determines whether the role has been modified externally or whether it is synchronized from the OutSystems structure</value>
-        /// <example>false</example>
-        [DataMember(Name = "Is_Custom", EmitDefaultValue = true)]
-        public bool IsCustom { get; set; }
-
-        /// <summary>
-        /// Determines whether the role is readonly and can be modified
-        /// </summary>
-        /// <value>Determines whether the role is readonly and can be modified</value>
-        /// <example>false</example>
-        [DataMember(Name = "Is_ReadOnly", IsRequired = true, EmitDefaultValue = true)]
-        public bool IsReadOnly { get; set; }
-
-        /// <summary>
         /// The date the record was updated
         /// </summary>
         /// <value>The date the record was updated</value>
@@ -203,8 +183,6 @@ namespace Agile.Now.AccessHub.Model
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  IsActive: ").Append(IsActive).Append("\n");
-            sb.Append("  IsCustom: ").Append(IsCustom).Append("\n");
-            sb.Append("  IsReadOnly: ").Append(IsReadOnly).Append("\n");
             sb.Append("  ModifiedOn: ").Append(ModifiedOn).Append("\n");
             sb.Append("  ModifiedBy: ").Append(ModifiedBy).Append("\n");
             sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");

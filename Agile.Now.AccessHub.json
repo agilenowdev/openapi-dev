@@ -5444,10 +5444,10 @@
           {
             "name": "Fields",
             "in": "query",
-            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, Is_Active, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```",
             "schema": {
               "type": "string",
-              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```"
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, Is_Active, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```"
             }
           },
           {
@@ -5879,10 +5879,10 @@
           {
             "name": "Fields",
             "in": "query",
-            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, Is_Active, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```",
             "schema": {
               "type": "string",
-              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```"
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, Is_Active, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```"
             }
           },
           {
@@ -12295,8 +12295,7 @@
       "Role": {
         "required": [
           "Id",
-          "RoleKey",
-          "Is_ReadOnly"
+          "RoleKey"
         ],
         "type": "object",
         "properties": {
@@ -12327,18 +12326,6 @@
           "Is_Active": {
             "type": "boolean",
             "description": "Defines if record is active",
-            "default": false,
-            "example": false
-          },
-          "Is_Custom": {
-            "type": "boolean",
-            "description": "Determines whether the role has been modified externally or whether it is synchronized from the OutSystems structure",
-            "default": false,
-            "example": false
-          },
-          "Is_ReadOnly": {
-            "type": "boolean",
-            "description": "Determines whether the role is readonly and can be modified",
             "default": false,
             "example": false
           },
@@ -12390,7 +12377,7 @@
           },
           "Name": {
             "type": "string",
-            "description": "Name of role. The value must be unique in the system and you cannot add multiple values. The pattern of the value (/test/)."
+            "description": "Name of role. The value must be unique in the system and you cannot add multiple values."
           },
           "RoleKey": {
             "type": "string",
@@ -12408,30 +12395,9 @@
             "type": "string",
             "description": "The external system code of the role. The value must be unique in the system and you cannot add multiple values."
           },
-          "RoleId": {
-            "$ref": "#/components/schemas/FieldType"
-          },
-          "ApplicationId": {
-            "$ref": "#/components/schemas/FieldType"
-          },
-          "EspaceId": {
-            "$ref": "#/components/schemas/FieldType"
-          },
           "Is_Active": {
             "type": "boolean",
             "description": "Defines if record is active.",
-            "default": false,
-            "example": false
-          },
-          "Is_Custom": {
-            "type": "boolean",
-            "description": "Determines whether the role has been modified externally or whether it is synchronized from the OutSystems structure.",
-            "default": false,
-            "example": false
-          },
-          "Is_ReadOnly": {
-            "type": "boolean",
-            "description": "Determines whether the role is readonly and can be modified.",
             "default": false,
             "example": false
           }
@@ -12441,8 +12407,7 @@
       "Role1": {
         "required": [
           "Id",
-          "RoleKey",
-          "Is_ReadOnly"
+          "RoleKey"
         ],
         "type": "object",
         "properties": {
@@ -12476,18 +12441,6 @@
           "Is_Active": {
             "type": "boolean",
             "description": "Defines if record is active",
-            "default": false,
-            "example": false
-          },
-          "Is_Custom": {
-            "type": "boolean",
-            "description": "Determines whether the role has been modified externally or whether it is synchronized from the OutSystems structure",
-            "default": false,
-            "example": false
-          },
-          "Is_ReadOnly": {
-            "type": "boolean",
-            "description": "Determines whether the role is readonly and can be modified",
             "default": false,
             "example": false
           },
@@ -12560,30 +12513,9 @@
           "AccessApplicationId": {
             "$ref": "#/components/schemas/FieldType"
           },
-          "RoleId": {
-            "$ref": "#/components/schemas/FieldType"
-          },
-          "ApplicationId": {
-            "$ref": "#/components/schemas/FieldType"
-          },
-          "EspaceId": {
-            "$ref": "#/components/schemas/FieldType"
-          },
           "Is_Active": {
             "type": "boolean",
             "description": "Defines if record is active.",
-            "default": false,
-            "example": false
-          },
-          "Is_Custom": {
-            "type": "boolean",
-            "description": "Determines whether the role has been modified externally or whether it is synchronized from the OutSystems structure.",
-            "default": false,
-            "example": false
-          },
-          "Is_ReadOnly": {
-            "type": "boolean",
-            "description": "Determines whether the role is readonly and can be modified.",
             "default": false,
             "example": false
           }

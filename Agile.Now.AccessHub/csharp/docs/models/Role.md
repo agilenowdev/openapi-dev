@@ -12,8 +12,6 @@ Name | Type | Description | Notes
 **Description** | **string** | The description of access group | [optional] 
 **ExternalId** | **string** | The external system code of the role | [optional] 
 **IsActive** | **bool** | Defines if record is active | [optional] [default to false]
-**IsCustom** | **bool** | Determines whether the role has been modified externally or whether it is synchronized from the OutSystems structure | [optional] [default to false]
-**IsReadOnly** | **bool** | Determines whether the role is readonly and can be modified | [default to false]
 **ModifiedOn** | **DateTime** | The date the record was updated | [optional] [default to "1900-01-01T00:00Z"]
 **ModifiedBy** | [**AbstractLong**](AbstractLong.md) | The AbstractLong object structure | [optional] 
 **CreatedBy** | [**AbstractLong**](AbstractLong.md) | The AbstractLong object structure | [optional] 

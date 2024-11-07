@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Agile.Now.AccessHub.Api;
 using Agile.Now.AccessHub.Model;
@@ -35,7 +36,7 @@ public class Application_Role_Tests : SubEntityTests<Application1, string, Appli
 
     protected override Role Upsert(string id, RoleData data) => api.UpsertApplicationRole(id, data);
 
-    protected override Role Delete(string id, string subId, string name, string subName) =>
+    protected override Role Delete(string id, string subId, string name = "Id", string subName = "Id") =>
         api.DeleteApplicationRole(id, subId, name: name, subName: subName);
 
     [Fact] public void Test_Application_Role_List_ById() => Test_List_ById();
@@ -45,6 +46,23 @@ public class Application_Role_Tests : SubEntityTests<Application1, string, Appli
     [Fact] public void Test_Application_Role_List_OrderDecending() => Test_List_OrderDecending();
 
     [Fact] public void Test_Application_Role_Upsert() => Test_Upsert();
+
+    [Fact]
+    public void Test_Application_Role_Upsert_ReadOnly_TestApp() {
+        foreach(var i in new[] {
+            Application1_TestData.ReadOnlyApplication,
+            Application1_TestData.TestAppApplication
+        })
+            Assert.ThrowsAny<Exception>(() => Upsert(i, TestData.GenerateRequestData().First()));
+    }
+
+    [Fact]
+    public void Test_Application_Role_Upsert_System() {
+        Assert.Null(Record.Exception(() => {
+            var created = Upsert(Application1_TestData.SystemApplication, TestData.GenerateRequestData().First());
+            Delete(Application1_TestData.SystemApplication, created.Id);
+        }));
+    }
 
     [Fact] public void Test_Application_Role_Delete_ById() => Test_Delete_ById();
     //[Fact] public void Test_Application_Role_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();

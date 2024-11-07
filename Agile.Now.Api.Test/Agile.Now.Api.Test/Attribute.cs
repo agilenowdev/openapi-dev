@@ -15,4 +15,6 @@ public class Attribute<TResponse, TId, TRequest> {
 
     public string CreateFilters(params TResponse[] entities) =>
         $"{Name} In {string.Join(GetSeparator(), entities.Select(i => Get(i)))}";
+
+    public string CreateFilters(params string[] ids) => $"Id In {string.Join(GetSeparator(), ids)}";
 }
