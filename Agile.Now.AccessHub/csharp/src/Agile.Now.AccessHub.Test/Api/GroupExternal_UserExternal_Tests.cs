@@ -32,8 +32,10 @@ public class GroupExternal_User_Tests : SubEntityTests<GroupExternal, GroupExter
     protected override UserExternal Upsert(Context<GroupExternal, GroupExternalData> context, UserExternalData data) =>
         api.UpsertGroupExternalUserExternal(context.ParentId, data);
 
-    protected override UserExternal[] Patch(string id, List<UserExternalData> data, string deleteNotExists) =>
-        api.PatchGroupExternalUserExternals(id: id,
+    protected override UserExternal[] Patch(Context<GroupExternal, GroupExternalData> context, 
+        UserExternalData[] data, string deleteNotExists) =>
+        
+        api.PatchGroupExternalUserExternals(context.ParentId,
             userExternalsData: new(userExternals: data.Select(i => i.ToUserExternalText()).ToList()),
             deleteNotExists: deleteNotExists).Data.ToArray();
 
@@ -49,7 +51,7 @@ public class GroupExternal_User_Tests : SubEntityTests<GroupExternal, GroupExter
     [Fact] public void Test_GroupExternal_User_Upsert() => Test_Upsert();
 
     [Fact] public void Test_GroupExternal_User_Patch() => Test_Patch();
-    //[Fact] public void Test_GroupExternal_User_Patch_DeleteNotExists() => Test_Patch_DeleteNotExists();
+    [Fact] public void Test_GroupExternal_User_Patch_DeleteNotExists() => Test_Patch_DeleteNotExists();
 
     [Fact] public void Test_GroupExternal_User_Delete_ById() => Test_Delete_ById();
     //[Fact] public void Test_GroupExternal_User_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();

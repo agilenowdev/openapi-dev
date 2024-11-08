@@ -26,8 +26,8 @@ public class User_EffectivePermission_Tests : SubEntityTests<User, User, Effecti
 
     [Fact]
     public void Test_User_EffectivePermission_Test_List_ById() {
-        using var context = CreateContext();
-        var existing = List(context, User_TestData.UserWithEffectivePermissions.ToString(), Parent.Id.Name);
+        using var context = CreateContext(User_TestData.UserWithEffectivePermissions.ToString());
+        var existing = List(context);
         Assert.NotEmpty(existing);
     }
 }

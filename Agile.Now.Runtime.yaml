@@ -140,8 +140,6 @@ paths:
       security:
       - OAuth2:
         - AccessManager:Read
-        - AccessUser:Read
-        - AccessUser:Read
       tags:
       - Users
   /Endpoint/rest/api/v1/Users:
@@ -364,8 +362,6 @@ paths:
       security:
       - OAuth2:
         - AccessManager:Read
-        - AccessUser:Read
-        - AccessUser:Read
       tags:
       - Users
   /Endpoint/rest/api/v1/User/{Id}/AccessGroups:
@@ -616,8 +612,6 @@ paths:
       security:
       - OAuth2:
         - AccessManager:Read
-        - AccessUser:Read
-        - AccessUser:Read
       tags:
       - Users
   /Endpoint/rest/api/v1/User/{Id}/AccessGroup:
@@ -754,8 +748,6 @@ paths:
       security:
       - OAuth2:
         - "AccessManager:Create, Update"
-        - "AccessUser:Create, Update"
-        - "AccessUser:Create, Update"
       tags:
       - Users
   /Endpoint/rest/api/v1/User/{Id}/AccessGroup/{SubId}:
@@ -905,8 +897,6 @@ paths:
       security:
       - OAuth2:
         - AccessManager:Delete
-        - AccessUser:Delete
-        - AccessUser:Delete
       tags:
       - Users
   /Endpoint/rest/api/v1/User/{Id}/Groups:
@@ -1155,8 +1145,158 @@ paths:
       security:
       - OAuth2:
         - AccessManager:Read
-        - AccessUser:Read
-        - AccessUser:Read
+      tags:
+      - Users
+    patch:
+      description: |-
+        Use the `GroupsData` object resource to insert or update (Upsert) a list of `GroupData` using `Id, UserId.Email, UserId.Username` field(s) value.
+
+        You can supply the required field values in the request data, and then use the `POST` method of the resource.
+
+        The input parameter must be used in the `GroupList` record structure as text fields in the foreign key fields.
+
+        Foreign key fields are: `User_Id, Group_Id`
+
+        ### Update a record of Group
+        * If the `UserId.Email, UserId.Username` field value is not empty and `Id` field value is empty, action try insert record according `UserId.Email, UserId.Username` field value (if set, the value is a unique identifier).
+
+        **Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.
+
+        ### Create a new record of Group
+        * If the value in the `UserId.Email, UserId.Username` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`GroupData`).
+
+        The response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `Group` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.
+      operationId: Patch User Groups
+      parameters:
+      - description: |-
+          The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
+
+          You can extract any string to a base64 string.
+          E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
+        explode: false
+        in: path
+        name: Id
+        required: true
+        schema:
+          description: |-
+            The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.
+
+            You can extract any string to a base64 string.
+            E.g email address name@domain.com value is base64\|bmFtZUBkb21haW4uY29t
+          type: string
+        style: simple
+      - description: "The name of the database field. If empty, the entity `Id` field\
+          \ is used.\n\nExample: \n```\nId\n```"
+        explode: true
+        in: query
+        name: Name
+        required: false
+        schema:
+          description: "The name of the database field. If empty, the entity `Id`\
+            \ field is used.\n\nExample: \n```\nId\n```"
+          type: string
+        style: form
+      - description: |-
+          The Delete not exists function delete orphan values from a table.
+
+          If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table.
+        explode: true
+        in: query
+        name: DeleteNotExists
+        required: false
+        schema:
+          default: "false"
+          description: |-
+            The Delete not exists function delete orphan values from a table.
+
+            If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table.
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupsData'
+        description: |-
+          The list of Group information to insert or update.
+
+          The input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.
+        required: true
+        x-bodyName: Data
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Groups'
+          description: "Inserted or updated list of Group information. \n"
+        "400":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The user has provided input that the browser is unable to convert.
+                - There are multiple rows in the database for the same value
+                - The value does not match the specified entity structure
+                - '...'
+                Type: /Errors/Bad Input
+                Title: Bad Request
+                StatusCode: 400
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request - The user has provided input that the browser
+            is unable to convert.
+        "401":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The session Id or OAuth token used has expired or is invalid.
+                Type: /Errors/Unauthorized
+                Title: Unauthorized
+                StatusCode: 401
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized - The response status code indicates that the
+            client request has not been completed because it lacks valid authentication
+            credentials for the requested resource.
+        "403":
+          content:
+            application/json:
+              example:
+                Errors:
+                - The user does not have access to execute operation
+                Type: /Errors/Permission
+                Title: Bad Request
+                StatusCode: 403
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden - The user does not have access to execute operation
+        "500":
+          content:
+            application/json:
+              example:
+                Errors:
+                - An internal server error is an error on the web server you're trying
+                  to access.
+                Type: /Errors/Internal Server Error
+                Title: Internal Server Error
+                StatusCode: 500
+                Instance: /OpenApi/rest/Xzy
+                RequestKey: 894ea43c-b8a6-4195-9a9c-82c07d9cc33a
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error - An internal server error is an error
+            on the web server you're trying to access.
+      security:
+      - OAuth2:
+        - "AccessManager:Create, Update"
       tags:
       - Users
   /Endpoint/rest/api/v1/User/{Id}/Group:
@@ -1293,8 +1433,6 @@ paths:
       security:
       - OAuth2:
         - "AccessManager:Create, Update"
-        - "AccessUser:Create, Update"
-        - "AccessUser:Create, Update"
       tags:
       - Users
   /Endpoint/rest/api/v1/User/{Id}/Group/{SubId}:
@@ -1444,8 +1582,6 @@ paths:
       security:
       - OAuth2:
         - AccessManager:Delete
-        - AccessUser:Delete
-        - AccessUser:Delete
       tags:
       - Users
   /Endpoint/rest/api/v1/User/{Id}/Departments:
@@ -1696,8 +1832,6 @@ paths:
       security:
       - OAuth2:
         - AccessManager:Read
-        - AccessUser:Read
-        - AccessUser:Read
       tags:
       - Users
     patch:
@@ -1850,8 +1984,6 @@ paths:
       security:
       - OAuth2:
         - "AccessManager:Create, Update"
-        - "AccessUser:Create, Update"
-        - "AccessUser:Create, Update"
       tags:
       - Users
   /Endpoint/rest/api/v1/User/{Id}/Department:
@@ -1988,8 +2120,6 @@ paths:
       security:
       - OAuth2:
         - "AccessManager:Create, Update"
-        - "AccessUser:Create, Update"
-        - "AccessUser:Create, Update"
       tags:
       - Users
   /Endpoint/rest/api/v1/User/{Id}/Department/{SubId}:
@@ -2139,8 +2269,6 @@ paths:
       security:
       - OAuth2:
         - AccessManager:Delete
-        - AccessUser:Delete
-        - AccessUser:Delete
       tags:
       - Users
   /Endpoint/rest/api/v1/User/{Id}/Locations:
@@ -2391,8 +2519,6 @@ paths:
       security:
       - OAuth2:
         - AccessManager:Read
-        - AccessUser:Read
-        - AccessUser:Read
       tags:
       - Users
     patch:
@@ -2545,8 +2671,6 @@ paths:
       security:
       - OAuth2:
         - "AccessManager:Create, Update"
-        - "AccessUser:Create, Update"
-        - "AccessUser:Create, Update"
       tags:
       - Users
   /Endpoint/rest/api/v1/User/{Id}/Location:
@@ -2683,8 +2807,6 @@ paths:
       security:
       - OAuth2:
         - "AccessManager:Create, Update"
-        - "AccessUser:Create, Update"
-        - "AccessUser:Create, Update"
       tags:
       - Users
   /Endpoint/rest/api/v1/User/{Id}/Location/{SubId}:
@@ -2834,8 +2956,6 @@ paths:
       security:
       - OAuth2:
         - AccessManager:Delete
-        - AccessUser:Delete
-        - AccessUser:Delete
       tags:
       - Users
   /Endpoint/rest/api/v1/User/{Id}/Applications:
@@ -3088,8 +3208,6 @@ paths:
       security:
       - OAuth2:
         - AccessManager:Read
-        - AccessUser:Read
-        - AccessUser:Read
       tags:
       - Users
   /Endpoint/rest/api/v1/User/{Id}/AccessRoles:
@@ -3342,8 +3460,6 @@ paths:
       security:
       - OAuth2:
         - AccessManager:Read
-        - AccessUser:Read
-        - AccessUser:Read
       tags:
       - Users
   /Endpoint/rest/api/v1/User/{Id}/EffectivePermissions:
@@ -3596,8 +3712,6 @@ paths:
       security:
       - OAuth2:
         - AccessManager:Read
-        - AccessUser:Read
-        - AccessUser:Read
       tags:
       - Users
 components:
@@ -4137,6 +4251,107 @@ components:
         Group_Id:
           $ref: '#/components/schemas/FieldType'
       type: object
+    GroupText:
+      description: The record of Group information.
+      example:
+        Group_Id: Group_Id
+      properties:
+        Group_Id:
+          type: string
+      type: object
+    GroupsData:
+      description: The data loading record of Group importing
+      example:
+        Extra:
+        - Pattern: Pattern
+          DefaultValue: DefaultValue
+          Min: Min
+          Required: false
+          Max: Max
+          Unique: false
+          FieldName: FieldName
+          Name: Name
+        - Pattern: Pattern
+          DefaultValue: DefaultValue
+          Min: Min
+          Required: false
+          Max: Max
+          Unique: false
+          FieldName: FieldName
+          Name: Name
+        IsFullValidation: false
+        Groups:
+        - Group_Id: Group_Id
+        - Group_Id: Group_Id
+      properties:
+        Extra:
+          description: List validation for entity attribute
+          items:
+            $ref: '#/components/schemas/ListValidation'
+          type: array
+        IsFullValidation:
+          default: false
+          description: "If the value is true, the data quality of all fields are checked.\
+            \ This has an effect on performance."
+          example: false
+          type: boolean
+        Groups:
+          description: The list of `Group` data record for import
+          items:
+            $ref: '#/components/schemas/GroupText'
+          type: array
+      type: object
+    ListValidation:
+      description: List validation for entity attribute
+      example:
+        Pattern: Pattern
+        DefaultValue: DefaultValue
+        Min: Min
+        Required: false
+        Max: Max
+        Unique: false
+        FieldName: FieldName
+        Name: Name
+      properties:
+        Name:
+          description: The name of the entity field.
+          type: string
+        FieldName:
+          description: "The field name of relation database table.\n\nExample; \n\
+            The field name is 'TenantId' and is associated with the 'Tenant' table.\
+            \ You want to use in the 'Tenant' table 'Name' field fetching data. Once\
+            \ 'Name' is specified, the validation service retrieves the tenant identifier\
+            \ from the 'Tenant' table based on the 'Name' field."
+          type: string
+        Required:
+          default: false
+          description: "If True, the value is required."
+          example: false
+          type: boolean
+        Unique:
+          default: false
+          description: "If True, the value must be unique in the database and you\
+            \ cannot add multiple values."
+          example: false
+          type: boolean
+        Max:
+          description: The max value of input value.
+          type: string
+        Min:
+          description: The min value of input value.
+          type: string
+        Pattern:
+          description: The pattern of the validation. Searches the input string for
+            an occurrence of a regular expression.
+          type: string
+        DefaultValue:
+          description: "The default value of row. If the value of the field is empty,\
+            \ the service automatically sets the value in the field. If the value\
+            \ does not match the data type, the value is cleaned. Remember data types."
+          type: string
+      required:
+      - Name
+      type: object
     Department:
       description: The record of Department information.
       example:
@@ -4352,57 +4567,6 @@ components:
           items:
             $ref: '#/components/schemas/DepartmentText'
           type: array
-      type: object
-    ListValidation:
-      description: List validation for entity attribute
-      example:
-        Pattern: Pattern
-        DefaultValue: DefaultValue
-        Min: Min
-        Required: false
-        Max: Max
-        Unique: false
-        FieldName: FieldName
-        Name: Name
-      properties:
-        Name:
-          description: The name of the entity field.
-          type: string
-        FieldName:
-          description: "The field name of relation database table.\n\nExample; \n\
-            The field name is 'TenantId' and is associated with the 'Tenant' table.\
-            \ You want to use in the 'Tenant' table 'Name' field fetching data. Once\
-            \ 'Name' is specified, the validation service retrieves the tenant identifier\
-            \ from the 'Tenant' table based on the 'Name' field."
-          type: string
-        Required:
-          default: false
-          description: "If True, the value is required."
-          example: false
-          type: boolean
-        Unique:
-          default: false
-          description: "If True, the value must be unique in the database and you\
-            \ cannot add multiple values."
-          example: false
-          type: boolean
-        Max:
-          description: The max value of input value.
-          type: string
-        Min:
-          description: The min value of input value.
-          type: string
-        Pattern:
-          description: The pattern of the validation. Searches the input string for
-            an occurrence of a regular expression.
-          type: string
-        DefaultValue:
-          description: "The default value of row. If the value of the field is empty,\
-            \ the service automatically sets the value in the field. If the value\
-            \ does not match the data type, the value is cleaned. Remember data types."
-          type: string
-      required:
-      - Name
       type: object
     Location:
       description: The record of Location information.
@@ -5066,8 +5230,6 @@ components:
           refreshUrl: https://dev.esystems.fi/oAuth/rest/v2/Token
           scopes:
             AccessManager:Read: Allows to edit access groups and all related data.
-              (ABAC) permissions required to perform a function.
-            AccessUser:Read: Allows to review access groups and all related data.
               (ABAC) permissions required to perform a function.
           tokenUrl: https://dev.esystems.fi/oAuth/rest/v2/Token
       type: oauth2

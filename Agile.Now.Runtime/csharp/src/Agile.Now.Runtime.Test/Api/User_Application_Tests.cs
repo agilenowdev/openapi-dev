@@ -26,8 +26,8 @@ public class User_Application_Tests : SubEntityTests<User, User, Application, ob
 
     [Fact]
     public void Test_User_Application_Test_List_ById() {
-        using var context = CreateContext();
-        var existing = List(context, User_TestData.UserWithApplications.ToString(), Parent.Id.Name);
+        using var context = CreateContext(User_TestData.UserWithApplications.ToString());
+        var existing = List(context);
         Assert.NotEmpty(existing);
     }
 }

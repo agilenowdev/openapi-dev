@@ -122,6 +122,7 @@ Class | Method | HTTP request | Description
 *UsersApi* | [**ListUserLocations**](docs/UsersApi.md#listuserlocations) | **GET** /Endpoint/rest/api/v1/User/{Id}/Locations | 
 *UsersApi* | [**ListUsers**](docs/UsersApi.md#listusers) | **GET** /Endpoint/rest/api/v1/Users | 
 *UsersApi* | [**PatchUserDepartments**](docs/UsersApi.md#patchuserdepartments) | **PATCH** /Endpoint/rest/api/v1/User/{Id}/Departments | 
+*UsersApi* | [**PatchUserGroups**](docs/UsersApi.md#patchusergroups) | **PATCH** /Endpoint/rest/api/v1/User/{Id}/Groups | 
 *UsersApi* | [**PatchUserLocations**](docs/UsersApi.md#patchuserlocations) | **PATCH** /Endpoint/rest/api/v1/User/{Id}/Locations | 
 *UsersApi* | [**UpsertUserAccessGroup**](docs/UsersApi.md#upsertuseraccessgroup) | **POST** /Endpoint/rest/api/v1/User/{Id}/AccessGroup | 
 *UsersApi* | [**UpsertUserDepartment**](docs/UsersApi.md#upsertuserdepartment) | **POST** /Endpoint/rest/api/v1/User/{Id}/Department | 
@@ -152,7 +153,9 @@ Class | Method | HTTP request | Description
  - [Model.FieldType](docs/models/FieldType.md)
  - [Model.Group](docs/models/Group.md)
  - [Model.GroupData](docs/models/GroupData.md)
+ - [Model.GroupText](docs/models/GroupText.md)
  - [Model.Groups](docs/models/Groups.md)
+ - [Model.GroupsData](docs/models/GroupsData.md)
  - [Model.ListValidation](docs/models/ListValidation.md)
  - [Model.Location](docs/models/Location.md)
  - [Model.LocationData](docs/models/LocationData.md)
@@ -177,5 +180,4 @@ Authentication schemes defined for the API:
 - **Authorization URL**: 
 - **Scopes**: 
   - AccessManager:Read: Allows to edit access groups and all related data. (ABAC) permissions required to perform a function.
-  - AccessUser:Read: Allows to review access groups and all related data. (ABAC) permissions required to perform a function.
 

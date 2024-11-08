@@ -31,9 +31,9 @@ public class User_Location_Tests : SubEntityTests<User, User, Location, Location
     protected override Location Upsert(Context<User, User> context, LocationData data) =>
         api.UpsertUserLocation(context.ParentId, data);
 
-    protected override Location[] Patch(string id, List<LocationData> data, string deleteNotExists) =>
-        api.PatchUserLocations(id: id,
-            locationsData: new LocationsData(locations: data.Select(i => i.ToLocationData()).ToList()),
+    protected override Location[] Patch(Context<User, User> context, LocationData[] data, string deleteNotExists) =>
+        api.PatchUserLocations(context.ParentId,
+            locationsData: new LocationsData(locations: data.Select(i => i.ToLocationText()).ToList()),
             deleteNotExists: deleteNotExists).Data.ToArray();
 
     protected override Location Delete(Context<User, User> context, string id, string name) =>

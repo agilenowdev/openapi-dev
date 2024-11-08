@@ -34,8 +34,10 @@ public class AccessGroup_Application_Tests
     protected override Application Upsert(Context<AccessGroup, AccessGroupInsertData> context, ApplicationData data) =>
         api.UpsertAccessGroupApplication(context.ParentId, data);
 
-    protected override Application[] Patch(string id, List<ApplicationData> data, string deleteNotExists) =>
-        api.PatchAccessGroupApplications(id: id,
+    protected override Application[] Patch(Context<AccessGroup, AccessGroupInsertData> context,
+        ApplicationData[] data, string deleteNotExists) =>
+
+        api.PatchAccessGroupApplications(context.ParentId,
             applicationsData: new(applications: data.Select(i => i.ToApplicationText()).ToList()),
             deleteNotExists: deleteNotExists).Data.ToArray();
 

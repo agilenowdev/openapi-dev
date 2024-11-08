@@ -47,31 +47,19 @@ public class Application_Role_Tests : SubEntityTests<Application1, ApplicationDa
     [Fact] public void Test_Application_Role_List_OrderDecending() => Test_List_OrderDecending();
 
     [Fact]
-    public void Test_Application_Role_List_NoAccess() =>
-        Test_List_SubEntities_NoAccess(Application1_TestData.ApplicationsWithNoAccess);
+    public void Test_Application_Role_List_ReadDenied() =>
+        Test_List_SubEntities_ReadDenied(Application1_TestData.ApplicationsReadDenied);
 
     [Fact] public void Test_Application_Role_Upsert() => Test_Upsert();
 
     [Fact]
-    public void Test_Application_Role_Upsert_ReadOnly_TestApp() {
-        foreach(var i in new[] {
-            Application1_TestData.ReadOnlyApplication,
-            Application1_TestData.TestAppApplication
-        }) {
-            using var context = CreateContext(i);
-            Assert.ThrowsAny<Exception>(() => Upsert(context, TestData.GenerateRequestData().First()));
-        }
-    }
-
-    [Fact]
-    public void Test_Application_Role_Upsert_System() {
-        using var context = CreateContext(Application1_TestData.SystemApplication);
-        Assert.Null(Record.Exception(() => {
-            var created = Upsert(context, TestData.GenerateRequestData().First());
-            Delete(context, Application1_TestData.SystemApplication, created.Id);
-        }));
-    }
+    public void Test_Application_Role_Upsert_WriteDenied() =>
+        Test_Upsert_SubEntities_WriteDenied(Application1_TestData.ApplicationsWriteDenied);
 
     [Fact] public void Test_Application_Role_Delete_ById() => Test_Delete_ById();
     //[Fact] public void Test_Application_Role_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();
+
+    [Fact]
+    public void Test_Application_Role_Delete_WriteDenied() =>
+        Test_Delete_SubEntities_WriteDenied(Application1_TestData.ApplicationsWriteDenied);
 }

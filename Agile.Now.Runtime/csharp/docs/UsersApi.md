@@ -18,6 +18,7 @@ All URIs are relative to *https://dev.esystems.fi*
 | [**ListUserLocations**](UsersApi.md#listuserlocations) | **GET** /Endpoint/rest/api/v1/User/{Id}/Locations |  |
 | [**ListUsers**](UsersApi.md#listusers) | **GET** /Endpoint/rest/api/v1/Users |  |
 | [**PatchUserDepartments**](UsersApi.md#patchuserdepartments) | **PATCH** /Endpoint/rest/api/v1/User/{Id}/Departments |  |
+| [**PatchUserGroups**](UsersApi.md#patchusergroups) | **PATCH** /Endpoint/rest/api/v1/User/{Id}/Groups |  |
 | [**PatchUserLocations**](UsersApi.md#patchuserlocations) | **PATCH** /Endpoint/rest/api/v1/User/{Id}/Locations |  |
 | [**UpsertUserAccessGroup**](UsersApi.md#upsertuseraccessgroup) | **POST** /Endpoint/rest/api/v1/User/{Id}/AccessGroup |  |
 | [**UpsertUserDepartment**](UsersApi.md#upsertuserdepartment) | **POST** /Endpoint/rest/api/v1/User/{Id}/Department |  |
@@ -1798,6 +1799,134 @@ catch (ApiException e)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Inserted or updated list of Department information.   |  -  |
+| **400** | Bad Request - The user has provided input that the browser is unable to convert. |  -  |
+| **401** | Unauthorized - The response status code indicates that the client request has not been completed because it lacks valid authentication credentials for the requested resource. |  -  |
+| **403** | Forbidden - The user does not have access to execute operation |  -  |
+| **500** | Internal Server Error - An internal server error is an error on the web server you&#39;re trying to access. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="patchusergroups"></a>
+# **PatchUserGroups**
+> Groups PatchUserGroups (string id, GroupsData groupsData, string name = null, string deleteNotExists = null)
+
+Use the `GroupsData` object resource to insert or update (Upsert) a list of `GroupData` using `Id, UserId.Email, UserId.Username` field(s) value.
+
+You can supply the required field values in the request data, and then use the `POST` method of the resource.
+
+The input parameter must be used in the `GroupList` record structure as text fields in the foreign key fields.
+
+Foreign key fields are: `User_Id, Group_Id`
+
+### Update a record of Group
+* If the `UserId.Email, UserId.Username` field value is not empty and `Id` field value is empty, action try insert record according `UserId.Email, UserId.Username` field value (if set, the value is a unique identifier).
+
+**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.
+
+### Create a new record of Group
+* If the value in the `UserId.Email, UserId.Username` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`GroupData`).
+
+The response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `Group` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Agile.Now.Runtime.Api;
+using Agile.Now.Runtime.Client;
+using Agile.Now.Runtime.Model;
+
+namespace Example
+{
+    public class PatchUserGroupsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://dev.esystems.fi";
+            // Configure OAuth2 access token for authorization: OAuth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new UsersApi(config);
+            var id = "id_example";  // string | The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t
+            var groupsData = new GroupsData(); // GroupsData | The list of Group information to insert or update.  The input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.
+            var name = "name_example";  // string | The name of the database field. If empty, the entity `Id` field is used.  Example:  ``` Id ``` (optional) 
+            var deleteNotExists = "\"false\"";  // string | The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. (optional)  (default to "false")
+
+            try
+            {
+                Groups result = apiInstance.PatchUserGroups(id, groupsData, name, deleteNotExists);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling UsersApi.PatchUserGroups: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+                Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+                Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+                Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+                Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+                // Human-readable explanation of the errors
+                Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the PatchUserGroupsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Groups> response = apiInstance.PatchUserGroupsWithHttpInfo(id, groupsData, name, deleteNotExists);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling UsersApi.PatchUserGroups: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);         // The HTTP response code
+    Debug.Print("Title: " + e.Error.Title);             // Brief, human-readable message about the error
+    Debug.Print("Type: " + e.Error.Type);               // URI identifier that categorizes the error
+    Debug.Print("Instance: " + e.Error.Instance);       // URI that identifies the specific occurrence of the error
+    Debug.Print("RequestKey: " + e.Error.RequestKey);   // Provides a request key that identifies the current request.
+    // Human-readable explanation of the errors
+    Debug.Print("Errors: " + string.Join(", ", e.Error.Errors));
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **id** | **string** | The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.  You can extract any string to a base64 string. E.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t |  |
+| **groupsData** | [**GroupsData**](models/GroupsData.md) | The list of Group information to insert or update.  The input parameter must be used in the &#x60;Extra&#x60; record array structure inside the &#x60;Name&#x60; and &#x60;FieldName&#x60; parameters in the foreign key fields. |  |
+| **name** | **string** | The name of the database field. If empty, the entity &#x60;Id&#x60; field is used.  Example:  &#x60;&#x60;&#x60; Id &#x60;&#x60;&#x60; | [optional]  |
+| **deleteNotExists** | **string** | The Delete not exists function delete orphan values from a table.  If you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table. | [optional] [default to &quot;false&quot;] |
+
+### Return type
+
+[**Groups**](models/Groups.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Inserted or updated list of Group information.   |  -  |
 | **400** | Bad Request - The user has provided input that the browser is unable to convert. |  -  |
 | **401** | Unauthorized - The response status code indicates that the client request has not been completed because it lacks valid authentication credentials for the requested resource. |  -  |
 | **403** | Forbidden - The user does not have access to execute operation |  -  |

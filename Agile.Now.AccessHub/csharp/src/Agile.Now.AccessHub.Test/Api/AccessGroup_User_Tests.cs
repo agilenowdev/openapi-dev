@@ -33,8 +33,10 @@ public class AccessGroup_User_Tests : SubEntityTests<AccessGroup, AccessGroupIns
     protected override User Upsert(Context<AccessGroup, AccessGroupInsertData> context, UserData data) =>
         api.UpsertAccessGroupUser(context.ParentId, data);
 
-    protected override User[] Patch(string id, List<UserData> data, string deleteNotExists) =>
-        api.PatchAccessGroupUsers(id: id,
+    protected override User[] Patch(Context<AccessGroup, AccessGroupInsertData> context, 
+        UserData[] data, string deleteNotExists)  =>
+
+        api.PatchAccessGroupUsers(context.ParentId,
             usersData: new UsersData(users: data.Select(i => i.ToUserText()).ToList()),
             deleteNotExists: deleteNotExists).Data.ToArray();
 

@@ -1934,7 +1934,7 @@ paths:
   /Endpoint/rest/api/v1/AccessGroup/{Id}:
     delete:
       description: |-
-        Use the query string resource to delete `AccessGroup` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id, Name, ExternalId` field(s) value and use the `DELETE` method of the resource to delete a record.
+        Use the query string resource to delete `AccessGroup` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id, Name` field(s) value and use the `DELETE` method of the resource to delete a record.
 
         Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 
@@ -1943,7 +1943,7 @@ paths:
         ### Delete a record of AccessGroup
         * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
         * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
-        * If the `Id, Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+        * If the `Id, Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
         The response body will contain the object of the deleted record if the call is successful.
       operationId: Delete AccessGroup
@@ -1966,14 +1966,14 @@ paths:
           type: string
         style: simple
       - description: "The name of the database field. If empty, the entity `Id` field\
-          \ is used.\n\nExample: \n```\nName,ExternalId\n```"
+          \ is used.\n\nExample: \n```\nName\n```"
         explode: true
         in: query
         name: Name
         required: false
         schema:
           description: "The name of the database field. If empty, the entity `Id`\
-            \ field is used.\n\nExample: \n```\nName,ExternalId\n```"
+            \ field is used.\n\nExample: \n```\nName\n```"
           type: string
         style: form
       responses:
@@ -2064,7 +2064,7 @@ paths:
         ### Get a record of AccessGroup
         * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.
         * If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
-        * If the `Id, Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+        * If the `Id, Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
       operationId: Get AccessGroup
       parameters:
       - description: |-
@@ -2085,14 +2085,14 @@ paths:
           type: string
         style: simple
       - description: "The name of the database field. If empty, the entity `Id` field\
-          \ is used.\n\nExample: \n```\nName,ExternalId\n```"
+          \ is used.\n\nExample: \n```\nName\n```"
         explode: true
         in: query
         name: Name
         required: false
         schema:
           description: "The name of the database field. If empty, the entity `Id`\
-            \ field is used.\n\nExample: \n```\nName,ExternalId\n```"
+            \ field is used.\n\nExample: \n```\nName\n```"
           type: string
         style: form
       responses:
@@ -2174,23 +2174,23 @@ paths:
       - AccessGroups
     put:
       description: "Use the `AccessGroupUpdateData` object resource to update `AccessGroup`\
-        \ using `Id, Name, ExternalId` field(s) value.\n\nProvide the updated record\
-        \ information in your request data and use the `PUT` method of the resource\
-        \ with a specific record ID to update that record. \n\nThe input parameter\
-        \ must be used in the `AccessGroupUpdateData` record structure inside the\
-        \ `FieldType` parameter in the foreign key fields.\n\nForeign key fields are:\
-        \ `AccessGroupTypeId, ModifiedBy, CreatedBy`\n\n### Update a record of AccessGroup\n\
-        * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not\
+        \ using `Id, Name` field(s) value.\n\nProvide the updated record information\
+        \ in your request data and use the `PUT` method of the resource with a specific\
+        \ record ID to update that record. \n\nThe input parameter must be used in\
+        \ the `AccessGroupUpdateData` record structure inside the `FieldType` parameter\
+        \ in the foreign key fields.\n\nForeign key fields are: `AccessGroupTypeId,\
+        \ ModifiedBy, CreatedBy`\n\n### Update a record of AccessGroup\n* If the `Id`\
+        \ field value is not matched, then a `404` error is reported (`Errors/Not\
         \ Found`), and the error record is returned.. You cannot change `Id` field\
         \ value (primary key).\n* If the `Id` field value is matched multiple times,\
         \ then a `400` error is reported (`Errors/Multible Rows`), and the error record\
-        \ is returned.\n* If the `Id, Name, ExternalId` field value is matched multiple\
-        \ times, then a `400` error is reported (`Errors/Multible Rows`), and the\
-        \ error record is returned.\n\nThe response body will contain the object of\
-        \ the updated record if the call is successful. Method returns an extended\
-        \ `AccessGroup` structure. Here, all foreign key fields are abstract object\
-        \ structures, utilizing `AbstractText` or `AbstractLong` data types, offering\
-        \ a detailed view of the data and related entities."
+        \ is returned.\n* If the `Id, Name` field value is matched multiple times,\
+        \ then a `400` error is reported (`Errors/Multible Rows`), and the error record\
+        \ is returned.\n\nThe response body will contain the object of the updated\
+        \ record if the call is successful. Method returns an extended `AccessGroup`\
+        \ structure. Here, all foreign key fields are abstract object structures,\
+        \ utilizing `AbstractText` or `AbstractLong` data types, offering a detailed\
+        \ view of the data and related entities."
       operationId: Update AccessGroup
       parameters:
       - description: |-
@@ -2211,14 +2211,14 @@ paths:
           type: string
         style: simple
       - description: "The name of the database field. If empty, the entity `Id` field\
-          \ is used.\n\nExample: \n```\nName,ExternalId\n```"
+          \ is used.\n\nExample: \n```\nName\n```"
         explode: true
         in: query
         name: Name
         required: false
         schema:
           description: "The name of the database field. If empty, the entity `Id`\
-            \ field is used.\n\nExample: \n```\nName,ExternalId\n```"
+            \ field is used.\n\nExample: \n```\nName\n```"
           type: string
         style: form
       requestBody:
@@ -2537,7 +2537,7 @@ paths:
   /Endpoint/rest/api/v1/AccessGroup:
     patch:
       description: |-
-        Use the `AccessGroupData` object resource to insert or update (Upsert) `AccessGroup` using `Id, Name, ExternalId` field(s) value.
+        Use the `AccessGroupData` object resource to insert or update (Upsert) `AccessGroup` using `Id, Name` field(s) value.
 
         You can supply the required field values in the request data, and then use the `POST` method of the resource.
 
@@ -2547,10 +2547,10 @@ paths:
 
         ### Update a record of AccessGroup
         * If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).
-        * If the `Name,ExternalId` field value is not empty and `Id` field value is empty, action try insert record according `Name,ExternalId` field value (if set, the value is a unique identifier).
+        * If the `Name` field value is not empty and `Id` field value is empty, action try insert record according `Name` field value (if set, the value is a unique identifier).
 
         ### Create a new record of AccessGroup
-        * If the value in the `Name,ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupData`).
+        * If the value in the `Name` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupData`).
 
         The response body will contain the object of the updated or created record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
       operationId: Upsert AccessGroup
@@ -2653,9 +2653,9 @@ paths:
         Foreign key fields are: `AccessGroupTypeId, ModifiedBy, CreatedBy`
 
         ### Create a new record of AccessGroup
-        * If the value in the `Id, Name, ExternalId` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupInsertData`).
-        * If the value in the `Name,ExternalId` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupInsertData`).
-        * If the `Id, Name, ExternalId` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
+        * If the value in the `Id, Name` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupInsertData`).
+        * If the value in the `Name` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`AccessGroupInsertData`).
+        * If the `Id, Name` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.
 
         The response body will contain the object of the created record if the call is successful. Method returns an extended `AccessGroup` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.
 

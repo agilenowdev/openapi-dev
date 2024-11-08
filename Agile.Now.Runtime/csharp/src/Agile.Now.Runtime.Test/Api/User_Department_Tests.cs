@@ -31,8 +31,8 @@ public class User_Department_Tests : SubEntityTests<User, User, Department, Depa
     protected override Department Upsert(Context<User, User> context, DepartmentData data) =>
         api.UpsertUserDepartment(context.ParentId, data);
 
-    protected override Department[] Patch(string id, List<DepartmentData> data, string deleteNotExists) =>
-        api.PatchUserDepartments(id: id,
+    protected override Department[] Patch(Context<User, User> context, DepartmentData[] data, string deleteNotExists) =>
+        api.PatchUserDepartments(context.ParentId,
             departmentsData: new DepartmentsData(departments: data.Select(i => i.ToDepartmentPatchData()).ToList()),
             deleteNotExists: deleteNotExists).Data.ToArray();
 

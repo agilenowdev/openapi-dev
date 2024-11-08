@@ -30,6 +30,6 @@ public class Location_TestData : TestData<Location, LocationData> {
 }
 
 public static class Location_TestData_Extensions {
-    public static LocationText ToLocationData(this LocationData locationData) =>
+    public static LocationText ToLocationText(this LocationData locationData) =>
         new LocationText(locationId: locationData.LocationId.Value);
 }

@@ -34,12 +34,13 @@ public class Location_Tests : EntityTests<Location, LocationInsertData> {
     protected override Location Create(Context<Location, LocationInsertData> context, LocationInsertData data) =>
         api.CreateLocation(data);
 
-    protected override Location Update(Context<Location, LocationInsertData> context, 
-        string id, LocationInsertData data, string name)  =>
+    protected override Location Update(Context<Location, LocationInsertData> context,
+        string id, LocationInsertData data, string name) =>
 
         api.UpdateLocation(id, data.ToLocationUpdateData(), name);
 
-    protected override Location Upsert(LocationInsertData data) => api.UpsertLocation(data.ToLocationData());
+    protected override Location Upsert(Context<Location, LocationInsertData> context, LocationInsertData data) =>
+        api.UpsertLocation(data.ToLocationData());
 
     protected override Location Delete(Context<Location, LocationInsertData> context, string id, string name) =>
         api.DeleteLocation(id, name);

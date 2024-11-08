@@ -42,7 +42,7 @@ public class Account_Tests : EntityTests<Account, AccountInsertData> {
 
         api.UpdateAccount(id, data.ToAccountUpdateData(), name);
 
-    protected override Account Upsert(AccountInsertData data) =>
+    protected override Account Upsert(Context<Account, AccountInsertData> context, AccountInsertData data) =>
         api.UpsertAccount(data.ToAccountData());
 
     protected override Account Delete(Context<Account, AccountInsertData> context, string id, string name) =>
@@ -53,20 +53,6 @@ public class Account_Tests : EntityTests<Account, AccountInsertData> {
     [Fact] public void Test_Account_List_Paging() => Test_List_Paging();
     [Fact] public void Test_Account_List_OrderAscending() => Test_List_OrderAscending();
     [Fact] public void Test_Account_List_OrderDecending() => Test_List_OrderDecending();
-
-    [Fact] public void Test_Account_Get_ById() => Test_Get_ById();
-    [Fact] public void Test_Account_Get_ByUniqueAttributes() => Test_Get_ByUniqueAttributes();
-
-    [Fact] public void Test_Account_Create() => Test_Create();
-    [Fact] public void Test_Account_Create_WithUniqueAttributes() => Test_Create_WithUniqueAttributes();
-
-    [Fact] public void Test_Account_Update() => Test_Update_ById();
-    [Fact] public void Test_Account_Update_ByUniqueAttributes() => Test_Update_ByUniqueAttributes();
-
-    [Fact] public void Test_Account_Upsert() => Test_Upsert();
-
-    [Fact] public void Test_Account_Delete_ById() => Test_Delete_ById();
-    [Fact] public void Test_Account_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();
 
     [Fact]
     public void Test_Account_List_ExternalUser() {
@@ -87,6 +73,9 @@ public class Account_Tests : EntityTests<Account, AccountInsertData> {
         }
     }
 
+    [Fact] public void Test_Account_Get_ById() => Test_Get_ById();
+    [Fact] public void Test_Account_Get_ByUniqueAttributes() => Test_Get_ByUniqueAttributes();
+
     [Fact]
     public void Test_Account_Get_ExternalUser() {
         using var context = CreateContext();
@@ -97,6 +86,17 @@ public class Account_Tests : EntityTests<Account, AccountInsertData> {
             Tenant_TestData.DefaultTenant.ToString(), subName: nameof(TenantData.TenantId));
         Assert.ThrowsAny<Exception>(() => Get(context, account.Id, Id.Name));
     }
+
+    [Fact] public void Test_Account_Create() => Test_Create();
+    [Fact] public void Test_Account_Create_WithUniqueAttributes() => Test_Create_WithUniqueAttributes();
+
+    [Fact] public void Test_Account_Update() => Test_Update_ById();
+    [Fact] public void Test_Account_Update_ByUniqueAttributes() => Test_Update_ByUniqueAttributes();
+
+    [Fact] public void Test_Account_Upsert() => Test_Upsert();
+
+    [Fact] public void Test_Account_Delete_ById() => Test_Delete_ById();
+    [Fact] public void Test_Account_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();
 
     [Fact]
     public void Test_Account_Delete_ExternalUser() {

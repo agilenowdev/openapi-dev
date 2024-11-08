@@ -21,3 +21,8 @@ public class Group_TestData : TestData<Group, GroupData> {
     public override IEnumerable<GroupData> GenerateRequestData() =>
         Groups.Select(i => new GroupData(groupId: new("Id", i.ToString())));
 }
+
+public static class Group_TestData_Extensions {
+    public static GroupText ToGroupText(this GroupData groupData) =>
+        new GroupText(groupId: groupData.GroupId.Value);
+}

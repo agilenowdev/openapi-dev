@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Agile.Now.Api.Test;
 using Agile.Now.Runtime.Api;
 using Agile.Now.Runtime.Model;
@@ -22,7 +23,7 @@ public class User_Group_Tests : SubEntityTests<User, User, Group, GroupData> {
 
     protected override string EntityName => "Group_";
 
-    protected override List<Group> List(Context<User, User> context, 
+    protected override List<Group> List(Context<User, User> context,
         string filters, string orders, int currentPage, int pageSize) =>
 
         api.ListUserGroups(id: context.ParentId, name: context.Parent.Id.Name,
@@ -30,6 +31,11 @@ public class User_Group_Tests : SubEntityTests<User, User, Group, GroupData> {
 
     protected override Group Upsert(Context<User, User> context, GroupData data) =>
         api.UpsertUserGroup(context.ParentId, data);
+
+    protected override Group[] Patch(Context<User, User> context, GroupData[] data, string deleteNotExists) =>
+        api.PatchUserGroups(context.ParentId,
+            groupsData: new GroupsData(groups: data.Select(i => i.ToGroupText()).ToList()),
+            deleteNotExists: deleteNotExists).Data.ToArray();
 
     protected override Group Delete(Context<User, User> context, string id, string name) =>
         api.DeleteUserGroup(context.ParentId, id, context.Parent.Id.Name, name);
@@ -41,6 +47,9 @@ public class User_Group_Tests : SubEntityTests<User, User, Group, GroupData> {
     [Fact] public void Test_User_Group_List_OrderDecending() => Test_List_OrderDecending();
 
     [Fact] public void Test_User_Group_Upsert() => Test_Upsert();
+
+    [Fact] public void Test_User_Group_Patch() => Test_Patch();
+    [Fact] public void Test_User_Group_Patch_DeleteNotExists() => Test_Patch_DeleteNotExists();
 
     [Fact] public void Test_User_Group_Delete_ById() => Test_Delete_ById();
     //[Fact] public void Test_User_Group_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();

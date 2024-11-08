@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using Agile.Now.AccessHub.Api;
 using Agile.Now.AccessHub.Model;
 using Agile.Now.AccessHub.Test.Common;
@@ -43,7 +41,9 @@ public class Application_Tests : EntityTests<Application1, ApplicationData1> {
 
         api.UpdateApplication(id, data, name);
 
-    protected override Application1 Upsert(ApplicationData1 data) => api.UpsertApplication(data);
+    protected override Application1 Upsert(Context<Application1, ApplicationData1> context, ApplicationData1 data) =>
+        api.UpsertApplication(data);
+
     protected override Application1 Delete(Context<Application1, ApplicationData1> context, string id, string name) =>
         api.DeleteApplication(id, name);
 
@@ -52,11 +52,11 @@ public class Application_Tests : EntityTests<Application1, ApplicationData1> {
     [Fact] public void Test_Application_List_Paging() => Test_List_Paging();
     [Fact] public void Test_Application_List_OrderAscending() => Test_List_OrderAscending();
     [Fact] public void Test_Application_List_OrderDecending() => Test_List_OrderDecending();
-    [Fact] public void Test_Application_List_NoAccess() => Test_List_NoAccess(Application1_TestData.ApplicationsWithNoAccess);
+    [Fact] public void Test_Application_List_ReadDenied() => Test_List_ReadDenied(Application1_TestData.ApplicationsReadDenied);
 
     [Fact] public void Test_Application_Get_ById() => Test_Get_ById();
     [Fact] public void Test_Application_Get_ByUniqueAttributes() => Test_Get_ByUniqueAttributes();
-    [Fact] public void Test_Application_Get_NoAccess() => Test_Get_NoAccess(Application1_TestData.ApplicationsWithNoAccess);
+    [Fact] public void Test_Application_Get_ReadDenied() => Test_Get_ReadDenied(Application1_TestData.ApplicationsReadDenied);
 
     [Fact] public void Test_Application_Create() => Test_Create();
     [Fact] public void Test_Application_Create_WithUniqueAttributes() => Test_Create_WithUniqueAttributes();
@@ -64,30 +64,12 @@ public class Application_Tests : EntityTests<Application1, ApplicationData1> {
     [Fact] public void Test_Application_Update() => Test_Update_ById();
     [Fact] public void Test_Application_Update_ByUniqueAttributes() => Test_Update_ByUniqueAttributes();
 
-    [Fact]
-    public void Test_Application_Update_ReadOnly_TestApp_System() {
-        using var context = CreateContext();
-        foreach(var i in new[] {
-            Application1_TestData.ReadOnlyApplication,
-            Application1_TestData.TestAppApplication,
-            Application1_TestData.SystemApplication
-        })
-            Assert.ThrowsAny<Exception>(() => Update(context, i, TestData.GenerateRequestData().First(), Id.Name));
-    }
-
     [Fact] public void Test_Application_Upsert() => Test_Upsert();
 
     [Fact] public void Test_Application_Delete_ById() => Test_Delete_ById();
     [Fact] public void Test_Application_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();
 
     [Fact]
-    public void Test_Application_Delete_ReadOnly_TestApp_System() {
-        using var context = CreateContext();
-        foreach(var i in new[] {
-            Application1_TestData.ReadOnlyApplication,
-            Application1_TestData.TestAppApplication,
-            Application1_TestData.SystemApplication
-        })
-            Assert.ThrowsAny<Exception>(() => Delete(context, i));
-    }
+    public void Test_Application_Delete_WriteDenied() =>
+        Test_Delete_WriteDenied(Application1_TestData.ApplicationsWriteDenied);
 }

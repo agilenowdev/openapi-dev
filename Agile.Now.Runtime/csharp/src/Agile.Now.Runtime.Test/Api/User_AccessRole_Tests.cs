@@ -26,8 +26,8 @@ public class User_AccessRole_Tests : SubEntityTests<User, User, AccessRole, obje
 
     [Fact]
     public void Test_User_AccessRole_Test_List_ById() {
-        using var context = CreateContext();
-        var existing = List(context, User_TestData.UserWithAccessRoles.ToString(), Parent.Id.Name);
+        using var context = CreateContext(User_TestData.UserWithAccessRoles.ToString());
+        var existing = List(context);
         Assert.NotEmpty(existing);
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Agile.Now.AccessHub.Api;
 using Agile.Now.AccessHub.Model;
@@ -35,7 +34,7 @@ public class AccessGroup_Tests : EntityTests<AccessGroup, AccessGroupInsertData>
     protected override AccessGroup Create(Context<AccessGroup, AccessGroupInsertData> context, AccessGroupInsertData data) =>
         api.CreateAccessGroup(data);
 
-    protected override AccessGroup Update(Context<AccessGroup, AccessGroupInsertData> context, 
+    protected override AccessGroup Update(Context<AccessGroup, AccessGroupInsertData> context,
         string id, AccessGroupInsertData data, string name) =>
 
         api.UpdateAccessGroup(id, data.ToAccessGroupUpdateData(), name);
@@ -65,10 +64,5 @@ public class AccessGroup_Tests : EntityTests<AccessGroup, AccessGroupInsertData>
 
     [Fact] public void Test_AccessGroup_Delete_ById() => Test_Delete_ById();
     [Fact] public void Test_AccessGroup_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();
-
-    [Fact]
-    public void Test_AccessGroup_Delete_IsSystem() {
-        using var context = CreateContext();
-        Assert.ThrowsAny<Exception>(() => Delete(context, AccessGroup_TestData.SystemAccessGroup));
-    }
+    [Fact] public void Test_AccessGroup_Delete_WriteDenied() => Test_Delete_WriteDenied(AccessGroup_TestData.SystemAccessGroup);
 }

@@ -43,5 +43,6 @@ public class Role1_TestData : TestData<Role1, RoleData1> {
     public static readonly string ReadOnlyRole = "41E20BDD-CD75-42CF-B23B-B5136BE897B4";
     public static readonly string CustomRole = "E0E66277-877B-490C-9F48-0C0D0D767ECF";
 
-    public static readonly string[] RolesWithNoAccess = new[] { ReadOnlyRole, CustomRole };
+    public static readonly string[] RolesReadDenied = new[] { ReadOnlyRole, CustomRole };
+    public static readonly string[] RolesWriteDenied = RolesReadDenied;
 }

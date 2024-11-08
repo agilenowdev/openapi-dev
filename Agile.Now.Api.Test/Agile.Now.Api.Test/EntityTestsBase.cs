@@ -18,7 +18,7 @@ public abstract class EntityTestsBase<TParentResponse, TParentRequest, TResponse
     }
 
     protected virtual string EntityName => typeof(TResponse).Name;
-    protected bool NoCleanUp;
+    public bool IsCleanUp { get; init; } = true;
     protected const int DefaultPageSize = 50;
 
     string GetSubName(Context<TParentResponse, TParentRequest> context, Attribute<TResponse, TRequest> attribute) {
@@ -65,10 +65,13 @@ public abstract class EntityTestsBase<TParentResponse, TParentRequest, TResponse
 
     protected virtual TResponse Upsert(Context<TParentResponse, TParentRequest> context, TRequest data) => default;
 
-    protected abstract TResponse Create2(Context<TParentResponse, TParentRequest> context, TRequest request);
+    protected virtual TResponse[] Patch(Context<TParentResponse, TParentRequest> context,
+        TRequest[] data, string deleteNotExists) => default;
+
+    protected abstract TResponse CreateInternal(Context<TParentResponse, TParentRequest> context, TRequest request);
 
     public TResponse[] GenerateEntities(Context<TParentResponse, TParentRequest> context, int count) =>
-        TestData.GenerateRequestData().Take(count).Select(i => Create2(context, i)).ToArray();
+        TestData.GenerateRequestData().Take(count).Select(i => CreateInternal(context, i)).ToArray();
 
     public TResponse GenerateEntity(Context<TParentResponse, TParentRequest> context) => GenerateEntities(context, 1).First();
 
@@ -91,7 +94,7 @@ public abstract class EntityTestsBase<TParentResponse, TParentRequest, TResponse
             }
         }
         finally {
-            if(!NoCleanUp)
+            if(IsCleanUp)
                 Delete(context, created);
         }
     }
@@ -114,7 +117,8 @@ public abstract class EntityTestsBase<TParentResponse, TParentRequest, TResponse
             Assert.Equal(created.Length, pages[0].Concat(pages[1]).GroupBy(i => Id.Get(i)).Count());
         }
         finally {
-            Delete(context, created);
+            if(IsCleanUp)
+                Delete(context, created);
         }
     }
 
@@ -129,20 +133,21 @@ public abstract class EntityTestsBase<TParentResponse, TParentRequest, TResponse
             Assert.True(actual.Select(i => Id.Get(i)).SequenceEqual(expected));
         }
         finally {
-            Delete(context, created);
+            if(IsCleanUp)
+                Delete(context, created);
         }
     }
 
     public void Test_List_OrderAscending() => Test_List_Order(x => x.Order(), "ASC");
     public void Test_List_OrderDecending() => Test_List_Order(x => x.OrderDescending(), "DESC");
 
-    public void Test_List_NoAccess(params string[] ids) {
+    public void Test_List_ReadDenied(params string[] ids) {
         using var context = CreateContext();
         var existing = List(context, filters: CreateFilters(context, Id, ids));
         Assert.Empty(existing);
     }
 
-    public void Test_List_SubEntities_NoAccess(params string[] parentIds) {
+    public void Test_List_SubEntities_ReadDenied(params string[] parentIds) {
         foreach(var i in parentIds) {
             using var context = CreateContext(i);
             Assert.ThrowsAny<Exception>(() => List(context));
@@ -168,7 +173,7 @@ public abstract class EntityTestsBase<TParentResponse, TParentRequest, TResponse
     public void Test_Get_ById() => Test_Get(Id);
     public void Test_Get_ByUniqueAttributes() => Test_Get(UniqueAttributes);
 
-    public void Test_Get_NoAccess(params string[] ids) {
+    public void Test_Get_ReadDenied(params string[] ids) {
         using var context = CreateContext();
         foreach(var i in ids)
             Assert.ThrowsAny<Exception>(() => Get(context, i, Id.Name));
@@ -227,7 +232,7 @@ public abstract class EntityTestsBase<TParentResponse, TParentRequest, TResponse
             }
         }
         finally {
-            Delete(null, created);
+            Delete(context, created);
         }
     }
 
@@ -246,8 +251,84 @@ public abstract class EntityTestsBase<TParentResponse, TParentRequest, TResponse
             }
         }
         finally {
-            if(!NoCleanUp)
-                Delete(null, created);
+            if(IsCleanUp)
+                Delete(context, created);
+        }
+    }
+
+    public void Test_Upsert_SubEntities_WriteDenied(params string[] parentIds) {
+        foreach(var i in parentIds) {
+            using var context = CreateContext(i);
+            Assert.ThrowsAny<Exception>(() => Upsert(context, TestData.GenerateRequestData().First()));
+        }
+    }
+
+    public void Test_Patch() {
+        using var context = CreateContext();
+        var data = TestData.GenerateRequestData().Take(3).ToArray();
+        var created = data.Take(2).Select(i => Upsert(context, i)).ToArray();
+        try {
+            var patched = Patch(context, data.Skip(1).Take(2).ToArray(), null);
+            created = created.UnionBy(patched, i => Id.Get(i)).ToArray();
+            try {
+                var existing = List(context, CreateFilters(context, Id, created));
+                AssertCollectionsEqual(existing, created);
+            }
+            finally {
+                Delete(context, created);
+                created = null;
+            }
+        }
+        finally {
+            if(created != null)
+                Delete(context, created);
+        }
+    }
+
+    public void Test_Patch_DeleteNotExists() {
+        using var context = CreateContext();
+        var data = TestData.GenerateRequestData().Take(2).ToArray();
+        var created = data.Take(1).Select(i => Upsert(context, i)).ToArray();
+        try {
+            var patched = Patch(context, data.Skip(1).Take(1).ToArray(), true.ToString());
+            var existing = List(context);
+            AssertCollectionsEqual(existing, patched);
+            created = patched;
+        }
+        finally {
+            Delete(context, created);
+        }
+    }
+
+    public void Test_Delete_ById() {
+        using var context = CreateContext();
+        var created = GenerateEntity(context);
+        var deleted = Delete(context, Id.Get(created), GetSubName(context, Id));
+        TestData.AssertEqualToResponse(created, deleted);
+        var existing = List(context, CreateFilters(context, Id, Id.Get(created)));
+        Assert.Empty(existing);
+    }
+
+    public void Test_Delete_ByUniqueAttributes() {
+        using var context = CreateContext();
+        foreach(var i in UniqueAttributes) {
+            var created = GenerateEntity(context);
+            Delete(context, i.Get(created), i.Name);
+            var existing = List(context, CreateFilters(context, Id, Id.Get(created)));
+            Assert.Empty(existing);
+        }
+    }
+
+    public void Test_Delete_WriteDenied(params string[] ids) {
+        using var context = CreateContext();
+        foreach(var i in ids)
+            Assert.ThrowsAny<Exception>(() => Delete(context, i, GetSubName(context, Id)));
+    }
+
+    public void Test_Delete_SubEntities_WriteDenied(params string[] parentIds) {
+        foreach(var i in parentIds) {
+            using var context = CreateContext(i);
+            Assert.ThrowsAny<Exception>(() => Delete(context, i, GetSubName(context, Id)));
         }
     }
 }

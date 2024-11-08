@@ -12,7 +12,7 @@ public class Context<TParentResponse, TParentRequest> : IDisposable {
         ParentId = parentId;
         if(ParentId == null) {
             ParentId = Parent.Id.Get(parent.GenerateEntity(null));
-            IsCleanUp = true;
+            IsCleanUp = Parent.IsCleanUp;
         }
     }
 

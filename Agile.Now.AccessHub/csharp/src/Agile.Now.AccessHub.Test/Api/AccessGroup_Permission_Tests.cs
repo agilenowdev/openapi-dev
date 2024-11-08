@@ -32,8 +32,10 @@ public class AccessGroup_Permission_Tests : SubEntityTests<AccessGroup, AccessGr
     protected override Permission Upsert(Context<AccessGroup, AccessGroupInsertData> context, PermissionData data) =>
         api.UpsertAccessGroupPermission(context.ParentId, data);
 
-    protected override Permission[] Patch(string id, List<PermissionData> data, string deleteNotExists) =>
-        api.PatchAccessGroupPermissions(id: id,
+    protected override Permission[] Patch(Context<AccessGroup, AccessGroupInsertData> context,
+        PermissionData[] data, string deleteNotExists) =>
+
+        api.PatchAccessGroupPermissions(context.ParentId,
             permissionsData: new(permissions: data.Select(i => i.ToPermissionText()).ToList()),
             deleteNotExists: deleteNotExists).Data.ToArray();
 
@@ -52,27 +54,4 @@ public class AccessGroup_Permission_Tests : SubEntityTests<AccessGroup, AccessGr
 
     [Fact] public void Test_AccessGroup_Permission_Delete_ById() => Test_Delete_ById();
     //[Fact] public void Test_AccessGroup_Permission_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();
-
-    [Fact]
-    public void Test_AccessGroup_Permission_Patch() {
-        using var context = CreateContext();
-        var data = TestData.GenerateRequestData().Take(3).ToArray();
-        var created = data.Take(2).Select(i => Upsert(context, i)).ToArray();
-        try {
-            var patched = Patch(context.ParentId, data.Skip(2).Take(1).ToList(), null);
-            created = created.UnionBy(patched, i => Id.Get(i)).ToArray();
-            try {
-                var existing = List(context, EntityName + CreateFilters(context, Id, created));
-                AssertCollectionsEqual(existing, created);
-            }
-            finally {
-                Delete(context, created);
-                created = null;
-            }
-        }
-        finally {
-            if(created != null)
-                Delete(context, created);
-        }
-    }
 }

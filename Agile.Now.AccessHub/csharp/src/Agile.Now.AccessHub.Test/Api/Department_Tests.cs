@@ -41,7 +41,7 @@ public class Department_Tests : EntityTests<Department, DepartmentInsertData> {
 
         api.UpdateDepartment(id, data.ToDepartmentUpdateData(), name);
 
-    protected override Department Upsert(DepartmentInsertData data) =>
+    protected override Department Upsert(Context<Department, DepartmentInsertData> context, DepartmentInsertData data) =>
         api.UpsertDepartment(data.ToDepartmentData());
 
     protected override Department Delete(Context<Department, DepartmentInsertData> context, string id, string name) =>

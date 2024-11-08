@@ -41,12 +41,14 @@ public class GroupExternal_Tests : EntityTests<GroupExternal, GroupExternalData>
 
         api.UpdateGroupExternal(id, data, name);
 
-    protected override GroupExternal Upsert(GroupExternalData data) =>
+    protected override GroupExternal Upsert(Context<GroupExternal, GroupExternalData> context, GroupExternalData data) =>
         api.UpsertGroupExternal(data);
 
-    protected override IEnumerable<GroupExternal> Patch(List<GroupExternalData> data, string deleteNotExists) =>
+    protected override GroupExternal[] Patch(Context<GroupExternal, GroupExternalData> context, 
+        GroupExternalData[] data, string deleteNotExists) =>
+
         api.PatchGroupExternals(new GroupExternalsData(
-            groupExternals: data.Select(i => i.ToGroupExternalText()).ToList())).Data;
+            groupExternals: data.Select(i => i.ToGroupExternalText()).ToList())).Data.ToArray();
 
     protected override GroupExternal Delete(Context<GroupExternal, GroupExternalData> context, string id, string name) =>
         api.DeleteGroupExternal(id, name);
