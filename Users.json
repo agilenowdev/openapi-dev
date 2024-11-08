@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.178"
+    "version": "3.0.179"
   },
   "servers": [
     {
@@ -537,6 +537,87 @@
           {
             "OAuth2": [
               "AccessManager:Read"
+            ]
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Use the `GroupsData` object resource to insert or update (Upsert) a list of `GroupData` using `Id, UserId.Email, UserId.Username` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `GroupList` record structure as text fields in the foreign key fields.\n\nForeign key fields are: `User_Id, Group_Id`\n\n### Update a record of Group\n* If the `UserId.Email, UserId.Username` field value is not empty and `Id` field value is empty, action try insert record according `UserId.Email, UserId.Username` field value (if set, the value is a unique identifier).\n\n**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.\n\n### Create a new record of Group\n* If the value in the `UserId.Email, UserId.Username` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`GroupData`).\n\nThe response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `Group` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.",
+        "operationId": "Patch User Groups",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```",
+            "schema": {
+              "type": "string",
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nId\n```"
+            }
+          },
+          {
+            "name": "DeleteNotExists",
+            "in": "query",
+            "description": "The Delete not exists function delete orphan values from a table.\n\nIf you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table.",
+            "schema": {
+              "type": "string",
+              "description": "The Delete not exists function delete orphan values from a table.\n\nIf you specify value, you do not need to manually delete orphan rows from the table, the service retrieves the result set and if it is not found from the json string, then delete orphan rows from the table.",
+              "default": "false"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The list of Group information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GroupsData"
+              }
+            }
+          },
+          "required": true,
+          "x-bodyName": "Data"
+        },
+        "responses": {
+          "200": {
+            "description": "Inserted or updated list of Group information. \n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Groups"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "AccessManager:Create, Update"
             ]
           }
         ]
@@ -2080,6 +2161,86 @@
         },
         "description": "The record of Group information."
       },
+      "GroupText": {
+        "type": "object",
+        "properties": {
+          "Group_Id": {
+            "type": "string"
+          }
+        },
+        "description": "The record of Group information."
+      },
+      "GroupsData": {
+        "type": "object",
+        "properties": {
+          "Extra": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ListValidation"
+            },
+            "description": "List validation for entity attribute"
+          },
+          "IsFullValidation": {
+            "type": "boolean",
+            "description": "If the value is true, the data quality of all fields are checked. This has an effect on performance.",
+            "default": false,
+            "example": false
+          },
+          "Groups": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GroupText"
+            },
+            "description": "The list of `Group` data record for import"
+          }
+        },
+        "description": "The data loading record of Group importing"
+      },
+      "ListValidation": {
+        "required": [
+          "Name"
+        ],
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string",
+            "description": "The name of the entity field."
+          },
+          "FieldName": {
+            "type": "string",
+            "description": "The field name of relation database table.\n\nExample; \nThe field name is 'TenantId' and is associated with the 'Tenant' table. You want to use in the 'Tenant' table 'Name' field fetching data. Once 'Name' is specified, the validation service retrieves the tenant identifier from the 'Tenant' table based on the 'Name' field."
+          },
+          "Required": {
+            "type": "boolean",
+            "description": "If True, the value is required.",
+            "default": false,
+            "example": false
+          },
+          "Unique": {
+            "type": "boolean",
+            "description": "If True, the value must be unique in the database and you cannot add multiple values.",
+            "default": false,
+            "example": false
+          },
+          "Max": {
+            "type": "string",
+            "description": "The max value of input value."
+          },
+          "Min": {
+            "type": "string",
+            "description": "The min value of input value."
+          },
+          "Pattern": {
+            "type": "string",
+            "description": "The pattern of the validation. Searches the input string for an occurrence of a regular expression."
+          },
+          "DefaultValue": {
+            "type": "string",
+            "description": "The default value of row. If the value of the field is empty, the service automatically sets the value in the field. If the value does not match the data type, the value is cleaned. Remember data types."
+          }
+        },
+        "description": "List validation for entity attribute"
+      },
       "Department": {
         "required": [
           "Id",
@@ -2215,51 +2376,6 @@
           }
         },
         "description": "The data loading record of Department importing"
-      },
-      "ListValidation": {
-        "required": [
-          "Name"
-        ],
-        "type": "object",
-        "properties": {
-          "Name": {
-            "type": "string",
-            "description": "The name of the entity field."
-          },
-          "FieldName": {
-            "type": "string",
-            "description": "The field name of relation database table.\n\nExample; \nThe field name is 'TenantId' and is associated with the 'Tenant' table. You want to use in the 'Tenant' table 'Name' field fetching data. Once 'Name' is specified, the validation service retrieves the tenant identifier from the 'Tenant' table based on the 'Name' field."
-          },
-          "Required": {
-            "type": "boolean",
-            "description": "If True, the value is required.",
-            "default": false,
-            "example": false
-          },
-          "Unique": {
-            "type": "boolean",
-            "description": "If True, the value must be unique in the database and you cannot add multiple values.",
-            "default": false,
-            "example": false
-          },
-          "Max": {
-            "type": "string",
-            "description": "The max value of input value."
-          },
-          "Min": {
-            "type": "string",
-            "description": "The min value of input value."
-          },
-          "Pattern": {
-            "type": "string",
-            "description": "The pattern of the validation. Searches the input string for an occurrence of a regular expression."
-          },
-          "DefaultValue": {
-            "type": "string",
-            "description": "The default value of row. If the value of the field is empty, the service automatically sets the value in the field. If the value does not match the data type, the value is cleaned. Remember data types."
-          }
-        },
-        "description": "List validation for entity attribute"
       },
       "Location": {
         "required": [
