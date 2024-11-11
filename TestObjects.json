@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.49"
+    "version": "3.0.50"
   },
   "servers": [
     {
@@ -22,7 +22,7 @@
         "tags": [
           "Objects"
         ],
-        "description": "The method returns one record of the `Object`.\n\nMethod returns an extended `Object` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `LanguageId, ModifiedBy, CreatedBy`\n\n### Get a record of Object\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.",
+        "description": "The method returns one record of the `Object`.\n\nMethod returns an extended `Object` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `LanguageId, ModifiedBy, CreatedBy`\n\n### Get a record of Object\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id, Title` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.",
         "operationId": "Get Object",
         "parameters": [
           {
@@ -38,10 +38,10 @@
           {
             "name": "Name",
             "in": "query",
-            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\n\n```",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nTitle\n```",
             "schema": {
               "type": "string",
-              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\n\n```"
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nTitle\n```"
             }
           }
         ],
@@ -74,7 +74,7 @@
         "tags": [
           "Objects"
         ],
-        "description": "Use the `ObjectData` object resource to update `Object` using `Id` field(s) value.\n\nProvide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record. \n\nThe input parameter must be used in the `ObjectData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `LanguageId, ModifiedBy, CreatedBy`\n\n### Update a record of Object\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the updated record if the call is successful. Method returns an extended `Object` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "description": "Use the `ObjectData` object resource to update `Object` using `Id, Title` field(s) value.\n\nProvide the updated record information in your request data and use the `PUT` method of the resource with a specific record ID to update that record. \n\nThe input parameter must be used in the `ObjectData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `LanguageId, ModifiedBy, CreatedBy`\n\n### Update a record of Object\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id, Title` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the updated record if the call is successful. Method returns an extended `Object` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
         "operationId": "Update Object",
         "parameters": [
           {
@@ -90,10 +90,10 @@
           {
             "name": "Name",
             "in": "query",
-            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\n\n```",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nTitle\n```",
             "schema": {
               "type": "string",
-              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\n\n```"
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nTitle\n```"
             }
           }
         ],
@@ -138,7 +138,7 @@
         "tags": [
           "Objects"
         ],
-        "description": "Use the query string resource to delete `Object` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `Object` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `LanguageId, ModifiedBy, CreatedBy`\n\n### Delete a record of Object\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
+        "description": "Use the query string resource to delete `Object` record. The method contains two parameters `Id` and `Name`. Specify the record `{Id}`, `Name` using `Id, Title` field(s) value and use the `DELETE` method of the resource to delete a record.\n\nMethod returns an extended `Object` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\nForeign key fields are: `LanguageId, ModifiedBy, CreatedBy`\n\n### Delete a record of Object\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n* If the `Id, Title` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the deleted record if the call is successful.",
         "operationId": "Delete Object",
         "parameters": [
           {
@@ -154,10 +154,10 @@
           {
             "name": "Name",
             "in": "query",
-            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\n\n```",
+            "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nTitle\n```",
             "schema": {
               "type": "string",
-              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\n\n```"
+              "description": "The name of the database field. If empty, the entity `Id` field is used.\n\nExample: \n```\nTitle\n```"
             }
           }
         ],
@@ -276,7 +276,7 @@
         "tags": [
           "Objects"
         ],
-        "description": "Use the `ObjectData` object resource to insert or update (Upsert) `Object` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `ObjectData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `LanguageId, ModifiedBy, CreatedBy`\n\n### Update a record of Object\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n### Create a new record of Object\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`ObjectData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Object` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
+        "description": "Use the `ObjectData` object resource to insert or update (Upsert) `Object` using `Id, Title` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `ObjectData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `LanguageId, ModifiedBy, CreatedBy`\n\n### Update a record of Object\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned.. You cannot change `Id` field value (primary key).\n* If the `Title` field value is not empty and `Id` field value is empty, action try insert record according `Title` field value (if set, the value is a unique identifier).\n\n### Create a new record of Object\n* If the value in the `Title` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`ObjectData`).\n\nThe response body will contain the object of the updated or created record if the call is successful. Method returns an extended `Object` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.",
         "operationId": "Upsert Object",
         "requestBody": {
           "description": "`Object` information to insert or update.\n\nThe input parameter must be used in the `ObjectData` record structure inside the `FieldType` parameter in the foreign key fields.",
@@ -319,7 +319,7 @@
         "tags": [
           "Objects"
         ],
-        "description": "Use the `ObjectData` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `ObjectData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `LanguageId, ModifiedBy, CreatedBy`\n\n### Create a new record of Object\n* If the value in the `Id` fields are empty then action insert a new record according input parameter entity record structure (`ObjectData`).\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`ObjectData`).\n* If the `Id` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the created record if the call is successful. Method returns an extended `Object` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\n",
+        "description": "Use the `ObjectData` object resource to create new records.\n\nYou can supply the required field values in the request data, and then use the `POST` method of the resource.\n\nThe input parameter must be used in the `ObjectData` record structure inside the `FieldType` parameter in the foreign key fields.\n\nForeign key fields are: `LanguageId, ModifiedBy, CreatedBy`\n\n### Create a new record of Object\n* If the value in the `Id, Title` fields are empty then action insert a new record according input parameter entity record structure (`ObjectData`).\n* If the value in the `Title` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`ObjectData`).\n* If the `Id, Title` field value is matched multiple times, then a `400` error is reported (`Errors/Multible Rows`), and the error record is returned.\n\nThe response body will contain the object of the created record if the call is successful. Method returns an extended `Object` structure. Here, all foreign key fields are abstract object structures, utilizing `AbstractText` or `AbstractLong` data types, offering a detailed view of the data and related entities.\n\n",
         "operationId": "Create Object",
         "requestBody": {
           "description": "`Object` information to insert.\n\nThe input parameter must be used in the `ObjectData` record structure inside the `FieldType` parameter in the foreign key fields.",
@@ -364,7 +364,7 @@
         "tags": [
           "Objects"
         ],
-        "description": "Use the `ObjectsText` object resource to insert or update (Upsert) a list of `ObjectList` using `Id` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `PATCH` method of the resource.\n\nThe input parameter must be used in the `ObjectList` record structure as text fields in the foreign key fields.\n\nForeign key fields are: `LanguageId, ModifiedBy, CreatedBy`\n\n### Update a record of Object\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned. You cannot change `Id` field value (primary key).\n* When the Id field value is not provided, the system will automatically initiate the insertion of a new record.\n\n**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.\n\n### Create a new record of Object\n* If the value in the `Id` field is empty then action insert a new record according input parameter entity record structure (`ObjectData`).\n\nThe response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `Object` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.",
+        "description": "Use the `ObjectsText` object resource to insert or update (Upsert) a list of `ObjectList` using `Id, Title` field(s) value.\n\nYou can supply the required field values in the request data, and then use the `PATCH` method of the resource.\n\nThe input parameter must be used in the `ObjectList` record structure as text fields in the foreign key fields.\n\nForeign key fields are: `LanguageId, ModifiedBy, CreatedBy`\n\n### Update a record of Object\n* If the `Id` field value is not matched, then a `404` error is reported (`Errors/Not Found`), and the error record is returned. You cannot change `Id` field value (primary key).\n* If the `Title` field value is not empty and `Id` field value is empty, action try insert record according `Title` field value (if set, the value is a unique identifier).\n\n**Attention!**, this can also cause an incorrect row update, but at the same time enables efficient data transfer between systems.\n\n### Create a new record of Object\n* If the value in the `Title` and `Id` fields are empty then action insert a new record according input parameter entity record structure (`ObjectData`).\n\nThe response body will contain the record list structure of the updated or created record if the call is successful. The method returns a list structured with an extended `Object` representation. In this format, all foreign key fields are depicted as abstract object structures, employing `AbstractText` or `AbstractLong` data types. This offers an enriched and detailed perspective of the data and its associated entities.",
         "operationId": "Patch Objects",
         "requestBody": {
           "description": "The list of Object information to insert or update.\n\nThe input parameter must be used in the `Extra` record array structure inside the `Name` and `FieldName` parameters in the foreign key fields.",
