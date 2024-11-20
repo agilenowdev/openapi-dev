@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.36"
+    "version": "3.0.37"
   },
   "servers": [
     {
@@ -219,10 +219,10 @@
           {
             "name": "Fields",
             "in": "query",
-            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_Active, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_Active, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```",
             "schema": {
               "type": "string",
-              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_Active, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```"
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_Active, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```"
             }
           },
           {
@@ -431,10 +431,10 @@
           {
             "name": "Fields",
             "in": "query",
-            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, Is_Active, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```",
             "schema": {
               "type": "string",
-              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, Is_Active, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```"
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, RoleKey, FullName, Description, ExternalId, AccessApplicationId, Is_Active, Is_Custom, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```"
             }
           },
           {
@@ -752,7 +752,8 @@
       "Application": {
         "required": [
           "Id",
-          "Is_Active"
+          "Is_Active",
+          "Is_ReadOnly"
         ],
         "type": "object",
         "properties": {
@@ -795,6 +796,12 @@
           "Is_Active": {
             "type": "boolean",
             "description": "Defines if the application is active and can be used",
+            "default": false,
+            "example": false
+          },
+          "Is_ReadOnly": {
+            "type": "boolean",
+            "description": "Determines whether the application is readonly and can be modified",
             "default": false,
             "example": false
           },
@@ -892,12 +899,6 @@
             "type": "string",
             "description": "Web Site URL of application."
           },
-          "Is_System": {
-            "type": "boolean",
-            "description": "Defines if application is system (setting menu).",
-            "default": false,
-            "example": false
-          },
           "Is_EndUser": {
             "type": "boolean",
             "description": "Specifies whether the application is an end-user application.",
@@ -916,7 +917,8 @@
       "Role": {
         "required": [
           "Id",
-          "RoleKey"
+          "RoleKey",
+          "Is_ReadOnly"
         ],
         "type": "object",
         "properties": {
@@ -947,6 +949,18 @@
           "Is_Active": {
             "type": "boolean",
             "description": "Defines if record is active",
+            "default": false,
+            "example": false
+          },
+          "Is_Custom": {
+            "type": "boolean",
+            "description": "Determines whether the role has been modified externally or whether it is synchronized from the OutSystems structure",
+            "default": false,
+            "example": false
+          },
+          "Is_ReadOnly": {
+            "type": "boolean",
+            "description": "Determines whether the role is readonly and can be modified",
             "default": false,
             "example": false
           },
