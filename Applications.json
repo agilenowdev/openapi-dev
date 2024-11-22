@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.40"
+    "version": "3.0.41"
   },
   "servers": [
     {
@@ -222,10 +222,10 @@
           {
             "name": "Fields",
             "in": "query",
-            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_Active, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```",
+            "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_TestApp, Is_Active, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```",
             "schema": {
               "type": "string",
-              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_Active, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```"
+              "description": "Specify the fields you want to retrieve in the fields parameter and use the GET method of the resource.\n\nThe list of database column attributes. If list is empty or &quot;*&quot; then all of fields will be returned.\n\nThis method converts a string list to a string with a comma separator.\n\nExample: \n```\nId, Name, ApplicationKey, ExternalId, Description, WebSiteURL, Is_System, Is_EndUser, Is_TestApp, Is_Active, Is_ReadOnly, ModifiedOn, ModifiedBy, CreatedBy, CreatedOn\n```"
             }
           },
           {
@@ -799,6 +799,12 @@
           "Is_EndUser": {
             "type": "boolean",
             "description": "Specifies whether the application is an end-user application",
+            "default": false,
+            "example": false
+          },
+          "Is_TestApp": {
+            "type": "boolean",
+            "description": "Specifies whether the application is a test application",
             "default": false,
             "example": false
           },
