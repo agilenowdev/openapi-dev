@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.37"
+    "version": "3.0.39"
   },
   "servers": [
     {
@@ -72,7 +72,8 @@
         "security": [
           {
             "OAuth2": [
-              "AccessManager:Read"
+              "AccessManager:Read",
+              "AccessUser:Read"
             ]
           }
         ]
@@ -143,7 +144,8 @@
         "security": [
           {
             "OAuth2": [
-              "AccessManager:Update"
+              "AccessManager:Update",
+              "AccessUser:Update"
             ]
           }
         ]
@@ -202,7 +204,8 @@
         "security": [
           {
             "OAuth2": [
-              "AccessManager:Delete"
+              "AccessManager:Delete",
+              "AccessUser:Delete"
             ]
           }
         ]
@@ -293,7 +296,8 @@
         "security": [
           {
             "OAuth2": [
-              "AccessManager:Read"
+              "AccessManager:Read",
+              "AccessUser:Read"
             ]
           }
         ]
@@ -345,7 +349,8 @@
         "security": [
           {
             "OAuth2": [
-              "AccessManager:Create, Update"
+              "AccessManager:Create, Update",
+              "AccessUser:Create, Update"
             ]
           }
         ]
@@ -395,7 +400,8 @@
         "security": [
           {
             "OAuth2": [
-              "AccessManager:Create"
+              "AccessManager:Create",
+              "AccessUser:Create"
             ]
           }
         ]
@@ -505,7 +511,8 @@
         "security": [
           {
             "OAuth2": [
-              "AccessManager:Read"
+              "AccessManager:Read",
+              "AccessUser:Read"
             ]
           }
         ]
@@ -578,7 +585,8 @@
         "security": [
           {
             "OAuth2": [
-              "AccessManager:Create, Update"
+              "AccessManager:Create, Update",
+              "AccessUser:Create, Update"
             ]
           }
         ]
@@ -658,7 +666,8 @@
         "security": [
           {
             "OAuth2": [
-              "AccessManager:Delete"
+              "AccessManager:Delete",
+              "AccessUser:Delete"
             ]
           }
         ]
@@ -1198,10 +1207,15 @@
             "refreshUrl": "https://dev.esystems.fi/oAuth/rest/v2/Token",
             "scopes": {
               "AccessManager:Read": "Allows to edit access groups and all related data. (ABAC) permissions required to perform a function.",
+              "AccessUser:Read": "Allows to review access groups and all related data. (ABAC) permissions required to perform a function.",
               "AccessManager:Create, Update": "Allows to edit access groups and all related data. (ABAC) permissions required to perform a function.",
+              "AccessUser:Create, Update": "Allows to review access groups and all related data. (ABAC) permissions required to perform a function.",
               "AccessManager:Create": "Allows to edit access groups and all related data. (ABAC) permissions required to perform a function.",
+              "AccessUser:Create": "Allows to review access groups and all related data. (ABAC) permissions required to perform a function.",
               "AccessManager:Update": "Allows to edit access groups and all related data. (ABAC) permissions required to perform a function.",
-              "AccessManager:Delete": "Allows to edit access groups and all related data. (ABAC) permissions required to perform a function."
+              "AccessUser:Update": "Allows to review access groups and all related data. (ABAC) permissions required to perform a function.",
+              "AccessManager:Delete": "Allows to edit access groups and all related data. (ABAC) permissions required to perform a function.",
+              "AccessUser:Delete": "Allows to review access groups and all related data. (ABAC) permissions required to perform a function."
             }
           }
         }
