@@ -45,4 +45,9 @@ public class Role1_TestData : TestData<Role1, RoleData1> {
 
     public static readonly string[] RolesReadDenied = new[] { ReadOnlyRole, CustomRole };
     public static readonly string[] RolesWriteDenied = RolesReadDenied;
+
+    public static readonly string[] ApplicationsRoleWriteDenied = new[] {
+        Application1_TestData.TestAppApplication,
+        Application1_TestData.ReadOnlyApplication
+    };
 }

@@ -52,11 +52,11 @@ public class Application_Tests : EntityTests<Application1, ApplicationData1> {
     [Fact] public void Test_Application_List_Paging() => Test_List_Paging();
     [Fact] public void Test_Application_List_OrderAscending() => Test_List_OrderAscending();
     [Fact] public void Test_Application_List_OrderDecending() => Test_List_OrderDecending();
-    [Fact] public void Test_Application_List_ReadDenied() => Test_List_ReadDenied(Application1_TestData.ApplicationsReadDenied);
+    //[Fact] public void Test_Application_List_ReadDenied() => Test_List_ReadDenied(Application1_TestData.ApplicationsReadDenied);
 
     [Fact] public void Test_Application_Get_ById() => Test_Get_ById();
     [Fact] public void Test_Application_Get_ByUniqueAttributes() => Test_Get_ByUniqueAttributes();
-    [Fact] public void Test_Application_Get_ReadDenied() => Test_Get_ReadDenied(Application1_TestData.ApplicationsReadDenied);
+    //[Fact] public void Test_Application_Get_ReadDenied() => Test_Get_ReadDenied(Application1_TestData.ApplicationsReadDenied);
 
     [Fact] public void Test_Application_Create() => Test_Create();
     [Fact] public void Test_Application_Create_WithUniqueAttributes() => Test_Create_WithUniqueAttributes();

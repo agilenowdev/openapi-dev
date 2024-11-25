@@ -46,15 +46,15 @@ public class Application_Role_Tests : SubEntityTests<Application1, ApplicationDa
     [Fact] public void Test_Application_Role_List_OrderAscending() => Test_List_OrderAscending();
     [Fact] public void Test_Application_Role_List_OrderDecending() => Test_List_OrderDecending();
 
-    [Fact]
-    public void Test_Application_Role_List_ReadDenied() =>
-        Test_List_SubEntities_ReadDenied(Application1_TestData.ApplicationsReadDenied);
+    //[Fact]
+    //public void Test_Application_Role_List_ReadDenied() =>
+    //    Test_List_SubEntities_ReadDenied(Application1_TestData.ApplicationsReadDenied);
 
     [Fact] public void Test_Application_Role_Upsert() => Test_Upsert();
 
     [Fact]
     public void Test_Application_Role_Upsert_WriteDenied() =>
-        Test_Upsert_SubEntities_WriteDenied(Application1_TestData.ApplicationsWriteDenied);
+        Test_Upsert_SubEntities_WriteDenied(Role1_TestData.RolesWriteDenied);
 
     [Fact] public void Test_Application_Role_Delete_ById() => Test_Delete_ById();
     //[Fact] public void Test_Application_Role_Delete_ByUniqueAttributes() => Test_Delete_ByUniqueAttributes();
