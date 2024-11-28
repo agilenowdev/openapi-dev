@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.25"
+    "version": "3.0.26"
   },
   "servers": [
     {
@@ -28,11 +28,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -88,11 +88,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -160,11 +160,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -471,11 +471,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -580,11 +580,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -625,7 +625,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User"
+                  "$ref": "#/components/schemas/Users"
                 }
               }
             }
@@ -664,11 +664,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -738,11 +738,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -757,11 +757,11 @@
           {
             "name": "SubId",
             "in": "path",
-            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the User record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -819,11 +819,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -928,11 +928,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -973,7 +973,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Contact"
+                  "$ref": "#/components/schemas/Contacts"
                 }
               }
             }
@@ -1012,11 +1012,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -1086,11 +1086,11 @@
           {
             "name": "Id",
             "in": "path",
-            "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the Customer record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -1105,11 +1105,11 @@
           {
             "name": "SubId",
             "in": "path",
-            "description": "The identifier of the Contact record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t",
+            "description": "The identifier of the Contact record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The identifier of the Contact record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64|bmFtZUBkb21haW4uY29t"
+              "description": "The identifier of the Contact record. The parameter is part of the url address and some special characters are forbidden.\n\nYou can extract any string to a base64 string.\nE.g email address name@domain.com value is base64\\|bmFtZUBkb21haW4uY29t"
             }
           },
           {
@@ -1304,9 +1304,6 @@
         "description": "The record of Customer information."
       },
       "AbstractLong": {
-        "required": [
-          "Id"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -1351,10 +1348,6 @@
         "description": "The list of `Customer` records"
       },
       "CustomerData": {
-        "required": [
-          "Name",
-          "Is_Active"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -1435,10 +1428,6 @@
         "description": "The field object structure. This structure allows users to specify any related entity field and its corresponding value. When saving data, the system automatically retrieves and assigns the primary key value from the system database table based on the provided field name and value."
       },
       "CustomerText": {
-        "required": [
-          "Name",
-          "Is_Active"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -1800,11 +1789,6 @@
         "description": "The list of `Contact` records"
       },
       "ContactData": {
-        "required": [
-          "Name",
-          "FirstName",
-          "LastName"
-        ],
         "type": "object",
         "properties": {
           "Id": {
@@ -1872,11 +1856,6 @@
         "description": "The record of Contact information."
       },
       "ContactText": {
-        "required": [
-          "Name",
-          "FirstName",
-          "LastName"
-        ],
         "type": "object",
         "properties": {
           "Id": {
