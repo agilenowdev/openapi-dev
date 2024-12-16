@@ -4532,39 +4532,218 @@
       },
       "EnumCurrency": {
         "enum": [
+          "AFG",
+          "DZA",
+          "ARG",
+          "ARM",
+          "ABW",
           "AUD",
+          "AZE",
+          "BHS",
           "BHD",
+          "PAN",
+          "BRB",
+          "BLR",
+          "BLZ",
+          "BMU",
+          "BTN",
+          "VEN",
+          "BOL",
+          "BRA",
           "BGN",
+          "BDI",
           "CAD",
+          "CYM",
+          "GHA",
+          "CIV",
+          "BEN",
+          "BFA",
+          "NER",
+          "MLI",
+          "SEN",
+          "TGO",
+          "CMR",
+          "COG",
+          "CAF",
+          "GNQ",
+          "PYF",
+          "NCL",
+          "WLF",
           "CNY",
+          "COL",
+          "COM",
+          "BIH",
+          "NIC",
+          "CRI",
           "HRK",
           "CZK",
           "DKK",
+          "MKD",
+          "DJI",
+          "STP",
+          "DOM",
+          "VNM",
+          "VCT",
+          "DMA",
+          "GRD",
+          "KNA",
+          "ATG",
+          "AIA",
+          "MSR",
+          "LCA",
           "AED",
+          "ERI",
+          "ETH",
           "EUR",
+          "ATF",
+          "LUX",
+          "FLK",
+          "COD",
+          "GIB",
+          "HTI",
           "GBP",
+          "PRY",
+          "GIN",
+          "GNB",
+          "GUY",
           "HKD",
           "HUF",
           "ISK",
+          "IRN",
+          "IRQ",
+          "JAM",
           "JPY",
+          "JOR",
+          "KEN",
+          "LAO",
+          "MWI",
+          "AGO",
+          "MMR",
+          "GEO",
+          "LBN",
+          "ALB",
+          "HND",
+          "SLE",
+          "LSO",
+          "ROM",
+          "LBR",
+          "LBY",
+          "SWZ",
+          "MDG",
+          "MYS",
+          "TKM",
+          "MUS",
+          "MEX",
+          "MDA",
+          "MAr",
+          "ESH",
+          "MOZ",
+          "NGA",
+          "NAM",
+          "NPL",
+          "SXM",
+          "ANT",
+          "CUW",
+          "ISR",
+          "TWN",
+          "PRK",
           "NOK",
+          "PER",
+          "MRT",
+          "TON",
+          "PAK",
+          "MAC",
+          "URY",
           "PLN",
+          "BWA",
+          "QAT",
+          "GTM",
+          "ZAF",
+          "OMN",
+          "KHM",
+          "MDV",
           "RUB",
+          "RWA",
+          "SRB",
+          "SYC",
           "SGD",
+          "SLB",
+          "KGZ",
+          "SOM",
+          "TJK",
+          "SSD",
+          "SHN",
+          "SDN",
+          "SUR",
           "SEK",
           "CHF",
+          "SYR",
+          "BGD",
+          "WSM",
           "THB",
+          "TTO",
+          "MNG",
+          "TUN",
           "TRY",
+          "UGA",
           "UAH",
-          "USD"
+          "USD",
+          "UZB",
+          "VUT",
+          "KOR",
+          "YEM",
+          "ZMB",
+          "ZWE"
         ],
         "type": "string",
         "description": "The enum of Currency.",
         "x-enums": [
           {
+            "value": "AFG",
+            "name": "Afghani",
+            "description": "Afghani",
+            "isString": true
+          },
+          {
+            "value": "DZA",
+            "name": "AlgerianDinar",
+            "description": "Algerian Dinar",
+            "isString": true
+          },
+          {
+            "value": "ARG",
+            "name": "ArgentinePeso",
+            "description": "Argentine Peso",
+            "isString": true
+          },
+          {
+            "value": "ARM",
+            "name": "ArmenianDram",
+            "description": "Armenian Dram",
+            "isString": true
+          },
+          {
+            "value": "ABW",
+            "name": "ArubanGuilder",
+            "description": "Aruban Guilder",
+            "isString": true
+          },
+          {
             "value": "AUD",
             "name": "AustralianDollar",
             "description": "Australian Dollar",
+            "isString": true
+          },
+          {
+            "value": "AZE",
+            "name": "AzerbaijanManat",
+            "description": "Azerbaijan Manat",
+            "isString": true
+          },
+          {
+            "value": "BHS",
+            "name": "BahamianDollar",
+            "description": "Bahamian Dollar",
             "isString": true
           },
           {
@@ -4574,9 +4753,69 @@
             "isString": true
           },
           {
+            "value": "PAN",
+            "name": "Balboa",
+            "description": "Balboa",
+            "isString": true
+          },
+          {
+            "value": "BRB",
+            "name": "BarbadosDollar",
+            "description": "Barbados Dollar",
+            "isString": true
+          },
+          {
+            "value": "BLR",
+            "name": "BelarusianRuble",
+            "description": "Belarusian Ruble",
+            "isString": true
+          },
+          {
+            "value": "BLZ",
+            "name": "BelizeDollar",
+            "description": "Belize Dollar",
+            "isString": true
+          },
+          {
+            "value": "BMU",
+            "name": "BermudianDollar",
+            "description": "Bermudian Dollar",
+            "isString": true
+          },
+          {
+            "value": "BTN",
+            "name": "BhutanNgultrum",
+            "description": "Bhutan Ngultrum",
+            "isString": true
+          },
+          {
+            "value": "VEN",
+            "name": "BolivarFuerte",
+            "description": "Bolivar Fuerte",
+            "isString": true
+          },
+          {
+            "value": "BOL",
+            "name": "Boliviano",
+            "description": "Boliviano",
+            "isString": true
+          },
+          {
+            "value": "BRA",
+            "name": "BrazilianReal",
+            "description": "Brazilian Real",
+            "isString": true
+          },
+          {
             "value": "BGN",
             "name": "BulgarianLev",
             "description": "Bulgarian Lev",
+            "isString": true
+          },
+          {
+            "value": "BDI",
+            "name": "BurundiFranc",
+            "description": "Burundi Franc",
             "isString": true
           },
           {
@@ -4586,9 +4825,135 @@
             "isString": true
           },
           {
+            "value": "CYM",
+            "name": "CaymanIsDollar",
+            "description": "Cayman Is. Dollar",
+            "isString": true
+          },
+          {
+            "value": "GHA",
+            "name": "Cedi",
+            "description": "Cedi",
+            "isString": true
+          },
+          {
+            "value": "CIV",
+            "name": "CfaFrancBceao",
+            "description": "CFA Franc BCEAO",
+            "isString": true
+          },
+          {
+            "value": "BEN",
+            "name": "CfaFrancBceao_1",
+            "description": "CFA Franc BCEAO",
+            "isString": true
+          },
+          {
+            "value": "BFA",
+            "name": "CfaFrancBceao_2",
+            "description": "CFA Franc BCEAO",
+            "isString": true
+          },
+          {
+            "value": "NER",
+            "name": "CfaFrancBceao_3",
+            "description": "CFA Franc BCEAO",
+            "isString": true
+          },
+          {
+            "value": "MLI",
+            "name": "CfaFrancBceao_4",
+            "description": "CFA Franc BCEAO",
+            "isString": true
+          },
+          {
+            "value": "SEN",
+            "name": "CfaFrancBceao_5",
+            "description": "CFA Franc BCEAO",
+            "isString": true
+          },
+          {
+            "value": "TGO",
+            "name": "CfaFrancBceao_6",
+            "description": "CFA Franc BCEAO",
+            "isString": true
+          },
+          {
+            "value": "CMR",
+            "name": "CfaFrancBeac",
+            "description": "CFA Franc BEAC",
+            "isString": true
+          },
+          {
+            "value": "COG",
+            "name": "CfaFrancBeac_1",
+            "description": "CFA Franc BEAC",
+            "isString": true
+          },
+          {
+            "value": "CAF",
+            "name": "CfaFrancBeac_2",
+            "description": "CFA Franc BEAC",
+            "isString": true
+          },
+          {
+            "value": "GNQ",
+            "name": "CfaFrancBeac_3",
+            "description": "CFA Franc BEAC",
+            "isString": true
+          },
+          {
+            "value": "PYF",
+            "name": "CfpFranc",
+            "description": "CFP Franc",
+            "isString": true
+          },
+          {
+            "value": "NCL",
+            "name": "CfpFranc_1",
+            "description": "CFP Franc",
+            "isString": true
+          },
+          {
+            "value": "WLF",
+            "name": "CfpFranc_2",
+            "description": "CFP Franc",
+            "isString": true
+          },
+          {
             "value": "CNY",
             "name": "ChineseYuanRenminbi",
             "description": "Chinese Yuan Renminbi",
+            "isString": true
+          },
+          {
+            "value": "COL",
+            "name": "ColombianPeso",
+            "description": "Colombian Peso",
+            "isString": true
+          },
+          {
+            "value": "COM",
+            "name": "ComoroFranc",
+            "description": "Comoro Franc",
+            "isString": true
+          },
+          {
+            "value": "BIH",
+            "name": "ConvertibleMark",
+            "description": "Convertible Mark",
+            "isString": true
+          },
+          {
+            "value": "NIC",
+            "name": "CordobaOro",
+            "description": "Cordoba Oro",
+            "isString": true
+          },
+          {
+            "value": "CRI",
+            "name": "CostaRicanColon",
+            "description": "Costa Rican Colon",
             "isString": true
           },
           {
@@ -4610,9 +4975,99 @@
             "isString": true
           },
           {
+            "value": "MKD",
+            "name": "Denar",
+            "description": "Denar",
+            "isString": true
+          },
+          {
+            "value": "DJI",
+            "name": "DjiboutiFranc",
+            "description": "Djibouti Franc",
+            "isString": true
+          },
+          {
+            "value": "STP",
+            "name": "Dobra",
+            "description": "Dobra",
+            "isString": true
+          },
+          {
+            "value": "DOM",
+            "name": "DominicanPeso",
+            "description": "Dominican Peso",
+            "isString": true
+          },
+          {
+            "value": "VNM",
+            "name": "Dong",
+            "description": "Dong",
+            "isString": true
+          },
+          {
+            "value": "VCT",
+            "name": "ECaribbeanDollar",
+            "description": "E. Caribbean Dollar",
+            "isString": true
+          },
+          {
+            "value": "DMA",
+            "name": "ECaribbeanDollar_1",
+            "description": "E. Caribbean Dollar",
+            "isString": true
+          },
+          {
+            "value": "GRD",
+            "name": "ECaribbeanDollar_2",
+            "description": "E. Caribbean Dollar",
+            "isString": true
+          },
+          {
+            "value": "KNA",
+            "name": "ECaribbeanDollar_3",
+            "description": "E. Caribbean Dollar",
+            "isString": true
+          },
+          {
+            "value": "ATG",
+            "name": "ECaribbeanDollar_4",
+            "description": "E. Caribbean Dollar",
+            "isString": true
+          },
+          {
+            "value": "AIA",
+            "name": "ECaribbeanDollar_5",
+            "description": "E. Caribbean Dollar",
+            "isString": true
+          },
+          {
+            "value": "MSR",
+            "name": "ECaribbeanDollar_6",
+            "description": "E. Caribbean Dollar",
+            "isString": true
+          },
+          {
+            "value": "LCA",
+            "name": "ECaribbeanDollar_7",
+            "description": "E. Caribbean Dollar",
+            "isString": true
+          },
+          {
             "value": "AED",
             "name": "EmiratiDirham",
             "description": "Emirati Dirham",
+            "isString": true
+          },
+          {
+            "value": "ERI",
+            "name": "EritreanNakfa",
+            "description": "Eritrean Nakfa",
+            "isString": true
+          },
+          {
+            "value": "ETH",
+            "name": "EthiopianBirr",
+            "description": "Ethiopian Birr",
             "isString": true
           },
           {
@@ -4622,9 +5077,69 @@
             "isString": true
           },
           {
+            "value": "ATF",
+            "name": "Euro_1",
+            "description": "Euro",
+            "isString": true
+          },
+          {
+            "value": "LUX",
+            "name": "Euro_2",
+            "description": "Euro",
+            "isString": true
+          },
+          {
+            "value": "FLK",
+            "name": "FalklandIsPound",
+            "description": "Falkland Is. Pound",
+            "isString": true
+          },
+          {
+            "value": "COD",
+            "name": "FrancCongolais",
+            "description": "Franc Congolais",
+            "isString": true
+          },
+          {
+            "value": "GIB",
+            "name": "GibraltarPound",
+            "description": "Gibraltar Pound",
+            "isString": true
+          },
+          {
+            "value": "HTI",
+            "name": "Gourde",
+            "description": "Gourde",
+            "isString": true
+          },
+          {
             "value": "GBP",
             "name": "GreatBritishPound",
             "description": "Great British Pound",
+            "isString": true
+          },
+          {
+            "value": "PRY",
+            "name": "Guarani",
+            "description": "Guarani",
+            "isString": true
+          },
+          {
+            "value": "GIN",
+            "name": "GuineaFranc",
+            "description": "Guinea Franc",
+            "isString": true
+          },
+          {
+            "value": "GNB",
+            "name": "GuineaBissauPeso",
+            "description": "Guinea-Bissau Peso",
+            "isString": true
+          },
+          {
+            "value": "GUY",
+            "name": "GuyanaDollar",
+            "description": "Guyana Dollar",
             "isString": true
           },
           {
@@ -4646,9 +5161,231 @@
             "isString": true
           },
           {
+            "value": "IRN",
+            "name": "IranianRial",
+            "description": "Iranian Rial",
+            "isString": true
+          },
+          {
+            "value": "IRQ",
+            "name": "IraqiDinar",
+            "description": "Iraqi Dinar",
+            "isString": true
+          },
+          {
+            "value": "JAM",
+            "name": "JamaicanDollar",
+            "description": "Jamaican Dollar",
+            "isString": true
+          },
+          {
             "value": "JPY",
             "name": "JapaneseYen",
             "description": "Japanese Yen",
+            "isString": true
+          },
+          {
+            "value": "JOR",
+            "name": "JordanianDinar",
+            "description": "Jordanian Dinar",
+            "isString": true
+          },
+          {
+            "value": "KEN",
+            "name": "KenyanShilling",
+            "description": "Kenyan Shilling",
+            "isString": true
+          },
+          {
+            "value": "LAO",
+            "name": "Kip",
+            "description": "Kip",
+            "isString": true
+          },
+          {
+            "value": "MWI",
+            "name": "Kwacha",
+            "description": "Kwacha",
+            "isString": true
+          },
+          {
+            "value": "AGO",
+            "name": "Kwanza",
+            "description": "Kwanza",
+            "isString": true
+          },
+          {
+            "value": "MMR",
+            "name": "Kyat",
+            "description": "Kyat",
+            "isString": true
+          },
+          {
+            "value": "GEO",
+            "name": "Lari",
+            "description": "Lari",
+            "isString": true
+          },
+          {
+            "value": "LBN",
+            "name": "LebanesePound",
+            "description": "Lebanese Pound",
+            "isString": true
+          },
+          {
+            "value": "ALB",
+            "name": "Lek",
+            "description": "Lek",
+            "isString": true
+          },
+          {
+            "value": "HND",
+            "name": "Lempira",
+            "description": "Lempira",
+            "isString": true
+          },
+          {
+            "value": "SLE",
+            "name": "Leone",
+            "description": "Leone",
+            "isString": true
+          },
+          {
+            "value": "LSO",
+            "name": "LesothoLoti",
+            "description": "Lesotho Loti",
+            "isString": true
+          },
+          {
+            "value": "ROM",
+            "name": "Leu",
+            "description": "Leu",
+            "isString": true
+          },
+          {
+            "value": "LBR",
+            "name": "LiberianDollar",
+            "description": "Liberian Dollar",
+            "isString": true
+          },
+          {
+            "value": "LBY",
+            "name": "LibyanDinar",
+            "description": "Libyan Dinar",
+            "isString": true
+          },
+          {
+            "value": "SWZ",
+            "name": "Lilangeni",
+            "description": "Lilangeni",
+            "isString": true
+          },
+          {
+            "value": "MDG",
+            "name": "MalagasyAriary",
+            "description": "Malagasy Ariary",
+            "isString": true
+          },
+          {
+            "value": "MYS",
+            "name": "MalaysianRinggit",
+            "description": "Malaysian Ringgit",
+            "isString": true
+          },
+          {
+            "value": "TKM",
+            "name": "Manat",
+            "description": "Manat",
+            "isString": true
+          },
+          {
+            "value": "MUS",
+            "name": "MauritiusRupee",
+            "description": "Mauritius Rupee",
+            "isString": true
+          },
+          {
+            "value": "MEX",
+            "name": "MexicanPeso",
+            "description": "Mexican Peso",
+            "isString": true
+          },
+          {
+            "value": "MDA",
+            "name": "MoldovanLeu",
+            "description": "Moldovan Leu",
+            "isString": true
+          },
+          {
+            "value": "MAr",
+            "name": "MoroccanDirham",
+            "description": "Moroccan Dirham",
+            "isString": true
+          },
+          {
+            "value": "ESH",
+            "name": "MoroccanDirham_1",
+            "description": "Moroccan Dirham",
+            "isString": true
+          },
+          {
+            "value": "MOZ",
+            "name": "MozambiqueMetical",
+            "description": "Mozambique Metical",
+            "isString": true
+          },
+          {
+            "value": "NGA",
+            "name": "Naira",
+            "description": "Naira",
+            "isString": true
+          },
+          {
+            "value": "NAM",
+            "name": "NamibiaDollar",
+            "description": "Namibia Dollar",
+            "isString": true
+          },
+          {
+            "value": "NPL",
+            "name": "NepaleseRupee",
+            "description": "Nepalese Rupee",
+            "isString": true
+          },
+          {
+            "value": "SXM",
+            "name": "NetherlandsAntilleanGuilder",
+            "description": "Netherlands Antillean Guilder",
+            "isString": true
+          },
+          {
+            "value": "ANT",
+            "name": "NetherlandsAntilleanGuilder_1",
+            "description": "Netherlands Antillean Guilder",
+            "isString": true
+          },
+          {
+            "value": "CUW",
+            "name": "NetherlandsAntilleanGuilder_2",
+            "description": "Netherlands Antillean Guilder",
+            "isString": true
+          },
+          {
+            "value": "ISR",
+            "name": "NewIsraeliShequel",
+            "description": "New Israeli Shequel",
+            "isString": true
+          },
+          {
+            "value": "TWN",
+            "name": "NewTaiwanDollar",
+            "description": "New Taiwan Dollar",
+            "isString": true
+          },
+          {
+            "value": "PRK",
+            "name": "NorthKoreanWon",
+            "description": "North Korean Won",
             "isString": true
           },
           {
@@ -4658,9 +5395,87 @@
             "isString": true
           },
           {
+            "value": "PER",
+            "name": "NuevoSol",
+            "description": "Nuevo Sol",
+            "isString": true
+          },
+          {
+            "value": "MRT",
+            "name": "Ouguiya",
+            "description": "Ouguiya",
+            "isString": true
+          },
+          {
+            "value": "TON",
+            "name": "PaAnga",
+            "description": "Pa'anga",
+            "isString": true
+          },
+          {
+            "value": "PAK",
+            "name": "PakistanRupee",
+            "description": "Pakistan Rupee",
+            "isString": true
+          },
+          {
+            "value": "MAC",
+            "name": "Pataca",
+            "description": "Pataca",
+            "isString": true
+          },
+          {
+            "value": "URY",
+            "name": "PesoUruguayo",
+            "description": "Peso Uruguayo",
+            "isString": true
+          },
+          {
             "value": "PLN",
             "name": "PolishZloty",
             "description": "Polish Zloty",
+            "isString": true
+          },
+          {
+            "value": "BWA",
+            "name": "Pula",
+            "description": "Pula",
+            "isString": true
+          },
+          {
+            "value": "QAT",
+            "name": "QatariRial",
+            "description": "Qatari Rial",
+            "isString": true
+          },
+          {
+            "value": "GTM",
+            "name": "Quetzal",
+            "description": "Quetzal",
+            "isString": true
+          },
+          {
+            "value": "ZAF",
+            "name": "Rand",
+            "description": "Rand",
+            "isString": true
+          },
+          {
+            "value": "OMN",
+            "name": "RialOmani",
+            "description": "Rial Omani",
+            "isString": true
+          },
+          {
+            "value": "KHM",
+            "name": "Riel",
+            "description": "Riel",
+            "isString": true
+          },
+          {
+            "value": "MDV",
+            "name": "Rufiyaa",
+            "description": "Rufiyaa",
             "isString": true
           },
           {
@@ -4670,9 +5485,75 @@
             "isString": true
           },
           {
+            "value": "RWA",
+            "name": "RwandaFranc",
+            "description": "Rwanda Franc",
+            "isString": true
+          },
+          {
+            "value": "SRB",
+            "name": "SerbianDinar",
+            "description": "Serbian Dinar",
+            "isString": true
+          },
+          {
+            "value": "SYC",
+            "name": "SeychellesRupee",
+            "description": "Seychelles Rupee",
+            "isString": true
+          },
+          {
             "value": "SGD",
             "name": "SingaporeDollar",
             "description": "Singapore Dollar",
+            "isString": true
+          },
+          {
+            "value": "SLB",
+            "name": "SolomonIsDollar",
+            "description": "Solomon Is. Dollar",
+            "isString": true
+          },
+          {
+            "value": "KGZ",
+            "name": "Som",
+            "description": "Som",
+            "isString": true
+          },
+          {
+            "value": "SOM",
+            "name": "SomaliShilling",
+            "description": "Somali Shilling",
+            "isString": true
+          },
+          {
+            "value": "TJK",
+            "name": "Somoni",
+            "description": "Somoni",
+            "isString": true
+          },
+          {
+            "value": "SSD",
+            "name": "SouthSudanesePound",
+            "description": "South Sudanese Pound",
+            "isString": true
+          },
+          {
+            "value": "SHN",
+            "name": "StHelenaPound",
+            "description": "St. Helena Pound",
+            "isString": true
+          },
+          {
+            "value": "SDN",
+            "name": "SudanesePound",
+            "description": "Sudanese Pound",
+            "isString": true
+          },
+          {
+            "value": "SUR",
+            "name": "SurinamDollar",
+            "description": "Surinam Dollar",
             "isString": true
           },
           {
@@ -4688,15 +5569,57 @@
             "isString": true
           },
           {
+            "value": "SYR",
+            "name": "SyrianPound",
+            "description": "Syrian Pound",
+            "isString": true
+          },
+          {
+            "value": "BGD",
+            "name": "Taka",
+            "description": "Taka",
+            "isString": true
+          },
+          {
+            "value": "WSM",
+            "name": "Tala",
+            "description": "Tala",
+            "isString": true
+          },
+          {
             "value": "THB",
             "name": "ThailandBaht",
             "description": "Thailand Baht",
             "isString": true
           },
           {
+            "value": "TTO",
+            "name": "TrinidadAndTobagoDollar",
+            "description": "Trinidad and Tobago Dollar",
+            "isString": true
+          },
+          {
+            "value": "MNG",
+            "name": "Tugrik",
+            "description": "Tugrik",
+            "isString": true
+          },
+          {
+            "value": "TUN",
+            "name": "TunisianDinar",
+            "description": "Tunisian Dinar",
+            "isString": true
+          },
+          {
             "value": "TRY",
             "name": "TurkishLira",
             "description": "Turkish Lira",
+            "isString": true
+          },
+          {
+            "value": "UGA",
+            "name": "UgandaShilling",
+            "description": "Uganda Shilling",
             "isString": true
           },
           {
@@ -4709,6 +5632,42 @@
             "value": "USD",
             "name": "UnitedStatesDollar",
             "description": "United States Dollar",
+            "isString": true
+          },
+          {
+            "value": "UZB",
+            "name": "UzbekistanSum",
+            "description": "Uzbekistan Sum",
+            "isString": true
+          },
+          {
+            "value": "VUT",
+            "name": "Vatu",
+            "description": "Vatu",
+            "isString": true
+          },
+          {
+            "value": "KOR",
+            "name": "Won",
+            "description": "Won",
+            "isString": true
+          },
+          {
+            "value": "YEM",
+            "name": "YemeniRial",
+            "description": "Yemeni Rial",
+            "isString": true
+          },
+          {
+            "value": "ZMB",
+            "name": "ZambianKwacha",
+            "description": "Zambian Kwacha",
+            "isString": true
+          },
+          {
+            "value": "ZWE",
+            "name": "ZimbabweDollar",
+            "description": "Zimbabwe Dollar",
             "isString": true
           }
         ]
