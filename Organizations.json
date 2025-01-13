@@ -4629,6 +4629,7 @@
           "LBR",
           "LBY",
           "SWZ",
+          "SZL",
           "MDG",
           "MYS",
           "TKM",
@@ -5277,6 +5278,12 @@
           {
             "value": "SWZ",
             "name": "Lilangeni",
+            "description": "Lilangeni",
+            "isString": true
+          },
+          {
+            "value": "SZL",
+            "name": "Lilangeni_1",
             "description": "Lilangeni",
             "isString": true
           },
