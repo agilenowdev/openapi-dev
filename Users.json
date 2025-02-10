@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "3.0.188"
+    "version": "3.0.189"
   },
   "servers": [
     {
@@ -1985,6 +1985,12 @@
           "Is_System": {
             "type": "boolean",
             "description": "Defines if access group is system and end-user cannot change it general, permissions and applications.",
+            "default": false,
+            "example": false
+          },
+          "Is_LoginGroup": {
+            "type": "boolean",
+            "description": "Determines if access control through groups is enabled. If enabled, users select an appropriate access group after login. This group dictates the access permissions and visibility during their session.",
             "default": false,
             "example": false
           },
