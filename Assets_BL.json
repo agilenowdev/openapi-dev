@@ -8,7 +8,7 @@
       "name": "BSD-3 license",
       "url": "https://opensource.org/licenses/BSD-3-Clause"
     },
-    "version": "2.0.38"
+    "version": "2.0.39"
   },
   "servers": [
     {
@@ -2772,11 +2772,6 @@
             "type": "boolean",
             "description": "Defines if the equipment is active and can be used",
             "example": false
-          },
-          "Is_Deleted": {
-            "type": "boolean",
-            "description": "Defines if the Equipment is deleted and cannot be used",
-            "example": false
           }
         },
         "description": "The type of certificate"
@@ -2943,11 +2938,6 @@
             "type": "boolean",
             "description": "Defines if the equipment is active and can be used",
             "example": false
-          },
-          "Is_Deleted": {
-            "type": "boolean",
-            "description": "Defines if the Equipment is deleted and cannot be used",
-            "example": false
           }
         },
         "description": "Equipment information for data patch"
@@ -2982,11 +2972,6 @@
           "Is_Active": {
             "type": "boolean",
             "description": "Defines if the equipment is active and can be used",
-            "example": false
-          },
-          "Is_Deleted": {
-            "type": "boolean",
-            "description": "Defines if the Equipment is deleted and cannot be used",
             "example": false
           }
         },
